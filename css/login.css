@@ -1,0 +1,78 @@
+body {
+    background: #fff;
+    padding-top: 25vh;
+    
+}
+.bg {
+    background-image: url('loginbg.png') ;
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 80vh;
+    width: 100%;
+    background-position: bottom left;
+}
+
+form {
+    background: #fff;
+}
+
+.row {
+   justify-content: center;
+}
+
+h4 {
+    text-align: center;
+    font-family: 'Poppins', serif;
+    font-style: italic;
+    font-weight: 700;
+}   
+
+.logo {
+    width: 28px;
+    height: 28px;
+    position: absolute;
+    top: 30px;
+    left: 40px;
+}
+
+.container-fluid .row .form-container .forgot {
+   font-size: 11px;
+
+}
+
+.form-container {
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0px 0px 2px 0px;
+}
+
+p {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.loginbtn {
+ padding: 0px 6px;
+ background: #F54748;
+ border: 0;
+ outline: none;
+ cursor: pointer;
+ font-family: 'Poppins', sans-serif;
+ font-size: 15px;
+ font-weight: 480;
+ border-radius: 5px;
+}
+
+.signwithbtn {
+    padding: 0px 6px;
+    background: #FFF7E9;
+    color: #272625;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    font-weight: 480;
+    border-radius: 5px;
+}
