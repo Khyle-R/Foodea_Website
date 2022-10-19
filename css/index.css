@@ -230,7 +230,7 @@ ul {
 }
 
 .info-section {
-    width: 70%;
+    width: auto;
     margin: 100px auto;
     display: flex;
     flex-direction: row;
