@@ -200,6 +200,8 @@ select:focus {
     border: 1px solid #ff0000;
 }
 
+
+
 .next:link, .next:visited {
     background-color: #F54748;
     color: white;
