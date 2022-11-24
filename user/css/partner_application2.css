@@ -200,13 +200,33 @@ select:focus {
     border: 1px solid #ff0000;
 }
 
-button {
-    padding: 13px 5px;
+.right .paragraph {
+    padding-top: 25px;
+    font-size: 12px;
     font-family: 'Montserrat', sans-serif;
-    opacity: 69%;
 }
 
-.next:link, .next:visited {
+.password-container{
+    position: relative;   
+}
+
+.password-container input[type="password"],
+.password-container input[type="text"]{
+    width: 100%;
+    padding: 12px;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.fa-eye{
+    position: absolute;
+    top: 28%;
+    right: 4%;
+    cursor: pointer;
+    color: lightgray;
+}
+
+.submit:link, .submit:visited {
     background-color: #F54748;
     color: white;
     padding: 12px 20px;
@@ -219,7 +239,7 @@ button {
     width: 190px;
 }
   
-.next:hover {
+.submit:hover {
     text-decoration: none;
     opacity: 100%;
     background-color: #F54748;

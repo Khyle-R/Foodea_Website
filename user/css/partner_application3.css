@@ -200,27 +200,7 @@ select:focus {
     border: 1px solid #ff0000;
 }
 
-button {
-    padding: 13px 5px;
-    font-family: 'Montserrat', sans-serif;
-    opacity: 69%;
-}
-
-.next:link, .next:visited {
-    background-color: #F54748;
-    color: white;
-    padding: 12px 20px;
-    text-align: center;
-    align-self: center;
-    text-decoration: none;
-    display: inline-block;
-    opacity: 75%;
-    border-radius: 25px;
-    width: 190px;
-}
-  
-.next:hover {
-    text-decoration: none;
-    opacity: 100%;
-    background-color: #F54748;
+a:link {
+    opacity: 60%;
+    color: #F54748;
 }
