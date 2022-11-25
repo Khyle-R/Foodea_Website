@@ -29,7 +29,8 @@ ul {
 }
 
 .container {
-    width: 100%;
+
+
     height: auto;
 }
 
@@ -63,8 +64,7 @@ ul {
 
 .back p {
     font-weight: 600;
-    font-family: 'Montserrat',
-        sans-serif;
+    font-family: 'Montserrat', sans-serif;
     padding-left: 10px;
     color: #fff;
     font-size: 15px;
@@ -200,13 +200,43 @@ select:focus {
     border: 1px solid #ff0000;
 }
 
-a:link, a:visited {
-    opacity: 60%;
-    color: #F54748;
+.digit-group input {
+    width: 60px;
+    height: 50px;
+    background-color: #fff;
+    border: none;
+    line-height: 50px;
+    text-align: center;
+    font-size: 24px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 200;
+    color: white;
+    margin: 0 2px;
 }
 
-a:hover {
-    opacity: 100%;
+.digit-group .splitter {
+    padding: 0 5px;
+    color: white;
+    font-size: 24px;
+}
+
+.right-content .paragraph {
+    padding-top: 15px;
+    font-size: 14px;
+    font-family: 'Montserrat',sans-serif;
+    opacity: 90%;
+    font-weight: 600;
+    color: #000;
+    opacity: 70%;
+}
+
+.veri:link, .veri:visited {
+    padding-top: 10px;
     color: #F54748;
-    text-decoration: none;
+    opacity: 60%;
+}
+
+.veri:hover {
+    color: #F54748;
+    opacity: 100%;
 }
