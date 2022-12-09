@@ -49,7 +49,7 @@ ul {
     margin: 2rem auto;
 }
 
-.back {
+.back a {
     display: flex;
     flex-direction: row;
     margin: 40px 0 10px 0;
