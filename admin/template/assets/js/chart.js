@@ -114,7 +114,7 @@ $(function () {
   var areaData = {
     labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
     datasets: [{
-      label: "# of Votes",
+      label: "Sales",
       data: [7200, 1900, 3000, 5000, 2000, 3000, 5000],
       backgroundColor: [
         "rgba(255, 99, 132, 0.2)",
