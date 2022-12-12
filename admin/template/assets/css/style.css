@@ -15746,12 +15746,18 @@ input[type="button"].btn-block {
 
 .card h3,
 h4,
-h6 {
+h6,
+.blackk {
   color: #000;
 }
 
+.gray {
+  color: rgb(160, 160, 160);
+  font-size: 85%;
+}
+
 .black {
-  color: #fff;
+  color: rgba(133, 133, 133, 0.459);
 }
 
 .card>hr {
@@ -16037,9 +16043,8 @@ h6 {
   padding: 0.5rem 0.75rem;
   margin-left: -1px;
   line-height: 1.25;
-  color: #007bff;
-  background-color: #000000;
-  border: 1px solid #dee2e6;
+  color: #4D4D4D;
+  background-color: #fff;
 }
 
 .page-link:hover,
@@ -24480,9 +24485,9 @@ code {
   font-weight: normal;
   font-size: 0.875rem;
   padding: 0.625rem 0.6875rem;
-  background-color: #2A3038;
+  background-color: #fff;
   border-radius: 2px;
-  color: #ffffff;
+  color: #5C5353;
 }
 
 .form-control:focus,
@@ -24496,8 +24501,8 @@ code {
 .typeahead:focus,
 .tt-query:focus,
 .tt-hint:focus {
-  border: 1px solid rgba(71, 164, 71, 0.5);
-  background-color: #2A3038;
+  border: 1px solid #4A47F5;
+  background-color: #fff;
 }
 
 .form-control.form-control-lg,
@@ -25980,13 +25985,14 @@ div.tagsinput {
   white-space: nowrap;
 }
 
+
 .table th img,
 .jsgrid .jsgrid-table th img,
 .table td img,
 .jsgrid .jsgrid-table td img {
   width: 30px;
   height: 30px;
-  border-radius: 100%;
+  border-radius: 50%;
 }
 
 .table th .badge,
