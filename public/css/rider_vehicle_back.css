@@ -61,6 +61,7 @@
 }
 
 .content header .fa-arrow-left:hover{
+<<<<<<< Updated upstream
     color: #FE9192;
     font-size: 14px;
     text-decoration: none;
@@ -74,6 +75,40 @@
    float: right;
    font-family: 'Montserrat', sans-serif;
    font-size: 14px;
+=======
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    padding-left: 10px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    color: #F54748;
+    font-size: 14px;
+    text-decoration: none;
+    transition-duration: 0.5s;
+    transition-timing-function: linear;
+}
+
+.content button {
+    border-radius: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: none;
+    outline: none;
+    width: 13%;
+    float: right;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    color: #000;
+    background-color: #ffffff;
+}
+
+.content button:hover {
+    color: #fdfdfd;
+    background-color: #f5a3a3;
+    transition-duration: 0.3s;
+    transition-timing-function: linear;
+>>>>>>> Stashed changes
 }
 
 .wrapper {
@@ -148,7 +183,14 @@ form p {
 }
   
 .wrapper button:hover {
+<<<<<<< Updated upstream
     background-color: #f0f0f0;
+=======
+    color: rgb(255, 255, 255);
+    background-color: #686665;
+    transition-duration: 0.3s;
+    transition-timing-function: linear;
+>>>>>>> Stashed changes
 }
 
 .btn img {
@@ -179,6 +221,13 @@ form p {
 
 .btn:hover {
     text-decoration: none;
+<<<<<<< Updated upstream
     opacity: 100%;
     background-color: #F54748;
+=======
+    color: #ffffff;
+    background-color: #fc0000;
+    transition-duration: 0.5s;
+    transition-timing-function: linear;
+>>>>>>> Stashed changes
 }

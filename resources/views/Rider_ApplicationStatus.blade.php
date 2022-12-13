@@ -17,7 +17,7 @@
         <div class="left">
           <div class="left-content">
             <div class="back">
-              <a href="#"><img src="images/vector.png" /></a>
+              <a href="partner_landing.html"><img src="images/vector.png" /></a>
               <p>Back to website</p>
             </div>
             <div class="logo">
@@ -26,12 +26,12 @@
             </div>
 
             <ul>
-              <h1>Partner Application</h1>
-              <li>Step 1 &nbsp;&nbsp;&nbsp; Submit Application</li>
-              <li>Step 2 &nbsp;&nbsp; Verify Mobile Number</li>
-              <li>Step 3 &nbsp;&nbsp;&nbsp; Personal Information</li>
-              <li>Step 4 &nbsp;&nbsp;&nbsp; Requirements</li>
-              <li>Step 5 &nbsp;&nbsp;&nbsp; Application Status</li>
+              <h1>Merchant Application</h1>
+            <li><a href="rider_application.html">Step 1 &nbsp;&nbsp;&nbsp; Personal Information</a></li>
+            <li><a href="rider_application2.html">Step 2 &nbsp;&nbsp;&nbsp; Verify Phone Number</a></li>
+            <li><a href="rider_application3.html">Step 3 &nbsp;&nbsp;&nbsp; Vehicle Information</a></li>
+            <li><a href="rider_application4.html">Step 4 &nbsp;&nbsp;&nbsp; Requirements</a></li>
+            <li><a href="Rider_ApplicationStatus.html">Step 5 &nbsp;&nbsp;&nbsp; Application Status</a></li>
             </ul>
           </div>
         </div>

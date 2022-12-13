@@ -19,7 +19,7 @@
 
   <div class="container">
     <div class="content">
-        <header><a class="fas fa-arrow-left" href="Rider_Application5.html"></a>FOODEA<button role="button" data-toggle="button">Help</button></header>
+        <header><a class="fas fa-arrow-left" href="rider_application4.html"></a>FOODEA<button role="button" data-toggle="button">Help</button></header>
        <div class="wrapper">   
            <label>Drug Test Result</label>
            <br>
@@ -31,7 +31,7 @@
                <br>
                <button>Browse</button>
             </form>
-            <a class="btn" href="Rider_Application5.html" role="button">NEXT<img src="images/ridernext.png"/></a>
+            <a class="btn" href="rider_application4.html" role="button">NEXT<img src="images/ridernext.png"/></a>
        </div>
     </div>
     

@@ -5,7 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vehicle Photo</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<<<<<<< Updated upstream
     <link rel="stylesheet" type="text/css" href="css/rider_vehicle_left.css" />
+=======
+<<<<<<< Updated upstream:resources/views/rider_vehicle_back.blade.php
+    <link rel="stylesheet" type="text/css" href="css/rider_vehicle_back.css" />
+=======
+    <link rel="stylesheet" type="text/css" href="css/rider_vehicle_left.css" />
+>>>>>>> Stashed changes:resources/views/rider_vehicle_left.blade.php
+>>>>>>> Stashed changes
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
   </head>
 
@@ -24,7 +32,15 @@
            <br>
            <samp>Make sure that the image is clear and the plate number visible and readable.</samp>
            <br>
+<<<<<<< Updated upstream
            <h4>Left Side</h4>
+=======
+<<<<<<< Updated upstream:resources/views/rider_vehicle_back.blade.php
+           <h4>Back View</h4>
+=======
+           <h4>Left Side</h4>
+>>>>>>> Stashed changes:resources/views/rider_vehicle_left.blade.php
+>>>>>>> Stashed changes
             <form action="#">
                <i class="fas fa-cloud-upload-alt"></i>
                <p>Drag File To Upload</p>

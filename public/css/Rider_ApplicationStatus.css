@@ -102,7 +102,7 @@ ul h1 {
 }
 
 li {
-    width: 90%;
+    width: 100%;
     font-weight: 600;
     margin: 0 auto;
     color: #fff;
@@ -111,19 +111,24 @@ li {
     font-size: 15px;
     padding: 20px 0 20px 20px;
 }
-li:hover {
+
+li a:hover {
     color: #F54748;
     background-color: #fff;
-    border-radius: 20px;
+    border-radius: 10px;
     transition-duration: 0.5s;
     transition-timing-function: linear;
 }
-/*
-.red {
-    color: #F54748;
-    background-color: #fff;
-    border-radius: 20px;
-}*/
+
+ul li a {
+    width: 80%;
+    margin: 0 auto;
+    color: #fff;
+    opacity: 90%;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    padding: 10px 10px 10px 10px;
+}
 
 .right {
     width: 80%;
