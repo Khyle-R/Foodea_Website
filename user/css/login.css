@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+body {
+    background-color: #f9f9f9;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.corner img {
+    position: absolute;
+    bottom: -290px;
+    left: -100px;
+}
+
+.clear {
+    clear: both;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+ul {
+    list-style: none;
+}
+
+.container {
+    width: 30%;
+    margin: 170px auto;
+    box-shadow: 0 15px 30px rgba(0, 0, 50, 0.2);
+}
+
+.content {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.title img {
+    width: 80px;
+    height: 100px;
+}
+
+.title h2 {
+    font-weight: bolder;
+    font-size: 23px;
+    color: #F54748;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.input {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    color: #F54748;
+    font-size: 13px;
+    font-family: 'Montserrat', sans-serif;
+    padding: 10px 0;
+}
+
+input[name="email"],
+input[name="password"] {
+    background-color: #fbeaea;
+    outline: none;
+    border: 1px solid #f9afaf;
+    padding: 10px 5px;
+    border-radius: 5px;
+}
+
+.content a {
+    text-align: right;
+    color: #d68f0b;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    padding: 20px 0;
+}
+
+.content h2 {
+    text-align: center;
+
+}
+
+button {
+    padding: 15px 5px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.login {
+    color: #fff;
+    outline: none;
+    background-color: #F54748;
+    border: 1px solid #F54748;
+    border-radius: 5px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: 0.5s;
+}
+
+.login:hover {
+    color: #F54748;
+    background-color: #FFF7E9;
+    border-color: #F54748;
+    transition-duration: 0.3s;
+    transition-timing-function: linear;
+
+}
+
+.sign {
+    color: #000;
+    outline: none;
+    border: 1px solid #000;
+    background-color: #FFF7E9;
+    border-radius: 5px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    opacity: 90%;
+}
+
+.sign:hover {
+    color: #FFF7E9;
+    background-color: #F54748;
+    border-color: #FFF7E9;
+    transition-duration: 0.3s;
+    transition-timing-function: linear;
+
+}
+
+h3 {
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 12px;
+    padding: 15px;
+}
+
+.bottom {
+    padding: 20px 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.bottom p {
+    color: #000;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+}
+
+.bottom a {
+    color: #F54748;
+    margin: 0 7px;
+}

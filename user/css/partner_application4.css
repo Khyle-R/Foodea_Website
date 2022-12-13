@@ -29,8 +29,7 @@ ul {
 }
 
 .container {
-
-
+    width: 100%;
     height: auto;
 }
 
@@ -38,7 +37,7 @@ ul {
     width: 20%;
     height: 100vh;
     float: left;
-    background-image: url(../images/red2.png);
+    background-image: url(../image/red2.png);
     background-repeat: no-repeat;
     background-size: cover;
     position: fixed;
@@ -64,7 +63,8 @@ ul {
 
 .back p {
     font-weight: 600;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat',
+        sans-serif;
     padding-left: 10px;
     color: #fff;
     font-size: 15px;
@@ -84,8 +84,9 @@ ul {
 }
 
 .logo h2 {
-    font-weight: 650;
-    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-family: 'Montserrat',
+        sans-serif;
     color: #fff;
     font-size: 22px;
     letter-spacing: 1px;
@@ -93,21 +94,22 @@ ul {
 }
 
 ul h1 {
-    font-weight: 700;
-    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-family: 'Montserrat',
+        sans-serif;
     color: #fff;
-    font-size: 30px;
+    font-size: 28px;
     letter-spacing: 1px;
     padding: 20px 0 20px 0;
 }
 
-li{
+li {
     width: 90%;
-    font-weight: 600;
     margin: 0 auto;
     color: #fff;
     opacity: 90%;
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Montserrat',
+        sans-serif;
     font-size: 15px;
     padding: 20px 0 20px 20px;
 }
@@ -115,7 +117,7 @@ li{
 li a:hover {
     color: #F54748;
     background-color: #fff;
-    border-radius: 10px;
+    border-radius: 20px;
     transition-duration: 0.5s;
     transition-timing-function: linear;
 }
@@ -127,7 +129,7 @@ ul li a {
     opacity: 90%;
     font-family: 'Montserrat', sans-serif;
     font-size: 15px;
-    padding: 10px 10px 10px 10px;
+    padding: 15px 15px 15px 15px;
 }
 
 .right {
@@ -141,88 +143,62 @@ ul li a {
     overflow: auto;
 }
 
-.right-content h2 {
+.center {
+    margin: auto;
+    width: 50%;
+    padding: 5px;
+}
+
+.center h2 {
     color: #F54748;
     opacity: 90%;
     font-family: 'Montserrat', sans-serif;
     font-size: 24px;
-    opacity: 90%;
     font-weight: 600;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
+    text-align: center;
 }
 
-.right-content p {
+.center p {
     font-size: 14px;
     font-family: 'Montserrat', sans-serif;
     opacity: 90%;
     font-weight: 600;
     color: #000;
     opacity: 70%;
-    padding-bottom: 20px;
+    text-align: center;
 }
 
-.form-container {
-    width: 40%;
-    display: flex;
-    flex-direction: column;
-}
-
-.btn-group button {
-    background-color: #fff;
-    border: #272625; 
-    color: #272625; 
-    padding: 20px 25px;
-    cursor: pointer;
-    width: 100%;
+.center img {
+    padding-top: 50px;
     display: block;
-    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.continue:link, .continue:visited {
+    background-color: #F54748;
+    color: white;
+    padding: 12px;
+    text-decoration: none;
+    display: flex;
+    opacity: 75%;
+    border-radius: 25px;
+    width: 120px;
+    margin: auto;
+    justify-content: center;
     font-family: 'Montserrat', sans-serif;
-    font-size: 15px;
-    font-weight: 600;
 }
   
-.btn-group button:not(:last-child) {
-    border-bottom: none; 
- }
-  
-.btn-group button:hover {
-    background-color: #f0f0f0;
-    border-radius: 10px;
-}
-
-.btn-group samp {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 10px bold;
-    color: #C09647;
-}
-
-.btn-group :where(i){
-   float: right;
-}
-
-.btn-group i {
-    font-size: 20px;
-    padding-top: 10px;
-    color: rgba(0, 0, 0, 0.418)
-}
-
-.btn-group input {
-    font-size: 15px;
-    font-weight: 700;
-    color: #fff;
-    background-color: #f5474786;
-    border-radius: 20px;
-    width: 20%;
-    height: 40px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    float: right;
-    border: 0px;
-}
-
-.btn-group input:hover {
+.continue:hover {
+    text-decoration: none;
+    opacity: 100%;
+    background-color: #fff;
     color: #F54748;
-    background-color: #f0f0f0;
+    border: 3px solid #F54748;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
     transition-duration: 0.5s;
-    transition-timing-function: linear;
+    transition-timing-function: ease-in-out;
 }

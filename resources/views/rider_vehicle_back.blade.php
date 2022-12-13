@@ -4,8 +4,18 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vehicle Photo</title>
+<<<<<<< Updated upstream
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<<<<<<< Updated upstream:resources/views/rider_vehicle_back.blade.php
+    <link rel="stylesheet" type="text/css" href="css/rider_vehicle_back.css" />
+=======
+    <link rel="stylesheet" type="text/css" href="css/rider_vehicle_left.css" />
+>>>>>>> Stashed changes:resources/views/rider_vehicle_left.blade.php
+=======
+    <link rel="shortcut icon" href="images/foodea.png" type="image">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/rider_vehicle_back.css" />
+>>>>>>> Stashed changes
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
   </head>
 
@@ -18,19 +28,35 @@
 
   <div class="container">
     <div class="content">
+<<<<<<< Updated upstream
         <header><a class="fas fa-arrow-left" href="#"></a>FOODEA<button role="button" data-toggle="button">Help</button></header>
+=======
+        <header><a class="fas fa-arrow-left" href="rider_application4.html"></a>FOODEA<button role="button" data-toggle="button">Help</button></header>
+>>>>>>> Stashed changes
        <div class="wrapper">   
            <label>Take a photo of your vehicle</label>
            <br>
            <samp>Make sure that the image is clear and the plate number visible and readable.</samp>
            <br>
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream:resources/views/rider_vehicle_back.blade.php
            <h4>Back View</h4>
+=======
+           <h4>Left Side</h4>
+>>>>>>> Stashed changes:resources/views/rider_vehicle_left.blade.php
+=======
+           <h4>Back View</h4>
+>>>>>>> Stashed changes
             <form action="#">
                <i class="fas fa-cloud-upload-alt"></i>
                <p>Drag File To Upload</p>
               <button>Browse</button>
             </form>  
+<<<<<<< Updated upstream
                 <a class="btn" href="#" role="button">NEXT<img src="image/ridernext.png" /></a>
+=======
+                <a class="btn" href="rider_application4.html" role="button">NEXT<img src="image/ridernext.png" /></a>
+>>>>>>> Stashed changes
        </div>
     </div>
     
