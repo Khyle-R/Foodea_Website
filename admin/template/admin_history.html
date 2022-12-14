@@ -473,6 +473,94 @@
           </div>
         </nav>
 
+<!-- Modal -->
+<div class="modal fade" id="viewdetails" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Customer's Details</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Accepted & User -->
+        <div>
+          <label><i class="mdi mdi-circle text-success icon-sm"></i>Accepted</label>
+        </div>
+                <img class="rounded-circle mx-auto d-block py-4" src="assets/images/sample.jpg" width="120" height="110"/>
+              <span class="text-center fo">
+                <div>
+                  <label>John Doe</label>
+                </div>
+                <div>
+                   <label>Blk 1, Lot 1 Caloocan City</label>
+                </div>
+                 <div>
+                    <label>09123456789</label>
+                      </div>
+             </span>
+
+      <!-- Orders -->
+      <div class="table-responsive">
+        <table class="order">
+          <thead>
+            <tr>
+              <th>Order</th>
+              <th>Product Name</th>
+              <th>Qty</th>
+              <th>Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <img
+                  src="assets/images/milktea.jpg"
+                  alt="image" width="50" height="60"
+                />
+              </td>
+              <td>Classic Milk Tea R</td>
+              <td>1</td>
+              <td>₱95.00</td>
+            </tr>
+            <tr>
+              <td>
+                <img
+                  src="assets/images/milktea.jpg"
+                  alt="image" width="50" height="60"
+                />
+              </td>
+              <td>Premium Milk Tea R</td>
+              <td>1</td>
+              <td>₱115.00</td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+             <div class="text-right" style="font-size: 12px;">
+              <label class="pr-5">Total</label>
+              <label class="pr-4">₱210.00</label>
+             </div>
+             <div class="cod">
+             <label>Cash on Delivery</label>
+             </div>
+             <span class="ridername">
+             <div>
+             <label>Rider’s name</label>
+             </div>
+             <div>
+             <label>Juan Dela cruz</label>
+             </div>
+             </span>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger btn-block btn-rounded " data-dismiss="modal">Back</button>
+      </div>
+    </div>
+  </div>
+</div>
+
         <!-- partial -->
         <div class="main-panel">
           <div class="content-wrapper">
@@ -601,14 +689,14 @@
                             <td>2022031</td>
                             <td>Milktea</td>
                             <td>02 December 2022</td>
-                            <td>130.00</td>
+                            <td>₱210.00</td>
                             <td>
                                 <div class="badge badge-outline-success">
                                   Delivered
                                 </div>
                               </td>
                             <td>
-                                <button type="button" class="btn btn-outline-danger">View Details</button>
+                                <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#viewdetails">View Details</button>
                             </td>
                           </tr>
                           <tr>
@@ -618,7 +706,7 @@
                             <td>2022031</td>
                             <td>Milktea</td>
                             <td>05 December 2022</td>
-                            <td>130.00</td>
+                            <td>₱130.00</td>
                             <td>
                                 <div class="badge badge-outline-success">
                                   Delivered
@@ -635,7 +723,7 @@
                             <td>22233</td>
                             <td>Fried Chicken</td>
                             <td>03 December 2022</td>
-                            <td>50.00</td>
+                            <td>₱50.00</td>
                             <td>
                                 <div class="badge badge-outline-danger">
                                   Cancelled
@@ -652,7 +740,7 @@
                             <td>02312</td>
                             <td>Donuts</td>
                             <td>10 December 2022</td>
-                            <td>200.00</td>
+                            <td>₱200.00</td>
                             <td>
                                 <div class="badge badge-outline-success">
                                   Accepted
@@ -669,7 +757,7 @@
                             <td>1253</td>
                             <td>Donuts</td>
                             <td>08 December 2022</td>
-                            <td>300.00</td>
+                            <td>₱300.00</td>
                             <td>
                                 <div class="badge badge-outline-success">
                                   Accepted
