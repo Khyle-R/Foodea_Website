@@ -85,8 +85,7 @@ ul {
 
 .logo h2 {
     font-weight: 700;
-    font-family: 'Montserrat',
-        sans-serif;
+    font-family: 'Montserrat', sans-serif;
     color: #fff;
     font-size: 22px;
     letter-spacing: 1px;
@@ -95,8 +94,7 @@ ul {
 
 ul h1 {
     font-weight: 800;
-    font-family: 'Montserrat',
-        sans-serif;
+    font-family: 'Montserrat', sans-serif;
     color: #fff;
     font-size: 28px;
     letter-spacing: 1px;
@@ -108,16 +106,27 @@ li {
     margin: 0 auto;
     color: #fff;
     opacity: 90%;
-    font-family: 'Montserrat',
-        sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 15px;
     padding: 20px 0 20px 20px;
 }
 
-.red {
+li a:hover {
     color: #F54748;
     background-color: #fff;
-    border-radius: 20px;
+    border-radius: 10px;
+    transition-duration: 0.5s;
+    transition-timing-function: linear;
+}
+
+ul li a {
+    width: 80%;
+    margin: 0 auto;
+    color: #fff;
+    opacity: 90%;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+    padding: 10px 10px 10px 10px;
 }
 
 .right {
@@ -134,8 +143,7 @@ li {
 .right-content h2 {
     color: #F54748;
     opacity: 90%;
-    font-family: 'Montserrat',
-        sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 24px;
     opacity: 90%;
     font-weight: 600;
@@ -144,8 +152,7 @@ li {
 
 .right-content p {
     font-size: 14px;
-    font-family: 'Montserrat',
-        sans-serif;
+    font-family: 'Montserrat', sans-serif;
     opacity: 90%;
     font-weight: 600;
     color: #000;
@@ -160,8 +167,7 @@ li {
 
 label {
     padding: 20px 0 10px 0;
-    font-family: 'Montserrat',
-        sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 14px;
     color: rgba(0, 0, 0, 0.753);
     font-weight: 600;
@@ -171,8 +177,7 @@ label {
     padding: 14px;
     border-radius: 10px;
     border: 1px solid #8e92969a;
-    font-family: 'Montserrat',
-        sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     color: rgba(0, 0, 0, 0.74);
     font-size: 15px;
@@ -182,8 +187,7 @@ label {
 .form-container select {
     border-radius: 10px;
     border: 1px solid #8e92969a;
-    font-family: 'Montserrat',
-        sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     color: rgba(0, 0, 0, 0.74);
     font-size: 15px;
@@ -213,10 +217,17 @@ select:focus {
     opacity: 75%;
     border-radius: 25px;
     width: 190px;
+    font-family: 'Montserrat', sans-serif;
 }
   
 .next:hover {
     text-decoration: none;
     opacity: 100%;
-    background-color: #F54748;
+    color: #F54748;
+    background-color: #ffffff;
+    border: 2px solid;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    transition-duration: 0.5s;
+    transition-timing-function: linear;
 }

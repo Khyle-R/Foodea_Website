@@ -1,0 +1,233 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.header {
+    background-color: #F54748;
+}
+
+.header img{
+    margin-left: 30px;
+    width: 35px;
+}
+
+.header label {
+    padding-top: 5px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 85vh;
+}
+
+.responsive {
+    position: absolute;
+    bottom: -260px;
+    left: -80px;
+  
+}
+
+.content {
+  box-shadow: 0px 0px 1px 0px;
+}
+
+.content header {
+    padding: 15px;
+    background-color: #F54748;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: left;
+}
+
+.content header .fa-arrow-left:link,  .fa-arrow-left:visited{
+    letter-spacing: 12px;
+    color: #fff;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.content header .fa-arrow-left:hover{
+<<<<<<< Updated upstream
+    color: #FE9192;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.content button {
+   border-radius: 2px;
+   border: none;
+   outline: none;
+   width: 13%;
+   float: right;
+   font-family: 'Montserrat', sans-serif;
+   font-size: 14px;
+=======
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    padding-left: 10px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    color: #F54748;
+    font-size: 14px;
+    text-decoration: none;
+    transition-duration: 0.5s;
+    transition-timing-function: linear;
+}
+
+.content button {
+    border-radius: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: none;
+    outline: none;
+    width: 13%;
+    float: right;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    color: #000;
+    background-color: #ffffff;
+}
+
+.content button:hover {
+    color: #fdfdfd;
+    background-color: #f5a3a3;
+    transition-duration: 0.3s;
+    transition-timing-function: linear;
+>>>>>>> Stashed changes
+}
+
+.wrapper {
+    padding: 25px;
+    background: #fff;
+    border: 5px;
+}
+
+.wrapper label {
+    color: #272625;
+    font-size: 12px;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.wrapper samp{
+    margin: 0.5rem;
+    color: #272625;
+    font-size: 9px;
+    opacity: 90%;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.wrapper h4 {
+    padding: 5px;
+    font-weight: 600;
+    font-size: 15px;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+}
+
+.wrapper form {
+    height: 150px;
+    margin: 10px 30px;
+    border-radius: 5px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border: 1px solid #272625;
+    text-align: center;
+   
+}
+
+form :where(i){
+    color: #F4C061;
+}
+
+form i {
+    font-size: 50px;
+}
+
+form p {
+    opacity: 60%;
+    font-size: 16px;
+    margin-top: 15px;
+}
+
+.wrapper button {
+    padding: 3px;
+    width: 25%;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    color: #272625;
+    font-size: 15px;
+}
+.wrapper button:not(:last-child) {
+    border-bottom: none; 
+}
+  
+.wrapper button:hover {
+<<<<<<< Updated upstream
+    background-color: #f0f0f0;
+=======
+    color: rgb(255, 255, 255);
+    background-color: #686665;
+    transition-duration: 0.3s;
+    transition-timing-function: linear;
+>>>>>>> Stashed changes
+}
+
+.btn img {
+    margin-left: 10px;
+    width: 35px;
+    height: 20px;
+}
+
+.btn {
+    padding: 5px;
+    color: #fff;
+    background: #F54748;
+    border: #fff;
+
+}
+
+.btn:link, .btn:visited {
+    background-color: #F54748;
+    color: white;
+    padding: 8px;
+    align-self: flex-end;
+    text-align: center;
+    text-decoration: none;
+    opacity: 75%;
+    margin: 5px 30px;
+    width: 340px;
+}
+
+.btn:hover {
+    text-decoration: none;
+<<<<<<< Updated upstream
+    opacity: 100%;
+    background-color: #F54748;
+=======
+    color: #ffffff;
+    background-color: #fc0000;
+    transition-duration: 0.5s;
+    transition-timing-function: linear;
+>>>>>>> Stashed changes
+}
