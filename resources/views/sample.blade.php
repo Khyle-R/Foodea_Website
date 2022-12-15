@@ -31,5 +31,11 @@
         </div>
       </li>
     </ul>
+    @foreach ($Data as $riderdata)
+      <p>{{ $riderdata->admin_id }}</p>
+       <p>{{ $riderdata->email }}</p>
+        <p>{{ $riderdata->password }}</p>
+         <p>{{ $riderdata->date }}</p>
+    @endforeach
   </body>
 </html>
