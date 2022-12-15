@@ -8,35 +8,98 @@
     <link rel="stylesheet" type="text/css" href="css/index.css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+   <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 
 </head>
 
 <body>
     <div class="header">
-        <div class="nav">
-            <div class="logo">
-                <img src="image/foodea1.png" alt="">
-                <h2>FOODEA</h3>
-            </div>
-            <div class="links">
-                <a href="#">Home</a>
-                <a href="#">Services</a>
-                <a href="#">About Us</a>
-                <a href="#">Contact</a>
-            </div>
-            <div class="log">
-                <a href="#">Sign up</a>
-                <a href="#">Login</a>
-            </div>
+        <!--- NAVBAR -->
+    <nav class="navbar navbar-expand-lg px-5 mx-5">
+      <div class="container-fluid px-3">
+        <a href="#" class="navbar-brand">
+          <img src="image/foodea1.png" alt="" width="45" height="50" />
+          FOODEA
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#offcanvasNavbar"
+          aria-controls="offcanvasNavbar"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div
+          class="offcanvas offcanvas-end"
+          tabindex="-1"
+          id="offcanvasNavbar"
+          aria-labelledby="offcanvasNavbarLabel"
+        >
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Foodea</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="offcanvas-body">
+            <ul class="navbar-nav mx-auto">
+              <li class="nav-item">
+                <a href="#" class="nav-link active">Home</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  href="#"
+                  class="nav-link dropdown-toggle"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  >Services</a
+                >
+                <ul class="dropdown-menu">
+                  <li><a href="/rider_landing" class="dropdown-item">Rider</a></li>
+                  <li><a href="/partner_landing" class="dropdown-item">Partner</a></li>
+                </ul>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">About Us</a>
+              </li>
+              <li class="nav-item">
+                <a href="#" class="nav-link">Contact Us</a>
+              </li>
+            </ul>
+            <a
+              href="/login"
+             class="text-secondary mt-2 mx-5"
+              style="text-decoration: none;"
+            >
+              Signup
+           </a>
+            <a
+              href="/login"
+              class="btn btn-danger btn-sm py-2 px-5 rounded"
+            >
+              Login
+        </a>
+          </div>
         </div>
+      </div>
+    </nav>
         <div class="section">
             <div class="content">
                 <h1>Be The Fastest In Delivering Your <span>Food</span></h1>
                 <p>Our job filling your tummy with delicious food
                     and with fast delivery</p>
-                <a href="#">Partner with us</a>
+                <a href="/partner_landing">Partner with us</a>
 
             </div>
             <div class="image">
@@ -50,13 +113,13 @@
                     <img src="image/rider.PNG" alt="">
                     <h3>Become a Rider</h3>
                     <p>As a delivery driver, you'll make reliable money working anytime, anywhere.</p>
-                    <a href="#">Start earning</a>
+                    <a href="/rider_landing">Start earning</a>
                 </div>
                 <div class="market">
                     <img src="image/market.PNG" alt="">
                     <h3>Become a Partner</h3>
                     <p>Grow your business and reach new customers by partnering with us.</p>
-                    <a href="#">Sign up you store</a>
+                    <a href="/partner_landing">Sign up you store</a>
                 </div>
                 <div class="phone">
                     <img src="image/phone.PNG" alt="">
@@ -186,6 +249,11 @@
     <script src="js/script.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+      crossorigin="anonymous"
+    ></script>
 
     <script>
         $(document).ready(function () {

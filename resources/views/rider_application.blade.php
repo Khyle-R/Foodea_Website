@@ -13,11 +13,11 @@
       <div class="left">
         <div class="left-content">
           <div class="back">
-            <a href="#"><img src="image/vector.png" /></a>
+            <a href="/"><img src="image/vector.png" /></a>
             <p>Back to website</p>
           </div>
           <div class="logo">
-            <a href="#"><img src="image/foodea.png" /></a>
+            <a href="/"><img src="image/foodea.png" /></a>
             <h2>FOODEA</h2>
           </div>
 
@@ -38,7 +38,8 @@
 
           <div class="form-container">
             <label>Firts Name</label>
-        
+            <input type="text" />
+
             <label>Middle Name</label>
             <input type="text" />
 
@@ -77,7 +78,7 @@
             <input type="text" />
 
            <br><br><br>
-           <a class="next" href="rider_application2.html">Next</a>
+           <a class="next" href="/rider_application2">Next</a>
 
           </div>
         </div>

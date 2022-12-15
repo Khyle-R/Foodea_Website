@@ -50,7 +50,7 @@
             <label>Motorcycle Displacement <samp style="color:#BD9140;font-size: 13px;">(CC)</samp></label>
             <input type="text" />
 
-            <label>Enine Number</label> 
+            <label>Engine Number</label> 
             <input type="text" />
 
             <label>Year Model</label>
@@ -61,7 +61,7 @@
 
 
            <br><br><br>
-           <a class="next" href="#">Next</a>
+           <a class="next" href="/rider_application4">Next</a>
 
           </div>
         </div>

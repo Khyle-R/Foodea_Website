@@ -47,7 +47,7 @@
                 </form>
 
                 <p class="paragraph">Didn't get an email?</p>
-                <a class="veri" href="#">Resend email verification</a>
+                <a class="veri" href="/rider_application3">Resend email verification</a>
         </div>
       </div>
     </div>  
