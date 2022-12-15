@@ -35,51 +35,55 @@
         <div class="right-content">
           <h2>Create your Account</h2>
           <p>Please fill up the form below.</p>
-
+          
+         <form method="post" action="{{route('rider_application.addPostSubmit')}}">
+          @csrf
           <div class="form-container">
+        
             <label>Firts Name</label>
-            <input type="text" />
+            <input name="firstname" type="text" />
 
             <label>Middle Name</label>
-            <input type="text" />
+            <input name="middle" type="text" />
 
             <label>Last Name</label>
-            <input type="text" />
+            <input name="lastname" type="text" />
 
             <label>Suffix</label>
-            <input type="text" />
+            <input name="suffix" type="text" />
 
             <label>Age</label> 
-            <input type="text" />
+            <input name="age" type="text" />
 
             <label>Gender</label>
-            <select name="" id="">
+            <select name="gender" id="">
               <option selected="true" disabled="disabled">- Select -</option>
               <option>MALE</option>
               <option>FEMALE</option>
             </select>
 
             <label>Email Address</label>
-            <input type="text" />
+            <input name="email" type="text" />
 
             <label>Mobile Number <samp style="color:#BD9140;font-size:9px;">(For Verification)</samp></label>
-            <input type="text" />
+            <input name="mobilenumber" type="text" />
 
             <label>Address</label>
-            <input type="text" />
+            <input name="address" type="text" />
 
             <label>City</label>
-            <input type="text" />
+            <input name="city" type="text" />
            
             <label>Barangay</label>
-            <input type="text" />
+            <input name="barangay" type="text" />
 
             <label>ZIP Code</label>
-            <input type="text" />
-
+            <input name="zip" type="text" />
+            
            <br><br><br>
-           <a class="next" href="/rider_application2">Next</a>
-
+           <button Value="submit" type="submit">Next</button>
+           {{-- <a class="next" href="/rider_application2">Next</a> --}}
+            </form>
           </div>
         </div>
       </div>

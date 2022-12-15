@@ -1,11 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Home;
+use App\Http\Controllers\RiderRegistration;
 
-
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', [Home::class, 'index'])->name('home.index');
 
 Route::get('/login_partner', function () {
     return view('login_partner');
@@ -31,9 +30,7 @@ Route::get('/partner_application4', function () {
 Route::get('/partner_landing', function () {
     return view('partner_landing');
 });
-Route::get('/rider_application', function () {
-    return view('rider_application');
-});
+
 Route::get('/rider_application1', function () {
     return view('rider_application1');
 });
@@ -72,6 +69,7 @@ Route::get('/rider_vehicle', function () {
     return view('rider_vehicle');
 });
 
-Route::get('/sample', function () {
-    return view('sample');
-});
+Route::get('/rider_application', [RiderRegistration::class, 'index'])->name('rider_application.index');
+Route::post('/rider_application', [RiderRegistration::class, 'addPostSubmit'])->name('rider_application.addPostSubmit');
+
+Route::get('/sample', [RiderRegistration::class, 'getAllData'])->name('sample.getAllData');
