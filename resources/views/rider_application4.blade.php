@@ -39,14 +39,15 @@
 
           <div class="form-container">
             <div class="btn-group">
-              <button>Photo of your vehicle<i class="fa fa-chevron-right"></i><br><samp>Required Steps</samp></button>
-              <button>Photo of your drivers license ID<i class="fa fa-chevron-right"></i><br><samp>Required Steps</samp></button>
-              <button>Certificate of Registration and 
-                Official Receipt of Vehicle Registration<i class="fa fa-chevron-right"></i><br><samp>Required Steps</samp></button>
-              <button>Drug Test Result<i class="fa fa-chevron-right"></i><br><samp>Optional</samp></button>
+              <button><a href="/rider_applicationstatus">Photo of your vehicle</a><i class="fa fa-chevron-right"></i><br><samp>Required Steps</samp></button>
+              <button>1x1 Picture<i class="fa fa-chevron-right"></i><br><samp>Required Steps</samp></button>
+              <button><a href="/rider_driverlicense1">Photo of your drivers license ID</a><i class="fa fa-chevron-right"></i><br><samp>Required Steps</samp></button>
+              <button><a href="/rider_driversor">Certificate of Registration and 
+                Official Receipt of Vehicle Registration</a><i class="fa fa-chevron-right"></i><br><samp>Required Steps</samp></button>
+              <button><a href="/rider_drugtestresult">Drug Test Result</a><i class="fa fa-chevron-right"></i><br><samp>Optional</samp></button>
               <button>NBI Clearance<i class="fa fa-chevron-right"></i><br><samp>Optional</samp></button>
             </div>
-              <a class="submit" href="#">Submit</a>
+              <a class="submit" href="/rider_applicationstatus">Submit</a>
           </div>
         </div>
       </div>

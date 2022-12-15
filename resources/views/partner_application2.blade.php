@@ -13,11 +13,11 @@
       <div class="left">
         <div class="left-content">
           <div class="back">
-            <a href="#"><img src="image/vector.png" /></a>
+            <a href="/"><img src="image/vector.png" /></a>
             <p>Back to website</p>
           </div>
           <div class="logo">
-            <a href="#"><img src="image/foodea.png" /></a>
+            <a href="/"><img src="image/foodea.png" /></a>
             <h2>FOODEA</h2>
           </div>
 
@@ -36,7 +36,7 @@
 
           <div class="form-container">
             <label>First Name</label>
-
+              <input type="text" />
             <label>Middle Name</label>
             <input type="text" />
 
@@ -75,7 +75,7 @@
             </div>
             
              <br><br><br>
-             <a class="submit" href="partner_application3.html">Submit</a>
+             <a class="submit" href="/partner_application3">Submit</a>
 
           </div>
         </div>

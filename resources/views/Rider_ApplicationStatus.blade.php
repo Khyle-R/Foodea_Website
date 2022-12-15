@@ -42,7 +42,7 @@
             <div class="content">
                       <div class="card">
                         <div class="wrapper">
-                          <img src="images/download.jpg">
+                          {{-- <img src="images/download.jpg"> --}}
                         </div>
                         <span>Juan Dela Cruz<br><samp>Motorcycle</samp></span>
                         <button type="button" class="btn btn-warning">Waiting for Approval</button>
@@ -67,14 +67,15 @@
                         <div class="form"> 
                         <p>Uploaded Documents</p><br><br>
                         <hr><br><br>                           
-                            <label>Photo of your Vehicle<i class="bi bi-check-circle-fill"></i></label>
+                            <label>Photo of your Vehicle</label>
                             <br><br><br>
-                            <label>Photo of your drivers license ID<i class="bi bi-check-circle-fill"></i></label>
+                            <label>Photo of your drivers license ID</label>
                             <br><br><br>
                             <label>Certificate of Registration and <br>
-                              Official Receipt of Vehicle Registration<i class="bi bi-check-circle-fill"></i></label>
+                              Official Receipt of Vehicle Registration</label>
                             <br><br><br>
-                            <label>Drug Test Result<i class="bi bi-check-circle-fill"></i></label>
+                            <label>Drug Test Result</label>
+                            {{-- <i class="bi bi-check-circle-fill"></i> --}}
                           </div>
                       <p>Vehicle Information</p><br><br>
                         <hr><br><br>

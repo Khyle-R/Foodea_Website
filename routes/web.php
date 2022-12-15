@@ -2,24 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
-Route::get('/bootstrap', function () {
-    return view('bootstrap');
-});
-
-Route::get('/index', function () {
+Route::get('/', function () {
     return view('index');
 });
+
 Route::get('/login_partner', function () {
     return view('login_partner');
 });
@@ -59,12 +46,32 @@ Route::get('/rider_application3', function () {
 Route::get('/rider_application4', function () {
     return view('rider_application4');
 });
+Route::get('/rider_application5', function () {
+    return view('rider_application5');
+});
+Route::get('/rider_applicationstatus', function () {
+    return view('rider_applicationstatus');
+});
+Route::get('/rider_driverlicense1', function () {
+    return view('rider_driverlicense1');
+});
+Route::get('/rider_driverlicense2', function () {
+    return view('rider_driverlicense2');
+});
+Route::get('/rider_driversor', function () {
+    return view('/rider_driversor');
+});
+Route::get('/rider_drugtestresult', function () {
+    return view('/rider_drugtestresult');
+});
+
 Route::get('/rider_landing', function () {
     return view('rider_landing');
 });
 Route::get('/rider_vehicle', function () {
     return view('rider_vehicle');
 });
+
 Route::get('/sample', function () {
     return view('sample');
 });

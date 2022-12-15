@@ -12,11 +12,11 @@
       <div class="left">
         <div class="left-content">
           <div class="back">
-            <a href="#"><img src="image/vector.png" /></a>
+            <a href="/"><img src="image/vector.png" /></a>
             <p>Back to website</p>
           </div>
           <div class="logo">
-            <a href="#"><img src="image/foodea.png" /></a>
+            <a href="/"><img src="image/foodea.png" /></a>
             <h2>FOODEA</h2>
           </div>
 
@@ -37,7 +37,7 @@
 
           <div class="form-container">
             <label>Didn't get an email?</label>
-            <a href="#">Resend email verification</a>
+            <a href="/partner_application4">Resend email verification</a>
 
           </div>
         </div>
