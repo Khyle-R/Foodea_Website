@@ -492,7 +492,7 @@
                 <div class="col-12 grid-margin">
                   <div class="card">
                     <div class="card-body">  
-                      <div class="table-responsive">
+                      <div class="table-responsive text-center">
                         <table class="table">
                           <thead>
                             <tr>
@@ -542,7 +542,7 @@
                                 </div>
                               </td>
                               <td>
-                                  <button type="button" class="btn btn-outline-danger">View Details</button>
+                                  <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#riderdetails">View Details</button>
                               </td>
                             </tr>
                             <tr>
@@ -572,7 +572,7 @@
                                 </div>
                               </td>
                               <td>
-                                  <button type="button" class="btn btn-outline-danger">View Details</button>
+                                  <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#riderdetails">View Details</button>
                               </td>
                             </tr>
                             <tr>
@@ -589,7 +589,7 @@
                               <td>
                                 <span class="pl-2">bc1qxy2kgdygjrsqtz</span>
                               </td>
-                              <td>John Doe</td>
+                              <td>Billy Jou</td>
                               <td class="text-danger">
                                 <i class="mdi mdi-email px-2"></i>
                                 <i class="mdi mdi-cellphone px-2"></i>
@@ -602,7 +602,7 @@
                                   </div>
                                 </td>
                               <td>
-                                  <button type="button" class="btn btn-outline-danger">View Details</button>
+                                  <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#riderdetails">View Details</button>
                               </td>
                             </tr>
                           </tbody>
@@ -612,6 +612,68 @@
                   </div>
                 </div>
               </div>
+
+
+            <!-- Modal Rider View Details-->
+            <div class="modal fade" id="riderdetails" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog  modal-sm" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">View Details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    
+                    <!-- Accepted & User -->
+                            <img class="rounded-circle mx-auto d-block py-1" src="assets/images/billy.jpg" width="120" height="110"/>
+                            <ul class="list-unstyled text-center text-small text-dark">
+                              <li class="font-weight-bolder"><i class="mdi mdi-circle text-success pr-1"></i>Billy Jou Nillos</li>
+                              <li>5.0
+                                 <i class="mdi mdi-star text-warning pt-3" style="font-size: 10px;">
+                                 <i class="mdi mdi-star text-warning">
+                                 <i class="mdi mdi-star text-warning">
+                                 <i class="mdi mdi-star text-warning">
+                                 <i class="mdi mdi-star text-warning">
+                                 </i></i></i></i></i>
+                              </li>
+                            </ul>
+            
+                  <!-- Rider Info -->
+                  <form>
+                    <div class="form-group text-dark">
+                      <label for="inputAddress">Email</label>
+                      <input type="email" class="form-control form-control-sm" placeholder="billyjounillos@gmail.com">
+                    </div>
+                    <div class="form-group text-dark">
+                      <label for="inputAddress2">Contact Number</label>
+                      <input type="text" class="form-control" placeholder="09123456789">
+                    </div>
+                    <div class="form-group text-dark">
+                      <label for="inputAddress">City</label>
+                      <input type="text" class="form-control form-control-sm" placeholder="Caloocan City">
+                    </div>
+                    <div class="form-group text-dark">
+                      <label for="inputAddress">Birthdate</label>
+                      <input type="text" class="form-control form-control-sm" placeholder="October 25, 2000">
+                    </div>
+                    <div class="form-group text-dark">
+                      <label for="inputAddress">Barangay</label>
+                      <input type="text" class="form-control form-control-sm" placeholder="178">
+                    </div>
+                    <div class="form-group text-dark">
+                      <label for="inputAddress2">Joined in</label>
+                      <input type="text" class="form-control form-control-sm" placeholder="November 23, 2022">
+                    </div>
+                  </form>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-danger btn-block btn-rounded " data-dismiss="modal">Back</button>
+                  </div>
+                </div>
+              </div>
+            </div>
 
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.html -->
