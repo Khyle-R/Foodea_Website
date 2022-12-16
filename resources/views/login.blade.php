@@ -25,8 +25,8 @@
             <input type="password" name="password" />
             <a href="#">Forgot your Password?</a>
             <button class="login">LOG IN</button>
-            <h3>OR</h3>
-            <button class="sign">Sign up with Google</button>
+            {{-- <h3>OR</h3>
+            <button class="sign">Sign up with Google</button> --}}
           </div>
           <div class="bottom">
             <p>Don't have an account?</p>

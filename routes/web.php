@@ -1,25 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Home;
+use App\Http\Controllers\RiderRegistration;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+Route::get('/', [Home::class, 'index'])->name('home.index');
 
-Route::get('/bootstrap', function () {
-    return view('bootstrap');
-});
-
-Route::get('/index', function () {
-    return view('index');
-});
 Route::get('/login_partner', function () {
     return view('login_partner');
 });
@@ -44,9 +30,7 @@ Route::get('/partner_application4', function () {
 Route::get('/partner_landing', function () {
     return view('partner_landing');
 });
-Route::get('/rider_application', function () {
-    return view('rider_application');
-});
+
 Route::get('/rider_application1', function () {
     return view('rider_application1');
 });
@@ -59,12 +43,33 @@ Route::get('/rider_application3', function () {
 Route::get('/rider_application4', function () {
     return view('rider_application4');
 });
+Route::get('/rider_application5', function () {
+    return view('rider_application5');
+});
+Route::get('/rider_applicationstatus', function () {
+    return view('rider_applicationstatus');
+});
+Route::get('/rider_driverlicense1', function () {
+    return view('rider_driverlicense1');
+});
+Route::get('/rider_driverlicense2', function () {
+    return view('rider_driverlicense2');
+});
+Route::get('/rider_driversor', function () {
+    return view('/rider_driversor');
+});
+Route::get('/rider_drugtestresult', function () {
+    return view('/rider_drugtestresult');
+});
+
 Route::get('/rider_landing', function () {
     return view('rider_landing');
 });
 Route::get('/rider_vehicle', function () {
     return view('rider_vehicle');
 });
-Route::get('/sample', function () {
-    return view('sample');
-});
+
+Route::get('/rider_application', [RiderRegistration::class, 'index'])->name('rider_application.index');
+Route::post('/rider_application', [RiderRegistration::class, 'addPostSubmit'])->name('rider_application.addPostSubmit');
+
+Route::get('/sample', [RiderRegistration::class, 'getAllData'])->name('sample.getAllData');

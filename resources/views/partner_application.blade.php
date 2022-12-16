@@ -12,13 +12,13 @@
       <div class="left">
         <div class="left-content">
           <div class="back">
-            <a href="index.html"
+            <a href="/"
               ><img src="image/vector.png" />
               <p>Back to website</p></a
             >
           </div>
           <div class="logo">
-            <a href="#"><img src="image/foodea.png" /></a>
+            <a href="/"><img src="image/foodea.png" /></a>
             <h2>FOODEA</h2>
           </div>
 
@@ -75,7 +75,7 @@
             <input type="text" />
 
            <br><br><br>
-           <a class="next" href="partner_application2.html">Next</a>
+           <a class="next" href="/partner_application2">Next</a>
 
           </div>
         </div>
