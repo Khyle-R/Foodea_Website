@@ -32,11 +32,11 @@
       rel="stylesheet"
       href="assets/vendors/owl-carousel-2/owl.theme.default.min.css"
     />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <!-- endinject -->
     <!-- Layout styles -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"/>
     <link rel="stylesheet" href="assets/css/admin_orders.css" />
     <!-- End layout styles -->
     <link rel="shortcut icon" href="../../user/image/foodea1.png" />
@@ -112,46 +112,12 @@
             <span class="nav-link">Navigation</span>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="superadmin_index.html">
               <span class="menu-icon">
                 <i class="mdi mdi-view-dashboard"></i>
               </span>
               <span class="menu-title">Dashboard</span>
             </a>
-          </li>
-          <li class="nav-item menu-items">
-            <a
-              class="nav-link"
-              data-toggle="collapse"
-              href="#ui-basic"
-              aria-expanded="false"
-              aria-controls="ui-basic"
-            >
-              <span class="menu-icon">
-                <i class="mdi mdi-book-multiple"></i>
-              </span>
-              <span class="menu-title">Menu</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="ui-basic">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item">
-                  <a class="nav-link" href="pages/ui-features/product.html"
-                    >Product</a
-                  >
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="pages/ui-features/category.html"
-                    >Category</a
-                  >
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="pages/ui-features/inventory.html"
-                    >Inventory</a
-                  >
-                </li>
-              </ul>
-            </div>
           </li>
           <li class="nav-item menu-items">
             <a class="nav-link" href="admin_orders.html">
@@ -162,7 +128,7 @@
             </a>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="admin_history.html">
               <span class="menu-icon">
                 <i class="mdi mdi-history"></i>
               </span>
@@ -170,7 +136,7 @@
             </a>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="pages/charts/chartjs.html">
               <span class="menu-icon">
                 <i class="mdi mdi-cards"></i>
               </span>
@@ -178,7 +144,7 @@
             </a>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="pages/icons/mdi.html">
               <span class="menu-icon">
                 <i class="mdi mdi-library-books"></i>
               </span>
@@ -203,7 +169,7 @@
           <div
             class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center"
           >
-            <a class="navbar-brand brand-logo-mini" href="index.html"
+            <a class="navbar-brand brand-logo-mini" href="superadmin_index.html"
               ><img src="../../user/image/foodea.png" class="w-50" alt="logo"
             /></a>
           </div>
@@ -473,7 +439,6 @@
             </button>
           </div>
         </nav>
-
         <!-- partial -->
         <div class="main-panel">
           <div class="content-wrapper">
@@ -490,17 +455,15 @@
                         />
                       </div>
                       <div class="col-5 col-sm-7 col-xl-8 p-0">
-                        <h4 class="black mb-1 mb-sm-0">Want even more features?</h4>
+                        <h4 class=" mb-1 mb-sm-0" style="color: #FEEECB;">Want even more features?</h4>
                         <p class="mb-0 font-weight-normal d-none d-sm-block">
                           Your account has limited access, please complete the documents needed so you can access all features.
                         </p>
                       </div>
                       <div class="col-3 col-sm-2 col-xl-2 pl-0 text-center">
                         <span>
-                          <a
-                            href="https://www.bootstrapdash.com/product/corona-admin-template/"
-                            target="_blank"
-                            class="btn btn-outline-warning btn-danger btn-rounded get-started-btn"
+                          <a href="#"
+                            class="btn btn-warning btn-rounded get-started-btn text-decoration-none"
                             >Upload documents</a
                           >
                         </span>
@@ -510,188 +473,153 @@
                 </div>
               </div>
             </div>
+            <!-- rider table buttons -->
+            <div class="row justify-content-sm-between px-3">
+              <h4 class="card-title"></h4>
+              <div class="template-demo">
+                <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Daily </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                    <a class="dropdown-item" href="#">Weekly</a>
+                    <a class="dropdown-item" href="#">Monthly</a>
+                  </div>
+                </div>
 
-            <div class="row">
-              <div class="col-12 grid-margin">
-                <div class="card">
-                  <div class="card-body">
-                    <div class="row justify-content-sm-between px-3 mb-3">
-                      <h4 class="card-title"></h4>
-                      <div class="row">
-                        <div class="dropdown">
-                          <button
-                            class="btn btn-secondary dropdown-toggle py-2 px-3 rounded"
-                            type="button"
-                            id="dropdownMenuButton"
-                            data-toggle="dropdown"
-                            aria-haspopup="true"
-                            aria-expanded="false"
-                          >
-                            Daily
-                          </button>
-                          <div
-                            class="dropdown-menu"
-                            aria-labelledby="dropdownMenuButton"
-                          >
-                            <a class="dropdown-item" href="#">Daily</a>
-                            <a class="dropdown-item" href="#">Monthly</a>
-                            <a class="dropdown-item" href="#">Weekly</a>
-                          </div>
-                        </div>
+                <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Date </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
+                    <a class="dropdown-item" href="#">Day</a>
+                    <a class="dropdown-item" href="#">Month</a>
+                    <a class="dropdown-item" href="#">Year</a>
+                  </div>
+                </div>
 
-                        <div class="dropdown">
-                          <button
-                            class="btn btn-secondary dropdown-toggle py-2 px-3 rounded mx-3"
-                            type="button"
-                            id="dropdownMenuButton"
-                            data-toggle="dropdown"
-                            aria-haspopup="true"
-                            aria-expanded="false"
-                          >
-                            Date
-                          </button>
-                          <div
-                            class="dropdown-menu"
-                            aria-labelledby="dropdownMenuButton"
-                          >
-                            <a class="dropdown-item" href="#">Ascending</a>
-                            <a class="dropdown-item" href="#">Descending</a>
-                          </div>
-                        </div>
-
-                        <div class="dropdown">
-                          <button
-                            class="btn btn-secondary dropdown-toggle py-2 px-3 rounded mx-3"
-                            type="button"
-                            id="dropdownMenuButton"
-                            data-toggle="dropdown"
-                            aria-haspopup="true"
-                            aria-expanded="false"
-                          >
-                            Status
-                          </button>
-                          <div
-                            class="dropdown-menu"
-                            aria-labelledby="dropdownMenuButton"
-                          >
-                            <a class="dropdown-item" href="#">Accepted</a>
-                            <a class="dropdown-item" href="#">Cancelled</a>
-                            <a class="dropdown-item" href="#">Delivered</a>
-                            <a class="dropdown-item" href="#">In Delivery</a>
-                            <a class="dropdown-item" href="#">Pending</a>
-                          </div>
-                        </div>
-
-                      </div>
-                    </div>
-                    <div class="table-responsive">
-                      <table class="table">
-                        <thead>
-                          <tr>
-                            <th>Order Number</th>
-                            <th>Customer ID</th>
-                            <th>Product ID</th>
-                            <th>Date</th>
-                            <th>Total</th>
-                            <th>Status</th>
-                            <th>Action</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>
-                              <span class="pl-2">000801210</span>
-                            </td>
-                            <td>2022031</td>
-                            <td>Milktea</td>
-                            <td>02 December 2022</td>
-                            <td>₱130.00</td>
-                            <td>
-                                <div class="badge badge-outline-success">
-                                  Accepted
-                                </div>
-                              </td>
-                            <td>
-                                <button type="button" class="btn btn-outline-danger">View Details</button>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <span class="pl-2">000801210</span>
-                            </td>
-                            <td>2022031</td>
-                            <td>Milktea</td>
-                            <td>05 December 2022</td>
-                            <td>₱130.00</td>
-                            <td>
-                                <div class="badge badge-outline-warning">
-                                  Pending
-                                </div>
-                              </td>
-                            <td>
-                                <button type="button" class="btn btn-outline-danger ">View Details</button>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <span class="pl-2">00823424</span>
-                            </td>
-                            <td>22233</td>
-                            <td>Fried Chicken</td>
-                            <td>03 December 2022</td>
-                            <td>₱50.00</td>
-                            <td>
-                                <div class="badge badge-outline-danger">
-                                  Cancelled
-                                </div>
-                              </td>
-                            <td>
-                              <button type="button" class="btn btn-outline-danger">View Details</button>
-                            </td>
-                          </tr>
-                          <tr>
-                             <td>
-                              <span class="pl-2">Lucy Abbott</span>
-                            </td>
-                            <td>02312</td>
-                            <td>Donuts</td>
-                            <td>10 December 2022</td>
-                            <td>₱200.00</td>
-                            <td>
-                                <div class="badge badge-outline-success">
-                                  Accepted
-                                </div>
-                              </td>
-                            <td>
-                              <button type="button" class="btn btn-outline-danger">View Details</button>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <span class="pl-2">Lucy Abbott</span>
-                            </td>
-                            <td>1253</td>
-                            <td>Donuts</td>
-                            <td>08 December 2022</td>
-                            <td>₱300.00</td>
-                            <td>
-                                <div class="badge badge-outline-success">
-                                  Accepted
-                                </div>
-                              </td>
-                            <td>
-                              <button type="button" class="btn btn-outline-danger">View Details</button>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
+                <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Status </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton4">
+                    <a class="dropdown-item" href="#">Accepted</a>
+                    <a class="dropdown-item" href="#">Cancelled</a>
+                    <a class="dropdown-item" href="#">Delivered</a>
+                    <a class="dropdown-item" href="#">In Delivery</a>
                   </div>
                 </div>
               </div>
             </div>
+      
+           <!-- rider table -->
+            <div class="row">
+                <div class="col-12 grid-margin">
+                  <div class="card">
+                    <div class="card-body">  
+                      <div class="table-responsive text-center">
+                        <table class="table">
+                          <thead>
+                            <tr>
+                              <th>Order Number</th>
+                              <th>Customer’s ID</th>
+                              <th>Product ID</th>
+                              <th>Date</th>
+                              <th>Total</th>
+                              <th>Status</th>
+                              <th>Action</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <td>
+                                bc1qxy2kgdygjrsqtzq2n0y
+                              </td>
+                              <td>
+                                202223131
+                              </td>
+                              <td>12387</td>
+                              <td>
+                                Febraury 23, 2022
+                              </td>
+                              <td>₱95.00</td>
+                              <td>
+                                <div class="badge badge-danger">
+                                  Cancelled
+                                </div>
+                              </td>
+                              <td>
+                                  <button type="button" class="btn btn-outline-danger">View Details</button>
+                              </td>
+                            </tr>
 
-            
+                            <tr>
+                              <td>
+                                bc1qxy2kgdygjrsqtzq2n
+                              </td>
+                              <td>
+                                202223131
+                              </td>
+                              <td>12387</td>
+                              <td>
+                                Febraury 23, 2022
+                              </td>
+                              <td>₱95.00</td>
+                              <td>
+                                <div class="badge badge-warning">
+                                  In Delivery
+                                </div>
+                              </td>
+                              <td>
+                                  <button type="button" class="btn btn-outline-danger">View Details</button>
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <td>
+                                bc1qxy2kgdygjrsqtzq2n0
+                              </td>
+                              <td>
+                                <span class="pl-2">202223131</span>
+                              </td>
+                              <td>12387</td>
+                              <td>
+                                Febraury 23, 2022
+                              </td>
+                              <td>₱95.00</td>
+                              <td>
+                                <div class="badge badge-success">
+                                    Delivered
+                                  </div>
+                                </td>
+                              <td>
+                                  <button type="button" class="btn btn-outline-danger">View Details</button>
+                              </td>
+                            </tr>
+
+                            <tr>
+                              <td>
+                                bc1qxy2kgdygjrsqtzq2n0
+                              </td>
+                              <td>
+                                <span class="pl-2">202223131</span>
+                              </td>
+                              <td>12387</td>
+                              <td>
+                                Febraury 23, 2022
+                              </td>
+                              <td>₱95.00</td>
+                              <td>
+                                <div class="badge badge-info">
+                                    Accepted
+                                  </div>
+                                </td>
+                              <td>
+                                  <button type="button" class="btn btn-outline-danger">View Details</button>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.html -->
           <footer class="footer">
@@ -715,9 +643,6 @@
     <!-- plugins:js -->
     <script src="assets/vendors/js/vendor.bundle.base.js"></script>
     <!-- endinject -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <!-- Plugin js for this page -->
     <script src="assets/vendors/chart.js/Chart.min.js"></script>
     <script src="assets/vendors/progressbar.js/progressbar.min.js"></script>

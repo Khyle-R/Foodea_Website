@@ -7517,7 +7517,7 @@ a.close.disabled {
   width: 100%;
   pointer-events: auto;
   background-clip: padding-box;
-  border: 1px solid #2c2e33;
+  box-shadow: 0px 0px 0px 0px;
   border-radius: 0.3rem;
   outline: 0;
   background-color: #fff;

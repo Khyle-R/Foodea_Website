@@ -501,7 +501,7 @@
                                 </div>
                               </td>
                               <td>
-                                  <button type="button" class="btn btn-outline-danger">View Details</button>
+                                  <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#merchantdetails">View Details</button>
                               </td>
                             </tr>
                             <tr>
@@ -523,7 +523,7 @@
                                   src="assets/images/faces/face5.jpg"
                                   alt="image"
                                 />
-                                <span class="pl-1">John Doe</span>
+                                <span class="pl-1">John Dough</span>
                               </td>
                               <td>Individual</td>
                               <td class="text-danger">
@@ -537,7 +537,7 @@
                                 </div>
                               </td>
                               <td>
-                                  <button type="button" class="btn btn-outline-danger">View Details</button>
+                                  <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#merchantdetails">View Details</button>
                               </td>
                             </tr>
                             <tr>
@@ -573,12 +573,78 @@
                                   </div>
                                 </td>
                               <td>
-                                  <button type="button" class="btn btn-outline-danger">View Details</button>
+                                  <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#merchantdetails">View Details</button>
                               </td>
                             </tr>
                           </tbody>
                         </table>
                       </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="modal fade" id="merchantdetails" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog  modal-sm" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">View Details</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      
+                      <!-- Accepted & User -->
+                              <img class="rounded-circle mx-auto d-block py-1" src="assets/images/johndough.png" width="120" height="110"/>
+                              <ul class="list-unstyled text-center text-small text-dark">
+                                <li class="font-weight-bolder"><i class="mdi mdi-circle text-success pr-1"></i>John Dough</li>
+                                <li>5.0
+                                   <i class="mdi mdi-star text-warning pt-3" style="font-size: 10px;">
+                                   <i class="mdi mdi-star text-warning">
+                                   <i class="mdi mdi-star text-warning">
+                                   <i class="mdi mdi-star text-warning">
+                                   <i class="mdi mdi-star text-warning">
+                                   </i></i></i></i></i>
+                                </li>
+                              </ul>
+              
+                    <!-- Rider Info -->
+                    <form>
+                      <div class="form-group text-dark">
+                        <label for="inputAddress">Email</label>
+                        <input type="email" class="form-control form-control-sm" readonly placeholder="foodea@gmail.com">
+                      </div>
+                      <div class="form-group text-dark">
+                        <label for="inputAddress2">Contact Number</label>
+                        <input type="text" class="form-control" readonly  placeholder="09123456789">
+                      </div>
+                      <div class="form-group text-dark">
+                        <label for="inputAddress">City</label>
+                        <input type="text" class="form-control form-control-sm" readonly  placeholder="Caloocan City">
+                      </div>
+                      <div class="form-row text-dark">
+                        <div class="form-group col-md-6">
+                          <label for="inputEmail4">Business Type</label>
+                          <input type="text" class="form-control form-control-sm" readonly  placeholder="Company">
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label >Number of branch</label>
+                          <input type="text" class="form-control form-control-sm" readonly  placeholder="1">
+                        </div>
+                      </div>
+                      <div class="form-group text-dark">
+                        <label for="inputAddress">Barangay</label>
+                        <input type="text" class="form-control form-control-sm" readonly  placeholder="178">
+                      </div>
+                      <div class="form-group text-dark">
+                        <label for="inputAddress2">Joined in</label>
+                        <input type="text" class="form-control form-control-sm" readonly  placeholder="November 23, 2022">
+                      </div>
+                    </form>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-danger btn-block btn-rounded " data-dismiss="modal">Back</button>
                     </div>
                   </div>
                 </div>
