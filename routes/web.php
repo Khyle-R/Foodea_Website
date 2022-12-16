@@ -6,6 +6,12 @@ use App\Http\Controllers\RiderRegistration;
 
 Route::get('/', [Home::class, 'index'])->name('home.index');
 
+Route::get('/rider_application', [RiderRegistration::class, 'index'])->name('rider_application.index');
+
+Route::post('/rider_application', [RiderRegistration::class, 'addPostSubmit'])->name('rider_application.addPostSubmit');
+
+Route::get('/sample', [RiderRegistration::class, 'getAllData'])->name('sample.getAllData');
+
 Route::get('/login_partner', function () {
     return view('login_partner');
 });
@@ -68,8 +74,3 @@ Route::get('/rider_landing', function () {
 Route::get('/rider_vehicle', function () {
     return view('rider_vehicle');
 });
-
-Route::get('/rider_application', [RiderRegistration::class, 'index'])->name('rider_application.index');
-Route::post('/rider_application', [RiderRegistration::class, 'addPostSubmit'])->name('rider_application.addPostSubmit');
-
-Route::get('/sample', [RiderRegistration::class, 'getAllData'])->name('sample.getAllData');
