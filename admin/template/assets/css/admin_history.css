@@ -1758,12 +1758,30 @@ pre code {
 
 
 /* Modal table*/
-.order {
+.form-container input[type=text] {
+  border-radius: 5px;
+  font-size: 12px;
+  border: 1px solid #272625;
+  color: rgba(0, 0, 0, 0.74);
+  outline: none;
+  width: 100%;
+}
+
+.form-container textarea[type=text] {
+  border-radius: 5px;
+  font-size: 12px;
+  border: 1px solid #272625;
+  color: rgba(0, 0, 0, 0.74);
+  outline: none;
+  width: 100%;
+}
+
+.ordetails {
   width: 100%;
  
 }
 
-.order td, .order th {
+.ordetails td, .ordetails th {
   border: none;
   padding: 8px;
   font-size: 12px;
@@ -1781,7 +1799,6 @@ pre code {
 .ridername {
   text-align: center;
   font-size: 12px;
-  padding: 2px;
 }
 
 /* Tables */
@@ -6991,7 +7008,9 @@ a.badge-dark.focus {
   display: block;
   padding: 0.75rem 1.25rem;
   background-color: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.125);
+  border: 0px solid rgba(0, 0, 0, 0.125);
+  font-size: 12px;
+  text-align: center;
 }
 
 .list-group-item:first-child {
@@ -7528,7 +7547,7 @@ a.close.disabled {
   align-items: flex-start;
   justify-content: space-between;
   padding: 1rem 1rem;
-  border-bottom: 1px solid #2c2e33;
+  border-bottom: 1px solid #F54748;
   border-top-left-radius: calc(0.3rem - 1px);
   border-top-right-radius: calc(0.3rem - 1px);
   background-color: #F54748;
@@ -7542,7 +7561,7 @@ a.close.disabled {
 
 .modal-title {
   margin-bottom: 0;
-  line-height: 1.5;
+  line-height: 1;
 }
 
 .modal-body {
@@ -7557,7 +7576,7 @@ a.close.disabled {
   align-items: center;
   justify-content: center;
   padding: 0.6875rem;
-  border-top: 1px solid #2c2e33;
+  border-top: 0px solid #2c2e33;
   border-bottom-right-radius: calc(0.3rem - 1px);
   border-bottom-left-radius: calc(0.3rem - 1px);
 }
@@ -14407,7 +14426,7 @@ code {
 }
 
 .card.corona-gradient-card {
-  background-image: linear-gradient(to left, #d41459, #911a6c);
+  background-color: #F54748;
   border-radius: 6px;
 }
 
