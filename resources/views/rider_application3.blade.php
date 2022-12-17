@@ -33,36 +33,63 @@
       </div>
       <div class="right">
         <div class="right-content">
+            
           <h2>Create your Account</h2>
           <p>Please fill up the form below.</p>
+          <form method="post" action="{{ route('rider_application3.addVehicle') }}">
+              @csrf
+            <!--GET RIDER ID-->
+            @if (Session::has('rider_id'))
+            <input type="hidden" name="rider_id" value=" {{ Session::get('rider_id') }}">
+          @endif
 
           <div class="form-container">
             <label>Vehicle Type</label>
-            <select name="" id="">
-                <option selected="true" disabled="disabled">- Select -</option>
-                <option>Motorcycle</option>
-                <option>Bicycle</option>
-              </select>
-        
+         
+            <select class="form-control" name="vehicle_type">
+            <option selected="true" disabled="disabled">- Select -</option>
+            <option value="Motorcycle" @if (old('vehicle_type') == 'Motorcycle') selected="selected" @endif>Motorcycle  </option>
+            <option value="Bicycle" @if (old('vehicle_type') == 'Bicycle') selected="selected" @endif>Bicycle</option>
+            </select>
+
+
+            <span
+            style="color:red;">
+            @error('vehicle_type') {{ $message }}
+            @enderror</span>
+
             <label>Plate Number</label>
-            <input type="text" />
+            <input type="text" name="plate_number" value="{{ old('plate_number') }}"/>
+            <span
+            style="color:red;">
+            @error('plate_number') {{ $message }}
+            @enderror</span>
 
             <label>Motorcycle Displacement <samp style="color:#BD9140;font-size: 13px;">(CC)</samp></label>
-            <input type="text" />
+            <input type="text" name="displacement" value="{{ old('displacement') }}"/>
+            <span
+            style="color:red;">
+            @error('displacement') {{ $message }}
+            @enderror</span>
 
             <label>Engine Number</label> 
-            <input type="text" />
+            <input type="text" name="engine_number" value="{{ old('engine_number') }}"/>
+            <span
+            style="color:red;">
+            @error('engine_number') {{ $message }}
+            @enderror</span>
 
             <label>Year Model</label>
-            <input type="text" />
-    
-            <label>Email Address</label>
-            <input type="text" />
+            <input type="text" name="year_model" value="{{ old('year_model') }}"/>
+            <span
+            style="color:red;">
+            @error('year_model') {{ $message }}
+            @enderror</span>
 
 
            <br><br><br>
-           <a class="next" href="/rider_application4">Next</a>
-
+           <button class="next" type="submit" href="/rider_application4">Next</button>
+            </form>
           </div>
         </div>
       </div>

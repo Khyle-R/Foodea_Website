@@ -20,7 +20,7 @@
             <a href="/"><img src="image/foodea.png" /></a>
             <h2>FOODEA</h2>
           </div>
-
+        
           <ul>
             <h1>Merchant Application</h1>
             <li class="red">Step 1 &nbsp;&nbsp;&nbsp; Personal Information</li>
@@ -35,25 +35,41 @@
         <div class="right-content">
           <h2>Create your Account</h2>
           <p>Please fill up the form below.</p>
-          
+
          <form method="post" action="{{route('rider_application.addPostSubmit')}}">
           @csrf
           <div class="form-container">
         
             <label>Firts Name</label>
-            <input name="firstname" type="text" />
+            <input name="firstname" type="text" value="{{ old('firstname') }}"/>
+            <span
+            style="color:red;">
+            @error('firstname') {{ $message }}
+            @enderror</span>
 
             <label>Middle Name</label>
-            <input name="middle" type="text" />
+            <input name="middlename" type="text" value="{{ old('middlename') }}"/>
+             <span
+            style="color:red;">
+            @error('middlename') {{ $message }}
+            @enderror</span>
 
             <label>Last Name</label>
-            <input name="lastname" type="text" />
+            <input name="lastname" type="text" value="{{ old('lastname') }}"/>
+             <span
+            style="color:red;">
+            @error('lastname') {{ $message }}
+            @enderror</span>
 
             <label>Suffix</label>
             <input name="suffix" type="text" />
 
             <label>Age</label> 
-            <input name="age" type="text" />
+            <input name="age" type="text" value="{{ old('age') }}"/>
+             <span
+            style="color:red;">
+            @error('age') {{ $message }}
+            @enderror</span>
 
             <label>Gender</label>
             <select name="gender" id="">
@@ -61,24 +77,52 @@
               <option>MALE</option>
               <option>FEMALE</option>
             </select>
+             <span
+            style="color:red;">
+            @error('gender') {{ $message }}
+            @enderror</span>
 
             <label>Email Address</label>
-            <input name="email" type="text" />
+            <input name="email" type="text" value="{{ old('email') }}"/>
+             <span
+            style="color:red;">
+            @error('email') {{ $message }}
+            @enderror</span>
 
             <label>Mobile Number <samp style="color:#BD9140;font-size:9px;">(For Verification)</samp></label>
-            <input name="mobilenumber" type="text" />
+            <input name="mobilenumber" type="text" value="{{ old('mobilenumber') }}"/>
+             <span
+            style="color:red;">
+            @error('mobilenumber') {{ $message }}
+            @enderror</span>
 
             <label>Address</label>
-            <input name="address" type="text" />
+            <input name="address" type="text" value="{{ old('address') }}"/>
+             <span
+            style="color:red;">
+            @error('address') {{ $message }}
+            @enderror</span>
 
             <label>City</label>
-            <input name="city" type="text" />
+            <input name="city" type="text" value="{{ old('city') }}"/>
+             <span
+            style="color:red;">
+            @error('city') {{ $message }}
+            @enderror</span>
            
             <label>Barangay</label>
-            <input name="barangay" type="text" />
+            <input name="barangay" type="text" value="{{ old('barangay') }}"/>
+             <span
+            style="color:red;">
+            @error('barangay') {{ $message }}
+            @enderror</span>
 
             <label>ZIP Code</label>
-            <input name="zip" type="text" />
+            <input name="zip" type="text" value="{{ old('zip') }}"/>
+             <span
+            style="color:red;">
+            @error('zip') {{ $message }}
+            @enderror</span>
             
            <br><br><br>
            <button Value="submit" type="submit">Next</button>
