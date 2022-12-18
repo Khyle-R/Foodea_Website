@@ -39,15 +39,56 @@
 
           <div class="form-container">
             <div class="btn-group">
-              <button><a href="/rider_applicationstatus">Photo of your vehicle</a><i class="fa fa-chevron-right"></i><br><samp>Required Steps</samp></button>
-              <button>1x1 Picture<i class="fa fa-chevron-right"></i><br><samp>Required Steps</samp></button>
-              <button><a href="/rider_driverlicense1">Photo of your drivers license ID</a><i class="fa fa-chevron-right"></i><br><samp>Required Steps</samp></button>
-              <button><a href="/rider_driversor">Certificate of Registration and 
-                Official Receipt of Vehicle Registration</a><i class="fa fa-chevron-right"></i><br><samp>Required Steps</samp></button>
-              <button><a href="/rider_drugtestresult">Drug Test Result</a><i class="fa fa-chevron-right"></i><br><samp>Optional</samp></button>
-              <button>NBI Clearance<i class="fa fa-chevron-right"></i><br><samp>Optional</samp></button>
+              <form action="{{ route('rider_application4.SaveDocuments') }}" method="post" enctype="multipart/form-data">
+             @csrf
+             @if (Session::has('rider_id'))
+            <input type="hidden" name="rider_id" value=" {{ Session::get('rider_id') }}">
+            @endif
+              <button>Photo of your vehicle
+                <input type="file" name="vehicle_photo">
+                <br>
+                <samp>Required Steps</samp>
+              </button>
+              
+              <button>1x1 Picture 
+                <input type="file" name="image">
+                <br>
+                <samp>Required Steps</samp>
+              </button>
+
+              <button>Photo of your drivers license ID
+                 <input type="file" name="license">
+                <br>
+                <samp>Required Steps</samp>
+              </button>
+
+              <button>Certificate of Registration
+                 <input type="file" name="cr">
+                <br>
+                <samp>Required Steps</samp>
+              </button>
+
+               <button>Official Receipt of Vehicle Registration
+                <input type="file" name="or">
+                <br>
+                <samp>Required Steps</samp>
+              </button>
+
+              <button>Drug Test Result 
+                 <input type="file" name="drug_test">
+                <br>
+                <samp>Optional</samp>
+              </button>
+
+              <button>NBI Clearance
+                <input type="file" name="nbi">
+                  </i>
+                  <br>
+                  <samp>Optional</samp>
+                </button>
             </div>
-              <a class="submit" href="/rider_applicationstatus">Submit</a>
+              <button class="submit" type="submit">Submit</button>
+              </form>
           </div>
         </div>
       </div>
