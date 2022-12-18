@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 
-use App\Models\tbl_rider_accounts;
-use App\Models\tbl_vehicle_infos;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use App\Models\tbl_vehicle_infos;
+use App\Models\tbl_rider_accounts;
+use App\Models\tbl_rider_document;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 
 class RiderRegistration extends Controller
@@ -96,66 +98,70 @@ class RiderRegistration extends Controller
              return back()->with('fail', 'Something is wrong');
         }
     }
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
+    public function stepindex(){
+        return view('/rider_application4');
+    }
+      public function SaveDocuments(Request $request){
+        $request->validate([
+            'vehicle_photo'=> 'required'
+        ]);
+        $document = new tbl_rider_document();
+        $document->rider_id = $request->rider_id;
+        
+        if($request->hasFile('vehicle_photo') && $request->hasFile('license') && $request->hasFile('image') && $request->hasFile('cr') && $request->hasFile('or') && $request->hasFile('drug_test') && $request->hasFile('nbi')){
+            $vehicle = $request->file('vehicle_photo');
+            $file = $request->file('license');
+            $file2 = $request->file('image');
+            $file3 = $request->file('cr');
+            $file4 = $request->file('or');
+            $file5 = $request->file('drug_test');
+            $file6 = $request->file('nbi');
+            
+            
+            $photo = $vehicle->getClientOriginalName();
+            $license = $file->getClientOriginalName();
+            $image = $file2->getClientOriginalName();
+            $cr = $file3->getClientOriginalName();
+            $or = $file4->getClientOriginalName();
+            $drug = $file5->getClientOriginalName();
+            $nbi = $file6->getClientOriginalName();
+            
+            // $filename = $photo;
+            // $filename2 = $license;
+
+            $vehicle->move('uploads/rider_documents/', $photo);
+            $file ->move('uploads/rider_documents/',  $license );
+            $file2->move('uploads/rider_documents/', $image);
+            $file3 ->move('uploads/rider_documents/',  $cr );
+            $file4->move('uploads/rider_documents/', $or);
+            $file5 ->move('uploads/rider_documents/',  $drug );
+            $file6 ->move('uploads/rider_documents/',  $nbi );
+
+
+            $document->vehicle_photo = $photo;
+            $document->driver_license =  $license;
+            $document->official_receipt = $or;
+            $document->cert_registration =  $cr;
+            $document->nbi_clearance = $nbi;
+            $document->drug_test =  $drug;
+            $document->rider_photo =  $image;
+            $document->vehicle_photo =  $nbi;
+        }
+        $document->save();
+        return redirect('rider_applicationstatus');
+    }
     
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+    public function step5index(Request $request){
+        
+        $rider_id = Session::get('rider_id');
+        
+        $Data = tbl_rider_accounts::join('tbl_vehicle_info', 'tbl_rider_account.rider_id', '=', 'tbl_vehicle_info.rider_id')
+        ->join('tbl_document_info', 'tbl_rider_account.rider_id', '=', 'tbl_document_info.rider_id')
+        ->where('tbl_rider_account.rider_id', $rider_id)
+        ->limit(1)
+        ->get(['firstname', 'middlename', 'lastname', 'age', 'gender', 'email', 'mobile_number', 'city', 'vehicle_type', 'plate_number', 'displacement', 'engine_number', 'year_model']);
+       
+        return view('/rider_applicationstatus', compact('Data'));
     }
 }

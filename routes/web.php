@@ -14,6 +14,12 @@ Route::get('/rider_application3', [RiderRegistration::class, 'step2index'])->nam
 
 Route::post('/rider_application3', [RiderRegistration::class, 'addVehicle'])->name('rider_application3.addVehicle');
 
+Route::post('/rider_application4', [RiderRegistration::class, 'SaveDocuments'])->name('rider_application4.SaveDocuments');
+
+Route::get('/rider_application4', [RiderRegistration::class, 'step4index']);
+
+Route::get('/rider_applicationstatus', [RiderRegistration::class, 'step5index']);
+
 Route::get('/sample', [RiderRegistration::class, 'getAllData'])->name('sample.getAllData');
 
 
@@ -35,9 +41,7 @@ Route::get('/partner_application2', function () {
 Route::get('/partner_application3', function () {
     return view('partner_application3');
 });
-Route::get('/partner_application4', function () {
-    return view('partner_application4');
-});
+
 Route::get('/partner_landing', function () {
     return view('partner_landing');
 });
@@ -55,9 +59,7 @@ Route::get('/rider_application4', function () {
 Route::get('/rider_application5', function () {
     return view('rider_application5');
 });
-Route::get('/rider_applicationstatus', function () {
-    return view('rider_applicationstatus');
-});
+
 Route::get('/rider_driverlicense1', function () {
     return view('rider_driverlicense1');
 });
