@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Home;
 use App\Http\Controllers\RiderRegistration;
+use App\Http\Controllers\Admin_product;
+use App\Http\Controllers\Admin_product\removeProduct;
 
 Route::get('/', [Home::class, 'index'])->name('home.index');
 
@@ -78,4 +80,35 @@ Route::get('/rider_landing', function () {
 });
 Route::get('/rider_vehicle', function () {
     return view('rider_vehicle');
+});
+
+
+// ===========================Admin====================
+
+Route::view('admin_personal','admin.admin_personal');
+
+//Add product
+Route::get('/add_product',[Admin_product::class, 'addProductView'])->name('add_product.addProductView');
+Route::post('/add_product',[Admin_product::class, 'addProduct'])->name('add_product.addProduct');
+
+//Remove product
+Route::get('/product/remove/{id}',[Admin_product::class, 'removeProduct']);
+
+//Update products
+Route::get('/product/update/{id}',[Admin_product::class, 'updateProduct']);
+
+//View products
+Route::get('product', function () {
+
+    $products = DB::table('tbl_product')->get();
+
+    return view('admin.product', ['products' => $products]);
+});
+
+//View inventory
+Route::get('inventory', function(){
+    
+    $invent = DB::table('tbl_inventory')->get();
+
+    return view('admin.inventory', ['invent' => $invent]);
 });
