@@ -207,7 +207,7 @@
                                                         </td>
                                                        
                                                         <td>
-                                                            <img src="../../assets/images/faces/face1.jpg" alt="image" class="img-fluid" style=" height: 60px; width: 70px; border-radius: 2px;"/>
+                                                            <img src="{{ asset('product_images/'.$data->product_image)}}" alt="image" class="img-fluid" style=" height: 60px; width: 70px; border-radius: 2px;"/>
                                                             <span class="pl-2">{{$data ->product_name}}</span>
                                                         </td>
                                                         <td>{{$data ->stock}}</td>

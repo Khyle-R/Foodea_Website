@@ -168,7 +168,7 @@
                             </td>
                             <td>
                               <img
-                                src="../../assets/images/faces/face1.jpg"
+                                src="{{ asset('product_images/'.$data->product_image)}}"
                                 alt="image"
                                 class="img-fluid"
                                 style="
@@ -184,7 +184,7 @@
                             <td>{{ $data->status}}</td>
                             <td>
                               <div class="row">
-                                <a class="badge badge-outline-success mr-3" href="">
+                                <a class="badge badge-outline-success mr-3" href="product/restore/{{$data->inventory_id}}">
                                   Restore
                                 </a>
 

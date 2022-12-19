@@ -94,8 +94,13 @@ Route::post('/add_product',[Admin_product::class, 'addProduct'])->name('add_prod
 //Remove product
 Route::get('/product/remove/{id}',[Admin_product::class, 'removeProduct']);
 
+//Restore product
+Route::get('/product/restore/{id}',[Admin_product::class, 'restoreProduct']);
+
 //Update products
 Route::get('/product/update/{id}',[Admin_product::class, 'updateProduct']);
+
+Route::post('/product/updateInfo', [Admin_product::class, 'updateProductInfo'])->name('product.updateProductInfo');
 
 //View products
 Route::get('product', function () {
