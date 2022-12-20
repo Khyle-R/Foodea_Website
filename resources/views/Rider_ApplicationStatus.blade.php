@@ -50,18 +50,30 @@
                     <br><br><br>
                     <p>Rider Information</p><br><br>
                     <hr><br><br>
+                     @if (Session::has('rider_id'))
+                   <input type="hidden" name="rider_id" value=" {{ Session::get('rider_id') }}">
+                      
+                   @endif
+
                         <div class="col">
+                          @foreach ($Data as $row)
                           <label>First Name</label>
-                          <div class="col-1">Juan</div>
+                          <div class="col-1">{{ $row->firstname }}</div>
+                          <br><br><br>
+                          <label>Middle Name</label>
+                          <div class="col-1">{{ $row->middlename }}</div>
                           <br><br><br>
                           <label>Last Name</label>
-                          <div class="col-2">Dela Cruz</div>
+                          <div class="col-2">{{ $row->lastname }}</div>
                           <br><br><br>
                           <label>Email Address</label>
-                          <div class="col-3">foodea@gmail.com</div>
+                          <div class="col-3">{{ $row->email }}</div>
                           <br><br><br>
                           <label>Mobile Number</label>
-                          <div class="col-4">09123456789</div>
+                          <div class="col-4">{{ $row->mobile_number }}</div>
+                          <label>City</label>
+                          <div class="col-3">{{ $row->city }}</div>
+                          <br><br><br>
                           <br><br><br><br><br>
                         </div>
                         <div class="form"> 
@@ -81,17 +93,18 @@
                         <hr><br><br>
                           <div class="col">
                             <label>Type</label>
-                            <div class="col-5">Motorcycle</div>
+                            <div class="col-5">{{ $row->vehicle_type }}</div>
                             <br><br><br>
-                            <label>Model</label>
-                            <div class="col-6">12</div>
+                            <label>Year model</label>
+                            <div class="col-6">{{ $row->year_model }}</div>
                             <br><br><br>
                             <label>Plate Number</label>
-                            <div class="col-7">ABC-123</div>
+                            <div class="col-7">{{ $row->plate_number }}</div>
                             <br><br><br>
-                            <label>Registration Number</label>
-                            <div class="col-8">1234567</div>
+                            <label>Engine Number</label>
+                            <div class="col-8">{{ $row->engine_number }}</div>
                           </div>
+                           @endforeach
                   <br><br><br>
             </div>
           </div>

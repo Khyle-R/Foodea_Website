@@ -22,7 +22,7 @@
           </div>
         
           <ul>
-            <h1>Merchant Application</h1>
+            <h1>Rider Application</h1>
             <li class="red">Step 1 &nbsp;&nbsp;&nbsp; Personal Information</li>
             <li>Step 2 &nbsp;&nbsp; Verify Phone Number</li>
             <li>Step 3 &nbsp;&nbsp;&nbsp; Vehicle Information</li>
@@ -94,6 +94,30 @@
              <span
             style="color:red;">
             @error('mobilenumber') {{ $message }}
+            @enderror</span>
+
+              <p class="paragraph"> Password must be at least 6 characters long. 
+              Password can contain letters, numbers and punctuation.
+            </p>
+           
+            <label>Password</label>
+            <div class="password-container">
+              <input type="password" id="password" name="password">
+              <i class="fa-solid fa-eye" id="eye"></i>
+            </div>
+             <span
+            style="color:red;">
+            @error('password') {{ $message }}
+            @enderror</span>
+
+            <label>Confirm Password</label>
+            <div class="password-container">
+              <input type="password" id="password" name="password_confirmation">
+              <i class="fa-solid fa-eye" id="eye"></i>
+            </div>
+             <span
+            style="color:red;">
+            @error('password_confirmation') {{ $message }}
             @enderror</span>
 
             <label>Address</label>

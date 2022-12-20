@@ -13,7 +13,7 @@
       <div class="left">
         <div class="left-content">
           <div class="back">
-            <a href="#"><img src="image/vector.png" /></a>
+            <a href="/"><img src="image/vector.png" /></a>
             <p>Back to website</p>
           </div>
           <div class="logo">
@@ -22,7 +22,7 @@
           </div>
 
           <ul>
-            <h1>Merchant Application</h1>
+            <h1>Rider Application</h1>
             <li>Step 1 &nbsp;&nbsp;&nbsp; Personal Information</li>
             <li class="red">Step 2 &nbsp;&nbsp; Verify Phone Number</li>
             <li>Step 3 &nbsp;&nbsp;&nbsp; Vehicle Information</li>
