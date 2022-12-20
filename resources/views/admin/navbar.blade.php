@@ -228,7 +228,7 @@
                         alt=""
                       />
                       <p class="mb-0 d-none d-sm-block navbar-profile-name">
-                        Henry Klein
+                       henry klein
                       </p>
                       <i class="mdi mdi-menu-down d-none d-sm-block"></i>
                     </div>
@@ -250,7 +250,7 @@
                       </div>
                     </a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item preview-item">
+                    <a href="/logout" class="dropdown-item preview-item">
                       <div class="preview-thumbnail">
                         <div class="preview-icon bg-dark rounded-circle">
                           <i class="mdi mdi-logout text-danger"></i>

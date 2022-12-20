@@ -237,6 +237,7 @@
                         <input type="radio" name="accordion" id="sixth" />
                         <label for="sixth">Valid Government issued ID</label>
                         <div class="content">
+                            <p>Types of valid ID (Driver's license, Passport, SSS ID, Postal ID, Voter ID)</p>
                          <img src="/image/ID.png" alt="">
                         </div>
                     </li>

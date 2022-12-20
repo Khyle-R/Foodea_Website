@@ -149,64 +149,93 @@ li {
     font-weight: 600;
     color: #000;
     opacity: 70%;
+    width: 50%;
+    line-height: 20px;
 }
 
 .form-container {
-    width: 40%;
+    width: 100%;
     display: flex;
     flex-direction: column;
 }
 
-.btn-group button {
-    background-color: #fff;
-    border: #272625; 
-    color: #272625; 
-    padding: 15px 25px;
+.btn-group {
+    padding: 1rem 2rem;
+
+}
+
+
+.requirements-title {
+    padding: 0.8rem 0;
+}
+
+.requirements-title p {
+    font-family: 'Montserrat',
+        sans-serif;
+    color: #000;
+    opacity: 70%;
+    font-size: 14px;
+}
+
+.requirements-title span {
+    font-family: 'Montserrat',
+        sans-serif;
+    color: #9b7227;
+}
+
+.requirements {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+}
+
+
+
+.requirements span {
+    font-size: 13px;
+    font-family: 'Montserrat',
+        sans-serif;
+    opacity: 90%;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.76);
+    margin-bottom: 1rem;
+}
+
+.requirements p {
+    padding: 0.5rem 0 1rem 0;
+}
+
+
+.pic {
+    height: 200px;
+    width: 200px;
+}
+
+input[type=file] {
+    margin: 10px 0;
+}
+
+button[type=submit] {
+    color: #fff;
+    background-color: #F54748;
+    border: #F54748 solid 1px;
+    padding: 0.6rem 0;
+    border-radius: 15px;
+    font-size: 17px;
+    font-family: 'Montserrat',
+        sans-serif;
     cursor: pointer;
-    width: 100%;
-    display: block;
-    text-align: left;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 15px;
-}
-  
-.btn-group button:not(:last-child) {
-    border-bottom: none; 
- }
-  
-.btn-group button:hover {
-    background-color: #f0f0f0;
 }
 
-.btn-group samp {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 10px;
-    color: #C09647;
-}
-
-.btn-group :where(i){
-   float: right;
-}
-
-.btn-group i {
-    font-size: 20px;
-}
-
-
-.submit:link, .submit:visited {
-    background-color: #F54748;
-    color: white;
-    padding: 8px;
-    align-self: flex-end;
-    text-align: center;
-    text-decoration: none;
-    opacity: 75%;
-    border-radius: 25px;
-    width: 120px;
-}
-  
-.submit:hover {
-    text-decoration: none;
-    opacity: 100%;
-    background-color: #F54748;
+button[type=submit]:hover {
+    color: #fff;
+    background-color: #c22c2c;
+    border: #F54748 solid 1px;
+    padding: 0.6rem 0;
+    border-radius: 15px;
+    font-size: 17px;
+    font-family: 'Montserrat',
+        sans-serif;
+    transition: 0.3s ease-out;
 }

@@ -1,11 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    <link rel="stylesheet" type="text/css" href="css/partner_application2.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="css/partner_application.css" />
     <title>FOODEA</title>
   </head>
   <body>
@@ -13,8 +13,10 @@
       <div class="left">
         <div class="left-content">
           <div class="back">
-            <a href="/"><img src="image/vector.png" /></a>
-            <p>Back to website</p>
+            <a href="/"
+              ><img src="image/vector.png" />
+              <p>Back to website</p></a
+            >
           </div>
           <div class="logo">
             <a href="/"><img src="image/foodea.png" /></a>
@@ -23,60 +25,108 @@
 
           <ul>
             <h1>Merchant Application</h1>
-            <li>Step 1 &nbsp;&nbsp;&nbsp;Submit Application</li>
-            <li class="red">Step 2 &nbsp;&nbsp;&nbsp;Personal Information</li>
-            <li>Step 3 &nbsp;&nbsp;&nbsp;Verify Email Address</li>
+            <li>Step 1 &nbsp; Profile Information</li>
+            <li class="red">Step 2 &nbsp; Business Information</li>
+            <li>Step 3 &nbsp; Verify Email Address</li>
+            <li>Step 4 &nbsp; Requirements</li>
+            <li>Step 5 &nbsp; Applicataion Status</li>
           </ul>
         </div>
       </div>
       <div class="right">
         <div class="right-content">
           <h2>Secure your Account</h2>
-          <p>Please fill up the form below</p>
+          <p>Please fill up the form below.</p>
 
-          <div class="form-container">
-            <label>First Name</label>
-              <input type="text" />
-            <label>Middle Name</label>
-            <input type="text" />
+            <!--GET RIDER ID-->
 
-            <label>Last Name</label>
-            <input type="text" />
+          <form method="post" action="{{ route('partner_application2.partner2submit') }}">
+         @csrf
+            @if (Session::has('merchant_id'))
+            <input type="hidden" name="merchant_id" value=" {{ Session::get('merchant_id') }}">
+          @endif
 
-            <label>Suffix</label>
-            <input type="text" />
+            <div class="form-container">
+            <label>Business Type</label>
+            <select name="business_type" id="">
+              <option selected="true" disabled="disabled">- Select -</option>
+              <option>Sole proprietorship</option>
+              <option>Corporation</option>
+            </select>
+            <span
+            style="color:red;">
+            @error('business_type') {{ $message }}
+            @enderror</span>
 
-            <label>Age</label>
-            <input type="text" />
+            <label>Business Name</label>
+            <input type="text" name="business_name"/>
+            <span
+            style="color:red;">
+            @error('business_name') {{ $message }}
+            @enderror</span>
 
-            <label>Gender</label>
-            <input type="text" />
+            <label>Country</label>
+             <select name="country" id="">
+              <option selected="true" disabled="disabled">- Select -</option>
+              <option>Philippines</option>
+            </select>
+            <span
+            style="color:red;">
+            @error('country') {{ $message }}
+            @enderror</span>
 
-            <label>Email Address <a style="color:#FDC55E;font-size: 10px;">(For Email verification)</a></label>
-            <input type="text" />
+            <label>Business Address</label>
+            <input type="text" name="address"/>
+            <span
+            style="color:red;">
+            @error('address') {{ $message }}
+            @enderror</span>
 
-            <label>Confirm Email</label>
-            <input type="text" />
+            <label>City</label> 
+            <input type="text" name="city"/>
+            <span
+            style="color:red;">
+            @error('city') {{ $message }}
+            @enderror</span>
 
-            <p class="paragraph"> Password must be at least 6 characters long. 
-              Password can contain letters, numbers and punctuation.
-            </p>
-           
-            <label>Password</label>
-            <div class="password-container">
-              <input type="password" id="password">
-              <i class="fa-solid fa-eye" id="eye"></i>
-            </div>
-          
-            <label>Confirm Password</label>
-            <div class="password-container">
-              <input type="password" id="password">
-              <i class="fa-solid fa-eye" id="eye"></i>
-            </div>
-            
-             <br><br><br>
-             <a class="submit" href="/partner_application3">Submit</a>
+            <label>Registered Barangay</label>
+            <input type="text" name="barangay"/>
+            <span
+            style="color:red;">
+            @error('barangay') {{ $message }}
+            @enderror</span>
 
+            <label>Registered Street</label>
+            <input type="text" name="street"/>
+            <span
+            style="color:red;">
+            @error('street') {{ $message }}
+            @enderror</span>
+
+            <label>Registered Postal Code</label>
+            <input type="text" name="postal_code"/>
+            <span
+            style="color:red;">
+            @error('postal_code') {{ $message }}
+            @enderror</span>
+
+            <label>Store Phone No.</label>
+            <input type="text" name="store_number"/>
+            <span
+            style="color:red;">
+            @error('store_number') {{ $message }}
+            @enderror</span>
+
+            <label>Store Email Address</label>
+            <input type="text" name="store_email"/>
+            <span
+            style="color:red;">
+            @error('store_email') {{ $message }}
+            @enderror</span>
+
+           <br><br><br>
+           <button class="next" type="submit">Next</button>
+      </form>
           </div>
         </div>
       </div>

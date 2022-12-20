@@ -13,7 +13,7 @@
       <div class="left">
         <div class="left-content">
           <div class="back">
-            <a href="#"><img src="image/vector.png" /></a>
+            <a href="/"><img src="image/vector.png" /></a>
             <p>Back to website</p>
           </div>
           <div class="logo">
@@ -22,7 +22,7 @@
           </div>
 
           <ul>
-            <h1>Merchant Application</h1>
+            <h1>Rider Application</h1>
             <li>Step 1 &nbsp;&nbsp;&nbsp; Personal Information</li>
             <li>Step 2 &nbsp;&nbsp; Verify Phone Number</li>
             <li class="red">Step 3 &nbsp;&nbsp;&nbsp; Vehicle Information</li>
@@ -44,7 +44,17 @@
           @endif
 
           <div class="form-container">
-            <label>Vehicle Type</label>
+            {{-- <label>Vehicle Type</label>
+         
+            <select class="form-control" name="vehicle_type">
+            <option selected="true" disabled="disabled">- Select -</option>
+            <option value="Owner" @if (old('vehicle_type') == 'Owner') selected="selected" @endif>Owner</option>
+            <option value="Borrowed Motor" @if (old('vehicle_type') == 'Borrowed Motor') selected="selected" @endif>Borrowed Motor </option>
+            <option value="Second hand" @if (old('vehicle_type') == 'Second hand') selected="selected" @endif>Second hand</option>
+           <option value="Reacquire Motor" @if (old('vehicle_type') == 'Reacquire Motor') selected="selected" @endif>Reacquire Motor</option>
+          </select> --}}
+            
+             <label>Vehicle</label>
          
             <select class="form-control" name="vehicle_type">
             <option selected="true" disabled="disabled">- Select -</option>
@@ -65,7 +75,7 @@
             @error('plate_number') {{ $message }}
             @enderror</span>
 
-            <label>Motorcycle Displacement <samp style="color:#BD9140;font-size: 13px;">(CC)</samp></label>
+            <label>Motorcycle Displacement <samp style="color:#BD9140;font-size: 13px;">(CC 99-160)</samp></label>
             <input type="text" name="displacement" value="{{ old('displacement') }}"/>
             <span
             style="color:red;">
