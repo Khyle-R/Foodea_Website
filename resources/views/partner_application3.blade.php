@@ -22,9 +22,11 @@
 
           <ul>
             <h1>Merchant Application</h1>
-            <li>Step 1 &nbsp;&nbsp;&nbsp;Submit Application</li>
-            <li>Step 2 &nbsp;&nbsp;&nbsp;Personal Information</li>
+            <li>Step 1 &nbsp;&nbsp;&nbsp;Profile Information</li>
+            <li>Step 2 &nbsp;&nbsp;&nbsp;Business Information</li>
             <li class="red">Step 3 &nbsp;&nbsp;&nbsp;Verify Email Address</li>
+            <li>Step 4 &nbsp; Requirements</li>
+            <li>Step 5 &nbsp; Applicataion Status</li>
           </ul>
         </div>
       </div>
@@ -37,7 +39,7 @@
 
           <div class="form-container">
             <label>Didn't get an email?</label>
-            <a href="/partner_application4">Resend email verification</a>
+            <a href="/partner_requirements">Resend email verification</a>
 
           </div>
         </div>

@@ -8,6 +8,7 @@ use App\Models\tbl_vehicle_infos;
 use App\Models\tbl_rider_accounts;
 use App\Models\tbl_rider_document;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
 
@@ -40,6 +41,8 @@ class RiderRegistration extends Controller
             'gender' => 'required',
             'email' => 'required|email|unique:tbl_rider_account',
             'mobilenumber' => 'required',
+            'password' => 'required|min:6|confirmed',
+            'password_confirmation' => 'required|min:6',
             'address' => 'required',
             'city' => 'required',
             'barangay' => 'required',
@@ -54,6 +57,7 @@ class RiderRegistration extends Controller
              $rider->age = $request->  age;
              $rider->gender = $request->  gender;
              $rider->email = $request-> email;
+             $rider->password = Hash::make($request->password);
              $rider->mobile_number = $request-> mobilenumber;
              $rider->address = $request->  address;
              $rider->city = $request-> city;
@@ -61,7 +65,7 @@ class RiderRegistration extends Controller
              $rider->zip_code = $request->  zip;
              //from database = input request
              $res = $rider -> save();
-  
+            
             if($res){
                 $request->session()->put('rider_id', $rider->id);
                 return redirect('/rider_application2');
@@ -104,19 +108,30 @@ class RiderRegistration extends Controller
     }
       public function SaveDocuments(Request $request){
         $request->validate([
-            'vehicle_photo'=> 'required'
+            'image'=> 'required|mimes:jpeg,png,jpg,pdf|max:5000',
+            'vehicle_front'=> 'required|mimes:jpeg,png,jpg,pdf|max:5000',
+            'vehicle_side'=> 'required|mimes:jpeg,png,jpg,pdf|max:5000',
+            'vehicle_back'=> 'required|mimes:jpeg,png,jpg,pdf|max:5000',
+            'license'=> 'required|mimes:jpeg,png,jpg,pdf|max:5000',
+            'license_back'=> 'required|mimes:jpeg,png,jpg,pdf|max:5000',
+            'cr'=> 'required|mimes:jpeg,png,jpg,pdf|max:5000',
+            'or'=> 'required|mimes:jpeg,png,jpg,pdf|max:5000',
+            'nbi'=> 'required|mimes:jpeg,png,jpg,pdf|max:5000'
         ]);
         $document = new tbl_rider_document();
         $document->rider_id = $request->rider_id;
         
-        if($request->hasFile('vehicle_photo') && $request->hasFile('license') && $request->hasFile('image') && $request->hasFile('cr') && $request->hasFile('or') && $request->hasFile('drug_test') && $request->hasFile('nbi')){
-            $vehicle = $request->file('vehicle_photo');
+        if($request->hasFile('vehicle_front') && $request->hasFile('license') && $request->hasFile('image') && $request->hasFile('cr') && $request->hasFile('or') && $request->hasFile('drug_test') && $request->hasFile('nbi') && $request->hasFile('vehicle_side') && $request->hasFile('vehicle_back') && $request->hasFile('license_back')){
+            $vehicle = $request->file('vehicle_front');
             $file = $request->file('license');
             $file2 = $request->file('image');
             $file3 = $request->file('cr');
             $file4 = $request->file('or');
             $file5 = $request->file('drug_test');
             $file6 = $request->file('nbi');
+            $file7 = $request->file('vehicle_side');
+            $file8 = $request->file('vehicle_back');
+            $file9 = $request->file('license_back');
             
             
             $photo = $vehicle->getClientOriginalName();
@@ -126,6 +141,9 @@ class RiderRegistration extends Controller
             $or = $file4->getClientOriginalName();
             $drug = $file5->getClientOriginalName();
             $nbi = $file6->getClientOriginalName();
+            $side = $file7->getClientOriginalName();
+            $back = $file8->getClientOriginalName();
+            $license_back = $file9->getClientOriginalName();
             
             // $filename = $photo;
             // $filename2 = $license;
@@ -137,16 +155,21 @@ class RiderRegistration extends Controller
             $file4->move('uploads/rider_documents/', $or);
             $file5 ->move('uploads/rider_documents/',  $drug );
             $file6 ->move('uploads/rider_documents/',  $nbi );
+            $file7->move('uploads/rider_documents/', $side);
+            $file8 ->move('uploads/rider_documents/',  $back );
+            $file9 ->move('uploads/rider_documents/',  $license_back );
 
 
-            $document->vehicle_photo = $photo;
+            $document->vehicle_front = $photo;
             $document->driver_license =  $license;
             $document->official_receipt = $or;
             $document->cert_registration =  $cr;
             $document->nbi_clearance = $nbi;
             $document->drug_test =  $drug;
             $document->rider_photo =  $image;
-            $document->vehicle_photo =  $nbi;
+            $document->vehicle_side =  $side;
+            $document->vehicle_back =  $back;
+            $document->license_back =  $license_back;
         }
         $document->save();
         return redirect('rider_applicationstatus');

@@ -14,7 +14,7 @@
       <div class="left">
         <div class="left-content">
           <div class="back">
-            <a href="#"><img src="image/vector.png" /></a>
+            <a href="/"><img src="image/vector.png" /></a>
             <p>Back to website</p>
           </div>
           <div class="logo">
@@ -23,7 +23,7 @@
           </div>
 
           <ul>
-            <h1>Merchant Application</h1>
+            <h1>Rider Application</h1>
             <li>Step 1 &nbsp;&nbsp;&nbsp; Personal Information</li>
             <li>Step 2 &nbsp;&nbsp; Verify Phone Number</li>
             <li>Step 3 &nbsp;&nbsp;&nbsp; Vehicle Information</li>
@@ -35,7 +35,9 @@
       <div class="right">
         <div class="right-content">
           <h2>Welcome, Juan</h2>
-          <p>Here's the required steps to set up your account</p>
+          <p>Here's the required steps to set up your account. 
+            Make sure the documents you upload matches the sample 
+            document or else the application process will be delayed.</p>
 
           <div class="form-container">
             <div class="btn-group">
@@ -44,50 +46,128 @@
              @if (Session::has('rider_id'))
             <input type="hidden" name="rider_id" value=" {{ Session::get('rider_id') }}">
             @endif
-              <button>Photo of your vehicle
-                <input type="file" name="vehicle_photo">
-                <br>
-                <samp>Required Steps</samp>
-              </button>
-              
-              <button>1x1 Picture 
+
+                <div class="requirements-title">
+               <p>2x2 image Picture <span>(Required)</span></p>
+               </div>
+               <div class="requirements">
+                 <img class="pic" src="image/1x1.png" alt="">
                 <input type="file" name="image">
-                <br>
-                <samp>Required Steps</samp>
-              </button>
+                  <span>File size up to 5mb only</span>
+               <span
+            style="color:red;">
+            @error('image') {{ $message }}
+            @enderror</span>
+                   </div>
 
-              <button>Photo of your drivers license ID
-                 <input type="file" name="license">
-                <br>
-                <samp>Required Steps</samp>
-              </button>
+              <div class="requirements-title">
+              <p>Photo of your vehicle <span>(Required)</span></p>
 
-              <button>Certificate of Registration
-                 <input type="file" name="cr">
-                <br>
-                <samp>Required Steps</samp>
-              </button>
+               </div>
+                <div class="requirements">
+              <p>Front view<span> (Required)</span></p>
+              <img src="image/front.png" alt="">
+              <input type="file" name="vehicle_front">
+               <span>File size up to 5mb only</span>
+                 <span
+              style="color:red;">
+              @error('vehicle_front') {{ $message }}
+             @enderror</span> 
 
-               <button>Official Receipt of Vehicle Registration
+               <p>Side view<span> (Required)</span></p>
+                 <img src="image/side.png" alt="">
+                  <input type="file" name="vehicle_side">
+                   <span>File size up to 5mb only</span>
+                <span
+                style="color:red;">
+                @error('vehicle_side') {{ $message }}
+               @enderror</span>
+
+                <p>Back view<span> (Required)</span></p>
+                  <img src="image/back.png" alt="">
+                <input type="file" name="vehicle_back">
+                 <span>File size up to 5mb only</span>
+               <span
+            style="color:red;">
+            @error('vehicle_back') {{ $message }}
+            @enderror</span>
+                </div>
+
+                 <div class="requirements-title">
+              <p>Photo of your Professional drivers license ID <span> (Required)</span></p>
+                 </div>
+                    <div class="requirements">
+                <p>Front<span> (Required)</span></p>
+                <img src="image/front_id.png" alt="">
+                <input type="file" name="license">
+                 <span>File size up to 5mb only</span>
+                   <span
+               style="color:red;">
+               @error('license') {{ $message }}
+               @enderror</span>
+
+                 <p>Back<span> (Required)</span></p>
+                <img src="image/back_id.png" alt="">
+                 <input type="file" name="license_back">
+                 <span>File size up to 5mb only</span>
+               <span
+            style="color:red;">
+            @error('license_back') {{ $message }}
+            @enderror</span>
+              </div>
+
+               <div class="requirements-title"> 
+            <p>Certificate of Registration <span>(Required)</span></p>
+               </div>
+                <div class="requirements">
+            <img src="image/cr.png" alt="">
+              <input type="file" name="cr">
+               <span>File size up to 5mb only</span>
+            <span
+            style="color:red;">
+            @error('cr') {{ $message }}
+            @enderror</span>
+              </div>
+
+               <div class="requirements-title">
+               <p>Official Receipt of Vehicle Registration <span>(Required)</span></p>
+               </div>
+                <div class="requirements">
+                  <img src="image/or.png" alt="">
                 <input type="file" name="or">
-                <br>
-                <samp>Required Steps</samp>
-              </button>
+                 <span>File size up to 5mb only</span>
+               <span
+            style="color:red;">
+            @error('or') {{ $message }}
+            @enderror</span>
+              </div>
 
-              <button>Drug Test Result 
+               <div class="requirements-title">    
+              <p>Drug Test Result <span>(Optional)</span></p>
+               </div>
+                <div class="requirements">
+               <img src="image/drug-test.png" alt="">
                  <input type="file" name="drug_test">
-                <br>
-                <samp>Optional</samp>
-              </button>
+                  <span>File size up to 5mb only</span>
+              </div>
 
-              <button>NBI Clearance
+                  <div class="requirements-title">
+              <p>NBI Clearance <span>(Required)</span></p>
+                  </div>
+                   <div class="requirements">
+               <img src="image/nbi.png" alt="">
                 <input type="file" name="nbi">
-                  </i>
-                  <br>
-                  <samp>Optional</samp>
-                </button>
-            </div>
+                   <span>File size up to 5mb only</span>
+               
+                 <span
+            style="color:red;">
+            @error('nbi') {{ $message }}
+            @enderror</span>
               <button class="submit" type="submit">Submit</button>
+                 </div>
+                 
+            </div>
+            
               </form>
           </div>
         </div>
