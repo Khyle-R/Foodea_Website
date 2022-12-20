@@ -152,6 +152,44 @@ li {
     opacity: 70%;
 }
 
+section {
+    width: 38%;
+    height: 45vh;
+    margin-top: 1rem;
+    overflow-y: scroll;
+    background-color: #fff;
+    box-shadow: 4px 4px 15px 5px #88888867;
+}
+
+section h3 {
+    font-weight: 600;
+    font-family: 'Montserrat',
+        sans-serif;
+    font-size: 18px;
+    color: #000;
+    opacity: 90%;
+    padding: 10px;
+}
+
+section p {
+    font-family: 'Montserrat',
+        sans-serif;
+    font-size: 18px;
+    color: #000;
+    opacity: 90%;
+    padding: 10px;
+    line-height: 23px;
+}
+
+
+.check input {
+    margin: 15px 0;
+    font-family: 'Montserrat',
+        sans-serif;
+    font-size: 18px;
+    color: #000;
+}
+
 .form-container {
     width: 30%;
     display: flex;

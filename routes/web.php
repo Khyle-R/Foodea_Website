@@ -42,7 +42,9 @@ Route::get('/login',  [PartnerRegistration::class, 'LoginIndex']);
 
 Route::post('/login',  [PartnerRegistration::class, 'LoginMerchant'])->name('login.LoginMerchant');
 
+Route::get('/rider_application_agreement', [RiderRegistration::class, 'agreement']);
 
+Route::get('/merchant_application_agreement', [PartnerRegistration::class, 'agreement']);
 
 // Route::get('/sample', [RiderRegistration::class, 'getAllData'])->name('sample.getAllData');
 
