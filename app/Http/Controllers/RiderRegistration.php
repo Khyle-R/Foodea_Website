@@ -187,4 +187,6 @@ class RiderRegistration extends Controller
        
         return view('/rider_applicationstatus', compact('Data'));
     }
+    
+   
 }

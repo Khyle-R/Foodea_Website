@@ -173,5 +173,8 @@ class PartnerRegistration extends Controller
         }
     }
     
+     public function agreement(){
+        return view('/merchant_application_agreement');
+    }
 
 }
