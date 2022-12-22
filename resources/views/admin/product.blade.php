@@ -233,9 +233,8 @@
                                                                 </a>
 
                                                                 <!-- Button trigger modal -->
-                                                                <a href="product/remove/{{ $data ->product_id}}" type="button"class="btn btn-danger">Remove product</a>
-                                                                {{-- <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"> Remove Product
-                                                                </button> --}}
+                                                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"> Remove Product
+                                                                </button>
                                                                 <!-- Modal -->
                                                                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                                     <div
@@ -257,8 +256,7 @@
                                                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                                                                                     Close
                                                                                 </button>
-                                                                                <button type="button" class="btn btn-primary">Save changes
-                                                                                </button>
+                                                                                <a href="product/remove/{{ $data ->product_id}}" type="button"class="btn btn-danger">Remove product</a>
                                                                             </div>
                                                                         </div>
                                                                     </div>
