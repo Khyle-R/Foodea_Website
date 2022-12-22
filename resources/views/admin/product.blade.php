@@ -213,7 +213,19 @@
                                                         <td>{{$data ->stock}}</td>
                                                         <td>{{$data ->price}}</td>
                                                         <td>Dashboard</td>
-                                                        <td>{{$data ->status}}</td>
+                                                        <td>
+                                                            @if ($data->status =='Active')
+                                                            <button class="btn btn-success" data-target="#Cancelled">
+                                                              Active
+                                                            </button>
+                                                          @elseif($data->status=='Disabled')
+                                                            <button class="btn btn-warning" data-target="#Cancelled">
+                                                              Disabled
+                                                            </button>
+                                                          @else
+                                                          
+                                                          @endif
+                                                        </td>
                                                         <td>
                                                             <div class="row">
                                                                 <a href="product/update/{{ $data ->product_id}}" class="badge badge-outline-success mr-3">

@@ -188,7 +188,7 @@
                                   Restore
                                 </a>
 
-                                <a class="badge badge-outline-danger" href="">
+                                <a class="badge badge-outline-danger" href="product/delete/{{ $data->inventory_id}}">
                                   Delete
                                 </a>
                               </div>
