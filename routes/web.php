@@ -83,7 +83,7 @@ Route::get('/rider_vehicle', function () {
 });
 
 
-// ===========================Admin====================
+// ===========================Merchant Admin====================
 
 Route::view('admin_personal','admin.admin_personal');
 
@@ -117,3 +117,14 @@ Route::get('inventory', function(){
 
     return view('admin.inventory', ['invent' => $invent]);
 });
+
+Route::view('merchant_index', 'admin.index');
+
+//Route::view('admin_history', 'admin.admin_history');
+Route::get('admin_history', function(){
+    $history = DB::table('tbl_transaction')->get();
+
+    return view('admin.admin_history', ['history' => $history]);
+});
+
+Route::view('admin_orders', 'admin.admin_orders');
