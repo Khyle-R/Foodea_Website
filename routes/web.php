@@ -119,6 +119,9 @@ Route::post('/add_product',[Admin_product::class, 'addProduct'])->name('add_prod
 //Remove product
 Route::get('/product/remove/{id}',[Admin_product::class, 'removeProduct']);
 
+//Delete product
+Route::get('/product/delete/{id}',[Admin_product::class, 'deleteProduct']);
+
 //Restore product
 Route::get('/product/restore/{id}',[Admin_product::class, 'restoreProduct']);
 

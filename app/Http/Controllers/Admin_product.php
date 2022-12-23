@@ -6,7 +6,7 @@ use App\Models\tbl_inventory;
 use App\Models\tbl_product;
 use App\Models\tbl_merchant_info;
 use App\Models\tbl_partner_accounts;
-
+use Carbon\Carbon; // to retrieve current Date
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 
@@ -69,6 +69,19 @@ class Admin_product extends Controller
         }
 
         
+    }
+
+    public function deleteProduct($id)
+    {
+    
+        $dProduct = DB::table('tbl_inventory')->where('inventory_id','=',$id); //deleting product
+        $ress=$dProduct->delete();
+        if ($ress) {
+            return redirect('inventory');
+        }
+        else {
+            return 'something wrong';
+        }
     }
 
     public function removeProduct($id)
@@ -145,6 +158,18 @@ class Admin_product extends Controller
 
     public function addProduct(Request $request)
     {
+        $request->validate([
+            'product_name'=> 'required',
+            'category'=> 'required',
+            'type'=> 'required',
+            'description'=> 'required',
+            'product_image' => 'required',
+            'price'=> 'required',
+            'stock'=> 'required',
+            'status'=> 'required'
+        ]);
+
+
         $addProd=new tbl_product();
 
        
@@ -165,7 +190,11 @@ class Admin_product extends Controller
             $addProd->stock = $request->stock;
             $addProd->status = $request->status;
             $addProd->description = $request->description;
-            $addProd->date = "2020:02:18";
+
+        
+            $currentTime = Carbon::now();// to get the current time
+
+            $addProd->date = $currentTime;
             $addProd->product_id = "000";
             $addProd->merchant_id = "111";
             $addProd->category_id = "222";
