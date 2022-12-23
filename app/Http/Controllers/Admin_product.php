@@ -1,30 +1,33 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Http\Request;
 use App\Models\tbl_inventory;
 use App\Models\tbl_product;
+use App\Models\tbl_merchant_info;
+use App\Models\tbl_partner_accounts;
+
 use Illuminate\Support\Facades\DB;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class Admin_product extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+    public function dashboard(){
+
+        $logIndata = array();
+        if(Session::has('loginID')){
+            $logIndata = tbl_partner_accounts::where('merchant_id', '=', Session::get('loginID'))->first();
+        }
+        return view('admin.index', compact('logIndata'));
+    }
+   public function logout(){
+    if(Session::has('loginID')){
+        Session::pull('loginID');
+        return redirect('/login');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+   }
 
-    
     public function addProductView()
     {
         //

@@ -22,9 +22,12 @@
 
           <ul>
             <h1>Merchant Application</h1>
-            <li>Step 1 &nbsp; Business Information</li>
-            <li>Step 2 &nbsp; Profile Information</li>
-            <li class="red">Step 3 &nbsp; Verify Email Address</li>
+            <li>Step 1 &nbsp;&nbsp;&nbsp;Profile Information</li>
+            <li>Step 2 &nbsp;&nbsp;&nbsp;Business Information</li>
+             <li>Step 3 &nbsp; Verify Email Address</li>
+            <li>Step 4 &nbsp; Requirements</li>
+            <li>Step 5 &nbsp; Applicataion Status</li>
+            
           </ul>
         </div>
       </div>
@@ -38,7 +41,7 @@
             <p>start adding your product</p>
              
             <br><br>
-            <a class="continue" href="#">Continue</a>
+            <a class="continue" href="/login">Login</a>
 
           </div>
         </div>

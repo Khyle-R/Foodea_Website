@@ -96,7 +96,7 @@
             <div class="content">
                 <h1>Grow your business with <span>Foodea</span></h1>
                 <p>Expand your business by bringing your food out and filling up your customers tummy and reach new customers by partnering with us.</p>
-                <a href="/partner_application">Apply Now </a>
+                <a href="/merchant_application_agreement">Apply Now </a>
                 {{-- <img src="image/vector.png" /> --}}
             </div>
             <div class="image">
@@ -237,6 +237,7 @@
                         <input type="radio" name="accordion" id="sixth" />
                         <label for="sixth">Valid Government issued ID</label>
                         <div class="content">
+                            <p>Types of valid ID (Driver's license, Passport, SSS ID, Postal ID, Voter ID)</p>
                          <img src="/image/ID.png" alt="">
                         </div>
                     </li>
