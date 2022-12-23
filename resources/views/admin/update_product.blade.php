@@ -106,30 +106,31 @@
               <div class="col-12 grid-margin">
                 <div class="card px-3">
                   <div class="card-body">
-                    <h4 class="card-title">Add Product</h4>
+                    <h4 class="card-title">Update Product</h4>
                     <div class="row justify-content-sm-between px-3 mb-3"></div>
                     <div class="row">
                       
-                        <form class="forms-sample"  action="{{route('add_product.addProduct')}}" method="post" enctype="multipart/form-data">
+                        <form class="forms-sample" action="{{route('product.updateProductInfo')}}" method="post" enctype="multipart/form-data">
                           @csrf 
+                          <input type="hidden" value="{{$update->product_id}}" name="product_id">
                           <div class="form-group">
                             <label for="exampleInputName1" class="blackk">Product Name</label>
-                            <input type="text" class="form-control" id="exampleInputName1" placeholder="Name" name="product_name"/>
+                            <input type="text" class="form-control" id="exampleInputName1" placeholder="Name" value="{{$update->product_name}}" name="product_name"/>
                             <span class="gray">Do not exceed 20 characters when entering the product name.</span>
                           </div>
                           <div class="row">
                             <div class="col form-group">
                               <label for="exampleSelectGender" class="blackk">Category</label>
                               <select class="form-control"  id="exampleSelectGender" style="border: 1px solid" name="category">
-                                <option></option>
-                                <option>Chicken</option>
+                                <option>{{$update->category_id}}</option>
+                                <option >Chicken</option>
                                 <option>Pork</option>
                               </select>
                             </div>
                             <div class="col form-group">
                               <label for="exampleSelectGender" class="blackk">Type</label>
                               <select class="form-control" id="exampleSelectGender"style="border: 1px solid" name="type">
-                                <option></option>
+                                <option>{{$update->category_id}}</option>
                                 <option>Fried Chicken</option>
                                 <option>Chicken Soup</option>
                               </select>
@@ -138,7 +139,7 @@
 
                           <div class="form-group">
                             <label for="exampleTextarea1" class="blackk">Description</label>
-                            <textarea class="form-control"id="exampleTextarea1"rows="4" name="description"></textarea>
+                            <textarea class="form-control"id="exampleTextarea1"rows="4" placeholder="{{$update->description}}" name="description">{{$update->description}}</textarea>
                             <span class="gray">Do not exceed 100 characters when entering the product details.</span>
                           </div>
                         
@@ -147,22 +148,22 @@
 
                           <div class="form-group">
                             <div class="file-loading">
-                              <input type="file" name="product_image"/>
+                              <input id="file-1" type="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="1" data-theme="fa5" value="{{$update->product_image}}" name="product_image"/>
                             </div>
                           </div>
                           <div class="row">
                             <div class="col-md">
                               <label for="exampleInputName1" class="blackk">Price</label>
-                              <input type="text"class="form-control" id="exampleInputName1" placeholder="Name" name="price"/>
+                              <input type="text"class="form-control" id="exampleInputName1" placeholder="{{$update->price}}" value="{{$update->price}}" name="price"/>
                             </div>
                             <div class="col-md">
                               <label for="exampleInputName1" class="blackk">Stock</label>
-                              <input type="text"class="form-control" id="exampleInputName1" placeholder="Name" name="stock"/>
+                              <input type="text"class="form-control" id="exampleInputName1" placeholder="{{$update->stock}}" value="{{$update->stock}}" name="stock"/>
                             </div>
                             <div class="col-md">
                               <label for="exampleSelectGender" class="blackk">Status</label>
                               <select  class="form-control" id="exampleSelectGender" style="border: 1px solid" name="status">
-                                <option></option>
+                                <option>{{$update->status}}</option>
                                 <option>Active</option>
                                 <option>Disabled</option>
                               </select>
@@ -170,7 +171,7 @@
                           </div>
                           <div class="text-lg-left text-center">
                             <button type="submit" class="btn btn-primary btn-lg mr-2 mt-4 py-2 px-5">
-                              Submit
+                              Update
                             </button>
                             <button class="btn btn-dark btn-lg mt-4 py-2 px-5">
                               Cancel

@@ -67,7 +67,10 @@
                   <span class="count bg-success"></span>
                 </div>
                 <div class="profile-name">
+
+
                   <h5 class="mb-0 font-weight-normal">    {{$logIndata->firstname . " " . $logIndata->lastname}}</h5>
+
                   <span>Verified</span>
                 </div>
               </div>
@@ -135,7 +138,9 @@
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
                 <li class="nav-item">
+
                   <a class="nav-link" href="/product"
+
                     >Product</a
                   >
                 </li>
@@ -427,6 +432,7 @@
                       alt=""
                     />
                     <p class="mb-0 d-none d-sm-block navbar-profile-name">
+
                      {{$logIndata->firstname . " " . $logIndata->lastname}}
                     </p>
                     <i class="mdi mdi-menu-down d-none d-sm-block"></i>
@@ -449,7 +455,9 @@
                     </div>
                   </a>
                   <div class="dropdown-divider"></div>
+
                   <a href="/logout" class="dropdown-item preview-item">
+
                     <div class="preview-thumbnail">
                       <div class="preview-icon bg-dark rounded-circle">
                         <i class="mdi mdi-logout text-danger"></i>
