@@ -207,13 +207,25 @@
                                                         </td>
                                                        
                                                         <td>
-                                                            <img src="../../assets/images/faces/face1.jpg" alt="image" class="img-fluid" style=" height: 60px; width: 70px; border-radius: 2px;"/>
+                                                            <img src="{{ asset('product_images/'.$data->product_image)}}" alt="image" class="img-fluid" style=" height: 60px; width: 70px; border-radius: 2px;"/>
                                                             <span class="pl-2">{{$data ->product_name}}</span>
                                                         </td>
                                                         <td>{{$data ->stock}}</td>
                                                         <td>{{$data ->price}}</td>
                                                         <td>Dashboard</td>
-                                                        <td>{{$data ->status}}</td>
+                                                        <td>
+                                                            @if ($data->status =='Active')
+                                                            <button class="btn btn-success" data-target="#Cancelled">
+                                                              Active
+                                                            </button>
+                                                          @elseif($data->status=='Disabled')
+                                                            <button class="btn btn-warning" data-target="#Cancelled">
+                                                              Disabled
+                                                            </button>
+                                                          @else
+                                                          
+                                                          @endif
+                                                        </td>
                                                         <td>
                                                             <div class="row">
                                                                 <a href="product/update/{{ $data ->product_id}}" class="badge badge-outline-success mr-3">
@@ -221,9 +233,8 @@
                                                                 </a>
 
                                                                 <!-- Button trigger modal -->
-                                                                <a href="product/remove/{{ $data ->product_id}}" type="button"class="btn btn-danger">Remove product</a>
-                                                                {{-- <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"> Remove Product
-                                                                </button> --}}
+                                                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"> Remove Product
+                                                                </button>
                                                                 <!-- Modal -->
                                                                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                                     <div
@@ -245,8 +256,7 @@
                                                                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                                                                                     Close
                                                                                 </button>
-                                                                                <button type="button" class="btn btn-primary">Save changes
-                                                                                </button>
+                                                                                <a href="product/remove/{{ $data ->product_id}}" type="button"class="btn btn-danger">Remove product</a>
                                                                             </div>
                                                                         </div>
                                                                     </div>

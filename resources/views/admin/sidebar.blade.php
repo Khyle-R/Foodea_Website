@@ -67,7 +67,7 @@
             <span class="nav-link">Navigation</span>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="index__merchant">
               <span class="menu-icon">
                 <i class="mdi mdi-view-dashboard"></i>
               </span>
@@ -109,7 +109,7 @@
             </div>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="pages/forms/basic_elements.html">
+            <a class="nav-link" href="admin_orders">
               <span class="menu-icon">
                 <i class="mdi mdi-cart"></i>
               </span>
@@ -117,7 +117,7 @@
             </a>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="pages/tables/basic-table.html">
+            <a class="nav-link" href="admin_history">
               <span class="menu-icon">
                 <i class="mdi mdi-history"></i>
               </span>

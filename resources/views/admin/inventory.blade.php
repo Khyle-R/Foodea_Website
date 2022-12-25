@@ -168,7 +168,7 @@
                             </td>
                             <td>
                               <img
-                                src="../../assets/images/faces/face1.jpg"
+                                src="{{ asset('product_images/'.$data->product_image)}}"
                                 alt="image"
                                 class="img-fluid"
                                 style="
@@ -184,13 +184,68 @@
                             <td>{{ $data->status}}</td>
                             <td>
                               <div class="row">
-                                <a class="badge badge-outline-success mr-3" href="">
+                         
+                                <button type="button" class="badge badge-outline-success mr-3" data-toggle="modal" data-target="#restoreModal">
                                   Restore
-                                </a>
+                                </button>
 
-                                <a class="badge badge-outline-danger" href="">
-                                  Delete
-                                </a>
+                                <!-- Modal -->
+                              <div class="modal fade" id="restoreModal" tabindex="-1" role="dialog" aria-labelledby="restoreModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h5 class="modal-title" id="restoreModalLabel">Alert</h5>
+                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                      </button>
+                                    </div>
+                                    <div class="modal-body">
+                                      Are you sure you want to Resore?
+                                    </div>
+                                    <div class="modal-footer">
+                                      <a class="badge badge-outline-dark" data-dismiss="modal">
+                                        Close
+                                      </a>
+                                      <a class="badge badge-outline-success" href="product/restore/{{ $data->inventory_id}}">
+                                        Resore
+                                      </a>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+                                  <!-- Button trigger modal -->
+                                  <button type="button" class="badge badge-outline-danger mr-3" data-toggle="modal" data-target="#deleteModal">
+                                    Delete
+                                  </button>
+
+                                  <!-- Modal -->
+                                <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                  <div class="modal-dialog modal-dialog-centered" >
+                                    <div class="modal-content">
+                                      <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Alert</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                          <span aria-hidden="true">&times;</span>
+                                        </button>
+                                      </div>
+                                      <div class="modal-body">
+                                        Are you sure you want to Delete?
+                                      </div>
+                                      <div class="modal-footer">
+                                        <a class="badge badge-outline-dark" data-dismiss="modal">
+                                          Close
+                                        </a>
+                                        <a class="badge badge-outline-danger" href="product/delete/{{ $data->inventory_id}}">
+                                          Delete
+                                        </a>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+
+
+
                               </div>
                             </td>
                           </tr>

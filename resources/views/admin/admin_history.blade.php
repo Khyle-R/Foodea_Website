@@ -505,6 +505,7 @@
                 </div>
               </div>
             </div>
+
       
            <!-- rider table -->
             <div class="row">
@@ -515,8 +516,10 @@
                         <table class="table">
                           <thead>
                             <tr>
+                              <th>Transaction ID</th>
                               <th>Order Number</th>
                               <th>Customer’s ID</th>
+                              <th>Rider's ID</th>
                               <th>Product ID</th>
                               <th>Date</th>
                               <th>Total</th>
@@ -525,71 +528,48 @@
                             </tr>
                           </thead>
                           <tbody>
+                            @foreach ($history as $key => $data)
+
                             <tr>
                               <td>
-                                bc1qxy2kgdygjrsqtzq2n0y
+                                {{$data->transaction_id}}
                               </td>
                               <td>
-                                202223131
+                                {{$data->order_id}}
                               </td>
-                              <td>12387</td>
                               <td>
-                                Febraury 23, 2022
+                                {{$data->customer_id}}
                               </td>
-                              <td>₱95.00</td>
                               <td>
-                                <button class="btn btn-danger" data-toggle="modal" data-target="#Cancelled">
-                                  Cancelled
-                                </button>
+                                {{$data->customer_id}}
+                              </td>
+                              <td>{{$data->product_Id}}</td>
+                              <td>
+                                {{$data->date}}
+                              </td>
+                              <td>
+                                {{$data->order_status}}
+                              </td>
+                              <td>
+                                  
+                                  @if ($data->order_status =='Cancelled')
+                                      <button class="btn btn-danger" data-toggle="modal" data-target="#Cancelled">
+                                        Cancelled
+                                      </button>
+                                    @elseif($data->order_status=='Delivered')
+                                      <button class="btn btn-success" data-toggle="modal" data-target="#Cancelled">
+                                        Delivered
+                                      </button>
+                                    @else
+                                    
+                                    @endif
                               </td>
                               <td>
                                   <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#viewdetails">View Details</button>
                               </td>
                             </tr>
 
-                            <tr>
-                              <td>
-                                bc1qxy2kgdygjrsqtzq2n
-                              </td>
-                              <td>
-                                202223131
-                              </td>
-                              <td>12387</td>
-                              <td>
-                                Febraury 23, 2022
-                              </td>
-                              <td>₱95.00</td>
-                              <td>
-                                <button class="btn btn-success" data-toggle="modal" data-target="#Delivered">
-                                  Delivered
-                                </button>
-                              </td>
-                              <td>
-                                  <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#viewdetails">View Details</button>
-                              </td>
-                            </tr>
-
-                            <tr>
-                              <td>
-                                bc1qxy2kgdygjrsqtzq2n0
-                              </td>
-                              <td>
-                                <span class="pl-2">202223131</span>
-                              </td>
-                              <td>12387</td>
-                              <td>
-                                Febraury 23, 2022
-                              </td>
-                              <td>₱95.00</td>
-                              <td>
-                                <button class="btn btn-success" data-toggle="modal" data-target="#Delivered">
-                                    Delivered
-                                </button>
-                                </td>
-                              <td>
-                                  <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#viewdetails">View Details</button>
-                              </td>
-                            </tr>
+                            @endforeach
                           </tbody>
                         </table>
                       </div>

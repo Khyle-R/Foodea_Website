@@ -97,7 +97,7 @@
                 <h1>Deliver Food With <span>Foodea</span></h1>
                 <p>Try becoming your own boss with Foodea as an alternative to 
                     conventional food delivery professions where the hours are fixed.</p>
-                <a href="/rider_application">Apply Now </a>
+                <a href="/rider_application_agreement">Apply Now </a>
                 {{-- <img src="image/vector.png" /> --}}
 
             </div>
