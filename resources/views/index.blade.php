@@ -96,11 +96,10 @@
       </div>
     </nav>
         <div class="section">
-            <div class="content container-fluid gx-0">
+            <div class="content">
                 <h1>Be The Fastest In Delivering Your <span>Food</span></h1>
-                <p>Our job filling your tummy with delicious food
-                    and with fast delivery</p>
-                <a href="/partner_landing">Partner with us</a>
+                <p>Our job filling your tummy with delicious food and with fast delivery</p>
+                <a class="partnerbtn" href="/partner_landing">Partner with us</a>
 
             </div>
             <div class="image">
