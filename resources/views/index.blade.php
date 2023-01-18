@@ -96,7 +96,7 @@
       </div>
     </nav>
         <div class="section">
-            <div class="content">
+            <div class="content container-fluid gx-0">
                 <h1>Be The Fastest In Delivering Your <span>Food</span></h1>
                 <p>Our job filling your tummy with delicious food
                     and with fast delivery</p>

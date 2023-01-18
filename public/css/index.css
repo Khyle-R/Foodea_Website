@@ -109,6 +109,10 @@ ul {
   justify-content: space-between;
 }
 
+.tagline{
+  font-size: clamp(2rem,1rem + 10vw,75px);
+}
+
 .content {
   margin-top: 40px;
 }
@@ -450,6 +454,9 @@ ul {
   margin: 0 auto;
   color: #fff;
   font-family: "Montserrat", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* END FOOTER*/
