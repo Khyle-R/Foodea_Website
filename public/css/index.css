@@ -101,11 +101,6 @@ ul {
   font-family: "Montserrat", sans-serif;
 }
 
-.partnerbtn{
-  position: inherit;
-  width: 20px;
-}
-
 .section {
   width: 70%;
   margin: 100px auto;
@@ -114,13 +109,12 @@ ul {
   justify-content: space-between;
 }
 
-/* .tagline{
+.tagline{
   font-size: clamp(2rem,1rem + 10vw,75px);
-} */
+}
 
 .content {
-  display: block;
-  flex-direction: column;
+  margin-top: 40px;
 }
 
 .content span {
@@ -129,7 +123,7 @@ ul {
 }
 
 .content h1 {
-  font-size: clamp(2rem, -0.875rem + 8.333vw, 4.98rem);
+  font-size: 75px;
   color: #363636;
   font-family: "Montserrat", sans-serif;
   font-weight: bold;
@@ -174,7 +168,7 @@ ul {
   justify-content: center;
   align-items: center;
   flex-direction: row;
-  /* flex-wrap: wrap; */
+  flex-wrap: wrap;
 }
 
 .service img {
@@ -216,7 +210,6 @@ ul {
   color: #f54748;
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
-  text-decoration: none;
 }
 
 .rider a:hover,
@@ -237,8 +230,8 @@ ul {
 }
 
 .image2 img {
-  width: 430px;
-  height: 350px;
+  width: 630px;
+  height: 450px;
 }
 
 .delivery {
@@ -247,7 +240,7 @@ ul {
 }
 
 .delivery h3 {
-  width: 65%;
+  width: 45%;
   margin: 30px auto;
   font-family: "Montserrat", sans-serif;
   color: #333131;
@@ -467,7 +460,6 @@ ul {
 }
 
 /* END FOOTER*/
-
 @media only screen and (max-width: 571px) {
   .content h1 {
     font-size: 45px;
@@ -491,43 +483,4 @@ ul {
     margin: auto;
     text-align: center;
   }
-}
-
-
-@media (max-width:1500px){
-
-  .image img {
-    width: 550px;
-    height: 400px;
-  }
-
-}
-
-@media (max-width:1150px){
-  
-  .image img {
-    width: 500px;
-    height: 350px;
-  }
-  .section {
-    width: 70%;
-    margin: 100px auto;
-    display: flex;
-    flex-direction: column-reverse;
-    justify-content: space-between;
-  }
-
-}
-
-@media (max-width:900px){
-  .image img {
-    width: 400px;
-    height: 250px;
-  }
-
-  .service img {
-    width: 270px;
-    height: 230px;
-  }
-  
 }
