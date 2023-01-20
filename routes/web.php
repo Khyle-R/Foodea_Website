@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin_product;
 use App\Http\Controllers\RiderRegistration;
 use App\Http\Controllers\PartnerRegistration;
 use App\Http\Controllers\Admin_product\removeProduct;
+use App\Http\Controllers\SuperadminController;
 
 Route::get('/', [Home::class, 'index'])->name('home.index');
 
@@ -47,6 +48,12 @@ Route::get('/rider_application_agreement', [RiderRegistration::class, 'agreement
 Route::get('/merchant_application_agreement', [PartnerRegistration::class, 'agreement']);
 
 // Route::get('/sample', [RiderRegistration::class, 'getAllData'])->name('sample.getAllData');
+
+// SUPER ADMIN ROUTE
+
+Route::get('/superadmin_index', [SuperadminController::class, 'index']);
+
+Route::get('/superadmin_changepass', [SuperadminController::class, 'changepass']);
 
 
 
@@ -101,6 +108,7 @@ Route::get('/rider_landing', function () {
 Route::get('/rider_vehicle', function () {
     return view('rider_vehicle');
 });
+
 
 
 // ===========================Merchant Admin====================
