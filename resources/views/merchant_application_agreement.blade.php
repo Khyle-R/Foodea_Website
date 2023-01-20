@@ -86,11 +86,10 @@
                         </p>
                     </section>
                     <div class="check">
-                        <input class="checkbox" type="checkbox" id="" name="vehicle1" value="">
-                        <label for="vehicle1"> I have a professional driver's license</label>
+                       
                         <br>
                         <input class="checkbox" type="checkbox" id="" name="vehicle2" value="">
-                        <label for="vehicle2"> I agree Dingdong®'s Terms and Conditions and Privacy Policy.</label>
+                        <label for="vehicle2"> I agree Foodea's Terms and Conditions and Privacy Policy.</label>
                     </div>
                     <div class="form-container">
                         <button Value="submit" type="submit">Next</button>

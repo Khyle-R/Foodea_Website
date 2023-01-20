@@ -187,6 +187,9 @@ class RiderRegistration extends Controller
        
         return view('/rider_applicationstatus', compact('Data'));
     }
-    
+
+    public function agreement(){
+        return view('/rider_application_agreement');
+    }
    
 }
