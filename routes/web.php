@@ -98,6 +98,19 @@ Route::get('/rider_drugtestresult', function () {
 Route::get('/rider_landing', function () {
     return view('rider_landing');
 });
+
+//ROUTE ABOUT
+
+Route::get('/about', function () {
+    return view('about');
+});
+
+//ROUTE CONTACT
+Route::get('/contact', function () {
+    return view('contact');
+});
+
+
 Route::get('/rider_vehicle', function () {
     return view('rider_vehicle');
 });

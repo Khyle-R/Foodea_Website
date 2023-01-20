@@ -21,11 +21,11 @@
 
 <body>
     <div class="header">
-        <!--- NAVBAR -->
+    <!--- NAVBAR -->
     <nav class="navbar navbar-expand-lg px-5 mx-5">
       <div class="container-fluid px-3">
         <a href="#" class="navbar-brand">
-          <img src="image/foodea1.png" alt="" width="45" height="50" />
+          <img src="image/foodea1.png" alt=""/>
           FOODEA
         </a>
         <button
@@ -34,6 +34,8 @@
           data-bs-toggle="offcanvas"
           data-bs-target="#offcanvasNavbar"
           aria-controls="offcanvasNavbar"
+          aria-expanded= "false"
+          aria-label= "Toggle Navigation"
         >
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -72,10 +74,10 @@
                 </ul>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">About Us</a>
+                <a href="/about" class="nav-link">About Us</a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">Contact Us</a>
+                <a href="/contact" class="nav-link">Contact Us</a>
               </li>
             </ul>
             <a
@@ -94,6 +96,7 @@
           </div>
         </div>
       </div>
+
     </nav>
         <div class="section">
             <div class="content">
@@ -102,9 +105,8 @@
                 <a class="partnerbtn" href="/partner_landing">Partner with us</a>
 
             </div>
-            <div class="image">
-                <img src="image/food.png" alt="">
-            </div>
+        <div class="image">
+            <img src="image/food.png" alt=""></div>
         </div>
 
         <div class="section-2">
@@ -129,6 +131,7 @@
                 </div>
             </div>
         </div>
+
 
         <div class="info-section">
             <div class="image2">
@@ -258,7 +261,7 @@
     <script>
         $(document).ready(function () {
             $(".customer-logos").slick({
-                slidesToShow: 6,
+                slidesToShow: 5,
                 slidesToScroll: 1,
                 autoplay: true,
                 autoplaySpeed: 1100,
@@ -266,7 +269,7 @@
                 dots: false,
                 pauseOnHover: false,
                 responsive: [{
-                        breakpoint: 768,
+                        breakpoint: 700,
                         setting: {
                             slidesToShow: 4,
                         },
