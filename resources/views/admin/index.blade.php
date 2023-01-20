@@ -51,7 +51,7 @@
             ><img src="assets/images/foodea_logo.PNG" alt="logo"
           /></a>
           <a class="sidebar-brand brand-logo-mini" href="index.html"
-            ><img src="../../user/image/foodea.png" class="w-50" alt="logo"
+            ><img src="/image/foodea.png" class="w-50" alt="logo"
           /></a>
         </div>
         <ul class="nav">
