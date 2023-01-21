@@ -14,12 +14,9 @@ class Admin_product extends Controller
 {
     public function dashboard(){
 
-        $logIndata = array();
-        if(Session::has('loginID')){
-            $logIndata = tbl_partner_accounts::where('merchant_id', '=', Session::get('loginID'))->first();
-        }
-        return view('admin.index', compact('logIndata'));
+        return view('admin.dashboard');
     }
+    
    public function logout(){
     if(Session::has('loginID')){
         Session::pull('loginID');
