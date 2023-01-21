@@ -9,8 +9,8 @@
   </head>
 
   <body>
-   
-    <div class="container-fluid bg">
+     
+    <div class="container-fluid">
         <div class="row justify-content-center">
         <div class="col-auto col-sm-8 col-md-6 col-lg-5 col-xl-4">
         <form method="post" action="{{ route('login.LoginMerchant') }}" class="form-container">
@@ -51,10 +51,11 @@
               <p>Don't have an account?</p>
               <a href="#">Sign Up</a>
             </div>
-       
+         
             {{-- <h3>OR</h3>
             <button class="sign">Sign up with Google</button> --}}
         </form>
+        
       </div>
       </div>
     </div>
