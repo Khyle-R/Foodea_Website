@@ -145,7 +145,7 @@
                   >
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="pages/ui-features/category.html"
+                  <a class="nav-link" href="/category"
                     >Category</a
                   >
                 </li>
@@ -158,7 +158,7 @@
             </div>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="pages/forms/basic_elements.html">
+            <a class="nav-link" href="/admin_orders">
               <span class="menu-icon">
                 <i class="mdi mdi-cart"></i>
               </span>
