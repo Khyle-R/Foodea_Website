@@ -11,11 +11,10 @@
 }
 
 .bg {
-    position: relative;
-    bottom: -290px;
-    left: -100px;
-    width: 100%;
-    height: auto;
+    position: static;
+    z-index: -1;
+    height: 300vh;
+    width: 900px;
 }
 
 a {
