@@ -12,7 +12,7 @@
    
     <div class="container-fluid bg">
         <div class="row justify-content-center">
-        <div class="col-auto col-sm-8 col-md-6 col-lg-5 col-xl-5">
+        <div class="col-auto col-sm-8 col-md-6 col-lg-5 col-xl-4">
         <form method="post" action="{{ route('login.LoginMerchant') }}" class="form-container">
             @csrf
           <div class="title">
