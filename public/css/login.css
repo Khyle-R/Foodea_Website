@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
 
+
 * {
     margin: 0;
     padding: 0;
@@ -9,21 +10,12 @@
 
 }
 
-body {
-    background-color: #f9f9f9;
-    overflow-x: hidden;
-    overflow-y: hidden;
+.bg {
     position: relative;
-}
-
-.corner img {
-    position: absolute;
     bottom: -290px;
     left: -100px;
-}
-
-.clear {
-    clear: both;
+    width: 100%;
+    height: auto;
 }
 
 a {
@@ -35,17 +27,15 @@ ul {
     list-style: none;
 }
 
-.container {
-    width: 30%;
-    margin: 170px auto;
+.form-container {
+    position: relative;
+    top: 5vh;
     padding: 2rem;
+    background: #fff;
     box-shadow: 0 15px 30px rgba(0, 0, 50, 0.2);
 }
 
-.content {
-    width: 80%;
-    margin: 0 auto;
-}
+
 
 .title {
     display: flex;
@@ -66,12 +56,7 @@ ul {
         sans-serif;
 }
 
-.input {
-    display: flex;
-    flex-direction: column;
-}
-
-label {
+.form-group label {
     color: #F54748;
     font-size: 13px;
     font-family: 'Montserrat',
@@ -79,13 +64,13 @@ label {
     padding: 10px 0;
 }
 
-input[name="email"],
-input[name="password"] {
+.form-group input {
     background-color: #fbeaea;
     outline: none;
     border: 1px solid #f9afaf;
     padding: 10px 5px;
     border-radius: 5px;
+    width: 100%;
 }
 
 .content a {
@@ -103,10 +88,15 @@ input[name="password"] {
 }
 
 button {
-    padding: 15px 5px;
-    font-family: 'Montserrat',
-        sans-serif;
-    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+    padding: 5px;
+    color: #fff;
+    background: #F54748;
+    border-radius: 5px;
+    border: none;
+    display: block;
+    outline: none;
 }
 
 .login {
@@ -149,9 +139,7 @@ h3 {
 .bottom {
     padding: 20px 5px;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-between;
 }
 
 .bottom p {
@@ -164,6 +152,7 @@ h3 {
 .bottom a {
     color: #F54748;
     margin: 0 7px;
+    text-align: right;
 }
 
 .alert {
@@ -176,4 +165,25 @@ h3 {
     font-size: 14px;
     margin: 1rem 0;
 
+}
+
+@media only screen and (max-width: 320px) {
+    .bottom p {
+        font-size: 12px;
+    }
+    
+    .bottom a {
+        margin: 0 5px;
+    }
+}
+
+@media only screen and (max-width: 280px) {
+    .bottom p {
+        font-size: 9px;
+    }
+    
+    .bottom a {
+        margin: 0 5px;
+        font-size: 12px;
+    }
 }
