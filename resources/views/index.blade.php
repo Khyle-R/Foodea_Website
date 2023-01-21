@@ -22,11 +22,11 @@
 <body>
     <div class="header">
     <!--- NAVBAR -->
-    <nav class="navbar navbar-expand-lg px-5 mx-5">
+    <nav class="navbar navbar-expand-lg px-5 mx-5 ">
       <div class="container-fluid px-3">
-        <a href="#" class="navbar-brand">
+        <a href="#" class="navbar-brand mb-0 h1">
           <img src="image/foodea1.png" alt=""/>
-          FOODEA
+          <span>FOODEA</span>
         </a>
         <button
           class="navbar-toggler"
