@@ -592,6 +592,15 @@ nav .navbar-brand span{
 }
 
 @media (max-width:630px){
+  .px-5 {
+    padding-left: (0 * .3) !important;
+    padding-right: (0 * .3) !important;
+  }
+
+  .mx-5 {
+    margin-left: (0 * .3) !important;
+    margin-right: (0 * .3) !important;
+  }
 
   .section-2 {
     width: 90%;

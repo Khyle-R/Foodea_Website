@@ -5,7 +5,7 @@
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FOODEA</title>
-    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <link rel="stylesheet" type="text/css" href="css/about.css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css" rel="stylesheet" />
     <link rel="icon" href="{{ url('image/foodea1.png') }}">
@@ -26,7 +26,7 @@
       <div class="container-fluid px-3">
         <a href="#" class="navbar-brand">
           <img src="image/foodea1.png" alt="" />
-          FOODEA
+          <span>FOODEA</span>
         </a>
         <button
           class="navbar-toggler"
@@ -58,7 +58,7 @@
           <div class="offcanvas-body">
             <ul class="navbar-nav mx-auto">
               <li class="nav-item">
-                <a href="/" class="nav-link active">Home</a>
+                <a href="/" class="nav-link">Home</a>
               </li>
               <li class="nav-item dropdown">
                 <a
@@ -74,7 +74,7 @@
                 </ul>
               </li>
               <li class="nav-item">
-                <a href="/about" class="nav-link">About Us</a>
+                <a href="/about" class="nav-link active">About Us</a>
               </li>
               <li class="nav-item">
                 <a href="/contact" class="nav-link">Contact Us</a>
@@ -99,7 +99,7 @@
     </nav>
         <div class="section">
             <div class="content">
-                <h1>About Page</h1>
+                <h1>Welcome to Foodea, your ultimate food recommendation app</h1>
             </div>
         </div>
     </div>
