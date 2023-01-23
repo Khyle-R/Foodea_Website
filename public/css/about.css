@@ -11,7 +11,7 @@
 
 body {
   overflow-x: hidden;
-  background-image: linear-gradient(#fdc55e3f, #f5474709);
+  background-color: #fff;
 }
 
 .clear {
@@ -29,7 +29,6 @@ ul {
 
 .header {
   padding-top: 30px;
-  padding-bottom: 50px;
 }
 
 .nav {
@@ -40,6 +39,10 @@ ul {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+}
+
+.main-container{
+  background-image: linear-gradient(#fdc55e3f, #f5474709);
 }
 
 
@@ -56,19 +59,96 @@ nav .navbar-brand span{
   width: clamp(0.140625rem, -1.4625rem + 8.5500vw, 2.8125rem);
 }
 
-.section {
+section {
+  width: 100%;
+}
+
+.content{
   width: 70%;
-  margin: 100px auto;
+  margin: 0 auto;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: column;
 }
 
 .content h1 {
-  font-size: clamp(2rem, 0.9733rem + 4.5506vw, 4.5rem);
+  font-size: clamp(1rem, 0.1544rem + 3.7584vw, 4.5rem);
   color: #363636;
   font-family: "Montserrat", sans-serif;
   font-weight: bold;
+}
+
+.section2{
+  width: 75%;
+  margin: 0 auto;
+}
+
+.content2{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.content2 img{
+  width: 414px;
+  height: 410px;
+}
+
+.content2 p{
+  line-height: 2rem;
+  text-align: justify;
+  width: 50%;
+  color: #363636;
+  font-family: "Montserrat", sans-serif;
+}
+
+.section3{
+  width: 75%;
+  margin: 0 auto;
+}
+
+.content3{
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.content3 img{
+  width: 414px;
+  height: 410px;
+}
+
+.content3 p{
+  line-height: 2rem;
+  text-align: justify;
+  width: 50%;
+  color: #363636;
+  font-family: "Montserrat", sans-serif;
+}
+
+section .wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+section .wave svg {
+    position: relative;
+    display: block;
+    width: calc(196% + 1.3px);
+    height: 83px;
+    transform: rotateY(180deg);
+}
+
+section .wave .shape-fill {
+  fill: #f54748;
 }
 
 /* FOOTER */
