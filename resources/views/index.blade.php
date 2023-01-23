@@ -22,7 +22,7 @@
 <body>
     <div class="header">
     <!--- NAVBAR -->
-    <nav class="navbar navbar-expand-lg px-5 mx-5 ">
+    <nav class="navbar navbar-expand-lg px-2 mx -2 px-xs-3 px-md-4 px-lg-5 mx-xs-3 mx-md-4 mx-lg-5">
       <div class="container-fluid px-3">
         <a href="#" class="navbar-brand mb-0 h1">
           <img src="image/foodea1.png" alt=""/>
@@ -103,7 +103,6 @@
                 <h1>Be The Fastest In Delivering Your <span>Food</span></h1>
                 <p>Our job filling your tummy with delicious food and with fast delivery</p>
                 <a class="partnerbtn" href="/partner_landing">Partner with us</a>
-
             </div>
         <div class="image">
             <img src="image/food.png" alt=""></div>
