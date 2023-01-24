@@ -30,7 +30,7 @@
             <label for="email">Email</label>
             <input type="email" name="email" />
              <span
-            style="color:red;">
+            class="error">
             @error('email') {{ $message }}
             @enderror</span>
           </div>
@@ -39,7 +39,7 @@
             <label for="password">Password</label>
             <input type="password" name="password" />
                <span
-            style="color:red;">
+             class="error">
             @error('password') {{ $message }}
             @enderror</span>
           </div>
