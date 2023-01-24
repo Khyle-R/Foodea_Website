@@ -151,7 +151,7 @@ class PartnerRegistration extends Controller
     }
 
     public function LoginIndex(){
-        return view('login');
+        return view('log_in');
     }
     public function LoginMerchant(Request $request){
 
