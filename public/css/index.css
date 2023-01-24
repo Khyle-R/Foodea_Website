@@ -41,6 +41,19 @@ ul {
   flex-wrap: wrap;
 }
 
+nav .navbar-brand span{
+  font-size: clamp(0.75rem, 0.5040rem + 1.3120vw, 1.16rem);
+  position:relative;
+  text-decoration: none;
+  color: #363636;
+  font-weight: bold;
+  font-family: "Montserrat", sans-serif;
+ }
+
+.navbar-brand>img {
+  width: clamp(0.140625rem, -1.4625rem + 8.5500vw, 2.8125rem);
+}
+
 .logo {
   display: flex;
   flex-direction: row;
@@ -101,6 +114,11 @@ ul {
   font-family: "Montserrat", sans-serif;
 }
 
+.partnerbtn{
+  position: inherit;
+  width: 20px;
+}
+
 .section {
   width: 70%;
   margin: 100px auto;
@@ -109,12 +127,9 @@ ul {
   justify-content: space-between;
 }
 
-.tagline{
-  font-size: clamp(2rem,1rem + 10vw,75px);
-}
-
 .content {
-  margin-top: 40px;
+  display: block;
+  flex-direction: column;
 }
 
 .content span {
@@ -123,15 +138,13 @@ ul {
 }
 
 .content h1 {
-  font-size: 75px;
+  font-size: clamp(2rem, 1.0938rem + 4.0278vw, 5.625rem);
   color: #363636;
   font-family: "Montserrat", sans-serif;
   font-weight: bold;
 }
 
 .content p {
-  width: 65%;
-  opacity: 70%;
   font-family: "Montserrat", sans-serif;
   line-height: 25px;
   margin-bottom: 35px;
@@ -154,8 +167,7 @@ ul {
 }
 
 .image img {
-  width: 650px;
-  height: 500px;
+  width: clamp(22.5rem, -4.8214rem + 48.5714vw, 43.75rem);
 }
 
 .section-2 {
@@ -168,12 +180,11 @@ ul {
   justify-content: center;
   align-items: center;
   flex-direction: row;
-  flex-wrap: wrap;
 }
 
 .service img {
-  width: 290px;
-  height: 250px;
+  width:300px;
+  height: 265px;
 }
 
 .rider,
@@ -197,11 +208,12 @@ ul {
 .market p,
 .phone p {
   width: 50%;
-  margin: 20px auto;
+  margin: 10px auto;
   opacity: 80%;
   font-family: "Montserrat", sans-serif;
   line-height: 25px;
 }
+
 
 .rider a,
 .market a,
@@ -210,6 +222,7 @@ ul {
   color: #f54748;
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
+  text-decoration: none;
 }
 
 .rider a:hover,
@@ -220,18 +233,17 @@ ul {
 }
 
 .info-section {
-  width: 70%;
+  width: 80%;
   margin: 100px auto;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  padding-bottom: 30px;
   align-items: center;
-  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .image2 img {
-  width: 630px;
-  height: 450px;
+  width: clamp(18.75rem, 14.0625rem + 20.8333vw, 37.5rem);
 }
 
 .delivery {
@@ -240,8 +252,9 @@ ul {
 }
 
 .delivery h3 {
-  width: 45%;
+  width: 65%;
   margin: 30px auto;
+  font-size: clamp(1rem, -0.9853rem + 3.5294vw, 1.75rem);
   font-family: "Montserrat", sans-serif;
   color: #333131;
   line-height: 35px;
@@ -252,6 +265,7 @@ ul {
 .delivery p {
   width: 65%;
   margin: 0 auto;
+  font-size: clamp(0.8rem, 0.2706rem + 0.9412vw, 1rem);
   font-family: "Montserrat", sans-serif;
   opacity: 75%;
   line-height: 25px;
@@ -425,6 +439,12 @@ ul {
   padding: 70px 0;
 }
 
+.icon{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .icon img {
   width: 130px;
   height: 60px;
@@ -452,6 +472,7 @@ ul {
 .dark-content {
   width: 60%;
   margin: 0 auto;
+  font-size: clamp(0.7rem, 0.5000rem + 0.8000vw, 1rem);
   color: #fff;
   font-family: "Montserrat", sans-serif;
   display: flex;
@@ -460,27 +481,192 @@ ul {
 }
 
 /* END FOOTER*/
-@media only screen and (max-width: 571px) {
-  .content h1 {
-    font-size: 45px;
-    color: #363636;
-    font-family: "Montserrat", sans-serif;
-    font-weight: bold;
+
+
+@media (max-width:1900px){
+  .service img {
+    width:300px;
+    height: 265px;
+  }
+}
+
+@media (max-width:1150px){
+  .service img {
+    width:290px;
+    height: 255px;
+  }
+} 
+
+@media (max-width:900px){
+
+  .service img {
+    width: clamp(13.75rem, 18.8542rem + -12.9630vw, 11.5625rem);
   }
 
-  .section {
-    display: block;
+  .section-2 {
+    width: 75%;
   }
 
-  .image {
-    display: none;
+  .header {
+    padding-top: 30px;
+    padding-bottom: 10px;
+    background-image: linear-gradient(#fdc55e3f, #f5474709);
   }
 
   .rider,
   .market,
   .phone {
-    width: auto;
+    width: 40%;
     margin: auto;
     text-align: center;
   }
+  
+  .rider h3,
+  .market h3,
+  .phone h3 {
+    font-size: 1rem;
+    opacity: 80%;
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+  }
+  
+  .rider p,
+  .market p,
+  .phone p {
+    width: 70%;
+    margin: 0px auto;
+    opacity: 80%;
+    font-family: "Montserrat", sans-serif;
+    line-height: 25px;
+  }
+  
+  .rider a,
+  .market a,
+  .phone a {
+    opacity: 80%;
+    color: #f54748;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .info-section {
+    width: 80%;
+    margin: 100px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .delivery {
+    width: 80%;
+    text-align: center;
+  }
+  
+  .delivery h3 {
+    width: 65%;
+    margin: 30px auto;
+    font-size: 32px;
+    font-family: "Montserrat", sans-serif;
+    color: #333131;
+    line-height: 35px;
+    font-weight: bold;
+    opacity: 85%;
+  }
+  
+  .delivery p {
+    width: 65%;
+    margin: 0 auto;
+    font-size: 1rem;
+    font-family: "Montserrat", sans-serif;
+    opacity: 75%;
+    line-height: 25px;
+    text-align: center;  
+}
+
+@media (max-width:767px){
+  .image img {
+    display: none;
+  }
+  
+  .px-5 {
+    padding-left: (0 * .3) !important;
+    padding-right: (0 * .3) !important;
+  }
+
+  .mx-5 {
+    margin-left: (0 * .3) !important;
+    margin-right: (0 * .3) !important;
+  }
+
+  .section-2 {
+    width: 90%;
+  }
+
+  .section {
+    width: 70%;
+    margin: 20px auto;
+  }
+  
+  .service {
+    flex-direction: column;
+  }
+
+  .service img {
+    width: clamp(15.625rem, 4.6094rem + 37.5000vw, 19.375rem);
+  }
+  
+  .rider,
+  .market,
+  .phone {
+    width: 70%;
+  }
+
+  .phone {
+    padding-bottom: 40px;
+  }
+  
+  .rider h3,
+  .market h3,
+  .phone h3 {
+    font-size: 24px;
+  }
+  
+  .rider p,
+  .market p,
+  .phone p {
+    width:60%;
+    line-height: 25px;
+  }
+
+  .info-section {
+    width: 100%;
+    margin: 0px auto;
+  }
+}
+
+@media (max-width:470px){
+  
+  .service img {
+    width:250px;
+    height: 215px;
+  }
+  
+  .icon{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+  }
+
+  .footer-content {
+    width: 60%;
+    margin: 0 auto;
+    flex: column;
+    justify-content: space-between;
+    color: #fff;
+    padding: 70px 0;
+  }
+
 }
