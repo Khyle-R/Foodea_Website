@@ -121,7 +121,11 @@ class Admin_product extends Controller
     {
         $update = DB::table('tbl_product')->where('product_id','=', $id)->first();
     
-      return view('admin.update_product', ['update' => $update]);
+        
+        $this->product_name =$update->product_name;
+
+        $this->dispatchBrowserEvent('show-edit');
+      //return view('admin.product', ['update' => $update]);
     }
 
     public  function updateProductInfo(Request $request)

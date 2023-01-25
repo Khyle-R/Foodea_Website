@@ -7,6 +7,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
+    
     <title>Foodea</title>
     <!-- plugins:css -->
     <link
@@ -32,6 +33,8 @@
       rel="stylesheet"
       href="assets/vendors/owl-carousel-2/owl.theme.default.min.css"
     />
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+   
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <!-- endinject -->
@@ -39,6 +42,8 @@
     <link rel="stylesheet" href="assets/css/style.css" />
     <!-- End layout styles -->
     <link rel="shortcut icon" href="../../user/image/foodea1.png" />
+
+    
   </head>
   <body>
     <div class="container-scroller">
