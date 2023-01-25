@@ -127,7 +127,6 @@ nav .navbar-brand span{
   justify-content: space-between;
 }
 
-
 .content {
   display: block;
   flex-direction: column;
@@ -146,8 +145,6 @@ nav .navbar-brand span{
 }
 
 .content p {
-  width: 65%;
-  opacity: 70%;
   font-family: "Montserrat", sans-serif;
   line-height: 25px;
   margin-bottom: 35px;
@@ -501,9 +498,6 @@ nav .navbar-brand span{
 } 
 
 @media (max-width:900px){
-  .image img {
-    display: none;
-  }
 
   .service img {
     width: clamp(13.75rem, 18.8542rem + -12.9630vw, 11.5625rem);
@@ -591,7 +585,20 @@ nav .navbar-brand span{
     text-align: center;  
 }
 
-@media (max-width:630px){
+@media (max-width:767px){
+  .image img {
+    display: none;
+  }
+  
+  .px-5 {
+    padding-left: (0 * .3) !important;
+    padding-right: (0 * .3) !important;
+  }
+
+  .mx-5 {
+    margin-left: (0 * .3) !important;
+    margin-right: (0 * .3) !important;
+  }
 
   .section-2 {
     width: 90%;

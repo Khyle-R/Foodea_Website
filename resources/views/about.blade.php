@@ -5,7 +5,7 @@
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FOODEA</title>
-    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <link rel="stylesheet" type="text/css" href="css/about.css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css" rel="stylesheet" />
     <link rel="icon" href="{{ url('image/foodea1.png') }}">
@@ -20,13 +20,14 @@
 </head>
 
 <body>
+    <div class="main-container">
     <div class="header">
     <!--- NAVBAR -->
     <nav class="navbar navbar-expand-lg px-5 mx-5">
       <div class="container-fluid px-3">
         <a href="#" class="navbar-brand">
           <img src="image/foodea1.png" alt="" />
-          FOODEA
+          <span>FOODEA</span>
         </a>
         <button
           class="navbar-toggler"
@@ -58,7 +59,7 @@
           <div class="offcanvas-body">
             <ul class="navbar-nav mx-auto">
               <li class="nav-item">
-                <a href="/" class="nav-link active">Home</a>
+                <a href="/" class="nav-link">Home</a>
               </li>
               <li class="nav-item dropdown">
                 <a
@@ -74,19 +75,18 @@
                 </ul>
               </li>
               <li class="nav-item">
-                <a href="/about" class="nav-link">About Us</a>
+                <a href="/about" class="nav-link active">About Us</a>
               </li>
               <li class="nav-item">
                 <a href="/contact" class="nav-link">Contact Us</a>
               </li>
             </ul>
             <a
-              href="/login"
-             class="text-secondary mt-2 mx-5"
-              style="text-decoration: none;"
-            >
+            href="/login"
+            class="text-secondary mt-2 mx-5"
+            style="text-decoration: none;">
               Signup
-           </a>
+            </a>
             <a
               href="/login"
               class="btn btn-danger btn-sm py-2 px-5 rounded"
@@ -97,14 +97,39 @@
         </div>
       </div>
     </nav>
-        <div class="section">
-            <div class="content">
-                <h1>About Page</h1>
-            </div>
-        </div>
     </div>
+    <!-- END OF NAVBAR -->
 
-    <div class="footer">
+    <!-- SECTION 1 -->
+    <section class="d-flex intro">
+      <div class="content py-2 py-xs-3 py-md-4 py-lg-5">
+        <h1 class="text-center">Welcome to Foodea,<br>your ultimate food <br>recommendation app</h1>
+      </div>
+    </section>
+    <!-- END SECTION 1 -->
+
+    <!-- SECTION 2 -->
+    <section class="section2">
+      <div class="content2">
+        <div class="images">
+          <img src="image/about3.png" alt="man riding"></div>  
+          <p class="">Say goodbye to meal-time indecision with Foodea - the ultimate food recommendation app. Our state-of-the-art algorithm takes into account your dietary restrictions, favorite cuisines, and location to provide personalized meal suggestions.</p>
+      </div>
+    </section>
+    <!-- END SECTION 3 -->
+
+    <!-- SECTION 4 -->
+    <section class="section3">
+      <div class="content3">
+        <div class="images">
+          <img src="image/about2.png" alt="delivering order"></div>  
+          <p class="">Discover new dishes, save your favorites and earn rewards for trying new restaurants. Get the app now on Software Store or visit foodea.com for your next culinary adventure.</p>
+      </div>
+    </section>
+    <!-- END SECTION 4 -->
+
+    <!-- FOOTER -->
+    <footer class="footer">
         <div class="footer-content">
             <div class="icon">
                 <img src="image/foodea2.png" alt="">
@@ -135,13 +160,13 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="dark-footer">
+        <div class="dark-footer">
         <div class="dark-content">
             <p>Copyright © 2022. All Rights Reserved</p>
         </div>
     </div>
-
+    </footer>
+    <!-- END FOOTER -->
 
     <script src="js/script.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
