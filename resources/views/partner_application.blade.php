@@ -2,44 +2,54 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    <link rel="stylesheet" type="text/css" href="css/partner_application2.css" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/partner_application.css" />
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <link rel="icon" href="{{ url('image/foodea1.png') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css" />
     <title>FOODEA</title>
   </head>
-  <body>
-    <div class="container">
-      <div class="left">
-        <div class="left-content">
-          <div class="back">
-            <a href="/"><img src="image/vector.png" /></a>
-            <p>Back to website</p>
-          </div>
-          <div class="logo">
-            <a href="/"><img src="image/foodea.png" /></a>
-            <h2>FOODEA</h2>
-          </div>
 
-          <ul>
-            <h1>Merchant Application</h1>
+  <body>
+    <div class="container-scroller">
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+      <ul class="nav">
+        <li class="nav-item back">
+            <div class="back-logo">
+                <a href="/"> <img src="image/vector.png" alt=""/> </a>
+                <h5 class="mb-0">Back to website</h5>
+            </div>
+        </li>
+        <li class="nav-item nav-category">
+          <a class="nav-link" href="/">
+            <img src="image/foodea.png" style="width: 50px">FOODEA
+          </a>
+        </li>
+            <li class="nav-item nav-category">Merchant Application</li>
             <li class="red">Step 1 &nbsp;&nbsp;&nbsp;Personal Information</li>
             <li>Step 2 &nbsp;&nbsp;&nbsp;Business Information</li>
             <li>Step 3 &nbsp;&nbsp;&nbsp;Verify Email Address</li>
             <li>Step 4 &nbsp; Requirements</li>
             <li>Step 5 &nbsp; Applicataion Status</li>
           </ul>
-        </div>
-      </div>
-      <div class="right">
-        <div class="right-content">
+    </nav>
+
+        <!-- Form -->
+        <div class="sign-form">
+          <div class="content-wrapper">
+            <div class="col-12 col-sm-10 col-md-11 col-lg-9 col-xl-6">
+               <div class="right">
           <h2>Secure your Account</h2>
           <p>Please fill up the form below</p>
           <form method="post" action="{{ route('partner_application.PersonalInfo') }}">
             @csrf
-          <div class="form-container">
+  
+            <div class="form-group">
                <label>Salutation</label>
-            <select name="salutation" id="">
+            <select name="salutation" id="" class="form-control form-control-lg">
               <option selected="true" disabled="disabled">- Select -</option>
               <option>Mr.</option>
               <option>Ms.</option>
@@ -49,64 +59,86 @@
             style="color:red;">
             @error('salutation') {{ $message }}
             @enderror</span>
+            </div>
 
+            <div class="form-group">
             <label>First Name</label>
-              <input type="text" name="firstname"/>
+              <input type="text" name="firstname" class="form-control form-control-lg"/>
               <span
             style="color:red;">
             @error('firstname') {{ $message }}
             @enderror</span>
+            </div>
 
+            <div class="form-group">
             <label>Middle Name</label>
-            <input type="text" name="middlename"/>
+            <input type="text" name="middlename" class="form-control form-control-lg"/>
               <span
             style="color:red;">
             @error('middlename') {{ $message }}
             @enderror</span>
+            </div>
 
+            <div class="form-group">
             <label>Last Name</label>
-            <input type="text" name="lastname"/>
+            <input type="text" name="lastname" class="form-control form-control-lg"/>
               <span
             style="color:red;">
             @error('lastname') {{ $message }}
             @enderror</span>
+            </div>
 
-            <label>Suffix <a style="color:#FDC55E;font-size: 10px;">(Optional)</a></label>
-            <input type="text" name="suffix"/>
+            <div class="form-group">
+            <label>Suffix</label>
+            <input type="text" name="suffix" class="form-control form-control-lg"/>
+            </div>
 
+            <div class="form-group">
             <label>Email Address <a style="color:#FDC55E;font-size: 10px;">(For Email verification)</a></label>
-            <input type="text" name="email"/>
+            <input type="text" name="email" class="form-control form-control-lg"/>
             <span
             style="color:red;">
             @error('email') {{ $message }}
             @enderror</span>
+            </div>
 
-            <p class="paragraph"> Password must be at least 6 characters long. 
+            <div class="form-group">
+            <p style="color: #BD9140; padding: 10px;"> Password must be at least 6 characters long. 
               Password can contain letters, numbers and punctuation.
             </p>
-           
-            <label>Password</label>
-            <div class="password-container">
-              <input type="password" id="password" name="password">
-              <i class="fa-solid fa-eye" id="eye"></i>
             </div>
-             <span
+           
+            <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" class="form-control form-control-lg" >
+            <span
             style="color:red;">
             @error('password') {{ $message }}
             @enderror</span>
+            </div>
 
-            <label>Confirm Password</label>
-            <div class="password-container">
-              <input type="password" id="password">
-              <i class="fa-solid fa-eye" id="eye"></i>
+            <div class="form-group">
+            <label for="password">Confirm Password</label>
+            <input type="password" id="conpassword" class="form-control form-control-lg" >
             </div>
             
-             <br><br><br>
-             <button class="submit" type="submit" >Submit</button>
+             <br><br>
+             <div class="form-group">
+              <div class="col-sm-10 d-flex justify-content-center">
+                <button Value="submit" type="submit" class="btn btn-danger w-50">Next</button>
+              </div>
+             </div>
             </form>
+            </div>
+            </div>
           </div>
         </div>
+        <!-- Scroller -->
       </div>
-    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
   </body>
 </html>
