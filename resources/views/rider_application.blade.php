@@ -31,11 +31,11 @@
           </a>
         </li>
         <li class="nav-item nav-category">Rider Application</li>
-        <li class="red">Step 1 Personal Information</li>
-        <li>Step 2 Verify Phone Number</li>
-        <li>Step 3 Vehicle Information</li>
-        <li>Step 4 Requirements</li>
-        <li>Step 5 Application Status</li>  
+        <li class="red">Step 1 &nbsp;&nbsp;&nbsp;Personal Information</li>
+        <li>Step 2 &nbsp;&nbsp;&nbsp;Verify Phone Number</li>
+        <li>Step 3 &nbsp;&nbsp;&nbsp;Vehicle Information</li>
+        <li>Step 4 &nbsp;Requirements</li>
+        <li>Step 5 &nbsp;Application Status</li>  
       </ul>
     </nav>
     
