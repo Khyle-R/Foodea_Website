@@ -30,12 +30,12 @@
                   <img src="image/foodea.png" style="width: 50px">FOODEA
                 </a>
               </li>
-              <li class="nav-item nav-category">Rider Application</li>
-              <li class="red">Step 1 Personal Information</li>
-              <li>Step 2 Verify Phone Number</li>
-              <li>Step 3 Vehicle Information</li>
-              <li>Step 4 Requirements</li>
-              <li>Step 5 Application Status</li>  
+              <li class="nav-item nav-category">Merchant Application</li>
+              <li class="red">Step 1 &nbsp;&nbsp;&nbsp;Personal Information</li>
+            <li>Step 2 &nbsp;&nbsp;&nbsp;Business Information</li>
+            <li>Step 3 &nbsp;&nbsp;&nbsp;Verify Email Address</li>
+            <li>Step 4 &nbsp; Requirements</li>
+            <li>Step 5 &nbsp; Applicataion Status</li>
             </ul>
           </nav>
 
