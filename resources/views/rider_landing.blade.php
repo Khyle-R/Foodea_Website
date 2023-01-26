@@ -2,11 +2,14 @@
 
 <head>
     <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FOODEA</title>
     <link rel="stylesheet" type="text/css" href="css/rider_landing.css" />
      <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css" rel="stylesheet" />
+    <link rel="icon" href="{{ url('image/foodea1.png') }}">
      <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -106,7 +109,7 @@
             </div>
         </div>
 
-    </div>
+ 
 
      <div class="section-3">
             <div class="service">
@@ -130,11 +133,13 @@
                 </div>
             </div>
         </div>
+      </div>
 
     <div class="change">
         <div class="change-title">
         <h2>You only need a few things to get started</h2>
         </div>
+
 <div class="section-2">
       <img src="image/motorbg.png" alt="" />
       <div class="wrapper">
@@ -214,7 +219,7 @@
       <img src="image/pick.png" alt="">
        <img src="image/earn.png" alt="">
        </div>
-    <div class="timeline-content">
+        <div class="timeline-content">
          <ul>
          <li>
         <div>
