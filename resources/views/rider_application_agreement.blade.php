@@ -99,8 +99,11 @@
          <input class="checkbox" type="checkbox" id="" name="vehicle2" value="">
         <label for="vehicle2"> I agree Foodea's Terms and Conditions and Privacy Policy.</label>
       </div>
-       <div class="form-container">
+      <br>
+       <div class="form-group">
+        <div class="col-sm-10 d-flex">
           <button Value="submit" type="submit" class="btn btn-danger w-50">Next</button>
+        </div>
        </div>
       </form>
             </div>
