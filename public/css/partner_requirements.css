@@ -6,7 +6,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-
+    overflow-x: hidden;
 }
 
 .clear {
@@ -121,46 +121,6 @@
   padding-left: 0;
 }
 
-/* Aggrement form */
-
-section {
-  width: 80%;
-  height: 45vh;
-  margin-top: 1rem;
-  overflow-y: scroll;
-  background-color: #fff;
-  box-shadow: 4px 4px 15px 5px #88888867;
-}
-
-section h3 {
-  font-weight: 600;
-  font-family: 'Montserrat',
-      sans-serif;
-  font-size: 18px;
-  color: #000;
-  opacity: 90%;
-  padding: 10px;
-}
-
-section p {
-  font-family: 'Montserrat',
-      sans-serif;
-  font-size: 18px;
-  color: #000;
-  opacity: 90%;
-  padding: 10px;
-  line-height: 23px;
-}
-
-
-.check input {
-  margin: 15px 0;
-  font-family: 'Montserrat',
-      sans-serif;
-  font-size: 18px;
-  color: #000;
-}
-
 /* Off Canvas Side */
 
 @media screen and (max-width: 991px) {
@@ -256,9 +216,58 @@ li {
 
 }
 
-.form-container .btn {
-  font-size: 15px;
-  border-radius: 20px;
+.form-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Requirements */
+.requirements-title {
+    padding: 0.8rem 0;
+}
+
+.requirements-title p {
+    font-family: 'Montserrat',
+        sans-serif;
+    color: #000;
+    opacity: 70%;
+    font-size: 14px;
+}
+
+.requirements-title span {
+    font-family: 'Montserrat',
+        sans-serif;
+    color: #9b7227;
+}
+
+.requirements {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+
+.requirements span {
+    font-size: 13px;
+    font-family: 'Montserrat',
+        sans-serif;
+    opacity: 90%;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.76);
+    margin-bottom: 1rem;
+}
+
+.requirements p {
+    padding: 0.5rem 0 1rem 0;
 }
 
 
+.pic {
+    height: 200px;
+    width: 200px;
+}
+
+input[type=file] {
+    margin: 10px 0;
+}
