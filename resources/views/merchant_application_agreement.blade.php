@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/rider_application.css" />
+    <link rel="stylesheet" type="text/css" href="css/partner_application.css" />
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <link rel="icon" href="{{ url('image/foodea1.png') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
@@ -95,13 +95,15 @@
                         </p>
                     </section>
                     <div class="check">
-                       
                         <br>
                         <input class="checkbox" type="checkbox" id="" name="vehicle2" value="">
                         <label for="vehicle2"> I agree Foodea's Terms and Conditions and Privacy Policy.</label>
                     </div>
-                    <div class="form-container">
+                    <br>
+                    <div class="form-group">
+                      <div class="col-sm-10 d-flex">
                         <button Value="submit" type="submit" class="btn btn-danger w-50">Next</button>
+                      </div>
                     </div>
                 </form>
             </div>
