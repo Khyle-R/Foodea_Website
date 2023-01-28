@@ -90,9 +90,9 @@ section {
 }
 
 
-.content2 img{
-  width: 414px;
-  height: 410px;
+.section2 img{
+  /* width:clamp(16.5rem, -13.1053rem + 52.6316vw, 29rem); */
+  width: clamp(16.5rem, -6.0000rem + 40.0000vw, 29rem);
 }
 
 .content2 p{
@@ -116,9 +116,19 @@ section {
 }
 
 
-.content3 img{
-  width: 414px;
-  height: 410px;
+.section3 img{
+  width: clamp(16.5rem, 13.7561rem + 12.1951vw, 29rem);
+}
+
+.section2 p{
+  text-align: justify;
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(1rem, 0.9451rem + 0.2439vw, 1.25rem);
+}
+
+.section3 p{
+  text-align: justify;
+  font-family: "Montserrat", sans-serif;
 }
 
 .content3 p{
