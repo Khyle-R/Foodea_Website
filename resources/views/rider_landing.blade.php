@@ -179,6 +179,7 @@
             </ul>
           </div>
           </div>
+
           <div class="radio_content radio_2">
               <div class="requirements">
                <p>Please read carefully before submitting your application. 
@@ -204,6 +205,7 @@
     </div>
    </div>
 
+   <!-- TIMELINE -->
    <div class="timeline">
     <div class="timeline-title">
         <h2>How food delivery works</h2>
@@ -257,7 +259,6 @@
     </ul>
     </div>
    </div>
-</div>
 
     <!---ACOORDION-->
     <div class="container2">
