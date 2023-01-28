@@ -125,7 +125,44 @@
       </div>
     </section>
     <!-- END SECTION 3 -->
-    
+
+    <!-- SECTION 4 -->
+    <section class="d-flex">
+      <div class="content pt-4 pb-2 py-xs-3 py-md-4 py-lg-5">
+        <h1 class="text-center">Lunch made easy<br>with just a tap</h1>
+      </div>
+    </section>
+    <!-- SECTION 4 -->
+
+    <!-- SECTION 5 -->
+    <!-- TIMELINE -->
+    <div class="timeline mx-auto">
+      <div class="timeline-section">
+        <div class="timeline-content">
+          <ul>
+              <li>
+                <div>
+                  <p><span>"Download"</span> Get the Foodea app on your phone, it's available on App Store and Google Play, and start your food journey with us.</p>
+                </div>
+          </li>
+              <li>
+                <div>
+                  <p><span>"Check"</span> Check out personalized recommendations based on your preferences and location, and discover new dishes that you may not have otherwise considered.</p>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <p><span>"Order"</span> Order your favorite dishes with just a few clicks, no more waiting in lines or calling to place an order. Have your food delivered right to your doorstep with Foodea.
+                  </p>
+                </div>
+              </li>
+          </ul>
+        </div>
+    </div>
+    </div>
+    <!-- SECTION 5 -->
+    <div class="container lastimage py-4 d-flex justify-content-center "><img src="image/about1.png" alt="calling"></div>
+    </div>
     </div>
     <!-- FOOTER -->
     <footer class="footer">
