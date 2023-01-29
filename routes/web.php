@@ -177,3 +177,15 @@ Route::get('admin_history', function(){
 });
 
 Route::view('admin_orders', 'admin.admin_orders');
+
+Route::get('account',  function(){
+    return view('admin.admin_personalinformation');
+});
+
+Route::get('business',  function(){
+    return view('admin.admin_businessinformation');
+});
+
+Route::get('document',  function(){
+    return view('admin.admin_partnerdocuments');
+});
