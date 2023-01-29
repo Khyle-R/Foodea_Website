@@ -172,20 +172,21 @@ class RiderRegistration extends Controller
             $document->license_back =  $license_back;
         }
         $document->save();
-        return redirect('rider_applicationstatus');
+        return redirect('/partner_application4');
     }
     
     public function step5index(Request $request){
         
-        $rider_id = Session::get('rider_id');
+        // $rider_id = Session::get('rider_id');
         
-        $Data = tbl_rider_accounts::join('tbl_vehicle_info', 'tbl_rider_account.rider_id', '=', 'tbl_vehicle_info.rider_id')
-        ->join('tbl_document_info', 'tbl_rider_account.rider_id', '=', 'tbl_document_info.rider_id')
-        ->where('tbl_rider_account.rider_id', $rider_id)
-        ->limit(1)
-        ->get(['firstname', 'middlename', 'lastname', 'age', 'gender', 'email', 'mobile_number', 'city', 'vehicle_type', 'plate_number', 'displacement', 'engine_number', 'year_model']);
+        // $Data = tbl_rider_accounts::join('tbl_vehicle_info', 'tbl_rider_account.rider_id', '=', 'tbl_vehicle_info.rider_id')
+        // ->join('tbl_document_info', 'tbl_rider_account.rider_id', '=', 'tbl_document_info.rider_id')
+        // ->where('tbl_rider_account.rider_id', $rider_id)
+        // ->limit(1)
+        // ->get(['firstname', 'middlename', 'lastname', 'age', 'gender', 'email', 'mobile_number', 'city', 'vehicle_type', 'plate_number', 'displacement', 'engine_number', 'year_model']);
        
-        return view('/rider_applicationstatus', compact('Data'));
+        // return view('/rider_applicationstatus', compact('Data'));
+        return view('/partner_application4');
     }
 
     public function agreement(){

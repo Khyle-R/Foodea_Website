@@ -36,9 +36,10 @@
     <!-- inject:css -->
     <!-- endinject -->
     <!-- Layout styles -->
-    <link rel="stylesheet" href="assets/css/superadmin_applicationrider.css" />
+    <link rel="stylesheet" href="assets/css/superadminapplication_partnerdetails.css" />
     <!-- End layout styles -->
     <link rel="shortcut icon" href="../../user/image/foodea1.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
   <body>
     <div class="container-scroller">
@@ -130,9 +131,7 @@
                 <i class="mdi mdi-book-multiple"></i>
               </span>
               <span class="menu-title">Application</span>
-              
             </a>
-            
           </li>
           <li class="nav-item menu-items">
             <a class="nav-link" href="pages/forms/basic_elements.html">
@@ -450,171 +449,280 @@
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="row">
-              <h3 class="font-weight-bolder mb-5" style="color: #F54748"> RIDERS </h3>
-                <div class="col-12 grid-margin stretch-card">
-                  <div class="card corona-gradient-card">
-                    <div class="card-body py-0 px-0 px-sm-3">
-                      <div class="row align-items-center">
-                        <div class="col-3 col-sm-2 col-xl-2 pl-0 text-center">
-                          <div class="btn-group" role="group" >
-                            <a class="btn btn-link text-light btn-outline-dark btn-rounded text-decoration-none" href="#" role="button">Riders</a>
-                            <a class="btn btn-link text-light btn-outline-dark btn-rounded text-decoration-none" href="superadminapplication_partner.html" role="button">Partners</a>
-                          </div>
-                        </div>
-
+              <div class="col-12  stretch-card">
+                <div class="card corona-gradient-card">
+                  <div class="card-body py-0 px-0 px-sm-3">
+                    <div class="row align-items-center">
+                      <div class="col-3 col-sm-2 col-xl-2 pl-0 text-center">
+                        <span>
+                          <button type="button" class="btn btn-link btn-fw  font-weight-normal text-white">Riders</button>
+                          
+                        </span>
                       </div>
+                      <div class="col-3 col-sm-2 col-xl-2 pl-0 text-center">
+                        <span>
+                          <button type="button" class="btn btn-link btn-fw  font-weight-normal text-white" style="float:left;">Partners</button>
+                          
+                        </span>
+                      </div>
+                      
                     </div>
                   </div>
                 </div>
               </div>
-            <!-- partner table -->
-            <div class="row">
-                <div class="col-12 grid-margin">
-                  <div class="card">
-                    <div class="card-body">  
-                      <div class="row justify-content-sm-between px-3 mb-3">
-                        <p style="color: black; font-weight: bold;">Showing 3 Applicants</p>
-                        <span class="selector">
-                        <button type="button" class="btn btn-link text-decoration-none  font-weight-normal ">All</button>
-                        <button type="button" class="btn btn-link text-decoration-none  font-weight-normal ">Pending</button>
-                        <button type="button" class="btn btn-link text-decoration-none  font-weight-normal ">On-Hold</button>
-                        <button type="button" class="btn btn-link text-decoration-none  font-weight-normal  ">Accepted</button>
-                        </span>
-                        <h4 class="card-title"></h4>
+            </div>
+            <div class="template-demo mb-5" style="align-items: center;">
+              <button type="button" class="btn btn-outline-danger  btn-md" style="width: 80px;">All</button>
+              <button type="button" class="btn btn-outline-danger btn-md">Pending</button>
+              <button type="button" class="btn btn-outline-danger btn-md">On hold</button>
+              <button type="button" class="btn btn-outline-danger btn-md">Accepted</button>
+              <button type="button" class="btn btn-outline-danger btn-md">Rejected</button>
+              <div class="dropdown mt-3" style="float: right;">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Newest </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                  
+                  <a class="dropdown-item" href="#">Newest</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Oldest</a>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <div class="container">
                         <div class="row">
-                          <div class="dropdown">
-                            <button
-                              class="btn btn-secondary dropdown-toggle py-2 px-3 rounded"
-                              type="button"
-                              id="dropdownMenuButton"
-                              data-toggle="dropdown"
-                              aria-haspopup="true"
-                              aria-expanded="false"
-                            >
-                              Newest
-                            </button>
-                            <div
-                              class="dropdown-menu"
-                              aria-labelledby="dropdownMenuButton"
-                            >
-                              <a class="dropdown-item" href="#">Ascending</a>
-                              <a class="dropdown-item" href="#">Descending</a>
+                          <div class="col-md-6">
+                            
+                            <img class="img-lg rounded-circle" src="assets/images/faces/face23.jpg" alt="">
+                            <span class="font-weight-bolder ml-2 " style="color:#fc424a;">FOODEA</span><br>
+                            
+                            <h6 class="mt-4 font-weight-bolder" style="color:#4d4d4d; font-size:18px;"> Business Ownwer Information</h6>
+                            <hr style="margin: 0; padding: 0;">
+                            <form>
+                                <div class="row">
+                                  <div class="col-md-6">
+                                    <div class="form-group">
+                                      <div class="form-check mt-4" style="list-style-type: none;  margin: 0; padding: 0;">
+                                        <label class="form-check-label">
+                                          <h6 class="font-weight-bolder">
+                                          First Name
+                                         </h6>
+                                      </div>
+                                      <div class="form-check" style="color:#4d4d4d; list-style-type: none;  margin: 0; padding: 0;">
+                                        <label class="form-check-label">
+                                            <h6 class="font-weight-bolder">
+                                          Last Name
+                                        </h6>
+                                      </div>
+                                      <div class="form-check" style="list-style-type: none;  margin: 0; padding: 0; ">
+                                        <label class="form-check-label">
+                                            <h6 class="font-weight-bolder">
+                                          Email Address
+                                        </h6>
+                                      </div>
+                                      <div class="form-check" style="list-style-type: none;  margin: 0; padding: 0;">
+                                        <label class="form-check-label">
+                                            <h6 class="font-weight-bolder">
+                                          Contact Number
+                                        </h6>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <div class="form-group">
+                                      <div class="form-check mt-4" style="list-style-type: none;  margin: 0; padding: 0;">
+                                        <label class="form-check-label">
+                                          <h6>
+                                           John Dough
+                                          </h6>
+                                      </div>
+                                      <div class="form-check" style="list-style-type: none;  margin: 0; padding: 0;">
+                                        <label class="form-check-label">
+                                            <h6>
+                                            Manaloto
+                                            </h6>
+                                      </div>
+                                      <div class="form-check" style="list-style-type: none;  margin: 0; padding: 0;">
+                                        <label class="form-check-label">
+                                            <h6>
+                                          johndough@gmail.com
+                                            </h6>
+                                      </div>
+                                      <div class="form-check" style="list-style-type: none;  margin: 0; padding: 0;">
+                                        <label class="form-check-label">
+                                            <h6>
+                                          Camarin Caloocan City
+                                            </h6>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </form>
+                              <h6 class="mt-4 font-weight-bolder" style="color:#4d4d4d; font-size:18px;">Uploaded Documents</h6>
+                              <hr style="margin: 0; padding: 0;">
+                              <form>
+                                <div class="row">
+                                  <div class="col-md-8">
+                                    <div class="form-group">
+                                      <div class="form-check mt-4" style="list-style-type: none;  margin: 0; padding: 0;">
+                                        <label class="form-check-label">
+                                          <h6 class="font-weight-bolder">
+                                          Photo of your vehicle
+                                         </h6>
+                                      </div>
+                                      <div class="form-check" style="color:#4d4d4d; list-style-type: none;  margin: 0; padding: 0;">
+                                        <label class="form-check-label">
+                                            <h6 class="font-weight-bolder">
+                                          Photo of your valid goverment ID
+                                        </h6>
+                                      </div>
+                                      <div class="form-check" style="list-style-type: none;  margin: 0; padding: 0; ">
+                                        <label class="form-check-label">
+                                            <h6 class="font-weight-bolder">
+                                          1x1 Picture (White background)
+                                        </h6>
+                                      </div>
+                                      <div class="form-check" style="list-style-type: none;  margin: 0; padding: 0;">
+                                        <label class="form-check-label">
+                                            <h6 class="font-weight-bolder">
+                                          Drug Test Result
+                                        </h6>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="col-md-4">
+                                    <div class="form-group">
+                                      <div class="form-check mt-4" style="list-style-type: none;  margin: 0; padding: 0;">
+                                        <label class="form-check-label">
+                                            <h6 class="fa fa-check-circle text-danger" style="font-size:16px;"> View
+                                             
+                                            </h6>
+                                      </div>
+                                      <div class="form-check " style="list-style-type: none;  margin: 0; padding: 0;">
+                                        <label class="form-check-label">
+                                            <h6 class="fa fa-check-circle text-danger" style="font-size:16px;"> View
+                                             
+                                            </h6>
+                                      </div>
+                                      <div class="form-check " style="list-style-type: none;  margin: 0; padding: 0;">
+                                        <label class="form-check-label">
+                                            <h6 class="fa fa-check-circle text-danger" style="font-size:16px;"> View
+                                             
+                                            </h6>
+                                      </div>
+                                      <div class="form-check " style="list-style-type: none;  margin: 0; padding: 0;">
+                                        <label class="form-check-label">
+                                            <h6 class="fa fa-check-circle text-danger" style="font-size:16px;"> View
+                                             
+                                            </h6>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </form>
+                              
+                          
+                  </div>
+                  <div class="col-md-6">
+                    <div class="text-center">
+                      <button type="button" class="btn btn-outline-warning btn-lg btn-rounded w-100">Pending</button>
+                      </div>
+                        
+                      <h6 class="mt-5 font-weight-bolder" style="color:#4d4d4d; font-size:18px;">Business Information</h6>
+                      <hr>
+                      <form>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <div class="form-check mt-2" style="list-style-type: none;  margin: 0; padding: 0;">
+                                <label class="form-check-label">
+                                  <h6 class="font-weight-bolder">
+                                  Business Type 
+                                 </h6>
+                              </div>
+                              <div class="form-check " style="list-style-type: none;  margin: 0; padding: 0;">
+                                <label class="form-check-label">
+                                  <h6 class="font-weight-bolder">
+                                  Address
+                                 </h6>
+                              </div>
+                              <div class="form-check" style="color:#4d4d4d; list-style-type: none;  margin: 0; padding: 0;">
+                                <label class="form-check-label">
+                                    <h6 class="font-weight-bolder">
+                                  City
+                                </h6>
+                              </div>
+                              <div class="form-check" style="list-style-type: none;  margin: 0; padding: 0; ">
+                                <label class="form-check-label">
+                                    <h6 class="font-weight-bolder">
+                                  Operating Since
+                                </h6>
+                              </div>
+                              <div class="form-check" style="list-style-type: none;  margin: 0; padding: 0;">
+                                <label class="form-check-label">
+                                    <h6 class="font-weight-bolder">
+                                  Number of Branch
+                                </h6>
+                              </div>
                             </div>
                           </div>
-  
-                          
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <div class="form-check mt-2" style="list-style-type: none;  margin: 0; padding: 0;">
+                                <label class="form-check-label">
+                                  <h6>
+                                   Company  
+                                  </h6>
+                              </div>
+                              <div class="form-check" style="list-style-type: none;  margin: 0; padding: 0;">
+                                <label class="form-check-label">
+                                    <h6>
+                                    Foodea blk 1 lot 1
+                                    </h6>
+                              </div>
+                              <div class="form-check" style="list-style-type: none;  margin: 0; padding: 0;">
+                                <label class="form-check-label">
+                                    <h6>
+                                    Caloocan
+                                    </h6>
+                              </div>
+                              <div class="form-check" style="list-style-type: none;  margin: 0; padding: 0;">
+                                <label class="form-check-label">
+                                    <h6>
+                                  2019
+                                    </h6>
+                              </div>
+                              <div class="form-check" style="list-style-type: none;  margin: 0; padding: 0;">
+                                <label class="form-check-label">
+                                    <h6>
+                                  1
+                                    </h6>
+                                    </div>
+                               
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                      <div class="table-responsive">
-                        <table class="table">
-                          <thead>
-                            <tr>
-                                <th>
-                                    <div class="form-check form-check-muted m-0">
-                                      <label class="form-check-label">
-                                        <input
-                                          type="checkbox"
-                                          class="form-check-input"
-                                        />
-                                      </label>
-                                    </div>
-                                  </th>
-                              <th>Applicant ID</th>
-                              <th>Date Applied</th>
-                              <th>Vehicle Type</th>
-                              <th>Documents</th>
-                              <th>Status</th>
-                              <th>Action</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                                <td>
-                                    <div class="form-check form-check-muted m-0">
-                                      <label class="form-check-label">
-                                        <input
-                                          type="checkbox"
-                                          class="form-check-input"
-                                        />
-                                      </label>
-                                    </div>
-                                  </td>
-                              <td>
-                                <span class="pl-2">bc1qxy2kgdygjrsqtz</span>
-                              </td>
-                              <td>Febraury 23, 2022</td>
-                              <td>Motorcycle</td>
-                              <td class="text-danger"><i class="mdi mdi-file-check text-danger"></i>Review</td>
-                              <td>
-                                  <div class="badge badge-outline-success">
-                                    Accepted
-                                  </div>
-                                </td>
-                              <td>
-                                  <button type="button" class="btn btn-outline-danger">View Details</button>
-                              </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="form-check form-check-muted m-0">
-                                      <label class="form-check-label">
-                                        <input
-                                          type="checkbox"
-                                          class="form-check-input"
-                                        />
-                                      </label>
-                                    </div>
-                                  </td>
-                              <td>
-                                <span class="pl-2">bc1qxy2kgdygjrsqtz</span>
-                              </td>
-                              <td>Febraury 25, 2022</td>
-                              <td>Bicycle</td>
-                              <td class="text-danger"><i class="mdi mdi-file-check text-danger"></i>Review</td>
-                              <td>
-                                  <div class="badge badge-outline-warning">
-                                    Pending
-                                  </div>
-                                </td>
-                              <td>
-                                  <button type="button" class="btn btn-outline-danger">View Details</button>
-                              </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="form-check form-check-muted m-0">
-                                      <label class="form-check-label">
-                                        <input
-                                          type="checkbox"
-                                          class="form-check-input"
-                                        />
-                                      </label>
-                                    </div>
-                                  </td>
-                              <td>
-                                <span class="pl-2">bc1qxy2kgdygjrsqtz</span>
-                              </td>
-                              <td>Febraury 24, 2022</td>
-                              <td>Motorcyle</td>
-                              <td class="text-danger"><i class="mdi mdi-file-check text-danger"></i>Review</td>
-                              <td>
-                                  <div class="badge badge-outline-warning">
-                                    Pending
-                                  </div>
-                                </td>
-                              <td>
-                                  <button type="button" class="btn btn-outline-danger">View Details</button>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
+                      </form>
+                      <div class="template-demo mt-5" style="float: right;">
+                        <button type="button" class="btn btn-outline-danger btn-icon-text btn-rounded btn-lg">
+                           Reject </button>
+                        
+                        <button type="button" class="btn btn-danger btn-icon-text btn-rounded btn-lg">
+                           Accept </button>
+                      
+                              </div>
+                            </div>
+                          </div>
+                        
+                  
                   </div>
-                </div>
-              </div>
+                  </div>
+                  </div>
+           </div>
 
-
+        
+             
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.html -->
           <footer class="footer">
