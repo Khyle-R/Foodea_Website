@@ -48,7 +48,7 @@
                             </div>
                         </div>
                         <div class="page-header">
-                            <h3 class="page-title">Product</h3>
+                            <li class="page-title" >Product</li>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">
@@ -64,9 +64,7 @@
                             <div class="col-12 grid-margin">
                                 <div class="card">
                                     <div class="card-body">
-                                        <div
-                                            class="row justify-content-sm-between px-3 mb-3"
-                                        >
+                                        <div class="row justify-content-sm-between px-3 mb-3">
                                             <h4 class="card-title">
                                                 Order Status
                                             </h4>
@@ -184,78 +182,19 @@
                                                                 </div>
                                                             </div>
                                                 </div>
-                                                <div class="dropdown">
-                                                    <button
-                                                        class="btn btn-secondary dropdown-toggle py-2 px-3 rounded"
-                                                        type="button"
-                                                        id="dropdownMenuButton"
-                                                        data-toggle="dropdown"
-                                                        aria-haspopup="true"
-                                                        aria-expanded="false"
-                                                    >
-                                                        Select Category
-                                                    </button>
-                                                    <div
-                                                        class="dropdown-menu"
-                                                        aria-labelledby="dropdownMenuButton"
-                                                    >
-                                                        <a
-                                                            class="dropdown-item"
-                                                            href="#"
-                                                            >Chicken</a
-                                                        >
-                                                        <a
-                                                            class="dropdown-item"
-                                                            href="#"
-                                                            >Drinks</a
-                                                        >
-                                                    </div>
-                                                </div>
+                                                
 
-                                                <div class="dropdown">
-                                                    <button
-                                                        class="btn btn-secondary dropdown-toggle py-2 px-3 rounded mx-3"
-                                                        type="button"
-                                                        id="dropdownMenuButton"
-                                                        data-toggle="dropdown"
-                                                        aria-haspopup="true"
-                                                        aria-expanded="false"
-                                                    >
-                                                        Select Order
-                                                    </button>
-                                                    <div
-                                                        class="dropdown-menu"
-                                                        aria-labelledby="dropdownMenuButton"
-                                                    >
-                                                        <a
-                                                            class="dropdown-item"
-                                                            href="#"
-                                                            >Ascending</a
-                                                        >
-                                                        <a
-                                                            class="dropdown-item"
-                                                            href="#"
-                                                            >Descending</a
-                                                        >
-                                                    </div>
-                                                </div>
+                                                
                                             </div>
                                         </div>
                                         <div class="table-responsive">
-                                            <table class="table">
+                                            <table class="table" id="myProduct">
                                                 <thead class="table-danger">
                                                     <tr>
                                                         <th>
-                                                            <div
-                                                                class="form-check form-check-muted m-0"
-                                                            >
-                                                                <label
-                                                                    class="form-check-label"
-                                                                >
-                                                                    <input
-                                                                        type="checkbox"
-                                                                        class="form-check-input"
-                                                                    />
+                                                            <div class="form-check form-check-muted m-0">
+                                                                <label class="form-check-label">
+                                                                    <input type="checkbox" class="form-check-input"/>
                                                                 </label>
                                                             </div>
                                                         </th>
@@ -269,7 +208,6 @@
                                                 </thead>  
                                                 <tbody>
                                                     @foreach($products as $key => $data)
-
                                                     <tr>
                                                         <td>
                                                             <div class="form-check form-check-muted m-0">
@@ -426,48 +364,46 @@
                                                 </tbody>
                                             </table>
                                         </div>
-
-                                        <ul
-                                            class="pagination pt-2 align-items-center justify-content-center justify-content-sm-end"
-                                        >
+                                        <div>
+                                            <table id="sample">
+                                                <tr>
+                                                  <th>Person 1</th>
+                                                  <th>Person 2</th>
+                                                  <th>Person 3</th>
+                                                </tr>
+                                                <tr>
+                                                  <td>Emil</td>
+                                                  <td>Tobias</td>
+                                                  <td>Linus</td>
+                                                </tr>
+                                                <tr>
+                                                  <td>16</td>
+                                                  <td>14</td>
+                                                  <td>10</td>
+                                                </tr>
+                                              </table>
+                                        </div>
+                                        {{-- <ul class="pagination pt-2 align-items-center justify-content-center justify-content-sm-end">
                                             <li class="page-item">
-                                                <a
-                                                    class="page-link"
-                                                    href="#"
-                                                    aria-label="Previous"
-                                                >
-                                                    <span aria-hidden="true"
-                                                        >&laquo;</span
-                                                    >
+                                                <a class="page-link" href="#" aria-label="Previous">
+                                                    <span aria-hidden="true">&laquo;</span>
                                                 </a>
                                             </li>
                                             <li class="page-item">
-                                                <a class="page-link" href="#"
-                                                    >1</a
-                                                >
+                                                <a class="page-link" href="#">1</a>
                                             </li>
                                             <li class="page-item">
-                                                <a class="page-link" href="#"
-                                                    >2</a
-                                                >
+                                                <a class="page-link" href="#">2</a>
                                             </li>
                                             <li class="page-item">
-                                                <a class="page-link" href="#"
-                                                    >3</a
-                                                >
+                                                <a class="page-link" href="#">3</a>
                                             </li>
                                             <li class="page-item">
-                                                <a
-                                                    class="page-link"
-                                                    href="#"
-                                                    aria-label="Next"
-                                                >
-                                                    <span aria-hidden="true"
-                                                        >&raquo;</span
-                                                    >
+                                                <a class="page-link" href="#" aria-label="Next">
+                                                    <span aria-hidden="true">&raquo;</span>
                                                 </a>
                                             </li>
-                                        </ul>
+                                        </ul> --}}
                                     </div>
                                 </div>
                             </div>
@@ -496,7 +432,7 @@
                             >
                         </div>
 
-                        <script>
+                        {{-- <script>
                             $(document).ready(function () {
                                $('.updateButton').click(function () {
                                     var userid = $(this).data('id');
@@ -504,7 +440,9 @@
                                });
                             });
                 
-                        </script>
+                        </script> --}}
+
+                       
 
                         {{-- <script>
                             $(document).ready(function () {

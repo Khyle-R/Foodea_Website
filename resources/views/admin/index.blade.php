@@ -3,36 +3,18 @@
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     
     <title>Foodea</title>
     <!-- plugins:css -->
-    <link
-      rel="stylesheet"
-      href="assets/vendors/mdi/css/materialdesignicons.min.css"
-    />
+    <link rel="stylesheet"href="assets/vendors/mdi/css/materialdesignicons.min.css"/>
     <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css" />
     <!-- endinject -->
     <!-- Plugin css for this page -->
-    <link
-      rel="stylesheet"
-      href="assets/vendors/jvectormap/jquery-jvectormap.css"
-    />
-    <link
-      rel="stylesheet"
-      href="assets/vendors/flag-icon-css/css/flag-icon.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="assets/vendors/owl-carousel-2/owl.carousel.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="assets/vendors/owl-carousel-2/owl.theme.default.min.css"
-    />
+    <link rel="stylesheet"href="assets/vendors/jvectormap/jquery-jvectormap.css"/>
+    <link rel="stylesheet" href="assets/vendors/flag-icon-css/css/flag-icon.min.css"/>
+    <link rel="stylesheet" href="assets/vendors/owl-carousel-2/owl.carousel.min.css"/>
+    <link rel="stylesheet" href="assets/vendors/owl-carousel-2/owl.theme.default.min.css"/>
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
    
     <!-- End plugin css for this page -->
@@ -43,6 +25,8 @@
     <!-- End layout styles -->
     <link rel="shortcut icon" href="../../user/image/foodea1.png" />
 
+    {{-- Datatable plugins --}}
+    <link rel="stylesheet" href="//cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css" />
     
   </head>
   <body>
@@ -492,7 +476,9 @@
       </div>
       <!-- page-body-wrapper ends -->
     </div>
-    <!-- container-scroller -->
+    {{-- Jquery --}}
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+
     <!-- plugins:js -->
     <script src="assets/vendors/js/vendor.bundle.base.js"></script>
     <!-- endinject -->
@@ -514,5 +500,21 @@
     <script src="assets/js/dashboard.js"></script>
     <script src="assets/js/chart.js"></script>
     <!-- End custom js for this page -->
+
+    {{-- DataTable plugins --}}
+    <script src="//cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+
+    <script>
+      $(document).ready( function () {
+        $('#myProduct').DataTable();
+    } );
+    </script>
+
+<script>
+  $(document).ready( function () {
+    $('#myInventory').DataTable();
+} );
+</script>
+
   </body>
 </html>
