@@ -98,7 +98,7 @@
       </div>
 
     </nav>
-        <div class="section">
+        <div class="section mx-auto my-5">
             <div class="content text-center text-md-start">
                 <h1>Be The Fastest In Delivering Your <span>Food</span></h1>
                 <p class="text-center text-md-start">Our job filling your tummy with delicious food and with fast delivery</p>

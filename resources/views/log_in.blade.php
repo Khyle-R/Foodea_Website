@@ -63,7 +63,7 @@
         <section>
             <div class="container mt-2 pt-5">
                 <div class="row">
-                    <div class="col-12 col-sm-7  col-md-6 m-auto">
+                     <div class="col-12 col-sm-7  col-md-6 m-auto">
                         <div class="card border-0 shadow">
                             <div class="card-body px-5 ">
                                 <div class="mt-4 text-center">

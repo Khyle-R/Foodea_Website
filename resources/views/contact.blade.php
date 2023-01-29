@@ -9,14 +9,8 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css" rel="stylesheet" />
     <link rel="icon" href="{{ url('image/foodea1.png') }}">
-   <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
-      crossorigin="anonymous"
-    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-
 </head>
 
 <body>
@@ -97,11 +91,60 @@
         </div>
       </div>
     </nav>
-        <div class="section">
-            <div class="content">
-                <h1>Contact Us</h1>
+
+          <section class="tittle pb-5">
+            <div class="container">
+              <div class="card">
+                <div class="card-body">
+                  <h1>Contact Us</h1>
+                  <div class="row">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+                      <!-- Location -->
+                      <div class="row pt-3">
+                        <div class="col-lg-1 offset-1 col-md-2 col-sm-2 col-1">
+                        </div>
+                        <div class="col-9 col-sm-9 col-md-9 col-lg-10">
+                          <span><i class="fa fa-map-marker-alt"></i>
+                          <p>Caloocan City,<br> Philippines</p>
+                        </span>
+                        </div>
+                      </div>
+                      <!-- Email -->
+                      <div class="row pt-3">
+                        <div class="col-lg-1 offset-1 col-md-2 col-sm-2 col-1">
+                        </div>
+                        <div class="col-9 col-sm-9 col-md-9 col-lg-8">
+                          <span><i class="fa fa-envelope"></i>
+                          <p>foodea@gmail.com</p>
+                        </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+                      <form class="form-row">
+                        <div class="form-group p-2">
+                          <label class="p-1">Your Name</label>
+                          <input type="text" class="form-control">
+                        </div>
+                        <div class="form-group p-2">
+                          <label  class="p-1">Email Address</label>
+                          <input type="email" class="form-control">
+                        </div>
+                        <div class="form-group p-2">
+                          <label  class="p-1">Message</label>
+                          <textarea class="form-control mb-3" rows="8"></textarea>
+                        </div>
+                        <div class="form-group p-2">
+                        <button class="btn btn-danger w-50">Send</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-        </div>
+          </section>
+
     </div>
 
     <div class="footer">

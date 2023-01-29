@@ -2,8 +2,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1" name="viewport" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>FOODEA</title>
     <link rel="stylesheet" type="text/css" href="css/rider_landing.css" />
      <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -179,6 +178,7 @@
             </ul>
           </div>
           </div>
+
           <div class="radio_content radio_2">
               <div class="requirements">
                <p>Please read carefully before submitting your application. 
@@ -204,6 +204,7 @@
     </div>
    </div>
 
+   <!-- TIMELINE -->
    <div class="timeline">
     <div class="timeline-title">
         <h2>How food delivery works</h2>
@@ -257,7 +258,6 @@
     </ul>
     </div>
    </div>
-</div>
 
     <!---ACOORDION-->
     <div class="container2">
@@ -308,7 +308,7 @@
             </div>
         </div>
     </div>
-    <div class="end">
+    <div class="bg-img" style="background-image: url(../image/bgmotor.png);">
         <div class="end-container">
                  <div class="end-content">
                   <h2>Start your journey now as a Foodea rider</h2>
