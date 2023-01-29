@@ -16,24 +16,11 @@
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
         />
         <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-           <link rel="stylesheet" type="text/css" href="css/login.css" />
+           <link rel="stylesheet" type="text/css" href="assets/css/login.css" />
         <title>Document</title>
     </head>
     <body>
          
-
-        <nav class="navbar navbar-light nav-red">
-            <a class="navbar-brand" href="#">
-                <img
-                    src="image/foodea.png"
-                    width="30"
-                    height="30"
-                    class="d-inline-block align-top"
-                    alt=""
-                />
-                <span class="white">FOODEA</span>
-            </a>
-        </nav>
         @if (Session::has('fail'))
              <p style="display:none" class="failed"></p>
             <div class="alert hide">
@@ -61,18 +48,21 @@
 
         @endif
         <section>
-            <div class="container mt-2 pt-5">
+            <div class="container pt-5">
                 <div class="row">
-                    <div class="col-12 col-sm-7  col-md-6 m-auto">
+                    <div class="col-12 col-sm-7 col-md-6 m-auto">
                         <div class="card border-0 shadow">
                             <div class="card-body px-5 ">
-                                <div class="mt-4 text-center">
+                                <div class="text-center">
                                   <img src="image/foodea4.png" alt="">
                                 </div>
-                                <form method="post" action="{{ route('login.LoginMerchant') }}" class="mt-4">
+                                <form method="post" action="{{ route('login.LoginAdmin') }}" class="mt-4">
                                    @csrf
 
                                     <div class="form-group">
+
+                                  
+
                                     <label for="email">Email</label>
                                     <input
                                         type="email"
@@ -112,7 +102,7 @@
                                             LOG IN
                                         </button>
                                         <div
-                                            class="d-flex mt-3 justify-content-center"
+                                            class="d-flex flex-sm-wrap mt-3 justify-content-center"
                                         >
                                             <p class="mr-2">
                                                 Don't have an account?
