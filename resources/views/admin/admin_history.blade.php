@@ -72,7 +72,7 @@
                   <div class="card">
                     <div class="card-body">  
                       <div class="table-responsive text-center">
-                        <table class="table">
+                        <table class="table" id="myHistory">
                           <thead>
                             <tr>
                               <th>Transaction ID</th>

@@ -176,10 +176,15 @@ Route::get('admin_history', function(){
     return view('admin.admin_history', ['history' => $history]);
 });
 
-Route::view('admin_orders', 'admin.admin_orders');
+Route::get('admin_orders', function(){
+    $orders = DB::table('tbl_orders')->get();
+
+    return view('admin.admin_orders', ['orders' => $orders]);
+});
+
 
 Route::get('account',  function(){
-    return view('admin.admin_personalinformation');
+    return view('admin.admin_personalinformation1');
 });
 
 Route::get('business',  function(){

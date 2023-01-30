@@ -17,6 +17,14 @@
     <link rel="stylesheet" href="assets/vendors/owl-carousel-2/owl.theme.default.min.css"/>
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
    
+    {{-- Admin Personal info disable  inputs --}}
+     <script>
+      $(document).ready(function(){
+          $("#myForm :input").prop("disabled", true);
+          $("#save_info").hide(0);
+      });
+    </script>
+
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <!-- endinject -->
@@ -516,5 +524,10 @@
 } );
 </script>
 
+<script>
+  $(document).ready( function () {
+    $('#myHistory').DataTable();
+} );
+</script>
   </body>
 </html>

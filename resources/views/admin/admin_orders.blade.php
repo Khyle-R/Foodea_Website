@@ -85,6 +85,7 @@
                             </tr>
                           </thead>
                           <tbody>
+                            @foreach ($orders as $key => $data)
                             <tr>
                               <td>
                                 bc1qxy2kgdygjrsqtzq2n0y
@@ -98,80 +99,31 @@
                               </td>
                               <td>₱95.00</td>
                               <td>
-                                <div class="badge badge-danger">
-                                  Cancelled
-                                </div>
+                                  @if ($data->status =='Cancelled')
+                                      <button class="badge badge-danger" data-toggle="modal" data-target="#Cancelled">
+                                        Cancelled
+                                      </button>
+                                    @elseif($data->status=='Delivered')
+                                      <button class="badge badge-success" data-toggle="modal" data-target="#Cancelled">
+                                        Delivered
+                                      </button>
+                                    @elseif($data->status=='Indelivery')
+                                    <button class="badge badge-warning" data-toggle="modal" data-target="#Cancelled">
+                                      Indelivery
+                                    </button>
+                                    @else($data->status=='Accepted')
+                                      <button class="badge badge-info" data-toggle="modal" data-target="#Cancelled">
+                                        Accepted
+                                      </button>
+                                    
+                                    @endif
                               </td>
                               <td>
                                   <button type="button" class="btn btn-outline-danger">View Details</button>
                               </td>
                             </tr>
 
-                            <tr>
-                              <td>
-                                bc1qxy2kgdygjrsqtzq2n
-                              </td>
-                              <td>
-                                202223131
-                              </td>
-                              <td>12387</td>
-                              <td>
-                                Febraury 23, 2022
-                              </td>
-                              <td>₱95.00</td>
-                              <td>
-                                <div class="badge badge-warning">
-                                  In Delivery
-                                </div>
-                              </td>
-                              <td>
-                                  <button type="button" class="btn btn-outline-danger">View Details</button>
-                              </td>
-                            </tr>
-
-                            <tr>
-                              <td>
-                                bc1qxy2kgdygjrsqtzq2n0
-                              </td>
-                              <td>
-                                <span class="pl-2">202223131</span>
-                              </td>
-                              <td>12387</td>
-                              <td>
-                                Febraury 23, 2022
-                              </td>
-                              <td>₱95.00</td>
-                              <td>
-                                <div class="badge badge-success">
-                                    Delivered
-                                  </div>
-                                </td>
-                              <td>
-                                  <button type="button" class="btn btn-outline-danger">View Details</button>
-                              </td>
-                            </tr>
-
-                            <tr>
-                              <td>
-                                bc1qxy2kgdygjrsqtzq2n0
-                              </td>
-                              <td>
-                                <span class="pl-2">202223131</span>
-                              </td>
-                              <td>12387</td>
-                              <td>
-                                Febraury 23, 2022
-                              </td>
-                              <td>₱95.00</td>
-                              <td>
-                                <div class="badge badge-info">
-                                    Accepted
-                                  </div>
-                                </td>
-                              <td>
-                                  <button type="button" class="btn btn-outline-danger">View Details</button>
-                              </td>
-                            </tr>
+                           @endforeach
                           </tbody>
                         </table>
                       </div>
