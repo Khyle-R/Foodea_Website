@@ -5,22 +5,28 @@
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FOODEA</title>
-    <link rel="stylesheet" type="text/css" href="css/contact.css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css" rel="stylesheet" />
-    <link rel="icon" href="{{ url('image/foodea1.png') }}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
+    <link rel="icon" href="{{url('image/foodea1.png') }}">
+   <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/contact.css" />
 </head>
 
 <body>
+    <div class="main-container">
     <div class="header">
     <!--- NAVBAR -->
-    <nav class="navbar navbar-expand-lg px-5 mx-5">
+    <nav class="navbar navbar-expand-lg px-2 mx -2 px-xs-3 px-md-4 px-lg-5 mx-xs-3 mx-md-4 mx-lg-5">
       <div class="container-fluid px-3">
         <a href="#" class="navbar-brand">
           <img src="image/foodea1.png" alt="" />
-          FOODEA
+          <span>FOODEA</span>
         </a>
         <button
           class="navbar-toggler"
@@ -52,7 +58,7 @@
           <div class="offcanvas-body">
             <ul class="navbar-nav mx-auto">
               <li class="nav-item">
-                <a href="/" class="nav-link active">Home</a>
+                <a href="/" class="nav-link">Home</a>
               </li>
               <li class="nav-item dropdown">
                 <a
@@ -71,16 +77,15 @@
                 <a href="/about" class="nav-link">About Us</a>
               </li>
               <li class="nav-item">
-                <a href="/contact" class="nav-link">Contact Us</a>
+                <a href="/contact" class="nav-link active">Contact Us</a>
               </li>
             </ul>
             <a
-              href="/login"
-             class="text-secondary mt-2 mx-5"
-              style="text-decoration: none;"
-            >
+            href="/login"
+            class="text-secondary mt-2 mx-5"
+            style="text-decoration: none;">
               Signup
-           </a>
+            </a>
             <a
               href="/login"
               class="btn btn-danger btn-sm py-2 px-5 rounded"
@@ -91,63 +96,141 @@
         </div>
       </div>
     </nav>
+    </div>
+    <!-- END OF NAVBAR -->
+    <div class="container">
 
-          <section class="tittle pb-5">
-            <div class="container">
-              <div class="card">
-                <div class="card-body">
-                  <h1>Contact Us</h1>
-                  <div class="row">
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-6">
-                      <!-- Location -->
-                      <div class="row pt-3">
-                        <div class="col-lg-1 offset-1 col-md-2 col-sm-2 col-1">
-                        </div>
-                        <div class="col-9 col-sm-9 col-md-9 col-lg-10">
-                          <span><i class="fa fa-map-marker-alt"></i>
-                          <p>Caloocan City,<br> Philippines</p>
-                        </span>
-                        </div>
-                      </div>
-                      <!-- Email -->
-                      <div class="row pt-3">
-                        <div class="col-lg-1 offset-1 col-md-2 col-sm-2 col-1">
-                        </div>
-                        <div class="col-9 col-sm-9 col-md-9 col-lg-8">
-                          <span><i class="fa fa-envelope"></i>
-                          <p>foodea@gmail.com</p>
-                        </span>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-12 col-sm-12 col-md-12 col-lg-6">
-                      <form class="form-row">
-                        <div class="form-group p-2">
-                          <label class="p-1">Your Name</label>
-                          <input type="text" class="form-control">
-                        </div>
-                        <div class="form-group p-2">
-                          <label  class="p-1">Email Address</label>
-                          <input type="email" class="form-control">
-                        </div>
-                        <div class="form-group p-2">
-                          <label  class="p-1">Message</label>
-                          <textarea class="form-control mb-3" rows="8"></textarea>
-                        </div>
-                        <div class="form-group p-2">
-                        <button class="btn btn-danger w-50">Send</button>
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
+    <!-- SECTION 1 -->
+    <section class="d-flex justify-content-center ">
+      <div class="content mx-auto d-flex flex-column align-items-center gap-4 w-75 pt-4 pb-2 py-xs-3 py-md-4 py-lg-5">
+        <h1 class="text-center">You’ve got questions?<br>We’ve got answers</h1>
+        <div class="paragraph1 w-75"><p class="text-center">Want to know more about Foodea? Have a question that's not answered on our website? Please chat to our friendly team.</p></div>
+      </div>
+    </section>
+    <!-- END SECTION 1 -->
+
+    <!-- SEARCH BAR -->
+    <div class="input-box container d-flex justify content align-items-center mx-auto">
+      <i class="uil uil-search"></i>
+      <input type="text" placeholder="Search" />
+      <button class="button">Search</button>
+    </div>
+    <!-- END SEARCH BAR -->
+
+    <!-- ACCORDITION -->
+    <div class="accordion accordion-flush pt-3 mx-auto" id="accordionExample">
+    <div class="accordion accordion-flush" id="accordionFlushExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="flush-headingOne">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+      How does Foodea generate its recommendations?
+      </button>
+    </h2>
+    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+      <div class="accordion-body">Foodea uses a state-of-the-art algorithm that takes into account your dietary restrictions, favorite cuisines, and even your location to provide you with personalized meal suggestions.</div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="flush-headingTwo">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+      Can I save my favorite meals for easy access?
+      </button>
+    </h2>
+    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+      <div class="accordion-body">Yes, Foodea allows you to save your favorite meals for easy access in the "Favorites" section..</div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="flush-headingThree">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+      How accurate are the map feature?
+      </button>
+    </h2>
+    <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+      <div class="accordion-body">Foodea uses your device location to provide you with accurate information, but the accuracy may depend on your device location settings and availability of information on that area.</div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="flush-headingFour">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="fals e" aria-controls="flush-collapseFour">
+      Can I use Foodea without an internet connection?
+      </button>
+    </h2>
+    <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
+      <div class="accordion-body">No, Foodea requires an internet connection to function properly.</div>
+    </div>
+  </div>
+
+  <div class="accordion-item">
+    <h2 class="accordion-header" id="flush-headingFive">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
+      Can I suggest a restaurant for Foodea to add?
+      </button>
+    </h2>
+    <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
+      <div class="accordion-body">Yes, you can suggest a restaurant for Foodea to add by contacting our support team.</div>
+    </div>
+  </div>
+
+
+</div>
+
+    <!-- SECTION 2 -->
+    <section class="d-flex justify-content-center align-items-start">
+
+      <!-- IMAGE
+      <div class="content mx-auto d-flex flex-row pt-4 pb-2 py-xs-3 py-md-4 py-lg-5">
+        <img src="image/contact1.png" alt="calling a girl">
+      </div> -->
+
+    </section>
+    <!-- END SECTION 2 -->
+
+    <!-- FORM -->
+    <div class="contact-container mx-auto d-flex flex-column-reverse  flex-md-row-reverse justify-content-center align-items-center gap-5">
+    <div class="left-side p-5">
+        <img src="image/contact1.png" alt="calling a girl">
+      </div>
+    <div class="contact-form m-4 my-md-5 mx-auto p-5">
+    <div class="content">
+      <div class="right-side">
+        <div class="topic-text">Send us a message</div>
+        <p>If you have any work from me or any types of quries related to my tutorial, you can send me message from here. It's my pleasure to help you.</p>
+      <form action="#">
+        <div class="input-box">
+          <input type="text" placeholder="Enter your name">
+        </div>
+        <div class="input-box">
+          <input type="text" placeholder="Enter your email">
+        </div>
+        <div class="input-box message-box">
+          <!-- <textarea id="message" rows="8" placeholder="Comment text.">
+          </textarea> -->
+          <textarea
+            id="message"
+            name="textarea"
+            rows="5"
+            cols="30"
+            placeholder="Comment text."></textarea>
+
+        </div>
+        <div class="button">
+          <input type="button" value="Send Now" >
+        </div>
+      </form>
+    </div>
+    </div>
+  </div>
+    </div>
+    
+    <!-- FORM -->
 
     </div>
+    </div>
 
-    <div class="footer">
+    <!-- FOOTER -->
+    <footer class="footer">
         <div class="footer-content">
             <div class="icon">
                 <img src="image/foodea2.png" alt="">
@@ -178,13 +261,13 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="dark-footer">
+        <div class="dark-footer">
         <div class="dark-content">
             <p>Copyright © 2022. All Rights Reserved</p>
         </div>
     </div>
-
+    </footer>
+    <!-- END FOOTER -->
 
     <script src="js/script.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
