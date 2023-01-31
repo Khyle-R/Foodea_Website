@@ -12,10 +12,7 @@
 
 body {
     height: 100vh;
-    background-image: url(../image/background.png);
-    background-size: cover;
-    background-repeat: no-repeat;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 
@@ -77,8 +74,9 @@ ul {
 }
 
 .card-body {
-    height: 550px;
+    height: auto;
 }
+
 
 .error {
     color: #cc4040;

@@ -1,28 +1,23 @@
 <!DOCTYPE html>
-
+<html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FOODEA</title>
     <link rel="stylesheet" type="text/css" href="css/partner_landing.css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css" rel="stylesheet" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
-      crossorigin="anonymous"
-    />
+    <link rel="icon" href="{{ url('image/foodea1.png') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
 </head>
 
 <body>
     <div class="header">
-        <nav class="navbar navbar-expand-lg px-5 mx-5">
+        <nav class="navbar navbar-expand-lg px-2 mx -2 px-xs-3 px-md-4 px-lg-5 mx-xs-3 mx-md-4 mx-lg-5">
       <div class="container-fluid px-3">
-        <a href="/" class="navbar-brand">
-          <img src="image/foodea1.png" alt="" width="45" height="50" />
+        <a href="/" class="navbar-brand mb-0 h1">
+          <img src="image/foodea1.png" alt=""/>
           FOODEA
         </a>
         <button
@@ -124,6 +119,7 @@
             </div>
         </div>
     </div>
+
     <div class="step-bg">
      <div class="step-container">
         <div class="step-title">
@@ -154,11 +150,11 @@
            
         </div>
 
-        <div class="step-image">
+         <div class="step-image">
             <img src="image/phone-circle.png" alt="">
             <p class="number">2000 +</p>
         </div>
-
+    
         <div class="step2">
             
             <div class="step2-container">
@@ -180,10 +176,12 @@
                  </div>
                  </div>
         </div>
-         </div>
 
         </div>
+
+      </div>
     </div>
+    
     <div class="req-container">
         <div class="req-section">
                <div class="req-image">
@@ -226,14 +224,14 @@
                          <img src="/image/barangay_permit.png" alt="">
                         </div>
                     </li>
-                     <li>
+                    <li>
                         <input type="radio" name="accordion" id="fifth" />
                         <label for="fifth">DTI Certificate</label>
                         <div class="content">
                         <img src="/image/DTI.png" alt="">
                         </div>
                     </li>
-                     <li>
+                    <li>
                         <input type="radio" name="accordion" id="sixth" />
                         <label for="sixth">Valid Government issued ID</label>
                         <div class="content">
@@ -245,7 +243,7 @@
                             </div>
                             </div>
                     </div>
-
+                
     <!---Requirements Accordion-->
   
 

@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Http\Controllers\Admin_product;
+
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\ServiceProvider;
 use App\Models\tbl_partner_accounts;
@@ -34,4 +34,5 @@ class AppServiceProvider extends ServiceProvider
             $view->with('logIndata', $logIndata);
         }); 
     }
+    
 }

@@ -26,7 +26,7 @@
             <li>Step 2 &nbsp;&nbsp;&nbsp;Business Information</li>
              <li>Step 3 &nbsp; Verify Email Address</li>
             <li>Step 4 &nbsp; Requirements</li>
-            <li>Step 5 &nbsp; Applicataion Status</li>
+            <li class="red">Step 5 &nbsp; Applicataion Status</li>
             
           </ul>
         </div>
@@ -37,11 +37,11 @@
           <div class="center">
             <img src="image/cashier.png" />
             <h2>Thank you for trusting Foodea</h2>
-            <p>You can now login to your account and</p>
-            <p>start adding your product</p>
+            <p>We have recieved your documents and</p>
+            <p>we will be processing your application.</p>
              
             <br><br>
-            <a class="continue" href="/login">Login</a>
+            <a class="continue" href="/">Done</a>
 
           </div>
         </div>
