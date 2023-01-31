@@ -69,9 +69,16 @@ Route::get('/superadmin_profile', [SuperadminController::class, 'profile']);
 
 Route::get('/superadmin_rider', [SuperadminController::class, 'Rider']);
 
-Route::get('/superadmin_partner', [SuperadminController::class, 'partner']);
+Route::get('/superadmin_partnerapplication', [SuperadminController::class, 'partner']);
 
 Route::get('/superadmin_log', [SuperadminController::class, 'ActivityLog']);
+
+Route::get('/superadmin_riderdetails', [SuperadminController::class, 'RiderDetails']);
+
+Route::get('/superadmin_acceptedrider', [SuperadminController::class, 'AcceptedRider']);
+
+Route::get('/superadmin_acceptedpartner', [SuperadminController::class, 'AcceptedPartner']);
+
 
 Route::get('/login_partner', function () {
     return view('login_partner');

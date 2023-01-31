@@ -54,9 +54,11 @@ class SuperadminController extends Controller
     public function PartnerDetails(){
     return view('superadmin.superadmin_partnerdetails');
    }
+   
    public function partner(){
     return view('superadmin.superadmin_partner');
    }
+
     public function profile(){
     return view('superadmin.superadmin_profile');
    }
@@ -65,5 +67,14 @@ class SuperadminController extends Controller
    }
    public function ActivityLog(){
     return view('superadmin.superadmin_activitylog');
+   }
+    public function RiderDetails(){
+    return view('superadmin.superadmin_riderdetails');
+   }
+   public function AcceptedRider(){
+    return view('superadmin.superadminapplication_accepted_rider');
+   }
+    public function AcceptedPartner(){
+    return view('superadmin.superadminapplication_accepted_partner');
    }
 }
