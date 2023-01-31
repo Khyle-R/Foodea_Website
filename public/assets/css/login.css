@@ -78,6 +78,10 @@ ul {
     height: auto;
 }
 
+.card {
+    border-radius: 12px;
+}
+
 .error {
     color: #cc4040;
     font-family: 'Montserrat',

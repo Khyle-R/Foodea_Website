@@ -36,8 +36,8 @@
     <!-- inject:css -->
     <!-- endinject -->
     <!-- Layout styles -->
-    <link rel="stylesheet" href="assets/css/superadmin_index.css" />
-    
+    <link rel="stylesheet" href="assets/css/style.css" />
+     <link rel="stylesheet" href="assets/css/superadmin.css" />
     <!-- End layout styles -->
     <link rel="shortcut icon" href="../../user/image/foodea1.png" />
   </head>
@@ -52,7 +52,7 @@
             ><img src="assets/images/foodea_logo.PNG" alt="logo"
           /></a>
           <a class="sidebar-brand brand-logo-mini" href="index.html"
-            ><img src="../../user/image/foodea.png" class="w-50" alt="logo"
+            ><img src="/image/foodea.png" class="w-50" alt="logo"
           /></a>
         </div>
         <ul class="nav">
@@ -68,7 +68,10 @@
                   <span class="count bg-success"></span>
                 </div>
                 <div class="profile-name">
+
+
                   <h5 class="mb-0 font-weight-normal">Admin</h5>
+
                   <span>Verified</span>
                 </div>
               </div>
@@ -122,34 +125,56 @@
           <li class="nav-item menu-items">
             <a
               class="nav-link"
-              href="/superadmin_application"
+              data-toggle="collapse"
+              href="#ui-basic"
+              aria-expanded="false"
+              aria-controls="ui-basic"
             >
               <span class="menu-icon">
                 <i class="mdi mdi-book-multiple"></i>
               </span>
               <span class="menu-title">Application</span>
+              <i class="menu-arrow"></i>
             </a>
+            <div class="collapse" id="ui-basic">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item">
+
+                  <a class="nav-link" href="/superadmin_rider"
+
+                    >Riders</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/superadmin_partnerapplication"
+                    >Merchants</a
+                  >
+                </li>
+              </ul>
+            </div>
           </li>
+      
           <li class="nav-item menu-items">
-            <a class="nav-link" href="/superadmin_rider">
+            <a class="nav-link" href="/superadmin_acceptedrider">
               <span class="menu-icon">
-                <i class="mdi mdi-cart"></i>
+                <i class="mdi mdi-cards"></i>
               </span>
               <span class="menu-title">Riders</span>
             </a>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="/superadmin_partner">
+            <a class="nav-link" href="/superadmin_acceptedpartner">
               <span class="menu-icon">
-                <i class="mdi mdi-history"></i>
+                <i class="mdi mdi-library-books"></i>
               </span>
-              <span class="menu-title">Partner Merchant</span>
+              <span class="menu-title">Merchants</span>
             </a>
           </li>
+          
           <li class="nav-item menu-items">
             <a class="nav-link" href="/superadmin_log">
               <span class="menu-icon">
-                <i class="mdi mdi-cards"></i>
+                <i class="mdi mdi-history"></i>
               </span>
               <span class="menu-title">Activity Log</span>
             </a>
@@ -172,7 +197,7 @@
           <div
             class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center"
           >
-            <a class="navbar-brand brand-logo-mini" href="superadmin_index.html"
+            <a class="navbar-brand brand-logo-mini" href="index.html"
               ><img src="../../user/image/foodea.png" class="w-50" alt="logo"
             /></a>
           </div>
@@ -397,7 +422,8 @@
                       alt=""
                     />
                     <p class="mb-0 d-none d-sm-block navbar-profile-name">
-                      Admin
+
+                    Admin
                     </p>
                     <i class="mdi mdi-menu-down d-none d-sm-block"></i>
                   </div>
@@ -419,7 +445,9 @@
                     </div>
                   </a>
                   <div class="dropdown-divider"></div>
+
                   <a href="/superadmin_logout" class="dropdown-item preview-item">
+
                     <div class="preview-thumbnail">
                       <div class="preview-icon bg-dark rounded-circle">
                         <i class="mdi mdi-logout text-danger"></i>
@@ -444,7 +472,7 @@
         </nav>
         <!-- partial -->
         <div class="main-panel">
-         @yield('content')
+          @yield('content')
         <!-- main-panel ends -->
       </div>
       <!-- page-body-wrapper ends -->

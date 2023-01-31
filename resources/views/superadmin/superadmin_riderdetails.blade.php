@@ -46,7 +46,7 @@
 
                                   <div class="row justify-content-between">
                                     <div class="col-sm-5 ml-sm-5">
-                                      <h4 class="title-border flex-wrap mb-4">Personal Information</h4>
+                                      <h4 class="title-border flex-wrap mb-4">Rider Information</h4>
                        
                                        <div class="row px-3">
                                         <label class="black width">First Name</label>
@@ -80,26 +80,26 @@
                                     </div>
 
                                      <div class="col-sm-5 mr-5">
-                                      <h4 class="title-border mb-4">Business Information</h4>
+                                      <h4 class="title-border mb-4">Vehicle Information</h4>
                                       <div class="row px-3">
 
-                                        <label class="black width">Business Type</label>
+                                        <label class="black width">Vehicle Type</label>
                                         <p class=" black ml-5">Andrei Nowell Ong</p>
                                       </div>
                                         <div class="row px-3">
-                                        <label class="black width">Business Number</label>
+                                        <label class="black width">Plate Number</label>
                                         <p class="black ml-5">Andrei Nowell</p>
                                       </div>
                                         <div class="row px-3">
-                                        <label class="black width">Business Address</label>
+                                        <label class="black width">Motorcycle Model</label>
                                         <p class="black ml-5">Andrei Nowell</p>
                                       </div>
                                         <div class="row px-3">
-                                        <label class="black width">City</label>
+                                        <label class="black width">Year Model</label>
                                         <p class="black ml-5">Andrei Nowell</p>
                                       </div>
                                         <div class="row px-3">
-                                        <label class="black width">Barangay</label>
+                                        <label class="black width">Engine Number</label>
                                         <p class="black ml-5">Andrei Nowell</p>
                                       </div>
                                        <div class="row px-3">
@@ -108,22 +108,6 @@
                                       </div>
                                        <div class="row px-3">
                                         <label class="black width">Barangay</label>
-                                        <p class="black ml-5">Andrei Nowell</p>
-                                      </div>
-                                      <div class="row px-3">
-                                        <label class="black width">Facebook URL</label>
-                                        <p class="black ml-5">Andrei Nowell</p>
-                                      </div>
-                                      <div class="row px-3">
-                                        <label class="black width">Website URL</label>
-                                        <p class="black ml-5">Andrei Nowell</p>
-                                      </div>
-                                      <div class="row px-3">
-                                        <label class="black width">Mission</label>
-                                        <p class="black ml-5">Andrei Nowell</p>
-                                      </div>
-                                      <div class="row px-3">
-                                        <label class="black width">Vision</label>
                                         <p class="black ml-5">Andrei Nowell</p>
                                       </div>
                                     </div>
@@ -134,30 +118,33 @@
                                       <h4 class="title-border flex-wrap mb-4">Uploaded Documents</h4>
                        
                                        <div class="row px-3 mt-2">
-                                        <label class="black space">Image Menu</label>
+                                        <label class="black space">2x2 Image Picture</label>
                                            <a class="red-link" href=""><i class="red-icon mdi mdi-check-circle mr-2"></i>View</a>
                                       </div>
                                        <div class="row px-3 mt-2">
-                                        <label class="black space">Business Permit</label>
+                                        <label class="black space">Vehicle Photo</label>
                                         <a class="red-link" href=""><i class="red-icon mdi mdi-check-circle mr-2"></i>View</a>
                                       </div>
                                        <div class="row px-3 mt-2">
-                                        <label class="black space">BIR Certificate</label>
+                                        <label class="black space">Certificate of Registration</label>
                                         <a class="red-link" href=""><i class="red-icon mdi mdi-check-circle mr-2"></i>View</a>
                                       </div>
                                        <div class="row px-3 mt-2">
-                                        <label class="black space">Barangay Permit</label>
+                                        <label class="black space">Official Receipt of Vehicle Registration</label>
                                          <a class="red-link" href=""><i class="red-icon mdi mdi-check-circle mr-2"></i>View</a>
                                       </div>
                                        <div class="row px-3 mt-2">
-                                        <label class="black space">DTI Certificate</label>
+                                        <label class="black space">Professional drivers license ID</label>
                                         <a class="red-link" href=""><i class="red-icon mdi mdi-check-circle mr-2"></i>View</a>
                                       </div>
                                        <div class="row px-3 mt-2">
-                                        <label class="black space">Valid Government ID</label>
+                                        <label class="black space">NBI Clearance</label>
                                         <a class="red-link" href=""><i class="red-icon mdi mdi-check-circle mr-2"></i>View</a>
                                       </div>
-                                     
+                                       <div class="row px-3 mt-2">
+                                        <label class="black space">Drugtest Result</label>
+                                        <a class="red-link" href=""><i class="red-icon mdi mdi-check-circle mr-2"></i>View</a>
+                                      </div>
                          
                                     </div>
                                      <div class="col-sm-5">

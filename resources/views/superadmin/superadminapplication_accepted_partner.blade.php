@@ -5,14 +5,14 @@
                           
                         </div>
                         <div class="page-header">
-                            <h3 class="page-title black">Rider Application</h3>
+                            <h3 class="black page-title">Merchants</h3>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">
                                         <a href="#">Menu</a>
                                     </li>
                                     <li class="breadcrumb-item active" aria-current="page">
-                                        Product
+                                        Merchants
                                     </li>
                                 </ol>
                             </nav>
@@ -138,11 +138,11 @@
                                                                 </label>
                                                             </div>
                                                         </th>
-                                                        <th>Applicant ID</th>
+                                                        <th>Company ID</th>
                                                         <th>Date Applied</th>
-                                                        <th>Vehicle Type</th>
-                                                        <th>Documents</th>
-                                                        <th>Status</th>
+                                                        <th>Business Type</th>
+                                                        <th>Contact</th>
+                                                        <th>Ratings</th>
                                                         <th>Action</th>
                                                     </tr>
                                                 </thead>  
@@ -158,16 +158,14 @@
                                                         <td></td>
                                                         <td></td>
                                                         <td></td>
-                                                        <td>
-                                                            <a class="red-icon d-flex align-items-center" href="">
-                                                            <i class="icons mdi mdi-file-check"></i>
-                                                            <span class="ml-1">Review</span>
-                                                            </a>
-                                                        </td>
-                                                        <td></td>
+                                                        <td> <a class="red-icon d-flex align-items-center" href="">
+                                                            <i class="icons mdi mdi-email"></i>
+                                                            <span class="ml-1">Email</span>
+                                                            </a></td>
+                                                            <td></td>
                                                         <td>
                                                             <div class="row">
-                                                                <a href="/superadmin_riderdetails" class="view-details badge badge-outline-success mr-3">
+                                                                <a href="/superadmin_partnerdetails" class="view-details badge badge-outline-success mr-3">
                                                                     View Details
                                                                 </a>
 

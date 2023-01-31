@@ -1,109 +1,239 @@
 @extends('superadmin.superadmin_index')
 @section('content')
-          <div class="content-wrapper">
-          
-            <!-- partner table buttons -->
-            <div class="row justify-content-sm-start px-3">
-              <p  style="color: black; font-weight: bold;">Showing 3 Applicants</p>
-              <span>
-              <button type="button" class="btn btn-link btn-danger btn-rounded active text-decoration-none  font-weight-normal ml-4">All</button>
-              </span>
-             </div>
-             
-              <h4 class="card-title"></h4>
-              <div class="row justify-content-sm-between px-2 mb-2">
-                <div class="text-dark px-1 small">
-                    <label>All</label>
-                  </div>
-                <div class="dropdown">
-                  <button
-                    class="btn btn-secondary dropdown-toggle py-2 px-3 rounded"
-                    type="button"
-                    id="dropdownMenuButton"
-                    data-toggle="dropdown"
-                    aria-haspopup="true"
-                    aria-expanded="false"
-                  >
-                    Newest
-                  </button>
-                  <div
-                    class="dropdown-menu"
-                    aria-labelledby="dropdownMenuButton"
-                  >
-                    <a class="dropdown-item" href="#">Ascending</a>
-                    <a class="dropdown-item" href="#">Descending</a>
-                  </div>
-                </div>
-              </div>
-            
-           
-           <!-- partner table -->
-            <div class="row">
-                <div class="col-12 grid-margin">
-                  <div class="card">
-                    <div class="card-body">  
-                      <div class="table-responsive">
-                        <table class="table">
-                          <thead>
-                            <tr>
-                              <th>ID</th>
-                              <th>Activity Description</th>
-                              <th>Logged In</th>
-                              <th>Logged Out</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>
-                                <span class="pl-2">bc1qxy2kgdygjrsqtz</span>
-                              </td>
-                              <td>
-                                Accepts Rider
-                              </td>
-                              <td>2023-02-22 12:51:052</td>
-                              <td>2023-02-22 12:51:055</td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <span class="pl-1">bc1qxy2kgdygjrsqtz</span>
-                              </td>
-                              <td>
-                                Accepts Partner Merchant
-                              </td>
-                              <td>2023-02-22 12:51:053</td>
-                              <td>2023-02-22 12:51:056</td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <span class="pl-2">bc1qxy2kgdygjrsqtz</span>
-                              </td>
-                              <td>
-                                Reject Rider
-                              </td>
-                              <td>2023-02-22 12:51:054</td>
-                              <td>2023-02-22 12:51:057</td>
-                            </tr>
-                          </tbody>
-                        </table>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+         <div class="content-wrapper">
+                 <div class="row">
+                          
+                        </div>
+                        <div class="page-header">
+                            <h3 class="page-title black">Rider Application</h3>
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item">
+                                        <a href="#">Menu</a>
+                                    </li>
+                                    <li class="breadcrumb-item active" aria-current="page">
+                                        Product
+                                    </li>
+                                </ol>
+                            </nav>
+                        </div>
+                        <div class="row">
+                            <div class="col-12 grid-margin">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div
+                                            class="row justify-content-sm-between px-3 mb-3"
+                                        >
+                                            <h5 class="card-title">
+                                                Showing 3 Activity
+                                            </h5>
+                                            <div class="d-flex flex-wrap">
+                                               
+                                                <div class="dropdown">
+                                                    <button
+                                                        class="but-cat btn btn-secondary dropdown-toggle py-2 px-3 rounded mb-2 mb-sm-0"
+                                                        type="button"
+                                                        id="dropdownMenuButton"
+                                                        data-toggle="dropdown"
+                                                        aria-haspopup="true"
+                                                        aria-expanded="false"
+                                                    >
+                                                        Status
+                                                    </button>
+                                                    <div
+                                                        class="dropdown-menu"
+                                                        aria-labelledby="dropdownMenuButton"
+                                                    >
+                                                        <a
+                                                            class="dropdown-item"
+                                                            href="#"
+                                                            >Pending</a
+                                                        >
+                                                        <a
+                                                            class="dropdown-item"
+                                                            href="#"
+                                                            >On-hold</a
+                                                        >
+                                                          <a
+                                                            class="dropdown-item"
+                                                            href="#"
+                                                            >Rejected</a
+                                                        >
+                                                    </div>
+                                                </div>
 
-          <!-- content-wrapper ends -->
-          <!-- partial:partials/_footer.html -->
-          <footer class="footer">
-            <div
-              class="d-sm-flex justify-content-center justify-content-sm-between"
-            >
-              <span
-                class="text-muted d-block text-center text-sm-left d-sm-inline-block"
-                >Copyright © 2022. All Rights Reserved</span
-              >
-             
-            </div>
-          </footer>
-          <!-- partial -->
-        </div>
-    @endsection
+                                                <div class="dropdown">
+                                                    <button
+                                                        class="but-cat btn btn-secondary dropdown-toggle py-2 px-3 rounded mx-1 mx-sm-3 mb-3 mb-xs-0"
+                                                        type="button"
+                                                        id="dropdownMenuButton"
+                                                        data-toggle="dropdown"
+                                                        aria-haspopup="true"
+                                                        aria-expanded="false"
+                                                    >
+                                                        Select Order
+                                                    </button>
+                                                    <div
+                                                        class="dropdown-menu"
+                                                        aria-labelledby="dropdownMenuButton"
+                                                    >
+                                                        <a
+                                                            class="dropdown-item"
+                                                            href="#"
+                                                            >Ascending</a
+                                                        >
+                                                        <a
+                                                            class="dropdown-item"
+                                                            href="#"
+                                                            >Descending</a
+                                                        >
+                                                    </div>
+                                                </div>
+                                                 <div class="dropdown">
+                                                    <button
+                                                        class="but-cat btn btn-secondary dropdown-toggle py-2 px-3 rounded"
+                                                        type="button"
+                                                        id="dropdownMenuButton"
+                                                        data-toggle="dropdown"
+                                                        aria-haspopup="true"
+                                                        aria-expanded="false"
+                                                    >
+                                                        Select Order
+                                                    </button>
+                                                    <div
+                                                        class="dropdown-menu"
+                                                        aria-labelledby="dropdownMenuButton"
+                                                    >
+                                                        <a
+                                                            class="dropdown-item"
+                                                            href="#"
+                                                            >Ascending</a
+                                                        >
+                                                        <a
+                                                            class="dropdown-item"
+                                                            href="#"
+                                                            >Descending</a
+                                                        >
+                                                    </div>
+                                                </div>
+                                            </div>
+                                       
+                                        </div>
+                                          
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <thead class="table-danger">
+                                                    <tr>
+                                                        <th>
+                                                            <div
+                                                                class="form-check form-check-muted m-0"
+                                                            >
+                                                                <label
+                                                                    class="form-check-label"
+                                                                >
+                                                                    <input
+                                                                        type="checkbox"
+                                                                        class="form-check-input"
+                                                                    />
+                                                                </label>
+                                                            </div>
+                                                        </th>
+                                                        <th>Activity ID</th>
+                                                        <th>Activity Description</th>
+                                                        <th>Logged In</th>
+                                                        <th>Logged Out</th>
+                                                    </tr>
+                                                </thead>  
+                                                <tbody>
+                                                   
+                                                    <tr>
+                                                        <td>
+                                                            <div class="form-check form-check-muted m-0">
+                                                                <label class="form-check-label"> <input type="checkbox"class="form-check-input"/></label>
+                                                            </div>
+                                                        </td>
+                                                       
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                        <td></td>
+                                                    
+                                                     
+                                                    </tr>
+                                           
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                        <ul
+                                            class="pagination pt-2 align-items-center justify-content-center justify-content-sm-end"
+                                        >
+                                            <li class="page-item">
+                                                <a
+                                                    class="page-link"
+                                                    href="#"
+                                                    aria-label="Previous"
+                                                >
+                                                    <span aria-hidden="true"
+                                                        >&laquo;</span
+                                                    >
+                                                </a>
+                                            </li>
+                                            <li class="page-item">
+                                                <a class="page-link" href="#"
+                                                    >1</a
+                                                >
+                                            </li>
+                                            <li class="page-item">
+                                                <a class="page-link" href="#"
+                                                    >2</a
+                                                >
+                                            </li>
+                                            <li class="page-item">
+                                                <a class="page-link" href="#"
+                                                    >3</a
+                                                >
+                                            </li>
+                                            <li class="page-item">
+                                                <a
+                                                    class="page-link"
+                                                    href="#"
+                                                    aria-label="Next"
+                                                >
+                                                    <span aria-hidden="true"
+                                                        >&raquo;</span
+                                                    >
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- content-wrapper ends -->
+                    <!-- partial:../../partials/_footer.html -->
+                    <footer class="footer">
+                        <div
+                            class="d-sm-flex justify-content-center justify-content-sm-between"
+                        >
+                            <span
+                                class="text-muted d-block text-center text-sm-left d-sm-inline-block"
+                                >Copyright © bootstrapdash.com 2020</span
+                            >
+                            <span
+                                class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"
+                            >
+                                Free
+                                <a
+                                    href="https://www.bootstrapdash.com/bootstrap-admin-template/"
+                                    target="_blank"
+                                    >Bootstrap admin templates</a
+                                >
+                                from Bootstrapdash.com</span
+                            >
+                        </div>
+                    </footer>
+                    <!-- partial -->
+                </div>
+        @endsection

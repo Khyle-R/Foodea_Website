@@ -16,7 +16,9 @@
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
         />
         <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
            <link rel="stylesheet" type="text/css" href="assets/css/login.css" />
+           
         <title>Document</title>
     </head>
     <body>
@@ -54,7 +56,9 @@
                         <div class="card border-0 shadow">
                             <div class="card-body px-5 ">
                                 <div class="text-center">
+                                    <a href="/">
                                   <img src="image/foodea4.png" alt="">
+                                  </a>
                                 </div>
                                 <form method="post" action="{{ route('login.LoginAdmin') }}" class="mt-4">
                                    @csrf

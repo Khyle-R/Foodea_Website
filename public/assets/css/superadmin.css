@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
+.view-details {
+    border-radius: 15px;
+    background-color: #6028cd;
+    color: #fff;
+    border-color: #6028cd;
+    padding: 10px 20px;
+}
+
+.view-details:hover {
+    background-color: #421c8f;
+    color: #fff;
+}
+
+.icons {
+    font-size: 17px;
+}
+
+.red-icon {
+    color: #F54748;
+
+}
+
+.red-link {
+    color: #F54748;
+    font-size: 15px;
+}
+
+.red-icon:hover {
+    text-decoration: none;
+    color: #ff0404;
+}
+
+.red-name {
+    color: #F54748;
+    font-size: 19px;
+    font-family: 'Montserrat',
+        sans-serif;
+    font-weight: 600;
+}
+
+.sub-text {
+    color: rgba(0, 0, 0, 0.671);
+    font-size: 15px;
+    font-family: 'Montserrat',
+        sans-serif;
+}
+
+.but-cat {
+    background-color: #fff;
+    box-shadow: 1px 2px 10px #88888848;
+}
+
+.white {
+    border-color: #fff;
+}
+
+.yellow {
+    color: #FDC55E;
+    letter-spacing: 2px;
+    font-family: 'Montserrat',
+        sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.black {
+    color: rgba(0, 0, 0, 0.575);
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.curve {
+    border-radius: 20px;
+    background-color: #fcf7ea;
+    border: 1px solid #FDC55E;
+}
+
+.circle {
+    border-radius: 100px;
+    border: 1px solid rgba(0, 0, 0, 0.089);
+}
+
+.card-pending {
+    width: 95%;
+    border: none;
+
+}
+
+.title-border {
+    border-bottom: 2px solid rgba(0, 0, 0, 0.137);
+
+}
+
+.width {
+    width: 135px;
+    display: inline-block;
+    text-align: left;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.705);
+}
+
+
+.space {
+    width: 300px;
+    display: inline-block;
+    text-align: left;
+}
+
+.button-white {
+    border-color: #F54748;
+    background-color: #fff;
+    color: #F54748;
+    border-radius: 20px;
+    padding: 1rem 5rem;
+}
+
+.button-white:hover {
+    background-color: #F54748;
+    color: #ffffff;
+
+}
+
+.button-red {
+    border-color: #F54748;
+    background-color: #F54748;
+    color: #fff;
+    border-radius: 20px;
+    padding: 1rem 5rem;
+}
