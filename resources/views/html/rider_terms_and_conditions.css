@@ -83,20 +83,11 @@ h1 {
   overflow-y: auto;
   font-size: 12px;
   font-weight: 500;
-  color: #d03838;
+  color: rgba(0, 0, 0, 0.822);
 }
-.terms-text h3 {
+.terms-text h6 {
   text-transform: uppercase;
-}
-
-.terms-box h4 {
-  font-size: 15px;
-  text-align: auto;
-  padding: 0 5px;
-}
-
-.terms-box h4 span {
-  color: #d8900a;
+  color: #f54748;
 }
 
 /* FOOTER */
