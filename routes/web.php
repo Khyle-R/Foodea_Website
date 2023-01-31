@@ -188,7 +188,7 @@ Route::get('account',  function(){
 });
 
 Route::get('business',  function(){
-    return view('admin.admin_businessinformation');
+    return view('admin.admin_businessinformation1');
 });
 
 Route::get('document',  function(){

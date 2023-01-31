@@ -20,7 +20,15 @@
     {{-- Admin Personal info disable  inputs --}}
      <script>
       $(document).ready(function(){
-          $("#myForm :input").prop("disabled", true);
+          $("#myForm_Account :input").prop("disabled", true);
+          $("#save_info").hide(0);
+      });
+    </script>
+
+    {{-- Admin Business info disable  inputs --}}
+    <script>
+      $(document).ready(function(){
+          $("#myForm_Business :input").prop("disabled", true);
           $("#save_info").hide(0);
       });
     </script>
@@ -512,11 +520,11 @@
     {{-- DataTable plugins --}}
     <script src="//cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
 
-    <script>
-      $(document).ready( function () {
-        $('#myProduct').DataTable();
-    } );
-    </script>
+<script>
+  $(document).ready( function () {
+    $('#myProduct').DataTable();
+} );
+</script>
 
 <script>
   $(document).ready( function () {

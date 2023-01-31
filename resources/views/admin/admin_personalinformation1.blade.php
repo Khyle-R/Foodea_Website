@@ -117,13 +117,13 @@
                       
                   
                         
-                        <a class="btn btn-link text-decoration-none get-started-btn " style="font-size: 15px;" href="admin_businessinformation1.html">Business Information</a>
+                        <a class="btn btn-link text-decoration-none get-started-btn " style="font-size: 15px;" href="/business">Business Information</a>
                     
                     <a class="btn btn-warning btn-rounded get-started-btn" id="edit_info" style="margin-left: 120px;">Edit Profile</a>
                     <a class="btn btn-warning btn-rounded get-started-btn" id="save_info" style="margin-left: 100px;">Save Profile</a>
                     </div>
                     <div class="card-body">
-                    <form class="form-sample" id="myForm">
+                    <form class="form-sample" id="myForm_Account">
                       <p class="card-description">   </p>
                       <div class="row">
                         <div class="col-md-6">
@@ -228,7 +228,7 @@
 
         <script>
           $( "#edit_info" ).click(function() {
-            $("#myForm :input").prop("disabled", false);
+            $("#myForm_Account :input").prop("disabled", false);
             $("#edit_info").hide(500);
             $("#save_info").show(500);
         });
@@ -236,7 +236,7 @@
 
         <script>
           $("#save_info").click(function () {
-            $("#myForm :input").prop("disabled", true);
+            $("#myForm_Account :input").prop("disabled", true);
             $("#save_info").hide(500);
             $("#edit_info").show(500);
           });

@@ -111,17 +111,18 @@
                   
                      <div class="card-header">
                       
-                      <a class="btn btn-link text-decoration-none get-started-btn " style="font-size: 15px;"  href="admin_personalinformation1.html">Profile Information</a>
+                      <a class="btn btn-link text-decoration-none get-started-btn " style="font-size: 15px;"  href="/account">Profile Information</a>
                         
                       
                   
                         
-                        <a class="btn btn-link text-decoration-none get-started-btn " style="font-size: 15px;" href="admin_businessinformation1.html">Business Information</a>
+                        <a class="btn btn-link text-decoration-none get-started-btn " style="font-size: 15px;" href="/business">Business Information</a>
                     
-                    <a class="btn btn-warning btn-rounded get-started-btn" style="margin-left: 120px;">Edit Profile</a>
+                    <a class="btn btn-warning btn-rounded get-started-btn" id="edit_info" style="margin-left: 120px;">Edit Profile</a>
+                   <a class="btn btn-warning btn-rounded get-started-btn" id="save_info" style="margin-left: 100px;">Save Profile</a>
                     </div>
                     <div class="card-body">
-                    <form class="form-sample">
+                    <form class="form-sample" id="myForm_Business">
                       <p class="card-description">   </p>
                       <div class="row">
                         <div class="col-md-6">
@@ -223,4 +224,20 @@
           </footer>
           <!-- partial -->
         </div>
+
+        <script>
+          $( "#edit_info" ).click(function() {
+            $("#myForm_Business :input").prop("disabled", false);
+            $("#edit_info").hide(500);
+            $("#save_info").show(500);
+        });
+        </script>
+
+        <script>
+          $("#save_info").click(function () {
+            $("#myForm_Business :input").prop("disabled", true);
+            $("#save_info").hide(500);
+            $("#edit_info").show(500);
+          });
+        </script>
  @endsection
