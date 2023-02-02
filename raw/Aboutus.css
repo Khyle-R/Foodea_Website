@@ -41,19 +41,6 @@ ul {
   flex-wrap: wrap;
 }
 
-nav .navbar-brand span{
-  font-size: clamp(0.75rem, 0.5040rem + 1.3120vw, 1.16rem);
-  position:relative;
-  text-decoration: none;
-  color: #363636;
-  font-weight: bold;
-  font-family: "Montserrat", sans-serif;
- }
-
-.navbar-brand>img {
-  width: clamp(0.140625rem, -1.4625rem + 8.5500vw, 2.8125rem);
-}
-
 .logo {
   display: flex;
   flex-direction: row;
@@ -114,11 +101,6 @@ nav .navbar-brand span{
   font-family: "Montserrat", sans-serif;
 }
 
-.partnerbtn{
-  position: inherit;
-  width: 20px;
-}
-
 .section {
   width: 70%;
   margin: 100px auto;
@@ -127,13 +109,8 @@ nav .navbar-brand span{
   justify-content: space-between;
 }
 
-.tagline{
-  font-size: clamp(2rem,1rem + 10vw,75px);
-}
-
 .content {
-  display: block;
-  flex-direction: column;
+  margin-top: 40px;
 }
 
 .content span {
@@ -173,7 +150,8 @@ nav .navbar-brand span{
 }
 
 .image img {
-  width: clamp(22.5rem, -4.8214rem + 48.5714vw, 43.75rem);
+  width: 650px;
+  height: 500px;
 }
 
 .section-2 {
@@ -190,8 +168,8 @@ nav .navbar-brand span{
 }
 
 .service img {
-  width:300px;
-  height: 265px;
+  width: 290px;
+  height: 250px;
 }
 
 .rider,
@@ -215,12 +193,11 @@ nav .navbar-brand span{
 .market p,
 .phone p {
   width: 50%;
-  margin: 10px auto;
+  margin: 20px auto;
   opacity: 80%;
   font-family: "Montserrat", sans-serif;
   line-height: 25px;
 }
-
 
 .rider a,
 .market a,
@@ -229,7 +206,6 @@ nav .navbar-brand span{
   color: #f54748;
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
-  text-decoration: none;
 }
 
 .rider a:hover,
@@ -240,13 +216,13 @@ nav .navbar-brand span{
 }
 
 .info-section {
-  width: 80%;
+  width: 70%;
   margin: 100px auto;
   display: flex;
   flex-direction: row;
-  padding-bottom: 30px;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .image2 img {
@@ -260,9 +236,8 @@ nav .navbar-brand span{
 }
 
 .delivery h3 {
-  width: 65%;
+  width: 45%;
   margin: 30px auto;
-  font-size: clamp(1rem, -0.9853rem + 3.5294vw, 1.75rem);
   font-family: "Montserrat", sans-serif;
   color: #333131;
   line-height: 35px;
@@ -273,7 +248,6 @@ nav .navbar-brand span{
 .delivery p {
   width: 65%;
   margin: 0 auto;
-  font-size: clamp(0.8rem, 0.2706rem + 0.9412vw, 1rem);
   font-family: "Montserrat", sans-serif;
   opacity: 75%;
   line-height: 25px;
@@ -447,12 +421,6 @@ nav .navbar-brand span{
   padding: 70px 0;
 }
 
-.icon{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 .icon img {
   width: 130px;
   height: 60px;
@@ -480,12 +448,8 @@ nav .navbar-brand span{
 .dark-content {
   width: 60%;
   margin: 0 auto;
-  font-size: clamp(0.7rem, 0.5000rem + 0.8000vw, 1rem);
   color: #fff;
   font-family: "Montserrat", sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 /* END FOOTER*/
@@ -496,115 +460,20 @@ nav .navbar-brand span{
     font-family: "Montserrat", sans-serif;
     font-weight: bold;
   }
-  
-  .rider p,
-  .market p,
-  .phone p {
-    width: 70%;
-    margin: 0px auto;
-    opacity: 80%;
-    font-family: "Montserrat", sans-serif;
-    line-height: 25px;
-  }
-  
-  .rider a,
-  .market a,
-  .phone a {
-    opacity: 80%;
-    color: #f54748;
-    font-family: "Montserrat", sans-serif;
-    font-weight: 600;
-    text-decoration: none;
-  }
-
-  .info-section {
-    width: 80%;
-    margin: 100px auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .delivery {
-    width: 80%;
-    text-align: center;
-  }
-  
-  .delivery h3 {
-    width: 65%;
-    margin: 30px auto;
-    font-size: 32px;
-    font-family: "Montserrat", sans-serif;
-    color: #333131;
-    line-height: 35px;
-    font-weight: bold;
-    opacity: 85%;
-  }
-  
-  .delivery p {
-    width: 65%;
-    margin: 0 auto;
-    font-size: 1rem;
-    font-family: "Montserrat", sans-serif;
-    opacity: 75%;
-    line-height: 25px;
-    text-align: center;  
-}
-
-@media (max-width:630px){
-  .px-5 {
-    padding-left: (0 * .3) !important;
-    padding-right: (0 * .3) !important;
-  }
-
-  .mx-5 {
-    margin-left: (0 * .3) !important;
-    margin-right: (0 * .3) !important;
-  }
-
-  .section-2 {
-    width: 90%;
-  }
 
   .section {
-    width: 70%;
-    margin: 20px auto;
-  }
-  
-  .service {
-    flex-direction: column;
+    display: block;
   }
 
-  .service img {
-    width: clamp(15.625rem, 4.6094rem + 37.5000vw, 19.375rem);
+  .image {
+    display: none;
   }
-  
+
   .rider,
   .market,
   .phone {
-    width: 70%;
-  }
-
-  .phone {
-    padding-bottom: 40px;
-  }
-  
-  .rider h3,
-  .market h3,
-  .phone h3 {
-    font-size: 24px;
-  }
-  
-  .rider p,
-  .market p,
-  .phone p {
-    width:60%;
-    line-height: 25px;
-  }
-
-  .info-section {
-    width: 100%;
-    margin: 0px auto;
+    width: auto;
+    margin: auto;
+    text-align: center;
   }
 }

@@ -2,7 +2,10 @@
 
 namespace App\Providers;
 
+use App\Http\Controllers\Admin_product;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\ServiceProvider;
+use App\Models\tbl_partner_accounts;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -22,7 +25,13 @@ class AppServiceProvider extends ServiceProvider
      * @return void
      */
     public function boot()
-    {
-        //
+    {   
+        view()->composer(['admin.index', 'admin.dashboard'],function ($view){
+         $logIndata = array();
+        if(Session::has('loginID')){
+            $logIndata = tbl_partner_accounts::where('merchant_id', '=', Session::get('loginID'))->first();
+        }
+            $view->with('logIndata', $logIndata);
+        }); 
     }
 }
