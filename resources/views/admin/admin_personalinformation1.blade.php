@@ -130,7 +130,7 @@
                           <div class="form-group row">
                             <p class="text-dark" style="padding-left: 15px;" >First Name</p>
                             <div class="col-sm-10">
-                              <input type="text" class="form-control" style="border-radius: 10px;">
+                              <input type="text" class="form-control" style="border-radius: 10px;" value="{{$accountInfo->firstname}}">
                             </div>
                           </div>
                         </div>
@@ -148,7 +148,7 @@
                           <div class="form-group row">
                             <p class="text-dark" style="padding-left: 15px;">Middle Name</p>
                             <div class="col-sm-10">
-                              <input type="text" class="form-control" style="border-radius: 10px;">
+                              <input type="text" class="form-control" style="border-radius: 10px;" value="{{ $accountInfo->middlename}}">
                             </div>
                           </div>
                         </div>
@@ -156,7 +156,7 @@
                           <div class="form-group row">
                             <p class="text-dark" style="padding-left: 15px;" >Email Address</p>
                             <div class="col-sm-10">
-                              <input type="text" class="form-control" style="border-radius: 10px;">
+                              <input type="text" class="form-control" style="border-radius: 10px;" value="{{ $accountInfo->email}}">
                             </div>
                           </div>
                         </div>
@@ -166,7 +166,7 @@
                           <div class="form-group row">
                             <p class="text-dark" style="padding-left: 15px;">Last Name</p>
                             <div class="col-sm-10" style="padding-left: 15px;">
-                              <input type="text" class="form-control" style="border-radius: 10px;">
+                              <input type="text" class="form-control" style="border-radius: 10px;" value="{{$accountInfo->lastname}}">
                             </div>
                           </div>
                         </div>
@@ -174,7 +174,7 @@
                           <div class="form-group row">
                             <p class="text-dark" style="padding-left: 15px;">Facebook URL</p>
                             <div class="col-sm-10">
-                              <input type="text" class="form-control" style="border-radius: 10px;">
+                              <input type="text" class="form-control" style="border-radius: 10px;" value="{{$accountInfo->facebook_url}}">
                             </div>
                           </div>
                         </div>
@@ -184,7 +184,7 @@
                           <div class="form-group row">
                             <p class="text-dark" style="padding-left: 15px;">Address &nbsp &nbsp &nbsp</p>
                             <div class="col-sm-10">
-                              <input type="text" class="form-control" style="border-radius: 10px;">
+                              <input type="text" class="form-control" style="border-radius: 10px;" value="{{$accountInfo->address}}">
                             </div>
                           </div>
                         </div>
@@ -199,7 +199,13 @@
                       </div>
                       <div class="form-group">
                         <p class="text-dark" style="padding-left: 15px;">About us</p>
-                        <textarea class="form-control" id="exampleTextarea1" rows="10" style="border-radius: 10px;"></textarea>
+                        <textarea class="form-control" id="exampleTextarea1" rows="10" style="border-radius: 10px;" >
+                          Mission
+                          {{$accountInfo->mission}}
+                          <br>
+                          Vision
+                          {{$accountInfo->vision}}
+                        </textarea>
                       </div>
 
                     </form>

@@ -240,18 +240,18 @@
                                                                 {{-- <a href="product/update/{{ $data ->product_id}}" class="badge badge-outline-success mr-3">
                                                                     Edit Product 
                                                                 </a> --}}
-                                                                 <button href="" data-id={{$data->product_id}} class="updateButton badge badge-outline-success mr-3" id="updateButton">
+                                                                 {{-- <button href="" data-id={{$data->product_id}} class="updateButton badge badge-outline-success mr-3" id="updateButton">
                                                                     Edit Product 
-                                                                 </button>
+                                                                 </button> --}}
                                                             <!-- Button trigger modal -->
-                                                            {{-- <button type="button" class="btn btn-success updateButton" data-toggle="modal" data-id={{$data->product_id}} data-target="#EditModal"> Remove Product</button>
+                                                            <button type="button" class="btn btn-success updateButton" data-toggle="modal" data-id={{$data->product_id}} data-target="#EditModal"> Edit Product</button>
                                                             <!-- Modal -->
                                                             <div class="modal fade" id="EditModal" tabindex="-1" aria-labelledby="EditModalLabel" aria-hidden="true">
                                                                 <div class="modal-dialog modal-dialog-centered">
                                                                     <div class="modal-content">
                                                                         <div class="modal-header">
                                                                             <h6 class="text-light" class="modal-title fs-5" id="deleteModalLabel">
-                                                                                Delete Product
+                                                                                Update Product
                                                                             </h6>
                                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                         </div>
@@ -259,17 +259,17 @@
                                                                             class="modal-body">
                                                                             <form class="forms-sample" action="{{route('product.updateProductInfo')}}" method="post" enctype="multipart/form-data">
                                                                                 @csrf 
-                                                                                <input type="hidden" value="" name="product_id">
+                                                                                
                                                                                 <div class="form-group">
                                                                                   <label for="exampleInputName1" class="blackk">Product Name</label>
-                                                                                  <input type="text" class="form-control" id="exampleInputName1" placeholder="Name" value="" name="product_name"/>
+                                                                                  <input type="text" class="form-control" id="exampleInputName1" placeholder="Name" value="{{$data->product_name}}" name="product_name"/>
                                                                                   <span class="gray">Do not exceed 20 characters when entering the product name.</span>
                                                                                 </div>
                                                                                 <div class="row">
                                                                                   <div class="col form-group">
                                                                                     <label for="exampleSelectGender" class="blackk">Category</label>
-                                                                                    <select class="form-control"  id="exampleSelectGender" style="border: 1px solid" name="category">
-                                                                                      <option></option>
+                                                                                    <select class="form-control"  id="exampleSelectGender" style="border: 1px solid" name="category" >
+                                                                                      <option>{{$data->category_id}}</option>
                                                                                       <option >Chicken</option>
                                                                                       <option>Pork</option>
                                                                                     </select>
@@ -286,31 +286,29 @@
                                                       
                                                                                 <div class="form-group">
                                                                                   <label for="exampleTextarea1" class="blackk">Description</label>
-                                                                                  <textarea class="form-control"id="exampleTextarea1"rows="4" placeholder="" name="description"></textarea>
+                                                                                  <textarea class="form-control"id="exampleTextarea1"rows="4" placeholder="" name="description">{{$data->description}}</textarea>
                                                                                   <span class="gray">Do not exceed 100 characters when entering the product details.</span>
                                                                                 </div>
-                                                                              
-                                                                            
-                                                                           
+
                                                       
                                                                                 <div class="form-group">
                                                                                   <div class="file-loading">
-                                                                                    <input id="file-1" type="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="1" data-theme="fa5" value="" name="product_image"/>
+                                                                                    <input id="file-1" type="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="1" data-theme="fa5" value="{{$data->product_image}}" name="product_image"/>
                                                                                   </div>
                                                                                 </div>
                                                                                 <div class="row">
                                                                                   <div class="col-md">
                                                                                     <label for="exampleInputName1" class="blackk">Price</label>
-                                                                                    <input type="text"class="form-control" id="exampleInputName1" placeholder="" value="" name="price"/>
+                                                                                    <input type="text"class="form-control" id="exampleInputName1" placeholder="" value="{{$data->price}}" name="price"/>
                                                                                   </div>
                                                                                   <div class="col-md">
                                                                                     <label for="exampleInputName1" class="blackk">Stock</label>
-                                                                                    <input type="text"class="form-control" id="exampleInputName1" placeholder="" value="" name="stock"/>
+                                                                                    <input type="text"class="form-control" id="exampleInputName1" placeholder="" value="{{$data->stock}}" name="stock"/>
                                                                                   </div>
                                                                                   <div class="col-md">
                                                                                     <label for="exampleSelectGender" class="blackk">Status</label>
                                                                                     <select  class="form-control" id="exampleSelectGender" style="border: 1px solid" name="status">
-                                                                                      <option></option>
+                                                                                      <option>{{$data->status}}</option>
                                                                                       <option>Active</option>
                                                                                       <option>Disabled</option>
                                                                                     </select>
@@ -330,7 +328,7 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div> --}}
+                                                            </div>
 
                                                                 <!-- Button trigger modal -->
                                                                 <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal"> Remove Product</button>
@@ -457,4 +455,5 @@
                     </footer>
                     <!-- partial -->
                 </div>
+
            @endsection

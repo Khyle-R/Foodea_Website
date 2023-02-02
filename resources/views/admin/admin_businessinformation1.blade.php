@@ -129,7 +129,7 @@
                           <div class="form-group row">
                             <p class="text-dark" style="padding-left: 15px;">Business Name</p>
                             <div class="col-sm-10">
-                              <input type="text" class="form-control" style="border-radius: 10px;">
+                              <input type="text" class="form-control" style="border-radius: 10px;" value="{{$businessInfo->business_name}}">
                             </div>
                           </div>
                         </div>
@@ -137,7 +137,7 @@
                           <div class="form-group row">
                             <p class="text-dark" style="padding-left: 15px;">Barangay</p>
                             <div class="col-sm-10">
-                              <input type="text" class="form-control" style="border-radius: 10px;">
+                              <input type="text" class="form-control" style="border-radius: 10px;"value="{{$businessInfo->barangay}}">
                             </div>
                           </div>
                         </div>
@@ -147,7 +147,7 @@
                           <div class="form-group row">
                             <p class="text-dark" style="padding-left: 15px;">Business Type</p>
                             <div class="col-sm-10">
-                              <input type="text" class="form-control" style="border-radius: 10px;">
+                              <input type="text" class="form-control" style="border-radius: 10px;"value="{{$businessInfo->business_type}}">
                             </div>
                           </div>
                         </div>
@@ -155,7 +155,7 @@
                           <div class="form-group row">
                             <p class="text-dark" style="padding-left: 15px;">Number of Branches</p>
                             <div class="col-sm-10">
-                              <input type="text" class="form-control" style="border-radius: 10px;">
+                              <input type="text" class="form-control" style="border-radius: 10px;"value="{{$businessInfo->braches}}">
                             </div>
                           </div>
                         </div>
@@ -165,7 +165,7 @@
                           <div class="form-group row">
                             <p class="text-dark" style="padding-left: 15px;">Business Address</p>
                             <div class="col-sm-10">
-                              <input type="text" class="form-control" style="border-radius: 10px;">
+                              <input type="text" class="form-control" style="border-radius: 10px;"value="{{$businessInfo->address}}">
                             </div>
                           </div>
                         </div>
@@ -173,7 +173,7 @@
                           <div class="form-group row">
                             <p class="text-dark" style="padding-left: 15px;">Facebook URL</p>
                             <div class="col-sm-10">
-                              <input type="text" class="form-control" style="border-radius: 10px;">
+                              <input type="text" class="form-control" style="border-radius: 10px;"value="{{$businessInfo->facebook_url}}">
                             </div>
                           </div>
                         </div>
@@ -183,7 +183,7 @@
                           <div class="form-group row">
                             <p class="text-dark" style="padding-left: 15px;">City &nbsp &nbsp &nbsp</p>
                             <div class="col-sm-10">
-                              <input type="text" class="form-control" style="border-radius: 10px;">
+                              <input type="text" class="form-control" style="border-radius: 10px;"value="{{$businessInfo->city}}">
                             </div>
                           </div>
                         </div>
@@ -198,7 +198,9 @@
                       </div>
                       <div class="form-group">
                         <p class="text-dark" >About us</p>
-                        <textarea class="form-control" id="exampleTextarea1" rows="10" style="border-radius: 10px;"></textarea>
+                        <textarea class="form-control" id="exampleTextarea1" rows="10" style="border-radius: 10px;">
+                          {{$businessInfo->business_name}}
+                        </textarea>
                       </div>
 
                     </form>

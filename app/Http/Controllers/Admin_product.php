@@ -124,7 +124,7 @@ class Admin_product extends Controller
         
         $this->product_name =$update->product_name;
 
-        $this->dispatchBrowserEvent('show-edit');
+
       //return view('admin.product', ['update' => $update]);
     }
 
@@ -207,6 +207,14 @@ class Admin_product extends Controller
             
             return redirect('product');
         
+    }
+
+    public function infoAccount()
+    {
+        $id=session('loginID');
+
+        $accountInfo = DB::table('tbl_merchant_account')->where('merchant_id','=', $id)->first();
+        return view('admin.admin_personalinformation1');
     }
 
     /**
