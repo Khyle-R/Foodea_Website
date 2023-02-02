@@ -6,7 +6,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-
+    overflow-x: hidden;
 }
 
 .clear {
@@ -109,7 +109,7 @@
   font-size: 20px;
   padding: 0.5rem 1.188rem;
   line-height: 2;
-  text-align: left;
+  text-align: center;
 }
 
 .sidebar .nav .nav-item.nav-category .nav-link {
@@ -206,17 +206,68 @@ li {
     font-weight: 600;
 }
 
-.form-group a:link, a:visited {
-    padding: 10px;
-    opacity: 60%;
-    color: #F54748;
+.form-group select {
+  margin: 6px;
 }
 
-.form-group a:hover {
-    opacity: 100%;
-    color: #F54748;
-    text-decoration: none;
+.form-group .btn {
+  font-size: 15px;
+  border-radius: 20px;
+
+}
+
+.form-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Requirements */
+.requirements-title {
+    padding: 0.8rem 0;
+}
+
+.requirements-title p {
+    font-family: 'Montserrat',
+        sans-serif;
+    color: #000;
+    opacity: 70%;
+    font-size: 14px;
+}
+
+.requirements-title span {
+    font-family: 'Montserrat',
+        sans-serif;
+    color: #9b7227;
+}
+
+.requirements {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+}
+
+.requirements span {
+    font-size: 13px;
+    font-family: 'Montserrat',
+        sans-serif;
+    opacity: 90%;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.76);
+    margin-bottom: 1rem;
+}
+
+.requirements p {
+    padding: 0.5rem 0 1rem 0;
 }
 
 
+.pic {
+    height: 200px;
+    width: 200px;
+}
 
+input[type=file] {
+    margin: 10px 0;
+}

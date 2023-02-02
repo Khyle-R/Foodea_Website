@@ -2,11 +2,14 @@
 
 <head>
     <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FOODEA</title>
     <link rel="stylesheet" type="text/css" href="css/rider_landing.css" />
      <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css" rel="stylesheet" />
+    <link rel="icon" href="{{ url('image/foodea1.png') }}">
      <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -19,9 +22,9 @@
 
 <body>
     <div class="header">
-        <nav class="navbar navbar-expand-lg px-5 mx-5">
+      <nav class="navbar navbar-expand-lg px-2 mx -2 px-xs-3 px-md-4 px-lg-5 mx-xs-3 mx-md-4 mx-lg-5">
       <div class="container-fluid px-3">
-        <a href="/" class="navbar-brand">
+        <a href="/" class="navbar-brand  mb-0 h1">
           <img src="image/foodea1.png" alt="" width="45" height="50" />
           FOODEA
         </a>
@@ -69,10 +72,10 @@
                 </ul>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">About Us</a>
+                <a href="/about" class="nav-link">About Us</a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">Contact Us</a>
+                <a href="/contact" class="nav-link">Contact Us</a>
               </li>
             </ul>
             <a
@@ -93,7 +96,7 @@
       </div>
     </nav>
         <div class="section">
-            <div class="content">
+            <div class="content  text-center text-md-start">
                 <h1>Deliver Food With <span>Foodea</span></h1>
                 <p>Try becoming your own boss with Foodea as an alternative to 
                     conventional food delivery professions where the hours are fixed.</p>
@@ -106,7 +109,7 @@
             </div>
         </div>
 
-    </div>
+ 
 
      <div class="section-3">
             <div class="service">
@@ -130,11 +133,13 @@
                 </div>
             </div>
         </div>
+      </div>
 
     <div class="change">
         <div class="change-title">
         <h2>You only need a few things to get started</h2>
         </div>
+
 <div class="section-2">
       <img src="image/motorbg.png" alt="" />
       <div class="wrapper">
@@ -174,6 +179,7 @@
             </ul>
           </div>
           </div>
+
           <div class="radio_content radio_2">
               <div class="requirements">
                <p>Please read carefully before submitting your application. 
@@ -199,6 +205,7 @@
     </div>
    </div>
 
+   <!-- TIMELINE -->
    <div class="timeline">
     <div class="timeline-title">
         <h2>How food delivery works</h2>
@@ -214,7 +221,7 @@
       <img src="image/pick.png" alt="">
        <img src="image/earn.png" alt="">
        </div>
-    <div class="timeline-content">
+        <div class="timeline-content">
          <ul>
          <li>
         <div>
@@ -252,7 +259,6 @@
     </ul>
     </div>
    </div>
-</div>
 
     <!---ACOORDION-->
     <div class="container2">
@@ -306,12 +312,13 @@
     <div class="end">
         <div class="end-container">
                  <div class="end-content">
-                     <h2>Start your journey now as a Foodea rider</h2>
-                     <p>Sign up as a new Foodea rider, fill out the personal
-                     information and vehicle information, upload the required documents, and submit your 
-                    application!</p>
+                  <h2>Start your journey now as a Foodea rider</h2>
+                  <p>Sign up as a new Foodea rider, fill out the personal
+                  information and vehicle information, upload the required documents, and submit your 
+                 application!</p>
                   <a href="#">Join Us</a>
                   </div>
+               
         </div>
     </div>
 
@@ -356,12 +363,7 @@
     <script src="js/script.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
-       <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
-</body>
-
+ </body>
 </html>

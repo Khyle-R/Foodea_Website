@@ -121,14 +121,9 @@ nav .navbar-brand span{
 
 .section {
   width: 70%;
-  margin: 100px auto;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-}
-
-.tagline{
-  font-size: clamp(2rem,1rem + 10vw,75px);
 }
 
 .content {
@@ -149,8 +144,6 @@ nav .navbar-brand span{
 }
 
 .content p {
-  width: 65%;
-  opacity: 70%;
   font-family: "Montserrat", sans-serif;
   line-height: 25px;
   margin-bottom: 35px;
@@ -493,6 +486,52 @@ nav .navbar-brand span{
   .content h1 {
     font-size: 45px;
     color: #363636;
+  }
+
+
+@media (max-width:1900px){
+  .service img {
+    width:300px;
+    height: 265px;
+  }
+}
+
+@media (max-width:1150px){
+  .service img {
+    width:290px;
+    height: 255px;
+  }
+} 
+
+@media (max-width:900px){
+
+  .service img {
+    width: clamp(13.75rem, 18.8542rem + -12.9630vw, 11.5625rem);
+  }
+
+  .section-2 {
+    width: 75%;
+  }
+
+  .header {
+    padding-top: 30px;
+    padding-bottom: 10px;
+    background-image: linear-gradient(#fdc55e3f, #f5474709);
+  }
+
+  .rider,
+  .market,
+  .phone {
+    width: 40%;
+    margin: auto;
+    text-align: center;
+  }
+  
+  .rider h3,
+  .market h3,
+  .phone h3 {
+    font-size: 1rem;
+    opacity: 80%;
     font-family: "Montserrat", sans-serif;
     font-weight: bold;
   }
@@ -552,7 +591,11 @@ nav .navbar-brand span{
     text-align: center;  
 }
 
-@media (max-width:630px){
+@media (max-width:767px){
+  .image img {
+    display: none;
+  }
+  
   .px-5 {
     padding-left: (0 * .3) !important;
     padding-right: (0 * .3) !important;
@@ -607,4 +650,5 @@ nav .navbar-brand span{
     width: 100%;
     margin: 0px auto;
   }
+
 }

@@ -226,14 +226,14 @@
                          <img src="/image/barangay_permit.png" alt="">
                         </div>
                     </li>
-                     <li>
+                    <li>
                         <input type="radio" name="accordion" id="fifth" />
                         <label for="fifth">DTI Certificate</label>
                         <div class="content">
                         <img src="/image/DTI.png" alt="">
                         </div>
                     </li>
-                     <li>
+                    <li>
                         <input type="radio" name="accordion" id="sixth" />
                         <label for="sixth">Valid Government issued ID</label>
                         <div class="content">

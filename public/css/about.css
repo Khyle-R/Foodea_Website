@@ -2,6 +2,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap");
 
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;900&display=swap");
+
+
 * {
   margin: 0;
   padding: 0;
@@ -11,7 +15,7 @@
 
 body {
   overflow-x: hidden;
-  background-image: linear-gradient(#fdc55e3f, #f5474709);
+  background-color: #fff;
 }
 
 .clear {
@@ -29,7 +33,6 @@ ul {
 
 .header {
   padding-top: 30px;
-  padding-bottom: 50px;
 }
 
 .nav {
@@ -40,6 +43,10 @@ ul {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+}
+
+.main-container{
+  background-image: linear-gradient(#fdc55e3f, #f5474709);
 }
 
 
@@ -56,20 +63,196 @@ nav .navbar-brand span{
   width: clamp(0.140625rem, -1.4625rem + 8.5500vw, 2.8125rem);
 }
 
-.section {
+section {
+  width: 100%;
+}
+
+.content{
   width: 70%;
-  margin: 100px auto;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.content h1 {
+  font-size: clamp(1rem, 0.1544rem + 3.7584vw, 4.5rem);
+  color: #363636;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+}
+
+.section2{
+  width: 75%;
+  margin: 0 auto;
+}
+
+.content2{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.section2 img{
+  width: clamp(16.5rem, -6.0000rem + 40.0000vw, 29rem);
+}
+
+.content2 p{
+  line-height: 2rem;
+  text-align: justify;
+  width: 50%;
+  color: #363636;
+  font-family: "Montserrat", sans-serif;
+}
+
+.section3{
+  width: 75%;
+  margin: 0 auto;
+}
+
+.content3{
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.section3 img{
+  width: clamp(16.5rem, 13.7561rem + 12.1951vw, 29rem);
+}
+
+.section2 p{
+  text-align: justify;
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(1rem, 0.9451rem + 0.2439vw, 1.25rem);
+}
+
+.section3 p{
+  text-align: justify;
+  font-family: "Montserrat", sans-serif;
+}
+
+.content3 p{
+  line-height: 2rem;
+  text-align: justify;
+  width: 50%;
+  color: #363636;
+  font-family: "Montserrat", sans-serif;
+}
+
+section .wave {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+section .wave svg {
+    position: relative;
+    display: block;
+    width: calc(196% + 1.3px);
+    height: 83px;
+    transform: rotateY(180deg);
+}
+
+section .wave .shape-fill {
+  fill: #f54748;
+}
+
+/* TIMELINE */
+.timeline {
+  width:50%;
+  padding-left:2rem;
+}
+
+.timeline-section {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
-.content h1 {
-  font-size: clamp(2rem, 0.9733rem + 4.5506vw, 4.5rem);
-  color: #363636;
-  font-family: "Montserrat", sans-serif;
-  font-weight: bold;
+.timeline-section img {
+  height: 195px;
+  width: 320px;
+  background-color: black;
+  margin: 20px 0;
+  border-radius: 15px;
 }
+
+.timeline ul {
+  height: auto;
+  border: 0px solid #111;
+  padding: 10px;
+  position: relative;
+  list-style: none;
+  width: 90%;
+  margin: 0 auto;
+}
+.timeline ul li {
+  padding-bottom: 20px;
+}
+.timeline ul li p{
+  width: 90%;
+  text-align: justify;
+  font-family: "Montserrat", sans-serif;
+  color: rgba(0, 0, 0, 0.822);
+}
+.timeline ul:before {
+  content: "";
+  position: absolute;
+  width: 1px;
+  background: #000000;
+  height: 65%;
+  left: 0px;
+  top: 30px;
+}
+.timeline ul li:before {
+  position: absolute;
+  content: "";
+  width: 15px;
+  height: 15px;
+  border-radius: 7.5px;
+  background: #ff5252;
+  left: -7.5px;
+  margin-top: 10px;
+}
+
+.timeline ul li div {
+  padding: 5px 0 0 0;
+  padding-bottom: 10px;
+  margin-left: 50px;
+  position: relative;
+}
+
+.timeline ul li div h1 {
+  font-size: 18px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+}
+.timeline ul li div:before {
+  content: "";
+  position: absolute;
+  left: -30px;
+  top: 15px;
+}
+
+.timeline p span{
+  color: #f54748;
+  font-weight: bold;
+  font-family: Poppins;
+}
+
+/* END TIMELINE */
+
+.lastimage img{
+  width: clamp(17rem, 13.5000rem + 18.6667vw, 31rem);
+}
+
 
 /* FOOTER */
 
@@ -129,4 +312,18 @@ nav .navbar-brand span{
   align-items: center;
 }
 
+
 /* END OF FOOTER */
+
+
+@media (max-width:1000px){
+  .timeline {
+    width:70%
+  }
+}
+
+@media (max-width:400px){
+  .timeline {
+    width:100%
+  }
+}
