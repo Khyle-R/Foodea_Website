@@ -2,8 +2,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1" name="viewport" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>FOODEA</title>
     <link rel="stylesheet" type="text/css" href="css/rider_landing.css" />
      <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -309,7 +308,7 @@
             </div>
         </div>
     </div>
-    <div class="end">
+    <div class="bg-img" style="background-image: url(../image/bgmotor.png);">
         <div class="end-container">
                  <div class="end-content">
                   <h2>Start your journey now as a Foodea rider</h2>

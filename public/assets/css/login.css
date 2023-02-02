@@ -13,6 +13,7 @@
 body {
     height: 100vh;
     overflow-x: hidden;
+    background-color: rgba(0, 0, 0, 0.041);
 }
 
 
@@ -77,6 +78,9 @@ ul {
     height: auto;
 }
 
+.card {
+    border-radius: 12px;
+}
 
 .error {
     color: #cc4040;

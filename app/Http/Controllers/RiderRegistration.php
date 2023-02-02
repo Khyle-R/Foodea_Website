@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\tbl_vehicle_infos;
 use App\Models\tbl_rider_accounts;
+use App\Models\tbl_rider_application;
 use App\Models\tbl_rider_document;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -67,7 +68,14 @@ class RiderRegistration extends Controller
              $res = $rider -> save();
             
             if($res){
+
                 $request->session()->put('rider_id', $rider->id);
+
+                $id = new tbl_rider_application();
+                $id->rider_id = Session::get('rider_id');
+                $id->status = 'first';
+                $id->save();
+                
                 return redirect('/rider_application2');
             }else{
                 return back()->with('fail', 'Something is wrong');
@@ -97,6 +105,17 @@ class RiderRegistration extends Controller
         $res = $vehicle -> save();
 
         if($res){
+            
+            //Find rider_id in tbl_vehicle info
+            $id = tbl_vehicle_infos::where('rider_id', $request->rider_id)->first();
+         
+            //update tbl_Rider_application to insert vehicle id that equals to rider_id
+            tbl_rider_application::where('rider_id', $request->rider_id)
+                ->update([
+                    'vehicle_id' => $id->vehicle_id,
+                    'status' => "second"
+                ]);
+              
               return redirect('/rider_application4');
         }else{
              return back()->with('fail', 'Something is wrong');
@@ -171,21 +190,36 @@ class RiderRegistration extends Controller
             $document->vehicle_back =  $back;
             $document->license_back =  $license_back;
         }
-        $document->save();
-        return redirect('rider_applicationstatus');
+        $success = $document->save();
+        if($success){
+            
+            $id = tbl_rider_document::where('rider_id', $request->rider_id)->first();
+
+            tbl_rider_application::where('rider_id', $request->rider_id)
+                ->update([
+                    'document_id' => $id->document_id,
+                    'status' => "pending"
+                ]);
+                  return redirect('/partner_application4');
+        }
+        else{
+            return back()->with('fail', 'Something is wrong');
+        }
+      
     }
     
     public function step5index(Request $request){
         
-        $rider_id = Session::get('rider_id');
+        // $rider_id = Session::get('rider_id');
         
-        $Data = tbl_rider_accounts::join('tbl_vehicle_info', 'tbl_rider_account.rider_id', '=', 'tbl_vehicle_info.rider_id')
-        ->join('tbl_document_info', 'tbl_rider_account.rider_id', '=', 'tbl_document_info.rider_id')
-        ->where('tbl_rider_account.rider_id', $rider_id)
-        ->limit(1)
-        ->get(['firstname', 'middlename', 'lastname', 'age', 'gender', 'email', 'mobile_number', 'city', 'vehicle_type', 'plate_number', 'displacement', 'engine_number', 'year_model']);
+        // $Data = tbl_rider_accounts::join('tbl_vehicle_info', 'tbl_rider_account.rider_id', '=', 'tbl_vehicle_info.rider_id')
+        // ->join('tbl_document_info', 'tbl_rider_account.rider_id', '=', 'tbl_document_info.rider_id')
+        // ->where('tbl_rider_account.rider_id', $rider_id)
+        // ->limit(1)
+        // ->get(['firstname', 'middlename', 'lastname', 'age', 'gender', 'email', 'mobile_number', 'city', 'vehicle_type', 'plate_number', 'displacement', 'engine_number', 'year_model']);
        
-        return view('/rider_applicationstatus', compact('Data'));
+        // return view('/rider_applicationstatus', compact('Data'));
+        return view('/partner_application4');
     }
 
     public function agreement(){

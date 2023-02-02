@@ -55,6 +55,29 @@ Route::get('/superadmin_index', [SuperadminController::class, 'index']);
 
 Route::get('/superadmin_changepass', [SuperadminController::class, 'changepass']);
 
+Route::get('/superadmin_login', [SuperadminController::class, 'login']);
+
+Route::post('/superadmin_login', [SuperadminController::class, 'LoginAdmin'])->name('login.LoginAdmin');
+
+Route::get('/superadmin_logout', [SuperadminController::class, 'AdminLogOut']);
+
+Route::get('/superadmin_application', [SuperadminController::class, 'ApplicationsRider']);
+
+Route::get('/superadmin_partnerdetails', [SuperadminController::class, 'PartnerDetails']);
+
+Route::get('/superadmin_profile', [SuperadminController::class, 'profile']);
+
+Route::get('/superadmin_rider', [SuperadminController::class, 'Rider']);
+
+Route::get('/superadmin_partnerapplication', [SuperadminController::class, 'partner']);
+
+Route::get('/superadmin_log', [SuperadminController::class, 'ActivityLog']);
+
+Route::get('/superadmin_riderdetails', [SuperadminController::class, 'RiderDetails']);
+
+Route::get('/superadmin_acceptedrider', [SuperadminController::class, 'AcceptedRider']);
+
+Route::get('/superadmin_acceptedpartner', [SuperadminController::class, 'AcceptedPartner']);
 
 
 Route::get('/login_partner', function () {
