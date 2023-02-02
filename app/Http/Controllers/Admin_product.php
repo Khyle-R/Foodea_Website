@@ -143,16 +143,26 @@ class Admin_product extends Controller
   
 
             $resss=$affected->update(['product_name' => $request->product_name,'price' => $request->price,'stock' => $request->stock,'status' => $request->status,'description' => $request->description,'product_image'=> $filename],
-              //['price' => $request->price],
-              //'price' => $request->price],
-              //['price' => $request->price],
-              //['description' => $request->description]
+              
             );
             if ($resss) {
                 return redirect('product');
             }
             else {
                 return back()->with('fail','Something went wrong when trying to delete');
+                //return view('admin.admin_product');
+            }
+        }
+        else {
+            // if the update dont have new profile upload
+            $resss=$affected->update(['product_name' => $request->product_name,'price' => $request->price,'stock' => $request->stock,'status' => $request->status,'description' => $request->description],  
+            );
+            if ($resss) {
+                return redirect('product');
+            }
+            else {
+                return back()->with('fail','Something went wrong when trying to delete');
+                //return view('admin.admin_product');
             }
         }
     }

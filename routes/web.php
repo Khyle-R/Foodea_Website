@@ -172,7 +172,7 @@ Route::get('/product/restore/{id}',[Admin_product::class, 'restoreProduct']);
 //Update products
 Route::get('/product/update/{id}',[Admin_product::class, 'updateProduct']);
 
-Route::post('/product/updateInfo', [Admin_product::class, 'updateProductInfo'])->name('product.updateProductInfo');
+Route::post('/product/updateInfo',[Admin_product::class, 'updateProductInfo'])->name('product.updateProductInfo');
 
 //View products
 Route::get('product', function () {

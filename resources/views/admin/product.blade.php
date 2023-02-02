@@ -244,7 +244,7 @@
                                                                     Edit Product 
                                                                  </button> --}}
                                                             <!-- Button trigger modal -->
-                                                            <button type="button" class="btn btn-success updateButton" data-toggle="modal" data-id={{$data->product_id}} data-target="#EditModal"> Edit Product</button>
+                                                            <button type="button" class="badge badge-outline-success mr-3" data-toggle="modal" data-id={{$data->product_id}} data-target="#EditModal">Edit Product</button>
                                                             <!-- Modal -->
                                                             <div class="modal fade" id="EditModal" tabindex="-1" aria-labelledby="EditModalLabel" aria-hidden="true">
                                                                 <div class="modal-dialog modal-dialog-centered">
@@ -259,7 +259,7 @@
                                                                             class="modal-body">
                                                                             <form class="forms-sample" action="{{route('product.updateProductInfo')}}" method="post" enctype="multipart/form-data">
                                                                                 @csrf 
-                                                                                
+                                                                                <input type="hidden" value="{{$data->product_id}}" name="product_id">
                                                                                 <div class="form-group">
                                                                                   <label for="exampleInputName1" class="blackk">Product Name</label>
                                                                                   <input type="text" class="form-control" id="exampleInputName1" placeholder="Name" value="{{$data->product_name}}" name="product_name"/>
@@ -319,7 +319,7 @@
                                                                                   <button type="submit" class="btn btn-primary btn-lg mr-2 mt-4 py-2 px-5 updateButton">
                                                                                     Update
                                                                                   </button>
-                                                                                  <button class="btn btn-dark btn-lg mt-4 py-2 px-5">
+                                                                                  <button class="btn btn-dark btn-lg mt-4 py-2 px-5" data-dismiss="modal">
                                                                                     Cancel
                                                                                   </button>
                                                                                 </div>
@@ -331,7 +331,7 @@
                                                             </div>
 
                                                                 <!-- Button trigger modal -->
-                                                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal"> Remove Product</button>
+                                                                <button type="button" class="badge badge-outline-danger mr-3" data-toggle="modal" data-target="#deleteModal"> Remove Product</button>
                                                                 <!-- Modal -->
                                                                 <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
                                                                     <div class="modal-dialog modal-dialog-centered">
