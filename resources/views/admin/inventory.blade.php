@@ -98,7 +98,7 @@
                       </div>
                     </div>
                     <div class="table-responsive">
-                      <table class="table">
+                      <table class="table" id="myInventory">
                         <thead class="table-danger">
                           <tr>
                             <th>

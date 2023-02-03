@@ -42,7 +42,7 @@
                     <div class="row">
                       <div class="col-9">
                         <div class="d-flex align-items-center align-self-start">
-                          <h3 class="mb-0">₱1200.34</h3>
+                          <h3 class="mb-0">{{$totalRevenue}}</h3>
                           <p class="text-success ml-2 mb-0 font-weight-medium">
                             +3.5%
                           </p>
@@ -57,7 +57,7 @@
                       </div>
                     </div>
                     <h6 class="text-muted font-weight-normal">
-                      Potential growth
+                      Total Revenue
                     </h6>
                   </div>
                 </div>
@@ -68,7 +68,7 @@
                     <div class="row">
                       <div class="col-9">
                         <div class="d-flex align-items-center align-self-start">
-                          <h3 class="mb-0">₱1700.34</h3>
+                          <h3 class="mb-0">{{ $totalOrders}}</h3>
                           <p class="text-success ml-2 mb-0 font-weight-medium">
                             +11%
                           </p>
@@ -94,7 +94,7 @@
                     <div class="row">
                       <div class="col-9">
                         <div class="d-flex align-items-center align-self-start">
-                          <h3 class="mb-0">₱1200.34</h3>
+                          <h3 class="mb-0">{{$productSold}}</h3>
                           <p class="text-danger ml-2 mb-0 font-weight-medium">
                             -2.4%
                           </p>
@@ -118,7 +118,7 @@
                     <div class="row">
                       <div class="col-9">
                         <div class="d-flex align-items-center align-self-start">
-                          <h3 class="mb-0">₱3100.53</h3>
+                          <h3 class="mb-0">{{$totalProduct}}</h3>
                           <p class="text-success ml-2 mb-0 font-weight-medium">
                             +3.5%
                           </p>

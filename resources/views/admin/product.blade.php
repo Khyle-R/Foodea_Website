@@ -48,7 +48,7 @@
                             </div>
                         </div>
                         <div class="page-header">
-                            <h3 class="page-title">Product</h3>
+                            <li class="page-title" >Product</li>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">
@@ -64,93 +64,137 @@
                             <div class="col-12 grid-margin">
                                 <div class="card">
                                     <div class="card-body">
-                                        <div
-                                            class="row justify-content-sm-between px-3 mb-3"
-                                        >
+                                        <div class="row justify-content-sm-between px-3 mb-3">
                                             <h4 class="card-title">
                                                 Order Status
                                             </h4>
                                             <div class="row">
                                                 <div>
-                                                    <a
-                                                        href="{{route("add_product.addProductView")}}"
-                                                        class="btn btn-danger btn-sm px-3 mr-3 py-2 px-3 rounded"
-                                                    >
-                                                        Add Product
-                                                    </a>
+                                                    {{-- <a href="{{route("add_product.addProductView")}}" class="btn btn-danger btn-sm px-3 mr-3 py-2 px-3 rounded">
+                                                        Add Products
+                                                    </a> --}}
+                                                     <!-- Button trigger modal -->
+                                                            <button type="button" class="btn btn-danger btn-sm px-3 mr-3 py-2 px-3 rounded" data-toggle="modal" data-target="#AddModal"> Add Product</button>
+                                                            <!-- Modal -->
+                                                            <div class="modal fade" id="AddModal" tabindex="-1" aria-labelledby="AddModalLabel" aria-hidden="true">
+                                                                <div class="modal-dialog modal-dialog-centered">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h6 class="text-light" class="modal-title fs-5" id="deleteModalLabel">
+                                                                                Delete Product
+                                                                            </h6>
+                                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <form class="forms-sample"  action="{{route('add_product.addProduct')}}" method="post" enctype="multipart/form-data">
+                                                                                @csrf 
+                                                                                <div class="form-group">
+                                                                                  <label for="exampleInputName1" class="blackk">Product Name</label>
+                                                                                  <input type="text" class="form-control" id="exampleInputName1" placeholder="Name" value="{{ old('product_name')}}" name="product_name"/>
+                                                                                  <span style="color:red;">
+                                                                                  @error('product_name') {{ $message }}
+                                                                                  @enderror</span>
+                                                                                  <span class="gray">Do not exceed 20 characters when entering the product name.</span>
+                                                                                </div>
+                                                                                <div class="row">
+                                                                                  <div class="col form-group">
+                                                                                    <label for="exampleSelectGender" class="blackk">Category</label>
+                                                                                    <select class="form-control"  id="exampleSelectGender" style="border: 1px solid" name="category">
+                                                                                      <option></option>
+                                                                                      <option>Chicken</option>
+                                                                                      <option>Pork</option>
+                                                                                    </select>
+                                                                                    <span style="color:red;">
+                                                                                      @error('category') {{ $message }}
+                                                                                      @enderror</span>
+                                                                                  </div>
+                                                                                  <div class="col form-group">
+                                                                                    <label for="exampleSelectGender" class="blackk">Type</label>
+                                                                                    <select class="form-control" id="exampleSelectGender"style="border: 1px solid" name="type">
+                                                                                      <option></option>
+                                                                                      <option>Fried Chicken</option>
+                                                                                      <option>Chicken Soup</option>
+                                                                                    </select>
+                                                                                    <span style="color:red;">
+                                                                                      @error('type') {{ $message }}
+                                                                                      @enderror</span>
+                                                                                  </div>
+                                                                                </div>
+                                                      
+                                                                                <div class="form-group">
+                                                                                  <label for="exampleTextarea1" class="blackk">Description</label>
+                                                                                  <textarea class="form-control"id="exampleTextarea1"rows="4" name="description"></textarea>
+                                                                                  <span style="color:red;">
+                                                                                    @error('description') {{ $message }}
+                                                                                    @enderror</span>
+                                                                                  <span class="gray">Do not exceed 100 characters when entering the product details.</span>
+                                                                                </div>
+                                                                              
+                                                                            
+                                                                           
+                                                      
+                                                                                <div class="form-group">
+                                                                                  <div class="file-loading">
+                                                                                    <input type="file" value="{{old('product_image')}}" name="product_image"/>
+                                                                                    <span style="color:red;">
+                                                                                      @error('product_image') {{ $message }}
+                                                                                      @enderror</span>
+                                                                                  </div>
+                                                                                </div>
+                                                                                <div class="row">
+                                                                                  <div class="col-md">
+                                                                                    <label for="exampleInputName1" class="blackk">Price</label>
+                                                                                    <input type="text"class="form-control" id="exampleInputName1" value="{{ old('price')}}" name="price"/>
+                                                                                    <span style="color:red;">
+                                                                                      @error('price') {{ $message }}
+                                                                                      @enderror</span>
+                                                                                  </div>
+                                                                                  <div class="col-md">
+                                                                                    <label for="exampleInputName1" class="blackk">Stock</label>
+                                                                                    <input type="text"class="form-control" id="exampleInputName1" value="{{old('stock')}}" name="stock"/>
+                                                                                    <span style="color:red;">
+                                                                                      @error('stock') {{ $message }}
+                                                                                      @enderror</span>
+                                                                                  </div>
+                                                                                  <div class="col-md">
+                                                                                    <label for="exampleSelectGender" class="blackk">Status</label>
+                                                                                    <select  class="form-control" id="exampleSelectGender" style="border: 1px solid" name="status">
+                                                                                      <option></option>
+                                                                                      <option>Active</option>
+                                                                                      <option>Disabled</option>
+                                                                                    </select>
+                                                                                    <span style="color:red;">
+                                                                                      @error('status') {{ $message }}
+                                                                                      @enderror</span>
+                                                                                  </div>
+                                                                                </div>
+                                                                                <div class="text-lg-left text-center">
+                                                                                  <button type="submit" class="btn btn-primary btn-lg mr-2 mt-4 py-2 px-5">
+                                                                                    Submit
+                                                                                  </button>
+                                                                                  <button class="btn btn-dark btn-lg mt-4 py-2 px-5" data-dismiss="modal">
+                                                                                    Cancel
+                                                                                  </button>
+                                                                                </div>
+                                                                              </form>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
                                                 </div>
-                                                <div class="dropdown">
-                                                    <button
-                                                        class="btn btn-secondary dropdown-toggle py-2 px-3 rounded"
-                                                        type="button"
-                                                        id="dropdownMenuButton"
-                                                        data-toggle="dropdown"
-                                                        aria-haspopup="true"
-                                                        aria-expanded="false"
-                                                    >
-                                                        Select Category
-                                                    </button>
-                                                    <div
-                                                        class="dropdown-menu"
-                                                        aria-labelledby="dropdownMenuButton"
-                                                    >
-                                                        <a
-                                                            class="dropdown-item"
-                                                            href="#"
-                                                            >Chicken</a
-                                                        >
-                                                        <a
-                                                            class="dropdown-item"
-                                                            href="#"
-                                                            >Drinks</a
-                                                        >
-                                                    </div>
-                                                </div>
+                                                
 
-                                                <div class="dropdown">
-                                                    <button
-                                                        class="btn btn-secondary dropdown-toggle py-2 px-3 rounded mx-3"
-                                                        type="button"
-                                                        id="dropdownMenuButton"
-                                                        data-toggle="dropdown"
-                                                        aria-haspopup="true"
-                                                        aria-expanded="false"
-                                                    >
-                                                        Select Order
-                                                    </button>
-                                                    <div
-                                                        class="dropdown-menu"
-                                                        aria-labelledby="dropdownMenuButton"
-                                                    >
-                                                        <a
-                                                            class="dropdown-item"
-                                                            href="#"
-                                                            >Ascending</a
-                                                        >
-                                                        <a
-                                                            class="dropdown-item"
-                                                            href="#"
-                                                            >Descending</a
-                                                        >
-                                                    </div>
-                                                </div>
+                                                
                                             </div>
                                         </div>
                                         <div class="table-responsive">
-                                            <table class="table">
+                                            <table class="table" id="myProduct">
                                                 <thead class="table-danger">
                                                     <tr>
                                                         <th>
-                                                            <div
-                                                                class="form-check form-check-muted m-0"
-                                                            >
-                                                                <label
-                                                                    class="form-check-label"
-                                                                >
-                                                                    <input
-                                                                        type="checkbox"
-                                                                        class="form-check-input"
-                                                                    />
+                                                            <div class="form-check form-check-muted m-0">
+                                                                <label class="form-check-label">
+                                                                    <input type="checkbox" class="form-check-input"/>
                                                                 </label>
                                                             </div>
                                                         </th>
@@ -193,22 +237,107 @@
                                                         </td>
                                                         <td>
                                                             <div class="row">
-                                                                <a href="product/update/{{ $data ->product_id}}" class="badge badge-outline-success mr-3">
+                                                                {{-- <a href="product/update/{{ $data ->product_id}}" class="badge badge-outline-success mr-3">
                                                                     Edit Product 
-                                                                </a>
+                                                                </a> --}}
+                                                                 {{-- <button href="" data-id={{$data->product_id}} class="updateButton badge badge-outline-success mr-3" id="updateButton">
+                                                                    Edit Product 
+                                                                 </button> --}}
+                                                            <!-- Button trigger modal -->
+                                                            <button type="button" class="badge badge-outline-success mr-3" data-toggle="modal" data-id={{$data->product_id}} data-target="#EditModal">Edit Product</button>
+                                                            <!-- Modal -->
+                                                            <div class="modal fade" id="EditModal" tabindex="-1" aria-labelledby="EditModalLabel" aria-hidden="true">
+                                                                <div class="modal-dialog modal-dialog-centered">
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                            <h6 class="text-light" class="modal-title fs-5" id="deleteModalLabel">
+                                                                                Update Product
+                                                                            </h6>
+                                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                        </div>
+                                                                        <div
+                                                                            class="modal-body">
+                                                                            <form class="forms-sample" action="{{route('product.updateProductInfo')}}" method="post" enctype="multipart/form-data">
+                                                                                @csrf 
+                                                                                <input type="hidden" value="{{$data->product_id}}" name="product_id">
+                                                                                <div class="form-group">
+                                                                                  <label for="exampleInputName1" class="blackk">Product Name</label>
+                                                                                  <input type="text" class="form-control" id="exampleInputName1" placeholder="Name" value="{{$data->product_name}}" name="product_name"/>
+                                                                                  <span class="gray">Do not exceed 20 characters when entering the product name.</span>
+                                                                                </div>
+                                                                                <div class="row">
+                                                                                  <div class="col form-group">
+                                                                                    <label for="exampleSelectGender" class="blackk">Category</label>
+                                                                                    <select class="form-control"  id="exampleSelectGender" style="border: 1px solid" name="category" >
+                                                                                      <option>{{$data->category_id}}</option>
+                                                                                      <option >Chicken</option>
+                                                                                      <option>Pork</option>
+                                                                                    </select>
+                                                                                  </div>
+                                                                                  <div class="col form-group">
+                                                                                    <label for="exampleSelectGender" class="blackk">Type</label>
+                                                                                    <select class="form-control" id="exampleSelectGender"style="border: 1px solid" name="type">
+                                                                                      <option></option>
+                                                                                      <option>Fried Chicken</option>
+                                                                                      <option>Chicken Soup</option>
+                                                                                    </select>
+                                                                                  </div>
+                                                                                </div>
+                                                      
+                                                                                <div class="form-group">
+                                                                                  <label for="exampleTextarea1" class="blackk">Description</label>
+                                                                                  <textarea class="form-control"id="exampleTextarea1"rows="4" placeholder="" name="description">{{$data->description}}</textarea>
+                                                                                  <span class="gray">Do not exceed 100 characters when entering the product details.</span>
+                                                                                </div>
+
+                                                      
+                                                                                <div class="form-group">
+                                                                                  <div class="file-loading">
+                                                                                    <input id="file-1" type="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="1" data-theme="fa5" value="{{$data->product_image}}" name="product_image"/>
+                                                                                  </div>
+                                                                                </div>
+                                                                                <div class="row">
+                                                                                  <div class="col-md">
+                                                                                    <label for="exampleInputName1" class="blackk">Price</label>
+                                                                                    <input type="text"class="form-control" id="exampleInputName1" placeholder="" value="{{$data->price}}" name="price"/>
+                                                                                  </div>
+                                                                                  <div class="col-md">
+                                                                                    <label for="exampleInputName1" class="blackk">Stock</label>
+                                                                                    <input type="text"class="form-control" id="exampleInputName1" placeholder="" value="{{$data->stock}}" name="stock"/>
+                                                                                  </div>
+                                                                                  <div class="col-md">
+                                                                                    <label for="exampleSelectGender" class="blackk">Status</label>
+                                                                                    <select  class="form-control" id="exampleSelectGender" style="border: 1px solid" name="status">
+                                                                                      <option>{{$data->status}}</option>
+                                                                                      <option>Active</option>
+                                                                                      <option>Disabled</option>
+                                                                                    </select>
+                                                                                  </div>
+                                                                                </div>
+
+                                                                                <div class="text-lg-left text-center">
+                                                                                  <button type="submit" class="btn btn-primary btn-lg mr-2 mt-4 py-2 px-5 updateButton">
+                                                                                    Update
+                                                                                  </button>
+                                                                                  <button class="btn btn-dark btn-lg mt-4 py-2 px-5" data-dismiss="modal">
+                                                                                    Cancel
+                                                                                  </button>
+                                                                                </div>
+
+                                                                              </form>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
 
                                                                 <!-- Button trigger modal -->
-                                                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal"> Remove Product
-                                                                </button>
+                                                                <button type="button" class="badge badge-outline-danger mr-3" data-toggle="modal" data-target="#deleteModal"> Remove Product</button>
                                                                 <!-- Modal -->
-                                                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                                    <div
-                                                                        class="modal-dialog modal-dialog-centered">
-                                                                        <div
-                                                                            class="modal-content">
-                                                                            <div
-                                                                                class="modal-header">
-                                                                                <h6 class="text-light" class="modal-title fs-5" id="exampleModalLabel">
+                                                                <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                                                    <div class="modal-dialog modal-dialog-centered">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header">
+                                                                                <h6 class="text-light" class="modal-title fs-5" id="deleteModalLabel">
                                                                                     Delete Product
                                                                                 </h6>
                                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -218,7 +347,7 @@
                                                                                 Are you sure you want to delete this product?
                                                                             </div>
                                                                             <div class="modal-footer">
-                                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">
                                                                                     Close
                                                                                 </button>
                                                                                 <a href="product/remove/{{ $data ->product_id}}" type="button"class="btn btn-danger">Remove product</a>
@@ -233,48 +362,46 @@
                                                 </tbody>
                                             </table>
                                         </div>
-
-                                        <ul
-                                            class="pagination pt-2 align-items-center justify-content-center justify-content-sm-end"
-                                        >
+                                        <div>
+                                            <table id="sample">
+                                                <tr>
+                                                  <th>Person 1</th>
+                                                  <th>Person 2</th>
+                                                  <th>Person 3</th>
+                                                </tr>
+                                                <tr>
+                                                  <td>Emil</td>
+                                                  <td>Tobias</td>
+                                                  <td>Linus</td>
+                                                </tr>
+                                                <tr>
+                                                  <td>16</td>
+                                                  <td>14</td>
+                                                  <td>10</td>
+                                                </tr>
+                                              </table>
+                                        </div>
+                                        {{-- <ul class="pagination pt-2 align-items-center justify-content-center justify-content-sm-end">
                                             <li class="page-item">
-                                                <a
-                                                    class="page-link"
-                                                    href="#"
-                                                    aria-label="Previous"
-                                                >
-                                                    <span aria-hidden="true"
-                                                        >&laquo;</span
-                                                    >
+                                                <a class="page-link" href="#" aria-label="Previous">
+                                                    <span aria-hidden="true">&laquo;</span>
                                                 </a>
                                             </li>
                                             <li class="page-item">
-                                                <a class="page-link" href="#"
-                                                    >1</a
-                                                >
+                                                <a class="page-link" href="#">1</a>
                                             </li>
                                             <li class="page-item">
-                                                <a class="page-link" href="#"
-                                                    >2</a
-                                                >
+                                                <a class="page-link" href="#">2</a>
                                             </li>
                                             <li class="page-item">
-                                                <a class="page-link" href="#"
-                                                    >3</a
-                                                >
+                                                <a class="page-link" href="#">3</a>
                                             </li>
                                             <li class="page-item">
-                                                <a
-                                                    class="page-link"
-                                                    href="#"
-                                                    aria-label="Next"
-                                                >
-                                                    <span aria-hidden="true"
-                                                        >&raquo;</span
-                                                    >
+                                                <a class="page-link" href="#" aria-label="Next">
+                                                    <span aria-hidden="true">&raquo;</span>
                                                 </a>
                                             </li>
-                                        </ul>
+                                        </ul> --}}
                                     </div>
                                 </div>
                             </div>
@@ -302,7 +429,31 @@
                                 from Bootstrapdash.com</span
                             >
                         </div>
+
+                        {{-- <script>
+                            $(document).ready(function () {
+                               $('.updateButton').click(function () {
+                                    var userid = $(this).data('id');
+                                    alert(userid)
+                               });
+                            });
+                
+                        </script> --}}
+
+                       
+
+                        {{-- <script>
+                            $(document).ready(function () {
+                                $("#EditModal").on("show.bs.modal", function (e) {
+                                    var id = $(e.relatedTarget).data('target-id');
+                                    $('#exampleInputName1').val(id);
+                                });
+                            });
+                
+                </script> --}}
+
                     </footer>
                     <!-- partial -->
                 </div>
+
            @endsection

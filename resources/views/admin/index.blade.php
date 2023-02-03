@@ -3,35 +3,36 @@
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    
     <title>Foodea</title>
     <!-- plugins:css -->
-    <link
-      rel="stylesheet"
-      href="assets/vendors/mdi/css/materialdesignicons.min.css"
-    />
+    <link rel="stylesheet"href="assets/vendors/mdi/css/materialdesignicons.min.css"/>
     <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css" />
     <!-- endinject -->
     <!-- Plugin css for this page -->
-    <link
-      rel="stylesheet"
-      href="assets/vendors/jvectormap/jquery-jvectormap.css"
-    />
-    <link
-      rel="stylesheet"
-      href="assets/vendors/flag-icon-css/css/flag-icon.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="assets/vendors/owl-carousel-2/owl.carousel.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="assets/vendors/owl-carousel-2/owl.theme.default.min.css"
-    />
+    <link rel="stylesheet"href="assets/vendors/jvectormap/jquery-jvectormap.css"/>
+    <link rel="stylesheet" href="assets/vendors/flag-icon-css/css/flag-icon.min.css"/>
+    <link rel="stylesheet" href="assets/vendors/owl-carousel-2/owl.carousel.min.css"/>
+    <link rel="stylesheet" href="assets/vendors/owl-carousel-2/owl.theme.default.min.css"/>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+   
+    {{-- Admin Personal info disable  inputs --}}
+     <script>
+      $(document).ready(function(){
+          $("#myForm_Account :input").prop("disabled", true);
+          $("#save_info").hide(0);
+      });
+    </script>
+
+    {{-- Admin Business info disable  inputs --}}
+    <script>
+      $(document).ready(function(){
+          $("#myForm_Business :input").prop("disabled", true);
+          $("#save_info").hide(0);
+      });
+    </script>
+
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <!-- endinject -->
@@ -39,6 +40,10 @@
     <link rel="stylesheet" href="assets/css/style.css" />
     <!-- End layout styles -->
     <link rel="shortcut icon" href="../../user/image/foodea1.png" />
+
+    {{-- Datatable plugins --}}
+    <link rel="stylesheet" href="//cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css" />
+    
   </head>
   <body>
     <div class="container-scroller">
@@ -114,7 +119,7 @@
             <span class="nav-link">Navigation</span>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" href="/index">
               <span class="menu-icon">
                 <i class="mdi mdi-view-dashboard"></i>
               </span>
@@ -145,7 +150,7 @@
                   >
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="pages/ui-features/category.html"
+                  <a class="nav-link" href="/category"
                     >Category</a
                   >
                 </li>
@@ -158,7 +163,7 @@
             </div>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="pages/forms/basic_elements.html">
+            <a class="nav-link" href="/admin_orders">
               <span class="menu-icon">
                 <i class="mdi mdi-cart"></i>
               </span>
@@ -166,7 +171,7 @@
             </a>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="admin_history.html">
+            <a class="nav-link" href="/admin_history">
               <span class="menu-icon">
                 <i class="mdi mdi-history"></i>
               </span>
@@ -190,7 +195,7 @@
             </a>
           </li>
            <li class="nav-item menu-items">
-            <a class="nav-link" href="pages/icons/mdi.html">
+            <a class="nav-link" href="/account">
               <span class="menu-icon">
                 <i class="mdi mdi-account-box"></i>
               </span>
@@ -487,7 +492,9 @@
       </div>
       <!-- page-body-wrapper ends -->
     </div>
-    <!-- container-scroller -->
+    {{-- Jquery --}}
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+
     <!-- plugins:js -->
     <script src="assets/vendors/js/vendor.bundle.base.js"></script>
     <!-- endinject -->
@@ -509,5 +516,26 @@
     <script src="assets/js/dashboard.js"></script>
     <script src="assets/js/chart.js"></script>
     <!-- End custom js for this page -->
+
+    {{-- DataTable plugins --}}
+    <script src="//cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+
+<script>
+  $(document).ready( function () {
+    $('#myProduct').DataTable();
+} );
+</script>
+
+<script>
+  $(document).ready( function () {
+    $('#myInventory').DataTable();
+} );
+</script>
+
+<script>
+  $(document).ready( function () {
+    $('#myHistory').DataTable();
+} );
+</script>
   </body>
 </html>
