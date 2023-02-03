@@ -14,7 +14,13 @@ class Admin_product extends Controller
 {
     public function dashboard(){
 
-        return view('admin.dashboard');
+ 
+       $totalOrders = DB::table('tbl_orders')->count();
+       $productSold = DB::table('tbl_product')->count();
+       $totalRevenue = DB::table('tbl_product')->count();
+       $totalProduct = DB::table('tbl_product')->count();
+
+        return view('admin.dashboard',['totalOrders' => $totalOrders, 'productSold' => $productSold, 'totalRevenue' => $totalRevenue, 'totalProduct' => $totalProduct]);
     }
     
    public function logout(){
