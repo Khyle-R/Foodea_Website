@@ -64,10 +64,10 @@
                 </ul>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">About Us</a>
+                <a href="/about" class="nav-link">About Us</a>
               </li>
               <li class="nav-item">
-                <a href="#" class="nav-link">Contact Us</a>
+                <a href="/landing" class="nav-link">Contact Us</a>
               </li>
             </ul>
             <a
