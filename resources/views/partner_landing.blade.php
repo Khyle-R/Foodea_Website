@@ -140,40 +140,39 @@
 
                    <div class="step1-container">
                     <div class="step1-content">
-                    <h2>STEP2:</h2>
+                    <h2>STEP 2:</h2>
                     <p>Submit addiotinal business details and documents.</p>
                 </div>
                  <div class="step1-image">
-                        <img src="image/hand.png" alt="">
+                        <img src="image/hand.png" alt="" >
                     </div>
                 </div>
            
         </div>
 
-         <div class="step-image">
+         <div class="step-image img-fluid">
             <img src="image/phone-circle.png" alt="">
             <p class="number">2000 +</p>
         </div>
     
-        <div class="step2">
-            
+        <div class="step2">    
             <div class="step2-container">
-            <div class="step2-image">
-                <img src="image/star.png" alt="">
-            </div>
             <div class="step2-content">
                 <h2>STEP 3:</h2>
                 <p>Verification of details and final approval.</p>
             </div>
+            <div class="step2-image">
+                <img src="image/star.png" alt="">
+            </div>
             </div>
              <div class="step2-container">
-            <div class="step2-image">
-                <img src="image/shake.png" alt="">
-            </div>
             <div class="step2-content">
-                <h2>STEP4:</h2>
+                <h2>STEP 4:</h2>
                  <p>Your are now part of Foodea.</p>
                  </div>
+                 <div class="step2-image">
+                    <img src="image/shake.png" alt="">
+                </div>
                  </div>
         </div>
 
