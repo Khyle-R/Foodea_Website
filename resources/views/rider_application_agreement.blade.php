@@ -101,7 +101,7 @@
       </div>
       <br>
        <div class="form-group">
-        <div class="col-sm-10 d-flex">
+        <div class="col-sm-10 d-flex justify-content-center">
           <button Value="submit" type="submit" class="btn btn-danger w-50">Next</button>
         </div>
        </div>
