@@ -1,18 +1,17 @@
 @extends('superadmin.superadmin_index')
 @section('content')
          <div class="content-wrapper">
-                 <div class="row px-3">
-                          
+                 <div class="row px-3"> 
                         </div>
                         <div class="page-header">
-                            <h3 class="page-title">Product</h3>
+                            <h3 class="black page-title">Partner Details</h3>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">
-                                        <a href="#">Menu</a>
+                                        <a href="#">Application</a>
                                     </li>
                                     <li class="breadcrumb-item active" aria-current="page">
-                                        Product
+                                        Partner Details
                                     </li>
                                 </ol>
                             </nav>
@@ -27,10 +26,13 @@
                                   <div class="row align-items-center my-5">
                                     <div class="col-md-6 ml-5">
                                       <div class="row align-items-center ">
-                                      <img class="circle img-responsive mr-3" width="170" height="160" src="image/1x1.png" alt="">
+                                        @foreach ($Data as $details)
+                                            
+                                       
+                                      <img class="circle img-responsive mr-3" width="170" height="160" src="{{ url('uploads/merchant_documents') }}" alt="">
                                       <div class="col flex-wrap">
-                                      <h2 class="red-name">Andrei Nowell Ong</h2>
-                                      <h2 class="sub-text">Motorcycle</h2>
+                                      <h2 class="red-name">{{ $details->firstname }}</h2>
+                                      <h2 class="sub-text">{{ $details->business_name }}</h2>
                                       </div>
                                       </div>
                                     </div> 
@@ -38,7 +40,7 @@
                                     <div class="col-sm-5">
                                       <div class="card-pending px-3">
                                       <div class="curve card-body text-center">
-                                      <h4 class="yellow">Pending</h4>
+                                      <h4 class="yellow">{{ $details->status }}</h4>
                                       </div>
                                       </div>
                                     </div>  
@@ -50,15 +52,15 @@
                        
                                        <div class="row px-3">
                                         <label class="black width">First Name</label>
-                                        <p class="black ml-5">Andrei Nowell</p>
+                                        <p class="black ml-5">{{ $details->firstname }}</p>
                                       </div>
                                        <div class="row px-3">
                                         <label class="black width">Middle Name</label>
-                                        <p class="black ml-5">Andrei Nowell</p>
+                                        <p class="black ml-5">{{ $details->middlename }}</p>
                                       </div>
                                        <div class="row px-3">
                                         <label class="black width">Last Name</label>
-                                        <p class="black ml-5">Andrei Nowell</p>
+                                        <p class="black ml-5">{{ $details->lastname }}</p>
                                       </div>
                                        <div class="row px-3">
                                         <label class="black width">Age</label>
@@ -70,7 +72,7 @@
                                       </div>
                                        <div class="row px-3">
                                         <label class="black width">Email Address</label>
-                                        <p class="black ml-5">Andrei Nowell</p>
+                                        <p class="black ml-5">{{ $details->email }}</p>
                                       </div>
                                        <div class="row px-3">
                                         <label class="black width">Mobile Number</label>
@@ -82,37 +84,41 @@
                                      <div class="col-sm-5 mr-5">
                                       <h4 class="title-border mb-4">Business Information</h4>
                                       <div class="row px-3">
-
+                                        <label class="black width">Business Name</label>
+                                        <p class="black ml-5">{{ $details->business_name }}</p>
+                                      </div>
+                                      <div class="row px-3">
                                         <label class="black width">Business Type</label>
-                                        <p class=" black ml-5">Andrei Nowell Ong</p>
+                                        <p class=" black ml-5">{{ $details->business_type }}</p>
                                       </div>
                                         <div class="row px-3">
                                         <label class="black width">Business Number</label>
-                                        <p class="black ml-5">Andrei Nowell</p>
+                                        <p class="black ml-5">{{ $details->store_number }}</p>
                                       </div>
                                         <div class="row px-3">
                                         <label class="black width">Business Address</label>
-                                        <p class="black ml-5">Andrei Nowell</p>
+                                        <p class="black ml-5">{{ $details->address }}</p>
                                       </div>
                                         <div class="row px-3">
                                         <label class="black width">City</label>
-                                        <p class="black ml-5">Andrei Nowell</p>
+                                        <p class="black ml-5">{{ $details->city }}</p>
                                       </div>
                                         <div class="row px-3">
                                         <label class="black width">Barangay</label>
-                                        <p class="black ml-5">Andrei Nowell</p>
+                                        <p class="black ml-5">{{ $details->barangay }}</p>
                                       </div>
+                                     
                                        <div class="row px-3">
-                                        <label class="black width">City</label>
-                                        <p class="black ml-5">Andrei Nowell</p>
-                                      </div>
-                                       <div class="row px-3">
-                                        <label class="black width">Barangay</label>
-                                        <p class="black ml-5">Andrei Nowell</p>
+                                        <label class="black width">Street</label>
+                                        <p class="black ml-5">{{ $details->street }}</p>
                                       </div>
                                       <div class="row px-3">
-                                        <label class="black width">Facebook URL</label>
-                                        <p class="black ml-5">Andrei Nowell</p>
+                                        <label class="black width">Business Number</label>
+                                        <p class="black ml-5">{{ $details->store_number }}</p>
+                                      </div>
+                                        <div class="row px-3">
+                                        <label class="black width">Email</label>
+                                        <p class="black ml-5">{{ $details->email }}</p>
                                       </div>
                                       <div class="row px-3">
                                         <label class="black width">Website URL</label>
@@ -164,6 +170,7 @@
                                       <div class="row justify-content-start ">
                                      <button type="button" class="button-white btn btn-lg mr-5">Reject</button>
                                     <button type="button" class="button-red btn btn-lg">Accept</button>
+                                   @endforeach
                                   </div> 
                                   </div>  
                                   </div>

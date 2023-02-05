@@ -12,7 +12,7 @@
                                         <a href="#">Menu</a>
                                     </li>
                                     <li class="breadcrumb-item active" aria-current="page">
-                                        Product
+                                        Partner Application
                                     </li>
                                 </ol>
                             </nav>
@@ -140,7 +140,8 @@
                                                         </th>
                                                         <th>Applicant ID</th>
                                                         <th>Date Applied</th>
-                                                        <th>Vehicle Type</th>
+                                                        <th>Bussiness Name</th>
+                                                        <th>Bussiness Type</th>
                                                         <th>Documents</th>
                                                         <th>Status</th>
                                                         <th>Action</th>
@@ -148,6 +149,8 @@
                                                 </thead>  
                                                 <tbody>
                                                    
+                                                    @foreach ($Data as $merchant)
+                                                    
                                                     <tr>
                                                         <td>
                                                             <div class="form-check form-check-muted m-0">
@@ -155,19 +158,20 @@
                                                             </div>
                                                         </td>
                                                        
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
+                                                        <td>{{ $merchant->merchant_application_id }}</td>
+                                                        <td>{{ $merchant->date }}</td>
+                                                        <td>{{ $merchant->business_name }}</td>
+                                                        <td>{{ $merchant->business_type }}</td>
                                                         <td>
                                                             <a class="red-icon d-flex align-items-center" href="">
                                                             <i class="icons mdi mdi-file-check"></i>
                                                             <span class="ml-1">Review</span>
                                                             </a>
                                                         </td>
-                                                        <td></td>
+                                                        <td>{{ $merchant->status }}</td>
                                                         <td>
                                                             <div class="row">
-                                                                <a href="/superadmin_riderdetails" class="view-details badge badge-outline-success mr-3">
+                                                                <a href="/superadmin_partnerdetails/{{ $merchant->merchant_id }}" class="view-details badge badge-outline-success mr-3">
                                                                     View Details
                                                                 </a>
 
@@ -175,7 +179,8 @@
                                                             </div>
                                                         </td>
                                                     </tr>
-                                           
+                                               
+                                                    @endforeach
                                                 </tbody>
                                             </table>
                                         </div>

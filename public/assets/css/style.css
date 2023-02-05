@@ -17202,6 +17202,7 @@ a.close.disabled {
 }
 
 .modal-header .close {
+    color: #fff;
     padding: 1rem 1rem;
     margin: -25px -26px -25px auto;
 }
