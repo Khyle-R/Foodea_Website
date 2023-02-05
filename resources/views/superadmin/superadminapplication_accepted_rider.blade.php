@@ -1,5 +1,6 @@
 @extends('superadmin.superadmin_index')
 @section('content')
+
 <div class="content-wrapper">
     <div class="row">
 
@@ -12,7 +13,7 @@
                     <a href="#">Menu</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">
-                    Product
+                    Rider Application
                 </li>
             </ol>
         </nav>
@@ -70,6 +71,8 @@
                     <div class="table-responsive">
                         <table class="table">
                             <thead class="table-danger">
+                             
+
                                 <tr>
                                     <th>
                                         <div class="form-check form-check-muted m-0">
@@ -87,7 +90,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-
+                        @foreach ($Data as $rider)
                                 <tr>
                                     <td>
                                         <div class="form-check form-check-muted m-0">
@@ -96,14 +99,14 @@
                                         </div>
                                     </td>
 
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{ $rider->accepted_rider_id }}</td>
+                                    <td>{{ $rider->firstname. ' ' .$rider->lastname }}</td>
+                                    <td>{{ $rider->vehicle_type }}</td>
                                     <td><a class="red-icon d-flex align-items-center" href="">
                                             <i class="icons mdi mdi-email"></i>
                                             <span class="ml-1">Email</span>
                                         </a></td>
-                                        <td></td>
+                                        <td>{{ $rider->credit_score }}</td>
                                     <td>
                                         <div class="row">
                                             <a href="/superadmin_riderdetails"
@@ -115,7 +118,7 @@
                                         </div>
                                     </td>
                                 </tr>
-
+                                   @endforeach
                             </tbody>
                         </table>
                     </div>

@@ -34,6 +34,31 @@
     color: #ff0404;
 }
 
+.red-btn {
+    background: #F54748;
+    padding: 10px 15px;
+    border-radius: 10px
+}
+
+.red-btn:hover {
+    background: #fff;
+    color: rgba(0, 0, 0, 0.795);
+    border: 1px #00000069 solid;
+}
+
+.white-btn {
+    background: #fff;
+    border: 1px #00000069 solid;
+    padding: 10px 15px;
+    border-radius: 10px;
+    color: rgba(0, 0, 0, 0.795);
+}
+
+.white-btn:hover {
+    background: #F54748;
+    color: #fff;
+}
+
 .red-name {
     color: #F54748;
     font-size: 19px;
