@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css" />
     <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css" />
-    <title>FOODEA</title>
+    <title>Partner Terms of Use</title>
 </head>
 
 <body>
@@ -101,7 +101,7 @@
                     </div>
                     <br>
                     <div class="form-group">
-                      <div class="col-sm-10 d-flex">
+                      <div class="col-sm-10 d-flex justify-content-center">
                         <button Value="submit" type="submit" class="btn btn-danger w-50">Next</button>
                       </div>
                     </div>
