@@ -153,9 +153,7 @@ Route::view('admin_personal','admin.admin_personal');
 
 Route::get('/index', [Admin_product::class, 'dashboard']);
 
-Route::get('/product', function () {
-    return view('/admin.product');
-});
+
 //Add product
 Route::get('/add_product',[Admin_product::class, 'addProductView'])->name('add_product.addProductView');
 Route::post('/add_product',[Admin_product::class, 'addProduct'])->name('add_product.addProduct');
@@ -236,4 +234,12 @@ Route::get('/business', function(){
 
 Route::get('document',  function(){
     return view('admin.admin_partnerdocuments');
+});
+
+//View Category
+Route::get('category', function () {
+
+    $category = DB::table('tbl_category')->get();
+
+    return view('admin.category', ['category' => $category]);
 });
