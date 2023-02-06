@@ -179,7 +179,7 @@
                                                                                     <div class="wrapper">
                                                                                         <div class="content">
                                                                                           <p>Press enter or add a comma after each tag</p>
-                                                                                          <ul><input type="text" spellcheck="false"></ul>
+                                                                                          <ul id="ul"><input id="input" type="text" spellcheck="false"></ul>
                                                                                         </div>
                                                                                         <div class="details">
                                                                                           <p><span>10</span> tags are remaining</p>
@@ -343,25 +343,7 @@
                                                 </tbody>
                                             </table>
                                         </div>
-                                        <div>
-                                            <table id="sample">
-                                                <tr>
-                                                  <th>Person 1</th>
-                                                  <th>Person 2</th>
-                                                  <th>Person 3</th>
-                                                </tr>
-                                                <tr>
-                                                  <td>Emil</td>
-                                                  <td>Tobias</td>
-                                                  <td>Linus</td>
-                                                </tr>
-                                                <tr>
-                                                  <td>16</td>
-                                                  <td>14</td>
-                                                  <td>10</td>
-                                                </tr>
-                                              </table>
-                                        </div>
+                                        
                                         {{-- <ul class="pagination pt-2 align-items-center justify-content-center justify-content-sm-end">
                                             <li class="page-item">
                                                 <a class="page-link" href="#" aria-label="Previous">
@@ -433,6 +415,54 @@
                 
                 </script> --}}
 
+              <script>
+                const ul = document.querySelector("#ul"),
+            input = document.querySelector("#input"),
+            tagNumb = document.querySelector(".details span");
+            let maxTags = 10,
+            tags = ["coding", "nepal"];
+            countTags();
+            createTag();
+            function countTags(){
+                input.focus();
+                tagNumb.innerText = maxTags - tags.length;
+            }
+            function createTag(){
+                ul.querySelectorAll("li").forEach(li => li.remove());
+                tags.slice().reverse().forEach(tag =>{
+                    let liTag = `<li>${tag} <i class="uit uit-multiply" onclick="remove(this, '${tag}')"></i></li>`;
+                    ul.insertAdjacentHTML("afterbegin", liTag);
+                });
+                countTags();
+            }
+            function remove(element, tag){
+                let index  = tags.indexOf(tag);
+                tags = [...tags.slice(0, index), ...tags.slice(index + 1)];
+                element.parentElement.remove();
+                countTags();
+            }
+            function addTag(e){
+                if(e.key == " "){
+                    let tag = e.target.value.replace(/\s+/g, ' ');
+                    if(tag.length > 1 && !tags.includes(tag)){
+                        if(tags.length < 10){
+                            tag.split(',').forEach(tag => {
+                                tags.push(tag);
+                                createTag();
+                            });
+                        }
+                    }
+                    e.target.value = "";
+                }
+            }
+            input.addEventListener("keyup", addTag);
+            const removeBtn = document.querySelector(".details button");
+            removeBtn.addEventListener("click", () =>{
+                tags.length = 0;
+                ul.querySelectorAll("li").forEach(li => li.remove());
+                countTags();
+            });
+              </script>
                     </footer>
                     <!-- partial -->
                 </div>
