@@ -10,7 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
     <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css" />
-    <title>FOODEA</title>
+    <title>FOODEA Partner Requirements</title>
   </head>
 
   <body>
@@ -56,7 +56,7 @@
             <input type="hidden" name="merchant_id" value=" {{ Session::get('merchant_id') }}">
           @endif
 
-                  <div class="requirements-title"> 
+            <div class="requirements-title"> 
             <p>Clear image of your menu<span> (Required)</span></p>
                </div>
                 <div class="requirements">
@@ -158,6 +158,7 @@
               </form>
           </div>
         </div>
+      </div>
       </div>
       </div>
       </div>

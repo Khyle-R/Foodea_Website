@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\tbl_merchant_application;
 use App\Models\tbl_merchant_document;
 use App\Models\tbl_merchant_info;
 use App\Models\tbl_partner_accounts;
@@ -38,6 +39,12 @@ class PartnerRegistration extends Controller
 
         if($res){
             $request->session()->put('merchant_id', $merchant->id);
+
+            $id = new tbl_merchant_application();
+            $id->merchant_id = $merchant->id;
+            $id->status = 'first';
+            $id->save();
+            
             return redirect('/partner_application2');
         }else{
             return back()->with('fail', 'Something is wrong');
@@ -77,6 +84,14 @@ class PartnerRegistration extends Controller
 
         $res = $merchant->save();
         if($res){
+            
+            $id = tbl_merchant_info::where('merchant_id', $request->merchant_id)->first();
+            
+            tbl_merchant_application::where('merchant_id', $request->merchant_id)
+            ->update([
+                'merchantinfo_id' => $id->merchantinfo_id,
+                'status' => 'second'
+            ]);
             return redirect('/partner_application3');
         }
         else{
@@ -128,13 +143,13 @@ class PartnerRegistration extends Controller
             // $filename = $photo;
             // $filename2 = $license;
 
-            $menu->move('uploads/rider_documents/', $photo);
-            $file ->move('uploads/rider_documents/',  $permit );
-            $file2->move('uploads/rider_documents/', $bir);
-            $file3 ->move('uploads/rider_documents/',  $barangay );
-            $file4->move('uploads/rider_documents/', $dti);
-            $file5 ->move('uploads/rider_documents/',  $front );
-            $file6 ->move('uploads/rider_documents/',  $back );
+            $menu->move('uploads/merchant_documents/', $photo);
+            $file ->move('uploads/merchant_documents/',  $permit );
+            $file2->move('uploads/merchant_documents/', $bir);
+            $file3 ->move('uploads/merchant_documents/',  $barangay );
+            $file4->move('uploads/merchant_documents/', $dti);
+            $file5 ->move('uploads/merchant_documents/',  $front );
+            $file6 ->move('uploads/merchant_documents/',  $back );
 
 
             $document->menu_photo = $photo;
@@ -146,8 +161,24 @@ class PartnerRegistration extends Controller
             $document->back_license =  $back;
 
         }
-        $document->save();
+        $success = $document->save();
+        
+        if($success){
+            
+        $id = tbl_merchant_document::where('merchant_id', $request->merchant_id)->first();
+        
+        tbl_merchant_application::where('merchant_id', $request->merchant_id)
+        ->update([
+            'merchant_document_id' => $id->merchant_document_id,
+            'status' => 'Pending'
+        ]);
         return redirect('partner_application4');
+
+        }
+        else
+        {
+             return back()->with('fail', 'Something is wrong');
+        }
     }
 
     public function LoginIndex(){

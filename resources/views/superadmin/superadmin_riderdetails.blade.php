@@ -1,18 +1,47 @@
 @extends('superadmin.superadmin_index')
 @section('content')
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+           
+          <div class="modal-body">
+            @foreach ($Data as $rider)
+            <form method="post" action="{{ route('RiderAccept') }}">
+              @csrf
+           <p class="black"> Do you want to accept this rider?</p>
+           <input type="text" name="rider_id" value="{{ $rider->rider_id }}">
+            <input type="text" name="application_id" value="{{ $rider->rider_application_id }}">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn white-btn" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn red-btn">Confirm</button>
+          </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
          <div class="content-wrapper">
                  <div class="row px-3">
                           
                         </div>
                         <div class="page-header">
-                            <h3 class="page-title">Product</h3>
+                            <h3 class="page-title black">Rider Application</h3>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">
                                         <a href="#">Menu</a>
                                     </li>
                                     <li class="breadcrumb-item active" aria-current="page">
-                                        Product
+                                        Rider Application
                                     </li>
                                 </ol>
                             </nav>
@@ -27,18 +56,23 @@
                                   <div class="row align-items-center my-5">
                                     <div class="col-md-6 ml-5">
                                       <div class="row align-items-center ">
-                                      <img class="circle img-responsive mr-3" width="170" height="160" src="image/1x1.png" alt="">
+                                   
+                                      <img class="circle img-responsive mr-3" width="170" height="160" src="{{ url('uploads/rider_documents/'. $rider->rider_photo) }}" alt="">
                                       <div class="col flex-wrap">
-                                      <h2 class="red-name">Andrei Nowell Ong</h2>
-                                      <h2 class="sub-text">Motorcycle</h2>
+                             
+                                    
+                            
+                                      <h2 class="red-name"> {{ $rider->firstname . " ". $rider->lastname  }} </h2>
+                                      <h2 class="sub-text">{{ $rider->vehicle_type }}</h2>
                                       </div>
                                       </div>
                                     </div> 
+                                       
 
                                     <div class="col-sm-5">
                                       <div class="card-pending px-3">
                                       <div class="curve card-body text-center">
-                                      <h4 class="yellow">Pending</h4>
+                                      <h4 class="yellow">{{ $rider->status }}</h4>
                                       </div>
                                       </div>
                                     </div>  
@@ -50,33 +84,45 @@
                        
                                        <div class="row px-3">
                                         <label class="black width">First Name</label>
-                                        <p class="black ml-5">Andrei Nowell</p>
+                                        <p class="black ml-5">{{ $rider->firstname }}</p>
                                       </div>
                                        <div class="row px-3">
                                         <label class="black width">Middle Name</label>
-                                        <p class="black ml-5">Andrei Nowell</p>
+                                        <p class="black ml-5">{{ $rider->middlename }}</p>
                                       </div>
                                        <div class="row px-3">
                                         <label class="black width">Last Name</label>
-                                        <p class="black ml-5">Andrei Nowell</p>
+                                        <p class="black ml-5">{{ $rider->lastname }}</p>
                                       </div>
                                        <div class="row px-3">
                                         <label class="black width">Age</label>
-                                        <p class="black ml-5">Andrei Nowell</p>
+                                        <p class="black ml-5">{{ $rider->gender }}</p>
                                       </div>
                                        <div class="row px-3">
                                         <label class="black width">Gender</label>
-                                        <p class="black ml-5">Andrei Nowell</p>
+                                        <p class="black ml-5">{{ $rider->age }}</p>
                                       </div>
                                        <div class="row px-3">
                                         <label class="black width">Email Address</label>
-                                        <p class="black ml-5">Andrei Nowell</p>
+                                        <p class="black ml-5">{{ $rider->email }}</p>
                                       </div>
                                        <div class="row px-3">
                                         <label class="black width">Mobile Number</label>
-                                        <p class="black ml-5">Andrei Nowell</p>
+                                        <p class="black ml-5">{{ $rider->mobile_number }}</p>
                                       </div>
-                         
+                                      <div class="row px-3">
+                                        <label class="black width">Address</label>
+                                        <p class="black ml-5">{{ $rider->address }}</p>
+                                      </div>
+                                       <div class="row px-3">
+                                        <label class="black width">City</label>
+                                        <p class="black ml-5">{{ $rider->city }}</p>
+                                      </div>
+                                       <div class="row px-3">
+                                        <label class="black width">Barangay</label>
+                                        <p class="black ml-5">{{ $rider->barangay }}</p>
+                                      </div>
+                                      
                                     </div>
 
                                      <div class="col-sm-5 mr-5">
@@ -84,32 +130,25 @@
                                       <div class="row px-3">
 
                                         <label class="black width">Vehicle Type</label>
-                                        <p class=" black ml-5">Andrei Nowell Ong</p>
+                                        <p class=" black ml-5">{{ $rider->vehicle_type }}</p>
                                       </div>
                                         <div class="row px-3">
                                         <label class="black width">Plate Number</label>
-                                        <p class="black ml-5">Andrei Nowell</p>
+                                        <p class="black ml-5">{{ $rider->plate_number }}</p>
                                       </div>
                                         <div class="row px-3">
-                                        <label class="black width">Motorcycle Model</label>
-                                        <p class="black ml-5">Andrei Nowell</p>
+                                        <label class="black width">Motorcycle CC</label>
+                                        <p class="black ml-5">{{ $rider->displacement }}</p>
                                       </div>
                                         <div class="row px-3">
                                         <label class="black width">Year Model</label>
-                                        <p class="black ml-5">Andrei Nowell</p>
+                                        <p class="black ml-5">{{ $rider->year_model }}</p>
                                       </div>
                                         <div class="row px-3">
                                         <label class="black width">Engine Number</label>
-                                        <p class="black ml-5">Andrei Nowell</p>
+                                        <p class="black ml-5">{{ $rider->engine_number }}</p>
                                       </div>
-                                       <div class="row px-3">
-                                        <label class="black width">City</label>
-                                        <p class="black ml-5">Andrei Nowell</p>
-                                      </div>
-                                       <div class="row px-3">
-                                        <label class="black width">Barangay</label>
-                                        <p class="black ml-5">Andrei Nowell</p>
-                                      </div>
+                                      
                                     </div>
                                   </div>
 
@@ -145,12 +184,13 @@
                                         <label class="black space">Drugtest Result</label>
                                         <a class="red-link" href=""><i class="red-icon mdi mdi-check-circle mr-2"></i>View</a>
                                       </div>
-                         
+                                       @endforeach
+
                                     </div>
                                      <div class="col-sm-5">
                                       <div class="row justify-content-start ">
                                      <button type="button" class="button-white btn btn-lg mr-5">Reject</button>
-                                    <button type="button" class="button-red btn btn-lg">Accept</button>
+                                    <button type="button" class="button-red btn btn-lg" data-toggle="modal" data-target="#exampleModalCenter">Accept</button>
                                   </div> 
                                   </div>  
                                   </div>

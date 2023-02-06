@@ -17,7 +17,8 @@
         />
         <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
            <link rel="stylesheet" type="text/css" href="css/login.css" />
-        <title>Document</title>
+        <title>FOODEA SignUp & LogIn</title>
+        <link rel="icon" href="{{ url('image/foodea1.png') }}">
     </head>
     <body>
          

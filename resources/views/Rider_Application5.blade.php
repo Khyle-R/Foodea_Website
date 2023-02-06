@@ -1,58 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="UTF-8" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="css/Rider_Application5.css" />
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <link rel="icon" href="{{ url('image/foodea1.png') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
-    <title>FOODEA</title>
-    <link rel="shortcut icon" href="images/foodea.png" type="image">
+    <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css" />
+    <title>FOODEA Rider Application Status</title>
   </head>
 
   <body>
-    <div class="container">
-      <div class="left">
-        <div class="left-content">
-          <div class="back">
-            <a href="#"><img src="images/vector.png" /></a>
-            <p>Back to website</p>
-          </div>
-          <div class="logo">
-            <a href="#"><img src="images/foodea.png" /></a>
-            <h2>FOODEA</h2>
-          </div>
+    <div class="container-scroller">
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <ul class="nav">
+          <li class="nav-item back">
+              <div class="back-logo">
+                  <a href="/"> <img src="image/vector.png" alt=""/> </a>
+                  <h5 class="mb-0">Back to website</h5>
+              </div>
+          </li>
+          <li class="nav-item nav-category">
+            <a class="nav-link" href="/">
+              <img src="image/foodea.png" style="width: 50px">FOODEA
+            </a>
+          </li>
+              <li class="nav-item nav-category">Merchant Application</li>
+              <li>Step 1 &nbsp;&nbsp;&nbsp;Personal Information</li>
+              <li>Step 2 &nbsp;&nbsp;&nbsp;Business Information</li>
+              <li>Step 3 &nbsp;&nbsp;&nbsp;Verify Email Address</li>
+              <li class="red">Step 4 &nbsp;Requirements</li>
+              <li>Step 5 &nbsp;Application Status</li>
+            </ul>
+      </nav>
 
-          <ul>
-            <h1>Merchant Application</h1>
-            <li><a href="rider_application.html">Step 1 &nbsp;&nbsp;&nbsp; Personal Information</a></li>
-            <li><a href="rider_application2.html">Step 2 &nbsp;&nbsp;&nbsp; Verify Phone Number</a></li>
-            <li><a href="rider_application3.html">Step 3 &nbsp;&nbsp;&nbsp; Vehicle Information</a></li>
-            <li><a href="rider_application4.html">Step 4 &nbsp;&nbsp;&nbsp; Requirements</a></li>
-            <li><a href="Rider_Application5.html">Step 5 &nbsp;&nbsp;&nbsp; Application Status</a></li>
-          </ul>
+      <div class="sign-form">
+        <div class="content-wrapper">
+          <div class="col-12 col-sm-10 col-md-11 col-lg-10 col-xl-6">
+            <div class="right"> 
+              <div class="center">
+               <img src="image/cashier.png" class="img-fluid"/>
+               <h2>Thank you for trusting Foodea</h2>
+               <p>We have recieved your documents and</p>
+               <p>we will be processing your application.</p>
+               <br><br>
+
+            <div class="form-group">
+              <div class="col-sm-10 d-flex justify-content-center">
+                <button Value="submit" type="submit" class="btn btn-danger w-50">Done</button>
+              </div>
+              </div>
+              </div>
+          </div>
         </div>
       </div>
-      <div class="right">
-        <div class="right-content">
-          <h2>Welcome, Juan</h2>
-          <p>Here's the required steps to set up your account</p>
+    </div>
+    <!-- Scroller -->
+    </div>
 
-          <div class="form-container">
-            <div class="btn-group">
-              <button>Photo of your vehicle<i class="fa fa-chevron-right"></i><br><br><samp>Required Steps</samp></button>
-              <button>Photo of your drivers license ID<i class="fa fa-chevron-right"></i><br><br><samp>Required Steps</samp></button>
-              <button>Certificate of Registration and Official Receipt of Vehicle Registration<i class="fa fa-chevron-right"></i><br><br><samp>Required Steps</samp></button>
-              <button>Drug Test Result<i class="fa fa-chevron-right"></i><br><br><samp>Required Steps</samp></button>
-              <button>NBI Clearance<i class="fa fa-chevron-right"></i><br><br><samp>Optional</samp></button>
-              <br><br>
-              <input class="btn btn-danger" type="submit" value="Submit">
-            </div>
-            
-            
-          </div>
-        </div>
-      </div>
-    </div>  
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
   </body>
 </html>

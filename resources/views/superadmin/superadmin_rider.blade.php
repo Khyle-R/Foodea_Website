@@ -12,7 +12,7 @@
                                         <a href="#">Menu</a>
                                     </li>
                                     <li class="breadcrumb-item active" aria-current="page">
-                                        Product
+                                       Rider Application
                                     </li>
                                 </ol>
                             </nav>
@@ -147,33 +147,34 @@
                                                     </tr>
                                                 </thead>  
                                                 <tbody>
-                                                   
+                                                     @foreach ($Data as $info)
                                                     <tr>
                                                         <td>
                                                             <div class="form-check form-check-muted m-0">
                                                                 <label class="form-check-label"> <input type="checkbox"class="form-check-input"/></label>
                                                             </div>
                                                         </td>
-                                                       
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
+                                                      
+                                                        <td>{{ $info->rider_application_id }}</td>
+                                                        <td>{{ $info->date }}</td>
+                                                        <td>{{ $info->vehicle_type }}</td>
                                                         <td>
                                                             <a class="red-icon d-flex align-items-center" href="">
                                                             <i class="icons mdi mdi-file-check"></i>
                                                             <span class="ml-1">Review</span>
                                                             </a>
                                                         </td>
-                                                        <td></td>
+                                                        <td>{{ $info->status }}</td>
                                                         <td>
                                                             <div class="row">
-                                                                <a href="/superadmin_riderdetails" class="view-details badge badge-outline-success mr-3">
+                                                                <a href="/superadmin_riderdetails/{{ $info->rider_id }}"  class="view-details badge badge-outline-success mr-3">
                                                                     View Details
                                                                 </a>
 
                                                               
                                                             </div>
                                                         </td>
+                                                          @endforeach
                                                     </tr>
                                            
                                                 </tbody>
