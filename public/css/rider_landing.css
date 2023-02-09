@@ -586,7 +586,7 @@ nav .navbar-brand span{
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: scroll;
-  height: 390px;
+  height: 370px;
 }
 
 .end-container {
@@ -596,11 +596,12 @@ nav .navbar-brand span{
   flex-direction: column;
   align-items: flex-start;
 }
+
 .end-content {
- margin-top: 6rem;
+ margin-top: 4rem;
 }
+
 .end-content h2 {
-  
   color: rgba(0, 0, 0, 0.863);
   font-family: "Montserrat", sans-serif;
   font-weight: 600;
@@ -786,7 +787,7 @@ nav .navbar-brand span{
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: scroll;
-    margin-bottom: -5.2rem;
+    margin-bottom: -4.6rem;
   }
   
   .end-content{
@@ -820,7 +821,7 @@ nav .navbar-brand span{
     background-color: #f54748;
     color: #fff;
     padding: 10px 40px;
-    border-radius: 15px;
+    border-radius: 20px;
     font-family: "Montserrat", sans-serif;
   }
 
@@ -885,41 +886,41 @@ nav .navbar-brand span{
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: scroll;
-    margin-bottom: -8.3rem;
+    margin-bottom: -7.8rem;
   }
   
   .end-content{
-    margin-top: 2rem;
+    margin-top: -2.5rem;
   }
   
   .end-container {
-    width: 60%;
+    width: 70%;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-  
   }
   
   .end-content h2 {
     color: rgba(0, 0, 0, 0.863);
     font-family: "Montserrat", sans-serif;
     font-weight: 600;
-    font-size: 15px;
+    font-size: 18px;
   }
+
   .end-content p {
     width: 100%;
     color: rgba(0, 0, 0, 0.74);
     font-family: "Montserrat", sans-serif;
     font-weight: 500;
-    font-size: 12px;
+    font-size: 15px;
    
   }
   .end-content a {
-    font-size: 13px;
+    font-size: 15px;
     background-color: #f54748;
     color: #fff;
     padding: 10px 40px;
-    border-radius: 15px;
+    border-radius: 20px;
     font-family: "Montserrat", sans-serif;
   }
 
@@ -986,11 +987,11 @@ nav .navbar-brand span{
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: scroll;
-  margin-bottom: -8.9rem;
+  margin-bottom: -8.2rem;
 }
 
 .end-content{
-  margin-top: -1rem;
+  margin-top: -2.5rem;
 }
 
 .end-container {
@@ -1065,28 +1066,48 @@ nav .navbar-brand span{
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: scroll;
-  margin-bottom: -9.3rem;
+  margin-bottom: -8.7rem;
 }
 
 .end-content{
-  margin-top: -2rem;
+  margin-top: -4.4rem;
 }
 
- 
 } 
 
-@media (min-width: 1901px) and (max-width:2560px) {
-
+@media (min-width:1330px) and (max-width:1500px) {
+  
   .bg-img {
-    margin-top: 5rem;
-    -webkit-background-size: cover;
-    -moz-background-size:cover;
-    -o-backgroundsize:cover;
-    background-size:cover;
+    -webkit-background-size: contain;
+    -moz-background-size:contain;
+    -o-backgroundsize:contain;
+    background-size:contain;
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: scroll;
-    height: 900px;
+    height: 500px;
+    margin-bottom: -2.5rem;
+  }
+
+  .end-content{
+    margin-top: 8rem;
+  }
+
+}
+
+@media (min-width: 1900px) and (max-width:2040px) {
+
+  .bg-img {
+    margin-top: 10rem;
+    -webkit-background-size: contain;
+    -moz-background-size:contain;
+    -o-backgroundsize:contain;
+    background-size:contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: scroll;
+    height: 620px;
+    margin-bottom: -1.9rem;
   }
   
   .end-container {
@@ -1097,7 +1118,7 @@ nav .navbar-brand span{
     align-items: flex-start;
   }
   .end-content {
-   margin-top: 20rem;
+   margin-top: 10rem;
   }
   .end-content h2 {
     
@@ -1118,7 +1139,56 @@ nav .navbar-brand span{
     background-color: #f54748;
     color: #fff;
     padding: 20px 80px;
-    border-radius: 20px;
+    border-radius: 40px;
+    font-size: 27px;
+    font-family: "Montserrat", sans-serif;
+  }
+}
+
+@media (min-width:2560px) {
+  .bg-img {
+    margin-top: 10rem;
+    -webkit-background-size: contain;
+    -moz-background-size:contain;
+    -o-backgroundsize:contain;
+    background-size:contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: scroll;
+    height: 760px;
+    margin-bottom: -0.5rem;
+  }
+  
+  .end-container {
+    width: 60%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .end-content {
+   margin-top: 10rem;
+  }
+  .end-content h2 {
+    
+    color: rgba(0, 0, 0, 0.863);
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    font-size: 35px;
+  }
+  .end-content p {
+    width: 45%;
+    color: rgba(0, 0, 0, 0.74);
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
+    font-size: 27px;
+    padding: 20px 0;
+  }
+  .end-content a {
+    background-color: #f54748;
+    color: #fff;
+    padding: 20px 80px;
+    border-radius: 40px;
     font-size: 27px;
     font-family: "Montserrat", sans-serif;
   }
