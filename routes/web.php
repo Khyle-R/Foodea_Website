@@ -63,7 +63,7 @@ Route::get('/superadmin_logout', [SuperadminController::class, 'AdminLogOut']);
 
 Route::get('/superadmin_application', [SuperadminController::class, 'ApplicationsRider']);
 
-Route::get('/superadmin_partnerdetails', [SuperadminController::class, 'PartnerDetails']);
+Route::get('/superadmin_partnerdetails/{id}', [SuperadminController::class, 'PartnerDetails']);
 
 Route::get('/superadmin_profile', [SuperadminController::class, 'profile']);
 
@@ -73,12 +73,13 @@ Route::get('/superadmin_partnerapplication', [SuperadminController::class, 'part
 
 Route::get('/superadmin_log', [SuperadminController::class, 'ActivityLog']);
 
-Route::get('/superadmin_riderdetails', [SuperadminController::class, 'RiderDetails']);
+Route::get('/superadmin_riderdetails/{id}', [SuperadminController::class, 'RiderDetails']);
 
 Route::get('/superadmin_acceptedrider', [SuperadminController::class, 'AcceptedRider']);
 
 Route::get('/superadmin_acceptedpartner', [SuperadminController::class, 'AcceptedPartner']);
 
+Route::post('/superadmin_riderdetails', [SuperadminController::class, 'RiderAccept'])->name('RiderAccept');
 
 Route::get('/login_partner', function () {
     return view('login_partner');
@@ -153,9 +154,7 @@ Route::view('admin_personal','admin.admin_personal');
 
 Route::get('/index', [Admin_product::class, 'dashboard']);
 
-Route::get('/product', function () {
-    return view('/admin.product');
-});
+
 //Add product
 Route::get('/add_product',[Admin_product::class, 'addProductView'])->name('add_product.addProductView');
 Route::post('/add_product',[Admin_product::class, 'addProduct'])->name('add_product.addProduct');
@@ -172,7 +171,7 @@ Route::get('/product/restore/{id}',[Admin_product::class, 'restoreProduct']);
 //Update products
 Route::get('/product/update/{id}',[Admin_product::class, 'updateProduct']);
 
-Route::post('/product/updateInfo', [Admin_product::class, 'updateProductInfo'])->name('product.updateProductInfo');
+Route::post('/product/updateInfo',[Admin_product::class, 'updateProductInfo'])->name('product.updateProductInfo');
 
 //View products
 Route::get('product', function () {
@@ -199,4 +198,49 @@ Route::get('admin_history', function(){
     return view('admin.admin_history', ['history' => $history]);
 });
 
-Route::view('admin_orders', 'admin.admin_orders');
+Route::get('admin_orders', function(){
+    $orders = DB::table('tbl_orders')->get();
+
+    return view('admin.admin_orders', ['orders' => $orders]);
+});
+
+Route::get('/account',[Admin_product::class, 'infoAccount']);
+
+Route::get('/account', function(){
+    $id=session('loginID');
+    // I use left join to combine the two tables and get the information to the other table
+    //$accountInfo = DB::table('tbl_merchant_account')->where('merchant_id','=', $id)->first();
+    $accountInfo = DB::table('tbl_merchant_account')
+    ->leftJoin('tbl_merchant_info', 'tbl_merchant_account.merchant_id', '=', 'tbl_merchant_info.merchant_id')
+    ->select('*')
+    ->where('tbl_merchant_account.merchant_id','=',$id)
+    ->first();
+
+    return view('admin.admin_personalinformation1', ['accountInfo' => $accountInfo]);
+});
+
+Route::get('/business', function(){
+    $id=session('loginID');
+
+    //$accountInfo = DB::table('tbl_merchant_account')->where('merchant_id','=', $id)->first();
+    $businessInfo = DB::table('tbl_merchant_account')
+    ->leftJoin('tbl_merchant_info', 'tbl_merchant_account.merchant_id', '=', 'tbl_merchant_info.merchant_id')
+    ->select('*')
+    ->where('tbl_merchant_account.merchant_id','=',$id)
+    ->first();
+
+    return view('admin.admin_businessinformation1', ['businessInfo' => $businessInfo]);
+});
+
+
+Route::get('document',  function(){
+    return view('admin.admin_partnerdocuments');
+});
+
+//View Category
+Route::get('category', function () {
+
+    $category = DB::table('tbl_category')->get();
+
+    return view('admin.category', ['category' => $category]);
+});

@@ -1,5 +1,84 @@
 @extends('admin.index')
 @section('content')           
+<style> /* Style for Tag inside the add Category modal */
+    .wrapper{
+  width: 496px;
+  background: #fff;
+  border-radius: 10px;
+  padding: 18px 25px 20px;
+  box-shadow: 0 0 30px rgba(0,0,0,0.06);
+}
+.wrapper :where(.title, li, li i, .details){
+  display: flex;
+  align-items: center;
+}
+.title img{
+  max-width: 21px;
+}
+.title h2{
+  font-size: 21px;
+  font-weight: 600;
+  margin-left: 8px;
+}
+.wrapper .content{
+  margin: 10px 0;
+}
+.content p{
+  font-size: 15px;
+}
+.content ul{
+  display: flex;
+  flex-wrap: wrap;
+  padding: 7px;
+  margin: 12px 0;
+  border-radius: 5px;
+  border: 1px solid #a6a6a6;
+}
+.content ul  li{
+  color: #333;
+  margin: 4px 3px;
+  list-style: none;
+  border-radius: 5px;
+  background: #F2F2F2;
+  padding: 5px 8px 5px 10px;
+  border: 1px solid #e3e1e1;
+}
+.content ul li i{
+  height: 20px;
+  width: 20px;
+  color: #808080;
+  margin-left: 8px;
+  font-size: 12px;
+  cursor: pointer;
+  border-radius: 50%;
+  background: #dfdfdf;
+  justify-content: center;
+}
+.content ul input{
+  flex: 1;
+  padding: 5px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+}
+.wrapper .details{
+  justify-content: space-between;
+}
+.details button{
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 9px 15px;
+  border-radius: 5px;
+  background: #5372F0;
+  transition: background 0.3s ease;
+}
+.details button:hover{
+  background: #2c52ed;
+}
+</style>
            <div class="content-wrapper">
                  <div class="row">
                             <div class="col-12 grid-margin stretch-card">
@@ -55,7 +134,7 @@
                                         <a href="#">Menu</a>
                                     </li>
                                     <li class="breadcrumb-item active" aria-current="page">
-                                        Product
+                                        Category
                                     </li>
                                 </ol>
                             </nav>
@@ -66,7 +145,7 @@
                                     <div class="card-body">
                                         <div class="row justify-content-sm-between px-3 mb-3">
                                             <h4 class="card-title">
-                                                Order Status
+                                                Category
                                             </h4>
                                             <div class="row">
                                                 <div>
@@ -74,7 +153,7 @@
                                                         Add Products
                                                     </a> --}}
                                                      <!-- Button trigger modal -->
-                                                            <button type="button" class="btn btn-danger btn-sm px-3 mr-3 py-2 px-3 rounded" data-toggle="modal" data-target="#AddModal"> Add Product</button>
+                                                            <button type="button" class="btn btn-danger btn-sm px-3 mr-3 py-2 px-3 rounded" data-toggle="modal" data-target="#AddModal"> Add Category</button>
                                                             <!-- Modal -->
                                                             <div class="modal fade" id="AddModal" tabindex="-1" aria-labelledby="AddModalLabel" aria-hidden="true">
                                                                 <div class="modal-dialog modal-dialog-centered">
@@ -89,7 +168,7 @@
                                                                             <form class="forms-sample"  action="{{route('add_product.addProduct')}}" method="post" enctype="multipart/form-data">
                                                                                 @csrf 
                                                                                 <div class="form-group">
-                                                                                  <label for="exampleInputName1" class="blackk">Product Name</label>
+                                                                                  <label for="exampleInputName1" class="blackk">Category Name</label>
                                                                                   <input type="text" class="form-control" id="exampleInputName1" placeholder="Name" value="{{ old('product_name')}}" name="product_name"/>
                                                                                   <span style="color:red;">
                                                                                   @error('product_name') {{ $message }}
@@ -97,76 +176,16 @@
                                                                                   <span class="gray">Do not exceed 20 characters when entering the product name.</span>
                                                                                 </div>
                                                                                 <div class="row">
-                                                                                  <div class="col form-group">
-                                                                                    <label for="exampleSelectGender" class="blackk">Category</label>
-                                                                                    <select class="form-control"  id="exampleSelectGender" style="border: 1px solid" name="category">
-                                                                                      <option></option>
-                                                                                      <option>Chicken</option>
-                                                                                      <option>Pork</option>
-                                                                                    </select>
-                                                                                    <span style="color:red;">
-                                                                                      @error('category') {{ $message }}
-                                                                                      @enderror</span>
-                                                                                  </div>
-                                                                                  <div class="col form-group">
-                                                                                    <label for="exampleSelectGender" class="blackk">Type</label>
-                                                                                    <select class="form-control" id="exampleSelectGender"style="border: 1px solid" name="type">
-                                                                                      <option></option>
-                                                                                      <option>Fried Chicken</option>
-                                                                                      <option>Chicken Soup</option>
-                                                                                    </select>
-                                                                                    <span style="color:red;">
-                                                                                      @error('type') {{ $message }}
-                                                                                      @enderror</span>
-                                                                                  </div>
-                                                                                </div>
-                                                      
-                                                                                <div class="form-group">
-                                                                                  <label for="exampleTextarea1" class="blackk">Description</label>
-                                                                                  <textarea class="form-control"id="exampleTextarea1"rows="4" name="description"></textarea>
-                                                                                  <span style="color:red;">
-                                                                                    @error('description') {{ $message }}
-                                                                                    @enderror</span>
-                                                                                  <span class="gray">Do not exceed 100 characters when entering the product details.</span>
-                                                                                </div>
-                                                                              
-                                                                            
-                                                                           
-                                                      
-                                                                                <div class="form-group">
-                                                                                  <div class="file-loading">
-                                                                                    <input type="file" value="{{old('product_image')}}" name="product_image"/>
-                                                                                    <span style="color:red;">
-                                                                                      @error('product_image') {{ $message }}
-                                                                                      @enderror</span>
-                                                                                  </div>
-                                                                                </div>
-                                                                                <div class="row">
-                                                                                  <div class="col-md">
-                                                                                    <label for="exampleInputName1" class="blackk">Price</label>
-                                                                                    <input type="text"class="form-control" id="exampleInputName1" value="{{ old('price')}}" name="price"/>
-                                                                                    <span style="color:red;">
-                                                                                      @error('price') {{ $message }}
-                                                                                      @enderror</span>
-                                                                                  </div>
-                                                                                  <div class="col-md">
-                                                                                    <label for="exampleInputName1" class="blackk">Stock</label>
-                                                                                    <input type="text"class="form-control" id="exampleInputName1" value="{{old('stock')}}" name="stock"/>
-                                                                                    <span style="color:red;">
-                                                                                      @error('stock') {{ $message }}
-                                                                                      @enderror</span>
-                                                                                  </div>
-                                                                                  <div class="col-md">
-                                                                                    <label for="exampleSelectGender" class="blackk">Status</label>
-                                                                                    <select  class="form-control" id="exampleSelectGender" style="border: 1px solid" name="status">
-                                                                                      <option></option>
-                                                                                      <option>Active</option>
-                                                                                      <option>Disabled</option>
-                                                                                    </select>
-                                                                                    <span style="color:red;">
-                                                                                      @error('status') {{ $message }}
-                                                                                      @enderror</span>
-                                                                                  </div>
+                                                                                    <div class="wrapper">
+                                                                                        <div class="content">
+                                                                                          <p>Press enter or add a comma after each tag</p>
+                                                                                          <ul><input type="text" spellcheck="false"></ul>
+                                                                                        </div>
+                                                                                        <div class="details">
+                                                                                          <p><span>10</span> tags are remaining</p>
+                                                                                          <button>Remove All</button>
+                                                                                        </div>
+                                                                                      </div>
                                                                                 </div>
                                                                                 <div class="text-lg-left text-center">
                                                                                   <button type="submit" class="btn btn-primary btn-lg mr-2 mt-4 py-2 px-5">
@@ -180,11 +199,9 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                </div>
+                                                            
                                                 
-
-                                                
+                                            </div>                     
                                             </div>
                                         </div>
                                         <div class="table-responsive">
@@ -198,30 +215,23 @@
                                                                 </label>
                                                             </div>
                                                         </th>
-                                                        <th>Product Name</th>
-                                                        <th>Stock</th>
-                                                        <th>Product Cost</th>
-                                                        <th>Category</th>
-                                                        <th>Status</th>
+                                                        <th>Category Name</th>
+                                                        <th>Sub Category</th>
                                                         <th>Action</th>
                                                     </tr>
                                                 </thead>  
                                                 <tbody>
-                                                    @foreach($products as $key => $data)
+                                                    @foreach($category as $key => $data)
                                                     <tr>
                                                         <td>
                                                             <div class="form-check form-check-muted m-0">
                                                                 <label class="form-check-label"> <input type="checkbox"class="form-check-input"/></label>
                                                             </div>
                                                         </td>
-                                                       
                                                         <td>
                                                             <img src="{{ asset('product_images/'.$data->product_image)}}" alt="image" class="img-fluid" style=" height: 60px; width: 70px; border-radius: 2px;"/>
                                                             <span class="pl-2">{{$data ->product_name}}</span>
                                                         </td>
-                                                        <td>{{$data ->stock}}</td>
-                                                        <td>{{$data ->price}}</td>
-                                                        <td>Dashboard</td>
                                                         <td>
                                                             @if ($data->status =='Active')
                                                             <button class="btn btn-success" data-target="#Cancelled">
@@ -266,35 +276,6 @@
                                                                                   <span class="gray">Do not exceed 20 characters when entering the product name.</span>
                                                                                 </div>
                                                                                 <div class="row">
-                                                                                  <div class="col form-group">
-                                                                                    <label for="exampleSelectGender" class="blackk">Category</label>
-                                                                                    <select class="form-control"  id="exampleSelectGender" style="border: 1px solid" name="category" >
-                                                                                      <option>{{$data->category_id}}</option>
-                                                                                      <option >Chicken</option>
-                                                                                      <option>Pork</option>
-                                                                                    </select>
-                                                                                  </div>
-                                                                                  <div class="col form-group">
-                                                                                    <label for="exampleSelectGender" class="blackk">Type</label>
-                                                                                    <select class="form-control" id="exampleSelectGender"style="border: 1px solid" name="type">
-                                                                                      <option></option>
-                                                                                      <option>Fried Chicken</option>
-                                                                                      <option>Chicken Soup</option>
-                                                                                    </select>
-                                                                                  </div>
-                                                                                </div>
-                                                      
-                                                                                <div class="form-group">
-                                                                                  <label for="exampleTextarea1" class="blackk">Description</label>
-                                                                                  <textarea class="form-control"id="exampleTextarea1"rows="4" placeholder="" name="description">{{$data->description}}</textarea>
-                                                                                  <span class="gray">Do not exceed 100 characters when entering the product details.</span>
-                                                                                </div>
-
-                                                      
-                                                                                <div class="form-group">
-                                                                                  <div class="file-loading">
-                                                                                    <input id="file-1" type="file" multiple class="file" data-overwrite-initial="false" data-min-file-count="1" data-theme="fa5" value="{{$data->product_image}}" name="product_image"/>
-                                                                                  </div>
                                                                                 </div>
                                                                                 <div class="row">
                                                                                   <div class="col-md">

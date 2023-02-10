@@ -11,35 +11,35 @@
     <!-- plugins:css -->
     <link
       rel="stylesheet"
-      href="assets/vendors/mdi/css/materialdesignicons.min.css"
+      href="{{ asset('assets/vendors/mdi/css/materialdesignicons.min.css') }}"
     />
-    <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css" />
+    <link rel="stylesheet" href="{{ asset('assets/vendors/css/vendor.bundle.base.css') }}" />
     <!-- endinject -->
     <!-- Plugin css for this page -->
     <link
       rel="stylesheet"
-      href="assets/vendors/jvectormap/jquery-jvectormap.css"
+      href="{{ asset('assets/vendors/jvectormap/jquery-jvectormap.css') }}"
     />
     <link
       rel="stylesheet"
-      href="assets/vendors/flag-icon-css/css/flag-icon.min.css"
+      href="{{ asset('assets/vendors/flag-icon-css/css/flag-icon.min.css') }}"
     />
     <link
       rel="stylesheet"
-      href="assets/vendors/owl-carousel-2/owl.carousel.min.css"
+      href="{{ asset('assets/vendors/owl-carousel-2/owl.carousel.min.css') }}"
     />
     <link
       rel="stylesheet"
-      href="assets/vendors/owl-carousel-2/owl.theme.default.min.css"
+      href="{{ asset('assets/vendors/owl-carousel-2/owl.theme.default.min.css') }}"
     />
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <!-- endinject -->
     <!-- Layout styles -->
-    <link rel="stylesheet" href="assets/css/style.css" />
-     <link rel="stylesheet" href="assets/css/superadmin.css" />
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
+     <link rel="stylesheet" href="{{ asset('assets/css/superadmin.css') }}" />
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="../../user/image/foodea1.png" />
+    <link rel="shortcut icon" href="{{ url('/image/foodea1.png') }}" />
   </head>
   <body>
     <div class="container-scroller">
@@ -49,10 +49,10 @@
           class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top"
         >
           <a class="sidebar-brand brand-logo" href="index.html"
-            ><img src="assets/images/foodea_logo.PNG" alt="logo"
+            ><img src="{{ asset('assets/images/foodea_logo.PNG') }}" alt="logo"
           /></a>
           <a class="sidebar-brand brand-logo-mini" href="index.html"
-            ><img src="/image/foodea.png" class="w-50" alt="logo"
+            ><img src="{{ url('/image/foodea.png') }}" class="w-50" alt="logo"
           /></a>
         </div>
         <ul class="nav">
@@ -62,7 +62,7 @@
                 <div class="count-indicator">
                   <img
                     class="img-xs rounded-circle"
-                    src="assets/images/faces/face15.jpg"
+                    src="{{ asset('assets/images/faces/face15.jpg') }}"
                     alt=""
                   />
                   <span class="count bg-success"></span>
@@ -198,7 +198,7 @@
             class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center"
           >
             <a class="navbar-brand brand-logo-mini" href="index.html"
-              ><img src="../../user/image/foodea.png" class="w-50" alt="logo"
+              ><img src="{{ url('/image/foodea.png') }}" class="w-50" alt="logo"
             /></a>
           </div>
           <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
@@ -418,7 +418,7 @@
                   <div class="navbar-profile">
                     <img
                       class="img-xs rounded-circle"
-                      src="assets/images/faces/face15.jpg"
+                      src="{{ asset('assets/images/faces/face15.jpg') }}"
                       alt=""
                     />
                     <p class="mb-0 d-none d-sm-block navbar-profile-name">
@@ -479,25 +479,25 @@
     </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
-    <script src="assets/vendors/js/vendor.bundle.base.js"></script>
+    <script src="{{ asset('assets/vendors/js/vendor.bundle.base.js') }}"></script>
     <!-- endinject -->
     <!-- Plugin js for this page -->
-    <script src="assets/vendors/chart.js/Chart.min.js"></script>
-    <script src="assets/vendors/progressbar.js/progressbar.min.js"></script>
-    <script src="assets/vendors/jvectormap/jquery-jvectormap.min.js"></script>
-    <script src="assets/vendors/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-    <script src="assets/vendors/owl-carousel-2/owl.carousel.min.js"></script>
+    <script src="{{ asset('assets/vendors/chart.js/Chart.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/progressbar.js/progressbar.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/jvectormap/jquery-jvectormap.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
+    <script src="{{ asset('assets/vendors/owl-carousel-2/owl.carousel.min.js') }}"></script>
     <!-- End plugin js for this page -->
     <!-- inject:js -->
-    <script src="assets/js/off-canvas.js"></script>
-    <script src="assets/js/hoverable-collapse.js"></script>
-    <script src="assets/js/misc.js"></script>
-    <script src="assets/js/settings.js"></script>
-    <script src="assets/js/todolist.js"></script>
+    <script src="{{ asset('assets/js/off-canvas.js') }}"></script>
+    <script src="{{ asset('assets/js/hoverable-collapse.js') }}"></script>
+    <script src="{{ asset('assets/js/misc.js') }}"></script>
+    <script src="{{ asset('assets/js/settings.js') }}"></script>
+    <script src="{{ asset('assets/js/todolist.js') }}"></script>
     <!-- endinject -->
     <!-- Custom js for this page -->
-    <script src="assets/js/dashboard.js"></script>
-    <script src="assets/js/chart.js"></script>
+    <script src="{{ asset('assets/js/dashboard.js') }}"></script>
+    <script src="{{ asset('assets/js/chart.js') }}"></script>
     <!-- End custom js for this page -->
   </body>
 </html>

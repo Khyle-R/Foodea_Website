@@ -9388,7 +9388,7 @@ body {
     font-size: 1rem;
     font-weight: 400;
     line-height: 1.5;
-    color: #ffffff;
+    color: #080808; /*text color*/
     text-align: left;
     background-color: #fff;
 }
@@ -17202,6 +17202,7 @@ a.close.disabled {
 }
 
 .modal-header .close {
+    color: #fff;
     padding: 1rem 1rem;
     margin: -25px -26px -25px auto;
 }
