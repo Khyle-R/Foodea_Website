@@ -39,6 +39,7 @@
 
       <div class="sign-form">
         <div class="content-wrapper">
+          <div class="row justify-content-center">
           <div class="col-12 col-sm-10 col-md-11 col-lg-10 col-xl-6">
             <div class="right"> 
               <div class="center">
@@ -49,11 +50,11 @@
                <br><br>
 
             <div class="form-group">
-              <div class="col-sm-10 d-flex justify-content-center">
+              <div class="col-auto d-flex justify-content-center">
                 <button Value="submit" type="submit" class="btn btn-danger w-50">Done</button>
               </div>
               </div>
-
+            </div>
           </div>
         </div>
       </div>
