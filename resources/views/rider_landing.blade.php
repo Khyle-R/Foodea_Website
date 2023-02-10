@@ -258,7 +258,7 @@
     </ul>
     </div>
    </div>
-
+   </div>
     <!---ACOORDION-->
     <div class="container2">
         <div class="accor-title">
