@@ -208,10 +208,25 @@
                                                         <td>
                                                             {{$data->main_category}}
                                                         </td>
-                                                        <td id="S">
+                                                        <td>
+                                                            <?php 
+                                                                $arr = $data->sub_category; // getting the data from foreach
+                                                                $string_arr = preg_split("/,/", $arr); // converting data to array
+                                                                $string_arrL = sizeof($string_arr); // knowing the lenght of the array
+                                                                
+                                                                $i = 0;
+                                                                while($i < $string_arrL) { // i use the trim to cut [] character from the array
+                                                            ?>
+                                                                <h3 id="button" class="btn btn-primary">{{trim($string_arr[$i], '[]');}}</h3> 
+                                                            
+                                                            <?php
+                                                                $i++;
+                                                            }
 
-                                                            <input type="text" id="category_sub" value="{{$data->sub_category}}">
-                                                            <h3 id="button"></h3>
+                                                            ?>
+                                                            {{-- <input type="text" id="category_sub" value="{{$data->sub_category}}">
+                                                            <h3 id="button" class="btn btn-primary"></h3> --}}
+
                                                         </td>
                                                         <td>
                                                             
