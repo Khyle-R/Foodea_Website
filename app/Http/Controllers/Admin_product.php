@@ -6,6 +6,7 @@ use App\Models\tbl_inventory;
 use App\Models\tbl_product;
 use App\Models\tbl_merchant_info;
 use App\Models\tbl_partner_accounts;
+use App\Models\tbl_category;
 use Carbon\Carbon; // to retrieve current Date
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
@@ -231,6 +232,28 @@ class Admin_product extends Controller
 
         $accountInfo = DB::table('tbl_merchant_account')->where('merchant_id','=', $id)->first();
         return view('admin.admin_personalinformation1');
+    }
+
+    public function addCategory(Request $request)
+    {
+        $addCategory = new tbl_category();
+
+        $addCategory->main_category = $request->category_name;
+        $addCategory->sub_category = $request->tags_category;
+        $addCategory->date = Carbon::now();// to get the current time
+
+        $result=$addCategory->save();
+
+        if($result)
+        {
+        //return redirect('category');
+        
+        }else 
+        {
+            return back()->with('fail','Something went wrong when trying to add');
+            //return view('admin.admin_product');
+        }
+       
     }
 
     /**

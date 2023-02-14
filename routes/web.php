@@ -159,6 +159,7 @@ Route::get('/index', [Admin_product::class, 'dashboard']);
 Route::get('/add_product',[Admin_product::class, 'addProductView'])->name('add_product.addProductView');
 Route::post('/add_product',[Admin_product::class, 'addProduct'])->name('add_product.addProduct');
 
+
 //Remove product
 Route::get('/product/remove/{id}',[Admin_product::class, 'removeProduct']);
 
@@ -244,3 +245,6 @@ Route::get('category', function () {
 
     return view('admin.category', ['category' => $category]);
 });
+
+//Add Category
+Route::post('/add_category',[Admin_product::class, 'addCategory'])->name('add_category.addCategory');
