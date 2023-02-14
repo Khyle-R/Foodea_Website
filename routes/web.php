@@ -69,7 +69,31 @@ Route::get('/superadmin_profile', [SuperadminController::class, 'profile']);
 
 Route::get('/superadmin_rider', [SuperadminController::class, 'Rider']);
 
+Route::get('/application_profile/{id}', [SuperadminController::class, 'ApplicationProfile']);
+
+Route::post('/superadmin_rider', [SuperadminController::class, 'Update'])->name('Updatemodal');
+
+Route::get('/superadmin_riderprofile/{id}', [SuperadminController::class, 'RiderProfile']);
+
+Route::get('/superadmin_pending', [SuperadminController::class, 'Pending']);
+
+Route::get('/superadmin_review', [SuperadminController::class, 'Review']);
+
+Route::get('/superadmin_accept', [SuperadminController::class, 'Accept']);
+
+Route::get('/superadmin_archive', [SuperadminController::class, 'Archive']);
+
+Route::get('/superadmin_merchantpending', [SuperadminController::class, 'MerchantPending']);
+
+Route::get('/superadmin_merchantreview', [SuperadminController::class, 'MerchantReview']);
+
+Route::get('/superadmin_merchantaccept', [SuperadminController::class, 'MerchantAccepted']);
+
+Route::get('/superadmin_merchantarchive', [SuperadminController::class, 'MerchantRejected']);
+
 Route::get('/superadmin_partnerapplication', [SuperadminController::class, 'partner']);
+
+Route::post('/superadmin_partnerapplication', [SuperadminController::class, 'UpdateMerchant'])->name('UpdateMerchant');
 
 Route::get('/superadmin_log', [SuperadminController::class, 'ActivityLog']);
 
@@ -80,6 +104,9 @@ Route::get('/superadmin_acceptedrider', [SuperadminController::class, 'AcceptedR
 Route::get('/superadmin_acceptedpartner', [SuperadminController::class, 'AcceptedPartner']);
 
 Route::post('/superadmin_riderdetails', [SuperadminController::class, 'RiderAccept'])->name('RiderAccept');
+
+
+/* END SUPERADMIN */
 
 Route::get('/login_partner', function () {
     return view('login_partner');

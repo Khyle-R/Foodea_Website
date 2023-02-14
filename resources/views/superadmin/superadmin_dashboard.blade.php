@@ -122,75 +122,35 @@
                   <div class="card-body">
                       <div class="d-flex flex-row justify-content-between my-2">
                         <div class="title">
-                    <h4 class="card-title  align-items-center">Top Selling Product</h4>
+                    <h4 class="card-title  align-items-center">Top Selling Merchants</h4>
                     </div>
-                    <div class="drop d-flex ">
-                    <div class="dropdown">
-                      <button
-                        class="btn btn-secondary dropdown-toggle py-2 px-3 rounded mx-3"
-                        type="button"
-                        id="dropdownMenuButton"
-                        data-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                      >
-                        Sort
-                      </button>
-                      <div
-                        class="dropdown-menu"
-                        aria-labelledby="dropdownMenuButton"
-                      >
-                        <a class="dropdown-item" href="#">Ascending</a>
-                        <a class="dropdown-item" href="#">Descendinng</a>
-                      </div>
-                    </div>
-                    <div class="dropdown">
-                      <button
-                        class="btn btn-secondary dropdown-toggle py-2 px-3 rounded"
-                        type="button"
-                        id="dropdownMenuButton"
-                        data-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                      >
-                        Today
-                      </button>
-                      <div
-                        class="dropdown-menu"
-                        aria-labelledby="dropdownMenuButton"
-                      >
-                        <a class="dropdown-item" href="#">Ascending</a>
-                        <a class="dropdown-item" href="#">Descendinng</a>
-                      </div>
-                      </div>
-                    </div>
+                    
                     </div>
                     <div class="table-responsive">
-                    <table class="table table-striped">
-                      <thead class="table-danger text-light">
-                        <tr>
-                          <th>#</th>
-                          <th>Business Name</th>
-                          <th>Name</th>
-                          <th>Sales</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>No Item</td>
-                          <td>No Item</td>
-                          <td>No Item</td>
-                          <td>No Item</td>
-                        </tr>
-                        <tr>
-                          <td>No Item</td>
-                          <td>No Item</td>
-                          <td>No Item</td>
-                          <td>No Item</td>
-                        </tr>
-                      </tbody>
+                    <table id="example0" class="table" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Descriptiong</th>
+                                <th>Date Time</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td> 
+                                </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                          
+                        </tbody>
+                    
                     </table>
-                  </div>
+                    </div>
             </div>
           </div>  
          </div>
@@ -203,48 +163,33 @@
                     <div class="card-body">
                        <div class="d-flex flex-row justify-content-between my-2">
                         <div class="title">
-                    <h4 class="card-title  align-items-center">Top Selling Product</h4>
+                    <h4 class="card-title  align-items-center">Top Selling Products</h4>
                     </div>
-                    <div class="drop d-flex ">
-                    <div class="dropdown">
-                      <button
-                        class="btn btn-secondary dropdown-toggle py-2 px-3 rounded mx-3"
-                        type="button"
-                        id="dropdownMenuButton"
-                        data-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                      >
-                        Sort
-                      </button>
-                      <div
-                        class="dropdown-menu"
-                        aria-labelledby="dropdownMenuButton"
-                      >
-                        <a class="dropdown-item" href="#">Ascending</a>
-                        <a class="dropdown-item" href="#">Descendinng</a>
-                      </div>
                     </div>
-                    <div class="dropdown">
-                      <button
-                        class="btn btn-secondary dropdown-toggle py-2 px-3 rounded"
-                        type="button"
-                        id="dropdownMenuButton"
-                        data-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                      >
-                        Today
-                      </button>
-                      <div
-                        class="dropdown-menu"
-                        aria-labelledby="dropdownMenuButton"
-                      >
-                        <a class="dropdown-item" href="#">Ascending</a>
-                        <a class="dropdown-item" href="#">Descendinng</a>
-                      </div>
-                      </div>
-                    </div>
+                    <div class="table-responsive">
+                    <table id="example1" class="table" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Description</th>
+                                <th>Date Time</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td> 
+                                </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                          
+                        </tbody>
+                    
+                    </table>
                     </div>
                     </div>
                   </div>
@@ -254,109 +199,40 @@
                     <div class="card-body">
                       <div class="d-flex flex-row justify-content-between my-2">
                         <div class="title">
-                    <h4 class="card-title  align-items-center">Top Selling Product</h4>
+                    <h4 class="card-title  align-items-center">Recent Applications</h4>
                     </div>
-                    <div class="drop d-flex ">
-                    <div class="dropdown">
-                      <button
-                        class="btn btn-secondary dropdown-toggle py-2 px-3 rounded mx-3"
-                        type="button"
-                        id="dropdownMenuButton"
-                        data-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                      >
-                        Sort
-                      </button>
-                      <div
-                        class="dropdown-menu"
-                        aria-labelledby="dropdownMenuButton"
-                      >
-                        <a class="dropdown-item" href="#">Ascending</a>
-                        <a class="dropdown-item" href="#">Descendinng</a>
-                      </div>
-                    </div>
-                    <div class="dropdown">
-                      <button
-                        class="btn btn-secondary dropdown-toggle py-2 px-3 rounded"
-                        type="button"
-                        id="dropdownMenuButton"
-                        data-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                      >
-                        Today
-                      </button>
-                      <div
-                        class="dropdown-menu"
-                        aria-labelledby="dropdownMenuButton"
-                      >
-                        <a class="dropdown-item" href="#">Ascending</a>
-                        <a class="dropdown-item" href="#">Descendinng</a>
-                      </div>
-                      </div>
-                    </div>
+                    
                     </div>
                       <div class="table-responsive">
-                      <table class="table table-striped">
-                        <thead class="table-danger text-light">
-                          <tr>
-                            <th>#</th>
-                            <th>Product</th>
-                            <th>Category</th>
-                            <th>Sales</th>
-                          </tr>
+                    <table id="example2" class="table" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Description</th>
+                                <th>Date Time</th>
+                            </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <td>1</td>
-                            <td>Fried Chicken</td>
-                            <td>Chicken</td>
-                            <td>5000</td>
-                          </tr>
-                          <tr>
-                            <td>2</td>
-                            <td>Milk Tea</td>
-                            <td>Drinks</td>
-                            <td>3000</td>
-                          </tr>
-                          <tr>
-                            <td>3</td>
-                            <td>Milk Tea</td>
-                            <td>Drinks</td>
-                            <td>2000</td>
-                          </tr>
-                          <tr>
-                            <td>4</td>
-                            <td>Milk Tea</td>
-                            <td>Drinks</td>
-                            <td>2000</td>
-                          </tr>
-                          <tr>
-                            <td>5</td>
-                            <td>Milk Tea</td>
-                            <td>Drinks</td>
-                            <td>2000</td>
-                          </tr>
-                           <tr>
-                            <td>6</td>
-                            <td>Fried Chicken</td>
-                            <td>Chicken</td>
-                            <td>5000</td>
-                          </tr>
-                           <tr>
-                            <td>7</td>
-                            <td>Fried Chicken</td>
-                            <td>Chicken</td>
-                            <td>5000</td>
-                          </tr>
+                            <tr>
+                                <td> 
+                                </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                          
                         </tbody>
-                      </table>
+                    
+                    </table>
                     </div>
               </div>
             </div>  
            </div>
                 </div>
+ </div>
 
         
              
