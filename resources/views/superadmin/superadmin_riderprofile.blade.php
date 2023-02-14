@@ -6,14 +6,14 @@
 
     </div>
     <div class="page-header">
-        <h3 class="page-title black">Partner Application</h3>
+        <h3 class="page-title black">Rider Application</h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
                     <a href="#">Menu</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">
-                    Partner Application
+                    Rider Application
                 </li>
            
             </ol>
@@ -26,9 +26,9 @@
                             <div class="profile-view">
                                 <div class="profile-img-wrap">
                                     <div class="profile-img">
-                                         @foreach ($Data as $partner)
+                                         @foreach ($Data as $rider)
                                      
-                                            <img alt="" src="{{ url('uploads/rider_documents/'.$partner->logo) }}">
+                                            <img alt="" src="{{ url('uploads/rider_documents/'.$rider->rider_photo) }}">
                                   
                                     </div>
                                 </div>
@@ -42,20 +42,20 @@
                                                
                                                     
                                                 
-                                                <div class="staff-id">User ID : {{ $partner->merchant_id }}</div>
-                                                <div class="small doj text-muted">Date Applied : {{ $partner->date }}</div>
-                                                <div class="staff-msg"><a class="red-btn" href="chat.html">{{ $partner->ratings }}</a></div>
+                                                <div class="staff-id">User ID : {{ $rider->rider_application_id }}</div>
+                                                <div class="small doj text-muted">Date Applied : {{ $rider->date }}</div>
+                                                <div class="staff-msg"><a class="red-btn" href="chat.html">{{ $rider->credit_score }}</a></div>
                                             </div>
                                         </div>
                                         <div class="col-md-7">
                                             <ul class="personal-info">
                                                 <li>
                                                     <div class="title">Phone:</div>
-                                                    <div class="text">{{ $partner->store_number }}</div>
+                                                    <div class="text">{{ $rider->mobile_number }}</div>
                                                 </li>
                                                 <li>
                                                     <div class="title">Email:</div>
-                                                    <div class="text">{{ $partner->email }}</div>
+                                                    <div class="text">{{ $rider->email }}</div>
                                                 </li>
                                               
                                                     <li>
@@ -68,14 +68,14 @@
                                                     <li>
                                                       
                                                         <div class="title">Gender:</div>
-                                                        <div class="text">{{ $partner->gender }}</div>
+                                                        <div class="text">{{ $rider->gender }}</div>
 
                                                   
                                                     </li>
                                                     <li>
                                                       
                                                         <div class="title">Age:</div>
-                                                        <div class="text">{{ $partner->age }}</div>
+                                                        <div class="text">{{ $rider->age }}</div>
 
                                                   
                                                     </li>
@@ -97,7 +97,7 @@
                     <div class="col-lg-12 col-md-12 col-sm-12 line-tabs">
                         <ul class="nav nav-tabs nav-tabs-bottom">
                             <li class="nav-item"><a href="#emp_profile" data-toggle="tab" class="nav-link tab-font active">Profile</a></li>
-                            <li class="nav-item"><a href="#emp_vehicle" data-toggle="tab" class="nav-link tab-font">Business</a></li>
+                            <li class="nav-item"><a href="#emp_vehicle" data-toggle="tab" class="nav-link tab-font">Vehicle</a></li>
                             <li class="nav-item"><a href="#emp_documents" data-toggle="tab" class="nav-link tab-font">Documents </a></li>
                         </ul>
                     </div>
@@ -116,35 +116,35 @@
                                     <ul class="personal-info">
                                         <li>
                                             <div class="title">Firstname</div>
-                                            <div class="text">{{ $partner->firstname }}</div>
+                                            <div class="text">{{ $rider->firstname }}</div>
                                         </li>
                                         <li>
                                             <div class="title">Middle Name</div>
-                                            <div class="text">{{ $partner->middlename }}</div>
+                                            <div class="text">{{ $rider->middlename }}</div>
                                         </li>
                                         <li>
                                             <div class="title">Last Name</div>
-                                            <div class="text">{{ $partner->lastname }}</div>
+                                            <div class="text">{{ $rider->lastname }}</div>
                                         </li>
                                         <li>
                                             <div class="title">Age</div>
-                                            <div class="text">{{ $partner->age }}</div>
+                                            <div class="text">{{ $rider->age }}</div>
                                         </li>
                                         <li>
                                             <div class="title">Address</div>
-                                            <div class="text">{{ $partner->address }}</div>
+                                            <div class="text">{{ $rider->address }}</div>
                                         </li>
                                         <li>
                                             <div class="title">City</div>
-                                            <div class="text">{{ $partner->city }}</div>
+                                            <div class="text">{{ $rider->city }}</div>
                                         </li>
                                         <li>
                                             <div class="title">Barangay</div>
-                                            <div class="text">{{ $partner->barangay }}</div>
+                                            <div class="text">{{ $rider->barangay }}</div>
                                         </li>
                                         <li>
-                                            <div class="title">Country</div>
-                                            <div class="text">{{ $partner->country }}</div>
+                                            <div class="title">ZIP Code</div>
+                                            <div class="text">{{ $rider->zip_code }}</div>
                                         </li>
                                     </ul>
                                   
@@ -265,36 +265,29 @@
                         <div class="col-md-6 d-flex mb-4">
                             <div class="card profile-box flex-fill">
                                 <div class="card-body">
-                                    <h3 class="card-title">Business Informations</h3>
+                                    <h3 class="card-title">Vehicle Informations</h3>
                                    
                                     <ul class="personal-info">
                                         <li>
-                                            <div class="title">Business Type</div>
-                                            <div class="text">{{ $partner->business_type }}</div>
+                                            <div class="title">Vehicle Type</div>
+                                            <div class="text">{{ $rider->vehicle_type }}</div>
                                         </li>
                                         <li>
-                                            <div class="title">Business Name</div>
-                                            <div class="text">{{ $partner->business_name }}</div>
+                                            <div class="title">Plate Number</div>
+                                            <div class="text">{{ $rider->plate_number }}</div>
                                         </li>
                                         <li>
-                                              <div class="title">Address</div>
-                                            <div class="text">{{ $partner->address }}</div>
+                                              <div class="title">Motorcycle Displacement</div>
+                                            <div class="text">{{ $rider->displacement }}</div>
+                                        </li>
+                                        <br>
+                                        <li>
+                                            <div class="title">Engine Number</div>
+                                            <div class="text">{{ $rider->engine_number }}</div>
                                         </li>
                                         <li>
-                                            <div class="title">City</div>
-                                            <div class="text">{{ $partner->city }}</div>
-                                        </li>
-                                        <li>
-                                            <div class="title">Barangay</div>
-                                            <div class="text">{{ $partner->barangay }}</div>
-                                        </li>
-                                        <li>
-                                            <div class="title">Store Number</div>
-                                            <div class="text">{{ $partner->store_number }}</div>
-                                        </li>
-                                        <li>
-                                            <div class="title">Store Email</div>
-                                            <div class="text">{{ $partner->store_email }}</div>
+                                            <div class="title">Year Model</div>
+                                            <div class="text">{{ $rider->year_model }}</div>
                                         </li>
                                        
                                     </ul>

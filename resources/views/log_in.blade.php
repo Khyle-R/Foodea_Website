@@ -17,7 +17,7 @@
         />
         <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
            <link rel="stylesheet" type="text/css" href="css/login.css" />
-        <title>FOODEA SignUp & LogIn</title>
+        <title>FOODEA</title>
         <link rel="icon" href="{{ url('image/foodea1.png') }}">
     </head>
     <body>
@@ -61,6 +61,7 @@
             </script>
 
         @endif
+          <br><br><br><br>
         <section>
             <div class="container mt-2 pt-5">
                 <div class="row">

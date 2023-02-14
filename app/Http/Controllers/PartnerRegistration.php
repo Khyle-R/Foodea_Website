@@ -107,20 +107,23 @@ class PartnerRegistration extends Controller
 
      public function SaveDocuments(Request $request){
         $request->validate([
-            'menu_photo'=> 'required|mimes:jpeg,png,jpg,pdf|max:5000',
-            'business_permit'=> 'required|mimes:jpeg,png,jpg,pdf|max:5000',
-            'bir_cert'=> 'required|mimes:jpeg,png,jpg,pdf|max:5000',
-            'barangay_permit'=> 'required|mimes:jpeg,png,jpg,pdf|max:5000',
-            'dti_cert'=> 'required|mimes:jpeg,png,jpg,pdf|max:5000',
-            'front_license'=> 'required|mimes:jpeg,png,jpg,pdf|max:5000',
-            'back_license'=> 'required|mimes:jpeg,png,jpg,pdf|max:5000'
+            // 'logo'=> 'required|mimes:jpeg,png,jpg,pdf|max:5000',
+            // 'menu_photo'=> 'required|mimes:jpeg,png,jpg,pdf|max:5000',
+            // 'business_permit'=> 'required|mimes:jpeg,png,jpg,pdf|max:5000',
+            // 'bir_cert'=> 'required|mimes:jpeg,png,jpg,pdf|max:5000',
+            // 'barangay_permit'=> 'required|mimes:jpeg,png,jpg,pdf|max:5000',
+            // 'dti_cert'=> 'required|mimes:jpeg,png,jpg,pdf|max:5000',
+            // 'front_license'=> 'required|mimes:jpeg,png,jpg,pdf|max:5000',
+            // 'back_license'=> 'required|mimes:jpeg,png,jpg,pdf|max:5000'
             
 
         ]);
         $document = new tbl_merchant_document();
         $document->merchant_id = $request->merchant_id;
         
-        if($request->hasFile('menu_photo') && $request->hasFile('business_permit') && $request->hasFile('bir_cert') && $request->hasFile('dti_cert') && $request->hasFile('front_license') && $request->hasFile('back_license')){
+        if($request->hasFile('menu_photo') && $request->hasfile('logo') && $request->hasFile('business_permit') && $request->hasFile('bir_cert') && $request->hasFile('dti_cert') && $request->hasFile('front_license') && $request->hasFile('back_license')){
+          
+            $logo = $request->file('logo');
             $menu = $request->file('menu_photo');
             $file = $request->file('business_permit');
             $file2 = $request->file('bir_cert');
@@ -130,7 +133,7 @@ class PartnerRegistration extends Controller
             $file6 = $request->file('back_license');
 
             
-            
+            $log = $logo->getClientOriginalName();
             $photo = $menu->getClientOriginalName();
             $permit = $file->getClientOriginalName();
             $bir = $file2->getClientOriginalName();
@@ -142,7 +145,7 @@ class PartnerRegistration extends Controller
             
             // $filename = $photo;
             // $filename2 = $license;
-
+            $logo->move('uploads/merchant_documents/', $log);
             $menu->move('uploads/merchant_documents/', $photo);
             $file ->move('uploads/merchant_documents/',  $permit );
             $file2->move('uploads/merchant_documents/', $bir);
@@ -151,7 +154,7 @@ class PartnerRegistration extends Controller
             $file5 ->move('uploads/merchant_documents/',  $front );
             $file6 ->move('uploads/merchant_documents/',  $back );
 
-
+            $document->logo = $log;
             $document->menu_photo = $photo;
             $document->business_permit =  $permit;
             $document->bir_cert = $bir;
