@@ -28,7 +28,7 @@
               <img src="image/foodea.png" style="width: 50px">FOODEA
             </a>
           </li>
-              <li class="nav-item nav-category">Merchant Application</li>
+              <li class="nav-item nav-category">Rider Application</li>
               <li>Step 1 &nbsp;&nbsp;&nbsp;Personal Information</li>
               <li>Step 2 &nbsp;&nbsp;&nbsp;Business Information</li>
               <li>Step 3 &nbsp;&nbsp;&nbsp;Verify Email Address</li>
@@ -39,6 +39,7 @@
 
       <div class="sign-form">
         <div class="content-wrapper">
+          <div class="row justify-content-center">
           <div class="col-12 col-sm-10 col-md-11 col-lg-10 col-xl-6">
             <div class="right"> 
               <div class="center">
@@ -49,11 +50,12 @@
                <br><br>
 
             <div class="form-group">
-              <div class="col-sm-10 d-flex justify-content-center">
+              <div class="col-auto d-flex justify-content-center">
                 <button Value="submit" type="submit" class="btn btn-danger w-50">Done</button>
               </div>
               </div>
               </div>
+            </div>
           </div>
         </div>
       </div>

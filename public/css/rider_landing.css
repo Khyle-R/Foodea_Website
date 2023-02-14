@@ -401,7 +401,7 @@ nav .navbar-brand span{
 
 /* ACCORDION */
 .container2 {
-  width: 60%;
+  width: 70%;
   margin: 100px auto;
 }
 
@@ -481,33 +481,40 @@ nav .navbar-brand span{
 }
 
 /* TIMELINE */
+
 .timeline {
+  margin-left: 10rem;
   margin-top: 18rem;
 }
+
 .timeline-title h2 {
   font-family: "Montserrat", sans-serif;
   font-size: 25px;
   font-weight: 600;
-  margin: 0 30px;
+  margin: 0 2rem;
 }
+
 .timeline-title p {
-  width: 90%;
+  width: 80%;
   text-align: left;
   padding: 15px 0;
   font-family: "Montserrat", sans-serif;
   color: rgba(0, 0, 0, 0.822);
   font-size: 16px;
-  margin: 0 30px;
+  margin: 0 2rem;
 }
+
 .timeline-image {
   display: flex;
   flex-direction: column;
 }
+
 .timeline-section {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
+
 .timeline-section img {
   height: 195px;
   width: 320px;
@@ -529,7 +536,7 @@ nav .navbar-brand span{
   padding-bottom: 80px;
 }
 .timeline ul li p {
-  width: 90%;
+  width: 80%;
   text-align: left;
   font-family: "Montserrat", sans-serif;
   font-size: 15px;
@@ -579,14 +586,15 @@ nav .navbar-brand span{
 
 .bg-img {
   margin-top: 5rem;
-  -webkit-background-size: cover;
-  -moz-background-size:cover;
-  -o-backgroundsize:cover;
-  background-size:cover;
+  -webkit-background-size: contain;
+  -moz-background-size:contain;
+  -o-backgroundsize:contain;
+  background-size:contain;
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: scroll;
-  height: 370px;
+  height: 380px;
+  margin-bottom: -0.3rem;
 }
 
 .end-container {
@@ -764,7 +772,7 @@ nav .navbar-brand span{
   }
   
   .timeline-title {
-   padding-top: 9rem;
+   padding-top: 5rem;
    display: flex;
    flex-direction: column;
    text-align: left;
@@ -787,7 +795,7 @@ nav .navbar-brand span{
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: scroll;
-    margin-bottom: -4.6rem;
+    margin-bottom: -4.9rem;
   }
   
   .end-content{
@@ -878,7 +886,12 @@ nav .navbar-brand span{
     justify-content: center;
   }
 
+  .timeline {
+    margin-left: 0;
+  }
+  
   .bg-img {
+    margin-top: 15rem;
     -webkit-background-size: contain;
     -moz-background-size:contain;
     -o-backgroundsize:contain;
@@ -886,11 +899,12 @@ nav .navbar-brand span{
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: scroll;
-    margin-bottom: -7.8rem;
+    height: 200px;
+    margin-bottom: -2.4rem;
   }
   
   .end-content{
-    margin-top: -2.5rem;
+    margin-top: -6.5rem;
   }
   
   .end-container {
@@ -987,11 +1001,11 @@ nav .navbar-brand span{
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: scroll;
-  margin-bottom: -8.2rem;
+  margin-bottom: -2.9rem;
 }
 
 .end-content{
-  margin-top: -2.5rem;
+  margin-top: -8.5rem;
 }
 
 .end-container {
@@ -1066,14 +1080,32 @@ nav .navbar-brand span{
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: scroll;
-  margin-bottom: -8.7rem;
+  margin-bottom: -2.9rem;
 }
 
 .end-content{
-  margin-top: -4.4rem;
+  margin-top: -8.4rem;
 }
 
 } 
+
+@media  (max-width:325px){
+  
+  .bg-img {
+    -webkit-background-size: contain;
+    -moz-background-size:contain;
+    -o-backgroundsize:contain;
+    background-size:contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: scroll;
+    margin-bottom: -3.5rem;
+  }
+
+  .end-content{
+    margin-top: -10.4rem;
+  }
+}
 
 @media (min-width:1330px) and (max-width:1500px) {
   
