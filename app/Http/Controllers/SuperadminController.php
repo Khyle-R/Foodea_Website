@@ -87,7 +87,17 @@ class SuperadminController extends Controller
     ->distinct()
     ->get(['merchant_document.logo' ,'merchant_application_id', 'status', 'merchant_application.date', 'merchant_application.merchant_id', 'store_email', 'business_type', 'business_name']);
    
-    return view('superadmin.superadmin_partner', compact('Data'));
+         $all = tbl_merchant_application::count();
+        $pending = tbl_merchant_application::where('status', 'Pending')
+        ->count();
+        $review = tbl_merchant_application::where('status', 'Reviewing')
+        ->count();
+        $accept = tbl_merchant_application::where('status', 'Accepted')
+        ->count();
+        $reject = tbl_merchant_application::where('status', 'Rejected')
+        ->count();
+        
+    return view('superadmin.superadmin_partner', compact('Data', 'all', 'pending', 'review', 'accept', 'reject'));
     // dd($Data);
    }
 

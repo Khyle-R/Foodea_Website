@@ -44,7 +44,7 @@
                                                 
                                                 <div class="staff-id">User ID : {{ $partner->merchant_id }}</div>
                                                 <div class="small doj text-muted">Date Applied : {{ $partner->date }}</div>
-                                                <div class="staff-msg"><a class="red-btn" href="chat.html">{{ $partner->ratings }}</a></div>
+                                                <div class="staff-msg"><a class="red-btn" href="#">{{ $partner->ratings }}</a></div>
                                             </div>
                                         </div>
                                         <div class="col-md-7">
@@ -310,13 +310,13 @@
                                         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                            <img class="d-block w-100" height="500" src="{{ asset('image/front.png') }}" alt="First slide">
+                            <img class="d-block w-100" height="500" src="{{ asset('uploads/merchant_documents/menu_sample.png') }}" alt="First slide">
                             </div>
                             <div class="carousel-item">
-                            <img class="d-block w-100" height="500" src="{{ asset('image/side.png') }}" alt="Second slide">
+                            <img class="d-block w-100" height="500" src="{{ asset('uploads/merchant_documents/business_permit.png') }}" alt="Second slide">
                             </div>
                             <div class="carousel-item">
-                            <img class="d-block w-100" height="500" src="{{ asset('image/back.png') }}" alt="Third slide">
+                            <img class="d-block w-100" height="500" src="{{ asset('uploads/merchant_documents/barangay_permit.png') }}" alt="Third slide">
                             </div>
                         </div>
                         <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">

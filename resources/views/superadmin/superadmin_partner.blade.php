@@ -37,7 +37,29 @@
                     <div class="card-body">
                         <div class="d-flex align-items-center justify-content-between px-3">
                         <div class="dash-widget-info">
-                            <h3>110</h3>
+                            @if ($all)
+                                    <h3>{{ $all }}</h3>
+                                    @else
+                                     <h3>0</h3>
+                            @endif
+                        
+                            <span>All</span>
+                        </div>
+                         <span class="dash-widget-icon"><i class="mdi mdi-file-check"></i></span>
+                    </div>
+                        </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3 mb-3">
+                <div class="card dash-widget">
+                      <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between px-3">
+                        <div class="dash-widget-info">
+                            @if ($pending)
+                                    <h3>{{ $pending }}</h3>
+                                    @else
+                                     <h3>0</h3>
+                            @endif
                             <span>Pending</span>
                         </div>
                          <span class="dash-widget-icon"><i class="mdi mdi-file-check"></i></span>
@@ -50,7 +72,11 @@
                       <div class="card-body">
                         <div class="d-flex align-items-center justify-content-between px-3">
                         <div class="dash-widget-info">
-                            <h3>110</h3>
+                             @if ($review)
+                                    <h3>{{ $review }}</h3>
+                                    @else
+                                     <h3>0</h3>
+                            @endif
                             <span>Reviewing</span>
                         </div>
                          <span class="dash-widget-icon"><i class="mdi mdi-file-check"></i></span>
@@ -63,20 +89,11 @@
                       <div class="card-body">
                         <div class="d-flex align-items-center justify-content-between px-3">
                         <div class="dash-widget-info">
-                            <h3>110</h3>
-                            <span>Accepted</span>
-                        </div>
-                         <span class="dash-widget-icon"><i class="mdi mdi-file-check"></i></span>
-                    </div>
-                        </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3 mb-3">
-                <div class="card dash-widget">
-                      <div class="card-body">
-                        <div class="d-flex align-items-center justify-content-between px-3">
-                        <div class="dash-widget-info">
-                            <h3>110</h3>
+                             @if ($reject)
+                                    <h3>{{ $reject }}</h3>
+                                    @else
+                                     <h3>0</h3>
+                            @endif
                             <span>Archived</span>
                         </div>
                          <span class="dash-widget-icon"><i class="mdi mdi-file-check"></i></span>
