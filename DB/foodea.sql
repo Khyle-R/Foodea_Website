@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 14, 2023 at 08:11 PM
+-- Generation Time: Feb 15, 2023 at 02:55 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -77,7 +77,8 @@ CREATE TABLE `merchant_application` (
 --
 
 INSERT INTO `merchant_application` (`merchant_application_id`, `merchant_id`, `merchantinfo_id`, `merchant_document_id`, `status`, `date`) VALUES
-(2, 13, 8, 24, 'Accepted', '2023-02-14 18:48:55');
+(2, 13, 8, 24, 'Accepted', '2023-02-15 01:47:36'),
+(3, 14, 9, 28, 'Accepted', '2023-02-15 01:53:55');
 
 -- --------------------------------------------------------
 
@@ -104,7 +105,8 @@ CREATE TABLE `merchant_document` (
 --
 
 INSERT INTO `merchant_document` (`merchant_document_id`, `merchant_id`, `logo`, `menu_photo`, `business_permit`, `bir_cert`, `barangay_permit`, `dti_cert`, `front_license`, `back_license`, `date`) VALUES
-(27, 13, 'bell.png', 'menu_sample.png', 'barangay_permit.png', 'business_permit.png', 'BIR.png', 'cr.PNG', 'front_id.PNG', 'back_id.PNG', '2023-02-14 18:02:17');
+(27, 13, 'bell.png', 'menu_sample.png', 'barangay_permit.png', 'business_permit.png', 'BIR.png', 'cr.PNG', 'front_id.PNG', 'back_id.PNG', '2023-02-14 18:02:17'),
+(28, 14, 'adidas.png', 'menu_sample.png', 'business_permit.png', 'BIR.png', 'barangay_permit.png', 'DTI.png', 'front_id.PNG', 'back_id.PNG', '2023-02-15 01:50:28');
 
 -- --------------------------------------------------------
 
@@ -201,7 +203,8 @@ CREATE TABLE `tbl_accepted_merchant` (
 
 INSERT INTO `tbl_accepted_merchant` (`accepted_merchant_id`, `merchant_id`, `ratings`, `date`) VALUES
 (1, 12, 100, '2023-02-14 18:24:25'),
-(2, 13, 100, '2023-02-14 18:48:55');
+(2, 13, 100, '2023-02-14 18:48:55'),
+(4, 14, 100, '2023-02-15 01:53:55');
 
 -- --------------------------------------------------------
 
@@ -339,7 +342,8 @@ CREATE TABLE `tbl_merchant_account` (
 --
 
 INSERT INTO `tbl_merchant_account` (`merchant_id`, `salutation`, `firstname`, `middlename`, `lastname`, `suffix`, `email`, `password`, `date`) VALUES
-(13, 'Mr.', 'juan', 'jose', 'dela cruz', 'jr', 'sample10@gmail.com', '123456', '2023-02-14 17:50:15');
+(13, 'Mr.', 'juan', 'jose', 'dela cruz', 'jr', 'sample10@gmail.com', '123456', '2023-02-14 17:50:15'),
+(14, 'Mr.', 'Andrei', 'Gutierrez', 'Ong', 'Jr', 'andreinowellong@yahoo.com', '123456', '2023-02-15 01:49:31');
 
 -- --------------------------------------------------------
 
@@ -368,7 +372,8 @@ CREATE TABLE `tbl_merchant_info` (
 --
 
 INSERT INTO `tbl_merchant_info` (`merchantinfo_id`, `merchant_id`, `business_type`, `business_name`, `country`, `address`, `city`, `barangay`, `street`, `postal_code`, `store_number`, `store_email`, `date`) VALUES
-(8, 13, 'Sole proprietorship', 'juan bakery', 'Philippines', 'sample', 'sample', 'sample', 'sample', '123', '123', 'sad2@gmail.com', '2023-02-14 17:50:38');
+(8, 13, 'Sole proprietorship', 'juan bakery', 'Philippines', 'sample', 'sample', 'sample', 'sample', '123', '123', 'sad2@gmail.com', '2023-02-14 17:50:38'),
+(9, 14, 'Corporation', 'foodea', 'Philippines', 'foodea', 'foodea', 'foodea', 'foodea', '123', '099999999', 'foodea@gmail.com', '2023-02-15 01:49:56');
 
 -- --------------------------------------------------------
 
@@ -473,7 +478,10 @@ INSERT INTO `tbl_superadmin_log` (`log_id`, `email`, `name`, `description`, `dat
 (3, NULL, NULL, 'Has Log In', '2023-02-14 17:36:32'),
 (4, NULL, NULL, 'Has Log Out', '2023-02-14 19:10:54'),
 (5, NULL, NULL, 'Has Log In', '2023-02-14 19:10:59'),
-(6, NULL, NULL, 'Has Log Out', '2023-02-14 19:11:08');
+(6, NULL, NULL, 'Has Log Out', '2023-02-14 19:11:08'),
+(7, NULL, NULL, 'Has Log In', '2023-02-15 01:39:37'),
+(8, NULL, NULL, 'Has Log Out', '2023-02-15 01:48:32'),
+(9, NULL, NULL, 'Has Log In', '2023-02-15 01:51:35');
 
 -- --------------------------------------------------------
 
@@ -730,13 +738,13 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `merchant_application`
 --
 ALTER TABLE `merchant_application`
-  MODIFY `merchant_application_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `merchant_application_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `merchant_document`
 --
 ALTER TABLE `merchant_document`
-  MODIFY `merchant_document_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `merchant_document_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -760,7 +768,7 @@ ALTER TABLE `rider_application`
 -- AUTO_INCREMENT for table `tbl_accepted_merchant`
 --
 ALTER TABLE `tbl_accepted_merchant`
-  MODIFY `accepted_merchant_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `accepted_merchant_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tbl_accepted_rider`
@@ -802,13 +810,13 @@ ALTER TABLE `tbl_inventory`
 -- AUTO_INCREMENT for table `tbl_merchant_account`
 --
 ALTER TABLE `tbl_merchant_account`
-  MODIFY `merchant_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `merchant_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `tbl_merchant_info`
 --
 ALTER TABLE `tbl_merchant_info`
-  MODIFY `merchantinfo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `merchantinfo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `tbl_orders`
@@ -832,7 +840,7 @@ ALTER TABLE `tbl_rider_account`
 -- AUTO_INCREMENT for table `tbl_superadmin_log`
 --
 ALTER TABLE `tbl_superadmin_log`
-  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `tbl_transaction`
