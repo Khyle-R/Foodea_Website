@@ -54,7 +54,7 @@
                             <tr>
                                  <a href="">
                                 <td>
-                                    <img class="circle mr-2" src="{{ url('uploads/rider_documents/'.$partner->logo) }}" alt="">
+                                    <img class="circle mr-2" src="{{ url('uploads/merchant_documents/'.$partner->logo) }}" alt="">
                                    {{ $partner->business_name}}
                                 </td>
                                 <td>{{ $partner->business_type }}</td>

@@ -28,7 +28,7 @@
                                     <div class="profile-img">
                                          @foreach ($Data as $partner)
                                      
-                                            <img alt="" src="{{ url('uploads/rider_documents/'.$partner->logo) }}">
+                                            <img alt="" src="{{ url('uploads/merchant_documents/'.$partner->logo) }}">
                                   
                                     </div>
                                 </div>
