@@ -147,7 +147,7 @@
                               <span class="pl-2">{{ $data->product_name}}</span>
                             </td>
                             <td>{{ $data->price}}</td>
-                            <td>{{ $data->category_id}}</td>
+                            <td></td>
                             <td>{{ $data->status}}</td>
                             <td>
                               <div class="row">
