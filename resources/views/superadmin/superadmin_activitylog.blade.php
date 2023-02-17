@@ -5,208 +5,55 @@
                           
                         </div>
                         <div class="page-header">
-                            <h3 class="page-title black">Rider Application</h3>
+                            <h3 class="page-title black"> Activity Log</h3>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">
                                         <a href="#">Menu</a>
                                     </li>
                                     <li class="breadcrumb-item active" aria-current="page">
-                                        Product
+                                       Activity Log
                                     </li>
                                 </ol>
                             </nav>
                         </div>
+
+
+
                         <div class="row">
                             <div class="col-12 grid-margin">
+
                                 <div class="card">
                                     <div class="card-body">
-                                        <div
-                                            class="row justify-content-sm-between px-3 mb-3"
-                                        >
-                                            <h5 class="card-title">
-                                                Showing 3 Activity
-                                            </h5>
-                                            <div class="d-flex flex-wrap">
-                                               
-                                                <div class="dropdown">
-                                                    <button
-                                                        class="but-cat btn btn-secondary dropdown-toggle py-2 px-3 rounded mb-2 mb-sm-0"
-                                                        type="button"
-                                                        id="dropdownMenuButton"
-                                                        data-toggle="dropdown"
-                                                        aria-haspopup="true"
-                                                        aria-expanded="false"
-                                                    >
-                                                        Status
-                                                    </button>
-                                                    <div
-                                                        class="dropdown-menu"
-                                                        aria-labelledby="dropdownMenuButton"
-                                                    >
-                                                        <a
-                                                            class="dropdown-item"
-                                                            href="#"
-                                                            >Pending</a
-                                                        >
-                                                        <a
-                                                            class="dropdown-item"
-                                                            href="#"
-                                                            >On-hold</a
-                                                        >
-                                                          <a
-                                                            class="dropdown-item"
-                                                            href="#"
-                                                            >Rejected</a
-                                                        >
-                                                    </div>
-                                                </div>
-
-                                                <div class="dropdown">
-                                                    <button
-                                                        class="but-cat btn btn-secondary dropdown-toggle py-2 px-3 rounded mx-1 mx-sm-3 mb-3 mb-xs-0"
-                                                        type="button"
-                                                        id="dropdownMenuButton"
-                                                        data-toggle="dropdown"
-                                                        aria-haspopup="true"
-                                                        aria-expanded="false"
-                                                    >
-                                                        Select Order
-                                                    </button>
-                                                    <div
-                                                        class="dropdown-menu"
-                                                        aria-labelledby="dropdownMenuButton"
-                                                    >
-                                                        <a
-                                                            class="dropdown-item"
-                                                            href="#"
-                                                            >Ascending</a
-                                                        >
-                                                        <a
-                                                            class="dropdown-item"
-                                                            href="#"
-                                                            >Descending</a
-                                                        >
-                                                    </div>
-                                                </div>
-                                                 <div class="dropdown">
-                                                    <button
-                                                        class="but-cat btn btn-secondary dropdown-toggle py-2 px-3 rounded"
-                                                        type="button"
-                                                        id="dropdownMenuButton"
-                                                        data-toggle="dropdown"
-                                                        aria-haspopup="true"
-                                                        aria-expanded="false"
-                                                    >
-                                                        Select Order
-                                                    </button>
-                                                    <div
-                                                        class="dropdown-menu"
-                                                        aria-labelledby="dropdownMenuButton"
-                                                    >
-                                                        <a
-                                                            class="dropdown-item"
-                                                            href="#"
-                                                            >Ascending</a
-                                                        >
-                                                        <a
-                                                            class="dropdown-item"
-                                                            href="#"
-                                                            >Descending</a
-                                                        >
-                                                    </div>
-                                                </div>
+                        <div class="table-responsive">
+                    <table id="example" class="table" style="width:100%">
+                        <thead>
+                           
+                                
+                           
+                            <tr>
+                                <th>Email</th>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>Date Time</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                             @foreach ($log as $actlog)
+                            <tr>
+                                <td> 
+                                </td>
+                                <td></td>
+                                <td>{{ $actlog->description }}</td>
+                                <td>{{ $actlog->date }}</td>
+                            </tr>
+                           @endforeach
+                        </tbody>
+                    
+                    </table>
+                    </div>
+            
                                             </div>
-                                       
-                                        </div>
-                                          
-                                        <div class="table-responsive">
-                                            <table class="table">
-                                                <thead class="table-danger">
-                                                    <tr>
-                                                        <th>
-                                                            <div
-                                                                class="form-check form-check-muted m-0"
-                                                            >
-                                                                <label
-                                                                    class="form-check-label"
-                                                                >
-                                                                    <input
-                                                                        type="checkbox"
-                                                                        class="form-check-input"
-                                                                    />
-                                                                </label>
-                                                            </div>
-                                                        </th>
-                                                        <th>Activity ID</th>
-                                                        <th>Activity Description</th>
-                                                        <th>Logged In</th>
-                                                        <th>Logged Out</th>
-                                                    </tr>
-                                                </thead>  
-                                                <tbody>
-                                                   
-                                                    <tr>
-                                                        <td>
-                                                            <div class="form-check form-check-muted m-0">
-                                                                <label class="form-check-label"> <input type="checkbox"class="form-check-input"/></label>
-                                                            </div>
-                                                        </td>
-                                                       
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                    
-                                                     
-                                                    </tr>
-                                           
-                                                </tbody>
-                                            </table>
-                                        </div>
-
-                                        <ul
-                                            class="pagination pt-2 align-items-center justify-content-center justify-content-sm-end"
-                                        >
-                                            <li class="page-item">
-                                                <a
-                                                    class="page-link"
-                                                    href="#"
-                                                    aria-label="Previous"
-                                                >
-                                                    <span aria-hidden="true"
-                                                        >&laquo;</span
-                                                    >
-                                                </a>
-                                            </li>
-                                            <li class="page-item">
-                                                <a class="page-link" href="#"
-                                                    >1</a
-                                                >
-                                            </li>
-                                            <li class="page-item">
-                                                <a class="page-link" href="#"
-                                                    >2</a
-                                                >
-                                            </li>
-                                            <li class="page-item">
-                                                <a class="page-link" href="#"
-                                                    >3</a
-                                                >
-                                            </li>
-                                            <li class="page-item">
-                                                <a
-                                                    class="page-link"
-                                                    href="#"
-                                                    aria-label="Next"
-                                                >
-                                                    <span aria-hidden="true"
-                                                        >&raquo;</span
-                                                    >
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -236,4 +83,5 @@
                     </footer>
                     <!-- partial -->
                 </div>
+              
         @endsection

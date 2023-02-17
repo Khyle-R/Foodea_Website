@@ -56,6 +56,20 @@
             <input type="hidden" name="merchant_id" value=" {{ Session::get('merchant_id') }}">
           @endif
 
+           <div class="requirements-title">
+               <p>Clear image of your logo <span>(Required)</span></p>
+               </div>
+               <div class="requirements">
+                 <img class="logo" src="image/foodea4.png" alt="">
+                <input type="file" name="logo">
+                  <span>File size up to 5mb only</span>
+               <span
+            style="color:red;">
+            @error('logo') {{ $message }}
+            @enderror</span>
+                   </div>
+
+
             <div class="requirements-title"> 
             <p>Clear image of your menu<span> (Required)</span></p>
                </div>
