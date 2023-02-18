@@ -198,7 +198,7 @@ class RiderRegistration extends Controller
             tbl_rider_application::where('rider_id', $request->rider_id)
                 ->update([
                     'document_id' => $id->document_id,
-                    'status' => "pending"
+                    'status' => "Pending"
                 ]);
                   return redirect('/partner_application4');
         }

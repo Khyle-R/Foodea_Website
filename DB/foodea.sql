@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 09, 2023 at 05:07 PM
+-- Generation Time: Feb 15, 2023 at 02:55 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -77,7 +77,8 @@ CREATE TABLE `merchant_application` (
 --
 
 INSERT INTO `merchant_application` (`merchant_application_id`, `merchant_id`, `merchantinfo_id`, `merchant_document_id`, `status`, `date`) VALUES
-(1, 12, 7, 5, 'Pending', '2023-02-03 16:34:36');
+(2, 13, 8, 24, 'Accepted', '2023-02-15 01:47:36'),
+(3, 14, 9, 28, 'Accepted', '2023-02-15 01:53:55');
 
 -- --------------------------------------------------------
 
@@ -88,6 +89,7 @@ INSERT INTO `merchant_application` (`merchant_application_id`, `merchant_id`, `m
 CREATE TABLE `merchant_document` (
   `merchant_document_id` int(11) NOT NULL,
   `merchant_id` int(11) NOT NULL,
+  `logo` varchar(128) NOT NULL,
   `menu_photo` varchar(128) NOT NULL,
   `business_permit` varchar(128) NOT NULL,
   `bir_cert` varchar(128) NOT NULL,
@@ -102,30 +104,9 @@ CREATE TABLE `merchant_document` (
 -- Dumping data for table `merchant_document`
 --
 
-INSERT INTO `merchant_document` (`merchant_document_id`, `merchant_id`, `menu_photo`, `business_permit`, `bir_cert`, `barangay_permit`, `dti_cert`, `front_license`, `back_license`, `date`) VALUES
-(1, 7, 'bike.png', 'Bubble_Tea.png', 'Bubble_Tea.png', 'barangay_permit.png', 'car.png', 'Bubble_Tea.png', 'earn.png', '2022-12-19 18:12:09'),
-(2, 8, 'back_id.PNG', 'drug-test.PNG', 'bgmotor.png', 'attract.png', '1x1.png', 'bell.png', 'DTI.png', '2022-12-19 18:54:08'),
-(3, 9, 'Bubble_Tea.png', 'eating.png', 'back_id.PNG', 'bgmotor.png', 'back_id.PNG', 'bell.png', 'cashier.png', '2022-12-20 00:10:05'),
-(4, 11, 'cr.PNG', 'bell.png', 'bg-circle.png', 'attract.png', 'barangay_permit.png', '1x1.png', 'BIR.png', '2023-01-28 17:06:39'),
-(5, 12, 'cr.PNG', 'cr.PNG', 'BIR.png', 'business_permit.png', 'cr.PNG', 'back_id.PNG', 'cr.PNG', '2023-02-03 16:22:21'),
-(6, 12, 'cr.PNG', 'cr.PNG', 'BIR.png', 'business_permit.png', 'cr.PNG', 'back_id.PNG', 'cr.PNG', '2023-02-03 16:22:36'),
-(7, 12, 'cr.PNG', 'cr.PNG', 'BIR.png', 'business_permit.png', 'cr.PNG', 'back_id.PNG', 'cr.PNG', '2023-02-03 16:22:50'),
-(8, 12, 'cr.PNG', 'cr.PNG', 'BIR.png', 'business_permit.png', 'cr.PNG', 'back_id.PNG', 'cr.PNG', '2023-02-03 16:25:11'),
-(9, 12, 'cr.PNG', 'cr.PNG', 'BIR.png', 'business_permit.png', 'cr.PNG', 'back_id.PNG', 'cr.PNG', '2023-02-03 16:25:18'),
-(10, 12, 'cr.PNG', 'cr.PNG', 'BIR.png', 'business_permit.png', 'cr.PNG', 'back_id.PNG', 'cr.PNG', '2023-02-03 16:25:24'),
-(11, 12, 'cr.PNG', 'cr.PNG', 'BIR.png', 'business_permit.png', 'cr.PNG', 'back_id.PNG', 'cr.PNG', '2023-02-03 16:25:58'),
-(12, 12, 'cr.PNG', 'cr.PNG', 'BIR.png', 'business_permit.png', 'cr.PNG', 'back_id.PNG', 'cr.PNG', '2023-02-03 16:26:14'),
-(13, 12, 'cr.PNG', 'cr.PNG', 'BIR.png', 'business_permit.png', 'cr.PNG', 'back_id.PNG', 'cr.PNG', '2023-02-03 16:27:51'),
-(14, 12, 'cr.PNG', 'cr.PNG', 'BIR.png', 'business_permit.png', 'cr.PNG', 'back_id.PNG', 'cr.PNG', '2023-02-03 16:28:12'),
-(15, 12, 'cr.PNG', 'cr.PNG', 'BIR.png', 'business_permit.png', 'cr.PNG', 'back_id.PNG', 'cr.PNG', '2023-02-03 16:29:01'),
-(16, 12, 'cr.PNG', 'cr.PNG', 'BIR.png', 'business_permit.png', 'cr.PNG', 'back_id.PNG', 'cr.PNG', '2023-02-03 16:30:02'),
-(17, 12, 'cr.PNG', 'cr.PNG', 'BIR.png', 'business_permit.png', 'cr.PNG', 'back_id.PNG', 'cr.PNG', '2023-02-03 16:30:07'),
-(18, 12, 'cr.PNG', 'cr.PNG', 'BIR.png', 'business_permit.png', 'cr.PNG', 'back_id.PNG', 'cr.PNG', '2023-02-03 16:31:06'),
-(19, 12, 'cr.PNG', 'cr.PNG', 'BIR.png', 'business_permit.png', 'cr.PNG', 'back_id.PNG', 'cr.PNG', '2023-02-03 16:32:01'),
-(20, 12, 'cr.PNG', 'cr.PNG', 'BIR.png', 'business_permit.png', 'cr.PNG', 'back_id.PNG', 'cr.PNG', '2023-02-03 16:32:07'),
-(21, 12, 'cr.PNG', 'cr.PNG', 'BIR.png', 'business_permit.png', 'cr.PNG', 'back_id.PNG', 'cr.PNG', '2023-02-03 16:32:22'),
-(22, 12, 'cr.PNG', 'cr.PNG', 'BIR.png', 'business_permit.png', 'cr.PNG', 'back_id.PNG', 'cr.PNG', '2023-02-03 16:33:19'),
-(23, 12, 'cr.PNG', 'cr.PNG', 'BIR.png', 'business_permit.png', 'cr.PNG', 'back_id.PNG', 'cr.PNG', '2023-02-03 16:34:36');
+INSERT INTO `merchant_document` (`merchant_document_id`, `merchant_id`, `logo`, `menu_photo`, `business_permit`, `bir_cert`, `barangay_permit`, `dti_cert`, `front_license`, `back_license`, `date`) VALUES
+(27, 13, 'bell.png', 'menu_sample.png', 'barangay_permit.png', 'business_permit.png', 'BIR.png', 'cr.PNG', 'front_id.PNG', 'back_id.PNG', '2023-02-14 18:02:17'),
+(28, 14, 'adidas.png', 'menu_sample.png', 'business_permit.png', 'BIR.png', 'barangay_permit.png', 'DTI.png', 'front_id.PNG', 'back_id.PNG', '2023-02-15 01:50:28');
 
 -- --------------------------------------------------------
 
@@ -200,7 +181,30 @@ CREATE TABLE `rider_application` (
 --
 
 INSERT INTO `rider_application` (`rider_application_id`, `rider_id`, `vehicle_id`, `document_id`, `status`, `date`) VALUES
-(8, 58, 40, 27, 'pending', '2023-02-09 06:52:56');
+(9, 59, 41, 28, 'Accepted', '2023-02-14 16:47:50'),
+(10, 60, 42, 29, 'Accepted', '2023-02-14 16:50:58');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_accepted_merchant`
+--
+
+CREATE TABLE `tbl_accepted_merchant` (
+  `accepted_merchant_id` int(11) NOT NULL,
+  `merchant_id` int(11) NOT NULL,
+  `ratings` int(100) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_accepted_merchant`
+--
+
+INSERT INTO `tbl_accepted_merchant` (`accepted_merchant_id`, `merchant_id`, `ratings`, `date`) VALUES
+(1, 12, 100, '2023-02-14 18:24:25'),
+(2, 13, 100, '2023-02-14 18:48:55'),
+(4, 14, 100, '2023-02-15 01:53:55');
 
 -- --------------------------------------------------------
 
@@ -220,7 +224,9 @@ CREATE TABLE `tbl_accepted_rider` (
 --
 
 INSERT INTO `tbl_accepted_rider` (`accepted_rider_id`, `rider_id`, `credit_score`, `date`) VALUES
-(7, 57, 100, '2023-02-05 15:34:22');
+(7, 58, 100, '2023-02-10 13:42:52'),
+(8, 58, 100, '2023-02-10 13:59:01'),
+(9, 60, 100, '2023-02-14 16:50:59');
 
 -- --------------------------------------------------------
 
@@ -290,7 +296,9 @@ CREATE TABLE `tbl_document_info` (
 INSERT INTO `tbl_document_info` (`document_id`, `rider_id`, `driver_license`, `official_receipt`, `cert_registration`, `nbi_clearance`, `drug_test`, `rider_photo`, `vehicle_front`, `vehicle_back`, `vehicle_side`, `license_back`, `date`) VALUES
 (25, 56, 'back_id.PNG', 'business_permit.png', 'cr.PNG', 'nbi.png', 'business_permit.png', '1x1.png', 'side.PNG', 'side.PNG', 'side.PNG', 'back_id.PNG', '2023-02-03 07:18:22'),
 (26, 57, 'back_id.PNG', 'cr.PNG', 'cr.PNG', 'cr.PNG', 'cr.PNG', 'about3.png', 'back.PNG', 'back.PNG', 'back.PNG', 'back_id.PNG', '2023-02-03 15:50:27'),
-(27, 58, 'back_id.PNG', 'back_id.PNG', 'back_id.PNG', 'back_id.PNG', 'back_id.PNG', '1x1.png', 'back.PNG', 'back.PNG', 'front.PNG', 'back_id.PNG', '2023-02-09 06:52:56');
+(27, 58, 'back_id.PNG', 'back_id.PNG', 'back_id.PNG', 'back_id.PNG', 'back_id.PNG', '1x1.png', 'back.PNG', 'back.PNG', 'front.PNG', 'back_id.PNG', '2023-02-09 06:52:56'),
+(28, 59, 'back_id.PNG', 'business_permit.png', 'cr.PNG', 'cr.PNG', 'cr.PNG', '1x1.png', 'back.PNG', 'back.PNG', 'back.PNG', 'business_permit.png', '2023-02-10 15:30:13'),
+(29, 60, 'back_id.PNG', 'cr.PNG', 'cr.PNG', 'cr.PNG', 'cr.PNG', '375851_359667544127511_1532145665_n.jpg', 'back.PNG', 'back.PNG', 'back.PNG', 'back_id.PNG', '2023-02-14 10:39:37');
 
 -- --------------------------------------------------------
 
@@ -334,18 +342,8 @@ CREATE TABLE `tbl_merchant_account` (
 --
 
 INSERT INTO `tbl_merchant_account` (`merchant_id`, `salutation`, `firstname`, `middlename`, `lastname`, `suffix`, `email`, `password`, `date`) VALUES
-(1, 'Mr.', 's', 's', 's', 's', 'andreinowellong@yahoo.com', 'CK3$X2HE.$mG4m9', '2022-12-19 11:54:35'),
-(2, 'Mr.', 'a', 'a', 'a', 'a', 'goodmanwha@gmail.com', '123456', '2022-12-19 11:55:22'),
-(3, 'Mr.', 'a', 'a', 'a', 'a', 'agoodmanwha@gmail.com', '123456', '2022-12-19 12:56:16'),
-(4, 'Mr.', 's', 's', 's', 's', '1andreinowellong@yahoo.com', 'CK3$X2HE.$mG4m9', '2022-12-19 13:01:20'),
-(5, 'Ms.', 's', 's', 's', 's', 'andreinowellong2@yahoo.com', 'CK3$X2HE.$mG4m9', '2022-12-19 13:49:51'),
-(6, 'Mr.', 'sd', 'sd', 'sd', 'sd', '4andreinowellong@yahoo.com', 'CK3$X2HE.$mG4m9', '2022-12-19 14:13:09'),
-(7, 'Ms.', 'sd', 'sd', 'sd', 'sd', '4andsreinowellong@yahoo.com', '123456', '2022-12-19 14:14:33'),
-(8, 'Mr.', 'andrei', 'gutierrez', 'ong', NULL, '2andreinowellong@yahoo.com', '123456', '2022-12-19 18:53:32'),
-(9, 'Mr.', 'andrei', 'andrei', 'andrei', 'g', 'sample11@gmail.com', '123456', '2022-12-20 00:09:27'),
-(10, 'Mr.', 'ds', 'ds', 'ds', 'g', 'sample@gmail.com', '123456', '2023-01-19 06:35:50'),
-(11, 'Mr.', 'sample', 'sample', 'sample', 'sample', 'sample2023@gmail.com', '123456', '2023-01-28 17:03:32'),
-(12, 'Mr.', 'sample', 'sample', 'sample', 'sample', 'sample5@gmail.com', '123456', '2023-02-03 16:04:50');
+(13, 'Mr.', 'juan', 'jose', 'dela cruz', 'jr', 'sample10@gmail.com', '123456', '2023-02-14 17:50:15'),
+(14, 'Mr.', 'Andrei', 'Gutierrez', 'Ong', 'Jr', 'andreinowellong@yahoo.com', '123456', '2023-02-15 01:49:31');
 
 -- --------------------------------------------------------
 
@@ -374,13 +372,8 @@ CREATE TABLE `tbl_merchant_info` (
 --
 
 INSERT INTO `tbl_merchant_info` (`merchantinfo_id`, `merchant_id`, `business_type`, `business_name`, `country`, `address`, `city`, `barangay`, `street`, `postal_code`, `store_number`, `store_email`, `date`) VALUES
-(1, 7, 'Sole proprietorship', 's', 'Philippines', 's', 's', 's', 's', '123', '123', 'sad2@gmail.com', '2022-12-19 14:14:52'),
-(2, 7, 'Sole proprietorship', 's', 'Philippines', 's', 's', 's', 's', '123', '123', 'sad2@gmail.com', '2022-12-19 14:15:39'),
-(3, 8, 'Sole proprietorship', 's', 'Philippines', 's', 's', 's', 's', '1', '123', 'sad2@gmail.com', '2022-12-19 18:53:48'),
-(4, 9, 'Sole proprietorship', 'andrei', 'Philippines', 'andrei', 'andrei', 'andrei', 'andrei', '1', '123', 'andrei@gmail.com', '2022-12-20 00:09:43'),
-(5, 10, 'Sole proprietorship', 's', 'Philippines', 'sd', 'sd', 'sda', 'sda', '123', '123', 'sad@gmail.com', '2023-01-19 06:36:18'),
-(6, 11, 'Sole proprietorship', 'sample', 'Philippines', 'sample', 'sample', '123', 'sample', '123', '123', 'sad@gmail.com', '2023-01-28 17:05:56'),
-(7, 12, 'Sole proprietorship', 'sample', 'Philippines', 'sample', 'sample', '123', 'sample', '123', '123', 'sad2@gmail.com', '2023-02-03 16:15:26');
+(8, 13, 'Sole proprietorship', 'juan bakery', 'Philippines', 'sample', 'sample', 'sample', 'sample', '123', '123', 'sad2@gmail.com', '2023-02-14 17:50:38'),
+(9, 14, 'Corporation', 'foodea', 'Philippines', 'foodea', 'foodea', 'foodea', 'foodea', '123', '099999999', 'foodea@gmail.com', '2023-02-15 01:49:56');
 
 -- --------------------------------------------------------
 
@@ -457,7 +450,38 @@ CREATE TABLE `tbl_rider_account` (
 INSERT INTO `tbl_rider_account` (`rider_id`, `password`, `firstname`, `middlename`, `lastname`, `suffix`, `age`, `gender`, `email`, `mobile_number`, `address`, `city`, `barangay`, `zip_code`, `date`) VALUES
 (56, '$2y$10$4SsBPiLnzIVQafFXNwLRFOt4UMR16UkqtOqTFMKzrx3c4HT3W2Eq6', 'Andrei', 'Gutierrez', 'Ong', 'G', 23, 'MALE', 'andreinowellong@yahoo.com', 123, 'Caloocan City', 'Caloocan', '167', 123, '2023-02-03 07:17:17'),
 (57, '$2y$10$emv0wQW9Yj8ZarhADw304eWjZvqmvXVvKaQwY6vx8wdI5Y0IshTO2', 'Sample', 'Sample', 'Sample', 'Sample', 12, 'MALE', 'goodmanwha@gmail.com', 123, 'Sample', 'Sample', 'Sample', 123, '2023-02-03 15:47:24'),
-(58, '$2y$10$NgC8z.Y3YB40lvJ6VIpESuQAJowxSEzqMbCldk9KF2aWH2X/j1j9C', 'Andrei', 'Gutierrez', 'Ong', 'Jr', 23, 'MALE', 'sample10@gmail.com', 123, 'sample', 'sd', 'sample', 1, '2023-02-09 06:51:35');
+(58, '$2y$10$NgC8z.Y3YB40lvJ6VIpESuQAJowxSEzqMbCldk9KF2aWH2X/j1j9C', 'Andrei', 'Gutierrez', 'Ong', 'Jr', 23, 'MALE', 'sample10@gmail.com', 123, 'sample', 'sd', 'sample', 1, '2023-02-09 06:51:35'),
+(59, '$2y$10$0n1Aok/.GNW2kIcWDgQVx.131VApp0txLtUmL/K2so4Fj5iJPd5UC', 'sample', 'sample', 'sample', 'g', 12, 'FEMALE', 'goodmanwha@gmail.com1', 123, 'sample', 'sample', 'sample', 123, '2023-02-10 15:29:19'),
+(60, '$2y$10$S58xnK2X3fzh9y1VHfkRdeTX.fjjSscEjc5joZF1/C1nGx7aCnRSK', 'andrei', 'sample', 'sample', 'jr', 12, 'MALE', 'sample2@gmail.com', 123, 'sample', 'sample', 'sample', 123, '2023-02-14 10:38:52');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_superadmin_log`
+--
+
+CREATE TABLE `tbl_superadmin_log` (
+  `log_id` int(11) NOT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `name` varchar(100) DEFAULT NULL,
+  `description` varchar(100) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_superadmin_log`
+--
+
+INSERT INTO `tbl_superadmin_log` (`log_id`, `email`, `name`, `description`, `date`) VALUES
+(1, NULL, NULL, 'Has Log In', '2023-02-14 17:30:45'),
+(2, NULL, NULL, 'Has Log Out', '2023-02-14 17:36:26'),
+(3, NULL, NULL, 'Has Log In', '2023-02-14 17:36:32'),
+(4, NULL, NULL, 'Has Log Out', '2023-02-14 19:10:54'),
+(5, NULL, NULL, 'Has Log In', '2023-02-14 19:10:59'),
+(6, NULL, NULL, 'Has Log Out', '2023-02-14 19:11:08'),
+(7, NULL, NULL, 'Has Log In', '2023-02-15 01:39:37'),
+(8, NULL, NULL, 'Has Log Out', '2023-02-15 01:48:32'),
+(9, NULL, NULL, 'Has Log In', '2023-02-15 01:51:35');
 
 -- --------------------------------------------------------
 
@@ -499,7 +523,9 @@ CREATE TABLE `tbl_vehicle_info` (
 INSERT INTO `tbl_vehicle_info` (`vehicle_id`, `rider_id`, `vehicle_type`, `plate_number`, `displacement`, `engine_number`, `year_model`, `datee`) VALUES
 (38, 56, 'Motorcycle', '123', 123, 123, 123, '2023-02-03 07:17:24'),
 (39, 57, 'Motorcycle', '123', 123, 123, 123, '2023-02-03 15:47:31'),
-(40, 58, 'Motorcycle', '123', 12, 123, 123, '2023-02-09 06:51:52');
+(40, 58, 'Motorcycle', '123', 12, 123, 123, '2023-02-09 06:51:52'),
+(41, 59, 'Motorcycle', '123', 123, 123, 123, '2023-02-10 15:29:26'),
+(42, 60, 'Motorcycle', '123', 123, 123, 123, '2023-02-14 10:38:58');
 
 -- --------------------------------------------------------
 
@@ -587,6 +613,12 @@ ALTER TABLE `rider_application`
   ADD PRIMARY KEY (`rider_application_id`);
 
 --
+-- Indexes for table `tbl_accepted_merchant`
+--
+ALTER TABLE `tbl_accepted_merchant`
+  ADD PRIMARY KEY (`accepted_merchant_id`);
+
+--
 -- Indexes for table `tbl_accepted_rider`
 --
 ALTER TABLE `tbl_accepted_rider`
@@ -653,6 +685,12 @@ ALTER TABLE `tbl_rider_account`
   ADD PRIMARY KEY (`rider_id`);
 
 --
+-- Indexes for table `tbl_superadmin_log`
+--
+ALTER TABLE `tbl_superadmin_log`
+  ADD PRIMARY KEY (`log_id`);
+
+--
 -- Indexes for table `tbl_transaction`
 --
 ALTER TABLE `tbl_transaction`
@@ -700,13 +738,13 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `merchant_application`
 --
 ALTER TABLE `merchant_application`
-  MODIFY `merchant_application_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `merchant_application_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `merchant_document`
 --
 ALTER TABLE `merchant_document`
-  MODIFY `merchant_document_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `merchant_document_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -724,13 +762,19 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `rider_application`
 --
 ALTER TABLE `rider_application`
-  MODIFY `rider_application_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `rider_application_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT for table `tbl_accepted_merchant`
+--
+ALTER TABLE `tbl_accepted_merchant`
+  MODIFY `accepted_merchant_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `tbl_accepted_rider`
 --
 ALTER TABLE `tbl_accepted_rider`
-  MODIFY `accepted_rider_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `accepted_rider_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `tbl_activitylog`
@@ -754,7 +798,7 @@ ALTER TABLE `tbl_category`
 -- AUTO_INCREMENT for table `tbl_document_info`
 --
 ALTER TABLE `tbl_document_info`
-  MODIFY `document_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `document_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `tbl_inventory`
@@ -766,13 +810,13 @@ ALTER TABLE `tbl_inventory`
 -- AUTO_INCREMENT for table `tbl_merchant_account`
 --
 ALTER TABLE `tbl_merchant_account`
-  MODIFY `merchant_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `merchant_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `tbl_merchant_info`
 --
 ALTER TABLE `tbl_merchant_info`
-  MODIFY `merchantinfo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `merchantinfo_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `tbl_orders`
@@ -790,7 +834,13 @@ ALTER TABLE `tbl_product`
 -- AUTO_INCREMENT for table `tbl_rider_account`
 --
 ALTER TABLE `tbl_rider_account`
-  MODIFY `rider_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
+  MODIFY `rider_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
+
+--
+-- AUTO_INCREMENT for table `tbl_superadmin_log`
+--
+ALTER TABLE `tbl_superadmin_log`
+  MODIFY `log_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `tbl_transaction`
@@ -802,7 +852,7 @@ ALTER TABLE `tbl_transaction`
 -- AUTO_INCREMENT for table `tbl_vehicle_info`
 --
 ALTER TABLE `tbl_vehicle_info`
-  MODIFY `vehicle_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `vehicle_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `tbl_voucher`

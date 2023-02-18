@@ -1,116 +1,44 @@
 @extends('superadmin.superadmin_index')
 @section('content')
-         <div class="content-wrapper">
-                 <div class="row">
-                          
-                        </div>
-                        <div class="page-header">
-                            <h3 class="page-title black">Rider Application</h3>
-                            <nav aria-label="breadcrumb">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item">
-                                        <a href="#">Menu</a>
-                                    </li>
-                                    <li class="breadcrumb-item active" aria-current="page">
-                                       Rider Application
-                                    </li>
-                                </ol>
-                            </nav>
-                        </div>
+<div class="content-wrapper">
+    <div class="row">
 
-                        <div class="card mb-4">
-                            <div class="card-body">
-                                <ul class="nav nav-tabs nav-tabs-solid nav-justified">
-                                <li class="nav-size nav-item"><a class="nav-link active" href="">All</a></li>
-                                <li class="nav-size nav-item"><a class="nav-link" href="/superadmin_merchantpending">Pending</a></li>
-                                <li class="nav-size nav-item"><a class="nav-link" href="/superadmin_merchantreview">Reviewing</a></li>
-                                <li class="nav-size nav-item"><a class="nav-link" href="/superadmin_merchantaccept">Accepted</a></li>
-                                <li class="nav-size nav-item"><a class="nav-link" href="/superadmin_merchantarchive">Archived</a></li>
-                                        
-                                </ul>
-                            </div>
-                        </div>
+    </div>
+    <div class="page-header">
+        <h3 class="page-title black">Rider Application</h3>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="#">Menu</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    Rider Application
+                </li>
+            </ol>
+        </nav>
+    </div>
 
-                 <div class="row mb-2">
-            <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3 mb-3">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex align-items-center justify-content-between px-3">
-                        <div class="dash-widget-info">
-                            @if ($all)
-                                    <h3>{{ $all }}</h3>
-                                    @else
-                                     <h3>0</h3>
-                            @endif
-                        
-                            <span>All</span>
-                        </div>
-                         <span class="dash-widget-icon"><i class="mdi mdi-file-check"></i></span>
-                    </div>
-                        </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3 mb-3">
-                <div class="card dash-widget">
-                      <div class="card-body">
-                        <div class="d-flex align-items-center justify-content-between px-3">
-                        <div class="dash-widget-info">
-                            @if ($pending)
-                                    <h3>{{ $pending }}</h3>
-                                    @else
-                                     <h3>0</h3>
-                            @endif
-                            <span>Pending</span>
-                        </div>
-                         <span class="dash-widget-icon"><i class="mdi mdi-file-check"></i></span>
-                    </div>
-                        </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3 mb-3">
-                <div class="card dash-widget">
-                      <div class="card-body">
-                        <div class="d-flex align-items-center justify-content-between px-3">
-                        <div class="dash-widget-info">
-                             @if ($review)
-                                    <h3>{{ $review }}</h3>
-                                    @else
-                                     <h3>0</h3>
-                            @endif
-                            <span>Reviewing</span>
-                        </div>
-                         <span class="dash-widget-icon"><i class="mdi mdi-file-check"></i></span>
-                    </div>
-                        </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3 mb-3">
-                <div class="card dash-widget">
-                      <div class="card-body">
-                        <div class="d-flex align-items-center justify-content-between px-3">
-                        <div class="dash-widget-info">
-                             @if ($reject)
-                                    <h3>{{ $reject }}</h3>
-                                    @else
-                                     <h3>0</h3>
-                            @endif
-                            <span>Archived</span>
-                        </div>
-                         <span class="dash-widget-icon"><i class="mdi mdi-file-check"></i></span>
-                    </div>
-                        </div>
-                </div>
-            </div>
+    <div class="card mb-4">
+        <div class="card-body">
+            <ul class="nav nav-tabs nav-tabs-solid nav-justified">
+                <li class="nav-size nav-item"><a class="nav-link" href="/superadmin_partnerapplication">All</a></li>
+                 <li class="nav-size nav-item"><a class="nav-link" href="/superadmin_merchantpending">Pending</a></li>
+                  <li class="nav-size nav-item"><a class="nav-link active" href="/superadmin_merchantreview">Reviewing</a></li>
+                  <li class="nav-size nav-item"><a class="nav-link" href="/superadmin_merchantaccept">Accepted</a></li>
+                  <li class="nav-size nav-item"><a class="nav-link" href="/superadmin_merchantarchive">Archived</a></li>
+
+            </ul>
         </div>
+    </div>
 
-                        <div class="row">
-                            <div class="col-12 grid-margin">
+    <div class="row">
+        <div class="col-12 grid-margin">
 
-                                <div class="card">
-                                    <div class="card-body">
-                        <div class="table-responsive">
-                    <table id="example" class="table" style="width:100%">
-                        <thead>
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table id="example" class="table" style="width:100%">
+                         <thead>
                             <tr>
                                 <th>Name</th>
                                 <th>Job Type</th>
@@ -122,12 +50,12 @@
                         </thead>
                         <tbody>
                             @foreach ($Data as $partner)
-                               <a href="#">
+
                             <tr>
-                                 
+                                 <a href="">
                                 <td>
                                     <img class="circle mr-2" src="{{ url('uploads/merchant_documents/'.$partner->logo) }}" alt="">
-                                    {{ $partner->business_name}}
+                                   {{ $partner->business_name}}
                                 </td>
                                 <td>{{ $partner->business_type }}</td>
                                 <td>{{ $partner->store_email }}</td>
@@ -169,21 +97,22 @@
                                             </div>
                                         @endif 
                                             
+                                            
                                         </div>
                                 </td>
                                 <td>{{ $partner->date }}</td>
                                 <td>
                                 <div class="dropdown">
                                     <a href="#" class="action-icon" data-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-vertical black-icon" aria-hidden="true"></i></a>
-                                    <div class="dropdown-menu dropdown-menu-right">
-                                        <a class="dropdown-item" href=""><i class="fa fa-pencil m-r-5"></i> View</a>
-                                        <a class="dropdown-item" href=""><i class="fa fa-trash-o m-r-5"></i> Delete</a>
+                                    <div class="bg-white dropdown-menu dropdown-menu-right">
+                                        <a class="action-btn dropdown-item black" href=""><i class="fa fa-pencil m-r-5"></i> View</a>
+                                        <a class="action-btn dropdown-item black" href=""><i class="fa fa-trash-o m-r-5"></i> Delete</a>
                                     </div>
                                 </div>
                                     </td>
-                                   
+                                    </a>
                             </tr>
-                             </a>
+                  
                              <!-- Review Modal -->
                     <div class="modal fade" id="ReviewModal{{ $partner->merchant_id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -260,17 +189,18 @@
                         </div>
                     </div>
                     </div>
-                            @endforeach
+                             @endforeach
+                           
                         </tbody>
                     
                     </table>
                     </div>
-            
-                                            </div>
+                                      </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                     <!-- content-wrapper ends -->
                     <!-- partial:../../partials/_footer.html -->
                     <footer class="footer">
