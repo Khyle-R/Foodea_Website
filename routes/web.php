@@ -184,7 +184,7 @@ Route::get('/index', [Admin_product::class, 'dashboard']);
 
 //Add product
 Route::get('/add_product',[Admin_product::class, 'addProductView'])->name('add_product.addProductView');
-
+Route::post('/add_product',[Admin_product::class, 'addProduct'])->name('add_product.addProduct');
 
 
 //Remove product
@@ -208,7 +208,6 @@ Route::get('product', function () {
 
     return view('admin.product', ['products' => $products]);
 });
-Route::post('product',[Admin_product::class, 'addProduct'])->name('add_product');
 
 //View inventory
 Route::get('inventory', function(){
