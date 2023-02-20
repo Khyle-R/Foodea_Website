@@ -101,7 +101,7 @@ class SuperadminController extends Controller
     // dd($Data);
    }
 
-    public function profile(){   
+    public function profile(){
     return view('superadmin.superadmin_profile');
    }
    public function Rider(){
