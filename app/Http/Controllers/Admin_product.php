@@ -316,4 +316,22 @@ class Admin_product extends Controller
     {
         //
     }
+
+    public function VoucherIndex(){
+        return view ('admin.voucher');
+    }
+    // Order Page
+    // Admin order accept!
+    public function OrderAccept(){
+        return view ('admin.admin_orderaccept');
+    }
+    public function OrderArchieve(){
+        return view ('admin.admin_orderarchieve');
+    }
+    public function OrderPending(){
+        return view ('admin.admin_orderpending');
+    }
+    public function OrderReview(){
+        return view ('admin.admin_orderreview');
+    }
 }
