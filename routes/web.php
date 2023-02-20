@@ -233,7 +233,15 @@ Route::get('admin_orders', function(){
     return view('admin.admin_orders', ['orders' => $orders]);
 });
 
-Route::get('/account',[Admin_product::class, 'infoAccount']);
+//Voucher Route
+Route::get('/voucher', [Admin_product::class, 'VoucherIndex']);
+
+//ORDER ADMIN
+//ORDER Pending
+Route::get('/orderpending', [Admin_product::class, 'OrderPending']);
+Route::get('/orderaccept', [Admin_product::class, 'OrderAccept']);
+Route::get('/orderreview', [Admin_product::class, 'OrderReview']);
+Route::get('/orderarchieve', [Admin_product::class, 'OrderArchieve']);
 
 Route::get('/account', function(){
     $id=session('loginID');
