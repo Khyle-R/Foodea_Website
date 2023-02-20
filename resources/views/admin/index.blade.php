@@ -15,9 +15,12 @@
     <link rel="stylesheet" href="assets/vendors/flag-icon-css/css/flag-icon.min.css"/>
     <link rel="stylesheet" href="assets/vendors/owl-carousel-2/owl.carousel.min.css"/>
     <link rel="stylesheet" href="assets/vendors/owl-carousel-2/owl.theme.default.min.css"/>
-    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/dataTables.bootstrap5.min.css">
+    
+    <!-- <script src="https://code.jquery.com/jquery-3.4.1.js"></script> --> 
    
-    {{-- Admin Personal info disable  inputs --}}
+    <!-- {{-- Admin Personal info disable  inputs --}}
      <script>
       $(document).ready(function(){
           $("#myForm_Account :input").prop("disabled", true);
@@ -31,18 +34,20 @@
           $("#myForm_Business :input").prop("disabled", true);
           $("#save_info").hide(0);
       });
-    </script>
+    </script> -->
 
     <!-- End plugin css for this page -->
     <!-- inject:css -->
     <!-- endinject -->
     <!-- Layout styles -->
-    <link rel="stylesheet" href="assets/css/style.css" />
+    
+    <link rel="stylesheet" href="assets/css/stylesadmin.css"/>
+    <link rel="stylesheet" href="assets/css/superadmin.css"/>
     <!-- End layout styles -->
     <link rel="shortcut icon" href="../../user/image/foodea1.png" />
 
     {{-- Datatable plugins --}}
-    <link rel="stylesheet" href="//cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css" />
+    <!-- <link rel="stylesheet" href="//cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css" /> -->
     
   </head>
   <body>
@@ -53,14 +58,14 @@
           class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top"
         >
           <a class="sidebar-brand brand-logo" href="index.html"
-            ><img src="assets/images/foodea_logo.PNG" alt="logo"
+            ><img src="assets/images/admin_logo.PNG" alt="logo"
           /></a>
           <a class="sidebar-brand brand-logo-mini" href="index.html"
             ><img src="/image/foodea.png" class="w-50" alt="logo"
           /></a>
         </div>
         <ul class="nav">
-          <li class="nav-item profile">
+          <li class="nav-item profile mt-3">
             <div class="profile-desc">
               <div class="profile-pic">
                 <div class="count-indicator">
@@ -72,10 +77,7 @@
                   <span class="count bg-success"></span>
                 </div>
                 <div class="profile-name">
-
-
-                  <h5 class="mb-0 font-weight-normal">    {{$logIndata->firstname . " " . $logIndata->lastname}}</h5>
-
+                  <h5 class="mb-0 font-weight-normal text-white fs-4">{{$logIndata->firstname . " " . $logIndata->lastname}}</h5>
                   <span>Verified</span>
                 </div>
               </div>
@@ -179,7 +181,7 @@
             </a>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="pages/charts/chartjs.html">
+            <a class="nav-link" href="/voucher">
               <span class="menu-icon">
                 <i class="mdi mdi-cards"></i>
               </span>
@@ -493,7 +495,7 @@
       <!-- page-body-wrapper ends -->
     </div>
     {{-- Jquery --}}
-    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script> -->
 
     <!-- plugins:js -->
     <script src="assets/vendors/js/vendor.bundle.base.js"></script>
@@ -504,6 +506,9 @@
     <script src="assets/vendors/jvectormap/jquery-jvectormap.min.js"></script>
     <script src="assets/vendors/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
     <script src="assets/vendors/owl-carousel-2/owl.carousel.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.13.2/js/jquery.dataTables.min.js"> </script>
+   <script src="https://cdn.datatables.net/1.13.2/js/dataTables.bootstrap5.min.js"> </script>
     <!-- End plugin js for this page -->
     <!-- inject:js -->
     <script src="assets/js/off-canvas.js"></script>
@@ -515,14 +520,14 @@
     <!-- Custom js for this page -->
     <script src="assets/js/dashboard.js"></script>
     <script src="assets/js/chart.js"></script>
+    <script src="assets/js/app.js"></script>
     <!-- End custom js for this page -->
 
     {{-- DataTable plugins --}}
-    <script src="//cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <!-- <script src="//cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script> -->
 
-    
 
-<script>
+<!-- <script>
   $(document).ready( function () {
     $('#myProduct').DataTable();
 } );
@@ -538,6 +543,6 @@
   $(document).ready( function () {
     $('#myHistory').DataTable();
 } );
-</script>
+</script> -->
   </body>
 </html>
