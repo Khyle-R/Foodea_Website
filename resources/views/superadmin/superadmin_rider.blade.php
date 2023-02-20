@@ -1,7 +1,9 @@
 @extends('superadmin.superadmin_index')
 @section('content')
-        <div class="content-wrapper">
-                <div class="row"></div>
+         <div class="content-wrapper">
+                 <div class="row">
+                          
+                        </div>
                         <div class="page-header">
                             <h3 class="page-title black">Rider Application</h3>
                             <nav aria-label="breadcrumb">
@@ -23,7 +25,8 @@
                                 <li class="nav-size nav-item"><a class="nav-link" href="/superadmin_pending">Pending</a></li>
                                 <li class="nav-size nav-item"><a class="nav-link" href="/superadmin_review">Reviewing</a></li>
                                 <li class="nav-size nav-item"><a class="nav-link" href="/superadmin_accept">Accepted</a></li>
-                                <li class="nav-size nav-item"><a class="nav-link" href="/superadmin_archive">Rejected</a></li>    
+                                <li class="nav-size nav-item"><a class="nav-link" href="/superadmin_archive">Rejected</a></li>
+                                        
                                 </ul>
                             </div>
                         </div>
@@ -117,7 +120,7 @@
             </div> --}}
         </div>
 
-                    <div class="row">
+                        <div class="row">
                             <div class="col-12 grid-margin">
 
                                 <div class="card">
