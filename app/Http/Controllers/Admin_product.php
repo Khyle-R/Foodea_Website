@@ -14,14 +14,12 @@ use Illuminate\Support\Facades\Session;
 class Admin_product extends Controller
 {
     public function dashboard(){
-
- 
        $totalOrders = DB::table('tbl_orders')->count();
        $productSold = DB::table('tbl_product')->count();
        $totalRevenue = DB::table('tbl_product')->count();
        $totalProduct = DB::table('tbl_product')->count();
 
-        return view('admin.dashboard',['totalOrders' => $totalOrders, 'productSold' => $productSold, 'totalRevenue' => $totalRevenue, 'totalProduct' => $totalProduct]);
+    return view('admin.dashboard',['totalOrders' => $totalOrders, 'productSold' => $productSold, 'totalRevenue' => $totalRevenue, 'totalProduct' => $totalProduct]);
     }
     
    public function logout(){
@@ -49,14 +47,11 @@ class Admin_product extends Controller
         $product->stock =$rProduct->stock;
         $product->status =$rProduct->status;
         $product->description =$rProduct->description;
-        $product->ingredients =$rProduct->ingredients;
         $product->date =$rProduct->date;
         $product->product_id =$rProduct->inventory_id;
         $product->merchant_id =$rProduct->merchant_id;
-        $product->category_name =$rProduct->category_name;
+        $product->category_id =$rProduct->category_id;
         $product->price =$rProduct->price;
-        $product->tags =$rProduct->tags;
-
         
         $res= $product-> save();
 
@@ -103,13 +98,11 @@ class Admin_product extends Controller
         $product->stock =$rProduct->stock;
         $product->status =$rProduct->status;
         $product->description =$rProduct->description;
-        $product->ingredients =$rProduct->ingredients;
         $product->date =$rProduct->date;
         $product->inventory_id =$rProduct->product_id;
         $product->merchant_id =$rProduct->merchant_id;
-        $product->category_name =$rProduct->category_name;
+        $product->category_id =$rProduct->category_id;
         $product->price =$rProduct->price;
-        $product->tags =$rProduct->tags;
         
         $res= $product-> save();
 
@@ -184,24 +177,21 @@ class Admin_product extends Controller
         $request->validate([
             'product_name'=> 'required',
             'category'=> 'required',
+            'type'=> 'required',
             'description'=> 'required',
             'product_image' => 'required',
             'price'=> 'required',
             'stock'=> 'required',
-            'status'=> 'required',
-            'tags_category'=> 'required',
-            'ingredients' => 'required'
+            'status'=> 'required'
         ]);
 
 
-        $addProd = new tbl_product();
+        $addProd=new tbl_product();
+
        
 
             if ($request->hasFile('product_image')) 
             {
-                
-        
-
                 $prod_image = $request->file('product_image');
 
                 $image_p = $prod_image->getClientOriginalName();
@@ -209,25 +199,28 @@ class Admin_product extends Controller
                 $prod_image->move('product_images', $image_p);
 
             
-            $addProd->merchant_id = "1";
-            $addProd->product_name =$request->product_name;
-            $addProd->stock = $request->stock;
-            $addProd->product_image =$image_p;
-            $addProd->price = $request->price;
-            $addProd->category_name=$request->category;
-            $addProd->status = $request->status;
-            $addProd->tags=$request->tags_category;
-            $addProd->description = $request->description;
-            $addProd->ingredients= $request->ingredients;
 
+            $addProd->product_name =$request->product_name;
+            $addProd->price = $request->price;
+            $addProd->product_image =$image_p;
+            $addProd->stock = $request->stock;
+            $addProd->status = $request->status;
+            $addProd->description = $request->description;
+
+        
             $currentTime = Carbon::now();// to get the current time
 
             $addProd->date = $currentTime;
-           
-        
+            $addProd->product_id = "000";
+            $addProd->merchant_id = "111";
+            $addProd->category_id = "222";
+            $addProd->price = $request->price;
+  
             }
-            $addProd-> save();
-            return redirect('');
+
+            $addProd->save();
+            
+            return redirect('product');
         
     }
 

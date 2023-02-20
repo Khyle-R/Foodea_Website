@@ -184,7 +184,7 @@ Route::get('/index', [Admin_product::class, 'dashboard']);
 
 //Add product
 Route::get('/add_product',[Admin_product::class, 'addProductView'])->name('add_product.addProductView');
-
+Route::post('/add_product',[Admin_product::class, 'addProduct'])->name('add_product.addProduct');
 
 
 //Remove product
@@ -208,7 +208,6 @@ Route::get('product', function () {
 
     return view('admin.product', ['products' => $products]);
 });
-Route::post('product',[Admin_product::class, 'addProduct'])->name('add_product');
 
 //View inventory
 Route::get('inventory', function(){
@@ -233,7 +232,15 @@ Route::get('admin_orders', function(){
     return view('admin.admin_orders', ['orders' => $orders]);
 });
 
-Route::get('/account',[Admin_product::class, 'infoAccount']);
+//Voucher Route
+Route::get('/voucher', [Admin_product::class, 'VoucherIndex']);
+
+//ORDER ADMIN
+//ORDER Pending
+Route::get('/orderpending', [Admin_product::class, 'OrderPending']);
+Route::get('/orderaccept', [Admin_product::class, 'OrderAccept']);
+Route::get('/orderreview', [Admin_product::class, 'OrderReview']);
+Route::get('/orderarchieve', [Admin_product::class, 'OrderArchieve']);
 
 Route::get('/account', function(){
     $id=session('loginID');
