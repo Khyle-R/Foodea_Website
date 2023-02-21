@@ -107,6 +107,23 @@
 /* === Import template variables === */
 /*-------------------------------------------------------------------*/
 /* === SCSS Compass Functions === */
+@-webkit-keyframes flash {
+  0% {
+    opacity: 1;
+  }
+  25% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  75% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 @keyframes flash {
   0% {
     opacity: 1;
@@ -122,6 +139,29 @@
   }
   100% {
     opacity: 1;
+  }
+}
+@-webkit-keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  20% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-30px);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  60% {
+    transform: translateY(-15px);
+  }
+  80% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(0);
   }
 }
 @keyframes bounce {
@@ -145,6 +185,41 @@
   }
   100% {
     transform: translateY(0);
+  }
+}
+@-webkit-keyframes shake {
+  0% {
+    transform: translateX(0);
+  }
+  10% {
+    transform: translateX(-10px);
+  }
+  20% {
+    transform: translateX(10px);
+  }
+  30% {
+    transform: translateX(-10px);
+  }
+  40% {
+    transform: translateX(10px);
+  }
+  50% {
+    transform: translateX(-10px);
+  }
+  60% {
+    transform: translateX(10px);
+  }
+  70% {
+    transform: translateX(-10px);
+  }
+  80% {
+    transform: translateX(10px);
+  }
+  90% {
+    transform: translateX(-10px);
+  }
+  100% {
+    transform: translateX(0);
   }
 }
 @keyframes shake {
@@ -182,6 +257,41 @@
     transform: translateX(0);
   }
 }
+@-webkit-keyframes tada {
+  0% {
+    transform: scale(1, 1);
+  }
+  10% {
+    transform: scale(0.9) rotate(-3deg);
+  }
+  20% {
+    transform: scale(0.9) rotate(-3deg);
+  }
+  30% {
+    transform: scale(1.1) rotate(3deg);
+  }
+  40% {
+    transform: scale(1.1) rotate(-3deg);
+  }
+  50% {
+    transform: scale(1.1) rotate(3deg);
+  }
+  60% {
+    transform: scale(1.1) rotate(-3deg);
+  }
+  70% {
+    transform: scale(1.1) rotate(3deg);
+  }
+  80% {
+    transform: scale(1.1) rotate(-3deg);
+  }
+  90% {
+    transform: scale(1.1) rotate(3deg);
+  }
+  100% {
+    transform: scale(1) rotate(0);
+  }
+}
 @keyframes tada {
   0% {
     transform: scale(1, 1);
@@ -217,6 +327,26 @@
     transform: scale(1) rotate(0);
   }
 }
+@-webkit-keyframes swing {
+  20%, 40%, 60%, 80%, 100% {
+    transform-origin: top center 50%;
+  }
+  20% {
+    transform: rotate(15deg);
+  }
+  40% {
+    transform: rotate(-10deg);
+  }
+  60% {
+    transform: rotate(5deg);
+  }
+  80% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
 @keyframes swing {
   20%, 40%, 60%, 80%, 100% {
     transform-origin: top center 50%;
@@ -235,6 +365,29 @@
   }
   100% {
     transform: rotate(0deg);
+  }
+}
+@-webkit-keyframes wobble {
+  0% {
+    transform: translateX(0%);
+  }
+  15% {
+    transform: translateX(-25%) rotate(-5deg);
+  }
+  30% {
+    transform: translateX(20%) rotate(3deg);
+  }
+  45% {
+    transform: translateX(-15%) rotate(-3deg);
+  }
+  60% {
+    transform: translateX(10%) rotate(2deg);
+  }
+  75% {
+    transform: translateX(-5%) rotate(-1deg);
+  }
+  100% {
+    transform: translateX(0%);
   }
 }
 @keyframes wobble {
@@ -260,6 +413,17 @@
     transform: translateX(0%);
   }
 }
+@-webkit-keyframes pulse {
+  0% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(1.1, 1.1);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
 @keyframes pulse {
   0% {
     transform: scale(1, 1);
@@ -269,6 +433,41 @@
   }
   100% {
     transform: scale(1, 1);
+  }
+}
+@-webkit-keyframes wiggle {
+  0% {
+    transform: skewX(9deg);
+  }
+  10% {
+    transform: skewX(-8deg);
+  }
+  20% {
+    transform: skewX(7deg);
+  }
+  30% {
+    transform: skewX(-6deg);
+  }
+  40% {
+    transform: skewX(5deg);
+  }
+  50% {
+    transform: skewX(-4deg);
+  }
+  60% {
+    transform: skewX(3deg);
+  }
+  70% {
+    transform: skewX(-2deg);
+  }
+  80% {
+    transform: skewX(1deg);
+  }
+  90% {
+    transform: skewX(0deg);
+  }
+  100% {
+    transform: skewX(0deg);
   }
 }
 @keyframes wiggle {
@@ -306,6 +505,22 @@
     transform: skewX(0deg);
   }
 }
+@-webkit-keyframes bounceOut {
+  0% {
+    transform: scale(1, 1);
+  }
+  25% {
+    transform: scale(0.95, 0.95);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1, 1.1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.3, 0.3);
+  }
+}
 @keyframes bounceOut {
   0% {
     transform: scale(1, 1);
@@ -322,6 +537,19 @@
     transform: scale(0.3, 0.3);
   }
 }
+@-webkit-keyframes bounceOutUp {
+  0% {
+    transform: translateY(0);
+  }
+  20% {
+    opacity: 1;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-2000px);
+  }
+}
 @keyframes bounceOutUp {
   0% {
     transform: translateY(0);
@@ -333,6 +561,19 @@
   100% {
     opacity: 0;
     transform: translateY(-2000px);
+  }
+}
+@-webkit-keyframes bounceOutDown {
+  0% {
+    transform: translateY(0);
+  }
+  20% {
+    opacity: 1;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(2000px);
   }
 }
 @keyframes bounceOutDown {
@@ -348,6 +589,19 @@
     transform: translateY(2000px);
   }
 }
+@-webkit-keyframes bounceOutLeft {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    opacity: 1;
+    transform: translateX(20px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-2000px);
+  }
+}
 @keyframes bounceOutLeft {
   0% {
     transform: translateX(0);
@@ -361,6 +615,19 @@
     transform: translateX(-2000px);
   }
 }
+@-webkit-keyframes bounceOutRight {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    opacity: 1;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(2000px);
+  }
+}
 @keyframes bounceOutRight {
   0% {
     transform: translateX(0);
@@ -372,6 +639,22 @@
   100% {
     opacity: 0;
     transform: translateX(2000px);
+  }
+}
+@-webkit-keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3, 0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05, 1.05);
+  }
+  70% {
+    transform: scale(0.9, 0.9);
+  }
+  100% {
+    transform: scale(1, 1);
   }
 }
 @keyframes bounceIn {
@@ -390,6 +673,22 @@
     transform: scale(1, 1);
   }
 }
+@-webkit-keyframes bounceInDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-2000px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(30px);
+  }
+  80% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
 @keyframes bounceInDown {
   0% {
     opacity: 0;
@@ -401,6 +700,22 @@
   }
   80% {
     transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@-webkit-keyframes bounceInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(2000px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-30px);
+  }
+  80% {
+    transform: translateY(10px);
   }
   100% {
     transform: translateY(0);
@@ -422,6 +737,22 @@
     transform: translateY(0);
   }
 }
+@-webkit-keyframes bounceInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(2000px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateX(-30px);
+  }
+  80% {
+    transform: translateX(10px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
 @keyframes bounceInRight {
   0% {
     opacity: 0;
@@ -433,6 +764,22 @@
   }
   80% {
     transform: translateX(10px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@-webkit-keyframes bounceInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-2000px);
+  }
+  60% {
+    opacity: 1;
+    transform: translateX(30px);
+  }
+  80% {
+    transform: translateX(-10px);
   }
   100% {
     transform: translateX(0);
@@ -454,11 +801,29 @@
     transform: translateX(0);
   }
 }
+@-webkit-keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
 @keyframes fadeOut {
   0% {
     opacity: 1;
   }
   100% {
+    opacity: 0;
+  }
+}
+@-webkit-keyframes fadeOutUp {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-20px);
     opacity: 0;
   }
 }
@@ -472,6 +837,16 @@
     opacity: 0;
   }
 }
+@-webkit-keyframes fadeOutDown {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+}
 @keyframes fadeOutDown {
   0% {
     transform: translateY(0);
@@ -479,6 +854,16 @@
   }
   100% {
     transform: translateY(20px);
+    opacity: 0;
+  }
+}
+@-webkit-keyframes fadeOutRight {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(20px);
     opacity: 0;
   }
 }
@@ -492,6 +877,16 @@
     opacity: 0;
   }
 }
+@-webkit-keyframes fadeOutLeft {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+}
 @keyframes fadeOutLeft {
   0% {
     transform: translateX(0);
@@ -499,6 +894,16 @@
   }
   100% {
     transform: translateX(-20px);
+    opacity: 0;
+  }
+}
+@-webkit-keyframes fadeOutUpBig {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-2000px);
     opacity: 0;
   }
 }
@@ -512,6 +917,16 @@
     opacity: 0;
   }
 }
+@-webkit-keyframes fadeOutDownBig {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(2000px);
+  }
+}
 @keyframes fadeOutDownBig {
   0% {
     opacity: 1;
@@ -520,6 +935,16 @@
   100% {
     opacity: 0;
     transform: translateY(2000px);
+  }
+}
+@-webkit-keyframes fadeOutRightBig {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(2000px);
   }
 }
 @keyframes fadeOutRightBig {
@@ -532,6 +957,16 @@
     transform: translateX(2000px);
   }
 }
+@-webkit-keyframes fadeOutLeftBig {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-2000px);
+  }
+}
 @keyframes fadeOutLeftBig {
   0% {
     opacity: 1;
@@ -542,6 +977,14 @@
     transform: translateX(-2000px);
   }
 }
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 @keyframes fadeIn {
   0% {
     opacity: 0;
@@ -550,9 +993,29 @@
     opacity: 1;
   }
 }
+@-webkit-keyframes fadeInUp {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
 @keyframes fadeInUp {
   0% {
     transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@-webkit-keyframes fadeInDown {
+  0% {
+    transform: translateY(-20px);
     opacity: 0;
   }
   100% {
@@ -570,9 +1033,29 @@
     opacity: 1;
   }
 }
+@-webkit-keyframes fadeInRight {
+  0% {
+    transform: translateX(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
 @keyframes fadeInRight {
   0% {
     transform: translateX(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@-webkit-keyframes fadeInLeft {
+  0% {
+    transform: translateX(-20px);
     opacity: 0;
   }
   100% {
@@ -590,6 +1073,16 @@
     opacity: 1;
   }
 }
+@-webkit-keyframes fadeInUpBig {
+  0% {
+    transform: translateY(2000px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
 @keyframes fadeInUpBig {
   0% {
     transform: translateY(2000px);
@@ -598,6 +1091,16 @@
   100% {
     transform: translateY(0);
     opacity: 1;
+  }
+}
+@-webkit-keyframes fadeInDownBig {
+  0% {
+    opacity: 0;
+    transform: translateY(-2000px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 @keyframes fadeInDownBig {
@@ -610,10 +1113,30 @@
     transform: translateY(0);
   }
 }
+@-webkit-keyframes fadeInRightBig {
+  0% {
+    opacity: 0;
+    transform: translateX(2000px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
 @keyframes fadeInRightBig {
   0% {
     opacity: 0;
     transform: translateX(2000px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@-webkit-keyframes fadeInLeftBig {
+  0% {
+    opacity: 0;
+    transform: translateX(-2000px);
   }
   100% {
     opacity: 1;
@@ -630,26 +1153,76 @@
     transform: translateX(0);
   }
 }
-@keyframes flip {
+@-webkit-keyframes flip {
   0% {
     transform: perspective(400px) rotateY(0);
+    -webkit-animation-timing-function: ease-out;
     animation-timing-function: ease-out;
   }
   40% {
     transform: perspective(400px) translateZ(150px) rotateY(170deg);
+    -webkit-animation-timing-function: ease-out;
     animation-timing-function: ease-out;
   }
   50% {
     transform: perspective(400px) translateZ(150px) rotateY(190deg) scale(1);
+    -webkit-animation-timing-function: ease-in;
     animation-timing-function: ease-in;
   }
   80% {
     transform: perspective(400px) rotateY(360deg) scale(0.95);
+    -webkit-animation-timing-function: ease-in;
     animation-timing-function: ease-in;
   }
   100% {
     transform: perspective(400px) scale(1);
+    -webkit-animation-timing-function: ease-in;
     animation-timing-function: ease-in;
+  }
+}
+@keyframes flip {
+  0% {
+    transform: perspective(400px) rotateY(0);
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+  }
+  40% {
+    transform: perspective(400px) translateZ(150px) rotateY(170deg);
+    -webkit-animation-timing-function: ease-out;
+    animation-timing-function: ease-out;
+  }
+  50% {
+    transform: perspective(400px) translateZ(150px) rotateY(190deg) scale(1);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+  }
+  80% {
+    transform: perspective(400px) rotateY(360deg) scale(0.95);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+  }
+  100% {
+    transform: perspective(400px) scale(1);
+    -webkit-animation-timing-function: ease-in;
+    animation-timing-function: ease-in;
+  }
+}
+@-webkit-keyframes flipInX {
+  0% {
+    transform: perspective(400px) rotateX(90deg);
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+    opacity: 0;
+  }
+  40% {
+    transform: perspective(400px) rotateX(-10deg);
+  }
+  70% {
+    transform: perspective(400px) rotateX(10deg);
+  }
+  100% {
+    transform: perspective(400px) rotateX(0deg);
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+    opacity: 1;
   }
 }
 @keyframes flipInX {
@@ -670,6 +1243,18 @@
     opacity: 1;
   }
 }
+@-webkit-keyframes flipOutX {
+  0% {
+    transform: perspective(400px) rotateX(0deg);
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+    opacity: 1;
+  }
+  100% {
+    transform: perspective(400px) rotateX(90deg);
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+    opacity: 0;
+  }
+}
 @keyframes flipOutX {
   0% {
     transform: perspective(400px) rotateX(0deg);
@@ -680,6 +1265,24 @@
     transform: perspective(400px) rotateX(90deg);
     filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
     opacity: 0;
+  }
+}
+@-webkit-keyframes flipInY {
+  0% {
+    transform: perspective(400px) rotateY(90deg);
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+    opacity: 0;
+  }
+  40% {
+    transform: perspective(400px) rotateY(-10deg);
+  }
+  70% {
+    transform: perspective(400px) rotateY(10deg);
+  }
+  100% {
+    transform: perspective(400px) rotateY(0deg);
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+    opacity: 1;
   }
 }
 @keyframes flipInY {
@@ -700,6 +1303,18 @@
     opacity: 1;
   }
 }
+@-webkit-keyframes flipOutY {
+  0% {
+    transform: perspective(400px) rotateY(0deg);
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+    opacity: 1;
+  }
+  100% {
+    transform: perspective(400px) rotateY(90deg);
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+    opacity: 0;
+  }
+}
 @keyframes flipOutY {
   0% {
     transform: perspective(400px) rotateY(0deg);
@@ -710,6 +1325,28 @@
     transform: perspective(400px) rotateY(90deg);
     filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
     opacity: 0;
+  }
+}
+@-webkit-keyframes lightSpeedIn {
+  0% {
+    transform: translateX(100%) skewX(-30deg);
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+    opacity: 0;
+  }
+  60% {
+    transform: translateX(-20%) skewX(30deg);
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+    opacity: 1;
+  }
+  80% {
+    transform: translateX(0%) skewX(-15deg);
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0%) skewX(0deg);
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+    opacity: 1;
   }
 }
 @keyframes lightSpeedIn {
@@ -734,6 +1371,18 @@
     opacity: 1;
   }
 }
+@-webkit-keyframes lightSpeedOut {
+  0% {
+    transform: translateX(0%) skewX(0deg);
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%) skewX(-30deg);
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+    opacity: 0;
+  }
+}
 @keyframes lightSpeedOut {
   0% {
     transform: translateX(0%) skewX(0deg);
@@ -743,6 +1392,18 @@
   100% {
     transform: translateX(100%) skewX(-30deg);
     filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+    opacity: 0;
+  }
+}
+@-webkit-keyframes rotateOut {
+  0% {
+    transform-origin: center center 50%;
+    transform: rotate(0);
+    opacity: 1;
+  }
+  100% {
+    transform-origin: center center 50%;
+    transform: rotate(200deg);
     opacity: 0;
   }
 }
@@ -758,6 +1419,18 @@
     opacity: 0;
   }
 }
+@-webkit-keyframes rotateOutDownLeft {
+  0% {
+    transform-origin: left bottom 50%;
+    transform: rotate(0);
+    opacity: 1;
+  }
+  100% {
+    transform-origin: left bottom 50%;
+    transform: rotate(90deg);
+    opacity: 0;
+  }
+}
 @keyframes rotateOutDownLeft {
   0% {
     transform-origin: left bottom 50%;
@@ -770,6 +1443,18 @@
     opacity: 0;
   }
 }
+@-webkit-keyframes rotateOutUpLeft {
+  0% {
+    transform-origin: left bottom 50%;
+    transform: rotate(0);
+    opacity: 1;
+  }
+  100% {
+    transform-origin: left bottom 50%;
+    transform: rotate(-90deg);
+    opacity: 0;
+  }
+}
 @keyframes rotateOutUpLeft {
   0% {
     transform-origin: left bottom 50%;
@@ -778,6 +1463,18 @@
   }
   100% {
     transform-origin: left bottom 50%;
+    transform: rotate(-90deg);
+    opacity: 0;
+  }
+}
+@-webkit-keyframes rotateOutDownRight {
+  0% {
+    transform-origin: right bottom 50%;
+    transform: rotate(0);
+    opacity: 1;
+  }
+  100% {
+    transform-origin: right bottom 50%;
     transform: rotate(-90deg);
     opacity: 0;
   }
@@ -794,6 +1491,18 @@
     opacity: 0;
   }
 }
+@-webkit-keyframes rotateOutUpRight {
+  0% {
+    transform-origin: right bottom 50%;
+    transform: rotate(0);
+    opacity: 1;
+  }
+  100% {
+    transform-origin: right bottom 50%;
+    transform: rotate(90deg);
+    opacity: 0;
+  }
+}
 @keyframes rotateOutUpRight {
   0% {
     transform-origin: right bottom 50%;
@@ -804,6 +1513,18 @@
     transform-origin: right bottom 50%;
     transform: rotate(90deg);
     opacity: 0;
+  }
+}
+@-webkit-keyframes rotateIn {
+  0% {
+    transform-origin: center center 50%;
+    transform: rotate(-200deg);
+    opacity: 0;
+  }
+  100% {
+    transform-origin: center center 50%;
+    transform: rotate(0);
+    opacity: 1;
   }
 }
 @keyframes rotateIn {
@@ -818,10 +1539,34 @@
     opacity: 1;
   }
 }
+@-webkit-keyframes rotateInDownLeft {
+  0% {
+    transform-origin: left bottom 50%;
+    transform: rotate(-90deg);
+    opacity: 0;
+  }
+  100% {
+    transform-origin: left bottom 50%;
+    transform: rotate(0);
+    opacity: 1;
+  }
+}
 @keyframes rotateInDownLeft {
   0% {
     transform-origin: left bottom 50%;
     transform: rotate(-90deg);
+    opacity: 0;
+  }
+  100% {
+    transform-origin: left bottom 50%;
+    transform: rotate(0);
+    opacity: 1;
+  }
+}
+@-webkit-keyframes rotateInUpLeft {
+  0% {
+    transform-origin: left bottom 50%;
+    transform: rotate(90deg);
     opacity: 0;
   }
   100% {
@@ -842,10 +1587,34 @@
     opacity: 1;
   }
 }
+@-webkit-keyframes rotateInUpRight {
+  0% {
+    transform-origin: right bottom 50%;
+    transform: rotate(-90deg);
+    opacity: 0;
+  }
+  100% {
+    transform-origin: right bottom 50%;
+    transform: rotate(0);
+    opacity: 1;
+  }
+}
 @keyframes rotateInUpRight {
   0% {
     transform-origin: right bottom 50%;
     transform: rotate(-90deg);
+    opacity: 0;
+  }
+  100% {
+    transform-origin: right bottom 50%;
+    transform: rotate(0);
+    opacity: 1;
+  }
+}
+@-webkit-keyframes rotateInDownRight {
+  0% {
+    transform-origin: right bottom 50%;
+    transform: rotate(90deg);
     opacity: 0;
   }
   100% {
@@ -866,20 +1635,23 @@
     opacity: 1;
   }
 }
-@keyframes hinge {
+@-webkit-keyframes hinge {
   0% {
     transform: rotate(0);
     transform-origin: top left 50%;
+    -webkit-animation-timing-function: ease-in-out;
     animation-timing-function: ease-in-out;
   }
   20%, 60% {
     transform: rotate(80deg);
     transform-origin: top left 50%;
+    -webkit-animation-timing-function: ease-in-out;
     animation-timing-function: ease-in-out;
   }
   40% {
     transform: rotate(60deg);
     transform-origin: top left 50%;
+    -webkit-animation-timing-function: ease-in-out;
     animation-timing-function: ease-in-out;
   }
   80% {
@@ -887,12 +1659,58 @@
     filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
     opacity: 1;
     transform-origin: top left 50%;
+    -webkit-animation-timing-function: ease-in-out;
     animation-timing-function: ease-in-out;
   }
   100% {
     transform: translateY(700px);
     filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
     opacity: 0;
+  }
+}
+@keyframes hinge {
+  0% {
+    transform: rotate(0);
+    transform-origin: top left 50%;
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+  }
+  20%, 60% {
+    transform: rotate(80deg);
+    transform-origin: top left 50%;
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+  }
+  40% {
+    transform: rotate(60deg);
+    transform-origin: top left 50%;
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+  }
+  80% {
+    transform: rotate(60deg) translateY(0);
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+    opacity: 1;
+    transform-origin: top left 50%;
+    -webkit-animation-timing-function: ease-in-out;
+    animation-timing-function: ease-in-out;
+  }
+  100% {
+    transform: translateY(700px);
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+    opacity: 0;
+  }
+}
+@-webkit-keyframes rollIn {
+  0% {
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+    opacity: 0;
+    transform: translateX(-100%) rotate(-120deg);
+  }
+  100% {
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+    opacity: 1;
+    transform: translateX(0px) rotate(0deg);
   }
 }
 @keyframes rollIn {
@@ -905,6 +1723,18 @@
     filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
     opacity: 1;
     transform: translateX(0px) rotate(0deg);
+  }
+}
+@-webkit-keyframes rollOut {
+  0% {
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
+    opacity: 1;
+    transform: translateX(0px) rotate(0deg);
+  }
+  100% {
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+    opacity: 0;
+    transform: translateX(-100%) rotate(-120deg);
   }
 }
 @keyframes rollOut {
@@ -2732,9 +3562,9 @@ pre code {
 }
 @media (prefers-reduced-motion: reduce) {
   .form-control, .typeahead,
-  .tt-query,
-  .tt-hint, .select2-container--default .select2-selection--single .select2-search__field, .select2-container--default .select2-selection--single, .jsgrid .jsgrid-table .jsgrid-filter-row input[type=number], .jsgrid .jsgrid-table .jsgrid-filter-row input[type=text],
-  .jsgrid .jsgrid-table .jsgrid-filter-row select, .dataTables_wrapper select, .asColorPicker-input {
+.tt-query,
+.tt-hint, .select2-container--default .select2-selection--single .select2-search__field, .select2-container--default .select2-selection--single, .jsgrid .jsgrid-table .jsgrid-filter-row input[type=number], .jsgrid .jsgrid-table .jsgrid-filter-row input[type=text],
+.jsgrid .jsgrid-table .jsgrid-filter-row select, .dataTables_wrapper select, .asColorPicker-input {
     transition: none;
   }
 }
@@ -2763,6 +3593,10 @@ pre code {
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 .form-control::-moz-placeholder, .typeahead::-moz-placeholder, .tt-query::-moz-placeholder, .tt-hint::-moz-placeholder, .select2-container--default .select2-selection--single .select2-search__field::-moz-placeholder, .select2-container--default .select2-selection--single::-moz-placeholder, .jsgrid .jsgrid-table .jsgrid-filter-row input[type=number]::-moz-placeholder, .jsgrid .jsgrid-table .jsgrid-filter-row input[type=text]::-moz-placeholder, .jsgrid .jsgrid-table .jsgrid-filter-row select::-moz-placeholder, .dataTables_wrapper select::-moz-placeholder, .asColorPicker-input::-moz-placeholder {
+  color: #4b5564;
+  opacity: 1;
+}
+.form-control:-ms-input-placeholder, .typeahead:-ms-input-placeholder, .tt-query:-ms-input-placeholder, .tt-hint:-ms-input-placeholder, .select2-container--default .select2-selection--single .select2-search__field:-ms-input-placeholder, .select2-container--default .select2-selection--single:-ms-input-placeholder, .jsgrid .jsgrid-table .jsgrid-filter-row input[type=number]:-ms-input-placeholder, .jsgrid .jsgrid-table .jsgrid-filter-row input[type=text]:-ms-input-placeholder, .jsgrid .jsgrid-table .jsgrid-filter-row select:-ms-input-placeholder, .dataTables_wrapper select:-ms-input-placeholder, .asColorPicker-input:-ms-input-placeholder {
   color: #4b5564;
   opacity: 1;
 }
@@ -3202,10 +4036,10 @@ textarea.is-invalid.tt-hint, .select2-container--default .select2-selection--sin
     margin-bottom: 0;
   }
   .form-inline .form-control, .form-inline .typeahead,
-  .form-inline .tt-query,
-  .form-inline .tt-hint, .form-inline .select2-container--default .select2-selection--single .select2-search__field, .select2-container--default .select2-selection--single .form-inline .select2-search__field, .form-inline .select2-container--default .select2-selection--single, .select2-container--default .form-inline .select2-selection--single, .form-inline .jsgrid .jsgrid-table .jsgrid-filter-row input[type=number], .jsgrid .jsgrid-table .jsgrid-filter-row .form-inline input[type=number], .form-inline .jsgrid .jsgrid-table .jsgrid-filter-row input[type=text], .jsgrid .jsgrid-table .jsgrid-filter-row .form-inline input[type=text],
-  .form-inline .jsgrid .jsgrid-table .jsgrid-filter-row select,
-  .jsgrid .jsgrid-table .jsgrid-filter-row .form-inline select, .form-inline .dataTables_wrapper select, .dataTables_wrapper .form-inline select, .form-inline .asColorPicker-input {
+.form-inline .tt-query,
+.form-inline .tt-hint, .form-inline .select2-container--default .select2-selection--single .select2-search__field, .select2-container--default .select2-selection--single .form-inline .select2-search__field, .form-inline .select2-container--default .select2-selection--single, .select2-container--default .form-inline .select2-selection--single, .form-inline .jsgrid .jsgrid-table .jsgrid-filter-row input[type=number], .jsgrid .jsgrid-table .jsgrid-filter-row .form-inline input[type=number], .form-inline .jsgrid .jsgrid-table .jsgrid-filter-row input[type=text], .jsgrid .jsgrid-table .jsgrid-filter-row .form-inline input[type=text],
+.form-inline .jsgrid .jsgrid-table .jsgrid-filter-row select,
+.jsgrid .jsgrid-table .jsgrid-filter-row .form-inline select, .form-inline .dataTables_wrapper select, .dataTables_wrapper .form-inline select, .form-inline .asColorPicker-input {
     display: inline-block;
     width: auto;
     vertical-align: middle;
@@ -3214,7 +4048,7 @@ textarea.is-invalid.tt-hint, .select2-container--default .select2-selection--sin
     display: inline-block;
   }
   .form-inline .input-group, .form-inline .asColorPicker-wrap,
-  .form-inline .custom-select {
+.form-inline .custom-select {
     width: auto;
   }
   .form-inline .form-check {
@@ -3248,6 +4082,7 @@ textarea.is-invalid.tt-hint, .select2-container--default .select2-selection--sin
   vertical-align: middle;
   -webkit-user-select: none;
      -moz-user-select: none;
+      -ms-user-select: none;
           user-select: none;
   background-color: transparent;
   border: 1px solid transparent;
@@ -4165,7 +5000,7 @@ input[type=button].btn-block {
   margin-right: 0;
 }
 
-.btn-sm + .dropdown-toggle-split, .fc button + .dropdown-toggle-split, .btn-group-sm > .btn + .dropdown-toggle-split, .wizard > .actions .btn-group-sm > a + .dropdown-toggle-split, .swal2-modal .swal2-buttonswrapper .btn-group-sm > .swal2-styled + .dropdown-toggle-split, .ajax-upload-dragdrop .btn-group-sm > .ajax-file-upload + .dropdown-toggle-split {
+.btn-sm + .dropdown-toggle-split, .fc button + .dropdown-toggle-split, .btn-group-sm > .btn + .dropdown-toggle-split, .wizard > .actions .btn-group-sm > a + .dropdown-toggle-split, .swal2-modal .swal2-buttonswrapper .btn-group-sm > .swal2-styled + .dropdown-toggle-split, .ajax-upload-dragdrop .btn-group-sm > .ajax-file-upload + .dropdown-toggle-split, .fc .btn-group-sm > button + .dropdown-toggle-split {
   padding-right: 0.375rem;
   padding-left: 0.375rem;
 }
@@ -4248,31 +5083,7 @@ input[type=button].btn-block {
 .ajax-upload-dragdrop .btn-group-toggle > .ajax-file-upload input[type=checkbox],
 .fc .btn-group-toggle > button input[type=checkbox],
 .btn-group-toggle > .btn-group > .btn input[type=radio],
-.wizard > .actions .btn-group-toggle > .btn-group > a input[type=radio],
-.swal2-modal .swal2-buttonswrapper .btn-group-toggle > .btn-group > .swal2-styled input[type=radio],
-.ajax-upload-dragdrop .btn-group-toggle > .btn-group > .ajax-file-upload input[type=radio],
-.fc .btn-group-toggle > .fc-button-group > .btn input[type=radio],
-.fc .wizard > .actions .btn-group-toggle > .fc-button-group > a input[type=radio],
-.wizard > .actions .fc .btn-group-toggle > .fc-button-group > a input[type=radio],
-.fc .swal2-modal .swal2-buttonswrapper .btn-group-toggle > .fc-button-group > .swal2-styled input[type=radio],
-.swal2-modal .swal2-buttonswrapper .fc .btn-group-toggle > .fc-button-group > .swal2-styled input[type=radio],
-.fc .ajax-upload-dragdrop .btn-group-toggle > .fc-button-group > .ajax-file-upload input[type=radio],
-.ajax-upload-dragdrop .fc .btn-group-toggle > .fc-button-group > .ajax-file-upload input[type=radio],
-.fc .btn-group-toggle > .btn-group > button input[type=radio],
-.fc .btn-group-toggle > .fc-button-group > button input[type=radio],
-.btn-group-toggle > .btn-group > .btn input[type=checkbox],
-.wizard > .actions .btn-group-toggle > .btn-group > a input[type=checkbox],
-.swal2-modal .swal2-buttonswrapper .btn-group-toggle > .btn-group > .swal2-styled input[type=checkbox],
-.ajax-upload-dragdrop .btn-group-toggle > .btn-group > .ajax-file-upload input[type=checkbox],
-.fc .btn-group-toggle > .fc-button-group > .btn input[type=checkbox],
-.fc .wizard > .actions .btn-group-toggle > .fc-button-group > a input[type=checkbox],
-.wizard > .actions .fc .btn-group-toggle > .fc-button-group > a input[type=checkbox],
-.fc .swal2-modal .swal2-buttonswrapper .btn-group-toggle > .fc-button-group > .swal2-styled input[type=checkbox],
-.swal2-modal .swal2-buttonswrapper .fc .btn-group-toggle > .fc-button-group > .swal2-styled input[type=checkbox],
-.fc .ajax-upload-dragdrop .btn-group-toggle > .fc-button-group > .ajax-file-upload input[type=checkbox],
-.ajax-upload-dragdrop .fc .btn-group-toggle > .fc-button-group > .ajax-file-upload input[type=checkbox],
-.fc .btn-group-toggle > .btn-group > button input[type=checkbox],
-.fc .btn-group-toggle > .fc-button-group > button input[type=checkbox] {
+.btn-group-toggle > .btn-group > .btn input[type=checkbox] {
   position: absolute;
   clip: rect(0, 0, 0, 0);
   pointer-events: none;
@@ -5399,8 +6210,8 @@ input[type=button].btn-block {
 }
 @media (prefers-reduced-motion: reduce) {
   .custom-control-label::before,
-  .custom-file-label,
-  .custom-select {
+.custom-file-label,
+.custom-select {
     transition: none;
   }
 }
@@ -5570,11 +6381,11 @@ input[type=button].btn-block {
 
 @media (max-width: 575.98px) {
   .navbar-expand-sm > .container,
-  .navbar-expand-sm > .container-fluid,
-  .navbar-expand-sm > .container-sm,
-  .navbar-expand-sm > .container-md,
-  .navbar-expand-sm > .container-lg,
-  .navbar-expand-sm > .container-xl {
+.navbar-expand-sm > .container-fluid,
+.navbar-expand-sm > .container-sm,
+.navbar-expand-sm > .container-md,
+.navbar-expand-sm > .container-lg,
+.navbar-expand-sm > .container-xl {
     padding-right: 0;
     padding-left: 0;
   }
@@ -5595,11 +6406,11 @@ input[type=button].btn-block {
     padding-left: 0.5rem;
   }
   .navbar-expand-sm > .container,
-  .navbar-expand-sm > .container-fluid,
-  .navbar-expand-sm > .container-sm,
-  .navbar-expand-sm > .container-md,
-  .navbar-expand-sm > .container-lg,
-  .navbar-expand-sm > .container-xl {
+.navbar-expand-sm > .container-fluid,
+.navbar-expand-sm > .container-sm,
+.navbar-expand-sm > .container-md,
+.navbar-expand-sm > .container-lg,
+.navbar-expand-sm > .container-xl {
     flex-wrap: nowrap;
   }
   .navbar-expand-sm .navbar-collapse {
@@ -5612,11 +6423,11 @@ input[type=button].btn-block {
 }
 @media (max-width: 767.98px) {
   .navbar-expand-md > .container,
-  .navbar-expand-md > .container-fluid,
-  .navbar-expand-md > .container-sm,
-  .navbar-expand-md > .container-md,
-  .navbar-expand-md > .container-lg,
-  .navbar-expand-md > .container-xl {
+.navbar-expand-md > .container-fluid,
+.navbar-expand-md > .container-sm,
+.navbar-expand-md > .container-md,
+.navbar-expand-md > .container-lg,
+.navbar-expand-md > .container-xl {
     padding-right: 0;
     padding-left: 0;
   }
@@ -5637,11 +6448,11 @@ input[type=button].btn-block {
     padding-left: 0.5rem;
   }
   .navbar-expand-md > .container,
-  .navbar-expand-md > .container-fluid,
-  .navbar-expand-md > .container-sm,
-  .navbar-expand-md > .container-md,
-  .navbar-expand-md > .container-lg,
-  .navbar-expand-md > .container-xl {
+.navbar-expand-md > .container-fluid,
+.navbar-expand-md > .container-sm,
+.navbar-expand-md > .container-md,
+.navbar-expand-md > .container-lg,
+.navbar-expand-md > .container-xl {
     flex-wrap: nowrap;
   }
   .navbar-expand-md .navbar-collapse {
@@ -5654,11 +6465,11 @@ input[type=button].btn-block {
 }
 @media (max-width: 991.98px) {
   .navbar-expand-lg > .container,
-  .navbar-expand-lg > .container-fluid,
-  .navbar-expand-lg > .container-sm,
-  .navbar-expand-lg > .container-md,
-  .navbar-expand-lg > .container-lg,
-  .navbar-expand-lg > .container-xl {
+.navbar-expand-lg > .container-fluid,
+.navbar-expand-lg > .container-sm,
+.navbar-expand-lg > .container-md,
+.navbar-expand-lg > .container-lg,
+.navbar-expand-lg > .container-xl {
     padding-right: 0;
     padding-left: 0;
   }
@@ -5679,11 +6490,11 @@ input[type=button].btn-block {
     padding-left: 0.5rem;
   }
   .navbar-expand-lg > .container,
-  .navbar-expand-lg > .container-fluid,
-  .navbar-expand-lg > .container-sm,
-  .navbar-expand-lg > .container-md,
-  .navbar-expand-lg > .container-lg,
-  .navbar-expand-lg > .container-xl {
+.navbar-expand-lg > .container-fluid,
+.navbar-expand-lg > .container-sm,
+.navbar-expand-lg > .container-md,
+.navbar-expand-lg > .container-lg,
+.navbar-expand-lg > .container-xl {
     flex-wrap: nowrap;
   }
   .navbar-expand-lg .navbar-collapse {
@@ -5696,11 +6507,11 @@ input[type=button].btn-block {
 }
 @media (max-width: 1199.98px) {
   .navbar-expand-xl > .container,
-  .navbar-expand-xl > .container-fluid,
-  .navbar-expand-xl > .container-sm,
-  .navbar-expand-xl > .container-md,
-  .navbar-expand-xl > .container-lg,
-  .navbar-expand-xl > .container-xl {
+.navbar-expand-xl > .container-fluid,
+.navbar-expand-xl > .container-sm,
+.navbar-expand-xl > .container-md,
+.navbar-expand-xl > .container-lg,
+.navbar-expand-xl > .container-xl {
     padding-right: 0;
     padding-left: 0;
   }
@@ -5721,11 +6532,11 @@ input[type=button].btn-block {
     padding-left: 0.5rem;
   }
   .navbar-expand-xl > .container,
-  .navbar-expand-xl > .container-fluid,
-  .navbar-expand-xl > .container-sm,
-  .navbar-expand-xl > .container-md,
-  .navbar-expand-xl > .container-lg,
-  .navbar-expand-xl > .container-xl {
+.navbar-expand-xl > .container-fluid,
+.navbar-expand-xl > .container-sm,
+.navbar-expand-xl > .container-md,
+.navbar-expand-xl > .container-lg,
+.navbar-expand-xl > .container-xl {
     flex-wrap: nowrap;
   }
   .navbar-expand-xl .navbar-collapse {
@@ -6010,11 +6821,11 @@ input[type=button].btn-block {
     border-bottom-right-radius: 0;
   }
   .card-group > .card:not(:last-child) .card-img-top,
-  .card-group > .card:not(:last-child) .card-header {
+.card-group > .card:not(:last-child) .card-header {
     border-top-right-radius: 0;
   }
   .card-group > .card:not(:last-child) .card-img-bottom,
-  .card-group > .card:not(:last-child) .card-footer {
+.card-group > .card:not(:last-child) .card-footer {
     border-bottom-right-radius: 0;
   }
   .card-group > .card:not(:first-child) {
@@ -6022,11 +6833,11 @@ input[type=button].btn-block {
     border-bottom-left-radius: 0;
   }
   .card-group > .card:not(:first-child) .card-img-top,
-  .card-group > .card:not(:first-child) .card-header {
+.card-group > .card:not(:first-child) .card-header {
     border-top-left-radius: 0;
   }
   .card-group > .card:not(:first-child) .card-img-bottom,
-  .card-group > .card:not(:first-child) .card-footer {
+.card-group > .card:not(:first-child) .card-footer {
     border-bottom-left-radius: 0;
   }
 }
@@ -6512,6 +7323,15 @@ a.badge-dark:focus, a.badge-dark.focus {
   color: black;
 }
 
+@-webkit-keyframes progress-bar-stripes {
+  from {
+    background-position: 1rem 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
+
 @keyframes progress-bar-stripes {
   from {
     background-position: 1rem 0;
@@ -6553,11 +7373,13 @@ a.badge-dark:focus, a.badge-dark.focus {
 }
 
 .progress-bar-animated {
-  animation: progress-bar-stripes 1s linear infinite;
+  -webkit-animation: progress-bar-stripes 1s linear infinite;
+          animation: progress-bar-stripes 1s linear infinite;
 }
 @media (prefers-reduced-motion: reduce) {
   .progress-bar-animated {
-    animation: none;
+    -webkit-animation: none;
+            animation: none;
   }
 }
 
@@ -7003,6 +7825,7 @@ a.close.disabled {
 .modal-dialog-centered::before {
   display: block;
   height: calc(100vh - 20px);
+  height: -webkit-min-content;
   height: -moz-min-content;
   height: min-content;
   content: "";
@@ -7111,6 +7934,7 @@ a.close.disabled {
   }
   .modal-dialog-centered::before {
     height: calc(100vh - 60px);
+    height: -webkit-min-content;
     height: -moz-min-content;
     height: min-content;
   }
@@ -7120,7 +7944,7 @@ a.close.disabled {
 }
 @media (min-width: 992px) {
   .modal-lg,
-  .modal-xl {
+.modal-xl {
     max-width: 90%;
   }
 }
@@ -7444,7 +8268,7 @@ a.close.disabled {
 }
 @media (prefers-reduced-motion: reduce) {
   .carousel-fade .active.carousel-item-left,
-  .carousel-fade .active.carousel-item-right {
+.carousel-fade .active.carousel-item-right {
     transition: none;
   }
 }
@@ -7466,7 +8290,7 @@ a.close.disabled {
 }
 @media (prefers-reduced-motion: reduce) {
   .carousel-control-prev,
-  .carousel-control-next {
+.carousel-control-next {
     transition: none;
   }
 }
@@ -7553,6 +8377,12 @@ a.close.disabled {
   text-align: center;
 }
 
+@-webkit-keyframes spinner-border {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 @keyframes spinner-border {
   to {
     transform: rotate(360deg);
@@ -7566,13 +8396,24 @@ a.close.disabled {
   border: 0.25em solid currentColor;
   border-right-color: transparent;
   border-radius: 50%;
-  animation: spinner-border 0.75s linear infinite;
+  -webkit-animation: spinner-border 0.75s linear infinite;
+          animation: spinner-border 0.75s linear infinite;
 }
 
 .spinner-border-sm {
   width: 1rem;
   height: 1rem;
   border-width: 0.2em;
+}
+
+@-webkit-keyframes spinner-grow {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 @keyframes spinner-grow {
@@ -7592,7 +8433,8 @@ a.close.disabled {
   background-color: currentColor;
   border-radius: 50%;
   opacity: 0;
-  animation: spinner-grow 0.75s linear infinite;
+  -webkit-animation: spinner-grow 0.75s linear infinite;
+          animation: spinner-grow 0.75s linear infinite;
 }
 
 .spinner-grow-sm {
@@ -8695,12 +9537,14 @@ button.bg-dark:focus {
 .user-select-auto {
   -webkit-user-select: auto !important;
      -moz-user-select: auto !important;
+      -ms-user-select: auto !important;
           user-select: auto !important;
 }
 
 .user-select-none {
   -webkit-user-select: none !important;
      -moz-user-select: none !important;
+      -ms-user-select: none !important;
           user-select: none !important;
 }
 
@@ -8729,6 +9573,7 @@ button.bg-dark:focus {
 }
 
 .position-sticky {
+  position: -webkit-sticky !important;
   position: sticky !important;
 }
 
@@ -8748,8 +9593,9 @@ button.bg-dark:focus {
   z-index: 1030;
 }
 
-@supports (position: sticky) {
+@supports ((position: -webkit-sticky) or (position: sticky)) {
   .sticky-top {
+    position: -webkit-sticky;
     position: sticky;
     top: 0;
     z-index: 1020;
@@ -9299,342 +10145,342 @@ button.bg-dark:focus {
     margin: 0 !important;
   }
   .mt-sm-0,
-  .my-sm-0 {
+.my-sm-0 {
     margin-top: 0 !important;
   }
   .mr-sm-0,
-  .mx-sm-0 {
+.mx-sm-0 {
     margin-right: 0 !important;
   }
   .mb-sm-0,
-  .my-sm-0 {
+.my-sm-0 {
     margin-bottom: 0 !important;
   }
   .ml-sm-0,
-  .mx-sm-0 {
+.mx-sm-0 {
     margin-left: 0 !important;
   }
   .m-sm-1 {
     margin: 0.25rem !important;
   }
   .mt-sm-1,
-  .my-sm-1 {
+.my-sm-1 {
     margin-top: 0.25rem !important;
   }
   .mr-sm-1,
-  .mx-sm-1 {
+.mx-sm-1 {
     margin-right: 0.25rem !important;
   }
   .mb-sm-1,
-  .my-sm-1 {
+.my-sm-1 {
     margin-bottom: 0.25rem !important;
   }
   .ml-sm-1,
-  .mx-sm-1 {
+.mx-sm-1 {
     margin-left: 0.25rem !important;
   }
   .m-sm-2 {
     margin: 0.5rem !important;
   }
   .mt-sm-2,
-  .my-sm-2 {
+.my-sm-2 {
     margin-top: 0.5rem !important;
   }
   .mr-sm-2,
-  .mx-sm-2 {
+.mx-sm-2 {
     margin-right: 0.5rem !important;
   }
   .mb-sm-2,
-  .my-sm-2 {
+.my-sm-2 {
     margin-bottom: 0.5rem !important;
   }
   .ml-sm-2,
-  .mx-sm-2 {
+.mx-sm-2 {
     margin-left: 0.5rem !important;
   }
   .m-sm-3 {
     margin: 1rem !important;
   }
   .mt-sm-3,
-  .my-sm-3 {
+.my-sm-3 {
     margin-top: 1rem !important;
   }
   .mr-sm-3,
-  .mx-sm-3 {
+.mx-sm-3 {
     margin-right: 1rem !important;
   }
   .mb-sm-3,
-  .my-sm-3 {
+.my-sm-3 {
     margin-bottom: 1rem !important;
   }
   .ml-sm-3,
-  .mx-sm-3 {
+.mx-sm-3 {
     margin-left: 1rem !important;
   }
   .m-sm-4 {
     margin: 1.5rem !important;
   }
   .mt-sm-4,
-  .my-sm-4 {
+.my-sm-4 {
     margin-top: 1.5rem !important;
   }
   .mr-sm-4,
-  .mx-sm-4 {
+.mx-sm-4 {
     margin-right: 1.5rem !important;
   }
   .mb-sm-4,
-  .my-sm-4 {
+.my-sm-4 {
     margin-bottom: 1.5rem !important;
   }
   .ml-sm-4,
-  .mx-sm-4 {
+.mx-sm-4 {
     margin-left: 1.5rem !important;
   }
   .m-sm-5 {
     margin: 3rem !important;
   }
   .mt-sm-5,
-  .my-sm-5 {
+.my-sm-5 {
     margin-top: 3rem !important;
   }
   .mr-sm-5,
-  .mx-sm-5 {
+.mx-sm-5 {
     margin-right: 3rem !important;
   }
   .mb-sm-5,
-  .my-sm-5 {
+.my-sm-5 {
     margin-bottom: 3rem !important;
   }
   .ml-sm-5,
-  .mx-sm-5 {
+.mx-sm-5 {
     margin-left: 3rem !important;
   }
   .p-sm-0 {
     padding: 0 !important;
   }
   .pt-sm-0,
-  .py-sm-0 {
+.py-sm-0 {
     padding-top: 0 !important;
   }
   .pr-sm-0,
-  .px-sm-0 {
+.px-sm-0 {
     padding-right: 0 !important;
   }
   .pb-sm-0,
-  .py-sm-0 {
+.py-sm-0 {
     padding-bottom: 0 !important;
   }
   .pl-sm-0,
-  .px-sm-0 {
+.px-sm-0 {
     padding-left: 0 !important;
   }
   .p-sm-1 {
     padding: 0.25rem !important;
   }
   .pt-sm-1,
-  .py-sm-1 {
+.py-sm-1 {
     padding-top: 0.25rem !important;
   }
   .pr-sm-1,
-  .px-sm-1 {
+.px-sm-1 {
     padding-right: 0.25rem !important;
   }
   .pb-sm-1,
-  .py-sm-1 {
+.py-sm-1 {
     padding-bottom: 0.25rem !important;
   }
   .pl-sm-1,
-  .px-sm-1 {
+.px-sm-1 {
     padding-left: 0.25rem !important;
   }
   .p-sm-2 {
     padding: 0.5rem !important;
   }
   .pt-sm-2,
-  .py-sm-2 {
+.py-sm-2 {
     padding-top: 0.5rem !important;
   }
   .pr-sm-2,
-  .px-sm-2 {
+.px-sm-2 {
     padding-right: 0.5rem !important;
   }
   .pb-sm-2,
-  .py-sm-2 {
+.py-sm-2 {
     padding-bottom: 0.5rem !important;
   }
   .pl-sm-2,
-  .px-sm-2 {
+.px-sm-2 {
     padding-left: 0.5rem !important;
   }
   .p-sm-3 {
     padding: 1rem !important;
   }
   .pt-sm-3,
-  .py-sm-3 {
+.py-sm-3 {
     padding-top: 1rem !important;
   }
   .pr-sm-3,
-  .px-sm-3 {
+.px-sm-3 {
     padding-right: 1rem !important;
   }
   .pb-sm-3,
-  .py-sm-3 {
+.py-sm-3 {
     padding-bottom: 1rem !important;
   }
   .pl-sm-3,
-  .px-sm-3 {
+.px-sm-3 {
     padding-left: 1rem !important;
   }
   .p-sm-4 {
     padding: 1.5rem !important;
   }
   .pt-sm-4,
-  .py-sm-4 {
+.py-sm-4 {
     padding-top: 1.5rem !important;
   }
   .pr-sm-4,
-  .px-sm-4 {
+.px-sm-4 {
     padding-right: 1.5rem !important;
   }
   .pb-sm-4,
-  .py-sm-4 {
+.py-sm-4 {
     padding-bottom: 1.5rem !important;
   }
   .pl-sm-4,
-  .px-sm-4 {
+.px-sm-4 {
     padding-left: 1.5rem !important;
   }
   .p-sm-5 {
     padding: 3rem !important;
   }
   .pt-sm-5,
-  .py-sm-5 {
+.py-sm-5 {
     padding-top: 3rem !important;
   }
   .pr-sm-5,
-  .px-sm-5 {
+.px-sm-5 {
     padding-right: 3rem !important;
   }
   .pb-sm-5,
-  .py-sm-5 {
+.py-sm-5 {
     padding-bottom: 3rem !important;
   }
   .pl-sm-5,
-  .px-sm-5 {
+.px-sm-5 {
     padding-left: 3rem !important;
   }
   .m-sm-n1 {
     margin: -0.25rem !important;
   }
   .mt-sm-n1,
-  .my-sm-n1 {
+.my-sm-n1 {
     margin-top: -0.25rem !important;
   }
   .mr-sm-n1,
-  .mx-sm-n1 {
+.mx-sm-n1 {
     margin-right: -0.25rem !important;
   }
   .mb-sm-n1,
-  .my-sm-n1 {
+.my-sm-n1 {
     margin-bottom: -0.25rem !important;
   }
   .ml-sm-n1,
-  .mx-sm-n1 {
+.mx-sm-n1 {
     margin-left: -0.25rem !important;
   }
   .m-sm-n2 {
     margin: -0.5rem !important;
   }
   .mt-sm-n2,
-  .my-sm-n2 {
+.my-sm-n2 {
     margin-top: -0.5rem !important;
   }
   .mr-sm-n2,
-  .mx-sm-n2 {
+.mx-sm-n2 {
     margin-right: -0.5rem !important;
   }
   .mb-sm-n2,
-  .my-sm-n2 {
+.my-sm-n2 {
     margin-bottom: -0.5rem !important;
   }
   .ml-sm-n2,
-  .mx-sm-n2 {
+.mx-sm-n2 {
     margin-left: -0.5rem !important;
   }
   .m-sm-n3 {
     margin: -1rem !important;
   }
   .mt-sm-n3,
-  .my-sm-n3 {
+.my-sm-n3 {
     margin-top: -1rem !important;
   }
   .mr-sm-n3,
-  .mx-sm-n3 {
+.mx-sm-n3 {
     margin-right: -1rem !important;
   }
   .mb-sm-n3,
-  .my-sm-n3 {
+.my-sm-n3 {
     margin-bottom: -1rem !important;
   }
   .ml-sm-n3,
-  .mx-sm-n3 {
+.mx-sm-n3 {
     margin-left: -1rem !important;
   }
   .m-sm-n4 {
     margin: -1.5rem !important;
   }
   .mt-sm-n4,
-  .my-sm-n4 {
+.my-sm-n4 {
     margin-top: -1.5rem !important;
   }
   .mr-sm-n4,
-  .mx-sm-n4 {
+.mx-sm-n4 {
     margin-right: -1.5rem !important;
   }
   .mb-sm-n4,
-  .my-sm-n4 {
+.my-sm-n4 {
     margin-bottom: -1.5rem !important;
   }
   .ml-sm-n4,
-  .mx-sm-n4 {
+.mx-sm-n4 {
     margin-left: -1.5rem !important;
   }
   .m-sm-n5 {
     margin: -3rem !important;
   }
   .mt-sm-n5,
-  .my-sm-n5 {
+.my-sm-n5 {
     margin-top: -3rem !important;
   }
   .mr-sm-n5,
-  .mx-sm-n5 {
+.mx-sm-n5 {
     margin-right: -3rem !important;
   }
   .mb-sm-n5,
-  .my-sm-n5 {
+.my-sm-n5 {
     margin-bottom: -3rem !important;
   }
   .ml-sm-n5,
-  .mx-sm-n5 {
+.mx-sm-n5 {
     margin-left: -3rem !important;
   }
   .m-sm-auto {
     margin: auto !important;
   }
   .mt-sm-auto,
-  .my-sm-auto {
+.my-sm-auto {
     margin-top: auto !important;
   }
   .mr-sm-auto,
-  .mx-sm-auto {
+.mx-sm-auto {
     margin-right: auto !important;
   }
   .mb-sm-auto,
-  .my-sm-auto {
+.my-sm-auto {
     margin-bottom: auto !important;
   }
   .ml-sm-auto,
-  .mx-sm-auto {
+.mx-sm-auto {
     margin-left: auto !important;
   }
 }
@@ -9643,342 +10489,342 @@ button.bg-dark:focus {
     margin: 0 !important;
   }
   .mt-md-0,
-  .my-md-0 {
+.my-md-0 {
     margin-top: 0 !important;
   }
   .mr-md-0,
-  .mx-md-0 {
+.mx-md-0 {
     margin-right: 0 !important;
   }
   .mb-md-0,
-  .my-md-0 {
+.my-md-0 {
     margin-bottom: 0 !important;
   }
   .ml-md-0,
-  .mx-md-0 {
+.mx-md-0 {
     margin-left: 0 !important;
   }
   .m-md-1 {
     margin: 0.25rem !important;
   }
   .mt-md-1,
-  .my-md-1 {
+.my-md-1 {
     margin-top: 0.25rem !important;
   }
   .mr-md-1,
-  .mx-md-1 {
+.mx-md-1 {
     margin-right: 0.25rem !important;
   }
   .mb-md-1,
-  .my-md-1 {
+.my-md-1 {
     margin-bottom: 0.25rem !important;
   }
   .ml-md-1,
-  .mx-md-1 {
+.mx-md-1 {
     margin-left: 0.25rem !important;
   }
   .m-md-2 {
     margin: 0.5rem !important;
   }
   .mt-md-2,
-  .my-md-2 {
+.my-md-2 {
     margin-top: 0.5rem !important;
   }
   .mr-md-2,
-  .mx-md-2 {
+.mx-md-2 {
     margin-right: 0.5rem !important;
   }
   .mb-md-2,
-  .my-md-2 {
+.my-md-2 {
     margin-bottom: 0.5rem !important;
   }
   .ml-md-2,
-  .mx-md-2 {
+.mx-md-2 {
     margin-left: 0.5rem !important;
   }
   .m-md-3 {
     margin: 1rem !important;
   }
   .mt-md-3,
-  .my-md-3 {
+.my-md-3 {
     margin-top: 1rem !important;
   }
   .mr-md-3,
-  .mx-md-3 {
+.mx-md-3 {
     margin-right: 1rem !important;
   }
   .mb-md-3,
-  .my-md-3 {
+.my-md-3 {
     margin-bottom: 1rem !important;
   }
   .ml-md-3,
-  .mx-md-3 {
+.mx-md-3 {
     margin-left: 1rem !important;
   }
   .m-md-4 {
     margin: 1.5rem !important;
   }
   .mt-md-4,
-  .my-md-4 {
+.my-md-4 {
     margin-top: 1.5rem !important;
   }
   .mr-md-4,
-  .mx-md-4 {
+.mx-md-4 {
     margin-right: 1.5rem !important;
   }
   .mb-md-4,
-  .my-md-4 {
+.my-md-4 {
     margin-bottom: 1.5rem !important;
   }
   .ml-md-4,
-  .mx-md-4 {
+.mx-md-4 {
     margin-left: 1.5rem !important;
   }
   .m-md-5 {
     margin: 3rem !important;
   }
   .mt-md-5,
-  .my-md-5 {
+.my-md-5 {
     margin-top: 3rem !important;
   }
   .mr-md-5,
-  .mx-md-5 {
+.mx-md-5 {
     margin-right: 3rem !important;
   }
   .mb-md-5,
-  .my-md-5 {
+.my-md-5 {
     margin-bottom: 3rem !important;
   }
   .ml-md-5,
-  .mx-md-5 {
+.mx-md-5 {
     margin-left: 3rem !important;
   }
   .p-md-0 {
     padding: 0 !important;
   }
   .pt-md-0,
-  .py-md-0 {
+.py-md-0 {
     padding-top: 0 !important;
   }
   .pr-md-0,
-  .px-md-0 {
+.px-md-0 {
     padding-right: 0 !important;
   }
   .pb-md-0,
-  .py-md-0 {
+.py-md-0 {
     padding-bottom: 0 !important;
   }
   .pl-md-0,
-  .px-md-0 {
+.px-md-0 {
     padding-left: 0 !important;
   }
   .p-md-1 {
     padding: 0.25rem !important;
   }
   .pt-md-1,
-  .py-md-1 {
+.py-md-1 {
     padding-top: 0.25rem !important;
   }
   .pr-md-1,
-  .px-md-1 {
+.px-md-1 {
     padding-right: 0.25rem !important;
   }
   .pb-md-1,
-  .py-md-1 {
+.py-md-1 {
     padding-bottom: 0.25rem !important;
   }
   .pl-md-1,
-  .px-md-1 {
+.px-md-1 {
     padding-left: 0.25rem !important;
   }
   .p-md-2 {
     padding: 0.5rem !important;
   }
   .pt-md-2,
-  .py-md-2 {
+.py-md-2 {
     padding-top: 0.5rem !important;
   }
   .pr-md-2,
-  .px-md-2 {
+.px-md-2 {
     padding-right: 0.5rem !important;
   }
   .pb-md-2,
-  .py-md-2 {
+.py-md-2 {
     padding-bottom: 0.5rem !important;
   }
   .pl-md-2,
-  .px-md-2 {
+.px-md-2 {
     padding-left: 0.5rem !important;
   }
   .p-md-3 {
     padding: 1rem !important;
   }
   .pt-md-3,
-  .py-md-3 {
+.py-md-3 {
     padding-top: 1rem !important;
   }
   .pr-md-3,
-  .px-md-3 {
+.px-md-3 {
     padding-right: 1rem !important;
   }
   .pb-md-3,
-  .py-md-3 {
+.py-md-3 {
     padding-bottom: 1rem !important;
   }
   .pl-md-3,
-  .px-md-3 {
+.px-md-3 {
     padding-left: 1rem !important;
   }
   .p-md-4 {
     padding: 1.5rem !important;
   }
   .pt-md-4,
-  .py-md-4 {
+.py-md-4 {
     padding-top: 1.5rem !important;
   }
   .pr-md-4,
-  .px-md-4 {
+.px-md-4 {
     padding-right: 1.5rem !important;
   }
   .pb-md-4,
-  .py-md-4 {
+.py-md-4 {
     padding-bottom: 1.5rem !important;
   }
   .pl-md-4,
-  .px-md-4 {
+.px-md-4 {
     padding-left: 1.5rem !important;
   }
   .p-md-5 {
     padding: 3rem !important;
   }
   .pt-md-5,
-  .py-md-5 {
+.py-md-5 {
     padding-top: 3rem !important;
   }
   .pr-md-5,
-  .px-md-5 {
+.px-md-5 {
     padding-right: 3rem !important;
   }
   .pb-md-5,
-  .py-md-5 {
+.py-md-5 {
     padding-bottom: 3rem !important;
   }
   .pl-md-5,
-  .px-md-5 {
+.px-md-5 {
     padding-left: 3rem !important;
   }
   .m-md-n1 {
     margin: -0.25rem !important;
   }
   .mt-md-n1,
-  .my-md-n1 {
+.my-md-n1 {
     margin-top: -0.25rem !important;
   }
   .mr-md-n1,
-  .mx-md-n1 {
+.mx-md-n1 {
     margin-right: -0.25rem !important;
   }
   .mb-md-n1,
-  .my-md-n1 {
+.my-md-n1 {
     margin-bottom: -0.25rem !important;
   }
   .ml-md-n1,
-  .mx-md-n1 {
+.mx-md-n1 {
     margin-left: -0.25rem !important;
   }
   .m-md-n2 {
     margin: -0.5rem !important;
   }
   .mt-md-n2,
-  .my-md-n2 {
+.my-md-n2 {
     margin-top: -0.5rem !important;
   }
   .mr-md-n2,
-  .mx-md-n2 {
+.mx-md-n2 {
     margin-right: -0.5rem !important;
   }
   .mb-md-n2,
-  .my-md-n2 {
+.my-md-n2 {
     margin-bottom: -0.5rem !important;
   }
   .ml-md-n2,
-  .mx-md-n2 {
+.mx-md-n2 {
     margin-left: -0.5rem !important;
   }
   .m-md-n3 {
     margin: -1rem !important;
   }
   .mt-md-n3,
-  .my-md-n3 {
+.my-md-n3 {
     margin-top: -1rem !important;
   }
   .mr-md-n3,
-  .mx-md-n3 {
+.mx-md-n3 {
     margin-right: -1rem !important;
   }
   .mb-md-n3,
-  .my-md-n3 {
+.my-md-n3 {
     margin-bottom: -1rem !important;
   }
   .ml-md-n3,
-  .mx-md-n3 {
+.mx-md-n3 {
     margin-left: -1rem !important;
   }
   .m-md-n4 {
     margin: -1.5rem !important;
   }
   .mt-md-n4,
-  .my-md-n4 {
+.my-md-n4 {
     margin-top: -1.5rem !important;
   }
   .mr-md-n4,
-  .mx-md-n4 {
+.mx-md-n4 {
     margin-right: -1.5rem !important;
   }
   .mb-md-n4,
-  .my-md-n4 {
+.my-md-n4 {
     margin-bottom: -1.5rem !important;
   }
   .ml-md-n4,
-  .mx-md-n4 {
+.mx-md-n4 {
     margin-left: -1.5rem !important;
   }
   .m-md-n5 {
     margin: -3rem !important;
   }
   .mt-md-n5,
-  .my-md-n5 {
+.my-md-n5 {
     margin-top: -3rem !important;
   }
   .mr-md-n5,
-  .mx-md-n5 {
+.mx-md-n5 {
     margin-right: -3rem !important;
   }
   .mb-md-n5,
-  .my-md-n5 {
+.my-md-n5 {
     margin-bottom: -3rem !important;
   }
   .ml-md-n5,
-  .mx-md-n5 {
+.mx-md-n5 {
     margin-left: -3rem !important;
   }
   .m-md-auto {
     margin: auto !important;
   }
   .mt-md-auto,
-  .my-md-auto {
+.my-md-auto {
     margin-top: auto !important;
   }
   .mr-md-auto,
-  .mx-md-auto {
+.mx-md-auto {
     margin-right: auto !important;
   }
   .mb-md-auto,
-  .my-md-auto {
+.my-md-auto {
     margin-bottom: auto !important;
   }
   .ml-md-auto,
-  .mx-md-auto {
+.mx-md-auto {
     margin-left: auto !important;
   }
 }
@@ -9987,342 +10833,342 @@ button.bg-dark:focus {
     margin: 0 !important;
   }
   .mt-lg-0,
-  .my-lg-0 {
+.my-lg-0 {
     margin-top: 0 !important;
   }
   .mr-lg-0,
-  .mx-lg-0 {
+.mx-lg-0 {
     margin-right: 0 !important;
   }
   .mb-lg-0,
-  .my-lg-0 {
+.my-lg-0 {
     margin-bottom: 0 !important;
   }
   .ml-lg-0,
-  .mx-lg-0 {
+.mx-lg-0 {
     margin-left: 0 !important;
   }
   .m-lg-1 {
     margin: 0.25rem !important;
   }
   .mt-lg-1,
-  .my-lg-1 {
+.my-lg-1 {
     margin-top: 0.25rem !important;
   }
   .mr-lg-1,
-  .mx-lg-1 {
+.mx-lg-1 {
     margin-right: 0.25rem !important;
   }
   .mb-lg-1,
-  .my-lg-1 {
+.my-lg-1 {
     margin-bottom: 0.25rem !important;
   }
   .ml-lg-1,
-  .mx-lg-1 {
+.mx-lg-1 {
     margin-left: 0.25rem !important;
   }
   .m-lg-2 {
     margin: 0.5rem !important;
   }
   .mt-lg-2,
-  .my-lg-2 {
+.my-lg-2 {
     margin-top: 0.5rem !important;
   }
   .mr-lg-2,
-  .mx-lg-2 {
+.mx-lg-2 {
     margin-right: 0.5rem !important;
   }
   .mb-lg-2,
-  .my-lg-2 {
+.my-lg-2 {
     margin-bottom: 0.5rem !important;
   }
   .ml-lg-2,
-  .mx-lg-2 {
+.mx-lg-2 {
     margin-left: 0.5rem !important;
   }
   .m-lg-3 {
     margin: 1rem !important;
   }
   .mt-lg-3,
-  .my-lg-3 {
+.my-lg-3 {
     margin-top: 1rem !important;
   }
   .mr-lg-3,
-  .mx-lg-3 {
+.mx-lg-3 {
     margin-right: 1rem !important;
   }
   .mb-lg-3,
-  .my-lg-3 {
+.my-lg-3 {
     margin-bottom: 1rem !important;
   }
   .ml-lg-3,
-  .mx-lg-3 {
+.mx-lg-3 {
     margin-left: 1rem !important;
   }
   .m-lg-4 {
     margin: 1.5rem !important;
   }
   .mt-lg-4,
-  .my-lg-4 {
+.my-lg-4 {
     margin-top: 1.5rem !important;
   }
   .mr-lg-4,
-  .mx-lg-4 {
+.mx-lg-4 {
     margin-right: 1.5rem !important;
   }
   .mb-lg-4,
-  .my-lg-4 {
+.my-lg-4 {
     margin-bottom: 1.5rem !important;
   }
   .ml-lg-4,
-  .mx-lg-4 {
+.mx-lg-4 {
     margin-left: 1.5rem !important;
   }
   .m-lg-5 {
     margin: 3rem !important;
   }
   .mt-lg-5,
-  .my-lg-5 {
+.my-lg-5 {
     margin-top: 3rem !important;
   }
   .mr-lg-5,
-  .mx-lg-5 {
+.mx-lg-5 {
     margin-right: 3rem !important;
   }
   .mb-lg-5,
-  .my-lg-5 {
+.my-lg-5 {
     margin-bottom: 3rem !important;
   }
   .ml-lg-5,
-  .mx-lg-5 {
+.mx-lg-5 {
     margin-left: 3rem !important;
   }
   .p-lg-0 {
     padding: 0 !important;
   }
   .pt-lg-0,
-  .py-lg-0 {
+.py-lg-0 {
     padding-top: 0 !important;
   }
   .pr-lg-0,
-  .px-lg-0 {
+.px-lg-0 {
     padding-right: 0 !important;
   }
   .pb-lg-0,
-  .py-lg-0 {
+.py-lg-0 {
     padding-bottom: 0 !important;
   }
   .pl-lg-0,
-  .px-lg-0 {
+.px-lg-0 {
     padding-left: 0 !important;
   }
   .p-lg-1 {
     padding: 0.25rem !important;
   }
   .pt-lg-1,
-  .py-lg-1 {
+.py-lg-1 {
     padding-top: 0.25rem !important;
   }
   .pr-lg-1,
-  .px-lg-1 {
+.px-lg-1 {
     padding-right: 0.25rem !important;
   }
   .pb-lg-1,
-  .py-lg-1 {
+.py-lg-1 {
     padding-bottom: 0.25rem !important;
   }
   .pl-lg-1,
-  .px-lg-1 {
+.px-lg-1 {
     padding-left: 0.25rem !important;
   }
   .p-lg-2 {
     padding: 0.5rem !important;
   }
   .pt-lg-2,
-  .py-lg-2 {
+.py-lg-2 {
     padding-top: 0.5rem !important;
   }
   .pr-lg-2,
-  .px-lg-2 {
+.px-lg-2 {
     padding-right: 0.5rem !important;
   }
   .pb-lg-2,
-  .py-lg-2 {
+.py-lg-2 {
     padding-bottom: 0.5rem !important;
   }
   .pl-lg-2,
-  .px-lg-2 {
+.px-lg-2 {
     padding-left: 0.5rem !important;
   }
   .p-lg-3 {
     padding: 1rem !important;
   }
   .pt-lg-3,
-  .py-lg-3 {
+.py-lg-3 {
     padding-top: 1rem !important;
   }
   .pr-lg-3,
-  .px-lg-3 {
+.px-lg-3 {
     padding-right: 1rem !important;
   }
   .pb-lg-3,
-  .py-lg-3 {
+.py-lg-3 {
     padding-bottom: 1rem !important;
   }
   .pl-lg-3,
-  .px-lg-3 {
+.px-lg-3 {
     padding-left: 1rem !important;
   }
   .p-lg-4 {
     padding: 1.5rem !important;
   }
   .pt-lg-4,
-  .py-lg-4 {
+.py-lg-4 {
     padding-top: 1.5rem !important;
   }
   .pr-lg-4,
-  .px-lg-4 {
+.px-lg-4 {
     padding-right: 1.5rem !important;
   }
   .pb-lg-4,
-  .py-lg-4 {
+.py-lg-4 {
     padding-bottom: 1.5rem !important;
   }
   .pl-lg-4,
-  .px-lg-4 {
+.px-lg-4 {
     padding-left: 1.5rem !important;
   }
   .p-lg-5 {
     padding: 3rem !important;
   }
   .pt-lg-5,
-  .py-lg-5 {
+.py-lg-5 {
     padding-top: 3rem !important;
   }
   .pr-lg-5,
-  .px-lg-5 {
+.px-lg-5 {
     padding-right: 3rem !important;
   }
   .pb-lg-5,
-  .py-lg-5 {
+.py-lg-5 {
     padding-bottom: 3rem !important;
   }
   .pl-lg-5,
-  .px-lg-5 {
+.px-lg-5 {
     padding-left: 3rem !important;
   }
   .m-lg-n1 {
     margin: -0.25rem !important;
   }
   .mt-lg-n1,
-  .my-lg-n1 {
+.my-lg-n1 {
     margin-top: -0.25rem !important;
   }
   .mr-lg-n1,
-  .mx-lg-n1 {
+.mx-lg-n1 {
     margin-right: -0.25rem !important;
   }
   .mb-lg-n1,
-  .my-lg-n1 {
+.my-lg-n1 {
     margin-bottom: -0.25rem !important;
   }
   .ml-lg-n1,
-  .mx-lg-n1 {
+.mx-lg-n1 {
     margin-left: -0.25rem !important;
   }
   .m-lg-n2 {
     margin: -0.5rem !important;
   }
   .mt-lg-n2,
-  .my-lg-n2 {
+.my-lg-n2 {
     margin-top: -0.5rem !important;
   }
   .mr-lg-n2,
-  .mx-lg-n2 {
+.mx-lg-n2 {
     margin-right: -0.5rem !important;
   }
   .mb-lg-n2,
-  .my-lg-n2 {
+.my-lg-n2 {
     margin-bottom: -0.5rem !important;
   }
   .ml-lg-n2,
-  .mx-lg-n2 {
+.mx-lg-n2 {
     margin-left: -0.5rem !important;
   }
   .m-lg-n3 {
     margin: -1rem !important;
   }
   .mt-lg-n3,
-  .my-lg-n3 {
+.my-lg-n3 {
     margin-top: -1rem !important;
   }
   .mr-lg-n3,
-  .mx-lg-n3 {
+.mx-lg-n3 {
     margin-right: -1rem !important;
   }
   .mb-lg-n3,
-  .my-lg-n3 {
+.my-lg-n3 {
     margin-bottom: -1rem !important;
   }
   .ml-lg-n3,
-  .mx-lg-n3 {
+.mx-lg-n3 {
     margin-left: -1rem !important;
   }
   .m-lg-n4 {
     margin: -1.5rem !important;
   }
   .mt-lg-n4,
-  .my-lg-n4 {
+.my-lg-n4 {
     margin-top: -1.5rem !important;
   }
   .mr-lg-n4,
-  .mx-lg-n4 {
+.mx-lg-n4 {
     margin-right: -1.5rem !important;
   }
   .mb-lg-n4,
-  .my-lg-n4 {
+.my-lg-n4 {
     margin-bottom: -1.5rem !important;
   }
   .ml-lg-n4,
-  .mx-lg-n4 {
+.mx-lg-n4 {
     margin-left: -1.5rem !important;
   }
   .m-lg-n5 {
     margin: -3rem !important;
   }
   .mt-lg-n5,
-  .my-lg-n5 {
+.my-lg-n5 {
     margin-top: -3rem !important;
   }
   .mr-lg-n5,
-  .mx-lg-n5 {
+.mx-lg-n5 {
     margin-right: -3rem !important;
   }
   .mb-lg-n5,
-  .my-lg-n5 {
+.my-lg-n5 {
     margin-bottom: -3rem !important;
   }
   .ml-lg-n5,
-  .mx-lg-n5 {
+.mx-lg-n5 {
     margin-left: -3rem !important;
   }
   .m-lg-auto {
     margin: auto !important;
   }
   .mt-lg-auto,
-  .my-lg-auto {
+.my-lg-auto {
     margin-top: auto !important;
   }
   .mr-lg-auto,
-  .mx-lg-auto {
+.mx-lg-auto {
     margin-right: auto !important;
   }
   .mb-lg-auto,
-  .my-lg-auto {
+.my-lg-auto {
     margin-bottom: auto !important;
   }
   .ml-lg-auto,
-  .mx-lg-auto {
+.mx-lg-auto {
     margin-left: auto !important;
   }
 }
@@ -10331,342 +11177,342 @@ button.bg-dark:focus {
     margin: 0 !important;
   }
   .mt-xl-0,
-  .my-xl-0 {
+.my-xl-0 {
     margin-top: 0 !important;
   }
   .mr-xl-0,
-  .mx-xl-0 {
+.mx-xl-0 {
     margin-right: 0 !important;
   }
   .mb-xl-0,
-  .my-xl-0 {
+.my-xl-0 {
     margin-bottom: 0 !important;
   }
   .ml-xl-0,
-  .mx-xl-0 {
+.mx-xl-0 {
     margin-left: 0 !important;
   }
   .m-xl-1 {
     margin: 0.25rem !important;
   }
   .mt-xl-1,
-  .my-xl-1 {
+.my-xl-1 {
     margin-top: 0.25rem !important;
   }
   .mr-xl-1,
-  .mx-xl-1 {
+.mx-xl-1 {
     margin-right: 0.25rem !important;
   }
   .mb-xl-1,
-  .my-xl-1 {
+.my-xl-1 {
     margin-bottom: 0.25rem !important;
   }
   .ml-xl-1,
-  .mx-xl-1 {
+.mx-xl-1 {
     margin-left: 0.25rem !important;
   }
   .m-xl-2 {
     margin: 0.5rem !important;
   }
   .mt-xl-2,
-  .my-xl-2 {
+.my-xl-2 {
     margin-top: 0.5rem !important;
   }
   .mr-xl-2,
-  .mx-xl-2 {
+.mx-xl-2 {
     margin-right: 0.5rem !important;
   }
   .mb-xl-2,
-  .my-xl-2 {
+.my-xl-2 {
     margin-bottom: 0.5rem !important;
   }
   .ml-xl-2,
-  .mx-xl-2 {
+.mx-xl-2 {
     margin-left: 0.5rem !important;
   }
   .m-xl-3 {
     margin: 1rem !important;
   }
   .mt-xl-3,
-  .my-xl-3 {
+.my-xl-3 {
     margin-top: 1rem !important;
   }
   .mr-xl-3,
-  .mx-xl-3 {
+.mx-xl-3 {
     margin-right: 1rem !important;
   }
   .mb-xl-3,
-  .my-xl-3 {
+.my-xl-3 {
     margin-bottom: 1rem !important;
   }
   .ml-xl-3,
-  .mx-xl-3 {
+.mx-xl-3 {
     margin-left: 1rem !important;
   }
   .m-xl-4 {
     margin: 1.5rem !important;
   }
   .mt-xl-4,
-  .my-xl-4 {
+.my-xl-4 {
     margin-top: 1.5rem !important;
   }
   .mr-xl-4,
-  .mx-xl-4 {
+.mx-xl-4 {
     margin-right: 1.5rem !important;
   }
   .mb-xl-4,
-  .my-xl-4 {
+.my-xl-4 {
     margin-bottom: 1.5rem !important;
   }
   .ml-xl-4,
-  .mx-xl-4 {
+.mx-xl-4 {
     margin-left: 1.5rem !important;
   }
   .m-xl-5 {
     margin: 3rem !important;
   }
   .mt-xl-5,
-  .my-xl-5 {
+.my-xl-5 {
     margin-top: 3rem !important;
   }
   .mr-xl-5,
-  .mx-xl-5 {
+.mx-xl-5 {
     margin-right: 3rem !important;
   }
   .mb-xl-5,
-  .my-xl-5 {
+.my-xl-5 {
     margin-bottom: 3rem !important;
   }
   .ml-xl-5,
-  .mx-xl-5 {
+.mx-xl-5 {
     margin-left: 3rem !important;
   }
   .p-xl-0 {
     padding: 0 !important;
   }
   .pt-xl-0,
-  .py-xl-0 {
+.py-xl-0 {
     padding-top: 0 !important;
   }
   .pr-xl-0,
-  .px-xl-0 {
+.px-xl-0 {
     padding-right: 0 !important;
   }
   .pb-xl-0,
-  .py-xl-0 {
+.py-xl-0 {
     padding-bottom: 0 !important;
   }
   .pl-xl-0,
-  .px-xl-0 {
+.px-xl-0 {
     padding-left: 0 !important;
   }
   .p-xl-1 {
     padding: 0.25rem !important;
   }
   .pt-xl-1,
-  .py-xl-1 {
+.py-xl-1 {
     padding-top: 0.25rem !important;
   }
   .pr-xl-1,
-  .px-xl-1 {
+.px-xl-1 {
     padding-right: 0.25rem !important;
   }
   .pb-xl-1,
-  .py-xl-1 {
+.py-xl-1 {
     padding-bottom: 0.25rem !important;
   }
   .pl-xl-1,
-  .px-xl-1 {
+.px-xl-1 {
     padding-left: 0.25rem !important;
   }
   .p-xl-2 {
     padding: 0.5rem !important;
   }
   .pt-xl-2,
-  .py-xl-2 {
+.py-xl-2 {
     padding-top: 0.5rem !important;
   }
   .pr-xl-2,
-  .px-xl-2 {
+.px-xl-2 {
     padding-right: 0.5rem !important;
   }
   .pb-xl-2,
-  .py-xl-2 {
+.py-xl-2 {
     padding-bottom: 0.5rem !important;
   }
   .pl-xl-2,
-  .px-xl-2 {
+.px-xl-2 {
     padding-left: 0.5rem !important;
   }
   .p-xl-3 {
     padding: 1rem !important;
   }
   .pt-xl-3,
-  .py-xl-3 {
+.py-xl-3 {
     padding-top: 1rem !important;
   }
   .pr-xl-3,
-  .px-xl-3 {
+.px-xl-3 {
     padding-right: 1rem !important;
   }
   .pb-xl-3,
-  .py-xl-3 {
+.py-xl-3 {
     padding-bottom: 1rem !important;
   }
   .pl-xl-3,
-  .px-xl-3 {
+.px-xl-3 {
     padding-left: 1rem !important;
   }
   .p-xl-4 {
     padding: 1.5rem !important;
   }
   .pt-xl-4,
-  .py-xl-4 {
+.py-xl-4 {
     padding-top: 1.5rem !important;
   }
   .pr-xl-4,
-  .px-xl-4 {
+.px-xl-4 {
     padding-right: 1.5rem !important;
   }
   .pb-xl-4,
-  .py-xl-4 {
+.py-xl-4 {
     padding-bottom: 1.5rem !important;
   }
   .pl-xl-4,
-  .px-xl-4 {
+.px-xl-4 {
     padding-left: 1.5rem !important;
   }
   .p-xl-5 {
     padding: 3rem !important;
   }
   .pt-xl-5,
-  .py-xl-5 {
+.py-xl-5 {
     padding-top: 3rem !important;
   }
   .pr-xl-5,
-  .px-xl-5 {
+.px-xl-5 {
     padding-right: 3rem !important;
   }
   .pb-xl-5,
-  .py-xl-5 {
+.py-xl-5 {
     padding-bottom: 3rem !important;
   }
   .pl-xl-5,
-  .px-xl-5 {
+.px-xl-5 {
     padding-left: 3rem !important;
   }
   .m-xl-n1 {
     margin: -0.25rem !important;
   }
   .mt-xl-n1,
-  .my-xl-n1 {
+.my-xl-n1 {
     margin-top: -0.25rem !important;
   }
   .mr-xl-n1,
-  .mx-xl-n1 {
+.mx-xl-n1 {
     margin-right: -0.25rem !important;
   }
   .mb-xl-n1,
-  .my-xl-n1 {
+.my-xl-n1 {
     margin-bottom: -0.25rem !important;
   }
   .ml-xl-n1,
-  .mx-xl-n1 {
+.mx-xl-n1 {
     margin-left: -0.25rem !important;
   }
   .m-xl-n2 {
     margin: -0.5rem !important;
   }
   .mt-xl-n2,
-  .my-xl-n2 {
+.my-xl-n2 {
     margin-top: -0.5rem !important;
   }
   .mr-xl-n2,
-  .mx-xl-n2 {
+.mx-xl-n2 {
     margin-right: -0.5rem !important;
   }
   .mb-xl-n2,
-  .my-xl-n2 {
+.my-xl-n2 {
     margin-bottom: -0.5rem !important;
   }
   .ml-xl-n2,
-  .mx-xl-n2 {
+.mx-xl-n2 {
     margin-left: -0.5rem !important;
   }
   .m-xl-n3 {
     margin: -1rem !important;
   }
   .mt-xl-n3,
-  .my-xl-n3 {
+.my-xl-n3 {
     margin-top: -1rem !important;
   }
   .mr-xl-n3,
-  .mx-xl-n3 {
+.mx-xl-n3 {
     margin-right: -1rem !important;
   }
   .mb-xl-n3,
-  .my-xl-n3 {
+.my-xl-n3 {
     margin-bottom: -1rem !important;
   }
   .ml-xl-n3,
-  .mx-xl-n3 {
+.mx-xl-n3 {
     margin-left: -1rem !important;
   }
   .m-xl-n4 {
     margin: -1.5rem !important;
   }
   .mt-xl-n4,
-  .my-xl-n4 {
+.my-xl-n4 {
     margin-top: -1.5rem !important;
   }
   .mr-xl-n4,
-  .mx-xl-n4 {
+.mx-xl-n4 {
     margin-right: -1.5rem !important;
   }
   .mb-xl-n4,
-  .my-xl-n4 {
+.my-xl-n4 {
     margin-bottom: -1.5rem !important;
   }
   .ml-xl-n4,
-  .mx-xl-n4 {
+.mx-xl-n4 {
     margin-left: -1.5rem !important;
   }
   .m-xl-n5 {
     margin: -3rem !important;
   }
   .mt-xl-n5,
-  .my-xl-n5 {
+.my-xl-n5 {
     margin-top: -3rem !important;
   }
   .mr-xl-n5,
-  .mx-xl-n5 {
+.mx-xl-n5 {
     margin-right: -3rem !important;
   }
   .mb-xl-n5,
-  .my-xl-n5 {
+.my-xl-n5 {
     margin-bottom: -3rem !important;
   }
   .ml-xl-n5,
-  .mx-xl-n5 {
+.mx-xl-n5 {
     margin-left: -3rem !important;
   }
   .m-xl-auto {
     margin: auto !important;
   }
   .mt-xl-auto,
-  .my-xl-auto {
+.my-xl-auto {
     margin-top: auto !important;
   }
   .mr-xl-auto,
-  .mx-xl-auto {
+.mx-xl-auto {
     margin-right: auto !important;
   }
   .mb-xl-auto,
-  .my-xl-auto {
+.my-xl-auto {
     margin-bottom: auto !important;
   }
   .ml-xl-auto,
-  .mx-xl-auto {
+.mx-xl-auto {
     margin-left: auto !important;
   }
 }
@@ -10911,8 +11757,8 @@ a.text-dark:hover, a.text-dark:focus {
 
 @media print {
   *,
-  *::before,
-  *::after {
+*::before,
+*::after {
     text-shadow: none !important;
     box-shadow: none !important;
   }
@@ -10926,7 +11772,7 @@ a.text-dark:hover, a.text-dark:focus {
     white-space: pre-wrap !important;
   }
   pre,
-  blockquote {
+blockquote {
     border: 1px solid #adb5bd;
     page-break-inside: avoid;
   }
@@ -10934,17 +11780,17 @@ a.text-dark:hover, a.text-dark:focus {
     display: table-header-group;
   }
   tr,
-  img {
+img {
     page-break-inside: avoid;
   }
   p,
-  h2,
-  h3 {
+h2,
+h3 {
     orphans: 3;
     widows: 3;
   }
   h2,
-  h3 {
+h3 {
     page-break-after: avoid;
   }
   @page {
@@ -10966,21 +11812,21 @@ a.text-dark:hover, a.text-dark:focus {
     border-collapse: collapse !important;
   }
   .table td, .jsgrid .jsgrid-table td,
-  .table th,
-  .jsgrid .jsgrid-table th {
+.table th,
+.jsgrid .jsgrid-table th {
     background-color: #ffffff !important;
   }
   .table-bordered th,
-  .table-bordered td {
+.table-bordered td {
     border: 1px solid #dee2e6 !important;
   }
   .table-dark {
     color: inherit;
   }
   .table-dark th,
-  .table-dark td,
-  .table-dark thead th,
-  .table-dark tbody + tbody {
+.table-dark td,
+.table-dark thead th,
+.table-dark tbody + tbody {
     border-color: #2c2e33;
   }
   .table .thead-dark th, .jsgrid .jsgrid-table .thead-dark th {
@@ -10999,6 +11845,17 @@ a.text-dark:hover, a.text-dark:focus {
 }
 
 /* Animation Mixins */
+@-webkit-keyframes dropdownAnimation {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -30px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    transform: translate3d(0, 0px, 0);
+  }
+}
 @keyframes dropdownAnimation {
   from {
     opacity: 0;
@@ -11011,8 +11868,11 @@ a.text-dark:hover, a.text-dark:focus {
   }
 }
 .dropdownAnimation, .navbar .navbar-menu-wrapper .navbar-nav .nav-item.dropdown .dropdown-menu {
-  animation-name: dropdownAnimation;
+  -webkit-animation-name: dropdownAnimation;
+          animation-name: dropdownAnimation;
+  -webkit-animation-duration: 0.25s;
   animation-duration: 0.25s;
+  -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
 }
 
@@ -11025,14 +11885,27 @@ a.text-dark:hover, a.text-dark:focus {
   }
 }
 .fadeOut {
-  animation-name: fadeOut;
+  -webkit-animation-name: fadeOut;
+          animation-name: fadeOut;
 }
 
 .infinite-spin {
-  animation-name: spin;
-  animation-duration: 3s;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
+  -webkit-animation-name: spin;
+          animation-name: spin;
+  -webkit-animation-duration: 3s;
+          animation-duration: 3s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+          animation-timing-function: linear;
+}
+@-webkit-keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 @keyframes spin {
   from {
@@ -11054,7 +11927,8 @@ a.text-dark:hover, a.text-dark:focus {
   }
 }
 .fadeInUp {
-  animation-name: fadeInUp;
+  -webkit-animation-name: fadeInUp;
+          animation-name: fadeInUp;
 }
 
 /*-------------------------------------------------------------------*/
@@ -11977,7 +12851,7 @@ code {
   }
 }
 
-.btn-group .btn + .btn, .btn-group .wizard > .actions a + .btn, .wizard > .actions .btn-group a + .btn, .btn-group .wizard > .actions .btn + a, .wizard > .actions .btn-group .btn + a, .btn-group .wizard > .actions a + a, .wizard > .actions .btn-group a + a, .btn-group .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-cancel + .btn, .btn-group .swal2-modal .swal2-buttonswrapper .wizard > .actions .swal2-styled.swal2-cancel + a, .wizard > .actions .btn-group .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-cancel + a, .swal2-modal .swal2-buttonswrapper .btn-group .swal2-styled.swal2-cancel + .btn, .swal2-modal .swal2-buttonswrapper .btn-group .wizard > .actions .swal2-styled.swal2-cancel + a, .wizard > .actions .swal2-modal .swal2-buttonswrapper .btn-group .swal2-styled.swal2-cancel + a, .btn-group .swal2-modal .swal2-buttonswrapper .btn + .swal2-styled.swal2-cancel, .btn-group .swal2-modal .swal2-buttonswrapper .wizard > .actions a + .swal2-styled.swal2-cancel, .wizard > .actions .btn-group .swal2-modal .swal2-buttonswrapper a + .swal2-styled.swal2-cancel, .swal2-modal .swal2-buttonswrapper .btn-group .btn + .swal2-styled.swal2-cancel, .swal2-modal .swal2-buttonswrapper .btn-group .wizard > .actions a + .swal2-styled.swal2-cancel, .wizard > .actions .swal2-modal .swal2-buttonswrapper .btn-group a + .swal2-styled.swal2-cancel, .btn-group .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-cancel + .swal2-styled.swal2-cancel, .swal2-modal .swal2-buttonswrapper .btn-group .swal2-styled.swal2-cancel + .swal2-styled.swal2-cancel, .btn-group .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-confirm + .btn, .btn-group .swal2-modal .swal2-buttonswrapper .wizard > .actions .swal2-styled.swal2-confirm + a, .wizard > .actions .btn-group .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-confirm + a, .btn-group .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-confirm + .swal2-styled.swal2-cancel, .swal2-modal .swal2-buttonswrapper .btn-group .swal2-styled.swal2-confirm + .btn, .swal2-modal .swal2-buttonswrapper .btn-group .wizard > .actions .swal2-styled.swal2-confirm + a, .wizard > .actions .swal2-modal .swal2-buttonswrapper .btn-group .swal2-styled.swal2-confirm + a, .swal2-modal .swal2-buttonswrapper .btn-group .swal2-styled.swal2-confirm + .swal2-styled.swal2-cancel, .btn-group .swal2-modal .swal2-buttonswrapper .btn + .swal2-styled.swal2-confirm, .btn-group .swal2-modal .swal2-buttonswrapper .wizard > .actions a + .swal2-styled.swal2-confirm, .wizard > .actions .btn-group .swal2-modal .swal2-buttonswrapper a + .swal2-styled.swal2-confirm, .btn-group .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-cancel + .swal2-styled.swal2-confirm, .swal2-modal .swal2-buttonswrapper .btn-group .btn + .swal2-styled.swal2-confirm, .swal2-modal .swal2-buttonswrapper .btn-group .wizard > .actions a + .swal2-styled.swal2-confirm, .wizard > .actions .swal2-modal .swal2-buttonswrapper .btn-group a + .swal2-styled.swal2-confirm, .swal2-modal .swal2-buttonswrapper .btn-group .swal2-styled.swal2-cancel + .swal2-styled.swal2-confirm, .btn-group .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-confirm + .swal2-styled.swal2-confirm, .swal2-modal .swal2-buttonswrapper .btn-group .swal2-styled.swal2-confirm + .swal2-styled.swal2-confirm, .btn-group .swal2-modal .swal2-buttonswrapper .swal2-styled + .btn, .btn-group .swal2-modal .swal2-buttonswrapper .wizard > .actions .swal2-styled + a, .wizard > .actions .btn-group .swal2-modal .swal2-buttonswrapper .swal2-styled + a, .btn-group .swal2-modal .swal2-buttonswrapper .swal2-styled + .swal2-styled.swal2-cancel, .btn-group .swal2-modal .swal2-buttonswrapper .swal2-styled + .swal2-styled.swal2-confirm, .swal2-modal .swal2-buttonswrapper .btn-group .swal2-styled + .btn, .swal2-modal .swal2-buttonswrapper .btn-group .wizard > .actions .swal2-styled + a, .wizard > .actions .swal2-modal .swal2-buttonswrapper .btn-group .swal2-styled + a, .swal2-modal .swal2-buttonswrapper .btn-group .swal2-styled + .swal2-styled.swal2-cancel, .swal2-modal .swal2-buttonswrapper .btn-group .swal2-styled + .swal2-styled.swal2-confirm, .btn-group .swal2-modal .swal2-buttonswrapper .btn + .swal2-styled, .btn-group .swal2-modal .swal2-buttonswrapper .wizard > .actions a + .swal2-styled, .wizard > .actions .btn-group .swal2-modal .swal2-buttonswrapper a + .swal2-styled, .btn-group .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-cancel + .swal2-styled, .btn-group .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-confirm + .swal2-styled, .swal2-modal .swal2-buttonswrapper .btn-group .btn + .swal2-styled, .swal2-modal .swal2-buttonswrapper .btn-group .wizard > .actions a + .swal2-styled, .wizard > .actions .swal2-modal .swal2-buttonswrapper .btn-group a + .swal2-styled, .swal2-modal .swal2-buttonswrapper .btn-group .swal2-styled.swal2-cancel + .swal2-styled, .swal2-modal .swal2-buttonswrapper .btn-group .swal2-styled.swal2-confirm + .swal2-styled, .btn-group .swal2-modal .swal2-buttonswrapper .swal2-styled + .swal2-styled, .swal2-modal .swal2-buttonswrapper .btn-group .swal2-styled + .swal2-styled, .btn-group .ajax-upload-dragdrop .ajax-file-upload + .btn, .btn-group .ajax-upload-dragdrop .wizard > .actions .ajax-file-upload + a, .wizard > .actions .btn-group .ajax-upload-dragdrop .ajax-file-upload + a, .btn-group .ajax-upload-dragdrop .swal2-modal .swal2-buttonswrapper .ajax-file-upload + .swal2-styled.swal2-cancel, .swal2-modal .swal2-buttonswrapper .btn-group .ajax-upload-dragdrop .ajax-file-upload + .swal2-styled.swal2-cancel, .btn-group .ajax-upload-dragdrop .swal2-modal .swal2-buttonswrapper .ajax-file-upload + .swal2-styled.swal2-confirm, .swal2-modal .swal2-buttonswrapper .btn-group .ajax-upload-dragdrop .ajax-file-upload + .swal2-styled.swal2-confirm, .btn-group .ajax-upload-dragdrop .swal2-modal .swal2-buttonswrapper .ajax-file-upload + .swal2-styled, .swal2-modal .swal2-buttonswrapper .btn-group .ajax-upload-dragdrop .ajax-file-upload + .swal2-styled, .ajax-upload-dragdrop .btn-group .ajax-file-upload + .btn, .ajax-upload-dragdrop .btn-group .wizard > .actions .ajax-file-upload + a, .wizard > .actions .ajax-upload-dragdrop .btn-group .ajax-file-upload + a, .ajax-upload-dragdrop .btn-group .swal2-modal .swal2-buttonswrapper .ajax-file-upload + .swal2-styled.swal2-cancel, .swal2-modal .swal2-buttonswrapper .ajax-upload-dragdrop .btn-group .ajax-file-upload + .swal2-styled.swal2-cancel, .ajax-upload-dragdrop .btn-group .swal2-modal .swal2-buttonswrapper .ajax-file-upload + .swal2-styled.swal2-confirm, .swal2-modal .swal2-buttonswrapper .ajax-upload-dragdrop .btn-group .ajax-file-upload + .swal2-styled.swal2-confirm, .ajax-upload-dragdrop .btn-group .swal2-modal .swal2-buttonswrapper .ajax-file-upload + .swal2-styled, .swal2-modal .swal2-buttonswrapper .ajax-upload-dragdrop .btn-group .ajax-file-upload + .swal2-styled, .btn-group .ajax-upload-dragdrop .btn + .ajax-file-upload, .btn-group .ajax-upload-dragdrop .wizard > .actions a + .ajax-file-upload, .wizard > .actions .btn-group .ajax-upload-dragdrop a + .ajax-file-upload, .btn-group .ajax-upload-dragdrop .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-cancel + .ajax-file-upload, .swal2-modal .swal2-buttonswrapper .btn-group .ajax-upload-dragdrop .swal2-styled.swal2-cancel + .ajax-file-upload, .btn-group .ajax-upload-dragdrop .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-confirm + .ajax-file-upload, .swal2-modal .swal2-buttonswrapper .btn-group .ajax-upload-dragdrop .swal2-styled.swal2-confirm + .ajax-file-upload, .btn-group .ajax-upload-dragdrop .swal2-modal .swal2-buttonswrapper .swal2-styled + .ajax-file-upload, .swal2-modal .swal2-buttonswrapper .btn-group .ajax-upload-dragdrop .swal2-styled + .ajax-file-upload, .ajax-upload-dragdrop .btn-group .btn + .ajax-file-upload, .ajax-upload-dragdrop .btn-group .wizard > .actions a + .ajax-file-upload, .wizard > .actions .ajax-upload-dragdrop .btn-group a + .ajax-file-upload, .ajax-upload-dragdrop .btn-group .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-cancel + .ajax-file-upload, .swal2-modal .swal2-buttonswrapper .ajax-upload-dragdrop .btn-group .swal2-styled.swal2-cancel + .ajax-file-upload, .ajax-upload-dragdrop .btn-group .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-confirm + .ajax-file-upload, .swal2-modal .swal2-buttonswrapper .ajax-upload-dragdrop .btn-group .swal2-styled.swal2-confirm + .ajax-file-upload, .ajax-upload-dragdrop .btn-group .swal2-modal .swal2-buttonswrapper .swal2-styled + .ajax-file-upload, .swal2-modal .swal2-buttonswrapper .ajax-upload-dragdrop .btn-group .swal2-styled + .ajax-file-upload, .btn-group .ajax-upload-dragdrop .ajax-file-upload + .ajax-file-upload, .ajax-upload-dragdrop .btn-group .ajax-file-upload + .ajax-file-upload, .fc .fc-button-group .btn + .btn, .fc .fc-button-group .wizard > .actions a + .btn, .wizard > .actions .fc .fc-button-group a + .btn, .fc .fc-button-group .wizard > .actions .btn + a, .wizard > .actions .fc .fc-button-group .btn + a, .fc .fc-button-group .wizard > .actions a + a, .wizard > .actions .fc .fc-button-group a + a, .fc .fc-button-group .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-cancel + .btn, .fc .fc-button-group .swal2-modal .swal2-buttonswrapper .wizard > .actions .swal2-styled.swal2-cancel + a, .wizard > .actions .fc .fc-button-group .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-cancel + a, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .swal2-styled.swal2-cancel + .btn, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .wizard > .actions .swal2-styled.swal2-cancel + a, .wizard > .actions .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .swal2-styled.swal2-cancel + a, .fc .fc-button-group .swal2-modal .swal2-buttonswrapper .btn + .swal2-styled.swal2-cancel, .fc .fc-button-group .swal2-modal .swal2-buttonswrapper .wizard > .actions a + .swal2-styled.swal2-cancel, .wizard > .actions .fc .fc-button-group .swal2-modal .swal2-buttonswrapper a + .swal2-styled.swal2-cancel, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .btn + .swal2-styled.swal2-cancel, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .wizard > .actions a + .swal2-styled.swal2-cancel, .wizard > .actions .swal2-modal .swal2-buttonswrapper .fc .fc-button-group a + .swal2-styled.swal2-cancel, .fc .fc-button-group .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-cancel + .swal2-styled.swal2-cancel, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .swal2-styled.swal2-cancel + .swal2-styled.swal2-cancel, .fc .fc-button-group .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-confirm + .btn, .fc .fc-button-group .swal2-modal .swal2-buttonswrapper .wizard > .actions .swal2-styled.swal2-confirm + a, .wizard > .actions .fc .fc-button-group .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-confirm + a, .fc .fc-button-group .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-confirm + .swal2-styled.swal2-cancel, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .swal2-styled.swal2-confirm + .btn, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .wizard > .actions .swal2-styled.swal2-confirm + a, .wizard > .actions .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .swal2-styled.swal2-confirm + a, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .swal2-styled.swal2-confirm + .swal2-styled.swal2-cancel, .fc .fc-button-group .swal2-modal .swal2-buttonswrapper .btn + .swal2-styled.swal2-confirm, .fc .fc-button-group .swal2-modal .swal2-buttonswrapper .wizard > .actions a + .swal2-styled.swal2-confirm, .wizard > .actions .fc .fc-button-group .swal2-modal .swal2-buttonswrapper a + .swal2-styled.swal2-confirm, .fc .fc-button-group .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-cancel + .swal2-styled.swal2-confirm, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .btn + .swal2-styled.swal2-confirm, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .wizard > .actions a + .swal2-styled.swal2-confirm, .wizard > .actions .swal2-modal .swal2-buttonswrapper .fc .fc-button-group a + .swal2-styled.swal2-confirm, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .swal2-styled.swal2-cancel + .swal2-styled.swal2-confirm, .fc .fc-button-group .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-confirm + .swal2-styled.swal2-confirm, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .swal2-styled.swal2-confirm + .swal2-styled.swal2-confirm, .fc .fc-button-group .swal2-modal .swal2-buttonswrapper .swal2-styled + .btn, .fc .fc-button-group .swal2-modal .swal2-buttonswrapper .wizard > .actions .swal2-styled + a, .wizard > .actions .fc .fc-button-group .swal2-modal .swal2-buttonswrapper .swal2-styled + a, .fc .fc-button-group .swal2-modal .swal2-buttonswrapper .swal2-styled + .swal2-styled.swal2-cancel, .fc .fc-button-group .swal2-modal .swal2-buttonswrapper .swal2-styled + .swal2-styled.swal2-confirm, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .swal2-styled + .btn, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .wizard > .actions .swal2-styled + a, .wizard > .actions .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .swal2-styled + a, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .swal2-styled + .swal2-styled.swal2-cancel, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .swal2-styled + .swal2-styled.swal2-confirm, .fc .fc-button-group .swal2-modal .swal2-buttonswrapper .btn + .swal2-styled, .fc .fc-button-group .swal2-modal .swal2-buttonswrapper .wizard > .actions a + .swal2-styled, .wizard > .actions .fc .fc-button-group .swal2-modal .swal2-buttonswrapper a + .swal2-styled, .fc .fc-button-group .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-cancel + .swal2-styled, .fc .fc-button-group .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-confirm + .swal2-styled, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .btn + .swal2-styled, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .wizard > .actions a + .swal2-styled, .wizard > .actions .swal2-modal .swal2-buttonswrapper .fc .fc-button-group a + .swal2-styled, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .swal2-styled.swal2-cancel + .swal2-styled, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .swal2-styled.swal2-confirm + .swal2-styled, .fc .fc-button-group .swal2-modal .swal2-buttonswrapper .swal2-styled + .swal2-styled, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .swal2-styled + .swal2-styled, .fc .fc-button-group .ajax-upload-dragdrop .ajax-file-upload + .btn, .fc .fc-button-group .ajax-upload-dragdrop .wizard > .actions .ajax-file-upload + a, .wizard > .actions .fc .fc-button-group .ajax-upload-dragdrop .ajax-file-upload + a, .fc .fc-button-group .ajax-upload-dragdrop .swal2-modal .swal2-buttonswrapper .ajax-file-upload + .swal2-styled.swal2-cancel, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .ajax-upload-dragdrop .ajax-file-upload + .swal2-styled.swal2-cancel, .fc .fc-button-group .ajax-upload-dragdrop .swal2-modal .swal2-buttonswrapper .ajax-file-upload + .swal2-styled.swal2-confirm, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .ajax-upload-dragdrop .ajax-file-upload + .swal2-styled.swal2-confirm, .fc .fc-button-group .ajax-upload-dragdrop .swal2-modal .swal2-buttonswrapper .ajax-file-upload + .swal2-styled, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .ajax-upload-dragdrop .ajax-file-upload + .swal2-styled, .ajax-upload-dragdrop .fc .fc-button-group .ajax-file-upload + .btn, .ajax-upload-dragdrop .fc .fc-button-group .wizard > .actions .ajax-file-upload + a, .wizard > .actions .ajax-upload-dragdrop .fc .fc-button-group .ajax-file-upload + a, .ajax-upload-dragdrop .fc .fc-button-group .swal2-modal .swal2-buttonswrapper .ajax-file-upload + .swal2-styled.swal2-cancel, .swal2-modal .swal2-buttonswrapper .ajax-upload-dragdrop .fc .fc-button-group .ajax-file-upload + .swal2-styled.swal2-cancel, .ajax-upload-dragdrop .fc .fc-button-group .swal2-modal .swal2-buttonswrapper .ajax-file-upload + .swal2-styled.swal2-confirm, .swal2-modal .swal2-buttonswrapper .ajax-upload-dragdrop .fc .fc-button-group .ajax-file-upload + .swal2-styled.swal2-confirm, .ajax-upload-dragdrop .fc .fc-button-group .swal2-modal .swal2-buttonswrapper .ajax-file-upload + .swal2-styled, .swal2-modal .swal2-buttonswrapper .ajax-upload-dragdrop .fc .fc-button-group .ajax-file-upload + .swal2-styled, .fc .fc-button-group .ajax-upload-dragdrop .btn + .ajax-file-upload, .fc .fc-button-group .ajax-upload-dragdrop .wizard > .actions a + .ajax-file-upload, .wizard > .actions .fc .fc-button-group .ajax-upload-dragdrop a + .ajax-file-upload, .fc .fc-button-group .ajax-upload-dragdrop .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-cancel + .ajax-file-upload, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .ajax-upload-dragdrop .swal2-styled.swal2-cancel + .ajax-file-upload, .fc .fc-button-group .ajax-upload-dragdrop .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-confirm + .ajax-file-upload, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .ajax-upload-dragdrop .swal2-styled.swal2-confirm + .ajax-file-upload, .fc .fc-button-group .ajax-upload-dragdrop .swal2-modal .swal2-buttonswrapper .swal2-styled + .ajax-file-upload, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .ajax-upload-dragdrop .swal2-styled + .ajax-file-upload, .ajax-upload-dragdrop .fc .fc-button-group .btn + .ajax-file-upload, .ajax-upload-dragdrop .fc .fc-button-group .wizard > .actions a + .ajax-file-upload, .wizard > .actions .ajax-upload-dragdrop .fc .fc-button-group a + .ajax-file-upload, .ajax-upload-dragdrop .fc .fc-button-group .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-cancel + .ajax-file-upload, .swal2-modal .swal2-buttonswrapper .ajax-upload-dragdrop .fc .fc-button-group .swal2-styled.swal2-cancel + .ajax-file-upload, .ajax-upload-dragdrop .fc .fc-button-group .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-confirm + .ajax-file-upload, .swal2-modal .swal2-buttonswrapper .ajax-upload-dragdrop .fc .fc-button-group .swal2-styled.swal2-confirm + .ajax-file-upload, .ajax-upload-dragdrop .fc .fc-button-group .swal2-modal .swal2-buttonswrapper .swal2-styled + .ajax-file-upload, .swal2-modal .swal2-buttonswrapper .ajax-upload-dragdrop .fc .fc-button-group .swal2-styled + .ajax-file-upload, .fc .fc-button-group .ajax-upload-dragdrop .ajax-file-upload + .ajax-file-upload, .ajax-upload-dragdrop .fc .fc-button-group .ajax-file-upload + .ajax-file-upload, .btn-group .fc button + .btn, .btn-group .fc .wizard > .actions button + a, .wizard > .actions .btn-group .fc button + a, .btn-group .fc .swal2-modal .swal2-buttonswrapper button + .swal2-styled.swal2-cancel, .swal2-modal .swal2-buttonswrapper .btn-group .fc button + .swal2-styled.swal2-cancel, .btn-group .fc .swal2-modal .swal2-buttonswrapper button + .swal2-styled.swal2-confirm, .swal2-modal .swal2-buttonswrapper .btn-group .fc button + .swal2-styled.swal2-confirm, .btn-group .fc .swal2-modal .swal2-buttonswrapper button + .swal2-styled, .swal2-modal .swal2-buttonswrapper .btn-group .fc button + .swal2-styled, .btn-group .fc .ajax-upload-dragdrop button + .ajax-file-upload, .ajax-upload-dragdrop .btn-group .fc button + .ajax-file-upload, .fc .btn-group button + .btn, .fc .btn-group .wizard > .actions button + a, .wizard > .actions .fc .btn-group button + a, .fc .btn-group .swal2-modal .swal2-buttonswrapper button + .swal2-styled.swal2-cancel, .swal2-modal .swal2-buttonswrapper .fc .btn-group button + .swal2-styled.swal2-cancel, .fc .btn-group .swal2-modal .swal2-buttonswrapper button + .swal2-styled.swal2-confirm, .swal2-modal .swal2-buttonswrapper .fc .btn-group button + .swal2-styled.swal2-confirm, .fc .btn-group .swal2-modal .swal2-buttonswrapper button + .swal2-styled, .swal2-modal .swal2-buttonswrapper .fc .btn-group button + .swal2-styled, .fc .btn-group .ajax-upload-dragdrop button + .ajax-file-upload, .ajax-upload-dragdrop .fc .btn-group button + .ajax-file-upload, .fc .fc-button-group button + .btn, .fc .fc-button-group .wizard > .actions button + a, .wizard > .actions .fc .fc-button-group button + a, .fc .fc-button-group .swal2-modal .swal2-buttonswrapper button + .swal2-styled.swal2-cancel, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group button + .swal2-styled.swal2-cancel, .fc .fc-button-group .swal2-modal .swal2-buttonswrapper button + .swal2-styled.swal2-confirm, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group button + .swal2-styled.swal2-confirm, .fc .fc-button-group .swal2-modal .swal2-buttonswrapper button + .swal2-styled, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group button + .swal2-styled, .fc .fc-button-group .ajax-upload-dragdrop button + .ajax-file-upload, .ajax-upload-dragdrop .fc .fc-button-group button + .ajax-file-upload, .btn-group .fc .btn + button, .btn-group .fc .wizard > .actions a + button, .wizard > .actions .btn-group .fc a + button, .btn-group .fc .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-cancel + button, .swal2-modal .swal2-buttonswrapper .btn-group .fc .swal2-styled.swal2-cancel + button, .btn-group .fc .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-confirm + button, .swal2-modal .swal2-buttonswrapper .btn-group .fc .swal2-styled.swal2-confirm + button, .btn-group .fc .swal2-modal .swal2-buttonswrapper .swal2-styled + button, .swal2-modal .swal2-buttonswrapper .btn-group .fc .swal2-styled + button, .btn-group .fc .ajax-upload-dragdrop .ajax-file-upload + button, .ajax-upload-dragdrop .btn-group .fc .ajax-file-upload + button, .fc .btn-group .btn + button, .fc .btn-group .wizard > .actions a + button, .wizard > .actions .fc .btn-group a + button, .fc .btn-group .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-cancel + button, .swal2-modal .swal2-buttonswrapper .fc .btn-group .swal2-styled.swal2-cancel + button, .fc .btn-group .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-confirm + button, .swal2-modal .swal2-buttonswrapper .fc .btn-group .swal2-styled.swal2-confirm + button, .fc .btn-group .swal2-modal .swal2-buttonswrapper .swal2-styled + button, .swal2-modal .swal2-buttonswrapper .fc .btn-group .swal2-styled + button, .fc .btn-group .ajax-upload-dragdrop .ajax-file-upload + button, .ajax-upload-dragdrop .fc .btn-group .ajax-file-upload + button, .fc .fc-button-group .btn + button, .fc .fc-button-group .wizard > .actions a + button, .wizard > .actions .fc .fc-button-group a + button, .fc .fc-button-group .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-cancel + button, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .swal2-styled.swal2-cancel + button, .fc .fc-button-group .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-confirm + button, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .swal2-styled.swal2-confirm + button, .fc .fc-button-group .swal2-modal .swal2-buttonswrapper .swal2-styled + button, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .swal2-styled + button, .fc .fc-button-group .ajax-upload-dragdrop .ajax-file-upload + button, .ajax-upload-dragdrop .fc .fc-button-group .ajax-file-upload + button, .btn-group .fc button + button, .fc .btn-group button + button, .fc .fc-button-group button + button {
+.btn-group .btn + .btn, .btn-group .wizard > .actions a + .btn, .wizard > .actions .btn-group a + .btn, .btn-group .wizard > .actions .btn + a, .wizard > .actions .btn-group .btn + a, .btn-group .wizard > .actions a + a, .wizard > .actions .btn-group a + a, .btn-group .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-cancel + .btn, .btn-group .swal2-modal .swal2-buttonswrapper .wizard > .actions .swal2-styled.swal2-cancel + a, .wizard > .actions .btn-group .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-cancel + a, .swal2-modal .swal2-buttonswrapper .btn-group .swal2-styled.swal2-cancel + .btn, .swal2-modal .swal2-buttonswrapper .btn-group .wizard > .actions .swal2-styled.swal2-cancel + a, .wizard > .actions .swal2-modal .swal2-buttonswrapper .btn-group .swal2-styled.swal2-cancel + a, .btn-group .swal2-modal .swal2-buttonswrapper .btn + .swal2-styled.swal2-cancel, .btn-group .swal2-modal .swal2-buttonswrapper .wizard > .actions a + .swal2-styled.swal2-cancel, .wizard > .actions .btn-group .swal2-modal .swal2-buttonswrapper a + .swal2-styled.swal2-cancel, .swal2-modal .swal2-buttonswrapper .btn-group .btn + .swal2-styled.swal2-cancel, .swal2-modal .swal2-buttonswrapper .btn-group .wizard > .actions a + .swal2-styled.swal2-cancel, .wizard > .actions .swal2-modal .swal2-buttonswrapper .btn-group a + .swal2-styled.swal2-cancel, .btn-group .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-cancel + .swal2-styled.swal2-cancel, .swal2-modal .swal2-buttonswrapper .btn-group .swal2-styled.swal2-cancel + .swal2-styled.swal2-cancel, .btn-group .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-confirm + .btn, .btn-group .swal2-modal .swal2-buttonswrapper .wizard > .actions .swal2-styled.swal2-confirm + a, .wizard > .actions .btn-group .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-confirm + a, .btn-group .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-confirm + .swal2-styled.swal2-cancel, .swal2-modal .swal2-buttonswrapper .btn-group .swal2-styled.swal2-confirm + .btn, .swal2-modal .swal2-buttonswrapper .btn-group .wizard > .actions .swal2-styled.swal2-confirm + a, .wizard > .actions .swal2-modal .swal2-buttonswrapper .btn-group .swal2-styled.swal2-confirm + a, .swal2-modal .swal2-buttonswrapper .btn-group .swal2-styled.swal2-confirm + .swal2-styled.swal2-cancel, .btn-group .swal2-modal .swal2-buttonswrapper .btn + .swal2-styled.swal2-confirm, .btn-group .swal2-modal .swal2-buttonswrapper .wizard > .actions a + .swal2-styled.swal2-confirm, .wizard > .actions .btn-group .swal2-modal .swal2-buttonswrapper a + .swal2-styled.swal2-confirm, .btn-group .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-cancel + .swal2-styled.swal2-confirm, .swal2-modal .swal2-buttonswrapper .btn-group .btn + .swal2-styled.swal2-confirm, .swal2-modal .swal2-buttonswrapper .btn-group .wizard > .actions a + .swal2-styled.swal2-confirm, .wizard > .actions .swal2-modal .swal2-buttonswrapper .btn-group a + .swal2-styled.swal2-confirm, .swal2-modal .swal2-buttonswrapper .btn-group .swal2-styled.swal2-cancel + .swal2-styled.swal2-confirm, .btn-group .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-confirm + .swal2-styled.swal2-confirm, .swal2-modal .swal2-buttonswrapper .btn-group .swal2-styled.swal2-confirm + .swal2-styled.swal2-confirm, .btn-group .swal2-modal .swal2-buttonswrapper .swal2-styled + .btn, .btn-group .swal2-modal .swal2-buttonswrapper .wizard > .actions .swal2-styled + a, .wizard > .actions .btn-group .swal2-modal .swal2-buttonswrapper .swal2-styled + a, .btn-group .swal2-modal .swal2-buttonswrapper .swal2-styled + .swal2-styled.swal2-cancel, .btn-group .swal2-modal .swal2-buttonswrapper .swal2-styled + .swal2-styled.swal2-confirm, .swal2-modal .swal2-buttonswrapper .btn-group .swal2-styled + .btn, .swal2-modal .swal2-buttonswrapper .btn-group .wizard > .actions .swal2-styled + a, .wizard > .actions .swal2-modal .swal2-buttonswrapper .btn-group .swal2-styled + a, .swal2-modal .swal2-buttonswrapper .btn-group .swal2-styled + .swal2-styled.swal2-cancel, .swal2-modal .swal2-buttonswrapper .btn-group .swal2-styled + .swal2-styled.swal2-confirm, .btn-group .swal2-modal .swal2-buttonswrapper .btn + .swal2-styled, .btn-group .swal2-modal .swal2-buttonswrapper .wizard > .actions a + .swal2-styled, .wizard > .actions .btn-group .swal2-modal .swal2-buttonswrapper a + .swal2-styled, .btn-group .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-cancel + .swal2-styled, .btn-group .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-confirm + .swal2-styled, .swal2-modal .swal2-buttonswrapper .btn-group .btn + .swal2-styled, .swal2-modal .swal2-buttonswrapper .btn-group .wizard > .actions a + .swal2-styled, .wizard > .actions .swal2-modal .swal2-buttonswrapper .btn-group a + .swal2-styled, .swal2-modal .swal2-buttonswrapper .btn-group .swal2-styled.swal2-cancel + .swal2-styled, .swal2-modal .swal2-buttonswrapper .btn-group .swal2-styled.swal2-confirm + .swal2-styled, .btn-group .swal2-modal .swal2-buttonswrapper .swal2-styled + .swal2-styled, .swal2-modal .swal2-buttonswrapper .btn-group .swal2-styled + .swal2-styled, .btn-group .ajax-upload-dragdrop .ajax-file-upload + .btn, .btn-group .ajax-upload-dragdrop .wizard > .actions .ajax-file-upload + a, .wizard > .actions .btn-group .ajax-upload-dragdrop .ajax-file-upload + a, .btn-group .ajax-upload-dragdrop .swal2-modal .swal2-buttonswrapper .ajax-file-upload + .swal2-styled.swal2-cancel, .swal2-modal .swal2-buttonswrapper .btn-group .ajax-upload-dragdrop .ajax-file-upload + .swal2-styled.swal2-cancel, .btn-group .ajax-upload-dragdrop .swal2-modal .swal2-buttonswrapper .ajax-file-upload + .swal2-styled.swal2-confirm, .swal2-modal .swal2-buttonswrapper .btn-group .ajax-upload-dragdrop .ajax-file-upload + .swal2-styled.swal2-confirm, .btn-group .ajax-upload-dragdrop .swal2-modal .swal2-buttonswrapper .ajax-file-upload + .swal2-styled, .swal2-modal .swal2-buttonswrapper .btn-group .ajax-upload-dragdrop .ajax-file-upload + .swal2-styled, .ajax-upload-dragdrop .btn-group .ajax-file-upload + .btn, .ajax-upload-dragdrop .btn-group .wizard > .actions .ajax-file-upload + a, .wizard > .actions .ajax-upload-dragdrop .btn-group .ajax-file-upload + a, .ajax-upload-dragdrop .btn-group .swal2-modal .swal2-buttonswrapper .ajax-file-upload + .swal2-styled.swal2-cancel, .swal2-modal .swal2-buttonswrapper .ajax-upload-dragdrop .btn-group .ajax-file-upload + .swal2-styled.swal2-cancel, .ajax-upload-dragdrop .btn-group .swal2-modal .swal2-buttonswrapper .ajax-file-upload + .swal2-styled.swal2-confirm, .swal2-modal .swal2-buttonswrapper .ajax-upload-dragdrop .btn-group .ajax-file-upload + .swal2-styled.swal2-confirm, .ajax-upload-dragdrop .btn-group .swal2-modal .swal2-buttonswrapper .ajax-file-upload + .swal2-styled, .swal2-modal .swal2-buttonswrapper .ajax-upload-dragdrop .btn-group .ajax-file-upload + .swal2-styled, .btn-group .ajax-upload-dragdrop .btn + .ajax-file-upload, .btn-group .ajax-upload-dragdrop .wizard > .actions a + .ajax-file-upload, .wizard > .actions .btn-group .ajax-upload-dragdrop a + .ajax-file-upload, .btn-group .ajax-upload-dragdrop .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-cancel + .ajax-file-upload, .swal2-modal .swal2-buttonswrapper .btn-group .ajax-upload-dragdrop .swal2-styled.swal2-cancel + .ajax-file-upload, .btn-group .ajax-upload-dragdrop .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-confirm + .ajax-file-upload, .swal2-modal .swal2-buttonswrapper .btn-group .ajax-upload-dragdrop .swal2-styled.swal2-confirm + .ajax-file-upload, .btn-group .ajax-upload-dragdrop .swal2-modal .swal2-buttonswrapper .swal2-styled + .ajax-file-upload, .swal2-modal .swal2-buttonswrapper .btn-group .ajax-upload-dragdrop .swal2-styled + .ajax-file-upload, .ajax-upload-dragdrop .btn-group .btn + .ajax-file-upload, .ajax-upload-dragdrop .btn-group .wizard > .actions a + .ajax-file-upload, .wizard > .actions .ajax-upload-dragdrop .btn-group a + .ajax-file-upload, .ajax-upload-dragdrop .btn-group .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-cancel + .ajax-file-upload, .swal2-modal .swal2-buttonswrapper .ajax-upload-dragdrop .btn-group .swal2-styled.swal2-cancel + .ajax-file-upload, .ajax-upload-dragdrop .btn-group .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-confirm + .ajax-file-upload, .swal2-modal .swal2-buttonswrapper .ajax-upload-dragdrop .btn-group .swal2-styled.swal2-confirm + .ajax-file-upload, .ajax-upload-dragdrop .btn-group .swal2-modal .swal2-buttonswrapper .swal2-styled + .ajax-file-upload, .swal2-modal .swal2-buttonswrapper .ajax-upload-dragdrop .btn-group .swal2-styled + .ajax-file-upload, .btn-group .ajax-upload-dragdrop .ajax-file-upload + .ajax-file-upload, .ajax-upload-dragdrop .btn-group .ajax-file-upload + .ajax-file-upload, .fc .fc-button-group .btn + .btn, .fc .fc-button-group .wizard > .actions a + .btn, .wizard > .actions .fc .fc-button-group a + .btn, .fc .fc-button-group .wizard > .actions .btn + a, .wizard > .actions .fc .fc-button-group .btn + a, .fc .fc-button-group .wizard > .actions a + a, .wizard > .actions .fc .fc-button-group a + a, .fc .fc-button-group .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-cancel + .btn, .fc .fc-button-group .swal2-modal .swal2-buttonswrapper .wizard > .actions .swal2-styled.swal2-cancel + a, .wizard > .actions .fc .fc-button-group .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-cancel + a, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .swal2-styled.swal2-cancel + .btn, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .wizard > .actions .swal2-styled.swal2-cancel + a, .wizard > .actions .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .swal2-styled.swal2-cancel + a, .fc .fc-button-group .swal2-modal .swal2-buttonswrapper .btn + .swal2-styled.swal2-cancel, .fc .fc-button-group .swal2-modal .swal2-buttonswrapper .wizard > .actions a + .swal2-styled.swal2-cancel, .wizard > .actions .fc .fc-button-group .swal2-modal .swal2-buttonswrapper a + .swal2-styled.swal2-cancel, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .btn + .swal2-styled.swal2-cancel, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .wizard > .actions a + .swal2-styled.swal2-cancel, .wizard > .actions .swal2-modal .swal2-buttonswrapper .fc .fc-button-group a + .swal2-styled.swal2-cancel, .fc .fc-button-group .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-cancel + .swal2-styled.swal2-cancel, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .swal2-styled.swal2-cancel + .swal2-styled.swal2-cancel, .fc .fc-button-group .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-confirm + .btn, .fc .fc-button-group .swal2-modal .swal2-buttonswrapper .wizard > .actions .swal2-styled.swal2-confirm + a, .wizard > .actions .fc .fc-button-group .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-confirm + a, .fc .fc-button-group .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-confirm + .swal2-styled.swal2-cancel, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .swal2-styled.swal2-confirm + .btn, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .wizard > .actions .swal2-styled.swal2-confirm + a, .wizard > .actions .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .swal2-styled.swal2-confirm + a, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .swal2-styled.swal2-confirm + .swal2-styled.swal2-cancel, .fc .fc-button-group .swal2-modal .swal2-buttonswrapper .btn + .swal2-styled.swal2-confirm, .fc .fc-button-group .swal2-modal .swal2-buttonswrapper .wizard > .actions a + .swal2-styled.swal2-confirm, .wizard > .actions .fc .fc-button-group .swal2-modal .swal2-buttonswrapper a + .swal2-styled.swal2-confirm, .fc .fc-button-group .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-cancel + .swal2-styled.swal2-confirm, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .btn + .swal2-styled.swal2-confirm, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .wizard > .actions a + .swal2-styled.swal2-confirm, .wizard > .actions .swal2-modal .swal2-buttonswrapper .fc .fc-button-group a + .swal2-styled.swal2-confirm, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .swal2-styled.swal2-cancel + .swal2-styled.swal2-confirm, .fc .fc-button-group .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-confirm + .swal2-styled.swal2-confirm, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .swal2-styled.swal2-confirm + .swal2-styled.swal2-confirm, .fc .fc-button-group .swal2-modal .swal2-buttonswrapper .swal2-styled + .btn, .fc .fc-button-group .swal2-modal .swal2-buttonswrapper .wizard > .actions .swal2-styled + a, .wizard > .actions .fc .fc-button-group .swal2-modal .swal2-buttonswrapper .swal2-styled + a, .fc .fc-button-group .swal2-modal .swal2-buttonswrapper .swal2-styled + .swal2-styled.swal2-cancel, .fc .fc-button-group .swal2-modal .swal2-buttonswrapper .swal2-styled + .swal2-styled.swal2-confirm, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .swal2-styled + .btn, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .wizard > .actions .swal2-styled + a, .wizard > .actions .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .swal2-styled + a, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .swal2-styled + .swal2-styled.swal2-cancel, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .swal2-styled + .swal2-styled.swal2-confirm, .fc .fc-button-group .swal2-modal .swal2-buttonswrapper .btn + .swal2-styled, .fc .fc-button-group .swal2-modal .swal2-buttonswrapper .wizard > .actions a + .swal2-styled, .wizard > .actions .fc .fc-button-group .swal2-modal .swal2-buttonswrapper a + .swal2-styled, .fc .fc-button-group .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-cancel + .swal2-styled, .fc .fc-button-group .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-confirm + .swal2-styled, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .btn + .swal2-styled, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .wizard > .actions a + .swal2-styled, .wizard > .actions .swal2-modal .swal2-buttonswrapper .fc .fc-button-group a + .swal2-styled, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .swal2-styled.swal2-cancel + .swal2-styled, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .swal2-styled.swal2-confirm + .swal2-styled, .fc .fc-button-group .swal2-modal .swal2-buttonswrapper .swal2-styled + .swal2-styled, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .swal2-styled + .swal2-styled, .fc .fc-button-group .ajax-upload-dragdrop .ajax-file-upload + .btn, .fc .fc-button-group .ajax-upload-dragdrop .wizard > .actions .ajax-file-upload + a, .wizard > .actions .fc .fc-button-group .ajax-upload-dragdrop .ajax-file-upload + a, .fc .fc-button-group .ajax-upload-dragdrop .swal2-modal .swal2-buttonswrapper .ajax-file-upload + .swal2-styled.swal2-cancel, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .ajax-upload-dragdrop .ajax-file-upload + .swal2-styled.swal2-cancel, .fc .fc-button-group .ajax-upload-dragdrop .swal2-modal .swal2-buttonswrapper .ajax-file-upload + .swal2-styled.swal2-confirm, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .ajax-upload-dragdrop .ajax-file-upload + .swal2-styled.swal2-confirm, .fc .fc-button-group .ajax-upload-dragdrop .swal2-modal .swal2-buttonswrapper .ajax-file-upload + .swal2-styled, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .ajax-upload-dragdrop .ajax-file-upload + .swal2-styled, .ajax-upload-dragdrop .fc .fc-button-group .ajax-file-upload + .btn, .ajax-upload-dragdrop .fc .fc-button-group .wizard > .actions .ajax-file-upload + a, .wizard > .actions .ajax-upload-dragdrop .fc .fc-button-group .ajax-file-upload + a, .ajax-upload-dragdrop .fc .fc-button-group .swal2-modal .swal2-buttonswrapper .ajax-file-upload + .swal2-styled.swal2-cancel, .swal2-modal .swal2-buttonswrapper .ajax-upload-dragdrop .fc .fc-button-group .ajax-file-upload + .swal2-styled.swal2-cancel, .ajax-upload-dragdrop .fc .fc-button-group .swal2-modal .swal2-buttonswrapper .ajax-file-upload + .swal2-styled.swal2-confirm, .swal2-modal .swal2-buttonswrapper .ajax-upload-dragdrop .fc .fc-button-group .ajax-file-upload + .swal2-styled.swal2-confirm, .ajax-upload-dragdrop .fc .fc-button-group .swal2-modal .swal2-buttonswrapper .ajax-file-upload + .swal2-styled, .swal2-modal .swal2-buttonswrapper .ajax-upload-dragdrop .fc .fc-button-group .ajax-file-upload + .swal2-styled, .fc .fc-button-group .ajax-upload-dragdrop .btn + .ajax-file-upload, .fc .fc-button-group .ajax-upload-dragdrop .wizard > .actions a + .ajax-file-upload, .wizard > .actions .fc .fc-button-group .ajax-upload-dragdrop a + .ajax-file-upload, .fc .fc-button-group .ajax-upload-dragdrop .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-cancel + .ajax-file-upload, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .ajax-upload-dragdrop .swal2-styled.swal2-cancel + .ajax-file-upload, .fc .fc-button-group .ajax-upload-dragdrop .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-confirm + .ajax-file-upload, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .ajax-upload-dragdrop .swal2-styled.swal2-confirm + .ajax-file-upload, .fc .fc-button-group .ajax-upload-dragdrop .swal2-modal .swal2-buttonswrapper .swal2-styled + .ajax-file-upload, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .ajax-upload-dragdrop .swal2-styled + .ajax-file-upload, .ajax-upload-dragdrop .fc .fc-button-group .btn + .ajax-file-upload, .ajax-upload-dragdrop .fc .fc-button-group .wizard > .actions a + .ajax-file-upload, .wizard > .actions .ajax-upload-dragdrop .fc .fc-button-group a + .ajax-file-upload, .ajax-upload-dragdrop .fc .fc-button-group .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-cancel + .ajax-file-upload, .swal2-modal .swal2-buttonswrapper .ajax-upload-dragdrop .fc .fc-button-group .swal2-styled.swal2-cancel + .ajax-file-upload, .ajax-upload-dragdrop .fc .fc-button-group .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-confirm + .ajax-file-upload, .swal2-modal .swal2-buttonswrapper .ajax-upload-dragdrop .fc .fc-button-group .swal2-styled.swal2-confirm + .ajax-file-upload, .ajax-upload-dragdrop .fc .fc-button-group .swal2-modal .swal2-buttonswrapper .swal2-styled + .ajax-file-upload, .swal2-modal .swal2-buttonswrapper .ajax-upload-dragdrop .fc .fc-button-group .swal2-styled + .ajax-file-upload, .fc .fc-button-group .ajax-upload-dragdrop .ajax-file-upload + .ajax-file-upload, .ajax-upload-dragdrop .fc .fc-button-group .ajax-file-upload + .ajax-file-upload, .btn-group .fc button + .btn, .btn-group .fc .wizard > .actions button + a, .wizard > .actions .btn-group .fc button + a, .btn-group .fc .swal2-modal .swal2-buttonswrapper button + .swal2-styled.swal2-cancel, .swal2-modal .swal2-buttonswrapper .btn-group .fc button + .swal2-styled.swal2-cancel, .btn-group .fc .swal2-modal .swal2-buttonswrapper button + .swal2-styled.swal2-confirm, .swal2-modal .swal2-buttonswrapper .btn-group .fc button + .swal2-styled.swal2-confirm, .btn-group .fc .swal2-modal .swal2-buttonswrapper button + .swal2-styled, .swal2-modal .swal2-buttonswrapper .btn-group .fc button + .swal2-styled, .btn-group .fc .ajax-upload-dragdrop button + .ajax-file-upload, .ajax-upload-dragdrop .btn-group .fc button + .ajax-file-upload, .fc .fc-button-group .fc button + .btn, .fc .fc-button-group .fc .wizard > .actions button + a, .wizard > .actions .fc .fc-button-group .fc button + a, .fc .fc-button-group .fc .swal2-modal .swal2-buttonswrapper button + .swal2-styled.swal2-cancel, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .fc button + .swal2-styled.swal2-cancel, .fc .fc-button-group .fc .swal2-modal .swal2-buttonswrapper button + .swal2-styled.swal2-confirm, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .fc button + .swal2-styled.swal2-confirm, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .fc button + .swal2-styled, .ajax-upload-dragdrop .fc .fc-button-group .fc button + .ajax-file-upload, .fc .btn-group button + .btn, .fc .btn-group .wizard > .actions button + a, .wizard > .actions .fc .btn-group button + a, .fc .btn-group .swal2-modal .swal2-buttonswrapper button + .swal2-styled.swal2-cancel, .swal2-modal .swal2-buttonswrapper .fc .btn-group button + .swal2-styled.swal2-cancel, .fc .btn-group .swal2-modal .swal2-buttonswrapper button + .swal2-styled.swal2-confirm, .swal2-modal .swal2-buttonswrapper .fc .btn-group button + .swal2-styled.swal2-confirm, .fc .btn-group .swal2-modal .swal2-buttonswrapper button + .swal2-styled, .swal2-modal .swal2-buttonswrapper .fc .btn-group button + .swal2-styled, .fc .btn-group .ajax-upload-dragdrop button + .ajax-file-upload, .ajax-upload-dragdrop .fc .btn-group button + .ajax-file-upload, .fc .fc-button-group button + .btn, .fc .fc-button-group .wizard > .actions button + a, .wizard > .actions .fc .fc-button-group button + a, .fc .fc-button-group .swal2-modal .swal2-buttonswrapper button + .swal2-styled.swal2-cancel, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group button + .swal2-styled.swal2-cancel, .fc .fc-button-group .swal2-modal .swal2-buttonswrapper button + .swal2-styled.swal2-confirm, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group button + .swal2-styled.swal2-confirm, .fc .fc-button-group .swal2-modal .swal2-buttonswrapper button + .swal2-styled, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group button + .swal2-styled, .fc .fc-button-group .ajax-upload-dragdrop button + .ajax-file-upload, .ajax-upload-dragdrop .fc .fc-button-group button + .ajax-file-upload, .btn-group .fc .btn + button, .btn-group .fc .wizard > .actions a + button, .wizard > .actions .btn-group .fc a + button, .btn-group .fc .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-cancel + button, .swal2-modal .swal2-buttonswrapper .btn-group .fc .swal2-styled.swal2-cancel + button, .btn-group .fc .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-confirm + button, .swal2-modal .swal2-buttonswrapper .btn-group .fc .swal2-styled.swal2-confirm + button, .btn-group .fc .swal2-modal .swal2-buttonswrapper .swal2-styled + button, .swal2-modal .swal2-buttonswrapper .btn-group .fc .swal2-styled + button, .btn-group .fc .ajax-upload-dragdrop .ajax-file-upload + button, .ajax-upload-dragdrop .btn-group .fc .ajax-file-upload + button, .fc .fc-button-group .fc .btn + button, .fc .fc-button-group .fc .wizard > .actions a + button, .wizard > .actions .fc .fc-button-group .fc a + button, .fc .fc-button-group .fc .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-cancel + button, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .fc .swal2-styled.swal2-cancel + button, .fc .fc-button-group .fc .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-confirm + button, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .fc .swal2-styled.swal2-confirm + button, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .fc .swal2-styled + button, .ajax-upload-dragdrop .fc .fc-button-group .fc .ajax-file-upload + button, .fc .btn-group .btn + button, .fc .btn-group .wizard > .actions a + button, .wizard > .actions .fc .btn-group a + button, .fc .btn-group .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-cancel + button, .swal2-modal .swal2-buttonswrapper .fc .btn-group .swal2-styled.swal2-cancel + button, .fc .btn-group .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-confirm + button, .swal2-modal .swal2-buttonswrapper .fc .btn-group .swal2-styled.swal2-confirm + button, .fc .btn-group .swal2-modal .swal2-buttonswrapper .swal2-styled + button, .swal2-modal .swal2-buttonswrapper .fc .btn-group .swal2-styled + button, .fc .btn-group .ajax-upload-dragdrop .ajax-file-upload + button, .ajax-upload-dragdrop .fc .btn-group .ajax-file-upload + button, .fc .fc-button-group .btn + button, .fc .fc-button-group .wizard > .actions a + button, .wizard > .actions .fc .fc-button-group a + button, .fc .fc-button-group .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-cancel + button, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .swal2-styled.swal2-cancel + button, .fc .fc-button-group .swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-confirm + button, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .swal2-styled.swal2-confirm + button, .fc .fc-button-group .swal2-modal .swal2-buttonswrapper .swal2-styled + button, .swal2-modal .swal2-buttonswrapper .fc .fc-button-group .swal2-styled + button, .fc .fc-button-group .ajax-upload-dragdrop .ajax-file-upload + button, .ajax-upload-dragdrop .fc .fc-button-group .ajax-file-upload + button, .btn-group .fc button + button, .fc .fc-button-group .fc button + button, .fc .btn-group button + button, .fc .fc-button-group button + button {
   border-left: 0;
 }
 
@@ -12983,6 +13857,10 @@ code {
   color: #6c7293;
   font-size: 0.875rem;
 }
+.form-control:-ms-input-placeholder, .typeahead:-ms-input-placeholder, .tt-query:-ms-input-placeholder, .tt-hint:-ms-input-placeholder, .select2-container--default .select2-selection--single .select2-search__field:-ms-input-placeholder, .select2-container--default .select2-selection--single:-ms-input-placeholder, .jsgrid .jsgrid-table .jsgrid-filter-row input[type=number]:-ms-input-placeholder, .jsgrid .jsgrid-table .jsgrid-filter-row input[type=text]:-ms-input-placeholder, .jsgrid .jsgrid-table .jsgrid-filter-row select:-ms-input-placeholder, .dataTables_wrapper select:-ms-input-placeholder, .asColorPicker-input:-ms-input-placeholder {
+  color: #6c7293;
+  font-size: 0.875rem;
+}
 .form-control::placeholder, .typeahead::placeholder,
 .tt-query::placeholder,
 .tt-hint::placeholder, .select2-container--default .select2-selection--single .select2-search__field::placeholder, .select2-container--default .select2-selection--single::placeholder, .jsgrid .jsgrid-table .jsgrid-filter-row input[type=number]::placeholder, .jsgrid .jsgrid-table .jsgrid-filter-row input[type=text]::placeholder,
@@ -13210,6 +14088,7 @@ div.tagsinput {
   margin: 0 0 0 -0.1em;
   background: #00d25b;
   transform-origin: 50% 250%;
+  -webkit-animation: rota 1.13s linear infinite, opa 3.67s ease-in-out infinite alternate;
   animation: rota 1.13s linear infinite, opa 3.67s ease-in-out infinite alternate;
 }
 #pgloading .bokeh li:nth-child(2) {
@@ -13218,6 +14097,7 @@ div.tagsinput {
   margin: -0.1em 0 0 0;
   background: #fc424a;
   transform-origin: -150% 50%;
+  -webkit-animation: rota 1.86s linear infinite, opa 4.29s ease-in-out infinite alternate;
   animation: rota 1.86s linear infinite, opa 4.29s ease-in-out infinite alternate;
 }
 #pgloading .bokeh li:nth-child(3) {
@@ -13226,6 +14106,7 @@ div.tagsinput {
   margin: 0 0 0 -0.1em;
   background: #ffab00;
   transform-origin: 50% -150%;
+  -webkit-animation: rota 1.45s linear infinite, opa 5.12s ease-in-out infinite alternate;
   animation: rota 1.45s linear infinite, opa 5.12s ease-in-out infinite alternate;
 }
 #pgloading .bokeh li:nth-child(4) {
@@ -13234,11 +14115,53 @@ div.tagsinput {
   margin: -0.1em 0 0 0;
   background: #0090e7;
   transform-origin: 250% 50%;
+  -webkit-animation: rota 1.72s linear infinite, opa 5.25s ease-in-out infinite alternate;
   animation: rota 1.72s linear infinite, opa 5.25s ease-in-out infinite alternate;
+}
+
+@-webkit-keyframes rota {
+  to {
+    -webkit-transform: rotate(360deg);
+  }
 }
 @keyframes rota {
   to {
     transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes opa {
+  12.0% {
+    opacity: 0.8;
+  }
+  19.5% {
+    opacity: 0.88;
+  }
+  37.2% {
+    opacity: 0.64;
+  }
+  40.5% {
+    opacity: 0.52;
+  }
+  52.7% {
+    opacity: 0.69;
+  }
+  60.2% {
+    opacity: 0.6;
+  }
+  66.6% {
+    opacity: 0.52;
+  }
+  70.0% {
+    opacity: 0.63;
+  }
+  79.9% {
+    opacity: 0.6;
+  }
+  84.2% {
+    opacity: 0.75;
+  }
+  91.0% {
+    opacity: 0.87;
   }
 }
 @keyframes opa {
@@ -13310,8 +14233,10 @@ div.tagsinput {
   transform-origin: center;
   transform: translate(-50%, -50%) rotate(-45deg);
   background-color: transparent;
-  animation: bigcon 2s infinite linear;
-  animation-delay: 0.25s;
+  -webkit-animation: bigcon 2s infinite linear;
+          animation: bigcon 2s infinite linear;
+  -webkit-animation-delay: 0.25s;
+          animation-delay: 0.25s;
 }
 
 .b {
@@ -13322,7 +14247,8 @@ div.tagsinput {
 .s {
   width: 15px;
   height: 15px;
-  animation: small 2s infinite ease;
+  -webkit-animation: small 2s infinite ease;
+          animation: small 2s infinite ease;
   box-shadow: 0px 2px rgba(0, 0, 0, 0.3);
   background-color: #0090e7;
 }
@@ -13354,39 +14280,59 @@ div.tagsinput {
   box-shadow: 0px 0px 10px #0090e7, 0px 0px 20px #0090e7, 0px 0px 30px #0090e7, 0px 0px 50px #0090e7, 0px 0px 60px #0090e7;
   z-index: 1;
   background-color: #0090e7;
-  animation: bigball 1s infinite linear;
+  -webkit-animation: bigball 1s infinite linear;
+          animation: bigball 1s infinite linear;
 }
 
 .sb1 {
-  animation-delay: -1.75s;
+  -webkit-animation-delay: -1.75s;
+          animation-delay: -1.75s;
 }
 
 .sb6 {
-  animation-delay: -1.5s;
+  -webkit-animation-delay: -1.5s;
+          animation-delay: -1.5s;
 }
 
 .sb2 {
-  animation-delay: -1.25s;
+  -webkit-animation-delay: -1.25s;
+          animation-delay: -1.25s;
 }
 
 .sb7 {
-  animation-delay: -1s;
+  -webkit-animation-delay: -1s;
+          animation-delay: -1s;
 }
 
 .sb3 {
-  animation-delay: -0.75s;
+  -webkit-animation-delay: -0.75s;
+          animation-delay: -0.75s;
 }
 
 .sb8 {
-  animation-delay: -0.5s;
+  -webkit-animation-delay: -0.5s;
+          animation-delay: -0.5s;
 }
 
 .sb4 {
-  animation-delay: -0.25s;
+  -webkit-animation-delay: -0.25s;
+          animation-delay: -0.25s;
 }
 
 .sb5 {
-  animation-delay: 0s;
+  -webkit-animation-delay: 0s;
+          animation-delay: 0s;
+}
+
+@-webkit-keyframes bigcon {
+  0% {
+    transform-origin: center;
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+  100% {
+    transform-origin: center;
+    transform: translate(-50%, -50%) rotate(405deg);
+  }
 }
 
 @keyframes bigcon {
@@ -13397,6 +14343,27 @@ div.tagsinput {
   100% {
     transform-origin: center;
     transform: translate(-50%, -50%) rotate(405deg);
+  }
+}
+@-webkit-keyframes small {
+  0% {
+    transform: scale(1);
+    background-color: #4ebcff;
+  }
+  10% {
+    transform: scale(1.3);
+    background-color: #0090e7;
+  }
+  15% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(1);
+    background-color: #0090e7;
+  }
+  100% {
+    transform: scale(1);
+    background-color: #0090e7;
   }
 }
 @keyframes small {
@@ -13428,7 +14395,24 @@ div.tagsinput {
   color: #ffab00;
   margin: 80px auto;
   box-shadow: 15px 15px 0 0, -15px -15px 0 0, 15px -15px 0 0, -15px 15px 0 0, 0 15px 0 0, 15px 0 0 0, -15px 0 0 0, 0 -15px 0 0;
-  animation: anim 2s linear infinite;
+  -webkit-animation: anim 2s linear infinite;
+          animation: anim 2s linear infinite;
+}
+
+@-webkit-keyframes anim {
+  0% {
+    -webkit-filter: hue-rotate(0deg);
+  }
+  50% {
+    box-shadow: 20px 20px 0 0, -20px -20px 0 0, 20px -20px 0 0, -20px 20px 0 0, 0 10px 0 0, 10px 0 0 0, -10px 0 0 0, 0 -10px 0 0;
+  }
+  75% {
+    box-shadow: 20px 20px 0 0, -20px -20px 0 0, 20px -20px 0 0, -20px 20px 0 0, 0 10px 0 0, 10px 0 0 0, -10px 0 0 0, 0 -10px 0 0;
+  }
+  100% {
+    transform: rotate(360deg);
+    -webkit-filter: hue-rotate(360deg);
+  }
 }
 
 @keyframes anim {
@@ -13447,6 +14431,17 @@ div.tagsinput {
   }
 }
 /* Square box loader */
+@-webkit-keyframes dyinglight {
+  15% {
+    transform: scale(1.6);
+  }
+  50% {
+    transform: rotate(-89deg);
+  }
+  100% {
+    transform: rotate(-90deg);
+  }
+}
 @keyframes dyinglight {
   15% {
     transform: scale(1.6);
@@ -13480,7 +14475,8 @@ div.tagsinput {
   bottom: 0;
   right: 0;
   transform-origin: 50% 50% 0;
-  animation: dyinglight 1s ease infinite;
+  -webkit-animation: dyinglight 1s ease infinite;
+          animation: dyinglight 1s ease infinite;
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
 }
@@ -13545,7 +14541,8 @@ div.tagsinput {
 
 .circle-loader:before {
   z-index: 100;
-  animation: spin 1s infinite;
+  -webkit-animation: spin 1s infinite;
+          animation: spin 1s infinite;
 }
 
 .circle-loader:after {
@@ -13579,15 +14576,18 @@ div.tagsinput {
 }
 
 .jumping-dots-loader span:nth-child(1) {
-  animation: bounce 1s ease-in-out infinite;
+  -webkit-animation: bounce 1s ease-in-out infinite;
+          animation: bounce 1s ease-in-out infinite;
 }
 
 .jumping-dots-loader span:nth-child(2) {
-  animation: bounce 1s ease-in-out 0.33s infinite;
+  -webkit-animation: bounce 1s ease-in-out 0.33s infinite;
+          animation: bounce 1s ease-in-out 0.33s infinite;
 }
 
 .jumping-dots-loader span:nth-child(3) {
-  animation: bounce 1s ease-in-out 0.66s infinite;
+  -webkit-animation: bounce 1s ease-in-out 0.66s infinite;
+          animation: bounce 1s ease-in-out 0.66s infinite;
 }
 
 @keyframes bounce {
@@ -13615,19 +14615,32 @@ div.tagsinput {
 }
 
 .bar-loader span:nth-child(1) {
-  animation: grow 1s ease-in-out infinite;
+  -webkit-animation: grow 1s ease-in-out infinite;
+          animation: grow 1s ease-in-out infinite;
 }
 
 .bar-loader span:nth-child(2) {
-  animation: grow 1s ease-in-out 0.15s infinite;
+  -webkit-animation: grow 1s ease-in-out 0.15s infinite;
+          animation: grow 1s ease-in-out 0.15s infinite;
 }
 
 .bar-loader span:nth-child(3) {
-  animation: grow 1s ease-in-out 0.3s infinite;
+  -webkit-animation: grow 1s ease-in-out 0.3s infinite;
+          animation: grow 1s ease-in-out 0.3s infinite;
 }
 
 .bar-loader span:nth-child(4) {
-  animation: grow 1s ease-in-out 0.45s infinite;
+  -webkit-animation: grow 1s ease-in-out 0.45s infinite;
+          animation: grow 1s ease-in-out 0.45s infinite;
+}
+
+@-webkit-keyframes grow {
+  0%, 100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(1.8);
+  }
 }
 
 @keyframes grow {
@@ -13655,12 +14668,29 @@ div.tagsinput {
   top: 0;
   left: calc(50% - 10px);
   background-color: rgba(0, 210, 91, 0.7);
-  animation: squaremove 1s ease-in-out infinite;
+  -webkit-animation: squaremove 1s ease-in-out infinite;
+          animation: squaremove 1s ease-in-out infinite;
 }
 
 .square-path-loader:after {
   bottom: 0;
-  animation-delay: 0.5s;
+  -webkit-animation-delay: 0.5s;
+          animation-delay: 0.5s;
+}
+
+@-webkit-keyframes squaremove {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0);
+  }
+  25% {
+    transform: translate(40px, 40px) rotate(45deg);
+  }
+  50% {
+    transform: translate(0px, 80px) rotate(0deg);
+  }
+  75% {
+    transform: translate(-40px, 40px) rotate(45deg);
+  }
 }
 
 @keyframes squaremove {
@@ -13697,15 +14727,27 @@ div.tagsinput {
 }
 
 .dot-opacity-loader span:nth-child(1) {
-  animation: opacitychange 1s ease-in-out infinite;
+  -webkit-animation: opacitychange 1s ease-in-out infinite;
+          animation: opacitychange 1s ease-in-out infinite;
 }
 
 .dot-opacity-loader span:nth-child(2) {
-  animation: opacitychange 1s ease-in-out 0.33s infinite;
+  -webkit-animation: opacitychange 1s ease-in-out 0.33s infinite;
+          animation: opacitychange 1s ease-in-out 0.33s infinite;
 }
 
 .dot-opacity-loader span:nth-child(3) {
-  animation: opacitychange 1s ease-in-out 0.66s infinite;
+  -webkit-animation: opacitychange 1s ease-in-out 0.66s infinite;
+          animation: opacitychange 1s ease-in-out 0.66s infinite;
+}
+
+@-webkit-keyframes opacitychange {
+  0%, 100% {
+    opacity: 0;
+  }
+  60% {
+    opacity: 1;
+  }
 }
 
 @keyframes opacitychange {
@@ -13735,7 +14777,8 @@ div.tagsinput {
   width: 50px;
   height: 50px;
   background-color: rgba(0, 210, 91, 0.7);
-  animation: flip 1s infinite;
+  -webkit-animation: flip 1s infinite;
+          animation: flip 1s infinite;
 }
 
 @keyframes flip {
@@ -13766,7 +14809,17 @@ div.tagsinput {
   top: calc(50% - 10px);
   left: 0px;
   background-color: rgba(252, 66, 74, 0.7);
-  animation: rotatemove 1s infinite;
+  -webkit-animation: rotatemove 1s infinite;
+          animation: rotatemove 1s infinite;
+}
+
+@-webkit-keyframes rotatemove {
+  0% {
+    transform: scale(1) translateX(0px);
+  }
+  100% {
+    transform: scale(2) translateX(45px);
+  }
 }
 
 @keyframes rotatemove {
@@ -14279,7 +15332,8 @@ div.tagsinput {
 }
 .list-wrapper .completed {
   text-decoration: line-through;
-  text-decoration-color: #0090e7;
+  -webkit-text-decoration-color: #0090e7;
+          text-decoration-color: #0090e7;
 }
 /*-------------------------------------------------------------------*/
 /* === Email === */
@@ -15044,22 +16098,22 @@ body.avgrund-active {
 }
 @media (max-width: 991px) {
   .datepicker-custom .datepicker.datepicker-inline .datepicker-days .table-condensed thead tr th.next, .datepicker-custom .datepicker.datepicker-inline .datepicker-days .table-condensed thead tr th.prev, .datepicker-custom .datepicker.datepicker-inline .datepicker-days .table-condensed thead tr th.datepicker-switch, .datepicker-custom .datepicker.datepicker-inline .datepicker-days .table-condensed thead tr th.dow,
-  .datepicker-custom .datepicker.datepicker-inline .datepicker-months .table-condensed thead tr th.next,
-  .datepicker-custom .datepicker.datepicker-inline .datepicker-months .table-condensed thead tr th.prev,
-  .datepicker-custom .datepicker.datepicker-inline .datepicker-months .table-condensed thead tr th.datepicker-switch,
-  .datepicker-custom .datepicker.datepicker-inline .datepicker-months .table-condensed thead tr th.dow,
-  .datepicker-custom .datepicker.datepicker-inline .datepicker-years .table-condensed thead tr th.next,
-  .datepicker-custom .datepicker.datepicker-inline .datepicker-years .table-condensed thead tr th.prev,
-  .datepicker-custom .datepicker.datepicker-inline .datepicker-years .table-condensed thead tr th.datepicker-switch,
-  .datepicker-custom .datepicker.datepicker-inline .datepicker-years .table-condensed thead tr th.dow,
-  .datepicker-custom .datepicker.datepicker-inline .datepicker-decades .table-condensed thead tr th.next,
-  .datepicker-custom .datepicker.datepicker-inline .datepicker-decades .table-condensed thead tr th.prev,
-  .datepicker-custom .datepicker.datepicker-inline .datepicker-decades .table-condensed thead tr th.datepicker-switch,
-  .datepicker-custom .datepicker.datepicker-inline .datepicker-decades .table-condensed thead tr th.dow,
-  .datepicker-custom .datepicker.datepicker-inline .datepicker-centuries .table-condensed thead tr th.next,
-  .datepicker-custom .datepicker.datepicker-inline .datepicker-centuries .table-condensed thead tr th.prev,
-  .datepicker-custom .datepicker.datepicker-inline .datepicker-centuries .table-condensed thead tr th.datepicker-switch,
-  .datepicker-custom .datepicker.datepicker-inline .datepicker-centuries .table-condensed thead tr th.dow {
+.datepicker-custom .datepicker.datepicker-inline .datepicker-months .table-condensed thead tr th.next,
+.datepicker-custom .datepicker.datepicker-inline .datepicker-months .table-condensed thead tr th.prev,
+.datepicker-custom .datepicker.datepicker-inline .datepicker-months .table-condensed thead tr th.datepicker-switch,
+.datepicker-custom .datepicker.datepicker-inline .datepicker-months .table-condensed thead tr th.dow,
+.datepicker-custom .datepicker.datepicker-inline .datepicker-years .table-condensed thead tr th.next,
+.datepicker-custom .datepicker.datepicker-inline .datepicker-years .table-condensed thead tr th.prev,
+.datepicker-custom .datepicker.datepicker-inline .datepicker-years .table-condensed thead tr th.datepicker-switch,
+.datepicker-custom .datepicker.datepicker-inline .datepicker-years .table-condensed thead tr th.dow,
+.datepicker-custom .datepicker.datepicker-inline .datepicker-decades .table-condensed thead tr th.next,
+.datepicker-custom .datepicker.datepicker-inline .datepicker-decades .table-condensed thead tr th.prev,
+.datepicker-custom .datepicker.datepicker-inline .datepicker-decades .table-condensed thead tr th.datepicker-switch,
+.datepicker-custom .datepicker.datepicker-inline .datepicker-decades .table-condensed thead tr th.dow,
+.datepicker-custom .datepicker.datepicker-inline .datepicker-centuries .table-condensed thead tr th.next,
+.datepicker-custom .datepicker.datepicker-inline .datepicker-centuries .table-condensed thead tr th.prev,
+.datepicker-custom .datepicker.datepicker-inline .datepicker-centuries .table-condensed thead tr th.datepicker-switch,
+.datepicker-custom .datepicker.datepicker-inline .datepicker-centuries .table-condensed thead tr th.dow {
     padding: 2rem 0.5rem;
   }
 }
@@ -15084,22 +16138,22 @@ body.avgrund-active {
 }
 @media (max-width: 991px) {
   .datepicker-custom .datepicker.datepicker-inline .datepicker-days .table-condensed thead tr th.next:first-child, .datepicker-custom .datepicker.datepicker-inline .datepicker-days .table-condensed thead tr th.prev:first-child, .datepicker-custom .datepicker.datepicker-inline .datepicker-days .table-condensed thead tr th.datepicker-switch:first-child, .datepicker-custom .datepicker.datepicker-inline .datepicker-days .table-condensed thead tr th.dow:first-child,
-  .datepicker-custom .datepicker.datepicker-inline .datepicker-months .table-condensed thead tr th.next:first-child,
-  .datepicker-custom .datepicker.datepicker-inline .datepicker-months .table-condensed thead tr th.prev:first-child,
-  .datepicker-custom .datepicker.datepicker-inline .datepicker-months .table-condensed thead tr th.datepicker-switch:first-child,
-  .datepicker-custom .datepicker.datepicker-inline .datepicker-months .table-condensed thead tr th.dow:first-child,
-  .datepicker-custom .datepicker.datepicker-inline .datepicker-years .table-condensed thead tr th.next:first-child,
-  .datepicker-custom .datepicker.datepicker-inline .datepicker-years .table-condensed thead tr th.prev:first-child,
-  .datepicker-custom .datepicker.datepicker-inline .datepicker-years .table-condensed thead tr th.datepicker-switch:first-child,
-  .datepicker-custom .datepicker.datepicker-inline .datepicker-years .table-condensed thead tr th.dow:first-child,
-  .datepicker-custom .datepicker.datepicker-inline .datepicker-decades .table-condensed thead tr th.next:first-child,
-  .datepicker-custom .datepicker.datepicker-inline .datepicker-decades .table-condensed thead tr th.prev:first-child,
-  .datepicker-custom .datepicker.datepicker-inline .datepicker-decades .table-condensed thead tr th.datepicker-switch:first-child,
-  .datepicker-custom .datepicker.datepicker-inline .datepicker-decades .table-condensed thead tr th.dow:first-child,
-  .datepicker-custom .datepicker.datepicker-inline .datepicker-centuries .table-condensed thead tr th.next:first-child,
-  .datepicker-custom .datepicker.datepicker-inline .datepicker-centuries .table-condensed thead tr th.prev:first-child,
-  .datepicker-custom .datepicker.datepicker-inline .datepicker-centuries .table-condensed thead tr th.datepicker-switch:first-child,
-  .datepicker-custom .datepicker.datepicker-inline .datepicker-centuries .table-condensed thead tr th.dow:first-child {
+.datepicker-custom .datepicker.datepicker-inline .datepicker-months .table-condensed thead tr th.next:first-child,
+.datepicker-custom .datepicker.datepicker-inline .datepicker-months .table-condensed thead tr th.prev:first-child,
+.datepicker-custom .datepicker.datepicker-inline .datepicker-months .table-condensed thead tr th.datepicker-switch:first-child,
+.datepicker-custom .datepicker.datepicker-inline .datepicker-months .table-condensed thead tr th.dow:first-child,
+.datepicker-custom .datepicker.datepicker-inline .datepicker-years .table-condensed thead tr th.next:first-child,
+.datepicker-custom .datepicker.datepicker-inline .datepicker-years .table-condensed thead tr th.prev:first-child,
+.datepicker-custom .datepicker.datepicker-inline .datepicker-years .table-condensed thead tr th.datepicker-switch:first-child,
+.datepicker-custom .datepicker.datepicker-inline .datepicker-years .table-condensed thead tr th.dow:first-child,
+.datepicker-custom .datepicker.datepicker-inline .datepicker-decades .table-condensed thead tr th.next:first-child,
+.datepicker-custom .datepicker.datepicker-inline .datepicker-decades .table-condensed thead tr th.prev:first-child,
+.datepicker-custom .datepicker.datepicker-inline .datepicker-decades .table-condensed thead tr th.datepicker-switch:first-child,
+.datepicker-custom .datepicker.datepicker-inline .datepicker-decades .table-condensed thead tr th.dow:first-child,
+.datepicker-custom .datepicker.datepicker-inline .datepicker-centuries .table-condensed thead tr th.next:first-child,
+.datepicker-custom .datepicker.datepicker-inline .datepicker-centuries .table-condensed thead tr th.prev:first-child,
+.datepicker-custom .datepicker.datepicker-inline .datepicker-centuries .table-condensed thead tr th.datepicker-switch:first-child,
+.datepicker-custom .datepicker.datepicker-inline .datepicker-centuries .table-condensed thead tr th.dow:first-child {
     padding-left: 0.5rem;
   }
 }
@@ -15124,22 +16178,22 @@ body.avgrund-active {
 }
 @media (max-width: 991px) {
   .datepicker-custom .datepicker.datepicker-inline .datepicker-days .table-condensed thead tr th.next:last-child, .datepicker-custom .datepicker.datepicker-inline .datepicker-days .table-condensed thead tr th.prev:last-child, .datepicker-custom .datepicker.datepicker-inline .datepicker-days .table-condensed thead tr th.datepicker-switch:last-child, .datepicker-custom .datepicker.datepicker-inline .datepicker-days .table-condensed thead tr th.dow:last-child,
-  .datepicker-custom .datepicker.datepicker-inline .datepicker-months .table-condensed thead tr th.next:last-child,
-  .datepicker-custom .datepicker.datepicker-inline .datepicker-months .table-condensed thead tr th.prev:last-child,
-  .datepicker-custom .datepicker.datepicker-inline .datepicker-months .table-condensed thead tr th.datepicker-switch:last-child,
-  .datepicker-custom .datepicker.datepicker-inline .datepicker-months .table-condensed thead tr th.dow:last-child,
-  .datepicker-custom .datepicker.datepicker-inline .datepicker-years .table-condensed thead tr th.next:last-child,
-  .datepicker-custom .datepicker.datepicker-inline .datepicker-years .table-condensed thead tr th.prev:last-child,
-  .datepicker-custom .datepicker.datepicker-inline .datepicker-years .table-condensed thead tr th.datepicker-switch:last-child,
-  .datepicker-custom .datepicker.datepicker-inline .datepicker-years .table-condensed thead tr th.dow:last-child,
-  .datepicker-custom .datepicker.datepicker-inline .datepicker-decades .table-condensed thead tr th.next:last-child,
-  .datepicker-custom .datepicker.datepicker-inline .datepicker-decades .table-condensed thead tr th.prev:last-child,
-  .datepicker-custom .datepicker.datepicker-inline .datepicker-decades .table-condensed thead tr th.datepicker-switch:last-child,
-  .datepicker-custom .datepicker.datepicker-inline .datepicker-decades .table-condensed thead tr th.dow:last-child,
-  .datepicker-custom .datepicker.datepicker-inline .datepicker-centuries .table-condensed thead tr th.next:last-child,
-  .datepicker-custom .datepicker.datepicker-inline .datepicker-centuries .table-condensed thead tr th.prev:last-child,
-  .datepicker-custom .datepicker.datepicker-inline .datepicker-centuries .table-condensed thead tr th.datepicker-switch:last-child,
-  .datepicker-custom .datepicker.datepicker-inline .datepicker-centuries .table-condensed thead tr th.dow:last-child {
+.datepicker-custom .datepicker.datepicker-inline .datepicker-months .table-condensed thead tr th.next:last-child,
+.datepicker-custom .datepicker.datepicker-inline .datepicker-months .table-condensed thead tr th.prev:last-child,
+.datepicker-custom .datepicker.datepicker-inline .datepicker-months .table-condensed thead tr th.datepicker-switch:last-child,
+.datepicker-custom .datepicker.datepicker-inline .datepicker-months .table-condensed thead tr th.dow:last-child,
+.datepicker-custom .datepicker.datepicker-inline .datepicker-years .table-condensed thead tr th.next:last-child,
+.datepicker-custom .datepicker.datepicker-inline .datepicker-years .table-condensed thead tr th.prev:last-child,
+.datepicker-custom .datepicker.datepicker-inline .datepicker-years .table-condensed thead tr th.datepicker-switch:last-child,
+.datepicker-custom .datepicker.datepicker-inline .datepicker-years .table-condensed thead tr th.dow:last-child,
+.datepicker-custom .datepicker.datepicker-inline .datepicker-decades .table-condensed thead tr th.next:last-child,
+.datepicker-custom .datepicker.datepicker-inline .datepicker-decades .table-condensed thead tr th.prev:last-child,
+.datepicker-custom .datepicker.datepicker-inline .datepicker-decades .table-condensed thead tr th.datepicker-switch:last-child,
+.datepicker-custom .datepicker.datepicker-inline .datepicker-decades .table-condensed thead tr th.dow:last-child,
+.datepicker-custom .datepicker.datepicker-inline .datepicker-centuries .table-condensed thead tr th.next:last-child,
+.datepicker-custom .datepicker.datepicker-inline .datepicker-centuries .table-condensed thead tr th.prev:last-child,
+.datepicker-custom .datepicker.datepicker-inline .datepicker-centuries .table-condensed thead tr th.datepicker-switch:last-child,
+.datepicker-custom .datepicker.datepicker-inline .datepicker-centuries .table-condensed thead tr th.dow:last-child {
     padding-right: 0.5rem;
   }
 }
@@ -15152,10 +16206,10 @@ body.avgrund-active {
 }
 @media (max-width: 991px) {
   .datepicker-custom .datepicker.datepicker-inline .datepicker-days .table-condensed thead tr th.datepicker-switch,
-  .datepicker-custom .datepicker.datepicker-inline .datepicker-months .table-condensed thead tr th.datepicker-switch,
-  .datepicker-custom .datepicker.datepicker-inline .datepicker-years .table-condensed thead tr th.datepicker-switch,
-  .datepicker-custom .datepicker.datepicker-inline .datepicker-decades .table-condensed thead tr th.datepicker-switch,
-  .datepicker-custom .datepicker.datepicker-inline .datepicker-centuries .table-condensed thead tr th.datepicker-switch {
+.datepicker-custom .datepicker.datepicker-inline .datepicker-months .table-condensed thead tr th.datepicker-switch,
+.datepicker-custom .datepicker.datepicker-inline .datepicker-years .table-condensed thead tr th.datepicker-switch,
+.datepicker-custom .datepicker.datepicker-inline .datepicker-decades .table-condensed thead tr th.datepicker-switch,
+.datepicker-custom .datepicker.datepicker-inline .datepicker-centuries .table-condensed thead tr th.datepicker-switch {
     font-size: 1rem;
   }
 }
@@ -15180,6 +16234,7 @@ body.avgrund-active {
 .dropify-wrapper:hover {
   background-size: 30px 30px;
   background-image: linear-gradient(135deg, #2e2f32 25%, transparent 25%, transparent 50%, #2e2f32 50%, #2e2f32 75%, transparent 75%, transparent);
+  -webkit-animation: stripes 2s linear infinite;
   animation: stripes 2s linear infinite;
 }
 .dropify-wrapper .dropify-message span.file-icon:before {
@@ -15778,7 +16833,7 @@ body.avgrund-active {
 }
 @media (min-width: 768px) and (max-width: 1200px) {
   .owl-carousel.portfolio-carousel.full-width .owl-nav .owl-prev,
-  .owl-carousel.portfolio-carousel.full-width .owl-nav .owl-next {
+.owl-carousel.portfolio-carousel.full-width .owl-nav .owl-next {
     padding: 0px 2px 19px 0px;
   }
 }
@@ -15796,7 +16851,7 @@ body.avgrund-active {
 }
 @media (min-width: 768px) and (max-width: 1200px) {
   .owl-carousel.portfolio-carousel.full-width .owl-nav .owl-prev i:before,
-  .owl-carousel.portfolio-carousel.full-width .owl-nav .owl-next i:before {
+.owl-carousel.portfolio-carousel.full-width .owl-nav .owl-next i:before {
     width: 20px;
     height: 20px;
     font-size: 0.75rem;
@@ -16913,7 +17968,7 @@ div.tagsinput span.tag a {
 /* Navbar */
 .navbar {
   font-weight: normal;
-  background: #F54748;
+  background: #191c24;
   left: 244px;
   transition: left 0.25s ease;
   -webkit-transition: left 0.25s ease;
@@ -16930,7 +17985,7 @@ div.tagsinput span.tag a {
   -webkit-transition: width 0.25s ease, background 0.25s ease;
   -moz-transition: width 0.25s ease, background 0.25s ease;
   -ms-transition: width 0.25s ease, background 0.25s ease;
-  background: #F54748;
+  background: #191c24;
   width: 244px;
   height: 70px;
 }
@@ -17052,7 +18107,7 @@ div.tagsinput span.tag a {
 .navbar .navbar-menu-wrapper .count-indicator .count-number {
   position: absolute;
   border-radius: 100%;
-  border: 2px solid #F54748;
+  border: 2px solid #191c24;
 }
 .navbar .navbar-menu-wrapper .count-indicator .count-symbol {
   top: 17px;
@@ -17242,6 +18297,10 @@ div.tagsinput span.tag a {
   color: #6c7293;
   font-size: 0.875rem;
 }
+.navbar .navbar-menu-wrapper .search input:-ms-input-placeholder {
+  color: #6c7293;
+  font-size: 0.875rem;
+}
 .navbar .navbar-menu-wrapper .search input::placeholder {
   color: #6c7293;
   font-size: 0.875rem;
@@ -17280,7 +18339,7 @@ div.tagsinput span.tag a {
 /* Sidebar */
 .sidebar {
   min-height: calc(100vh - 70px);
-  background: #f54748;
+  background: #191c24;
   font-weight: normal;
   padding: 0;
   width: 244px;
@@ -17295,7 +18354,7 @@ div.tagsinput span.tag a {
   -webkit-transition: width 0.25s ease, background 0.25s ease;
   -moz-transition: width 0.25s ease, background 0.25s ease;
   -ms-transition: width 0.25s ease, background 0.25s ease;
-  background: #f54748;
+  background: #191c24;
   width: 244px;
   height: 70px;
 }
@@ -17317,10 +18376,10 @@ div.tagsinput span.tag a {
 }
 .sidebar .sidebar-brand-wrapper .sidebar-brand img {
   width: calc(244px - 120px );
-  vertical-align: middle;
   max-width: 100%;
-  height: 35px;
+  height: 28px;
   margin: auto;
+  vertical-align: middle;
 }
 .sidebar .sidebar-brand-wrapper .sidebar-brand.brand-logo-mini {
   display: none;
@@ -17357,7 +18416,7 @@ div.tagsinput span.tag a {
   align-items: center;
   white-space: nowrap;
   padding: 0.8rem 10px 0.8rem 1.188rem;
-  color: white;
+  color: #6c7293;
   transition-duration: 0.45s;
   transition-property: color;
   -webkit-transition-property: color;
@@ -17368,7 +18427,7 @@ div.tagsinput span.tag a {
   color: inherit;
 }
 .sidebar .nav .nav-item .nav-link i.menu-icon {
-  font-size: 2rem;
+  font-size: 1rem;
   line-height: 1;
   margin-left: auto;
   color: rgba(187, 168, 191, 0.9607843137);
@@ -17383,9 +18442,9 @@ div.tagsinput span.tag a {
 .sidebar .nav .nav-item .nav-link i.menu-arrow {
   font: normal normal normal 24px/1 "Material Design Icons";
   line-height: 1;
-  font-size: 2rem;
+  font-size: 1rem;
   margin-left: auto;
-  color: white;
+  color: rgba(108, 114, 147, 0.36);
 }
 .rtl .sidebar .nav .nav-item .nav-link i.menu-arrow {
   margin-left: 0;
@@ -17408,7 +18467,7 @@ div.tagsinput span.tag a {
   margin-left: 1rem;
 }
 .sidebar .nav .nav-item.active > .nav-link {
-  background: white;
+  background: #0f1015;
   position: relative;
 }
 .sidebar .nav .nav-item.active > .nav-link:before {
@@ -17422,7 +18481,7 @@ div.tagsinput span.tag a {
   top: 0;
 }
 .sidebar .nav .nav-item.active > .nav-link .menu-title {
-  color: #272727;
+  color: #ffffff;
 }
 .sidebar .nav .nav-item.active > .nav-link i {
   color: #ffffff;
@@ -17511,7 +18570,7 @@ div.tagsinput span.tag a {
 .sidebar .nav .nav-item.profile .profile-desc .profile-pic .count-indicator .count-number {
   position: absolute;
   border-radius: 100%;
-  border: 2px solid #F54748;
+  border: 2px solid #191c24;
 }
 .sidebar .nav .nav-item.profile .profile-desc .profile-pic .count-indicator .count-symbol {
   top: 17px;
@@ -17547,7 +18606,7 @@ div.tagsinput span.tag a {
 }
 .sidebar .nav .nav-item.profile .profile-desc .mdi-dots-vertical {
   font-size: 20px;
-  color: white;
+  color: #6c7293;
 }
 .sidebar .nav .nav-item.profile .profile-desc .dropdown-menu {
   padding: 0;
@@ -17610,7 +18669,7 @@ div.tagsinput span.tag a {
   padding: 0;
 }
 .sidebar .nav.sub-menu .nav-item .nav-link {
-  color: white;
+  color: #6c7293;
   padding: 0.5rem 0.35rem;
   position: relative;
   font-size: 0.855rem;
@@ -17619,18 +18678,18 @@ div.tagsinput span.tag a {
   border-top: 0;
 }
 .sidebar .nav.sub-menu .nav-item .nav-link.active {
-  color: #272727;
+  color: #ffffff;
   background: transparent;
 }
 .sidebar .nav.sub-menu .nav-item .nav-link:hover {
-  color: black;
+  color: #ffffff;
 }
 .sidebar .nav.sub-menu .nav-item:hover {
   background: transparent;
 }
 .sidebar .nav:not(.sub-menu) > .nav-item:hover:not(.nav-category):not(.account-dropdown) > .nav-link {
-  background: white;
-  color: #272727;
+  background: #0f1015;
+  color: #ffffff;
 }
 .sidebar .nav .menu-items:nth-child(5n+1) .nav-link .menu-icon i {
   color: #0090e7;
@@ -17676,7 +18735,7 @@ div.tagsinput span.tag a {
   color: white;
 }
 .sidebar-tinted .sidebar .nav .nav-item .nav-link i.menu-arrow {
-  color: rgba(12, 14, 14, 0.1);
+  color: rgba(255, 255, 255, 0.36);
 }
 .sidebar-tinted .sidebar .nav .nav-item.active > .nav-link {
   background: rgba(12, 14, 14, 0.1);
@@ -17744,7 +18803,7 @@ div.tagsinput span.tag a {
     text-align: center;
   }
   .sidebar-icon-only .sidebar .nav .nav-item .nav-link .menu-title,
-  .sidebar-icon-only .sidebar .nav .nav-item .nav-link .badge, .sidebar-icon-only .sidebar .nav .nav-item .nav-link .menu-sub-title {
+.sidebar-icon-only .sidebar .nav .nav-item .nav-link .badge, .sidebar-icon-only .sidebar .nav .nav-item .nav-link .menu-sub-title {
     display: none;
   }
   .sidebar-icon-only .sidebar .nav .nav-item .nav-link .menu-title {
@@ -17784,7 +18843,7 @@ div.tagsinput span.tag a {
   .sidebar-icon-only .sidebar .nav .nav-item.hover-open .nav-link .menu-title {
     display: flex;
     align-items: center;
-    background: white;
+    background: #0f1015;
     padding: 0.5rem 1.4rem;
     left: 70px;
     position: absolute;
@@ -17796,7 +18855,7 @@ div.tagsinput span.tag a {
     line-height: 1.8;
   }
   .sidebar-dark.sidebar-icon-only .sidebar .nav .nav-item.hover-open .nav-link .menu-title {
-    background: white;
+    background: #0f1015;
   }
   .rtl.sidebar-icon-only .sidebar .nav .nav-item.hover-open .nav-link .menu-title {
     left: auto;
@@ -17807,17 +18866,17 @@ div.tagsinput span.tag a {
     display: none;
   }
   .sidebar-icon-only .sidebar .nav .nav-item.hover-open .collapse,
-  .sidebar-icon-only .sidebar .nav .nav-item.hover-open .collapsing {
+.sidebar-icon-only .sidebar .nav .nav-item.hover-open .collapsing {
     display: block;
     padding: 0.5rem 0;
-    background: white;
+    background: #0f1015;
     border-radius: 0 0 5px 0;
     position: absolute;
     left: 70px;
     width: 190px;
   }
   .sidebar-dark.sidebar-icon-only .sidebar .nav .nav-item.hover-open .collapse, .sidebar-dark.sidebar-icon-only .sidebar .nav .nav-item.hover-open .collapsing {
-    background: #f54748;
+    background: #191c24;
   }
   .rtl.sidebar-icon-only .sidebar .nav .nav-item.hover-open .collapse, .rtl.sidebar-icon-only .sidebar .nav .nav-item.hover-open .collapsing {
     left: auto;
@@ -17837,7 +18896,7 @@ div.tagsinput span.tag a {
     width: 5px;
     height: 5px;
     border-radius: 50%;
-    background-color: white;
+    background-color: #6c7293;
     position: absolute;
     left: 0;
   }
@@ -17913,4 +18972,4 @@ div.tagsinput span.tag a {
   padding: 1.875rem 1.75rem;
   width: 100%;
   flex-grow: 1;
-}
+}/*# sourceMappingURL=style.css.map */

@@ -536,6 +536,7 @@ input[type=file].file-loading, .file-loading input[type=file] {
 }
 
 .file-sortable .file-drag-handle {
+  cursor: -webkit-grab;
   cursor: grab;
   opacity: 1;
 }
@@ -548,6 +549,7 @@ input[type=file].file-loading, .file-loading input[type=file] {
 }
 
 .file-grabbing .file-preview-thumbnails * {
+  cursor: -webkit-grabbing !important;
   cursor: grabbing !important;
 }
 
@@ -593,4 +595,4 @@ input[type=file].file-loading, .file-loading input[type=file] {
 
 .kv-overflow-hidden {
   overflow: hidden;
-}
+}/*# sourceMappingURL=fileinput.css.map */
