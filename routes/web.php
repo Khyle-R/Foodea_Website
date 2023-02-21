@@ -11,6 +11,8 @@ use App\Http\Controllers\SuperadminController;
 
 Route::get('/', [Home::class, 'index'])->name('home.index');
 
+Route::get('/type', [Home::class, 'AccountType']);
+
 Route::get('/rider_application', [RiderRegistration::class, 'index'])->name('rider_application.index');
 
 Route::post('/rider_application', [RiderRegistration::class, 'addPostSubmit'])->name('rider_application.addPostSubmit');
@@ -42,6 +44,7 @@ Route::get('/logout', [Admin_product::class, 'logout']);
 Route::get('/login',  [PartnerRegistration::class, 'LoginIndex']);
 
 Route::post('/login',  [PartnerRegistration::class, 'LoginMerchant'])->name('login.LoginMerchant');
+
 
 Route::get('/rider_application_agreement', [RiderRegistration::class, 'agreement']);
 
