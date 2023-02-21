@@ -212,6 +212,8 @@ Route::get('product', function () {
     return view('admin.product', ['products' => $products]);
 });
 
+Route::post('product',[Admin_product::class, 'addProduct'])->name('add_product');
+
 //View inventory
 Route::get('inventory', function(){
     

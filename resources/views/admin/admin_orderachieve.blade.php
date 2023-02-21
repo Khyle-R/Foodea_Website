@@ -1,15 +1,15 @@
 @extends('admin.index')
 @section('content')
-<div class="content-wrapper">
+<div class="content-wrapper">  
                         <div class="page-header">
-                            <h3 class="page-title black">Order Accept</h3>
+                            <h3 class="page-title black">Order Reject</h3>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">
                                         <a href="#">Menu</a>
                                     </li>
                                     <li class="breadcrumb-item active" aria-current="page">
-                                        Order Accept
+                                        Order Reject
                                     </li>
                                 </ol>
                             </nav>
@@ -21,12 +21,22 @@
                                 <li class="nav-size nav-item"><a class="nav-link" href="/admin_orders">All</a></li>
                                 <li class="nav-size nav-item"><a class="nav-link" href="/orderpending">Pending</a></li>
                                 <li class="nav-size nav-item"><a class="nav-link" href="/orderreview">Reviewing</a></li>
-                                <li class="nav-size nav-item"><a class="nav-link active" href="/orderaccept">Accepted</a></li>
-                                <li class="nav-size nav-item"><a class="nav-link" href="/orderarchieve">Rejected</a></li>
+                                <li class="nav-size nav-item"><a class="nav-link" href="/orderaccept">Accepted</a></li>
+                                <li class="nav-size nav-item"><a class="nav-link active" href="/orderarchieve">Rejected</a></li>
                                 </ul>
                             </div>
                         </div>
 
+        <!-- <div class="table-title mt-1 mb-2 px-3">
+			<div class="row">
+                <div class="col-12 d-flex justify-content-end">
+                    <a href="#addContentModal" class="btn btn-success" data-toggle="modal">
+                    <i class="material-icons">&#xE147;</i>
+                    <span>Add Voucher</span>
+                    </a>
+                </div>
+			</div>
+		</div>	 -->
         <div class="row">
             <div class="col-12 grid-margin">
                 <div class="card">
