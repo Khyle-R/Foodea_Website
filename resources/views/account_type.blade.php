@@ -79,7 +79,7 @@
                                             <p class="mb-0 pe-3">Don't have an account?</p>
                                         </div>
                                         <div>
-                                        <a href="#" class="red">  Sign Up</a>
+                                        <a href="#" class="red">Sign Up</a>
                                         </div>
                                     </div>
                                 </div>
