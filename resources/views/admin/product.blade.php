@@ -287,7 +287,7 @@
                      </div>
                   </div>
                   <div class="table-responsive">
-                     <table class="table" id="myProduct">
+                     <table id="example" class="table" style="width:100%">
                         <thead class="table-danger">
                            <tr>
                               <th>Product Name</th>
@@ -323,14 +323,16 @@
                                  </td>
                                  <td>
                                     <div class="row">
-                                       {{-- <a href="product/update/{{ $data ->product_id}}" class="badge badge-outline-success mr-3">
-                                                                    Edit Product 
-                                                                </a> --}}
-                                       {{-- <button href="" data-id={{$data->product_id}} class="updateButton badge badge-outline-success mr-3" id="updateButton">
-                                                                    Edit Product 
-                                                                 </button> --}}
-                                       <!-- Button trigger modal -->
-                                       <button type="button" class="badge badge-outline-success mr-3" data-toggle="modal"data-target="#EditModal{{ $data->product_id }}">Edit Product</button>
+                                       <div class="dropdown action-label">
+                                          <a class=" btn-white-circle btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
+                                              <i class=" pending mdi mdi-radiobox-marked"></i> Status
+                                          </a>
+                                          <div class="bg-white dropdown-menu dropdown-menu-right">
+                                                <a data-toggle="modal" data-target="#deleteModal" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-success"></i> Remove Product</a>
+                                                <a data-toggle="modal" data-target="#EditModal{{ $data->product_id }}" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-danger"></i> Edit Product</a>
+                                          </div>
+                                       </div>
+
                                        <!-- Modal -->
                                        <div class="modal fade" id="EditModal{{ $data->product_id }}" tabindex="-1" aria-labelledby="EditModalLabel" aria-hidden="true">
                                           <div class="modal-dialog modal-dialog-centered">
@@ -450,9 +452,7 @@
                                           </div>
                                        </div>
 
-                                       <!-- Button trigger modal -->
-                                       <button type="button" class="badge badge-outline-danger mr-3" data-toggle="modal" data-target="#deleteModal"> Remove
-                                          Product</button>
+
                                        <!-- Modal -->
                                        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
                                           <div class="modal-dialog modal-dialog-centered">

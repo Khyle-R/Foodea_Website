@@ -182,7 +182,7 @@
                                             
 
                                         <div class="table-responsive">
-                                            <table class="table" id="myProduct">
+                                            <table id="example" class="table" style="width:100%">
                                                 <thead class="table-danger">
                                                     <tr>
                                                         <th>

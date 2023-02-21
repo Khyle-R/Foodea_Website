@@ -98,7 +98,7 @@
                       </div>
                     </div>
                     <div class="table-responsive">
-                      <table class="table" id="myInventory">
+                      <table id="example" class="table" style="width:100%">
                         <thead class="table-danger">
                           <tr>
                             <th>
@@ -152,9 +152,15 @@
                             <td>
                               <div class="row">
                          
-                                <button type="button" class="badge badge-outline-success mr-3" data-toggle="modal" data-target="#restoreModal">
-                                  Restore
-                                </button>
+                                <div class="dropdown action-label">
+                                  <a class=" btn-white-circle btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
+                                      <i class=" pending mdi mdi-radiobox-marked"></i> Status
+                                  </a>
+                                  <div class="bg-white dropdown-menu dropdown-menu-right">
+                                        <a data-toggle="modal" data-target="#deleteModal" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-success"></i> Delete</a>
+                                        <a data-toggle="modal" data-target="#restoreModal" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-danger"></i> Restore</a>
+                                  </div>
+                               </div>
 
                                 <!-- Modal -->
                               <div class="modal fade" id="restoreModal" tabindex="-1" role="dialog" aria-labelledby="restoreModalLabel" aria-hidden="true">
@@ -181,10 +187,7 @@
                                 </div>
                               </div>
 
-                                  <!-- Button trigger modal -->
-                                  <button type="button" class="badge badge-outline-danger mr-3" data-toggle="modal" data-target="#deleteModal">
-                                    Delete
-                                  </button>
+
 
                                   <!-- Modal -->
                                 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
@@ -222,29 +225,6 @@
                       </table>
                     </div>
 
-                    <ul
-                      class="pagination pt-2 align-items-center justify-content-center justify-content-sm-end"
-                    >
-                      <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                          <span aria-hidden="true">&laquo;</span>
-                        </a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="#">1</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="#">2</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="#">3</a>
-                      </li>
-                      <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                          <span aria-hidden="true">&raquo;</span>
-                        </a>
-                      </li>
-                    </ul>
                   </div>
                 </div>
               </div>
