@@ -281,6 +281,7 @@ Route::get('document',  function(){
     return view('admin.admin_partnerdocuments');
 });
 
+//CATEGORY
 //View Category
 Route::get('category', function () {
 
@@ -291,3 +292,8 @@ Route::get('category', function () {
 
 //Add Category
 Route::post('/add_category',[Admin_product::class, 'addCategory'])->name('add_category.addCategory');
+
+//update Category
+Route::post('/update_category',[Admin_product::class, 'updateCategory'])->name('update_category.updateCategory');
+
+Route::get('/delete_category/{id}',[Admin_product::class, 'deleteCategory']);

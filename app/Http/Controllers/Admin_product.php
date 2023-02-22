@@ -237,28 +237,38 @@ class Admin_product extends Controller
         return view('admin.admin_personalinformation1');
     }
 
+    //CATEGORY
     public function addCategory(Request $request)
     {
         $addCategory = new tbl_category();
 
-        $addCategory->main_category = $request->category_name;
-        $addCategory->sub_category = $request->tags_category;
-        $addCategory->date = Carbon::now();// to get the current time
+        $addCategory->main_category = $request->categoryName;
+        $addCategory->description = $request->description;
 
-        $result=$addCategory->save();
-
-        if($result)
-        {
-        //return redirect('category');
+        $addCategory->save();
         
-        }else 
-        {
-            return back()->with('fail','Something went wrong when trying to add');
-            //return view('admin.admin_product');
-        }
-       
+        return redirect('category');
+        
     }
 
+    public function updateCategory(Request $request)
+    {
+
+
+        $affected = DB::table('tbl_category')->where('category_id', $request->category_id);
+                
+        $resss=$affected->update(['main_category' => $request->categoryName,'description' => $request->description],);
+              
+        return redirect('category');
+    }
+
+    public function deleteCategory($id)
+    {
+        $dCategory = DB::table('tbl_category')->where('category_id','=',$id); //deleting product
+        $ress=$dCategory->delete();
+
+        return redirect('category');
+    }
     /**
      * Store a newly created resource in storage.
      *
