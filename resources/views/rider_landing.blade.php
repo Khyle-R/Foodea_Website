@@ -25,7 +25,7 @@
       <div class="container-fluid px-3">
         <a href="/" class="navbar-brand  mb-0 h1">
           <img src="image/foodea1.png" alt="" width="45" height="50" />
-          FOODEA
+          <span> FOODEA </span>
         </a>
         <button
           class="navbar-toggler"
@@ -97,7 +97,7 @@
         <div class="section">
             <div class="content  text-center text-md-start">
                 <h1>Deliver Food With <span>Foodea</span></h1>
-                <p>Try becoming your own boss with Foodea as an alternative to 
+                <p class="text-center text-md-start ">Try becoming your own boss with Foodea as an alternative to 
                     conventional food delivery professions where the hours are fixed.</p>
                 <a href="/rider_application_agreement">Apply Now </a>
                 {{-- <img src="image/vector.png" /> --}}
@@ -324,9 +324,11 @@
     <div class="footer">
         <div class="footer-content">
             <div class="icon">
+              <a href="/" class="iccon">
                 <img src="image/foodea2.png" alt="">
-                <h1>FOODEA</h1>
-                <p>Follow Us</p>
+                <h1 class="text-light">FOODEA</h1>
+              </a>
+                <p class="text-center">Follow Us</p>
             </div>
             <div class="join">
                 <h2>Join Us</h2>

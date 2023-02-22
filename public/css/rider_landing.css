@@ -42,7 +42,7 @@ ul {
 }
 
 nav .navbar-brand span{
-  font-size: clamp(0.75rem, 0.5040rem + 1.3120vw, 1.16rem);
+  font-size: clamp(0.75rem, 0.8040rem + 1.3120vw, 1.16rem);
   position:relative;
   text-decoration: none;
   color: #363636;
@@ -139,7 +139,7 @@ nav .navbar-brand span{
 }
 
 .content p {
-  width: 65%;
+  width: 95%;
   opacity: 70%;
   font-family: "Montserrat", sans-serif;
   line-height: 25px;
@@ -653,6 +653,10 @@ nav .navbar-brand span{
   height: 60px;
 }
 
+.iccon:link {
+  text-decoration: none;
+}
+
 .footer-content h2 {
   font-size: 20px;
 }
@@ -675,8 +679,12 @@ nav .navbar-brand span{
 .dark-content {
   width: 60%;
   margin: 0 auto;
+  font-size: clamp(0.7rem, 0.5000rem + 0.8000vw, 1rem);
   color: #fff;
   font-family: "Montserrat", sans-serif;
+  display: flex;
+  justify-content: start;
+  align-items: start;
 }
 
 /* END FOOTER*/
@@ -783,8 +791,8 @@ nav .navbar-brand span{
     flex-direction: column;
   }
 
-  .timeline-image img {
-   width: 200px;
+  .timeline-image {
+    display: none;
   }
 
   .bg-img {
@@ -889,7 +897,7 @@ nav .navbar-brand span{
   .timeline {
     margin-left: 0;
   }
-  
+
   .bg-img {
     margin-top: 15rem;
     -webkit-background-size: contain;
