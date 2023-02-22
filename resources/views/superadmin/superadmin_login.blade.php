@@ -62,8 +62,8 @@
                                   </a>
                                 </div>
                                 <form method="post" action="{{ route('login.LoginAdmin') }}" class="mt-4">
-                                   {{-- @csrf --}}
-                                   <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                                   @csrf
+
                                     <div class="form-group">
 
                                   
