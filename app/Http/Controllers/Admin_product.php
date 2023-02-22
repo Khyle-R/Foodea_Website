@@ -7,6 +7,7 @@ use App\Models\tbl_product;
 use App\Models\tbl_merchant_info;
 use App\Models\tbl_partner_accounts;
 use App\Models\tbl_category;
+use App\Models\tbl_voucher;
 use Carbon\Carbon; // to retrieve current Date
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
@@ -315,8 +316,51 @@ class Admin_product extends Controller
     }
 
     public function VoucherIndex(){
-        return view ('admin.voucher');
+        $voucher = DB::table('tbl_voucher')->get();
+
+        return view('admin.voucher', ['voucher' => $voucher]);
+
     }
+
+    public function addVoucher(Request $request)
+    {
+       
+        $addVoucher = new tbl_voucher();
+
+        $addVoucher->voucher_name = $request->voucherName;
+        $addVoucher->voucher_code =  $quickpass = substr( str_shuffle( str_repeat( 'abcdefghijklmnopqrstuvwxyz0123456789', 10 ) ), 0, 10 ); //Generate default codes
+        $addVoucher->description = $request->description;
+        $addVoucher->exp_date = $request->expDate;
+        $addVoucher->status = "Pending";
+        
+        $addVoucher->save();
+
+        return redirect('voucher');
+    }
+    
+    public function deleteVoucher($id)
+    {
+        $deleteVoucher = DB::table('tbl_voucher')->where('voucher_id','=',$id); //deleting product
+        $deleteVoucher->delete();
+
+        return redirect('voucher');
+    }
+
+    public function VoucherReview(request $request)
+    {
+
+    }
+    
+    public function VoucherAccept(request $request)
+    {
+        
+    }
+
+    public function VoucherReject(request $request)
+    {
+        
+    }
+
     // Order Page
     // Admin order accept!
     public function OrderAccept(){

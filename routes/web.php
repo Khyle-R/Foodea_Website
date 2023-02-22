@@ -239,6 +239,9 @@ Route::get('admin_orders', function(){
 
 //Voucher Route
 Route::get('/voucher', [Admin_product::class, 'VoucherIndex']);
+Route::post('/voucherAdd',[Admin_product::class, 'addVoucher'])->name('voucher.addVoucher');
+
+Route::get('/voucherdelete/{id}',[Admin_product::class, 'deleteVoucher'])->name('voucher.deleteVoucher');
 
 //ORDER ADMIN
 //ORDER Pending
