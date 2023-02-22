@@ -27,7 +27,7 @@
       <div class="container-fluid px-3">
         <a href="#" class="navbar-brand">
           <img src="image/foodea1.png" alt="" />
-          <span>FOODEA</span>
+          <span>FOODEA </span>
         </a>
         <button
           class="navbar-toggler"
