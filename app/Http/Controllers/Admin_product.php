@@ -412,7 +412,15 @@ class Admin_product extends Controller
     public function Orders(){
         $orders = DB::table('tbl_orders')->get();
 
-        return view('admin.admin_orders', ['orders' => $orders]);
+        $TotalOrders = DB::table('tbl_orders')->count();
+        $PendingOrders = DB::table('tbl_orders')->where('status','Pending')->count();
+        $PreparingOrders = DB::table('tbl_orders')->where('status','Preparing')->count();
+        $DeliveringOrders = DB::table('tbl_orders')->where('status','Delivering')->count();
+        $DeliveredOrders = DB::table('tbl_orders')->where('status','Delivered')->count();
+       
+
+        return view('admin.admin_orders',['orders' => $orders, 'TotalOrders' => $TotalOrders, 'PendingOrders' => $PendingOrders, 'PreparingOrders' => $PreparingOrders, 'DeliveringOrders' => $DeliveringOrders, 'DeliveredOrders' => $DeliveringOrders]);
+
     }
     public function OrderPending(){
         $pending_order = DB::table('tbl_orders')->where('status','=', 'Pending')->get();

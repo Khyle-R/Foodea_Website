@@ -222,46 +222,46 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- ADD CONTENT -->
-                                <div class="modal fade" tabindex="-1" id="addContentModal" role="dialog">
-                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                        <div class="modal-content">
-                                            <!-- MODAL HEADER -->
-                                            <div class="modal-header">
-                                                <h5 class="modal-title text-white">Add Voucher</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <!-- MODAL BODY -->
-                                            <div class="modal-body text-dark">
-                                                <div class="form-group">
-                                                    <form method="post" action="{{ route('voucher.addVoucher')}}">
-                                                    @csrf
-                                                    <label>Voucher Name</label>
-                                                    <input id="voucherName" name="voucherName" type="text" class="form-control" required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Your Description</label>
-                                                    <textarea class="form-control" id="description" name="description" rows="4"></textarea>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Expiry Date</label>
-                                                    <input id="expDate" name="expDate" type="date" class="form-control" min="2023-01-01" required>
-                                                </div>
-                                            </div>
-                                            <!-- MODAL FOOTER -->
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn white-btn" data-dismiss="modal">Close</button>
-                                                <button type="submit" class="btn red-btn">Confirm</button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                                 @endforeach
                             </tbody>
                         </table>
+                        <!-- ADD CONTENT -->
+                        <div class="modal fade" tabindex="-1" id="addContentModal" role="dialog">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <!-- MODAL HEADER -->
+                                    <div class="modal-header">
+                                        <h5 class="modal-title text-white">Add Voucher</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <!-- MODAL BODY -->
+                                    <div class="modal-body text-dark">
+                                        <div class="form-group">
+                                            <form method="post" action="{{ route('voucher.addVoucher')}}">
+                                            @csrf
+                                            <label>Voucher Name</label>
+                                            <input id="voucherName" name="voucherName" type="text" class="form-control" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Your Description</label>
+                                            <textarea class="form-control" id="description" name="description" rows="4"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Expiry Date</label>
+                                            <input id="expDate" name="expDate" type="date" class="form-control" min="2023-01-01" required>
+                                        </div>
+                                    </div>
+                                    <!-- MODAL FOOTER -->
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn white-btn" data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn red-btn">Confirm</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         </div>
                     </div>
                 </div>
