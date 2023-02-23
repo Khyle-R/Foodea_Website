@@ -136,7 +136,7 @@
                                                     </a> --}}
                            <!-- Button trigger modal -->
                            <button type="button" class="btn btn-danger btn-sm px-3 mr-3 py-2 px-3 rounded" data-toggle="modal" data-target="#AddModal"> Add Product</button>
-                           <!-- Modal -->
+                           <!-- ADD Modal -->
                            <div class="modal fade" id="AddModal" tabindex="-1" aria-labelledby="AddModalLabel" aria-hidden="true">
                               <div class="modal-dialog modal-dialog-centered">
                                  <div class="modal-content">
@@ -152,7 +152,7 @@
                                           <div class="form-group">
                                              <label for="exampleInputName1" class="blackk">Product Name</label>
                                              <input type="text" class="form-control"id="exampleInputName1" placeholder="Name"value="{{ old('product_name') }}"
-                                                name="product_name" />
+                                                name="product_name" required/>
                                              <span style="color:red;">
                                                 @error('product_name')
                                                    {{ $message }}
@@ -162,7 +162,7 @@
                                           </div>
                                           <div class="row">
                                              <div class="col form-group"><label for="exampleSelectGender" class="blackk">Category</label>
-                                                <select class="form-control" id="exampleSelectGender" style="border: 1px solid" name="category">
+                                                <select class="form-control" id="exampleSelectGender" style="border: 1px solid" name="category" required>
                                                    <option>{{ old('category') }}</option>
                                                    <option>Chicken</option>
                                                    <option>Pork</option>
@@ -204,7 +204,7 @@
 
                                           <div class="form-group">
                                              <label for="exampleTextarea1" class="blackk">Description</label>
-                                             <textarea class="form-control"id="exampleTextarea1"rows="4" name="description">{{ old('description') }}</textarea>
+                                             <textarea class="form-control"id="exampleTextarea1"rows="4" name="description" required>{{ old('description') }}</textarea>
                                              <span style="color:red;">
                                                 @error('description')
                                                    {{ $message }}
@@ -216,7 +216,7 @@
 
                                           <div class="form-group">
                                              <label for="exampleTextarea1" class="blackk">Ingredients</label>
-                                             <textarea class="form-control"id="exampleTextarea1"rows="4" name="ingredients">{{ old('ingredients') }}</textarea>
+                                             <textarea class="form-control"id="exampleTextarea1"rows="4" name="ingredients" required>{{ old('ingredients') }}</textarea>
                                              <span style="color:red;">
                                                 @error('ingredients')
                                                    {{ $message }}
@@ -240,7 +240,7 @@
                                           <div class="row">
                                              <div class="col-md">
                                                 <label for="exampleInputName1" class="blackk">Price</label>
-                                                <input type="text"class="form-control" id="exampleInputName1" value="{{ old('price') }}" name="price" />
+                                                <input type="text"class="form-control" id="exampleInputName1" value="{{ old('price') }}" name="price" required/>
                                                 <span style="color:red;">
                                                    @error('price')
                                                       {{ $message }}
@@ -249,7 +249,7 @@
                                              </div>
                                              <div class="col-md">
                                                 <label for="exampleInputName1" class="blackk">Stock</label>
-                                                <input type="text"class="form-control" id="exampleInputName1" value="{{ old('stock') }}" name="stock" />
+                                                <input type="text"class="form-control" id="exampleInputName1" value="{{ old('stock') }}" name="stock" required/>
                                                 <span style="color:red;">
                                                    @error('stock')
                                                       {{ $message }}
@@ -258,7 +258,7 @@
                                              </div>
                                              <div class="col-md">
                                                 <label for="exampleSelectGender" class="blackk">Status</label>
-                                                <select class="form-control" id="exampleSelectGender" style="border: 1px solid" name="status">
+                                                <select class="form-control" id="exampleSelectGender" style="border: 1px solid" name="status" required>
                                                    <option>{{ old('status') }}</option>
                                                    <option>Active</option>
                                                    <option>Disabled</option>
@@ -333,7 +333,7 @@
                                           </div>
                                        </div>
 
-                                       <!-- Modal -->
+                                       <!-- UPDATE Modal -->
                                        <div class="modal fade" id="EditModal{{ $data->product_id }}" tabindex="-1" aria-labelledby="EditModalLabel" aria-hidden="true">
                                           <div class="modal-dialog modal-dialog-centered">
                                              <div class="modal-content">
@@ -350,7 +350,7 @@
                                                       <div class="form-group">
                                                          <label for="exampleInputName1" class="blackk">Product Name</label>
                                                          <input type="text" class="form-control" id="exampleInputName1" placeholder="Name" value="{{ $data->product_name }}"
-                                                            name="product_name" />
+                                                            name="product_name" required/>
                                                          <span class="gray">Do not exceed 20
                                                             characters when entering the product
                                                             name.</span>
@@ -358,7 +358,7 @@
                                                       <div class="row">
                                                          <div class="col form-group">
                                                             <label for="exampleSelectGender" class="blackk">Category</label>
-                                                            <select class="form-control" id="exampleSelectGender" style="border: 1px solid" name="category">
+                                                            <select class="form-control" id="exampleSelectGender" style="border: 1px solid" name="category" required>
                                                                <option>
                                                                   {{ $data->category_name}}
                                                                </option>
@@ -371,7 +371,7 @@
                                                             <div class="wrapper">
                                                                 <div class="content">
                                                                    <p> Tags</p>
-                                                                   <ul id="ul"><input id="input" value="{{ $data->tags }}" class="" type="text" name="tags"
+                                                                   <ul id="ul"><input id="input" value="" class="" type="text" name="tags"
                                                                          spellcheck="false"></ul>
                                                                    <span style="color:red;">
                                                                       @error('tags_category')
@@ -397,14 +397,14 @@
 
                                                       <div class="form-group">
                                                          <label for="exampleTextarea1" class="blackk">Description</label>
-                                                         <textarea class="form-control"id="exampleTextarea1"rows="4" placeholder="" name="description">{{ $data->description }}</textarea>
+                                                         <textarea class="form-control"id="exampleTextarea1"rows="4" placeholder="" name="description" required>{{ $data->description }}</textarea>
                                                          <span class="gray">Do not exceed 100
                                                             characters when entering the product
                                                             details.</span>
                                                       </div>
                                                       <div class="form-group">
                                                         <label for="exampleTextarea1" class="blackk">Ingredients</label>
-                                                        <textarea class="form-control"id="exampleTextarea1"rows="4" placeholder="" name="ingredients">{{ $data->ingredients }}</textarea>
+                                                        <textarea class="form-control"id="exampleTextarea1"rows="4" placeholder="" name="ingredients" required>{{ $data->ingredients }}</textarea>
                                                         <span class="gray">Do not exceed 100
                                                            characters when entering the product
                                                            details.</span>
@@ -420,16 +420,16 @@
                                                          <div class="col-md">
                                                             <label for="exampleInputName1" class="blackk">Price</label>
                                                             <input type="text"class="form-control" id="exampleInputName1" placeholder="" value="{{ $data->price }}"
-                                                               name="price" />
+                                                               name="price" required/>
                                                          </div>
                                                          <div class="col-md">
                                                             <label for="exampleInputName1" class="blackk">Stock</label>
                                                             <input type="text"class="form-control" id="exampleInputName1" placeholder="" value="{{ $data->stock }}"
-                                                               name="stock" />
+                                                               name="stock" required/>
                                                          </div>
                                                          <div class="col-md">
                                                             <label for="exampleSelectGender" class="blackk">Status</label>
-                                                            <select class="form-control" id="exampleSelectGender" style="border: 1px solid" name="status">
+                                                            <select class="form-control" id="exampleSelectGender" style="border: 1px solid" name="status" required>
                                                                <option>{{ $data->status }}</option>
                                                                <option>Active</option>
                                                                <option>Disabled</option>
@@ -521,6 +521,7 @@
 
 
       <script>
+
          const ul = document.querySelector("#ul"),
             input = document.querySelector("#input"), // input of tags
             tagNumb = document.querySelector(".details span"),
@@ -530,7 +531,7 @@
 
          countTags();
          createTag();
-
+         
 
          function countTags() { // count tags to know the limits of arrays
             input.focus();
@@ -539,6 +540,9 @@
          }
 
          function gettingTags(gTag) {
+            gTag = gTag.replace(/"/g, '');
+            gTag = gTag.replace('[', '');
+            gTag = gTag.replace(']', '');
             document.getElementById('tags_category').value = gTag; // set the value of the input
             console.log(gTag);
          }

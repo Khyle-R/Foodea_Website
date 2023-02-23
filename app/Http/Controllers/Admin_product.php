@@ -179,18 +179,8 @@ class Admin_product extends Controller
 
     public function addProduct(Request $request)
     {
-        $request->validate([
-            'product_name'=> 'required',
-            'category'=> 'required',
-            'type'=> 'required',
-            'description'=> 'required',
-            'product_image' => 'required',
-            'price'=> 'required',
-            'stock'=> 'required',
-            'status'=> 'required'
-        ]);
 
-
+        
         $addProd=new tbl_product();
 
        
@@ -216,9 +206,7 @@ class Admin_product extends Controller
                 $addProd->description = $request->description;
                 $addProd->ingredients= $request->ingredients;
     
-                $currentTime = Carbon::now();// to get the current time
-    
-                $addProd->date = $currentTime;
+              
                
   
             }
