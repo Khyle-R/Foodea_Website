@@ -319,16 +319,17 @@ class Admin_product extends Controller
     }
     // Order Page
     // Admin order accept!
-    public function OrderAccept(){
-        return view ('admin.admin_orderaccept');
+    public function OrderDelivering(){
+        return view ('admin.admin_orderdelivering');
     }
-    public function OrderArchieve(){
-        return view ('admin.admin_orderarchieve');
+    public function OrderPreparing(){
+        return view ('admin.admin_orderpreparing');
+    }
+    public function OrderDelivered(){
+        return view ('admin.admin_orderdelivered');
     }
     public function OrderPending(){
         return view ('admin.admin_orderpending');
     }
-    public function OrderReview(){
-        return view ('admin.admin_orderreview');
-    }
+    
 }

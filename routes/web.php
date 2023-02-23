@@ -243,9 +243,9 @@ Route::get('/voucher', [Admin_product::class, 'VoucherIndex']);
 //ORDER ADMIN
 //ORDER Pending
 Route::get('/orderpending', [Admin_product::class, 'OrderPending']);
-Route::get('/orderaccept', [Admin_product::class, 'OrderAccept']);
-Route::get('/orderreview', [Admin_product::class, 'OrderReview']);
-Route::get('/orderarchieve', [Admin_product::class, 'OrderArchieve']);
+Route::get('/orderpreparing', [Admin_product::class, 'OrderPreparing']);
+Route::get('/orderdelivering', [Admin_product::class, 'OrderDelivering']);
+Route::get('/orderdelivered', [Admin_product::class, 'OrderDelivered']);
 
 Route::get('/account', function(){
     $id=session('loginID');

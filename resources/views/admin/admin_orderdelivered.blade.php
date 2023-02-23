@@ -2,14 +2,14 @@
 @section('content')
 <div class="content-wrapper">
                         <div class="page-header">
-                            <h3 class="page-title black">Order Accept</h3>   
+                            <h3 class="page-title black">Order</h3>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">
                                         <a href="#">Menu</a>
                                     </li>
                                     <li class="breadcrumb-item active" aria-current="page">
-                                        Order Accept
+                                        Orders
                                     </li>
                                 </ol>
                             </nav>
@@ -20,9 +20,9 @@
                                 <ul class="nav nav-tabs nav-tabs-solid nav-justified">
                                 <li class="nav-size nav-item"><a class="nav-link" href="/admin_orders">All</a></li>
                                 <li class="nav-size nav-item"><a class="nav-link" href="/orderpending">Pending</a></li>
-                                <li class="nav-size nav-item"><a class="nav-link" href="/orderreview">Reviewing</a></li>
-                                <li class="nav-size nav-item"><a class="nav-link active" href="/orderaccept">Accepted</a></li>
-                                <li class="nav-size nav-item"><a class="nav-link" href="/orderarchieve">Rejected</a></li>
+                                <li class="nav-size nav-item"><a class="nav-link" href="/orderpreparing">Preparing</a></li>
+                                <li class="nav-size nav-item"><a class="nav-link" href="/orderdelivering">Delivering</a></li>
+                                <li class="nav-size nav-item"><a class="nav-link active" href="/orderdelivered">Delivered</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -55,12 +55,12 @@
                                     <td>
                                         <div class="dropdown action-label">
                                                 <a class=" btn-white-circle btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
-                                                    <i class=" pending mdi mdi-radiobox-marked"></i> Status
+                                                    <i class=" pending mdi mdi-radiobox-marked"></i> Pending
                                                 </a>
                                             <div class="bg-white dropdown-menu dropdown-menu-right">
-                                                <a data-toggle="modal" data-target="#ReviewModal" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-success"></i> Reviewing</a>
-                                                <a data-toggle="modal" data-target="#AcceptedModal" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-danger"></i> Accepted</a>
-                                                <a data-toggle="modal" data-target="#RejectModal" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-warning"></i> Rejected</a>
+                                                <a data-toggle="modal" data-target="#PrepareModal" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-danger"></i>Preparing</a>
+                                                <a data-toggle="modal" data-target="#TobeReceiveModal" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-warning"></i>To be Received</a>
+                                                <a data-toggle="modal" data-target="#DeliverModal" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-warning"></i>Delivering</a>
                                             </div>
                                         </div>
                                     </td>
@@ -76,37 +76,8 @@
                                 </tr>
 
                                 <!-- MODAL STARTS HERE -->
-                                <!-- REVIEW MODAL -->
-                                <div class="modal fade" id="ReviewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                        <div class="modal-content">
-                                            <!-- MODAL HEADER -->
-                                            <div class="modal-header d-flex justify-content-between">
-                                                <h5 class="modal-title white-font " id="exampleModalLongTitle">Update</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <!-- MODAL BODY -->
-                                            <div class="modal-body">
-                                                Do you want to change the status?
-                                                <form method="post" action="{}">
-                                                <input type="hidden" name="status" value="Reviewing">
-                                                <input type="hidden" name="id" value="{}">
-                                            </div>
-                                            <!-- MODAL FOOTER -->
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn white-btn" data-dismiss="modal">Close</button>
-                                                <button type="submit" class="btn red-btn">Confirm</button>
-                                                </form>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- ACCEPT MODAL -->
-                                <div class="modal fade" id="AcceptedModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <!-- PREPARE MODAL -->
+                                <div class="modal fade" id="PrepareModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <!-- MODAL HEADER -->
@@ -118,7 +89,7 @@
                                             </div>
                                             <!-- MODAL BODY -->
                                             <div class="modal-body">
-                                                Do you want to change the status to accept?
+                                                Do you want to change the status to "Preparing"?
                                                 <form method="post" action="{}">
                                                 <input type="hidden" name="status" value="Accepted">
                                                 <input type="hidden" name="id" value="{}">
@@ -134,8 +105,8 @@
                                     </div>
                                 </div>
 
-                                <!-- REJECTED MODAL -->
-                                <div class="modal fade" id="RejectModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <!-- TO BE DELIVERING MODAL -->
+                                <div class="modal fade" id="DeliverModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <!-- MODAL HEADER -->
@@ -147,7 +118,7 @@
                                             </div>
                                             <!-- MODAL MODAL -->
                                             <div class="modal-body mt-3">
-                                                Do you want to change the status to reject?
+                                                Do you want to change the status to "Delivering"?
                                                 <form method="post" action="{}">
                                                 <input type="hidden" name="status" value="Rejected">
                                                 <input type="hidden" name="id" value="{}">
@@ -161,6 +132,36 @@
                                         </div>
                                     </div>
                                 </div>
+
+                                 <!-- TO BE RECEIVED MODAL -->
+                                 <div class="modal fade" id="TobeReceiveModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <!-- MODAL HEADER -->
+                                            <div class="modal-header">
+                                                <h5 class="modal-title white-font " id="exampleModalLongTitle">Update</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <!-- MODAL MODAL -->
+                                            <div class="modal-body mt-3">
+                                                Do you want to change the status to "To be Received"?
+                                                <form method="post" action="{}">
+                                                <input type="hidden" name="status" value="Rejected">
+                                                <input type="hidden" name="id" value="{}">
+                                            </div>
+                                            <!-- MODAL FOOTER -->
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn white-btn" data-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn red-btn">Confirm</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
                                 <!-- DELETE CONTENT -->
                                 <div class="modal fade" id="DeleteContent" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -209,6 +210,4 @@
                     </span>
             </div>
         </footer>
-        <!-- END OF FOOTER --> 
-        <!-- partial -->
 @endsection 
