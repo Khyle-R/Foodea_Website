@@ -172,38 +172,45 @@
             </button>
             <div class="cont">
                 <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta
-                    aliquam facere adipisci quod mollitia, aut nemo deleniti fugiat et,
-                    corrupti sequi. Omnis dolorem quos eligendi placeat soluta sint
-                    corrupti quod.
+                    FOODEA is a mobile application that provides food suggestions and ordering options, with a 
+                    focus on supporting small businesses and promoting healthy eating habits.
                 </p>
             </div>
         </div>
         <div class="wrapper">
             <button class="toggle">
-                How to be a Rider in Foodea?
+                How does FOODEA support small food businesses?
                 <i class="fas fa-plus icon"></i>
             </button>
             <div class="cont">
                 <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores
-                    error doloremque, quibusdam qui necessitatibus autem aperiam
-                    reprehenderit? Ipsum maiores dolore inventore ea. Accusantium fuga
-                    eius laboriosam iusto blanditiis doloremque ullam?
+                    FOODEA partners with local merchants to offer their products on the app, 
+                    giving them increased visibility and access to a wider customer base.
                 </p>
             </div>
         </div>
         <div class="wrapper">
             <button class="toggle">
-                How to be a Foodea Partner?
+                Can FOODEA suggest healthy food options?
                 <i class="fas fa-plus icon"></i>
             </button>
             <div class="cont">
                 <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae
-                    consectetur officiis labore commodi sunt ex praesentium dolor magnam
-                    asperiores reiciendis. Minus magnam nesciunt aliquid eos ipsam sequi
-                    recusandae quos incidunt.
+                    Yes, FOODEA can suggest healthy and nutritional foods based on a user's 
+                    weight goals and dietary preferences.
+                </p>
+            </div>
+        </div>
+        <div class="wrapper">
+            <button class="toggle">
+                Does FOODEA offer exercise recommendations?
+                <i class="fas fa-plus icon"></i>
+            </button>
+            <div class="cont">
+                <p>
+                    Yes, FOODEA can provide simple exercise suggestions based on a user's 
+                    calorie intake and preferred workout time.
+
                 </p>
             </div>
         </div>

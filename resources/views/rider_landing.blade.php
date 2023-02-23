@@ -267,46 +267,51 @@
         </div>
         <div class="wrappers">
             <button class="toggle">
-                What is Foodea?
+              What is a FOODEA rider?
                 <i class="fas fa-plus icon"></i>
             </button>
             <div class="cont">
                 <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta
-                    aliquam facere adipisci quod mollitia, aut nemo deleniti fugiat et,
-                    corrupti sequi. Omnis dolorem quos eligendi placeat soluta sint
-                    corrupti quod.
+                  A FOODEA rider is someone who delivers food orders to customers using the FOODEA app.
                 </p>
             </div>
         </div>
         <div class="wrappers">
             <button class="toggle">
-                How to be a Rider in Foodea?
+              How do I become a FOODEA rider?
                 <i class="fas fa-plus icon"></i>
             </button>
             <div class="cont">
                 <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores
-                    error doloremque, quibusdam qui necessitatibus autem aperiam
-                    reprehenderit? Ipsum maiores dolore inventore ea. Accusantium fuga
-                    eius laboriosam iusto blanditiis doloremque ullam?
+                  To become a FOODEA rider, you can visit the Rider Page on the FOODEA
+                   website for more information on the application process.
                 </p>
             </div>
         </div>
         <div class="wrappers">
             <button class="toggle">
-                How to be a Foodea Partner?
+              What are the requirements to become a FOODEA rider?
                 <i class="fas fa-plus icon"></i>
             </button>
             <div class="cont">
                 <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae
-                    consectetur officiis labore commodi sunt ex praesentium dolor magnam
-                    asperiores reiciendis. Minus magnam nesciunt aliquid eos ipsam sequi
-                    recusandae quos incidunt.
+                  Typically include a valid driver's license, a reliable vehicle, and a smartphone. If you look for the papers and other requirements. 
+                  You can view the requirements to get started is in the rider page.
                 </p>
             </div>
         </div>
+        <div class="wrappers">
+          <button class="toggle">
+            What are the benefits of being a FOODEA rider?
+              <i class="fas fa-plus icon"></i>
+          </button>
+          <div class="cont">
+              <p>
+                FOODEA riders have the opportunity to earn flexible income and connect with local businesses and customers in their area.
+
+              </p>
+          </div>
+      </div>
     </div>
     <div class="bg-img" style="background-image: url(../image/bgmotor.png);">
         <div class="end-container">
