@@ -211,9 +211,11 @@
     <div class="footer">
         <div class="footer-content">
             <div class="icon">
+                <a href="/" class="iccon">
                 <img src="image/foodea2.png" alt="">
-                <h1>FOODEA</h1>
-                <p>Follow Us</p>
+                <h1 class="text-light">FOODEA</h1>
+                </a>
+                <p class="text-center">Follow Us</p>
             </div>
             <div class="join">
                 <h2>Join Us</h2>

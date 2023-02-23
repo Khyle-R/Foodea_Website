@@ -18,7 +18,7 @@
       <div class="container-fluid px-3">
         <a href="/" class="navbar-brand mb-0 h1">
           <img src="image/foodea1.png" alt=""/>
-          FOODEA
+          <span> FOODEA </span>
         </a>
         <button
           class="navbar-toggler"
@@ -67,7 +67,7 @@
                 <a href="/about" class="nav-link">About Us</a>
               </li>
               <li class="nav-item">
-                <a href="/landing" class="nav-link">Contact Us</a>
+                <a href="/contact" class="nav-link">Contact Us</a>
               </li>
             </ul>
             <a
@@ -88,9 +88,9 @@
       </div>
     </nav>
         <div class="section">
-            <div class="content">
+            <div class="content text-center text-md-start">
                 <h1>Grow your business with <span>Foodea</span></h1>
-                <p>Expand your business by bringing your food out and filling up your customers tummy and reach new customers by partnering with us.</p>
+                <p class="text-center text-md-start">Expand your business by bringing your food out and filling up your customers tummy and reach new customers by partnering with us.</p>
                 <a href="/merchant_application_agreement">Apply Now </a>
                 {{-- <img src="image/vector.png" /> --}}
             </div>
@@ -183,15 +183,19 @@
     
     <div class="req-container">
         <div class="req-section">
-               <div class="req-image">
-                            <img src="/image/requirements.png" alt="">
-                        </div>
-              <div class="req-content">
-                <h2>Get your documents ready</h2>
-                <p>You can find the required documents as below. Please ensure that the 
+            <div class="row mb-5">
+                <h2 class="text-center mb-4 text-md-center">Get your documents ready</h2>
+                <p class="mb-5">You can find the required documents as below. Please ensure that the 
                     following documents are original or else your application will be rejected.
                      Upload only a scanned copy and images of the following documents to avoid document information 
                      being reflective and blurred.</p>
+                <div class="col-md-6 col-lg-6">
+               <div class="req-image">
+                            <img src="/image/requirements.png" alt="">
+                        </div>
+                    </div>
+             <div class="col-12 col-md-6 col-lg-6 col">
+              <div class="req-content">
                 <ul class="accordion">
                 
                  <li>
@@ -239,6 +243,8 @@
                         </div>
                     </li>
                     </ul>
+                    </div>
+                    </div>
                             </div>
                             </div>
                     </div>
@@ -298,9 +304,11 @@
     <div class="footer">
         <div class="footer-content">
             <div class="icon">
+             <a href="/" class="iccon">
                 <img src="image/foodea2.png" alt="">
-                <h1>FOODEA</h1>
-                <p>Follow Us</p>
+               <h1 class="text-light">FOODEA</h1>
+            </a>
+                <p class="text-center">Follow Us</p>
             </div>
             <div class="join">
                 <h2>Join Us</h2>
