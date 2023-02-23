@@ -43,23 +43,26 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($disableVoucher as $key => $data)
+                                    
+
                                 <tr>
-                                    <td>Jollibee Voucher</td>
-                                    <td>243242</td>
-                                    <td>Voucher for Jollibee Chicken</td>
+                                    <td>{{ $data->voucher_name}}</td>
+                                    <td>{{ $data->voucher_code}}</td>
+                                    <td>{{ $data->description}}</td>
                                     <td>
-                                        11/22/23
+                                        {{ $data->exp_date}}
                                     </td>
-                                    <td>20%</td>
-                                    <td>2</td>
+                                    <td>{{ $data->discount}}</td>
+                                    <td>{{ $data->total_claimed}}</td>
                                     <td>
                                         <div class="dropdown action-label">
                                             <a class=" btn-white-circle btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
-                                                <i class=" pending mdi mdi-radiobox-marked"></i>Status
+                                                <i class=" pending mdi mdi-radiobox-marked"></i>{{ $data->status}}
                                             </a>
                                             <div class="bg-white dropdown-menu dropdown-menu-right">
-                                                <a data-toggle="modal" data-target="#EnableModal" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-danger"></i>Enable</a>
-                                                <a data-toggle="modal" data-target="#DisableModal" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-warning"></i>Disable</a>
+                                                <a data-toggle="modal" data-target="#EnableModal{{ $data->voucher_id}}" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-danger"></i>Enable</a>
+                                                <a data-toggle="modal" data-target="#DisableModal{{ $data->voucher_id}}" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-warning"></i>Disable</a>
                                             </div>
                                         </div>
                                     </td>
@@ -68,7 +71,7 @@
                                             <a href="#" class="action-icon" data-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-vertical black-icon" aria-hidden="true"></i></a>
                                             <div class="bg-white dropdown-menu dropdown-menu-right">
                                                 <a class="action-btn dropdown-item black" href="/voucherView"><i class="fa fa-pencil m-r-5"></i>View</a>
-                                                <a class="action-btn dropdown-item black" data-toggle="modal" data-target="#UpdateModal" href=""><i class="fa fa-trash-o m-r-5"></i>Update</a>
+                                                <a class="action-btn dropdown-item black" data-toggle="modal" data-target="#UpdateModal{{ $data->voucher_id}}" href=""><i class="fa fa-trash-o m-r-5"></i>Update</a>
                                             </div>
                                         </div>
                                     </td>
@@ -76,8 +79,8 @@
 
 
                                 <!-- MODAL STARTS HERE -->
-                                <!-- UPDATE CONTENT -->
-                                <div class="modal fade" tabindex="-1" id="UpdateModal" role="dialog">
+                                  <!-- UPDATE CONTENT -->
+                                  <div class="modal fade" tabindex="-1" id="UpdateModal{{ $data->voucher_id}}" role="dialog">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <!-- MODAL HEADER -->
@@ -90,21 +93,23 @@
                                             <!-- MODAL BODY -->
                                             <div class="modal-body text-dark">
                                                 <div class="form-group">
-                                                    <form method="post" action="">
+                                                    <form method="post" action="{{ route('voucher.Update')}}">
+                                                        @csrf
                                                     <label>Voucher Name</label>
-                                                    <input id="voucherName" name="voucherName" type="text" class="form-control" placeholder="" required>
+                                                    <input id="voucherName" name="voucherName" type="text" class="form-control" value="{{ $data->voucher_name}}" placeholder="" required>
+                                                    <input type="hidden" name="voucher_id" value="{{ $data->voucher_id}}">
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Description</label>
-                                                    <textarea class="form-control" id="description" name="description" rows="4" placeholder=""></textarea>
+                                                    <textarea class="form-control" id="description" name="description" rows="4" placeholder="{{ $data->voucher_name}}">{{ $data->description}}</textarea>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Discount</label>
-                                                    <input id="voucherName" name="voucherName" type="text" class="form-control" placeholder="" required>
+                                                    <input id="discount" name="discount" type="text" class="form-control" value="{{ $data->discount}}" placeholder="" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Expiration Date</label>
-                                                    <input id="voucherName" name="voucherName" type="text" class="form-control" placeholder="" required>
+                                                    <input type="date" id="expDate" name="expDate" type="text" class="form-control" value="{{ $data->date}}" placeholder="" required>
                                                 </div>
                                             </div>
                                             <!-- MODAL FOOTER -->
@@ -117,7 +122,7 @@
                                     </div>
                                 </div>
                                 <!-- ENABLE MODAL -->
-                                <div class="modal fade" id="EnableModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal fade" id="EnableModal{{ $data->voucher_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <!-- MODAL HEADER -->
@@ -130,10 +135,11 @@
                                             <!-- MODAL BODY -->
                                             <div class="modal-body">
                                                 Do you want to change the status to Enable?
-                                                <form method="post" action="{}">
+                                                <form method="post" action="{{ route('voucher.Enable')}}">
+                                                    @csrf
                                                 <input type="hidden" name="status" value="Accepted">
                                                 <input type="hidden" name="id" value="{}">
-                                                <input type="hidden" name="rider_id" value="{}">
+                                                <input type="hidden" name="voucher_id" value="{{ $data->voucher_id}}">
                                             </div>
                                             <!-- MODAL FOOTER -->
                                             <div class="modal-footer">
@@ -146,7 +152,7 @@
                                 </div>
 
                                 <!-- DISABLED MODAL -->
-                                <div class="modal fade" id="DisableModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal fade" id="DisableModal{{ $data->voucher_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <!-- MODAL HEADER -->
@@ -159,9 +165,10 @@
                                             <!-- MODAL MODAL -->
                                             <div class="modal-body mt-3">
                                                 Do you want to change the status to Disable?
-                                                <form method="post" action="{}">
+                                                <form method="post" action="{{ route('voucher.Disable')}}">
+                                                    @csrf
                                                 <input type="hidden" name="status" value="Rejected">
-                                                <input type="hidden" name="id" value="{}">
+                                                <input type="hidden" name="voucher_id" value="{{ $data->voucher_id}}">
                                             </div>
                                             <!-- MODAL FOOTER -->
                                             <div class="modal-footer">
@@ -172,6 +179,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                @endforeach
                             </tbody>
                         </table>
 

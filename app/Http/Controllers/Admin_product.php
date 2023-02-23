@@ -325,63 +325,6 @@ class Admin_product extends Controller
         //
     }
 
-    public function VoucherIndex(){
-        $voucher = DB::table('tbl_voucher')->get();
-
-        return view('admin.voucher', ['voucher' => $voucher]);
-    }
-
-    public function addVoucher(Request $request)
-    {
-       
-        $addVoucher = new tbl_voucher();
-
-        $addVoucher->voucher_name = $request->voucherName;
-        $addVoucher->voucher_code =  $quickpass = substr( str_shuffle( str_repeat( 'abcdefghijklmnopqrstuvwxyz0123456789', 10 ) ), 0, 10 ); //Generate default codes
-        $addVoucher->description = $request->description;
-        $addVoucher->exp_date = $request->expDate;
-        $addVoucher->status = "Pending";
-        
-        $addVoucher->save();
-
-        return redirect('voucher');
-    }
-    
-    public function deleteVoucher($id)
-    {
-        $deleteVoucher = DB::table('tbl_voucher')->where('voucher_id','=',$id); //deleting product
-        $deleteVoucher->delete();
-
-        return redirect('voucher');
-    }
-
-    public function VoucherReview(request $request)
-    {
-
-    }
-    
-    public function VoucherAccept(request $request)
-    {
-        
-    }
-
-    public function VoucherReject(request $request)
-    {
-        
-    }
-
-    
-    public function VoucherEnable(){
-        return view('admin.voucher_enable');
-    }
-    public function VoucherDisable(){
-        return view('admin.voucher_disable');
-    }
-    public function VoucherView(){
-        return view('admin.voucher_view');
-    }
-
-
 
     // Order Page
     public function Order_Pending(Request $request)
@@ -454,6 +397,89 @@ class Admin_product extends Controller
         $delivered_order = DB::table('tbl_orders')->where('status','=', 'Delivered')->get();
 
         return view ('admin.admin_orderdelivered', ['delivered_order' => $delivered_order]);
+    }
+
+// VOUCHER 
+
+    public function VoucherIndex(){
+        $voucher = DB::table('tbl_voucher')->get();
+
+        $voucherCount = DB::table('tbl_voucher')->count();
+        $EnableVoucher = DB::table('tbl_voucher')->where('status','Enable')->count();
+        $DisableVoucher = DB::table('tbl_voucher')->where('status','Disable')->count();
+
+       
+        return view('admin.voucher',['voucher' => $voucher, 'EnableVoucher' => $EnableVoucher, 'DisableVoucher' => $DisableVoucher, 'voucherCount' => $voucherCount]);
+    }
+
+    public function EnableVoucher(){
+        $enableVoucher = DB::table('tbl_voucher')->where('status','=', 'Enable')->get();
+
+        return view ('admin.voucher_enable', ['enableVoucher' => $enableVoucher]);
+    }
+
+    public function DisableVoucher(){
+        $disableVoucher = DB::table('tbl_voucher')->where('status','=', 'Disable')->get();
+
+        return view ('admin.voucher_disable', ['disableVoucher' => $disableVoucher]);
+    }
+
+    public function Enable_Voucher(Request $request) // Update the Voucher Status
+    {
+        $affected = DB::table('tbl_voucher')->where('voucher_id', $request->voucher_id);
+                
+        $resss=$affected->update(['status' => 'Enable'],);
+              
+        return redirect('voucher');
+    }
+
+    public function Disable_Voucher(Request $request) // Update the Voucher Status
+    {
+        $affected = DB::table('tbl_voucher')->where('voucher_id', $request->voucher_id);
+                
+        $resss=$affected->update(['status' => 'Disable'],);
+              
+        return redirect('voucher');
+    }
+
+    public function Update_Voucher(Request $request) // Update the Voucher 
+    {
+        $affected = DB::table('tbl_voucher')->where('voucher_id', $request->voucher_id);
+                
+        $resss=$affected->update(['voucher_name' => $request->voucherName, 'description' => $request->description, 'discount' => $request->discount, 'exp_date' => $request->expDate],);
+              
+        return redirect('voucher');
+    }
+
+    public function addVoucher(Request $request)
+    {
+       
+        $addVoucher = new tbl_voucher();
+
+        $addVoucher->voucher_name = $request->voucherName;
+        $addVoucher->voucher_code =  $quickpass = substr( str_shuffle( str_repeat( 'abcdefghijklmnopqrstuvwxyz0123456789', 10 ) ), 0, 10 ); //Generate default codes
+        $addVoucher->description = $request->description;
+        $addVoucher->discount = $request->discount;
+        $addVoucher->total_claimed = '0';
+        $addVoucher->exp_date = $request->expDate;
+        $addVoucher->status = "Pending";
+        
+        $addVoucher->save();
+
+        return redirect('voucher');
+    }
+    
+    public function deleteVoucher($id)
+    {
+        $deleteVoucher = DB::table('tbl_voucher')->where('voucher_id','=',$id); //deleting product
+        $deleteVoucher->delete();
+
+        return redirect('voucher');
+    }
+
+
+    public function VoucherView(){
+        return view('admin.voucher_view');
     }
 
 }

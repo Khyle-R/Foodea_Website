@@ -65,11 +65,11 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Discount</label>
-                                                    <input id="voucherName" name="voucherName" type="text" class="form-control" placeholder="" required>
+                                                    <input id="discount" name="discount" type="text" class="form-control" placeholder="" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Expiration Date</label>
-                                                    <input id="voucherName" name="voucherName" type="text" class="form-control" placeholder="" required>
+                                                    <input id="expDate" name="expDate" type="text" class="form-control" placeholder="" required>
                                                 </div>
                                             </div>
                                             <!-- MODAL FOOTER -->
