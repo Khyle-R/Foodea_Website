@@ -260,43 +260,50 @@
         </div>
         <div class="wrapper">
             <button class="toggle">
-                What is Foodea?
+                What is a FOODEA merchant?
                 <i class="fas fa-plus icon"></i>
             </button>
             <div class="cont">
                 <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta
-                    aliquam facere adipisci quod mollitia, aut nemo deleniti fugiat et,
-                    corrupti sequi. Omnis dolorem quos eligendi placeat soluta sint
-                    corrupti quod.
+                    A FOODEA merchant is a local business that partners with FOODEA to offer their food products on the app.
+
                 </p>
             </div>
         </div>
         <div class="wrapper">
             <button class="toggle">
-                How to be a Rider in Foodea?
+                How do I become a FOODEA merchant?
                 <i class="fas fa-plus icon"></i>
             </button>
             <div class="cont">
                 <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores
-                    error doloremque, quibusdam qui necessitatibus autem aperiam
-                    reprehenderit? Ipsum maiores dolore inventore ea. Accusantium fuga
-                    eius laboriosam iusto blanditiis doloremque ullam?
+                    To become a FOODEA merchant, you can visit the Merchant Page on the FOODEA
+                     website for more information on the application process.
+
                 </p>
             </div>
         </div>
         <div class="wrapper">
             <button class="toggle">
-                How to be a Foodea Partner?
+                What are the benefits of partnering with FOODEA as a merchant?
                 <i class="fas fa-plus icon"></i>
             </button>
             <div class="cont">
                 <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae
-                    consectetur officiis labore commodi sunt ex praesentium dolor magnam
-                    asperiores reiciendis. Minus magnam nesciunt aliquid eos ipsam sequi
-                    recusandae quos incidunt.
+                    Partnering with FOODEA can provide increased visibility and access to a wider customer base, 
+                    as well as potential opportunities for marketing and promotions.
+                </p>
+            </div>
+        </div>
+        <div class="wrapper">
+            <button class="toggle">
+                What are the requirements to partner with FOODEA as a merchant?
+                <i class="fas fa-plus icon"></i>
+            </button>
+            <div class="cont">
+                <p>
+                    The requirements to partner with FOODEA as a merchant may vary by location, but typically include compliance with food safety
+                     regulations and a willingness to provide high-quality products and customer service.
                 </p>
             </div>
         </div>
