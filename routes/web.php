@@ -11,6 +11,8 @@ use App\Http\Controllers\SuperadminController;
 
 Route::get('/', [Home::class, 'index'])->name('home.index');
 
+Route::get('/type', [Home::class, 'AccountType']);
+
 Route::get('/rider_application', [RiderRegistration::class, 'index'])->name('rider_application.index');
 
 Route::post('/rider_application', [RiderRegistration::class, 'addPostSubmit'])->name('rider_application.addPostSubmit');
@@ -42,6 +44,7 @@ Route::get('/logout', [Admin_product::class, 'logout']);
 Route::get('/login',  [PartnerRegistration::class, 'LoginIndex']);
 
 Route::post('/login',  [PartnerRegistration::class, 'LoginMerchant'])->name('login.LoginMerchant');
+
 
 Route::get('/rider_application_agreement', [RiderRegistration::class, 'agreement']);
 
@@ -184,7 +187,7 @@ Route::get('/index', [Admin_product::class, 'dashboard']);
 
 //Add product
 Route::get('/add_product',[Admin_product::class, 'addProductView'])->name('add_product.addProductView');
-
+Route::post('/add_product',[Admin_product::class, 'addProduct'])->name('add_product.addProduct');
 
 
 //Remove product
@@ -208,6 +211,7 @@ Route::get('product', function () {
 
     return view('admin.product', ['products' => $products]);
 });
+
 Route::post('product',[Admin_product::class, 'addProduct'])->name('add_product');
 
 //View inventory
@@ -233,7 +237,15 @@ Route::get('admin_orders', function(){
     return view('admin.admin_orders', ['orders' => $orders]);
 });
 
-Route::get('/account',[Admin_product::class, 'infoAccount']);
+//Voucher Route
+Route::get('/voucher', [Admin_product::class, 'VoucherIndex']);
+
+//ORDER ADMIN
+//ORDER Pending
+Route::get('/orderpending', [Admin_product::class, 'OrderPending']);
+Route::get('/orderaccept', [Admin_product::class, 'OrderAccept']);
+Route::get('/orderreview', [Admin_product::class, 'OrderReview']);
+Route::get('/orderarchieve', [Admin_product::class, 'OrderArchieve']);
 
 Route::get('/account', function(){
     $id=session('loginID');

@@ -8,7 +8,7 @@ use App\Models\tbl_vehicle_infos;
 use App\Models\tbl_rider_accounts;
 use App\Models\tbl_rider_application;
 use App\Models\tbl_rider_document;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\DB;  
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
