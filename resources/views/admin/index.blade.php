@@ -18,36 +18,12 @@
 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/dataTables.bootstrap5.min.css">
     
-    <!-- <script src="https://code.jquery.com/jquery-3.4.1.js"></script> --> 
-   
-    <!-- {{-- Admin Personal info disable  inputs --}}
-     <script>
-      $(document).ready(function(){
-          $("#myForm_Account :input").prop("disabled", true);
-          $("#save_info").hide(0);
-      });
-    </script>
-
-    {{-- Admin Business info disable  inputs --}}
-    <script>
-      $(document).ready(function(){
-          $("#myForm_Business :input").prop("disabled", true);
-          $("#save_info").hide(0);
-      });
-    </script> -->
-
-    <!-- End plugin css for this page -->
-    <!-- inject:css -->
-    <!-- endinject -->
-    <!-- Layout styles -->
-    
     <link rel="stylesheet" href="assets/css/stylesadmin.css"/>
     <link rel="stylesheet" href="assets/css/superadmin.css"/>
     <!-- End layout styles -->
     <link rel="shortcut icon" href="../../user/image/foodea1.png" />
 
     {{-- Datatable plugins --}}
-    <!-- <link rel="stylesheet" href="//cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css" /> -->
     
   </head>
   <body>
@@ -495,7 +471,6 @@
       <!-- page-body-wrapper ends -->
     </div>
     {{-- Jquery --}}
-    <!-- <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script> -->
 
     <!-- plugins:js -->
     <script src="assets/vendors/js/vendor.bundle.base.js"></script>
@@ -523,26 +498,5 @@
     <script src="assets/js/app.js"></script>
     <!-- End custom js for this page -->
 
-    {{-- DataTable plugins --}}
-    <!-- <script src="//cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script> -->
-
-
-<!-- <script>
-  $(document).ready( function () {
-    $('#myProduct').DataTable();
-} );
-</script>
-
-<script>
-  $(document).ready( function () {
-    $('#myInventory').DataTable();
-} );
-</script>
-
-<script>
-  $(document).ready( function () {
-    $('#myHistory').DataTable();
-} );
-</script> -->
   </body>
 </html>
