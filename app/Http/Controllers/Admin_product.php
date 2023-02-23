@@ -372,31 +372,40 @@ class Admin_product extends Controller
 
 
     // Order Page
-    public function Order_Accept(Request $request)
+    public function Order_Pending(Request $request)
     {
         $affected = DB::table('tbl_orders')->where('order_id', $request->order_id);
                 
-        $resss=$affected->update(['status' => 'Accepted'],);
+        $resss=$affected->update(['status' => 'Pending'],);
               
-        return redirect('admin_orders');
+        return redirect('orderpending');
     }
 
-    public function Order_Review(Request $request)
+    public function Order_Preparing(Request $request)
     {
         $affected = DB::table('tbl_orders')->where('order_id', $request->order_id);
                 
-        $resss=$affected->update(['status' => 'Review'],);
+        $resss=$affected->update(['status' => 'Preparing'],);
               
-        return redirect('admin_orderreview');
+        return redirect('orderpreparing');
     }
 
-    public function Order_Reject(Request $request)
+    public function Order_Delivering(Request $request)
     {
         $affected = DB::table('tbl_orders')->where('order_id', $request->order_id);
                 
-        $resss=$affected->update(['status' => 'Rejected'],);
+        $resss=$affected->update(['status' => 'Delivering'],);
               
-        return redirect('admin_orders');
+        return redirect('orderdelivering');
+    }
+
+    public function Order_Delivered(Request $request)
+    {
+        $affected = DB::table('tbl_orders')->where('order_id', $request->order_id);
+                
+        $resss=$affected->update(['status' => 'Delivered'],);
+              
+        return redirect('orderdelivered');
     }
 
 // Admin order Show the Table
@@ -405,26 +414,26 @@ class Admin_product extends Controller
 
         return view('admin.admin_orders', ['orders' => $orders]);
     }
-    
-    public function OrderAccept(){
-        $accepted_order = DB::table('tbl_orders')->where('status','=', 'Accepted')->get();
-
-        return view ('admin.admin_orderaccept', ['accepted_order' => $accepted_order]);
-    }
-    public function OrderArchieve(){
-        $archieve_order = DB::table('tbl_orders')->where('status','=', 'Rejected')->get();
-
-        return view ('admin.admin_orderarchieve', ['archieve_order' => $archieve_order]);
-    }
     public function OrderPending(){
         $pending_order = DB::table('tbl_orders')->where('status','=', 'Pending')->get();
 
         return view ('admin.admin_orderpending', ['pending_order' => $pending_order]);
     }
-    public function OrderReview(){
-        $review_order = DB::table('tbl_orders')->where('status','=', 'Review')->get();
+    public function OrderPreparing(){
+        $preparing_order = DB::table('tbl_orders')->where('status','=', 'Preparing')->get();
 
-        return view ('admin.admin_orderreview', ['review_order' => $review_order]);
+        return view ('admin.admin_orderpreparing', ['preparing_order' => $preparing_order]);
+    }
+    public function OrderDelivering(){
+        $delivering_order = DB::table('tbl_orders')->where('status','=', 'Delivering')->get();
+
+        return view ('admin.admin_orderdelivering', ['delivering_order' => $delivering_order]);
+    }
+
+    public function OrderDelivered(){
+        $delivered_order = DB::table('tbl_orders')->where('status','=', 'Delivered')->get();
+
+        return view ('admin.admin_orderdelivered', ['delivered_order' => $delivered_order]);
     }
 
 }

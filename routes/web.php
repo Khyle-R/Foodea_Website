@@ -234,9 +234,10 @@ Route::get('admin_history', function(){
 // ORDERS ROUTE
 Route::get('/admin_orders', [Admin_product::class, 'Orders']);
 
-Route::post('/admin_orders/Accept', [Admin_product::class, 'Order_Accept'])->name('order.Accept');
-Route::post('/admin_orders/Review', [Admin_product::class, 'Order_Review'])->name('order.Review');
-Route::post('/admin_orders/Reject', [Admin_product::class, 'Order_Reject'])->name('order.Reject');
+Route::post('/admin_orders/Pending', [Admin_product::class, 'Order_Pending'])->name('order.Pending');
+Route::post('/admin_orders/Prepapring', [Admin_product::class, 'Order_Preparing'])->name('order.Preparing');
+Route::post('/admin_orders/Delivering', [Admin_product::class, 'Order_Delivering'])->name('order.Delivering');
+Route::post('/admin_orders/Delivered', [Admin_product::class, 'Order_Delivered'])->name('order.Delivered');
 
 
 //Voucher Route
