@@ -329,7 +329,6 @@ class Admin_product extends Controller
         $voucher = DB::table('tbl_voucher')->get();
 
         return view('admin.voucher', ['voucher' => $voucher]);
-
     }
 
     public function addVoucher(Request $request)
@@ -371,18 +370,61 @@ class Admin_product extends Controller
         
     }
 
+
     // Order Page
-    // Admin order accept!
+    public function Order_Accept(Request $request)
+    {
+        $affected = DB::table('tbl_orders')->where('order_id', $request->order_id);
+                
+        $resss=$affected->update(['status' => 'Accepted'],);
+              
+        return redirect('admin_orders');
+    }
+
+    public function Order_Review(Request $request)
+    {
+        $affected = DB::table('tbl_orders')->where('order_id', $request->order_id);
+                
+        $resss=$affected->update(['status' => 'Review'],);
+              
+        return redirect('admin_orderreview');
+    }
+
+    public function Order_Reject(Request $request)
+    {
+        $affected = DB::table('tbl_orders')->where('order_id', $request->order_id);
+                
+        $resss=$affected->update(['status' => 'Rejected'],);
+              
+        return redirect('admin_orders');
+    }
+
+// Admin order Show the Table
+    public function Orders(){
+        $orders = DB::table('tbl_orders')->get();
+
+        return view('admin.admin_orders', ['orders' => $orders]);
+    }
+    
     public function OrderAccept(){
-        return view ('admin.admin_orderaccept');
+        $accepted_order = DB::table('tbl_orders')->where('status','=', 'Accepted')->get();
+
+        return view ('admin.admin_orderaccept', ['accepted_order' => $accepted_order]);
     }
     public function OrderArchieve(){
-        return view ('admin.admin_orderarchieve');
+        $archieve_order = DB::table('tbl_orders')->where('status','=', 'Rejected')->get();
+
+        return view ('admin.admin_orderarchieve', ['archieve_order' => $archieve_order]);
     }
     public function OrderPending(){
-        return view ('admin.admin_orderpending');
+        $pending_order = DB::table('tbl_orders')->where('status','=', 'Pending')->get();
+
+        return view ('admin.admin_orderpending', ['pending_order' => $pending_order]);
     }
     public function OrderReview(){
-        return view ('admin.admin_orderreview');
+        $review_order = DB::table('tbl_orders')->where('status','=', 'Review')->get();
+
+        return view ('admin.admin_orderreview', ['review_order' => $review_order]);
     }
+
 }

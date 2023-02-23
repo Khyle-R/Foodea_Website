@@ -56,12 +56,15 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($archieve_order as $key => $data)
+                                    
+                               
                                 <tr>
-                                    <td>314324211213</td>
-                                    <td>ADFAFS43</td>
-                                    <td>AFG22</td>
-                                    <td>December 30. 2023</td>
-                                    <td>6</td>
+                                    <td>{{ $data->order_id}}</td>
+                                    <td>{{ $data->customer_id}}</td>
+                                    <td>{{ $data->product_id}}</td>
+                                    <td>{{ $data->date}}</td>
+                                    <td>{{ $data->total}}</td>
                                     <td>
                                         <div class="dropdown action-label">
                                                 <a class=" btn-white-circle btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
@@ -198,6 +201,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                @endforeach
                             </tbody>
                         </table>
                         </div>

@@ -231,11 +231,13 @@ Route::get('admin_history', function(){
     return view('admin.admin_history', ['history' => $history]);
 });
 
-Route::get('admin_orders', function(){
-    $orders = DB::table('tbl_orders')->get();
+// ORDERS ROUTE
+Route::get('/admin_orders', [Admin_product::class, 'Orders']);
 
-    return view('admin.admin_orders', ['orders' => $orders]);
-});
+Route::post('/admin_orders/Accept', [Admin_product::class, 'Order_Accept'])->name('order.Accept');
+Route::post('/admin_orders/Review', [Admin_product::class, 'Order_Review'])->name('order.Review');
+Route::post('/admin_orders/Reject', [Admin_product::class, 'Order_Reject'])->name('order.Reject');
+
 
 //Voucher Route
 Route::get('/voucher', [Admin_product::class, 'VoucherIndex']);
@@ -249,6 +251,7 @@ Route::get('/orderpending', [Admin_product::class, 'OrderPending']);
 Route::get('/orderaccept', [Admin_product::class, 'OrderAccept']);
 Route::get('/orderreview', [Admin_product::class, 'OrderReview']);
 Route::get('/orderarchieve', [Admin_product::class, 'OrderArchieve']);
+
 
 Route::get('/account', function(){
     $id=session('loginID');

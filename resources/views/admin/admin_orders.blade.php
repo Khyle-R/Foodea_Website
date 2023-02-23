@@ -114,21 +114,24 @@
                                 </tr>
                             </thead>
                             <tbody>
+                              @foreach ($orders as $key => $data)
+                                  
+                              
                                 <tr>
-                                    <td>314324211213</td>
-                                    <td>ADFAFS43</td>
-                                    <td>AFG22</td>
-                                    <td>December 30. 2023</td>
-                                    <td>6</td>
+                                    <td>{{ $data->order_id}}</td>
+                                    <td>{{ $data->customer_id}}</td>
+                                    <td>{{ $data->product_id}}</td>
+                                    <td>{{ $data->date}}</td>
+                                    <td>{{ $data->total}}</td>
                                     <td>
                                         <div class="dropdown action-label">
                                                 <a class=" btn-white-circle btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
                                                     <i class=" pending mdi mdi-radiobox-marked"></i> Status
                                                 </a>
                                             <div class="bg-white dropdown-menu dropdown-menu-right">
-                                                <a data-toggle="modal" data-target="#ReviewModal" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-success"></i> Reviewing</a>
-                                                <a data-toggle="modal" data-target="#AcceptedModal" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-danger"></i> Accepted</a>
-                                                <a data-toggle="modal" data-target="#RejectModal" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-warning"></i> Rejected</a>
+                                                <a data-toggle="modal" data-target="#ReviewModal{{ $data->order_id}}" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-success"></i> Reviewing</a>
+                                                <a data-toggle="modal" data-target="#AcceptedModal{{ $data->order_id}}" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-danger"></i> Accepted</a>
+                                                <a data-toggle="modal" data-target="#RejectModal{{ $data->order_id}}" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-warning"></i> Rejected</a>
                                             </div>
                                         </div>
                                     </td>
@@ -145,7 +148,7 @@
 
                                 <!-- MODAL STARTS HERE -->
                                 <!-- REVIEW MODAL -->
-                                <div class="modal fade" id="ReviewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal fade" id="ReviewModal{{ $data->order_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <!-- MODAL HEADER -->
@@ -158,9 +161,10 @@
                                             <!-- MODAL BODY -->
                                             <div class="modal-body">
                                                 Do you want to change the status?
-                                                <form method="post" action="{}">
+                                                <form method="post" action="{{ route('order.Review')}}">
+                                                @csrf
                                                 <input type="hidden" name="status" value="Reviewing">
-                                                <input type="hidden" name="id" value="{}">
+                                                <input type="hidden" name="order_id" id="order_id"  value="{{ $data->order_id}}">
                                             </div>
                                             <!-- MODAL FOOTER -->
                                             <div class="modal-footer">
@@ -174,7 +178,7 @@
                                 </div>
 
                                 <!-- ACCEPT MODAL -->
-                                <div class="modal fade" id="AcceptedModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal fade" id="AcceptedModal{{ $data->order_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <!-- MODAL HEADER -->
@@ -187,10 +191,11 @@
                                             <!-- MODAL BODY -->
                                             <div class="modal-body">
                                                 Do you want to change the status to accept?
-                                                <form method="post" action="{}">
+                                                <form method="post" action="{{ route('order.Accept')}}">
+                                                  @csrf
                                                 <input type="hidden" name="status" value="Accepted">
                                                 <input type="hidden" name="id" value="{}">
-                                                <input type="hidden" name="rider_id" value="{}">
+                                                <input type="hidden" name="order_id" id="order_id" value="{{ $data->order_id}}">
                                             </div>
                                             <!-- MODAL FOOTER -->
                                             <div class="modal-footer">
@@ -203,7 +208,7 @@
                                 </div>
 
                                 <!-- REJECTED MODAL -->
-                                <div class="modal fade" id="RejectModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal fade" id="RejectModal{{ $data->order_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <!-- MODAL HEADER -->
@@ -216,9 +221,10 @@
                                             <!-- MODAL MODAL -->
                                             <div class="modal-body mt-3">
                                                 Do you want to change the status to reject?
-                                                <form method="post" action="{}">
+                                                <form method="post" action="{{ route('order.Reject')}}">
+                                                  @csrf
                                                 <input type="hidden" name="status" value="Rejected">
-                                                <input type="hidden" name="id" value="{}">
+                                                <input type="hidden" name="order_id" id="order_id" value="{{ $data->order_id}}">
                                             </div>
                                             <!-- MODAL FOOTER -->
                                             <div class="modal-footer">
@@ -256,6 +262,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                @endforeach
                             </tbody>
                         </table>
                         </div>
