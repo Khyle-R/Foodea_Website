@@ -9,75 +9,21 @@
                         <a href="#">Menu</a>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">
-                        Voucher
+                        Enable
                     </li>
                 </ol>
             </nav>
         </div>
         <div class="card mb-4">
-                            <div class="card-body">
-                                <ul class="nav nav-tabs nav-tabs-solid nav-justified">
-                                <li class="nav-size nav-item"><a class="nav-link active" href="/voucher">All</a></li>
-                                <li class="nav-size nav-item"><a class="nav-link" href="/voucherEnable">Enable</a></li>
-                                <li class="nav-size nav-item"><a class="nav-link" href="/voucherDisable">Disabled</a></li>
-                                </ul>
-                            </div>
-                        </div>
-
-        <div class="row mb-2">
-
-            <div class="col-md-6 col-sm-6 col-lg-6 col-xl-4 mb-3">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex align-items-center justify-content-between px-3">
-                          <div class="dash-widget-info">
-                                  <h3>0</h3>
-                              <span>All</span>
-                          </div>
-                         <span class="dash-widget-icon"><i class="mdi mdi-file-check"></i></span>
-                        </div>
-                    </div>
-                </div>
+            <div class="card-body">
+                <ul class="nav nav-tabs nav-tabs-solid nav-justified">
+                <li class="nav-size nav-item"><a class="nav-link" href="/voucher">All</a></li>
+                <li class="nav-size nav-item"><a class="nav-link active" href="/voucherEnable">Enable</a></li>
+                <li class="nav-size nav-item"><a class="nav-link" href="/voucherDisable">Disabled</a></li>
+                </ul>
             </div>
+         </div>
 
-            <div class="col-md-6 col-sm-6 col-lg-6 col-xl-4 mb-3">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex align-items-center justify-content-between px-3">
-                        <div class="dash-widget-info">
-                                <h3>0</h3>
-                            <span>Enable</span>
-                        </div>
-                         <span class="dash-widget-icon"><i class="mdi mdi-file-check"></i></span>
-                    </div>
-                        </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-sm-6 col-lg-6 col-xl-4 mb-3">
-                <div class="card dash-widget">
-                    <div class="card-body">
-						<div class="d-flex align-items-center justify-content-between px-3">
-							<div class="dash-widget-info">
-									<h3>0</h3>
-								<span>Disable</span>
-							</div>
-							<span class="dash-widget-icon"><i class="mdi mdi-file-check"></i></span>
-						</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="table-title mt-1 mb-2 px-3">
-			<div class="row">
-                <div class="col-12 d-flex justify-content-end">
-					<a href="#addContentModal" class="btn btn-success" data-toggle="modal">
-					<i class="material-icons">&#xE147;</i>
-					<span>Add Voucher</span>
-					</a>
-                </div>
-			</div>
-		</div>	
         <div class="row">
             <div class="col-12 grid-margin">
                 <div class="card">
@@ -227,7 +173,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                @endforeach
                             </tbody>
                         </table>
 
