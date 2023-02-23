@@ -132,7 +132,6 @@
                                             <a href="#" class="action-icon" data-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-vertical black-icon" aria-hidden="true"></i></a>
                                             <div class="bg-white dropdown-menu dropdown-menu-right">
                                                 <a data-toggle="modal" data-target="#ViewModal{{ $data->order_id}}" class="action-btn dropdown-item black" href="#"><i class="fa fa-pencil m-r-5"></i>View</a>
-                                                <a data-toggle="modal" data-target="#DeleteContent{{ $data->order_id}}" class="action-btn dropdown-item black" href="#"><i class="fa fa-trash-o m-r-5"></i>Delete</a>
                                             </div>
                                         </div>
                                     </td>
@@ -327,35 +326,6 @@
                                             <!-- MODAL MODAL -->
                                             <div class="modal-body mt-3">
                                                 Do you want to change the status to "To be Received"?
-                                                <form method="post" action="{}">
-                                                <input type="hidden" name="status" value="Rejected">
-                                                <input type="hidden" name="id" value="{}">
-                                            </div>
-                                            <!-- MODAL FOOTER -->
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn white-btn" data-dismiss="modal">Close</button>
-                                                <button type="submit" class="btn red-btn">Confirm</button>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <!-- DELETE CONTENT -->
-                                <div class="modal fade" id="DeleteContent" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                        <div class="modal-content">
-                                            <!-- MODAL HEADER -->
-                                            <div class="modal-header">
-                                                <h5 class="modal-title white-font " id="exampleModalLongTitle">Delete</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <!-- MODAL MODAL -->
-                                            <div class="modal-body mt-3">
-                                                Do you want to delete this? 
                                                 <form method="post" action="{}">
                                                 <input type="hidden" name="status" value="Rejected">
                                                 <input type="hidden" name="id" value="{}">
