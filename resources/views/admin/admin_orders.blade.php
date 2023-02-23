@@ -120,8 +120,13 @@
                                         <div class="dropdown action-label">
                                                 <a class=" btn-white-circle btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
                                                     <i class=" pending mdi mdi-radiobox-marked"></i> {{ $data->status}}
+                                                    <i class=" pending mdi mdi-radiobox-marked"></i> {{ $data->status}}
                                                 </a>
                                             <div class="bg-white dropdown-menu dropdown-menu-right">
+                                                <a data-toggle="modal" data-target="#PendingModal{{ $data->order_id}}" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-success"></i> Pending</a>
+                                                <a data-toggle="modal" data-target="#PreparingModal{{ $data->order_id}}" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-danger"></i> Preparing</a>
+                                                <a data-toggle="modal" data-target="#DeliveringModal{{ $data->order_id}}" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-warning"></i> Delivering</a>
+                                                <a data-toggle="modal" data-target="#DeliveredModal{{ $data->order_id}}" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-warning"></i> Delivered</a>
                                                 <a data-toggle="modal" data-target="#PendingModal{{ $data->order_id}}" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-success"></i> Pending</a>
                                                 <a data-toggle="modal" data-target="#PreparingModal{{ $data->order_id}}" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-danger"></i> Preparing</a>
                                                 <a data-toggle="modal" data-target="#DeliveringModal{{ $data->order_id}}" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-warning"></i> Delivering</a>
@@ -133,7 +138,8 @@
                                         <div class="dropdown">
                                             <a href="#" class="action-icon" data-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-vertical black-icon" aria-hidden="true"></i></a>
                                             <div class="bg-white dropdown-menu dropdown-menu-right">
-                                                <a data-toggle="modal" data-target="#ViewModal{{ $data->order_id}}" class="action-btn dropdown-item black" href="#"><i class="fa fa-pencil m-r-5"></i>View</a>
+                                                <a class="action-btn dropdown-item black" href="#"><i class="fa fa-pencil m-r-5"></i>View</a>
+                                                <a data-toggle="modal" data-target="#DeleteContent" class="action-btn dropdown-item black" href="#"><i class="fa fa-trash-o m-r-5"></i>Delete</a>
                                             </div>
                                         </div>
                                     </td>

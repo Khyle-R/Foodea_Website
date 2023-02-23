@@ -473,4 +473,69 @@ class Admin_product extends Controller
     }
 
 
+    // Order Page
+    public function Order_Pending(Request $request)
+    {
+        $affected = DB::table('tbl_orders')->where('order_id', $request->order_id);
+                
+        $resss=$affected->update(['status' => 'Pending'],);
+              
+        return redirect('orderpending');
+    }
+
+    public function Order_Preparing(Request $request)
+    {
+        $affected = DB::table('tbl_orders')->where('order_id', $request->order_id);
+                
+        $resss=$affected->update(['status' => 'Preparing'],);
+              
+        return redirect('orderpreparing');
+    }
+
+    public function Order_Delivering(Request $request)
+    {
+        $affected = DB::table('tbl_orders')->where('order_id', $request->order_id);
+                
+        $resss=$affected->update(['status' => 'Delivering'],);
+              
+        return redirect('orderdelivering');
+    }
+
+    public function Order_Delivered(Request $request)
+    {
+        $affected = DB::table('tbl_orders')->where('order_id', $request->order_id);
+                
+        $resss=$affected->update(['status' => 'Delivered'],);
+              
+        return redirect('orderdelivered');
+    }
+
+// Admin order Show the Table
+    public function Orders(){
+        $orders = DB::table('tbl_orders')->get();
+
+        return view('admin.admin_orders', ['orders' => $orders]);
+    }
+    public function OrderPending(){
+        $pending_order = DB::table('tbl_orders')->where('status','=', 'Pending')->get();
+
+        return view ('admin.admin_orderpending', ['pending_order' => $pending_order]);
+    }
+    public function OrderPreparing(){
+        $preparing_order = DB::table('tbl_orders')->where('status','=', 'Preparing')->get();
+
+        return view ('admin.admin_orderpreparing', ['preparing_order' => $preparing_order]);
+    }
+    public function OrderDelivering(){
+        $delivering_order = DB::table('tbl_orders')->where('status','=', 'Delivering')->get();
+
+        return view ('admin.admin_orderdelivering', ['delivering_order' => $delivering_order]);
+    }
+
+    public function OrderDelivered(){
+        $delivered_order = DB::table('tbl_orders')->where('status','=', 'Delivered')->get();
+
+        return view ('admin.admin_orderdelivered', ['delivered_order' => $delivered_order]);
+    }
+
 }
