@@ -17,7 +17,8 @@
     <link rel="stylesheet" href="assets/vendors/owl-carousel-2/owl.theme.default.min.css"/>
 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/dataTables.bootstrap5.min.css">
-    
+    {{-- // for Javascript --}}
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <link rel="stylesheet" href="assets/css/stylesadmin.css"/>
     <link rel="stylesheet" href="assets/css/superadmin.css"/>
     <!-- End layout styles -->

@@ -205,7 +205,7 @@ class Admin_product extends Controller
 
             
 
-                $addProd->merchant_id = "1";
+                $addProd->merchant_id = session('merchant_id');
                 $addProd->product_name =$request->product_name;
                 $addProd->stock = $request->stock;
                 $addProd->product_image =$image_p;
