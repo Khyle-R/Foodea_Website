@@ -249,7 +249,8 @@ Route::get('/voucherDisable', [Admin_product::class, 'DisableVoucher']);
 Route::post('/voucher/enable', [Admin_product::class, 'Enable_Voucher'])->name('voucher.Enable'); // Update the status of the Voucher
 Route::post('/voucher/disable', [Admin_product::class, 'Disable_Voucher'])->name('voucher.Disable'); // Update the status of the Voucher
 Route::post('/voucher/update', [Admin_product::class, 'Update_Voucher'])->name('voucher.Update'); // Update the status of the Voucher
-Route::get('/voucherView', [Admin_product::class, 'VoucherView']);
+
+Route::post('/claimedVoucher', [Admin_product::class, 'ClaimedVoucher'])->name('voucher.Claimed');
 
 //ORDER ADMIN
 //ORDER Pending

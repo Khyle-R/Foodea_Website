@@ -30,12 +30,14 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($claimedVoucher as $key => $data)
+                                
                                 <tr>
-                                    <td>Adas132123</td>
-                                    <td>Agatha</td>
-                                    <td>243242</td>
+                                    <td>{{ $data->user_id}}</td>
+                                    <td>{{ $data->user_name}}</td>
+                                    <td>{{ $data->voucher_code}}</td>
                                     <td>
-                                        11/22/23
+                                        {{ $data->claimed_date}}
                                     </td>
                                 </tr>
 
@@ -137,6 +139,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                @endforeach
                             </tbody>
                         </table>
 

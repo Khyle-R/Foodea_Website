@@ -70,7 +70,7 @@
                                         <div class="dropdown">
                                             <a href="#" class="action-icon" data-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-vertical black-icon" aria-hidden="true"></i></a>
                                             <div class="bg-white dropdown-menu dropdown-menu-right">
-                                                <a class="action-btn dropdown-item black" href="/voucherView"><i class="fa fa-pencil m-r-5"></i>View</a>
+                                                <a class="action-btn dropdown-item black" data-toggle="modal" data-target="#ViewModal{{ $data->voucher_id}}"<i class="fa fa-pencil m-r-5"></i>View</a>
                                                 <a class="action-btn dropdown-item black" data-toggle="modal" data-target="#UpdateModal{{ $data->voucher_id}}" href=""><i class="fa fa-trash-o m-r-5"></i>Update</a>
                                             </div>
                                         </div>
@@ -79,6 +79,35 @@
 
 
                                 <!-- MODAL STARTS HERE -->
+                                <!-- View MODAL -->
+                                <div class="modal fade" id="ViewModal{{ $data->voucher_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <div class="modal-content">
+                                            <!-- MODAL HEADER -->
+                                            <div class="modal-header">
+                                                <h5 class="modal-title white-font " id="exampleModalLongTitle">Update</h5>
+                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <!-- MODAL BODY -->
+                                            <div class="modal-body">
+                                                Do you want to see the claimed History Details?
+                                                <form method="post" action="{{ route('voucher.Claimed')}}">
+                                                    @csrf
+                                                <input type="hidden" name="status" value="Accepted">
+                                                <input type="hidden" name="voucher_code" value="{{ $data->voucher_code}}">
+                                                <input type="hidden" name="rider_id" value="{}">
+                                            </div>
+                                            <!-- MODAL FOOTER -->
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn white-btn" data-dismiss="modal">Close</button>
+                                                <button type="submit" class="btn red-btn">Confirm</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                   <!-- UPDATE CONTENT -->
                                   <div class="modal fade" tabindex="-1" id="UpdateModal{{ $data->voucher_id}}" role="dialog">
                                     <div class="modal-dialog modal-dialog-centered" role="document">

@@ -400,7 +400,7 @@ class Admin_product extends Controller
     }
 
 // VOUCHER 
-
+//VIEW
     public function VoucherIndex(){
         $voucher = DB::table('tbl_voucher')->get();
 
@@ -423,7 +423,7 @@ class Admin_product extends Controller
 
         return view ('admin.voucher_disable', ['disableVoucher' => $disableVoucher]);
     }
-
+// UPDATE
     public function Enable_Voucher(Request $request) // Update the Voucher Status
     {
         $affected = DB::table('tbl_voucher')->where('voucher_id', $request->voucher_id);
@@ -450,7 +450,7 @@ class Admin_product extends Controller
               
         return redirect('voucher');
     }
-
+//ADD
     public function addVoucher(Request $request)
     {
        
@@ -477,9 +477,11 @@ class Admin_product extends Controller
         return redirect('voucher');
     }
 
+    public function ClaimedVoucher(Request $request){
+        $claimedVoucher = DB::table('tbl_claimed')->where('voucher_code','=', $request->voucher_code)->get();
 
-    public function VoucherView(){
-        return view('admin.voucher_view');
+        return view ('admin.voucher_claimed', ['claimedVoucher' => $claimedVoucher]);
     }
+
 
 }
