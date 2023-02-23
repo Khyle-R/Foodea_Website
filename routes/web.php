@@ -207,7 +207,7 @@ Route::post('/product/updateInfo',[Admin_product::class, 'updateProductInfo'])->
 //View products
 Route::get('product', function () {
 
-    $products = DB::table('tbl_product')->get();
+    $products = DB::table('tbl_product')->where('merchant_id', '=', session('loginID'))->get();
 
     return view('admin.product', ['products' => $products]);
 });
@@ -217,7 +217,7 @@ Route::post('product',[Admin_product::class, 'addProduct'])->name('add_product')
 //View inventory
 Route::get('inventory', function(){
     
-    $invent = DB::table('tbl_inventory')->get();
+    $invent = DB::table('tbl_inventory')->where('merchant_id', '=', session('loginID'))->get();
 
     return view('admin.inventory', ['invent' => $invent]);
 });
@@ -226,7 +226,7 @@ Route::view('merchant_index', 'admin.index');
 
 //Route::view('admin_history', 'admin.admin_history');
 Route::get('admin_history', function(){
-    $history = DB::table('tbl_transaction')->get();
+    $history = DB::table('tbl_transaction')->where('merchant_id', '=', session('loginID'))->get();
 
     return view('admin.admin_history', ['history' => $history]);
 });
@@ -295,7 +295,7 @@ Route::get('document',  function(){
 //View Category
 Route::get('category', function () {
 
-    $category = DB::table('tbl_category')->get();
+    $category = DB::table('tbl_category')->where('merchant_id', '=', session('loginID'))->get();
 
     return view('admin.category', ['category' => $category]);
 });
