@@ -370,6 +370,18 @@ class Admin_product extends Controller
         
     }
 
+    
+    public function VoucherEnable(){
+        return view('admin.voucher_enable');
+    }
+    public function VoucherDisable(){
+        return view('admin.voucher_disable');
+    }
+    public function VoucherView(){
+        return view('admin.voucher_view');
+    }
+
+
 
     // Order Page
     public function Order_Pending(Request $request)

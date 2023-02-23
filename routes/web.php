@@ -243,8 +243,10 @@ Route::post('/admin_orders/Delivered', [Admin_product::class, 'Order_Delivered']
 //Voucher Route
 Route::get('/voucher', [Admin_product::class, 'VoucherIndex']);
 Route::post('/voucherAdd',[Admin_product::class, 'addVoucher'])->name('voucher.addVoucher');
-
 Route::get('/voucherdelete/{id}',[Admin_product::class, 'deleteVoucher'])->name('voucher.deleteVoucher');
+Route::get('/voucherEnable', [Admin_product::class, 'VoucherEnable']);
+Route::get('/voucherDisable', [Admin_product::class, 'VoucherDisable']);
+Route::get('/voucherView', [Admin_product::class, 'VoucherView']);
 
 //ORDER ADMIN
 //ORDER Pending

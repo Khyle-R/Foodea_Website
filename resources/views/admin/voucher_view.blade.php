@@ -9,75 +9,11 @@
                         <a href="#">Menu</a>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">
-                        Voucher
+                        View
                     </li>
                 </ol>
             </nav>
         </div>
-        <div class="card mb-4">
-                            <div class="card-body">
-                                <ul class="nav nav-tabs nav-tabs-solid nav-justified">
-                                <li class="nav-size nav-item"><a class="nav-link active" href="/voucher">All</a></li>
-                                <li class="nav-size nav-item"><a class="nav-link" href="/voucherEnable">Enable</a></li>
-                                <li class="nav-size nav-item"><a class="nav-link" href="/voucherDisable">Disabled</a></li>
-                                </ul>
-                            </div>
-                        </div>
-
-        <div class="row mb-2">
-
-            <div class="col-md-6 col-sm-6 col-lg-6 col-xl-4 mb-3">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex align-items-center justify-content-between px-3">
-                          <div class="dash-widget-info">
-                                  <h3>0</h3>
-                              <span>All</span>
-                          </div>
-                         <span class="dash-widget-icon"><i class="mdi mdi-file-check"></i></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-sm-6 col-lg-6 col-xl-4 mb-3">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex align-items-center justify-content-between px-3">
-                        <div class="dash-widget-info">
-                                <h3>0</h3>
-                            <span>Enable</span>
-                        </div>
-                         <span class="dash-widget-icon"><i class="mdi mdi-file-check"></i></span>
-                    </div>
-                        </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-sm-6 col-lg-6 col-xl-4 mb-3">
-                <div class="card dash-widget">
-                    <div class="card-body">
-						<div class="d-flex align-items-center justify-content-between px-3">
-							<div class="dash-widget-info">
-									<h3>0</h3>
-								<span>Disable</span>
-							</div>
-							<span class="dash-widget-icon"><i class="mdi mdi-file-check"></i></span>
-						</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="table-title mt-1 mb-2 px-3">
-			<div class="row">
-                <div class="col-12 d-flex justify-content-end">
-					<a href="#addContentModal" class="btn btn-success" data-toggle="modal">
-					<i class="material-icons">&#xE147;</i>
-					<span>Add Voucher</span>
-					</a>
-                </div>
-			</div>
-		</div>	
         <div class="row">
             <div class="col-12 grid-margin">
                 <div class="card">
@@ -87,45 +23,19 @@
                             <table id="example" class="table" style="width:100%">
                             <thead>
                                 <tr>
-                                    <th>Voucher Name</th>
+                                    <th>User ID</th>
+                                    <th>Username</th>
                                     <th>Voucher Code</th>
-                                    <th>Discription</th>
-                                    <th>Expiration Date</th>
-                                    <th>Discount</th>
-                                    <th>Total Claimed</th>
-                                    <th>Status</th>
-                                    <th>Action</th>
+                                    <th>Date Claimed</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>Jollibee Voucher</td>
+                                    <td>Adas132123</td>
+                                    <td>Agatha</td>
                                     <td>243242</td>
-                                    <td>Voucher for Jollibee Chicken</td>
                                     <td>
                                         11/22/23
-                                    </td>
-                                    <td>20%</td>
-                                    <td>2</td>
-                                    <td>
-                                        <div class="dropdown action-label">
-                                            <a class=" btn-white-circle btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
-                                                <i class=" pending mdi mdi-radiobox-marked"></i>Status
-                                            </a>
-                                            <div class="bg-white dropdown-menu dropdown-menu-right">
-                                                <a data-toggle="modal" data-target="#EnableModal" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-danger"></i>Enable</a>
-                                                <a data-toggle="modal" data-target="#DisableModal" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-warning"></i>Disable</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="dropdown">
-                                            <a href="#" class="action-icon" data-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-vertical black-icon" aria-hidden="true"></i></a>
-                                            <div class="bg-white dropdown-menu dropdown-menu-right">
-                                                <a class="action-btn dropdown-item black" href="/voucherView"><i class="fa fa-pencil m-r-5"></i>View</a>
-                                                <a class="action-btn dropdown-item black" data-toggle="modal" data-target="#UpdateModal" href=""><i class="fa fa-trash-o m-r-5"></i>Update</a>
-                                            </div>
-                                        </div>
                                     </td>
                                 </tr>
 
