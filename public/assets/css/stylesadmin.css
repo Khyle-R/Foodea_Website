@@ -9959,6 +9959,8 @@ pre code {
     padding-left: 0;
 }
 
+col-2
+
 .col-1,
 .col-2,
 .col-3,
@@ -10029,6 +10031,7 @@ pre code {
 .col-xl-11,
 .col-xl-12,
 .col-xl,
+
 .col-xl-auto {
     position: relative;
     width: 100%;

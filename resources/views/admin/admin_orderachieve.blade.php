@@ -1,7 +1,7 @@
 @extends('admin.index')
 @section('content')
 <div class="content-wrapper">  
-                        <div class="page-header">
+                        <div class="page-header">    
                             <h3 class="page-title black">Order Reject</h3>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
