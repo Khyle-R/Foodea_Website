@@ -79,7 +79,7 @@
             </div>
 
             <div class="form-group">
-            <label>Suffix</label>
+            <label>Suffix <a style="color:#FDC55E;font-size: 10px;">(Optional)</a></label>
             <input name="suffix" type="text"  class="form-control form-control-lg"/>
             </div>
 
@@ -96,14 +96,23 @@
             <label>Gender</label>
             <select name="gender" id="" class="form-control form-control-lg">
               <option selected="true" disabled="disabled">- Select -</option>
-              <option>MALE</option>
-              <option>FEMALE</option>
+              <option>Male</option>
+              <option>Female</option>
             </select>
              <span
             style="color:red;">
             @error('gender') {{ $message }}
             @enderror</span>
             </div>
+
+            <div class="form-group">
+            <label for="birthday">Birthdate</label>
+           <input class="form-control form-control-lg" type="date" id="birthday" name="birthday">
+          <span
+            style="color:red;">
+            @error('birthday') {{ $message }}
+            @enderror</span> 
+          </div>
 
             <div class="form-group">
             <label >Email Address <a style="color:#FDC55E;font-size: 10px;">(For Email verification)</a></label>
@@ -184,6 +193,34 @@
             @enderror</span>
             </div>
 
+             <h5 class="mt-4">Emergency Contact</h5>
+
+             <div class="form-group">
+            <label>Name</label>
+            <input name="name" type="text" value="{{ old('zip') }}" class="form-control form-control-lg"/>
+             <span
+            style="color:red;">
+            @error('name') {{ $message }}
+            @enderror</span>
+            </div>
+
+             <div class="form-group">
+            <label>Relationship</label>
+            <input name="relationship" type="text" value="{{ old('zip') }}" class="form-control form-control-lg"/>
+             <span
+            style="color:red;">
+            @error('relationship') {{ $message }}
+            @enderror</span>
+            </div>
+
+             <div class="form-group">
+            <label>Phone</label>
+            <input name="phone" type="text" value="{{ old('zip') }}" class="form-control form-control-lg"/>
+             <span
+            style="color:red;">
+            @error('phone') {{ $message }}
+            @enderror</span>
+            </div>
            <br><br>
            <div class="form-group">
             <div class="col-sm-10 d-flex justify-content-center">

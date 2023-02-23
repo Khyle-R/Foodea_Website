@@ -26,7 +26,7 @@ ul {
   list-style: none;
 }
 
-.header {
+.main-container {
   padding-top: 30px;
   background-image: linear-gradient(#fdc55e3f, #f5474709);
 }
@@ -45,7 +45,7 @@ nav .navbar-brand span{
   font-size: clamp(0.75rem, 0.8040rem + 1.3120vw, 1.16rem);
   position:relative;
   text-decoration: none;
-  color: #363636;
+  color: #f54748;
   font-weight: bold;
   font-family: "Montserrat", sans-serif;
  }
@@ -268,13 +268,13 @@ nav .navbar-brand span{
   font-family: "Montserrat", sans-serif;
   opacity: 75%;
   line-height: 25px;
-  text-align: left;
+  text-align: justify;
 }
 
 /* CAROUSEL */
 
 .container {
-  padding-top: 90px;
+  padding-top: 50px;
 }
 
 .container h2 {
@@ -478,13 +478,28 @@ nav .navbar-brand span{
   font-size: clamp(0.7rem, 0.5000rem + 0.8000vw, 1rem);
   color: #fff;
   font-family: "Montserrat", sans-serif;
-  display: flex;
-  justify-content: start;
-  align-items: start;
+  text-align: center;
+}
+
+.join a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.join a:hover {
+  color: #FEEECB;
+}
+
+.company a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.company a:hover {
+  color: #FEEECB;
 }
 
 /* END FOOTER*/
-
 
 @media (max-width:1900px){
   .service img {
@@ -510,7 +525,7 @@ nav .navbar-brand span{
     width: 75%;
   }
 
-  .header {
+  .content-wrap {
     padding-top: 30px;
     padding-bottom: 10px;
     background-image: linear-gradient(#fdc55e3f, #f5474709);
@@ -579,18 +594,29 @@ nav .navbar-brand span{
   }
   
   .delivery p {
-    width: 65%;
+    width: 75%;
     margin: 0 auto;
     font-size: 1rem;
     font-family: "Montserrat", sans-serif;
     opacity: 75%;
     line-height: 25px;
-    text-align: center;  
+    text-align: justify;  
+  }
 }
+
 
 @media (max-width:767px){
   .image img {
     display: none;
+  }
+  .delivery p {
+    width: 85%;
+    margin: 0 auto;
+    font-size: 1rem;
+    font-family: "Montserrat", sans-serif;
+    opacity: 75%;
+    line-height: 25px;
+    text-align: justify;  
   }
   
   .px-5 {
@@ -650,6 +676,15 @@ nav .navbar-brand span{
 }
 
 @media (max-width:470px){
+  .delivery p {
+    width: 85%;
+    margin: 0 auto;
+    font-size: 1rem;
+    font-family: "Montserrat", sans-serif;
+    opacity: 75%;
+    line-height: 25px;
+    text-align: justify;  
+  }
   
   .service img {
     width:250px;
@@ -670,6 +705,9 @@ nav .navbar-brand span{
     justify-content: space-between;
     color: #fff;
     padding: 70px 0;
+  }
+  .container2 {
+    width: 80%;
   }
 
 }

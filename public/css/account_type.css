@@ -8,7 +8,7 @@
     padding: 0;
     box-sizing: border-box;
 
-}    
+}
 
 body {
     height: 100vh;
@@ -17,7 +17,7 @@ body {
 
 a {
     text-decoration: none;
-    color: #000;
+    color: #F54748;
 }
 
 .nav-red {
@@ -49,6 +49,7 @@ a {
     display: flex;
     margin-top: 30px;
 }
+
 .type {
     border-radius: 50%;
 }
@@ -66,7 +67,7 @@ a {
 }
 
 .cards {
-    background-color: rgb(255, 244, 179);
+    background-color: rgba(255, 255, 255, 0.267);
     margin: 0 1rem;
     padding: 2rem;
     height: clamp(11.25rem, 5.4167rem + 23.3333vw, 15.625rem);
@@ -77,47 +78,54 @@ a {
     border-radius: .5rem;
     position: relative;
     cursor: pointer;
-    border: .5rem solid transparent;
+    border: .3rem solid #0000000e;
     transition: 200ms ease-in-out transform;
 }
+
 .checks_btn {
     position: absolute;
     top: 8%;
     right: 8%;
     background-color: rgba(92, 92, 92, .4);
-    width: 2rem;
-    height: 2rem;
+    width: 1.3rem;
+    height: 1.3rem;
     display: grid;
     place-items: center;
     border-radius: .5rem;
 }
+
 .fa-check {
     color: #fff;
 }
+
 .title {
     color: #272727;
 }
+
 .title,
 ul li {
-    color: #1f1208;
+    color: #1f1208a4;
     text-shadow: 0 0 .1rem rgba(0, 0, 0, .4);
 }
 
 .cards:hover {
     transform: scale(1.02)
 }
+
 .cards:active {
     transform: scale(.97)
 }
 
-input[id="card_one"]:checked ~ label[for="card_one"] .cards,
-input[id="card_two"]:checked ~ label[for="card_two"] .cards {
-    border-color:  #f17575;
+input[id="card_one"]:checked~label[for="card_one"] .cards,
+input[id="card_two"]:checked~label[for="card_two"] .cards {
+    border-color: #f17575;
+    background-color: rgb(255, 244, 179);
 }
 
-input[id="card_one"]:checked ~ label[for="card_one"] .cards .checks_btn,
-input[id="card_two"]:checked ~ label[for="card_two"] .cards .checks_btn{
+input[id="card_one"]:checked~label[for="card_one"] .cards .checks_btn,
+input[id="card_two"]:checked~label[for="card_two"] .cards .checks_btn {
     background-color: #F54748;
+
 }
 
 input {
