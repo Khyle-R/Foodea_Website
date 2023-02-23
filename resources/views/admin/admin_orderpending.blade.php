@@ -9,7 +9,7 @@
                                         <a href="#">Menu</a>
                                     </li>
                                     <li class="breadcrumb-item active" aria-current="page">
-                                        Pending
+                                        Orders
                                     </li>
                                 </ol>
                             </nav>
