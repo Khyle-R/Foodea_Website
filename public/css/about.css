@@ -307,9 +307,6 @@ section .wave .shape-fill {
   font-size: clamp(0.7rem, 0.5000rem + 0.8000vw, 1rem);
   color: #fff;
   font-family: "Montserrat", sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 
@@ -322,8 +319,23 @@ section .wave .shape-fill {
   }
 }
 
-@media (max-width:400px){
+@media (max-width:470px){
   .timeline {
     width:100%
+  }
+  .icon{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+  }
+
+  .footer-content {
+    width: 60%;
+    margin: 0 auto;
+    flex: column;
+    justify-content: space-between;
+    color: #fff;
+    padding: 70px 0;
   }
 }

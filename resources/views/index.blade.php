@@ -98,7 +98,8 @@
       </div>
 
     </nav>
-        <div class="section mx-auto my-5">
+    
+    <div class="section mx-auto my-5">
             <div class="content text-center text-md-start">
                 <h1>Be The Fastest In Delivering Your <span>Food</span></h1>
                 <p class="text-center text-md-start">Our job filling your tummy with delicious food and with fast delivery</p>
@@ -107,7 +108,7 @@
         <div class="image">
             <img src="image/food.png" alt=""></div>
         </div>
-
+    <div class="container pt-0">
         <div class="section-2">
             <div class="service">
                 <div class="rider">
@@ -144,19 +145,20 @@
             </div>
         </div>
     </div>
+    </div>
 
     <!---CAROUSEL-->
     <div class="container">
         <h2>Our Partners</h2>
         <section class="customer-logos slider">
-            <div class="slide"><img src="image/adidas.png" alt="logo" /></div>
-            <div class="slide"><img src="image/facebook.png" alt="logo" /></div>
-            <div class="slide"><img src="image/google.png" alt="logo" /></div>
-            <div class="slide"><img src="image/instagram.png" alt="logo" /></div>
-            <div class="slide"><img src="image/nike.png" alt="logo" /></div>
-            <div class="slide"><img src="image/twitter.png" alt="logo" /></div>
-            <div class="slide"><img src="image/uber.png" alt="logo" /></div>
-            <div class="slide"><img src="image/youtube.png" alt="logo" /></div>
+            <div class="slide"><img src="image/jollibee.png" alt="logo" /></div>
+            <div class="slide"><img src="image/angel.png" alt="logo" /></div>
+            <div class="slide"><img src="image/mcdo.png" alt="logo" /></div>
+            <div class="slide"><img src="image/domino.png" alt="logo" /></div>
+            <div class="slide"><img src="image/wendy.png" alt="logo" /></div>
+            <div class="slide"><img src="image/sarsa.png" alt="logo" /></div>
+            <div class="slide"><img src="image/potle.png" alt="logo" /></div>
+            <div class="slide"><img src="image/king.png" alt="logo" /></div>
         </section>
     </div>
     <!---ACOORDION-->
@@ -217,9 +219,9 @@
         </div>
     </div>
     <div class="footer">
-        <div class="footer-content">
-            <div class="icon">
-                <a href="/" class="iccon">
+        <div class="footer-content py-4 py-md-5">
+            <div class="icon pb-3 pb-md-0">
+                <a href="/" class="icon text-decoration-none">
                 <img src="image/foodea2.png" alt="">
                 <h1 class="text-light">FOODEA</h1>
                 </a>
@@ -227,19 +229,30 @@
             </div>
             <div class="join">
                 <h2>Join Us</h2>
-                <a href="/rider_landing"><p>Register as Rider</p></a>
-                <a href="/partner_landing"><p>Be a Partner</p></a>
+                <a href="/rider_landing" class="text-reset text-decoration-none">
+                    <p>Register as Rider</p>
+                </a>
+                <a href="/partner_landing" class="text-reset text-decoration-none">
+                    <p>Be a Partner</p>
+                </a>
             </div>
             <div class="company">
                 <h2>Our Company</h2>
-                <a href="/about" ><p>About Us</p></a>
-                <p>Mission</p>
-                <p>Vision</p>
-                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">Services</a>
-                    <ul class="dropdown-menu">
-                      <li><a href="/rider_landing" class="dropdown-item text-dark">Rider</a></li>
-                      <li><a href="/partner_landing" class="dropdown-item text-dark">Partner</a></li>
-                    </ul>           
+                <a href="/about" class="text-reset text-decoration-none">
+                    <p>About Us</p>
+                </a>
+                <a href="/contact" class="text-reset text-decoration-none">
+                    <p>Contact Us</p>
+                </a>
+                <a href="/" class="text-reset text-decoration-none">
+                    <p>Mission</p>
+                </a>
+                <a href="/" class="text-reset text-decoration-none">
+                    <p>Vision</p>
+                </a>
+                <a href="/" class="text-reset text-decoration-none">
+                    <p>Services</p>
+                </a>
             </div>
             <div class="footer-section">
                 <div class="inquire">
@@ -254,13 +267,11 @@
             </div>
         </div>
     </div>
-    <div class="dark-footer">
-        <div class="dark-content">
-            <p>Copyright © 2022. All Rights Reserved</p>
+    <div class="dark-footer pt-3">
+        <div class="dark-content m-auto text-center">
+            <p class="">Copyright © 2022. All Rights Reserved</p>
         </div>
     </div>
-
-
 
     <script src="js/script.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

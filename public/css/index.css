@@ -429,14 +429,13 @@ nav .navbar-brand span {
 }
 
 .footer-content {
-    width: 60%;
-    margin: 0 auto;
-    display: flex;
-    flex: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    color: #fff;
-    padding: 70px 0;
+  width: 60%;
+  margin: 0 auto;
+  display: flex;
+  flex: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  color: #fff;
 }
 
 .icon {
@@ -465,19 +464,17 @@ nav .navbar-brand span {
 }
 
 .dark-footer {
-    background-color: #d03838;
-    overflow-x: hidden;
+  background-color: #d03838;
+  overflow-x: hidden;
+  text-align: center;
 }
 
 .dark-content {
-    width: 60%;
-    margin: 0 auto;
-    font-size: clamp(0.7rem, 0.5000rem + 0.8000vw, 1rem);
-    color: #fff;
-    font-family: "Montserrat", sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  margin: 0 auto;
+  font-size: clamp(0.7rem, 0.5000rem + 0.8000vw, 1rem);
+  color: #fff;
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
 }
 
 .join a {
@@ -493,12 +490,32 @@ nav .navbar-brand span {
     color: #ffffff;
     text-decoration: none;
 }
+}
 
 .company a:hover {
     color: #FEEECB;
 }
 
 /* END FOOTER*/
+  .info-section {
+    width: 100%;
+    margin: 0px auto;
+  }
+}
+
+@media (max-width:500px){
+  
+  .service img {
+    width:250px;
+    height: 215px;
+  }
+  
+  .icon{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+  }
 
 
 @media (max-width:1900px) {
@@ -666,7 +683,7 @@ nav .navbar-brand span {
     }
 }
 
-@media (max-width:470px) {
+@media (max-width:500px) {
 
     .service img {
         width: 250px;

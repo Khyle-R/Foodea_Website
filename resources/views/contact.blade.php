@@ -189,7 +189,7 @@
 
     <!-- FORM -->
     <div class="contact-container mx-auto d-flex flex-column-reverse  flex-md-row-reverse justify-content-center align-items-center gap-5">
-    <div class="left-side p-5">
+    <div class="left-side pb-5">
         <img src="image/contact1.png" alt="calling a girl">
       </div>
     <div class="contact-form m-4 my-md-5 mx-auto p-5">
@@ -230,24 +230,41 @@
     </div>
 
     <!-- FOOTER -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="icon">
+    <div class="footer">
+        <div class="footer-content py-4 py-md-5">
+            <div class="icon pb-3 pb-md-0">
+                <a href="/" class="icon text-decoration-none">
                 <img src="image/foodea2.png" alt="">
-                <h1>FOODEA</h1>
-                <p>Follow Us</p>
+                <h1 class="text-light">FOODEA</h1>
+                </a>
+                <p class="text-center">Follow Us</p>
             </div>
             <div class="join">
                 <h2>Join Us</h2>
-                <p>Register as Rider</p>
-                <p>Be a Partner</p>
+                <a href="/rider_landing" class="text-reset text-decoration-none">
+                    <p>Register as Rider</p>
+                </a>
+                <a href="/partner_landing" class="text-reset text-decoration-none">
+                    <p>Be a Partner</p>
+                </a>
             </div>
             <div class="company">
                 <h2>Our Company</h2>
-                <p>About Us</p>
-                <p>Mission</p>
-                <p>Vision</p>
-                <p>Services</p>
+                <a href="/about" class="text-reset text-decoration-none">
+                    <p>About Us</p>
+                </a>
+                <a href="/contact" class="text-reset text-decoration-none">
+                    <p>Contact Us</p>
+                </a>
+                <a href="/" class="text-reset text-decoration-none">
+                    <p>Mission</p>
+                </a>
+                <a href="/" class="text-reset text-decoration-none">
+                    <p>Vision</p>
+                </a>
+                <a href="/" class="text-reset text-decoration-none">
+                    <p>Services</p>
+                </a>
             </div>
             <div class="footer-section">
                 <div class="inquire">
@@ -261,12 +278,12 @@
                 </div>
             </div>
         </div>
-        <div class="dark-footer">
-        <div class="dark-content">
-            <p>Copyright © 2022. All Rights Reserved</p>
+    </div>
+    <div class="dark-footer pt-3">
+        <div class="dark-content m-auto text-center">
+            <p class="">Copyright © 2022. All Rights Reserved</p>
         </div>
     </div>
-    </footer>
     <!-- END FOOTER -->
 
     <script src="js/script.js"></script>
