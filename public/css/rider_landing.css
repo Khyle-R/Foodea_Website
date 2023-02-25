@@ -687,6 +687,24 @@ nav .navbar-brand span{
   align-items: start;
 }
 
+.join a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.join a:hover {
+  color: #FEEECB;
+}
+
+.company a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.company a:hover {
+  color: #FEEECB;
+}
+
 /* END FOOTER*/
 
 /* Media Queries */
@@ -704,6 +722,20 @@ nav .navbar-brand span{
   .service img {
     width:290px;
     height: 255px;
+  }
+   .bg-img {
+    -webkit-background-size: contain;
+    -moz-background-size:contain;
+    -o-backgroundsize:contain;
+    background-size:contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: scroll;
+    height: 310px;
+  }
+  .end-content{
+    margin-top: -2rem;
+    
   }
 } 
 
@@ -803,11 +835,12 @@ nav .navbar-brand span{
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: scroll;
-    margin-bottom: -4.9rem;
+    height: 230px;
   }
   
   .end-content{
-    margin-top: 2rem;
+    margin-top: -2rem;
+    
   }
   
   .end-container {
@@ -1009,7 +1042,7 @@ nav .navbar-brand span{
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: scroll;
-  margin-bottom: -2.9rem;
+  height: 185px;
 }
 
 .end-content{
@@ -1026,76 +1059,6 @@ nav .navbar-brand span{
 }
 
 
-@media (max-width:375px){
-  
-
-  .service img {
-    width:250px;
-    height: 215px;
-  }
-  
-  .icon{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0 auto;
-  }
-
-  .footer-content {
-    width: 60%;
-    margin: 0 auto;
-    flex: content;
-    justify-content: space-between;
-    color: #fff;
-    padding: 70px 0;
-  }
-  
-    .change {
-    align-items: flex-start;
-    justify-content: flex-start;
-  }
-
-  .section-2 {
-    width: 80%;
-    margin: 50px auto;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .section-2 img {
-    align-self: center;
-  }
-  
-  .timeline-title {
-   padding-top: 20rem;
-   display: flex;
-   flex-direction: column;
-   text-align: left;
-  }
-  
-  .container2 {
-    width: 90%;
-    margin: 100px auto;
-    padding: 10px;
-  }
-
-  
-.bg-img {
-  -webkit-background-size: contain;
-  -moz-background-size:contain;
-  -o-backgroundsize:contain;
-  background-size:contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-attachment: scroll;
-  margin-bottom: -2.9rem;
-}
-
-.end-content{
-  margin-top: -8.4rem;
-}
-
-} 
 
 @media  (max-width:325px){
   
@@ -1107,7 +1070,7 @@ nav .navbar-brand span{
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: scroll;
-    margin-bottom: -3.5rem;
+    height: 170px;
   }
 
   .end-content{

@@ -183,18 +183,18 @@
     
     <div class="req-container">
         <div class="req-section">
-            <div class="row mb-5">
+            <div class="row">
                 <h2 class="text-center mb-4 text-md-center">Get your documents ready</h2>
                 <p class="mb-5">You can find the required documents as below. Please ensure that the 
                     following documents are original or else your application will be rejected.
                      Upload only a scanned copy and images of the following documents to avoid document information 
                      being reflective and blurred.</p>
-                <div class="col-md-6 col-lg-6">
+                <div class="col-0 col-md-6 col-lg-6">
                <div class="req-image">
                             <img src="/image/requirements.png" alt="">
                         </div>
                     </div>
-             <div class="col-12 col-md-6 col-lg-6 col">
+             <div class="col-12 col-sm-12 col-md-6 col-lg-6">
               <div class="req-content">
                 <ul class="accordion">
                 
@@ -319,15 +319,19 @@
             </div>
             <div class="join">
                 <h2>Join Us</h2>
-                <p>Register as Rider</p>
-                <p>Be a Partner</p>
+                <a href="/rider_landing"><p>Register as Rider</p></a>
+                <a href="/partner_landing"><p>Be a Partner</p></a>
             </div>
             <div class="company">
                 <h2>Our Company</h2>
-                <p>About Us</p>
+                <a href="/about" ><p>About Us</p></a>
                 <p>Mission</p>
                 <p>Vision</p>
-                <p>Services</p>
+                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">Services</a>
+                    <ul class="dropdown-menu">
+                      <li><a href="/rider_landing" class="dropdown-item text-dark">Rider</a></li>
+                      <li><a href="/partner_landing" class="dropdown-item text-dark">Partner</a></li>
+                    </ul>           
             </div>
             <div class="footer-section">
                 <div class="inquire">

@@ -337,15 +337,19 @@
             </div>
             <div class="join">
                 <h2>Join Us</h2>
-                <p>Register as Rider</p>
-                <p>Be a Partner</p>
+                <a href="/rider_landing"><p>Register as Rider</p></a>
+                <a href="/partner_landing"><p>Be a Partner</p></a>
             </div>
             <div class="company">
                 <h2>Our Company</h2>
-                <p>About Us</p>
+                <a href="/about" ><p>About Us</p></a>
                 <p>Mission</p>
                 <p>Vision</p>
-                <p>Services</p>
+                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">Services</a>
+                    <ul class="dropdown-menu">
+                      <li><a href="/rider_landing" class="dropdown-item text-dark">Rider</a></li>
+                      <li><a href="/partner_landing" class="dropdown-item text-dark">Partner</a></li>
+                    </ul>            
             </div>
             <div class="footer-section">
                 <div class="inquire">

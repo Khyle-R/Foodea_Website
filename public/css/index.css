@@ -483,6 +483,24 @@ nav .navbar-brand span{
   align-items: start;
 }
 
+.join a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.join a:hover {
+  color: #FEEECB;
+}
+
+.company a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.company a:hover {
+  color: #FEEECB;
+}
+
 /* END FOOTER*/
 
 
@@ -586,7 +604,9 @@ nav .navbar-brand span{
     opacity: 75%;
     line-height: 25px;
     text-align: center;  
+  }
 }
+
 
 @media (max-width:767px){
   .image img {
