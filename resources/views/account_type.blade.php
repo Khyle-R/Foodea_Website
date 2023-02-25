@@ -20,7 +20,7 @@
 
     <body>
         <nav class="navbar navbar-light nav-red">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="/">
                 <img
                     src="image/foodea.png"
                     width="30"
@@ -43,8 +43,8 @@
                                   <h6 class="pt-4 fw-medium title">Select an Account type</h6>
                                 </div>
                                 <div class="radio mb-4 d-flex justify-content-center align-items-center">
-                                    <input type="radio" name="card" id="card_one">
-                                    <input type="radio" name="card" id="card_two">
+                                    <input type="radio"  name="card" id="card_one">
+                                    <input type="radio"  name="card" id="card_two">
                                     <!-- <input type="radio" name="card" id="card_three"> -->
                                        <!-- they should all have the same name attr but different ids -->
                                     <label for="card_one">
@@ -72,14 +72,14 @@
                                 </div>
 
                                 <div class="d-flex flex-column ">
-                                    <a href="#" class="btn btn-danger" role="button" data-bs-toggle="button">Continue</a>
+                                    <a href="" class="btn btn-danger" id="submit" onclick='myFunction()'>Continue</a>
 
                                     <div class="pt-4 mb-3 d-flex flex-column flex-md-row justify-content-center align-items-center">
                                         <div>
-                                            <p class="mb-0 pe-3">Don't have an account?</p>
+                                            <p class="mb-0 pe-2">Already have an account?</p>
                                         </div>
                                         <div>
-                                        <a href="#" class="red">Sign Up</a>
+                                        <a href="/login_type" class="red">Log In</a>
                                         </div>
                                     </div>
                                 </div>
@@ -91,7 +91,19 @@
         </section>
     </body>
 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script>
+    function myFunction() {
 
+        if(document.getElementById('card_one').checked) {
+            document.getElementById('submit').href = "/rider_application_agreement";
+        }
+
+      if(document.getElementById('card_two').checked) {
+            document.getElementById('submit').href = "/merchant_application_agreement";
+        }
+
+    }
+</script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
 </html>

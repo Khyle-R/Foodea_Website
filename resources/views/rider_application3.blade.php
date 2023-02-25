@@ -76,6 +76,18 @@
             @enderror</span>
           </div>
 
+             <div class="form-group">
+            <label>Vehicle Ownership</label>
+            <select class="form-control form-control-lg" name="vehicle_ownership">
+            <option selected="true" disabled="disabled">- Select -</option>
+            <option value="Fully_owned" >Fully owned </option>
+            <option value="Borrowed">Borrowed</option>
+           <option value="Second-hand" >Second-hand</option> 
+          </select>
+        
+          </div>
+      
+
           <div class="form-group">
             <label>Plate Number</label>
             <input type="text" name="plate_number" value="{{ old('plate_number') }}" class="form-control form-control-lg"/>

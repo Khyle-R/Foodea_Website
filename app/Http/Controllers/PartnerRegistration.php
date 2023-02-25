@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\tbl_merchant_application;
-use App\Models\tbl_merchant_document;
-use App\Models\tbl_merchant_info;
-use App\Models\tbl_partner_accounts;
 use Illuminate\Http\Request;
+use App\Models\tbl_merchant_info;
+use App\Models\tbl_rider_accounts;
+use App\Models\tbl_partner_accounts;
 use Illuminate\Support\Facades\Hash;
+use App\Models\tbl_merchant_document;
+use Illuminate\Support\Facades\Session;
+use App\Models\tbl_merchant_application;
 
 class PartnerRegistration extends Controller
 {
@@ -66,7 +68,10 @@ class PartnerRegistration extends Controller
             'country' => 'required',
             'postal_code' => 'required',
             'store_number' => 'required',
-            'store_email' => 'required|email'
+            'store_email' => 'required|email',
+            'date_founded' => 'required',
+            'mission' => 'required',
+            'vision' => 'required'
         ]);
 
         $merchant = new tbl_merchant_info();
@@ -81,7 +86,9 @@ class PartnerRegistration extends Controller
         $merchant->postal_code = $request->postal_code;
         $merchant->store_number = $request->store_number;
         $merchant->store_email = $request->store_email; 
-
+        $merchant->date_founded = $request->date_founded; 
+        $merchant->mission = $request->mission; 
+        $merchant->vision = $request->vision; 
         $res = $merchant->save();
         if($res){
             
@@ -175,7 +182,7 @@ class PartnerRegistration extends Controller
             'merchant_document_id' => $id->merchant_document_id,
             'status' => 'Pending'
         ]);
-        return redirect('partner_application4');
+        return redirect('partner_applicationstatus');
 
         }
         else
@@ -210,5 +217,17 @@ class PartnerRegistration extends Controller
      public function agreement(){
         return view('/merchant_application_agreement');
     }
+    public function PartnerApplicationStatus(){
+        $id = Session::get('merchant_id');
 
+        $Data = tbl_partner_accounts::join('tbl_merchant_info', 'tbl_merchant_account.merchant_id', '=', 'tbl_merchant_info.merchant_id')
+    ->join('merchant_application', 'tbl_merchant_account.merchant_id', '=', 'merchant_application.merchant_id')
+    ->join('merchant_document', 'tbl_merchant_account.merchant_id', '=', 'merchant_document.merchant_id')
+    ->where('merchant_application.merchant_id',  $id)
+    ->limit(1)
+    ->get();
+        
+     return view('partner_applicationstatus', compact('Data'));
+
+    }
 }
