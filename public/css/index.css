@@ -435,7 +435,6 @@ nav .navbar-brand span{
   flex-wrap: wrap;
   justify-content: space-between;
   color: #fff;
-  padding: 70px 0;
 }
 
 .icon{
@@ -470,17 +469,15 @@ nav .navbar-brand span{
 .dark-footer {
   background-color: #d03838;
   overflow-x: hidden;
+  text-align: center;
 }
 
 .dark-content {
-  width: 60%;
   margin: 0 auto;
   font-size: clamp(0.7rem, 0.5000rem + 0.8000vw, 1rem);
   color: #fff;
   font-family: "Montserrat", sans-serif;
-  display: flex;
-  justify-content: start;
-  align-items: start;
+  text-align: center;
 }
 
 /* END FOOTER*/
@@ -587,6 +584,7 @@ nav .navbar-brand span{
     line-height: 25px;
     text-align: center;  
 }
+}
 
 @media (max-width:767px){
   .image img {
@@ -649,7 +647,7 @@ nav .navbar-brand span{
   }
 }
 
-@media (max-width:470px){
+@media (max-width:500px){
   
   .service img {
     width:250px;
