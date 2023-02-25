@@ -99,7 +99,42 @@
             @error('vehicle_back') {{ $message }}
             @enderror</span>
                 </div>
+              
+              <!--- BORROWED-->  
+              @if(Session::get('vehicle') == 'Borrowed')
+                
+          
+               <div class="requirements-title"> 
+            <p>Original Authorization letter <span> (Required)</span></p>
+               </div>
+                <div class="requirements">
+            <img src="image/cr.png" alt="">
+              <input type="file" name="auth_letter">
+               <span>File size up to 5mb only</span>
+            <span
+            style="color:red;">
+            @error('auth_letter') {{ $message }}
+            @enderror</span>
+              </div>
 
+                 
+           @endif
+
+           @if(Session::get('vehicle') == 'Second-hand')
+                  <!--- SECOND HAND-->  
+               <div class="requirements-title"> 
+            <p>Notarized Deed of Sale <span> (Required)</span></p>
+               </div>
+                <div class="requirements">
+            <img src="image/cr.png" alt="">
+              <input type="file" name="deed_sale">
+               <span>File size up to 5mb only</span>
+            <span
+            style="color:red;">
+            @error('deed_sale') {{ $message }}
+            @enderror</span>
+              </div>
+          @endif
                  <div class="requirements-title">
               <p>Photo of your Professional drivers license ID <span> (Required)</span></p>
                  </div>

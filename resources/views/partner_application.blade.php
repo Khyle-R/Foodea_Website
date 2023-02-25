@@ -89,7 +89,7 @@
             </div>
 
             <div class="form-group">
-            <label>Suffix</label>
+            <label>Suffix<a style="color:#FDC55E;font-size: 10px;">(Optional)</a></label>
             <input type="text" name="suffix" class="form-control form-control-lg"/>
             </div>
 
