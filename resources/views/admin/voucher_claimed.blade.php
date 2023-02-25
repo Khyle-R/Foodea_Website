@@ -30,12 +30,14 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach ($claimedVoucher as $key => $data)
+                                
                                 <tr>
-                                    <td>Adas132123</td>
-                                    <td>Agatha</td>
-                                    <td>243242</td>
+                                    <td>{{ $data->user_id}}</td>
+                                    <td>{{ $data->user_name}}</td>
+                                    <td>{{ $data->voucher_code}}</td>
                                     <td>
-                                        11/22/23
+                                        {{ $data->claimed_date}}
                                     </td>
                                 </tr>
 
@@ -65,11 +67,11 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Discount</label>
-                                                    <input id="voucherName" name="voucherName" type="text" class="form-control" placeholder="" required>
+                                                    <input id="discount" name="discount" type="text" class="form-control" placeholder="" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Expiration Date</label>
-                                                    <input id="voucherName" name="voucherName" type="text" class="form-control" placeholder="" required>
+                                                    <input id="expDate" name="expDate" type="text" class="form-control" placeholder="" required>
                                                 </div>
                                             </div>
                                             <!-- MODAL FOOTER -->
@@ -137,6 +139,7 @@
                                         </div>
                                     </div>
                                 </div>
+                                @endforeach
                             </tbody>
                         </table>
 

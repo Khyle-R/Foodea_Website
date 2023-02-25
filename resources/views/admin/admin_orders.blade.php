@@ -34,7 +34,7 @@
                     <div class="card-body">
                         <div class="d-flex align-items-center justify-content-between px-3">
                           <div class="dash-widget-info">
-                                  <h3>0</h3>
+                                  <h3>{{ $TotalOrders}}</h3>
                               <span>All</span>
                           </div>
                          <span class="dash-widget-icon"><i class="mdi mdi-file-check"></i></span>
@@ -48,7 +48,7 @@
                     <div class="card-body">
                         <div class="d-flex align-items-center justify-content-between px-3">
                         <div class="dash-widget-info">
-                                <h3>0</h3>
+                                <h3>{{ $PendingOrders}}</h3>
                             <span>Pending</span>
                         </div>
                          <span class="dash-widget-icon"><i class="mdi mdi-file-check"></i></span>
@@ -62,7 +62,7 @@
                     <div class="card-body">
 						<div class="d-flex align-items-center justify-content-between px-3">
 							<div class="dash-widget-info">
-									<h3>0</h3>
+									<h3>{{ $PreparingOrders}}</h3>
 								<span>Preparing</span>
 							</div>
 							<span class="dash-widget-icon"><i class="mdi mdi-file-check"></i></span>
@@ -76,7 +76,7 @@
                     <div class="card-body">
                         <div class="d-flex align-items-center justify-content-between px-3">
 							<div class="dash-widget-info">
-									<h3>0</h3>
+									<h3>{{ $DeliveringOrders}}</h3>
 								<span>Delivering</span>
 							</div>
                          <span class="dash-widget-icon"><i class="mdi mdi-file-check"></i></span>
@@ -85,6 +85,8 @@
                 </div>
             </div>
         </div>
+
+        
 
         <div class="row">
             <div class="col-12 grid-margin">
