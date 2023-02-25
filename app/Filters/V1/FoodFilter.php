@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 
 class FoodFilter{
     protected $allowedParameters = [
+        'product_id' => ['eq'],
         'merchant_id' => ['eq'],
         'category_id' => ['eq'],
         'product_name' => ['eq', 'like'],
