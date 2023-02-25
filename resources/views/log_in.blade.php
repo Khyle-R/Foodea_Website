@@ -61,7 +61,7 @@
             </script>
 
         @endif
-          <br><br><br><br>
+
         <section>
             <div class="container mt-2 pt-5">
                 <div class="row">
@@ -93,7 +93,7 @@
                                             type="password"
                                             name="password"
                                             class="form-control my-1 form-control-lg"
-                                            placeholder="example@gmail.com"
+                                            placeholder="Password"
                                         />
                                    <span
                                     class="error">
@@ -119,7 +119,7 @@
                                             <p class="mr-2">
                                                 Don't have an account?
                                             </p>
-                                            <a href="#" class="red">Sign Up</a>
+                                            <a href="/account_type" class="red">Sign Up</a>
                                         </div>
                                     </div>
                                 </form>

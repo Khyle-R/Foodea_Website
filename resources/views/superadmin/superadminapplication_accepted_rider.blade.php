@@ -3,7 +3,19 @@
 
 <div class="content-wrapper">
     <div class="row">
-
+        <!---ALERT BOX --->
+                    @if (Session::has('success'))
+                    <p style="display:none" class="popup"></p>
+            <div class="success hide">
+                <span class="fas fa-exclamation-circle"></span>
+                <span class="msg">{{ Session::pull('success') }}</span>
+                <div class="close-btn">
+                    <span class="fas fa-times"></span>
+                </div>
+            </div>
+                    @endif
+             
+              <!---/ALERT BOX --->
     </div>
     <div class="page-header">
         <h3 class="page-title black">Rider Application</h3>
@@ -28,7 +40,8 @@
                             Showing 3 Applicants
                         </h5>
                     </div>
-
+                
+                       @if(count($Data) > 0)
                     <div class="row">
              @foreach ($Data as $rider)      
             <div class="col-sm-3 mb-2">
@@ -36,14 +49,14 @@
                 <div class="card">
                 <div class="card-body">
                     <div class="text-center">
-                        <img class="circle mb-2" height="87" width="90" src="{{ url('uploads/rider_documents/'.$rider->rider_photo) }}" alt="">
+                        <img class="circle mb-2" height="87" width="90" src="{{ url(('uploads/'.$rider->rider_id. '_' .$rider->firstname. '_' .$rider->lastname. '/'). $rider->rider_photo) }}" alt="">
                         <p class="card-text black-name">{{ $rider->firstname. ' ' .$rider->lastname }}</p>
                     </div>
                      <div class="dropdown profile-action">
                             <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-vertical black-icon" aria-hidden="true"></i></a>
                             <div class="bg-white dropdown-menu dropdown-menu-right">
                                 <a data-toggle="modal" data-target="#EditModal{{ $rider->rider_id }}"  class="action-btn black dropdown-item" href=""><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                <a class="action-btn black dropdown-item" href=""><i class="fa fa-trash-o m-r-5"></i> Delete</a>
+                                <a data-toggle="modal" data-target="#RemoveModal{{ $rider->rider_id }}" class="action-btn black dropdown-item" href=""><i class="fa fa-trash-o m-r-5"></i> Remove</a>
                             </div>
                         </div>
                 </div>
@@ -61,57 +74,57 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form method="post" action="{{ route('Updatemodal') }}">
+                            <form method="post" action="{{ route('UpdateAcceptedRider') }}">
                                 @csrf
                              <div class="form-row">
 
                             <div class="form-group col-md-6">
                             <label for="first">First Name</label>
-                            <input type="text" class="form-control input-border" id="first" placeholder="Firstname">
+                            <input name="firstname" type="text" value="{{ $rider->firstname }}" class="form-control input-border" id="first" placeholder="Firstname">
                             </div>
 
                             <div class="form-group col-md-6">
                             <label for="middle">Middle Name</label>
-                            <input type="text" class="form-control input-border" id="middle" placeholder="Middlename">
+                            <input name="middlename" type="text" value="{{ $rider->middlename }}" class="form-control input-border" id="middle" placeholder="Middlename">
                             </div>
 
                             <div class="form-group col-md-6">
                             <label for="last">Last Name</label>
-                           <input type="text" class="form-control input-border" id="last" placeholder="Lastname">
+                           <input name="lastname" type="text" value="{{ $rider->lastname }}" class="form-control input-border" id="last" placeholder="Lastname">
                             </div>
 
                             <div class="form-group col-md-6">
                             <label for="suff">Suffix</label>
-                           <input type="text" class="form-control input-border" id="suff" placeholder="Suffix">
+                           <input name="suffix" type="text" value="{{ $rider->suffix }}" class="form-control input-border" id="suff" placeholder="Suffix">
                             </div>
 
                         </div>
                         
                         <div class="form-group">
                             <label for="email">Email</label>
-                            <input type="text" class="form-control input-border" id="email" placeholder="Email">
+                            <input name="email" type="text" value="{{ $rider->email }}" class="form-control input-border" id="email" placeholder="Email">
                         </div>
                          <div class="form-group">
                             <label for="email">Mobile Number</label>
-                            <input type="text" class="form-control input-border" id="email" placeholder="Mobile number">
+                            <input name="mobile_number" type="text" value="{{ $rider->mobile_number }}" class="form-control input-border" id="email" placeholder="Mobile number">
                         </div>
                         <div class="form-group">
                             <label for="inputAddress2">Address</label>
-                            <input type="text" class="form-control input-border" id="inputAddress2" placeholder="">
+                            <input name="address" type="text" value="{{ $rider->address }}" class="form-control input-border" id="inputAddress2" placeholder="">
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
                             <label for="inputCity">City</label>
-                            <input type="text" class="form-control input-border" id="inputCity">
+                            <input name="city" type="text" value="{{ $rider->city }}" class="form-control input-border" id="inputCity">
                             </div>
                            <div class="form-group col-md-6">
                             <label for="barang">Barangay</label>
-                            <input type="text" class="form-control input-border" id="barang">
+                            <input name="barangay" type="text" value="{{ $rider->barangay }}" class="form-control input-border" id="barang">
                             </div>
                            
                         </div>
-                       
-                            <input type="hidden" name="id" value="{{ $rider->accepted_rider_id }}">
+                     
+                            <input type="hidden" name="accepted_rider_id" value="{{ $rider->accepted_rider_id }}">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn white-btn" data-dismiss="modal">Close</button>
@@ -121,8 +134,39 @@
                         </div>
                     </div>
                     </div>
+
+                    <!-- Remove Modal -->
+                     <div class="modal fade" id="RemoveModal{{ $rider->rider_id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title white-font " id="exampleModalLongTitle">Update</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            Do you want to remove this rider?
+                            <form method="post" action="{{ route('RemoveRider') }}">
+                                @csrf
+                            <input type="hidden" name="accepted_rider_id" value="{{ $rider->accepted_rider_id }}">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn white-btn" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn red-btn">Confirm</button>
+                            </form>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+              
           @endforeach
             </div>
+            @else
+             <div class="text-center">
+          <p class="black">No Rider Found</p>
+          </div>
+            @endif
                 </div>
             </div>
         </div>

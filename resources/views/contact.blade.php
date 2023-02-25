@@ -24,7 +24,7 @@
     <!--- NAVBAR -->
     <nav class="navbar navbar-expand-lg px-2 mx -2 px-xs-3 px-md-4 px-lg-5 mx-xs-3 mx-md-4 mx-lg-5">
       <div class="container-fluid px-3">
-        <a href="#" class="navbar-brand">
+        <a href="/" class="navbar-brand">
           <img src="image/foodea1.png" alt="" />
           <span>FOODEA</span>
         </a>

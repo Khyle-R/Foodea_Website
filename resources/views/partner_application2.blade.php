@@ -75,6 +75,16 @@
             @enderror</span>
           </div>
 
+          
+         <div class="form-group">
+            <label for="birthday">Date Founded</label>
+           <input class="form-control form-control-lg" type="date" id="birthday" name="date_founded">
+         <span
+            style="color:red;">
+            @error('date_founded') {{ $message }}
+            @enderror</span>
+          </div>
+
           <div class="form-group">
             <label>Country</label>
              <select name="country" id="" class="form-control form-control-lg">
@@ -150,6 +160,27 @@
             @enderror</span>
           </div>
 
+          
+           <div class="form-group">
+          <label for="exampleFormControlTextarea1">Mission</label>
+          <textarea name="mission" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        <span
+            style="color:red;">
+            @error('mission') {{ $message }}
+            @enderror</span>
+        </div>
+
+            <div class="form-group">
+          <label for="exampleFormControlTextarea1">Vision</label>
+           <textarea name="vision" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+          <span
+            style="color:red;">
+            @error('vision') {{ $message }}
+            @enderror</span>
+          </div>
+
+            
+           
            <br><br><br>
            <div class="form-group">
             <div class="col-sm-10 d-flex justify-content-center">

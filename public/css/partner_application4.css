@@ -48,7 +48,7 @@
 /** Side  **/
 
 .sidebar {
-  min-height: calc(120vh - 70px);
+  min-height: calc(150vh - 70px);
   background-image: url(../image/red2.png);
   font-weight: normal;
   padding: 0;

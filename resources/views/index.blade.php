@@ -81,14 +81,14 @@
               </li>
             </ul>
             <a
-              href="/login"
+              href="/account_type"
              class="text-secondary mt-2 mx-5"
               style="text-decoration: none;"
             >
               Signup
            </a>
             <a
-              href="/login"
+              href="/login_type"
               class="btn btn-danger btn-sm py-2 px-5 rounded"
             >
               Login
@@ -209,11 +209,12 @@
                 <i class="fas fa-plus icon"></i>
             </button>
             <div class="cont">
-                <p>
+                {{-- <p>
                     Yes, FOODEA can provide simple exercise suggestions based on a user's 
                     calorie intake and preferred workout time.
 
-                </p>
+                </p> --}}
+                <p>Coming Soon...</p>
             </div>
         </div>
     </div>

@@ -71,14 +71,14 @@
               </li>
             </ul>
             <a
-              href="/login"
+              href="/account_type"
               class="text-secondary mt-2 mx-5"
               style="text-decoration: none;"
             >
               Signup
            </a>
             <a
-              href="/login"
+              href="/login_type"
               class="btn btn-danger btn-sm py-2 px-5 rounded"
             >
               Login
@@ -183,18 +183,18 @@
     
     <div class="req-container">
         <div class="req-section">
-            <div class="row mb-5">
+            <div class="row">
                 <h2 class="text-center mb-4 text-md-center">Get your documents ready</h2>
                 <p class="mb-5">You can find the required documents as below. Please ensure that the 
                     following documents are original or else your application will be rejected.
                      Upload only a scanned copy and images of the following documents to avoid document information 
                      being reflective and blurred.</p>
-                <div class="col-md-6 col-lg-6">
+                <div class="col-0 col-md-6 col-lg-6">
                <div class="req-image">
                             <img src="/image/requirements.png" alt="">
                         </div>
                     </div>
-             <div class="col-12 col-md-6 col-lg-6 col">
+             <div class="col-12 col-sm-12 col-md-6 col-lg-6">
               <div class="req-content">
                 <ul class="accordion">
                 
