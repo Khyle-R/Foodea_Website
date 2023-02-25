@@ -231,21 +231,34 @@ Route::get('admin_history', function(){
     return view('admin.admin_history', ['history' => $history]);
 });
 
-Route::get('admin_orders', function(){
-    $orders = DB::table('tbl_orders')->get();
+// ORDERS ROUTE
+Route::get('/admin_orders', [Admin_product::class, 'Orders']);
 
-    return view('admin.admin_orders', ['orders' => $orders]);
-});
+Route::post('/admin_orders/Pending', [Admin_product::class, 'Order_Pending'])->name('order.Pending');
+Route::post('/admin_orders/Prepapring', [Admin_product::class, 'Order_Preparing'])->name('order.Preparing');
+Route::post('/admin_orders/Delivering', [Admin_product::class, 'Order_Delivering'])->name('order.Delivering');
+Route::post('/admin_orders/Delivered', [Admin_product::class, 'Order_Delivered'])->name('order.Delivered');
+
 
 //Voucher Route
 Route::get('/voucher', [Admin_product::class, 'VoucherIndex']);
+Route::post('/voucherAdd',[Admin_product::class, 'addVoucher'])->name('voucher.addVoucher');
+Route::get('/voucherdelete/{id}',[Admin_product::class, 'deleteVoucher'])->name('voucher.deleteVoucher');
+Route::get('/voucherEnable', [Admin_product::class, 'EnableVoucher']);
+Route::get('/voucherDisable', [Admin_product::class, 'DisableVoucher']);
+Route::post('/voucher/enable', [Admin_product::class, 'Enable_Voucher'])->name('voucher.Enable'); // Update the status of the Voucher
+Route::post('/voucher/disable', [Admin_product::class, 'Disable_Voucher'])->name('voucher.Disable'); // Update the status of the Voucher
+Route::post('/voucher/update', [Admin_product::class, 'Update_Voucher'])->name('voucher.Update'); // Update the status of the Voucher
+
+Route::post('/claimedVoucher', [Admin_product::class, 'ClaimedVoucher'])->name('voucher.Claimed');
 
 //ORDER ADMIN
 //ORDER Pending
 Route::get('/orderpending', [Admin_product::class, 'OrderPending']);
-Route::get('/orderaccept', [Admin_product::class, 'OrderAccept']);
-Route::get('/orderreview', [Admin_product::class, 'OrderReview']);
-Route::get('/orderarchieve', [Admin_product::class, 'OrderArchieve']);
+Route::get('/orderpreparing', [Admin_product::class, 'OrderPreparing']);
+Route::get('/orderdelivering', [Admin_product::class, 'OrderDelivering']);
+Route::get('/orderdelivered', [Admin_product::class, 'OrderDelivered']);
+
 
 Route::get('/account', function(){
     $id=session('loginID');
@@ -278,6 +291,7 @@ Route::get('document',  function(){
     return view('admin.admin_partnerdocuments');
 });
 
+//CATEGORY
 //View Category
 Route::get('category', function () {
 
@@ -288,3 +302,6 @@ Route::get('category', function () {
 
 //Add Category
 Route::post('/add_category',[Admin_product::class, 'addCategory'])->name('add_category.addCategory');
+//update Category
+Route::post('/update_category',[Admin_product::class, 'updateCategory'])->name('update_category.updateCategory');
+Route::get('/delete_category/{id}',[Admin_product::class, 'deleteCategory']);

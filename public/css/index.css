@@ -42,7 +42,7 @@ ul {
 }
 
 nav .navbar-brand span{
-  font-size: clamp(0.75rem, 0.5040rem + 1.3120vw, 1.16rem);
+  font-size: clamp(0.75rem, 0.8040rem + 1.3120vw, 1.16rem);
   position:relative;
   text-decoration: none;
   color: #363636;
@@ -51,7 +51,7 @@ nav .navbar-brand span{
  }
 
 .navbar-brand>img {
-  width: clamp(0.140625rem, -1.4625rem + 8.5500vw, 2.8125rem);
+  width: clamp(0.140625rem, 0.5rem + 8.5500vw, 2.8125rem);
 }
 
 .logo {
@@ -449,6 +449,10 @@ nav .navbar-brand span{
   height: 60px;
 }
 
+.iccon:link {
+  text-decoration: none;
+}
+
 .footer-content h2 {
   font-size: 20px;
 }
@@ -475,8 +479,26 @@ nav .navbar-brand span{
   color: #fff;
   font-family: "Montserrat", sans-serif;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: start;
+  align-items: start;
+}
+
+.join a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.join a:hover {
+  color: #FEEECB;
+}
+
+.company a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.company a:hover {
+  color: #FEEECB;
 }
 
 /* END FOOTER*/
@@ -582,7 +604,9 @@ nav .navbar-brand span{
     opacity: 75%;
     line-height: 25px;
     text-align: center;  
+  }
 }
+
 
 @media (max-width:767px){
   .image img {

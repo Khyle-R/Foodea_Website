@@ -42,7 +42,7 @@ ul {
 }
 
 nav .navbar-brand span{
-  font-size: clamp(0.75rem, 0.5040rem + 1.3120vw, 1.16rem);
+  font-size: clamp(0.75rem, 0.8040rem + 1.3120vw, 1.16rem);
   position:relative;
   text-decoration: none;
   color: #363636;
@@ -139,7 +139,7 @@ nav .navbar-brand span{
 }
 
 .content p {
-  width: 65%;
+  width: 95%;
   opacity: 70%;
   font-family: "Montserrat", sans-serif;
   line-height: 25px;
@@ -653,6 +653,10 @@ nav .navbar-brand span{
   height: 60px;
 }
 
+.iccon:link {
+  text-decoration: none;
+}
+
 .footer-content h2 {
   font-size: 20px;
 }
@@ -675,8 +679,30 @@ nav .navbar-brand span{
 .dark-content {
   width: 60%;
   margin: 0 auto;
+  font-size: clamp(0.7rem, 0.5000rem + 0.8000vw, 1rem);
   color: #fff;
   font-family: "Montserrat", sans-serif;
+  display: flex;
+  justify-content: start;
+  align-items: start;
+}
+
+.join a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.join a:hover {
+  color: #FEEECB;
+}
+
+.company a {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.company a:hover {
+  color: #FEEECB;
 }
 
 /* END FOOTER*/
@@ -696,6 +722,20 @@ nav .navbar-brand span{
   .service img {
     width:290px;
     height: 255px;
+  }
+   .bg-img {
+    -webkit-background-size: contain;
+    -moz-background-size:contain;
+    -o-backgroundsize:contain;
+    background-size:contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: scroll;
+    height: 310px;
+  }
+  .end-content{
+    margin-top: -2rem;
+    
   }
 } 
 
@@ -783,8 +823,8 @@ nav .navbar-brand span{
     flex-direction: column;
   }
 
-  .timeline-image img {
-   width: 200px;
+  .timeline-image {
+    display: none;
   }
 
   .bg-img {
@@ -795,11 +835,12 @@ nav .navbar-brand span{
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: scroll;
-    margin-bottom: -4.9rem;
+    height: 230px;
   }
   
   .end-content{
-    margin-top: 2rem;
+    margin-top: -2rem;
+    
   }
   
   .end-container {
@@ -889,7 +930,7 @@ nav .navbar-brand span{
   .timeline {
     margin-left: 0;
   }
-  
+
   .bg-img {
     margin-top: 15rem;
     -webkit-background-size: contain;
@@ -1001,7 +1042,7 @@ nav .navbar-brand span{
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: scroll;
-  margin-bottom: -2.9rem;
+  height: 185px;
 }
 
 .end-content{
@@ -1018,76 +1059,6 @@ nav .navbar-brand span{
 }
 
 
-@media (max-width:375px){
-  
-
-  .service img {
-    width:250px;
-    height: 215px;
-  }
-  
-  .icon{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0 auto;
-  }
-
-  .footer-content {
-    width: 60%;
-    margin: 0 auto;
-    flex: content;
-    justify-content: space-between;
-    color: #fff;
-    padding: 70px 0;
-  }
-  
-    .change {
-    align-items: flex-start;
-    justify-content: flex-start;
-  }
-
-  .section-2 {
-    width: 80%;
-    margin: 50px auto;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .section-2 img {
-    align-self: center;
-  }
-  
-  .timeline-title {
-   padding-top: 20rem;
-   display: flex;
-   flex-direction: column;
-   text-align: left;
-  }
-  
-  .container2 {
-    width: 90%;
-    margin: 100px auto;
-    padding: 10px;
-  }
-
-  
-.bg-img {
-  -webkit-background-size: contain;
-  -moz-background-size:contain;
-  -o-backgroundsize:contain;
-  background-size:contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-attachment: scroll;
-  margin-bottom: -2.9rem;
-}
-
-.end-content{
-  margin-top: -8.4rem;
-}
-
-} 
 
 @media  (max-width:325px){
   
@@ -1099,7 +1070,7 @@ nav .navbar-brand span{
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: scroll;
-    margin-bottom: -3.5rem;
+    height: 170px;
   }
 
   .end-content{

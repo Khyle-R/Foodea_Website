@@ -9,7 +9,7 @@
                                         <a href="#">Menu</a>
                                     </li>
                                     <li class="breadcrumb-item active" aria-current="page">
-                                        Orders
+                                        Delivering
                                     </li>
                                 </ol>
                             </nav>
@@ -18,75 +18,14 @@
                         <div class="card mb-4">
                             <div class="card-body">
                                 <ul class="nav nav-tabs nav-tabs-solid nav-justified">
-                                <li class="nav-size nav-item"><a class="nav-link active" href="/admin_orders">All</a></li>
+                                <li class="nav-size nav-item"><a class="nav-link" href="/admin_orders">All</a></li>
                                 <li class="nav-size nav-item"><a class="nav-link" href="/orderpending">Pending</a></li>
                                 <li class="nav-size nav-item"><a class="nav-link" href="/orderpreparing">Preparing</a></li>
-                                <li class="nav-size nav-item"><a class="nav-link" href="/orderdelivering">Delivering</a></li>
+                                <li class="nav-size nav-item"><a class="nav-link active" href="/orderdelivering">Delivering</a></li>
                                 <li class="nav-size nav-item"><a class="nav-link" href="/orderdelivered">Delivered</a></li>
                                 </ul>
                             </div>
                         </div>
-
-        <div class="row mb-2">
-
-            <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3 mb-3">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex align-items-center justify-content-between px-3">
-                          <div class="dash-widget-info">
-                                  <h3>{{ $TotalOrders}}</h3>
-                              <span>All</span>
-                          </div>
-                         <span class="dash-widget-icon"><i class="mdi mdi-file-check"></i></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3 mb-3">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex align-items-center justify-content-between px-3">
-                        <div class="dash-widget-info">
-                                <h3>{{ $PendingOrders}}</h3>
-                            <span>Pending</span>
-                        </div>
-                         <span class="dash-widget-icon"><i class="mdi mdi-file-check"></i></span>
-                    </div>
-                        </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3 mb-3">
-                <div class="card dash-widget">
-                    <div class="card-body">
-						<div class="d-flex align-items-center justify-content-between px-3">
-							<div class="dash-widget-info">
-									<h3>{{ $PreparingOrders}}</h3>
-								<span>Preparing</span>
-							</div>
-							<span class="dash-widget-icon"><i class="mdi mdi-file-check"></i></span>
-						</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3 mb-3">
-                <div class="card dash-widget">
-                    <div class="card-body">
-                        <div class="d-flex align-items-center justify-content-between px-3">
-							<div class="dash-widget-info">
-									<h3>{{ $DeliveringOrders}}</h3>
-								<span>Delivering</span>
-							</div>
-                         <span class="dash-widget-icon"><i class="mdi mdi-file-check"></i></span>
-                    	</div>
-                	</div>
-                </div>
-            </div>
-        </div>
-
-        
 
         <div class="row">
             <div class="col-12 grid-margin">
@@ -107,9 +46,9 @@
                                 </tr>
                             </thead>
                             <tbody>
-                              @foreach ($orders as $key => $data)
-                                  
-                              
+                                @foreach ($delivering_order as $key => $data)
+                                    
+                               
                                 <tr>
                                     <td>{{ $data->order_id}}</td>
                                     <td>{{ $data->customer_id}}</td>
@@ -124,7 +63,6 @@
                                             <div class="bg-white dropdown-menu dropdown-menu-right">
                                                 <a data-toggle="modal" data-target="#PendingModal{{ $data->order_id}}" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-success"></i> Pending</a>
                                                 <a data-toggle="modal" data-target="#PreparingModal{{ $data->order_id}}" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-danger"></i> Preparing</a>
-                                                <a data-toggle="modal" data-target="#DeliveringModal{{ $data->order_id}}" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-warning"></i> Delivering</a>
                                                 <a data-toggle="modal" data-target="#DeliveredModal{{ $data->order_id}}" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-warning"></i> Delivered</a>
                                             </div>
                                         </div>
@@ -140,8 +78,8 @@
                                 </tr>
 
                                 <!-- MODAL STARTS HERE -->
-                                 <!-- VIEW CONTENT -->
-                                 <div class="modal fade" tabindex="-1" id="ViewModal{{ $data->order_id}}" role="dialog">
+                                <!-- VIEW CONTENT -->
+                                <div class="modal fade" tabindex="-1" id="ViewModal{{ $data->order_id}}" role="dialog">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <!-- MODAL HEADER -->
@@ -241,7 +179,7 @@
                                             <div class="modal-body">
                                                 Do you want to change the status to accept?
                                                 <form method="post" action="{{ route('order.Preparing')}}">
-                                                  @csrf
+                                                @csrf
                                                 <input type="hidden" name="status" value="Reiv">
                                                 <input type="hidden" name="id" value="{}">
                                                 <input type="hidden" name="order_id" id="order_id" value="{{ $data->order_id}}">
@@ -271,7 +209,7 @@
                                             <div class="modal-body mt-3">
                                                 Do you want to change the status to reject?
                                                 <form method="post" action="{{ route('order.Delivering')}}">
-                                                  @csrf
+                                                @csrf
                                                 <input type="hidden" name="status" value="Delivering">
                                                 <input type="hidden" name="order_id" id="order_id" value="{{ $data->order_id}}">
                                             </div>
@@ -314,8 +252,8 @@
                                     </div>
                                 </div>
 
-                                 <!-- TO BE RECEIVED MODAL -->
-                                 <div class="modal fade" id="TobeReceiveModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <!-- TO BE RECEIVED MODAL -->
+                                <div class="modal fade" id="TobeReceiveModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <!-- MODAL HEADER -->
@@ -341,6 +279,7 @@
                                         </div>
                                     </div>
                                 </div>
+
                                 @endforeach
                             </tbody>
                         </table>
@@ -363,6 +302,4 @@
                     </span>
             </div>
         </footer>
-        <!-- END OF FOOTER --> 
-        <!-- partial -->
 @endsection 

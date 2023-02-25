@@ -25,7 +25,7 @@
       <div class="container-fluid px-3">
         <a href="/" class="navbar-brand  mb-0 h1">
           <img src="image/foodea1.png" alt="" width="45" height="50" />
-          FOODEA
+          <span> FOODEA </span>
         </a>
         <button
           class="navbar-toggler"
@@ -97,7 +97,7 @@
         <div class="section">
             <div class="content  text-center text-md-start">
                 <h1>Deliver Food With <span>Foodea</span></h1>
-                <p>Try becoming your own boss with Foodea as an alternative to 
+                <p class="text-center text-md-start ">Try becoming your own boss with Foodea as an alternative to 
                     conventional food delivery professions where the hours are fixed.</p>
                 <a href="/rider_application_agreement">Apply Now </a>
                 {{-- <img src="image/vector.png" /> --}}
@@ -267,46 +267,51 @@
         </div>
         <div class="wrappers">
             <button class="toggle">
-                What is Foodea?
+              What is a FOODEA rider?
                 <i class="fas fa-plus icon"></i>
             </button>
             <div class="cont">
                 <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta
-                    aliquam facere adipisci quod mollitia, aut nemo deleniti fugiat et,
-                    corrupti sequi. Omnis dolorem quos eligendi placeat soluta sint
-                    corrupti quod.
+                  A FOODEA rider is someone who delivers food orders to customers using the FOODEA app.
                 </p>
             </div>
         </div>
         <div class="wrappers">
             <button class="toggle">
-                How to be a Rider in Foodea?
+              How do I become a FOODEA rider?
                 <i class="fas fa-plus icon"></i>
             </button>
             <div class="cont">
                 <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores
-                    error doloremque, quibusdam qui necessitatibus autem aperiam
-                    reprehenderit? Ipsum maiores dolore inventore ea. Accusantium fuga
-                    eius laboriosam iusto blanditiis doloremque ullam?
+                  To become a FOODEA rider, you can visit the Rider Page on the FOODEA
+                   website for more information on the application process.
                 </p>
             </div>
         </div>
         <div class="wrappers">
             <button class="toggle">
-                How to be a Foodea Partner?
+              What are the requirements to become a FOODEA rider?
                 <i class="fas fa-plus icon"></i>
             </button>
             <div class="cont">
                 <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae
-                    consectetur officiis labore commodi sunt ex praesentium dolor magnam
-                    asperiores reiciendis. Minus magnam nesciunt aliquid eos ipsam sequi
-                    recusandae quos incidunt.
+                  Typically include a valid driver's license, a reliable vehicle, and a smartphone. If you look for the papers and other requirements. 
+                  You can view the requirements to get started is in the rider page.
                 </p>
             </div>
         </div>
+        <div class="wrappers">
+          <button class="toggle">
+            What are the benefits of being a FOODEA rider?
+              <i class="fas fa-plus icon"></i>
+          </button>
+          <div class="cont">
+              <p>
+                FOODEA riders have the opportunity to earn flexible income and connect with local businesses and customers in their area.
+
+              </p>
+          </div>
+      </div>
     </div>
     <div class="bg-img" style="background-image: url(../image/bgmotor.png);">
         <div class="end-container">
@@ -324,21 +329,27 @@
     <div class="footer">
         <div class="footer-content">
             <div class="icon">
+              <a href="/" class="iccon">
                 <img src="image/foodea2.png" alt="">
-                <h1>FOODEA</h1>
-                <p>Follow Us</p>
+                <h1 class="text-light">FOODEA</h1>
+              </a>
+                <p class="text-center">Follow Us</p>
             </div>
             <div class="join">
                 <h2>Join Us</h2>
-                <p>Register as Rider</p>
-                <p>Be a Partner</p>
+                <a href="/rider_landing"><p>Register as Rider</p></a>
+                <a href="/partner_landing"><p>Be a Partner</p></a>
             </div>
             <div class="company">
                 <h2>Our Company</h2>
-                <p>About Us</p>
+                <a href="/about" ><p>About Us</p></a>
                 <p>Mission</p>
                 <p>Vision</p>
-                <p>Services</p>
+                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">Services</a>
+                    <ul class="dropdown-menu">
+                      <li><a href="/rider_landing" class="dropdown-item text-dark">Rider</a></li>
+                      <li><a href="/partner_landing" class="dropdown-item text-dark">Partner</a></li>
+                    </ul>            
             </div>
             <div class="footer-section">
                 <div class="inquire">

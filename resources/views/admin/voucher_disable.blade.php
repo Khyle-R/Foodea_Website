@@ -9,75 +9,20 @@
                         <a href="#">Menu</a>
                     </li>
                     <li class="breadcrumb-item active" aria-current="page">
-                        Voucher
+                        Disabled
                     </li>
                 </ol>
             </nav>
         </div>
         <div class="card mb-4">
-                            <div class="card-body">
-                                <ul class="nav nav-tabs nav-tabs-solid nav-justified">
-                                <li class="nav-size nav-item"><a class="nav-link active" href="/voucher">All</a></li>
-                                <li class="nav-size nav-item"><a class="nav-link" href="/voucherEnable">Enable</a></li>
-                                <li class="nav-size nav-item"><a class="nav-link" href="/voucherDisable">Disabled</a></li>
-                                </ul>
-                            </div>
-                        </div>
-
-        <div class="row mb-2">
-
-            <div class="col-md-6 col-sm-6 col-lg-6 col-xl-4 mb-3">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex align-items-center justify-content-between px-3">
-                          <div class="dash-widget-info">
-                                  <h3>{{ $voucherCount}}</h3>
-                              <span>All</span>
-                          </div>
-                         <span class="dash-widget-icon"><i class="mdi mdi-file-check"></i></span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-sm-6 col-lg-6 col-xl-4 mb-3">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="d-flex align-items-center justify-content-between px-3">
-                        <div class="dash-widget-info">
-                                <h3>{{ $EnableVoucher}}</h3>
-                            <span>Enable</span>
-                        </div>
-                         <span class="dash-widget-icon"><i class="mdi mdi-file-check"></i></span>
-                    </div>
-                        </div>
-                </div>
-            </div>
-
-            <div class="col-md-6 col-sm-6 col-lg-6 col-xl-4 mb-3">
-                <div class="card dash-widget">
-                    <div class="card-body">
-						<div class="d-flex align-items-center justify-content-between px-3">
-							<div class="dash-widget-info">
-									<h3>{{ $DisableVoucher}}</h3>
-								<span>Disable</span>
-							</div>
-							<span class="dash-widget-icon"><i class="mdi mdi-file-check"></i></span>
-						</div>
-                    </div>
-                </div>
+            <div class="card-body">
+                <ul class="nav nav-tabs nav-tabs-solid nav-justified">
+                <li class="nav-size nav-item"><a class="nav-link" href="/voucher">All</a></li>
+                <li class="nav-size nav-item"><a class="nav-link" href="/voucherEnable">Enable</a></li>
+                <li class="nav-size nav-item"><a class="nav-link active" href="/voucherDisable">Disabled</a></li>
+                </ul>
             </div>
         </div>
-        <div class="table-title mt-1 mb-2 px-3">
-			<div class="row">
-                <div class="col-12 d-flex justify-content-end">
-					<a href="#addContentModal" class="btn btn-success" data-toggle="modal">
-					<i class="material-icons">&#xE147;</i>
-					<span>Add Voucher</span>
-					</a>
-                </div>
-			</div>
-		</div>	
         <div class="row">
             <div class="col-12 grid-margin">
                 <div class="card">
@@ -98,7 +43,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($voucher as $key => $data)
+                                @foreach ($disableVoucher as $key => $data)
                                     
 
                                 <tr>
@@ -163,8 +108,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- UPDATE CONTENT -->
-                                <div class="modal fade" tabindex="-1" id="UpdateModal{{ $data->voucher_id}}" role="dialog">
+                                  <!-- UPDATE CONTENT -->
+                                  <div class="modal fade" tabindex="-1" id="UpdateModal{{ $data->voucher_id}}" role="dialog">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <!-- MODAL HEADER -->
@@ -222,8 +167,8 @@
                                                 <form method="post" action="{{ route('voucher.Enable')}}">
                                                     @csrf
                                                 <input type="hidden" name="status" value="Accepted">
+                                                <input type="hidden" name="id" value="{}">
                                                 <input type="hidden" name="voucher_id" value="{{ $data->voucher_id}}">
-                                                <input type="hidden" name="rider_id" value="{}">
                                             </div>
                                             <!-- MODAL FOOTER -->
                                             <div class="modal-footer">
@@ -293,7 +238,7 @@
                                                 <div class="form-group">
                                                     <form method="post" action="">
                                                     <label>Discount</label>
-                                                    <input id="discount" name="discount" type="text" class="form-control" required>
+                                                    <input id="" name="" type="text" class="form-control" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Expiry Date</label>

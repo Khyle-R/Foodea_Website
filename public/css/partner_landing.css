@@ -42,7 +42,7 @@ ul {
 }
 
 nav .navbar-brand span{
-    font-size: clamp(0.75rem, 0.5040rem + 1.3120vw, 1.16rem);
+    font-size: clamp(0.75rem, 0.8040rem + 1.3120vw, 1.16rem);
     position:relative;
     text-decoration: none;
     color: #363636;
@@ -139,7 +139,7 @@ nav .navbar-brand span{
 }
 
 .content p {
-    width: 65%;
+    width: 95%;
     opacity: 70%;
     font-family: "Montserrat", sans-serif;
     line-height: 25px;
@@ -358,34 +358,21 @@ nav .navbar-brand span{
     margin: 0 auto;
 }
 
-.req-section {
-    margin: 0 auto;
-    width: 90%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-}
-
 .req-image img {
-    width: 500px;
-    height: 480px;
+    width: 100%;
+    height:auto;
     border-radius: 15px;
-}
-
-.req-content {
-    width: 50%;
 }
 
 .accordion {
     width: 100%;
-    margin: 0px auto;
+    padding: 0;
 }
 
 .accordion li {
     list-style: none;
     width: 100%;
-    margin: 20px 0;
+    margin-bottom: 20px;
     padding: 10px 0;
     border-radius: 8px;
     background-color: #ffffff;
@@ -402,7 +389,7 @@ nav .navbar-brand span{
 }
 
 .accordion .content img {
-    height: 100%;
+    height: auto;
     width: 100%;
     border-radius: 15px;
 }
@@ -439,8 +426,9 @@ input[type="radio"] {
 }
 
 /* ACCORDION */
+
 .container2 {
-    width: 60%;
+    width: 70%;
     margin: 100px auto;
 }
 
@@ -541,6 +529,10 @@ input[type="radio"] {
     height: 60px;
 }
 
+.iccon:link {
+    text-decoration: none;
+}
+
 .footer-content h2 {
     font-size: 20px;
 }
@@ -563,9 +555,32 @@ input[type="radio"] {
 .dark-content {
     width: 60%;
     margin: 0 auto;
+    font-size: clamp(0.7rem, 0.5000rem + 0.8000vw, 1rem);
     color: #fff;
     font-family: "Montserrat", sans-serif;
+    display: flex;
+    justify-content: start;
+    align-items: start;
 }
+
+.join a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.join a:hover {
+    color: #FEEECB;
+}
+
+.company a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.company a:hover {
+    color: #FEEECB;
+}
+
 
 /* END FOOTER*/
 
@@ -709,19 +724,7 @@ input[type="radio"] {
     background-repeat: no-repeat;
     background-size: 990px;
 }
-    .req-section {
-        margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-    }
-    
-    .req-image img {
-        width: 480px;
-        height: 350px;
-        border-radius: 15px;
-    }
+
     
     .req-content {
         margin-top: 1rem;
@@ -878,25 +881,17 @@ margin: 10rem auto;
     margin-bottom: .8rem;
 }
 
-    .req-section {
-        margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-    }
-    
-    .req-image img {
-        width: 280px;
-        height: 280px;
-        border-radius: 15px;
-    }
+
     
     .req-content {
         margin-top: 1rem;
         width: 100%;
     }
     
+    .req-image {
+        display: none;
+    }
+
     .accordion {
         width: 100%;
         margin: 0px auto;
@@ -1140,25 +1135,6 @@ margin: 10rem auto;
         margin-bottom: 2rem;
     }
 
-    .req-section {
-        margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: center;
-    }
-    
-    .req-image img {
-        width: 280px;
-        height: 280px;
-        border-radius: 15px;
-    }
-    
-    .req-content {
-        margin-top: 1rem;
-        width: 100%;
-    }
-    
     .accordion {
         width: 100%;
         margin: 0px auto;

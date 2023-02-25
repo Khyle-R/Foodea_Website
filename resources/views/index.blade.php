@@ -172,38 +172,45 @@
             </button>
             <div class="cont">
                 <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta
-                    aliquam facere adipisci quod mollitia, aut nemo deleniti fugiat et,
-                    corrupti sequi. Omnis dolorem quos eligendi placeat soluta sint
-                    corrupti quod.
+                    FOODEA is a mobile application that provides food suggestions and ordering options, with a 
+                    focus on supporting small businesses and promoting healthy eating habits.
                 </p>
             </div>
         </div>
         <div class="wrapper">
             <button class="toggle">
-                How to be a Rider in Foodea?
+                How does FOODEA support small food businesses?
                 <i class="fas fa-plus icon"></i>
             </button>
             <div class="cont">
                 <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores
-                    error doloremque, quibusdam qui necessitatibus autem aperiam
-                    reprehenderit? Ipsum maiores dolore inventore ea. Accusantium fuga
-                    eius laboriosam iusto blanditiis doloremque ullam?
+                    FOODEA partners with local merchants to offer their products on the app, 
+                    giving them increased visibility and access to a wider customer base.
                 </p>
             </div>
         </div>
         <div class="wrapper">
             <button class="toggle">
-                How to be a Foodea Partner?
+                Can FOODEA suggest healthy food options?
                 <i class="fas fa-plus icon"></i>
             </button>
             <div class="cont">
                 <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae
-                    consectetur officiis labore commodi sunt ex praesentium dolor magnam
-                    asperiores reiciendis. Minus magnam nesciunt aliquid eos ipsam sequi
-                    recusandae quos incidunt.
+                    Yes, FOODEA can suggest healthy and nutritional foods based on a user's 
+                    weight goals and dietary preferences.
+                </p>
+            </div>
+        </div>
+        <div class="wrapper">
+            <button class="toggle">
+                Does FOODEA offer exercise recommendations?
+                <i class="fas fa-plus icon"></i>
+            </button>
+            <div class="cont">
+                <p>
+                    Yes, FOODEA can provide simple exercise suggestions based on a user's 
+                    calorie intake and preferred workout time.
+
                 </p>
             </div>
         </div>
@@ -211,21 +218,27 @@
     <div class="footer">
         <div class="footer-content">
             <div class="icon">
+                <a href="/" class="iccon">
                 <img src="image/foodea2.png" alt="">
-                <h1>FOODEA</h1>
-                <p>Follow Us</p>
+                <h1 class="text-light">FOODEA</h1>
+                </a>
+                <p class="text-center">Follow Us</p>
             </div>
             <div class="join">
                 <h2>Join Us</h2>
-                <p>Register as Rider</p>
-                <p>Be a Partner</p>
+                <a href="/rider_landing"><p>Register as Rider</p></a>
+                <a href="/partner_landing"><p>Be a Partner</p></a>
             </div>
             <div class="company">
                 <h2>Our Company</h2>
-                <p>About Us</p>
+                <a href="/about" ><p>About Us</p></a>
                 <p>Mission</p>
                 <p>Vision</p>
-                <p>Services</p>
+                <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">Services</a>
+                    <ul class="dropdown-menu">
+                      <li><a href="/rider_landing" class="dropdown-item text-dark">Rider</a></li>
+                      <li><a href="/partner_landing" class="dropdown-item text-dark">Partner</a></li>
+                    </ul>           
             </div>
             <div class="footer-section">
                 <div class="inquire">
