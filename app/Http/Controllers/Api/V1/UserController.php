@@ -4,19 +4,19 @@ namespace App\Http\Controllers\Api\V1;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Filters\V1\FoodFilter;
-use App\Models\tbl_product;
+use App\Filters\V1\UserFilter;
+use App\Models\AppUser;
 
-class FoodController extends Controller
+class UserController extends Controller
 {
     public function index(Request $request){
-        $filter = new FoodFilter();
+        $filter = new UserFilter();
         $queryItems = $filter->transform($request);
 
         if (!isset($queryItems)||count($queryItems) == 0 ) {
-            return tbl_product::all();
+            return AppUser::all();
         } else {
-            return tbl_product::where($queryItems)->get();
+            return AppUser::where($queryItems)->get();
         }
     }
 }
