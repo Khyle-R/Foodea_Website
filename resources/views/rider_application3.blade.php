@@ -113,8 +113,12 @@
           </div>
 
 
-           <br><br><br>
-           <button class="next" type="submit" href="/rider_application4">Next</button>
+           <br><br>
+           <div class="form-group">
+            <div class="col-sm-10 d-flex justify-content-center">
+              <button Value="submit" type="submit" class="btn btn-danger w-50">Next</button>
+            </div>
+           </div>
             </form>
           </div>
         </div>

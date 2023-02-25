@@ -360,13 +360,13 @@ nav .navbar-brand span{
 
 .req-image img {
     width: 100%;
-    height: 100%;
+    height:auto;
     border-radius: 15px;
 }
 
 .accordion {
     width: 100%;
-    margin: 0px auto;
+    padding: 0;
 }
 
 .accordion li {
@@ -389,7 +389,7 @@ nav .navbar-brand span{
 }
 
 .accordion .content img {
-    height: 100%;
+    height: auto;
     width: 100%;
     border-radius: 15px;
 }
@@ -426,6 +426,7 @@ input[type="radio"] {
 }
 
 /* ACCORDION */
+
 .container2 {
     width: 70%;
     margin: 100px auto;
@@ -561,6 +562,25 @@ input[type="radio"] {
     justify-content: start;
     align-items: start;
 }
+
+.join a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.join a:hover {
+    color: #FEEECB;
+}
+
+.company a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.company a:hover {
+    color: #FEEECB;
+}
+
 
 /* END FOOTER*/
 
@@ -868,6 +888,10 @@ margin: 10rem auto;
         width: 100%;
     }
     
+    .req-image {
+        display: none;
+    }
+
     .accordion {
         width: 100%;
         margin: 0px auto;
