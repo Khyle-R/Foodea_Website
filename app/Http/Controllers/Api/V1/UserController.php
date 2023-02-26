@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\V1;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Filters\V1\UserFilter;
+use App\Http\Requests\V1\StoreAppUserRequest;
 use App\Models\AppUser;
 
 class UserController extends Controller
@@ -18,5 +19,9 @@ class UserController extends Controller
         } else {
             return AppUser::where($queryItems)->get();
         }
+    }
+
+    public function store(StoreAppUserRequest $request){
+        return AppUser::create($request->all());
     }
 }
