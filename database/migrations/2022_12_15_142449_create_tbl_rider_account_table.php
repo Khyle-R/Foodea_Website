@@ -1,0 +1,44 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('tbl_rider_account', function (Blueprint $table) {
+            $table->id('rider_id');
+            $table->string('password');
+            $table->string('firstname');
+            $table->string('lastname');
+            $table->string('middlename');
+            $table->string('suffix')->nuLlable();
+            $table->integer('age');
+            $table->string('gender');
+            $table->string('email');
+            $table->integer('mobile_number');
+            $table->string('address');
+            $table->string('city');
+            $table->string('barangay');
+            $table->integer('zip_code');
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('tbl_rider_account');
+    }
+};
