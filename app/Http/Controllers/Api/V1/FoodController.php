@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api\V1;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Filters\V1\FoodFilter;
+use App\Http\Requests\V1\StoreFoodRequest;
 use App\Models\tbl_product;
 
 class FoodController extends Controller
@@ -18,5 +19,9 @@ class FoodController extends Controller
         } else {
             return tbl_product::where($queryItems)->get();
         }
+    }
+
+    public function store(StoreFoodRequest $request){
+        return tbl_product::create($request->all());
     }
 }
