@@ -24,7 +24,7 @@
          
 
         <nav class="navbar navbar-light nav-red">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="/">
                 <img
                     src="image/foodea.png"
                     width="30"

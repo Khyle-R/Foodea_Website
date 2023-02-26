@@ -142,7 +142,7 @@
                             <tr>
                                  <a href="">
                                 <td>
-                                    <img class="circle mr-2" src="<?php echo e(url(('uploads/'.$rider->rider_id. '_' .$rider->firstname. '_' .$rider->lastname. '/'). $rider->rider_photo)); ?>" alt="">
+                                    <img class="circle mr-2" src="<?php echo e(url(('uploads/'. 'rider_documents'. '/'.$rider->rider_id. '_' .$rider->firstname. '_' .$rider->lastname. '/'). $rider->rider_photo)); ?>" alt="">
                                     <?php echo e($rider->firstname. ' ' .$rider->lastname); ?>
 
                                 </td>
