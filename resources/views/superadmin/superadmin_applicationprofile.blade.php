@@ -28,7 +28,7 @@
                                     <div class="profile-img">
                                          @foreach ($Data as $rider)
                                      
-                                            <img alt="" src="{{ url(('uploads/'.$rider->rider_id. '_' .$rider->firstname. '_' .$rider->lastname. '/'). $rider->rider_photo) }}">
+                                            <img alt="" src="{{ url(('uploads/'. 'rider_documents'. '/'.$rider->rider_id. '_' .$rider->firstname. '_' .$rider->lastname. '/'). $rider->rider_photo) }}">
                                   
                                     </div>
                                 </div>
@@ -216,22 +216,22 @@
                                 <td>Professional Drivers license ID</td>
                                 <td>{{ $rider->driver_license }}</td>
                                  <td><a class="red-btn" href="" data-toggle="modal" data-target="#ViewModal3"><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
-                                <td><a class="red-btn" href="/download_file/{{ $rider->firstname }}/{{ $rider->lastname }}/{{ $rider->rider_id }}/{{ $rider->driver_license }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
+                                <td><a class="red-btn" href="/download_license/{{ $rider->firstname }}/{{ $rider->lastname }}/{{ $rider->rider_id }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
 
                             </tr>
                             <tr>
                                 <td>Certificate of Registration</td>
                                 <td>{{ $rider->cert_registration }}</td>
-                               <td><a class="red-btn" href="" data-toggle="modal" data-target="#ViewModal4"><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
-                                <td><a class="red-btn" href=""><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
+                               <td><a class="red-btn" href="/display_pdf/{{ $rider->firstname }}/{{ $rider->lastname }}/{{ $rider->rider_id }}/{{ $rider->cert_registration }}"><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
+                                <td><a class="red-btn" href="/download_file/{{ $rider->firstname }}/{{ $rider->lastname }}/{{ $rider->rider_id }}/{{ $rider->cert_registration }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
 
                             </tr>
                             @if ($rider->vehicle_ownership == 'Borrowed')
                               <tr>
                                 <td>Authorization letter</td>
                                 <td>{{ $rider->auth_letter }}</td>
-                                <td><a class="red-btn" href=""  data-toggle="modal" data-target="#ViewModal5"><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
-                                <td><a class="red-btn" href=""><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
+                                <td><a class="red-btn" href="/display_pdf/{{ $rider->firstname }}/{{ $rider->lastname }}/{{ $rider->rider_id }}/{{ $rider->auth_letter }}"><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
+                                <td><a class="red-btn" href="/download_file/{{ $rider->firstname }}/{{ $rider->lastname }}/{{ $rider->rider_id }}/{{ $rider->auth_letter }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
 
                             </tr>
    
@@ -240,29 +240,29 @@
                               <tr>
                                 <td>Deed Of Sale</td>
                                 <td>{{ $rider->deed_sale}}</td>
-                                 <td><a class="red-btn" href=""  data-toggle="modal" data-target="#ViewModal6"><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
-                                <td><a class="red-btn" href=""><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
+                                 <td><a class="red-btn" href="/display_pdf/{{ $rider->firstname }}/{{ $rider->lastname }}/{{ $rider->rider_id }}/{{ $rider->deed_sale }}"><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
+                                <td><a class="red-btn" href="/download_file/{{ $rider->firstname }}/{{ $rider->lastname }}/{{ $rider->rider_id }}/{{ $rider->deed_sale }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
 
                             </tr>
                               @endif
                             <tr>
                                 <td>Official Receipt of Vehicle Registration</td>
                                 <td>{{ $rider->official_receipt }}</td>
-                                 <td><a class="red-btn" href=""  data-toggle="modal" data-target="#ViewModal7"><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
-                                <td><a class="red-btn" href=""><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
+                                 <td><a class="red-btn" href="/display_pdf/{{ $rider->firstname }}/{{ $rider->lastname }}/{{ $rider->rider_id }}/{{ $rider->official_receipt }}" ><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
+                                <td><a class="red-btn" href="/download_file/{{ $rider->firstname }}/{{ $rider->lastname }}/{{ $rider->rider_id }}/{{ $rider->official_receipt }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
 
                             </tr>
                             <tr>
                                 <td>Drug Test Result</td>
                                 <td>{{ $rider->drug_test }}</td>
-                                 <td><a class="red-btn" href=""   data-toggle="modal" data-target="#ViewModal8"><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
-                                <td><a class="red-btn" href=""><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
+                                 <td><a class="red-btn" href="/display_pdf/{{ $rider->firstname }}/{{ $rider->lastname }}/{{ $rider->rider_id }}/{{ $rider->drug_test }}" ><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
+                                <td><a class="red-btn" href="/download_file/{{ $rider->firstname }}/{{ $rider->lastname }}/{{ $rider->rider_id }}/{{ $rider->drug_test }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
 
                             </tr>
                             <tr>
                                 <td>NBI Clearance</td>
                                 <td>{{ $rider->nbi_clearance }}</td>
-                                <td><a class="red-btn" href=""   data-toggle="modal" data-target="#ViewModal9"><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
+                                <td><a class="red-btn" href="/display_pdf/{{ $rider->firstname }}/{{ $rider->lastname }}/{{ $rider->rider_id }}/{{ $rider->nbi_clearance }}" ><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
                                 <td><a class="red-btn" href="/download_file/{{ $rider->firstname }}/{{ $rider->lastname }}/{{ $rider->rider_id }}/{{ $rider->nbi_clearance }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
 
                             </tr>
@@ -289,7 +289,7 @@
                         </div>
                         <div class="modal-body">
                             <div class="image text-center">
-                           <img height="400" width="400" src="{{ url(('uploads/'.$rider->rider_id. '_' .$rider->firstname. '_' .$rider->lastname. '/'). $rider->rider_photo) }}" alt="">
+                           <img height="400" width="400" src="{{ url(('uploads/'. 'rider_documents'. '/'.$rider->rider_id. '_' .$rider->firstname. '_' .$rider->lastname. '/'). $rider->rider_photo) }}" alt="">
                        </div>
                         </div>
                         </div>
@@ -298,7 +298,7 @@
 
                      <!-- Modal vehicle -->
                     <div class="modal fade" id="ViewModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                         <div class="modal-content px-2 py-2">
                         <div class="">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -310,13 +310,13 @@
                             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                            <img class="d-block w-100" height="600" src="{{ url(('uploads/'.$rider->rider_id. '_' .$rider->firstname. '_' .$rider->lastname. '/'). $rider->vehicle_front) }}" alt="First slide">
+                            <img class="d-block" height="650"  width="100%" src="{{ url(('uploads/'. 'rider_documents'. '/'.$rider->rider_id. '_' .$rider->firstname. '_' .$rider->lastname. '/'. 'vehicle/'). $rider->vehicle_front) }}" alt="First slide">
                             </div>
                             <div class="carousel-item">
-                            <img class="d-block w-100" height="600" src="{{ url(('uploads/'.$rider->rider_id. '_' .$rider->firstname. '_' .$rider->lastname. '/'). $rider->vehicle_side) }}" alt="Second slide">
+                            <img class="d-block" height="650" width="100%" src="{{ url(('uploads/'. 'rider_documents'. '/'.$rider->rider_id. '_' .$rider->firstname. '_' .$rider->lastname. '/'. 'vehicle/'). $rider->vehicle_side) }}" alt="Second slide">
                             </div>
                             <div class="carousel-item">
-                            <img class="d-block w-100" height="600" src="{{ url(('uploads/'.$rider->rider_id. '_' .$rider->firstname. '_' .$rider->lastname. '/'). $rider->vehicle_back) }}" alt="Third slide">
+                            <img class="d-block" height="650"  width="100%" src="{{ url(('uploads/'. 'rider_documents'. '/'.$rider->rider_id. '_' .$rider->firstname. '_' .$rider->lastname. '/'. 'vehicle/'). $rider->vehicle_back) }}" alt="Third slide">
                             </div>
                         </div>
                         <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -348,10 +348,10 @@
                             <div id="carouselExampleControlss" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                            <img class="d-block" height="350"  width="600" src="{{ url(('uploads/'.$rider->rider_id. '_' .$rider->firstname. '_' .$rider->lastname. '/'). $rider->driver_license) }}" alt="First slide">
+                            <img class="d-block" height="350"  width="100%" src="{{ url(('uploads/'. 'rider_documents'. '/'. $rider->rider_id. '_' .$rider->firstname. '_' .$rider->lastname. '/'. 'driver license/'). $rider->driver_license) }}" alt="First slide">
                             </div>
                             <div class="carousel-item">
-                            <img class="d-block" height="350" width="600" src="{{ url(('uploads/'.$rider->rider_id. '_' .$rider->firstname. '_' .$rider->lastname. '/'). $rider->license_back) }}" alt="Second slide">
+                            <img class="d-block" height="350" width="100%" src="{{ url(('uploads/'. 'rider_documents'. '/'.$rider->rider_id. '_' .$rider->firstname. '_' .$rider->lastname. '/'. 'driver license/'). $rider->license_back) }}" alt="Second slide">
                             </div>
                         </div>
                         <a class="carousel-control-prev" href="#carouselExampleControlss" role="button" data-slide="prev">
@@ -420,13 +420,13 @@
                                         <div id="carouselExampleControls1" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                            <img class="d-block w-100 px-5" height="500" src="{{ url(('uploads/'.$rider->rider_id. '_' .$rider->firstname. '_' .$rider->lastname. '/'.'vehicle/'). $rider->vehicle_front) }}" alt="First slide">
+                            <img class="d-block" height="600" width="100%" src="{{ url(('uploads/'. 'rider_documents'. '/'.$rider->rider_id. '_' .$rider->firstname. '_' .$rider->lastname. '/'.'vehicle/'). $rider->vehicle_front) }}" alt="First slide">
                             </div>
                             <div class="carousel-item">
-                            <img class="d-block w-100" height="500" src="{{ url(('uploads/'.$rider->rider_id. '_' .$rider->firstname. '_' .$rider->lastname. '/'.'vehicle/'). $rider->vehicle_side) }}" alt="Second slide">
+                            <img class="d-block" height="600" width="100%" src="{{ url(('uploads/'. 'rider_documents'. '/'.$rider->rider_id. '_' .$rider->firstname. '_' .$rider->lastname. '/'.'vehicle/'). $rider->vehicle_side) }}" alt="Second slide">
                             </div>
                             <div class="carousel-item">
-                            <img class="d-block w-100 px-5" height="500" src="{{ url(('uploads/'.$rider->rider_id. '_' .$rider->firstname. '_' .$rider->lastname. '/'.'vehicle/'). $rider->vehicle_back) }}" alt="Third slide">
+                            <img class="d-block" height="600" width="100%" src="{{ url(('uploads/'. 'rider_documents'. '/'.$rider->rider_id. '_' .$rider->firstname. '_' .$rider->lastname. '/'.'vehicle/'). $rider->vehicle_back) }}" alt="Third slide">
                             </div>
                         </div>
                         <a class="carousel-control-prev" href="#carouselExampleControls1" role="button" data-slide="prev">
@@ -449,26 +449,7 @@
                
              </div>
 </div>
-            <!-- Modal NBI -->
-                    <div class="modal fade" id="ViewModal9" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered modal-fullscreen" role="document">
-                        <div class="modal-content px-5 py-2">
-                        <div class="">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            
-                          <embed src="{{ url(('uploads/'.$rider->rider_id. '_' .$rider->firstname. '_' .$rider->lastname. '/'). $rider->nbi_clearance) }}" 
-                            type="application/pdf"
-                        width="100%"
-                        height="900px">
-
-                        </div>
-                        </div>
-                    </div>
-                    </div>
+          
 
 
 <!-- content-wrapper ends -->

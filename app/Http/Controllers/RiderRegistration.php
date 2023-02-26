@@ -143,15 +143,15 @@ class RiderRegistration extends Controller
     }
       public function SaveDocuments(Request $request){
         $request->validate([
-            'image'=> 'required|mimes:jpeg,png,jpg,pdf|max:5000',
-            'vehicle_front'=> 'required|mimes:jpeg,png,jpg,pdf|max:5000',
-            'vehicle_side'=> 'required|mimes:jpeg,png,jpg,pdf|max:5000',
-            'vehicle_back'=> 'required|mimes:jpeg,png,jpg,pdf|max:5000',
-            'license'=> 'required|mimes:jpeg,png,jpg,pdf|max:5000',
-            'license_back'=> 'required|mimes:jpeg,png,jpg,pdf|max:5000',
-            'cr'=> 'required|mimes:jpeg,png,jpg,pdf|max:5000',
-            'or'=> 'required|mimes:jpeg,png,jpg,pdf|max:5000',
-            'nbi'=> 'required|mimes:jpeg,png,jpg,pdf|max:5000'
+            'image'=> 'required|mimes:jpeg,png,jpg|max:5000',
+            'vehicle_front'=> 'required|mimes:jpeg,png,jpg|max:5000',
+            'vehicle_side'=> 'required|mimes:jpeg,png,jpg|max:5000',
+            'vehicle_back'=> 'required|mimes:jpeg,png,jpg|max:5000',
+            'license'=> 'required|mimes:jpeg,png,jpg|max:5000',
+            'license_back'=> 'required|mimes:jpeg,png,jpg|max:5000',
+            'cr'=> 'required|mimes:pdf|max:5000',
+            'or'=> 'required|mimes:pdf|max:5000',
+            'nbi'=> 'required|mimes:pdf|max:5000'
         ]);
         
         $document = new tbl_rider_document();
@@ -223,23 +223,23 @@ class RiderRegistration extends Controller
 
             $name = tbl_rider_accounts::where('rider_id', $request->rider_id)->first();
              
-            $vehicle->move(('uploads/'.$request->rider_id. '_'.$name->firstname. '_' .$name->lastname. '/' .'vehicle/'), $filename1);
-            $file ->move(('uploads/'.$request->rider_id. '_'.$name->firstname. '_' .$name->lastname. '/' .'driver license/'),  $filename2 );
-            $file2->move(('uploads/'.$request->rider_id. '_'.$name->firstname. '_' .$name->lastname), $filename3);
-            $file3 ->move(('uploads/'.$request->rider_id. '_'.$name->firstname. '_' .$name->lastname),  $filename4 );
-            $file4->move(('uploads/'.$request->rider_id. '_'.$name->firstname. '_' .$name->lastname), $filename5);
-            $file5 ->move(('uploads/'.$request->rider_id. '_'.$name->firstname. '_' .$name->lastname),  $filename6 );
-            $file6 ->move(('uploads/'.$request->rider_id. '_'.$name->firstname. '_' .$name->lastname),  $filename7 );
-            $file7->move(('uploads/'.$request->rider_id. '_'.$name->firstname. '_' .$name->lastname. '/' .'vehicle/'), $filename8);
-            $file8 ->move(('uploads/'.$request->rider_id. '_'.$name->firstname. '_' .$name->lastname. '/' .'vehicle/'),  $filename9 );
-            $file9 ->move(('uploads/'.$request->rider_id. '_'.$name->firstname. '_' .$name->lastname. '/' .'driver license/'),  $filename10 );
+            $vehicle->move(('uploads/'. 'rider_documents'. '/'. $request->rider_id. '_'.$name->firstname. '_' .$name->lastname. '/' .'vehicle/'), $filename1);
+            $file ->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id. '_'.$name->firstname. '_' .$name->lastname. '/' .'driver license/'),  $filename2 );
+            $file2->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id. '_'.$name->firstname. '_' .$name->lastname), $filename3);
+            $file3 ->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id. '_'.$name->firstname. '_' .$name->lastname),  $filename4 );
+            $file4->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id. '_'.$name->firstname. '_' .$name->lastname), $filename5);
+            $file5 ->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id. '_'.$name->firstname. '_' .$name->lastname),  $filename6 );
+            $file6 ->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id. '_'.$name->firstname. '_' .$name->lastname),  $filename7 );
+            $file7->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id. '_'.$name->firstname. '_' .$name->lastname. '/' .'vehicle/'), $filename8);
+            $file8 ->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id. '_'.$name->firstname. '_' .$name->lastname. '/' .'vehicle/'),  $filename9 );
+            $file9 ->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id. '_'.$name->firstname. '_' .$name->lastname. '/' .'driver license/'),  $filename10 );
              if(Session::get('vehicle') == 'Borrowed')
             {
-            $file10->move(('uploads/'.$request->rider_id. '_'.$name->firstname. '_' .$name->lastname), $filename11);
+            $file10->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id. '_'.$name->firstname. '_' .$name->lastname), $filename11);
             }
               if(Session::get('vehicle') == 'Second-hand')
             {
-            $file12 ->move(('uploads/'.$request->rider_id. '_'.$name->firstname. '_' .$name->lastname),  $filename13 );
+            $file12 ->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id. '_'.$name->firstname. '_' .$name->lastname),  $filename13 );
             }
 
             $document->vehicle_front = $filename1;

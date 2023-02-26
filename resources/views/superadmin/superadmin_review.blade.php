@@ -66,7 +66,7 @@
                             <tr>
                                  <a href="">
                                 <td>
-                                    <img class="circle mr-2" src="{{ url('uploads/rider_documents/'.$rider->rider_photo) }}" alt="">
+                                    <img class="circle mr-2" src="{{ url(('uploads/'. 'rider_documents'. '/'.$rider->rider_id. '_' .$rider->firstname. '_' .$rider->lastname. '/'). $rider->rider_photo) }}" alt="">
                                     {{ $rider->firstname. ' ' .$rider->lastname }}
                                 </td>
                                 <td>{{ $rider->vehicle_type }}</td>
@@ -142,6 +142,7 @@
                                 @csrf
                             <input type="hidden" name="status" value="Reviewing">
                             <input type="hidden" name="id" value="{{ $rider->rider_application_id }}">
+                     
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn white-btn" data-dismiss="modal">Close</button>
@@ -158,7 +159,8 @@
                         <div class="modal-header">
                             <h5 class="modal-title white-font " id="exampleModalLongTitle">Update</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
+                                 
+                                <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
@@ -166,6 +168,7 @@
                             <form method="post" action="{{ route('Updatemodal') }}">
                                 @csrf
                             <input type="hidden" name="status" value="Accepted">
+                            <input type="hidden" name="rider_id" value="{{ $rider->rider_id }}">
                             <input type="hidden" name="id" value="{{ $rider->rider_application_id }}">
                         </div>
                         <div class="modal-footer">
