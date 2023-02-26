@@ -205,7 +205,7 @@ class Admin_product extends Controller
 
             
 
-                $addProd->merchant_id = session('merchant_id');
+                $addProd->merchant_id = session('loginID');
                 $addProd->product_name =$request->product_name;
                 $addProd->stock = $request->stock;
                 $addProd->product_image =$image_p;
@@ -365,36 +365,36 @@ class Admin_product extends Controller
 
 // Admin order Show the Table
     public function Orders(){
-        $orders = DB::table('tbl_orders')->get();
+        $orders = DB::table('tbl_orders')->where('merchant_id', '=', session('loginID'))->get();
 
-        $TotalOrders = DB::table('tbl_orders')->count();
-        $PendingOrders = DB::table('tbl_orders')->where('status','Pending')->count();
-        $PreparingOrders = DB::table('tbl_orders')->where('status','Preparing')->count();
-        $DeliveringOrders = DB::table('tbl_orders')->where('status','Delivering')->count();
-        $DeliveredOrders = DB::table('tbl_orders')->where('status','Delivered')->count();
+        $TotalOrders = DB::table('tbl_orders')->where('merchant_id', '=', session('loginID'))->count();
+        $PendingOrders = DB::table('tbl_orders')->where([['status','Pending'],['merchant_id', '=', session('loginID')]])->count();
+        $PreparingOrders = DB::table('tbl_orders')->where([['status','Preparing'],['merchant_id', '=', session('loginID')]])->count();
+        $DeliveringOrders = DB::table('tbl_orders')->where([['status','Delivering'],['merchant_id', '=', session('loginID')]])->count();
+        $DeliveredOrders = DB::table('tbl_orders')->where([['status','Delivered'],['merchant_id', '=', session('loginID')]])->count();
        
 
         return view('admin.admin_orders',['orders' => $orders, 'TotalOrders' => $TotalOrders, 'PendingOrders' => $PendingOrders, 'PreparingOrders' => $PreparingOrders, 'DeliveringOrders' => $DeliveringOrders, 'DeliveredOrders' => $DeliveringOrders]);
 
     }
     public function OrderPending(){
-        $pending_order = DB::table('tbl_orders')->where('status','=', 'Pending')->get();
+        $pending_order = DB::table('tbl_orders')->where([['status','=', 'Pending'],['merchant_id', '=', session('loginID')]])->get();
 
         return view ('admin.admin_orderpending', ['pending_order' => $pending_order]);
     }
     public function OrderPreparing(){
-        $preparing_order = DB::table('tbl_orders')->where('status','=', 'Preparing')->get();
+        $preparing_order = DB::table('tbl_orders')->where([['status','=', 'Preparing'],['merchant_id', '=', session('loginID')]])->get();
 
         return view ('admin.admin_orderpreparing', ['preparing_order' => $preparing_order]);
     }
     public function OrderDelivering(){
-        $delivering_order = DB::table('tbl_orders')->where('status','=', 'Delivering')->get();
+        $delivering_order = DB::table('tbl_orders')->where([['status','=', 'Delivering'],['merchant_id', '=', session('loginID')]])->get();
 
         return view ('admin.admin_orderdelivering', ['delivering_order' => $delivering_order]);
     }
 
     public function OrderDelivered(){
-        $delivered_order = DB::table('tbl_orders')->where('status','=', 'Delivered')->get();
+        $delivered_order = DB::table('tbl_orders')->where([['status','=', 'Delivered'],['merchant_id', '=', session('loginID')]])->get();
 
         return view ('admin.admin_orderdelivered', ['delivered_order' => $delivered_order]);
     }
@@ -402,7 +402,7 @@ class Admin_product extends Controller
 // VOUCHER 
 //VIEW
     public function VoucherIndex(){
-        $voucher = DB::table('tbl_voucher')->get();
+        $voucher = DB::table('tbl_voucher')->where('merchant_id', '=', session('loginID'))->get();
 
         $voucherCount = DB::table('tbl_voucher')->count();
         $EnableVoucher = DB::table('tbl_voucher')->where('status','Enable')->count();
@@ -413,13 +413,13 @@ class Admin_product extends Controller
     }
 
     public function EnableVoucher(){
-        $enableVoucher = DB::table('tbl_voucher')->where('status','=', 'Enable')->get();
+        $enableVoucher = DB::table('tbl_voucher')->where([['status', '=', 'Enable' ],['merchant_id',session('loginID')]])->get();
 
         return view ('admin.voucher_enable', ['enableVoucher' => $enableVoucher]);
     }
 
     public function DisableVoucher(){
-        $disableVoucher = DB::table('tbl_voucher')->where('status','=', 'Disable')->get();
+        $disableVoucher = DB::table('tbl_voucher')->where([['status', '=', 'Disable'],['merchant_id',session('loginID')]])->get();
 
         return view ('admin.voucher_disable', ['disableVoucher' => $disableVoucher]);
     }
@@ -435,7 +435,7 @@ class Admin_product extends Controller
 
     public function Disable_Voucher(Request $request) // Update the Voucher Status
     {
-        $affected = DB::table('tbl_voucher')->where('voucher_id', $request->voucher_id);
+        $affected = DB::table('tbl_voucher')->where(['voucher_id', $request->voucher_id]);
                 
         $resss=$affected->update(['status' => 'Disable'],);
               
@@ -456,6 +456,7 @@ class Admin_product extends Controller
        
         $addVoucher = new tbl_voucher();
 
+        $addVoucher->merchant_id = session('loginID');
         $addVoucher->voucher_name = $request->voucherName;
         $addVoucher->voucher_code =  $quickpass = substr( str_shuffle( str_repeat( 'abcdefghijklmnopqrstuvwxyz0123456789', 10 ) ), 0, 10 ); //Generate default codes
         $addVoucher->description = $request->description;
@@ -478,7 +479,7 @@ class Admin_product extends Controller
     }
 
     public function ClaimedVoucher(Request $request){
-        $claimedVoucher = DB::table('tbl_claimed')->where('voucher_code','=', $request->voucher_code)->get();
+        $claimedVoucher = DB::table('tbl_claimed')->where([['voucher_code','=', $request->voucher_code],['merchant_id', '=', session('loginID')]])->get();
 
         return view ('admin.voucher_claimed', ['claimedVoucher' => $claimedVoucher]);
     }
