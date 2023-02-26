@@ -7,11 +7,20 @@ use App\Http\Controllers\Admin_product;
 use App\Http\Controllers\RiderRegistration;
 use App\Http\Controllers\PartnerRegistration;
 use App\Http\Controllers\Admin_product\removeProduct;
+use App\Http\Controllers\sample;
 use App\Http\Controllers\SuperadminController;
 
 Route::get('/', [Home::class, 'index'])->name('home.index');
 
-Route::get('/type', [Home::class, 'AccountType']);
+Route::get('/account_type', [Home::class, 'AccountType']);
+
+Route::get('/rider_login', [Home::class, 'RiderLoginIndex']);
+
+Route::get('/login_type', [Home::class, 'LoginType']);
+
+Route::post('/rider_login', [RiderRegistration::class, 'RiderLogIn'])->name('RiderLogIn');
+
+Route::get('//rider_logout', [RiderRegistration::class, 'RiderLogout']);
 
 Route::get('/rider_application', [RiderRegistration::class, 'index'])->name('rider_application.index');
 
@@ -25,7 +34,9 @@ Route::post('/rider_application4', [RiderRegistration::class, 'SaveDocuments'])-
 
 Route::get('/rider_application4', [RiderRegistration::class, 'step4index']);
 
-Route::get('/rider_applicationstatus', [RiderRegistration::class, 'step5index']);
+Route::get('/rider_application5', [RiderRegistration::class, 'step5index']);
+
+Route::get('/rider_applicationstatus', [RiderRegistration::class, 'RiderApplicationStatus']);
 
 Route::get('/partner_application', [PartnerRegistration::class, 'index']);
 
@@ -49,6 +60,8 @@ Route::post('/login',  [PartnerRegistration::class, 'LoginMerchant'])->name('log
 Route::get('/rider_application_agreement', [RiderRegistration::class, 'agreement']);
 
 Route::get('/merchant_application_agreement', [PartnerRegistration::class, 'agreement']);
+
+Route::get('/partner_applicationstatus', [PartnerRegistration::class, 'PartnerApplicationStatus']);
 
 // Route::get('/sample', [RiderRegistration::class, 'getAllData'])->name('sample.getAllData');
 
@@ -78,6 +91,8 @@ Route::post('/superadmin_rider', [SuperadminController::class, 'Update'])->name(
 
 Route::get('/superadmin_riderprofile/{id}', [SuperadminController::class, 'RiderProfile']);
 
+Route::post('/superadmin_riderprofile', [SuperadminController::class, 'RiderProfileUpdate'])->name('RiderProfileUpdate');
+
 Route::get('/superadmin_pending', [SuperadminController::class, 'Pending']);
 
 Route::get('/superadmin_review', [SuperadminController::class, 'Review']);
@@ -96,6 +111,8 @@ Route::get('/superadmin_merchantarchive', [SuperadminController::class, 'Merchan
 
 Route::get('/superadmin_partnerapplication', [SuperadminController::class, 'partner']);
 
+Route::get('/superadmin_merchantproile/{id}', [SuperadminController::class, 'MerchantApplicationProfile']);
+
 Route::post('/superadmin_partnerapplication', [SuperadminController::class, 'UpdateMerchant'])->name('UpdateMerchant');
 
 Route::get('/superadmin_log', [SuperadminController::class, 'ActivityLog']);
@@ -108,6 +125,32 @@ Route::get('/superadmin_acceptedpartner', [SuperadminController::class, 'Accepte
 
 Route::post('/superadmin_riderdetails', [SuperadminController::class, 'RiderAccept'])->name('RiderAccept');
 
+Route::post('/superadmin_accepted_rider', [SuperadminController::class, 'RemoveAcceptedRider'])->name('RemoveRider');
+
+Route::post('/superadmin_accepted_partner', [SuperadminController::class, 'RemoveAcceptedMerchant'])->name('RemoveMerchant');
+
+Route::post('/superadmin_acceptedrider', [SuperadminController::class, 'AcceptedRiderUpdate'])->name('UpdateAcceptedRider');
+
+Route::post('/superadmin_acceptedpartner', [SuperadminController::class, 'AcceptedPartnerUpdate'])->name('UpdateAcceptedPartner');
+
+Route::post('/superadmin_partnerdetailsprofile', [SuperadminController::class, 'MerchantPersonalUpdate'])->name('MerchantPersonalUpdate');
+
+Route::post('/superadmin_partnerdetailsbusiness', [SuperadminController::class, 'MerchantBusinessUpdate'])->name('MerchantBusinessUpdate');
+
+Route::get('/superadmin_account', [SuperadminController::class, 'AccountIndex']);
+
+Route::post('/superadmin_accountpass', [SuperadminController::class, 'ChangePassAdmin'])->name('ChangePassAdmin');
+
+Route::post('/superadmin_accountemail', [SuperadminController::class, 'ChangeEmailAdmin'])->name('ChangeEmailAdmin');
+
+Route::get('/superadmin_sales', [SuperadminController::class, 'SalesIndex']);
+
+/*VIEW PDF */
+// Route::get('/display_pdf/{firstname}/{lastname}/{id}/{name}', [SuperadminController::class, 'ViewPDF']);
+
+Route::get('/download_file/{firstname}/{lastname}/{id}/{name}', [SuperadminController::class, 'Download']);
+
+Route::get('/download_vehicle/{firstname}/{lastname}/{id}', [SuperadminController::class, 'DownloadVehicleZip']);
 
 /* END SUPERADMIN */
 
@@ -207,7 +250,7 @@ Route::post('/product/updateInfo',[Admin_product::class, 'updateProductInfo'])->
 //View products
 Route::get('product', function () {
 
-    $products = DB::table('tbl_product')->get();
+    $products = DB::table('tbl_product')->where('merchant_id', '=', session('loginID'))->get();
 
     return view('admin.product', ['products' => $products]);
 });
@@ -217,7 +260,7 @@ Route::post('product',[Admin_product::class, 'addProduct'])->name('add_product')
 //View inventory
 Route::get('inventory', function(){
     
-    $invent = DB::table('tbl_inventory')->get();
+    $invent = DB::table('tbl_inventory')->where('merchant_id', '=', session('loginID'))->get();
 
     return view('admin.inventory', ['invent' => $invent]);
 });
@@ -226,26 +269,39 @@ Route::view('merchant_index', 'admin.index');
 
 //Route::view('admin_history', 'admin.admin_history');
 Route::get('admin_history', function(){
-    $history = DB::table('tbl_transaction')->get();
+    $history = DB::table('tbl_transaction')->where('merchant_id', '=', session('loginID'))->get();
 
     return view('admin.admin_history', ['history' => $history]);
 });
 
-Route::get('admin_orders', function(){
-    $orders = DB::table('tbl_orders')->get();
+// ORDERS ROUTE
+Route::get('/admin_orders', [Admin_product::class, 'Orders']);
 
-    return view('admin.admin_orders', ['orders' => $orders]);
-});
+Route::post('/admin_orders/Pending', [Admin_product::class, 'Order_Pending'])->name('order.Pending');
+Route::post('/admin_orders/Prepapring', [Admin_product::class, 'Order_Preparing'])->name('order.Preparing');
+Route::post('/admin_orders/Delivering', [Admin_product::class, 'Order_Delivering'])->name('order.Delivering');
+Route::post('/admin_orders/Delivered', [Admin_product::class, 'Order_Delivered'])->name('order.Delivered');
+
 
 //Voucher Route
 Route::get('/voucher', [Admin_product::class, 'VoucherIndex']);
+Route::post('/voucherAdd',[Admin_product::class, 'addVoucher'])->name('voucher.addVoucher');
+Route::get('/voucherdelete/{id}',[Admin_product::class, 'deleteVoucher'])->name('voucher.deleteVoucher');
+Route::get('/voucherEnable', [Admin_product::class, 'EnableVoucher']);
+Route::get('/voucherDisable', [Admin_product::class, 'DisableVoucher']);
+Route::post('/voucher/enable', [Admin_product::class, 'Enable_Voucher'])->name('voucher.Enable'); // Update the status of the Voucher
+Route::post('/voucher/disable', [Admin_product::class, 'Disable_Voucher'])->name('voucher.Disable'); // Update the status of the Voucher
+Route::post('/voucher/update', [Admin_product::class, 'Update_Voucher'])->name('voucher.Update'); // Update the status of the Voucher
+
+Route::post('/claimedVoucher', [Admin_product::class, 'ClaimedVoucher'])->name('voucher.Claimed');
 
 //ORDER ADMIN
 //ORDER Pending
 Route::get('/orderpending', [Admin_product::class, 'OrderPending']);
-Route::get('/orderaccept', [Admin_product::class, 'OrderAccept']);
-Route::get('/orderreview', [Admin_product::class, 'OrderReview']);
-Route::get('/orderarchieve', [Admin_product::class, 'OrderArchieve']);
+Route::get('/orderpreparing', [Admin_product::class, 'OrderPreparing']);
+Route::get('/orderdelivering', [Admin_product::class, 'OrderDelivering']);
+Route::get('/orderdelivered', [Admin_product::class, 'OrderDelivered']);
+
 
 Route::get('/account', function(){
     $id=session('loginID');
@@ -278,13 +334,17 @@ Route::get('document',  function(){
     return view('admin.admin_partnerdocuments');
 });
 
+//CATEGORY
 //View Category
 Route::get('category', function () {
 
-    $category = DB::table('tbl_category')->get();
+    $category = DB::table('tbl_category')->where('merchant_id', '=', session('loginID'))->get();
 
     return view('admin.category', ['category' => $category]);
 });
 
 //Add Category
 Route::post('/add_category',[Admin_product::class, 'addCategory'])->name('add_category.addCategory');
+//update Category
+Route::post('/update_category',[Admin_product::class, 'updateCategory'])->name('update_category.updateCategory');
+Route::get('/delete_category/{id}',[Admin_product::class, 'deleteCategory']);

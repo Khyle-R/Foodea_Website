@@ -2,6 +2,24 @@
 @section('content')
         <div class="content-wrapper">
                 <div class="row"></div>
+
+         <div class="content-wrapper">
+                 <div class="row">
+
+                    <!---ALERT BOX --->
+                    @if (Session::has('success'))
+                    <p style="display:none" class="popup"></p>
+            <div class="success hide">
+                <span class="fas fa-exclamation-circle"></span>
+                <span class="msg">{{ Session::pull('success') }}</span>
+                <div class="close-btn">
+                    <span class="fas fa-times"></span>
+                </div>
+            </div>
+                    @endif
+             
+              <!---/ALERT BOX --->
+                        </div>
                         <div class="page-header">
                             <h3 class="page-title black">Rider Application</h3>
                             <nav aria-label="breadcrumb">
@@ -15,7 +33,7 @@
                                 </ol>
                             </nav>
                         </div>
-
+               
                         <div class="card mb-4">
                             <div class="card-body">
                                 <ul class="nav nav-tabs nav-tabs-solid nav-justified">
@@ -140,7 +158,7 @@
                             <tr>
                                  <a href="">
                                 <td>
-                                    <img class="circle mr-2" src="{{ url('uploads/rider_documents/'.$rider->rider_photo) }}" alt="">
+                                    <img class="circle mr-2" src="{{ url(('uploads/'.$rider->rider_id. '_' .$rider->firstname. '_' .$rider->lastname. '/'). $rider->rider_photo) }}" alt="">
                                     {{ $rider->firstname. ' ' .$rider->lastname }}
                                 </td>
                                 <td>{{ $rider->vehicle_type }}</td>
@@ -285,6 +303,7 @@
                             </div>
                         </div>
                     </div>
+        </div>
 
                     <!-- content-wrapper ends -->
                     <!-- partial:../../partials/_footer.html -->

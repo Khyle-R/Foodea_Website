@@ -18,7 +18,7 @@
       <div class="container-fluid px-3">
         <a href="/" class="navbar-brand mb-0 h1">
           <img src="image/foodea1.png" alt=""/>
-          FOODEA
+          <span> FOODEA </span>
         </a>
         <button
           class="navbar-toggler"
@@ -48,12 +48,12 @@
           <div class="offcanvas-body">
             <ul class="navbar-nav mx-auto">
               <li class="nav-item">
-                <a href="/" class="nav-link active">Home</a>
+                <a href="/" class="nav-link">Home</a>
               </li>
               <li class="nav-item dropdown">
                 <a
                   href="#"
-                  class="nav-link dropdown-toggle"
+                  class="nav-link dropdown-toggle active"
                   role="button"
                   data-bs-toggle="dropdown"
                   >Services</a
@@ -67,18 +67,18 @@
                 <a href="/about" class="nav-link">About Us</a>
               </li>
               <li class="nav-item">
-                <a href="/landing" class="nav-link">Contact Us</a>
+                <a href="/contact" class="nav-link">Contact Us</a>
               </li>
             </ul>
             <a
-              href="/login"
+              href="/account_type"
               class="text-secondary mt-2 mx-5"
               style="text-decoration: none;"
             >
               Signup
            </a>
             <a
-              href="/login"
+              href="/login_type"
               class="btn btn-danger btn-sm py-2 px-5 rounded"
             >
               Login
@@ -88,9 +88,9 @@
       </div>
     </nav>
         <div class="section">
-            <div class="content">
+            <div class="content text-center text-md-start">
                 <h1>Grow your business with <span>Foodea</span></h1>
-                <p>Expand your business by bringing your food out and filling up your customers tummy and reach new customers by partnering with us.</p>
+                <p class="text-center text-md-start">Expand your business by bringing your food out and filling up your customers tummy and reach new customers by partnering with us.</p>
                 <a href="/merchant_application_agreement">Apply Now </a>
                 {{-- <img src="image/vector.png" /> --}}
             </div>
@@ -183,15 +183,19 @@
     
     <div class="req-container">
         <div class="req-section">
-               <div class="req-image">
-                            <img src="/image/requirements.png" alt="">
-                        </div>
-              <div class="req-content">
-                <h2>Get your documents ready</h2>
-                <p>You can find the required documents as below. Please ensure that the 
+            <div class="row">
+                <h2 class="text-center mb-4 text-md-center">Get your documents ready</h2>
+                <p class="mb-5">You can find the required documents as below. Please ensure that the 
                     following documents are original or else your application will be rejected.
                      Upload only a scanned copy and images of the following documents to avoid document information 
                      being reflective and blurred.</p>
+                <div class="col-0 col-md-6 col-lg-6">
+               <div class="req-image">
+                            <img src="/image/requirements.png" alt="">
+                        </div>
+                    </div>
+             <div class="col-12 col-sm-12 col-md-6 col-lg-6">
+              <div class="req-content">
                 <ul class="accordion">
                 
                  <li>
@@ -239,6 +243,8 @@
                         </div>
                     </li>
                     </ul>
+                    </div>
+                    </div>
                             </div>
                             </div>
                     </div>
@@ -254,65 +260,89 @@
         </div>
         <div class="wrapper">
             <button class="toggle">
-                What is Foodea?
+                What is a FOODEA merchant?
                 <i class="fas fa-plus icon"></i>
             </button>
             <div class="cont">
                 <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta
-                    aliquam facere adipisci quod mollitia, aut nemo deleniti fugiat et,
-                    corrupti sequi. Omnis dolorem quos eligendi placeat soluta sint
-                    corrupti quod.
+                    A FOODEA merchant is a local business that partners with FOODEA to offer their food products on the app.
+
                 </p>
             </div>
         </div>
         <div class="wrapper">
             <button class="toggle">
-                How to be a Rider in Foodea?
+                How do I become a FOODEA merchant?
                 <i class="fas fa-plus icon"></i>
             </button>
             <div class="cont">
                 <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores
-                    error doloremque, quibusdam qui necessitatibus autem aperiam
-                    reprehenderit? Ipsum maiores dolore inventore ea. Accusantium fuga
-                    eius laboriosam iusto blanditiis doloremque ullam?
+                    To become a FOODEA merchant, you can visit the Merchant Page on the FOODEA
+                     website for more information on the application process.
+
                 </p>
             </div>
         </div>
         <div class="wrapper">
             <button class="toggle">
-                How to be a Foodea Partner?
+                What are the benefits of partnering with FOODEA as a merchant?
                 <i class="fas fa-plus icon"></i>
             </button>
             <div class="cont">
                 <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae
-                    consectetur officiis labore commodi sunt ex praesentium dolor magnam
-                    asperiores reiciendis. Minus magnam nesciunt aliquid eos ipsam sequi
-                    recusandae quos incidunt.
+                    Partnering with FOODEA can provide increased visibility and access to a wider customer base, 
+                    as well as potential opportunities for marketing and promotions.
+                </p>
+            </div>
+        </div>
+        <div class="wrapper">
+            <button class="toggle">
+                What are the requirements to partner with FOODEA as a merchant?
+                <i class="fas fa-plus icon"></i>
+            </button>
+            <div class="cont">
+                <p>
+                    The requirements to partner with FOODEA as a merchant may vary by location, but typically include compliance with food safety
+                     regulations and a willingness to provide high-quality products and customer service.
                 </p>
             </div>
         </div>
     </div>
     <div class="footer">
-        <div class="footer-content">
-            <div class="icon">
+        <div class="footer-content py-4 py-md-5">
+            <div class="icon pb-3 pb-md-0">
+                <a href="/" class="icon text-decoration-none">
                 <img src="image/foodea2.png" alt="">
-                <h1>FOODEA</h1>
-                <p>Follow Us</p>
+                <h1 class="text-light">FOODEA</h1>
+                </a>
+                <p class="text-center">Follow Us</p>
             </div>
             <div class="join">
                 <h2>Join Us</h2>
-                <p>Register as Rider</p>
-                <p>Be a Partner</p>
+                <a href="/rider_landing" class="text-reset text-decoration-none">
+                    <p>Register as Rider</p>
+                </a>
+                <a href="/partner_landing" class="text-reset text-decoration-none">
+                    <p>Be a Partner</p>
+                </a>
             </div>
             <div class="company">
                 <h2>Our Company</h2>
-                <p>About Us</p>
-                <p>Mission</p>
-                <p>Vision</p>
-                <p>Services</p>
+                <a href="/about" class="text-reset text-decoration-none">
+                    <p>About Us</p>
+                </a>
+                <a href="/contact" class="text-reset text-decoration-none">
+                    <p>Contact Us</p>
+                </a>
+                <a href="/" class="text-reset text-decoration-none">
+                    <p>Mission</p>
+                </a>
+                <a href="/" class="text-reset text-decoration-none">
+                    <p>Vision</p>
+                </a>
+                <a href="/" class="text-reset text-decoration-none">
+                    <p>Services</p>
+                </a>
             </div>
             <div class="footer-section">
                 <div class="inquire">
@@ -327,9 +357,9 @@
             </div>
         </div>
     </div>
-    <div class="dark-footer">
-        <div class="dark-content">
-            <p>Copyright © 2022. All Rights Reserved</p>
+    <div class="dark-footer pt-3">
+        <div class="dark-content m-auto text-center">
+            <p class="">Copyright © 2022. All Rights Reserved</p>
         </div>
     </div>
 

@@ -20,7 +20,7 @@
 </head>
 
 <body>
-    <div class="header">
+    <div class="main-container">
     <!--- NAVBAR -->
     <nav class="navbar navbar-expand-lg px-2 mx -2 px-xs-3 px-md-4 px-lg-5 mx-xs-3 mx-md-4 mx-lg-5">
       <div class="container-fluid px-3">
@@ -81,14 +81,14 @@
               </li>
             </ul>
             <a
-              href="/login"
+              href="/account_type"
              class="text-secondary mt-2 mx-5"
               style="text-decoration: none;"
             >
               Signup
            </a>
             <a
-              href="/login"
+              href="/login_type"
               class="btn btn-danger btn-sm py-2 px-5 rounded"
             >
               Login
@@ -96,18 +96,19 @@
           </div>
         </div>
       </div>
-
     </nav>
-        <div class="section mx-auto my-5">
+    
+    
+    <div class="section mx-auto my-5">
             <div class="content text-center text-md-start">
                 <h1>Be The Fastest In Delivering Your <span>Food</span></h1>
                 <p class="text-center text-md-start">Our job filling your tummy with delicious food and with fast delivery</p>
-                <a class="partnerbtn" href="/partner_landing">Partner with us</a>
+                <a class="partnerbtn text-decoration-none" href="/partner_landing">Partner with us</a>
             </div>
         <div class="image">
             <img src="image/food.png" alt=""></div>
         </div>
-
+    <div class="container pt-0">
         <div class="section-2">
             <div class="service">
                 <div class="rider">
@@ -149,14 +150,14 @@
     <div class="container">
         <h2>Our Partners</h2>
         <section class="customer-logos slider">
-            <div class="slide"><img src="image/adidas.png" alt="logo" /></div>
-            <div class="slide"><img src="image/facebook.png" alt="logo" /></div>
-            <div class="slide"><img src="image/google.png" alt="logo" /></div>
-            <div class="slide"><img src="image/instagram.png" alt="logo" /></div>
-            <div class="slide"><img src="image/nike.png" alt="logo" /></div>
-            <div class="slide"><img src="image/twitter.png" alt="logo" /></div>
-            <div class="slide"><img src="image/uber.png" alt="logo" /></div>
-            <div class="slide"><img src="image/youtube.png" alt="logo" /></div>
+            <div class="slide"><img src="image/jollibee.png" alt="logo" /></div>
+            <div class="slide"><img src="image/angel.png" alt="logo" /></div>
+            <div class="slide"><img src="image/mcdo.png" alt="logo" /></div>
+            <div class="slide"><img src="image/domino.png" alt="logo" /></div>
+            <div class="slide"><img src="image/wendy.png" alt="logo" /></div>
+            <div class="slide"><img src="image/sarsa.png" alt="logo" /></div>
+            <div class="slide"><img src="image/potle.png" alt="logo" /></div>
+            <div class="slide"><img src="image/king.png" alt="logo" /></div>
         </section>
     </div>
     <!---ACOORDION-->
@@ -172,60 +173,72 @@
             </button>
             <div class="cont">
                 <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta
-                    aliquam facere adipisci quod mollitia, aut nemo deleniti fugiat et,
-                    corrupti sequi. Omnis dolorem quos eligendi placeat soluta sint
-                    corrupti quod.
+                    FOODEA is a mobile application that provides food suggestions and ordering options, with a 
+                    focus on supporting small businesses and promoting healthy eating habits.
                 </p>
             </div>
         </div>
         <div class="wrapper">
             <button class="toggle">
-                How to be a Rider in Foodea?
+                How does FOODEA support small food businesses?
                 <i class="fas fa-plus icon"></i>
             </button>
             <div class="cont">
                 <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores
-                    error doloremque, quibusdam qui necessitatibus autem aperiam
-                    reprehenderit? Ipsum maiores dolore inventore ea. Accusantium fuga
-                    eius laboriosam iusto blanditiis doloremque ullam?
+                    FOODEA partners with local merchants to offer their products on the app, 
+                    giving them increased visibility and access to a wider customer base.
                 </p>
             </div>
         </div>
         <div class="wrapper">
             <button class="toggle">
-                How to be a Foodea Partner?
+                Can FOODEA suggest healthy food options?
                 <i class="fas fa-plus icon"></i>
             </button>
             <div class="cont">
                 <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae
-                    consectetur officiis labore commodi sunt ex praesentium dolor magnam
-                    asperiores reiciendis. Minus magnam nesciunt aliquid eos ipsam sequi
-                    recusandae quos incidunt.
+                    Yes, FOODEA can suggest healthy and nutritional foods based on a user's 
+                    weight goals and dietary preferences.
                 </p>
             </div>
         </div>
     </div>
+    
     <div class="footer">
-        <div class="footer-content">
-            <div class="icon">
+        <div class="footer-content py-4 py-md-5">
+            <div class="icon pb-3 pb-md-0">
+                <a href="/" class="icon text-decoration-none">
                 <img src="image/foodea2.png" alt="">
-                <h1>FOODEA</h1>
-                <p>Follow Us</p>
+                <h1 class="text-light">FOODEA</h1>
+                </a>
+                <p class="text-center">Follow Us</p>
             </div>
             <div class="join">
                 <h2>Join Us</h2>
-                <p>Register as Rider</p>
-                <p>Be a Partner</p>
+                <a href="/rider_landing" class="text-reset text-decoration-none">
+                    <p>Register as Rider</p>
+                </a>
+                <a href="/partner_landing" class="text-reset text-decoration-none">
+                    <p>Be a Partner</p>
+                </a>
             </div>
             <div class="company">
                 <h2>Our Company</h2>
-                <p>About Us</p>
-                <p>Mission</p>
-                <p>Vision</p>
-                <p>Services</p>
+                <a href="/about" class="text-reset text-decoration-none">
+                    <p>About Us</p>
+                </a>
+                <a href="/contact" class="text-reset text-decoration-none">
+                    <p>Contact Us</p>
+                </a>
+                <a href="/" class="text-reset text-decoration-none">
+                    <p>Mission</p>
+                </a>
+                <a href="/" class="text-reset text-decoration-none">
+                    <p>Vision</p>
+                </a>
+                <a href="/" class="text-reset text-decoration-none">
+                    <p>Services</p>
+                </a>
             </div>
             <div class="footer-section">
                 <div class="inquire">
@@ -240,14 +253,12 @@
             </div>
         </div>
     </div>
-    <div class="dark-footer">
-        <div class="dark-content">
-            <p>Copyright © 2022. All Rights Reserved</p>
+    <div class="dark-footer pt-3">
+        <div class="dark-content m-auto text-center">
+            <p class="">Copyright © 2022. All Rights Reserved</p>
         </div>
     </div>
-
-
-
+    </div>
     <script src="js/script.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
@@ -284,5 +295,4 @@
         });
     </script>
 </body>
-
 </html>
