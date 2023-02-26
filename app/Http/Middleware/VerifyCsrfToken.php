@@ -12,11 +12,7 @@ class VerifyCsrfToken extends Middleware
      * @var array<int, string>
      */
     protected $except = [
-        'superadmin_login',
-        'rider_application',
-        'rider_application3',
-        'rider_application4',
-        'rider_applicationstatus'
+        'superadmin_login'
         //
     ];
 }
