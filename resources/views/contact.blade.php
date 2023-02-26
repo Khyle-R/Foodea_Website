@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1" name="viewport" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />  
     <title>FOODEA Contact Us</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css" rel="stylesheet" />
@@ -96,13 +96,14 @@
         </div>
       </div>
     </nav>
+    
     </div>
     <!-- END OF NAVBAR -->
     <div class="container">
 
     <!-- SECTION 1 -->
     <section class="d-flex justify-content-center ">
-      <div class="content mx-auto d-flex flex-column align-items-center gap-4 w-75 pt-4 pb-2 py-xs-3 py-md-4 py-lg-5">
+      <div class="content1 mx-auto d-flex flex-column align-items-center gap-4 pt-4 pb-2 py-xs-3 py-md-4 py-lg-5">
         <h1 class="text-center">You’ve got questions?<br>We’ve got answers</h1>
         <div class="paragraph1 w-75"><p class="text-center">Want to know more about Foodea? Have a question that's not answered on our website? Please chat to our friendly team.</p></div>
       </div>
@@ -110,7 +111,7 @@
     <!-- END SECTION 1 -->
 
     <!-- SEARCH BAR -->
-    <div class="input-box container d-flex justify content align-items-center mx-auto">
+    <div class="input-box container d-flex justify content1 align-items-center mx-auto">
       <i class="uil uil-search"></i>
       <input type="text" placeholder="Search" />
       <button class="button">Search</button>
@@ -175,20 +176,8 @@
 
 
 </div>
-
-    <!-- SECTION 2 -->
-    <section class="d-flex justify-content-center align-items-start">
-
-      <!-- IMAGE
-      <div class="content mx-auto d-flex flex-row pt-4 pb-2 py-xs-3 py-md-4 py-lg-5">
-        <img src="image/contact1.png" alt="calling a girl">
-      </div> -->
-
-    </section>
-    <!-- END SECTION 2 -->
-
     <!-- FORM -->
-    <div class="contact-container mx-auto d-flex flex-column-reverse  flex-md-row-reverse justify-content-center align-items-center gap-5">
+    <div class="contact-container mx-auto d-flex flex-row flex-column-reverse flex-lg-row-reverse justify-content-center align-items-center gap-5">
     <div class="left-side pb-5">
         <img src="image/contact1.png" alt="calling a girl">
       </div>

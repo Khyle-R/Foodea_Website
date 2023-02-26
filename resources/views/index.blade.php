@@ -20,7 +20,7 @@
 </head>
 
 <body>
-    <div class="header">
+    <div class="main-container">
     <!--- NAVBAR -->
     <nav class="navbar navbar-expand-lg px-2 mx -2 px-xs-3 px-md-4 px-lg-5 mx-xs-3 mx-md-4 mx-lg-5">
       <div class="container-fluid px-3">
@@ -96,14 +96,14 @@
           </div>
         </div>
       </div>
-
     </nav>
+    
     
     <div class="section mx-auto my-5">
             <div class="content text-center text-md-start">
                 <h1>Be The Fastest In Delivering Your <span>Food</span></h1>
                 <p class="text-center text-md-start">Our job filling your tummy with delicious food and with fast delivery</p>
-                <a class="partnerbtn" href="/partner_landing">Partner with us</a>
+                <a class="partnerbtn text-decoration-none" href="/partner_landing">Partner with us</a>
             </div>
         <div class="image">
             <img src="image/food.png" alt=""></div>
@@ -144,7 +144,6 @@
                     convenient way with places that deliver to your door.</p>
             </div>
         </div>
-    </div>
     </div>
 
     <!---CAROUSEL-->
@@ -203,21 +202,8 @@
                 </p>
             </div>
         </div>
-        <div class="wrapper">
-            <button class="toggle">
-                Does FOODEA offer exercise recommendations?
-                <i class="fas fa-plus icon"></i>
-            </button>
-            <div class="cont">
-                {{-- <p>
-                    Yes, FOODEA can provide simple exercise suggestions based on a user's 
-                    calorie intake and preferred workout time.
-
-                </p> --}}
-                <p>Coming Soon...</p>
-            </div>
-        </div>
     </div>
+    
     <div class="footer">
         <div class="footer-content py-4 py-md-5">
             <div class="icon pb-3 pb-md-0">
@@ -272,7 +258,7 @@
             <p class="">Copyright © 2022. All Rights Reserved</p>
         </div>
     </div>
-
+    </div>
     <script src="js/script.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
