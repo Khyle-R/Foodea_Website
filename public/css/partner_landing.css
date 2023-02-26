@@ -31,6 +31,11 @@ ul {
     background-image: linear-gradient(#f5474725, #fffcfc8a);
 }
 
+.main-container {
+    padding-top: 30px;
+    background-image: linear-gradient(#f5474725, #fffcfc8a);
+}
+
 .nav {
     width: 90%;
     margin: 0 auto;
@@ -632,12 +637,6 @@ input[type="radio"] {
 
     .section-2 {
         width: 75%;
-    }
-
-    .header {
-        padding-top: 30px;
-        padding-bottom: 10px;
-        background-image: linear-gradient(#f5474725, #fffcfc8a);
     }
 
     .rider,
