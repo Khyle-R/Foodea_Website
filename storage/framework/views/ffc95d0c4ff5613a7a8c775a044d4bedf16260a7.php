@@ -57,12 +57,12 @@
           <?php endif; ?>
 
            <div class="requirements-title">
-               <p>Clear image of your logo <span>(Required)</span></p>
+               <p>Clear image of your logo <span>(Required JPG or PNG)</span></p>
                </div>
                <div class="requirements">
                  <img class="logo" src="image/foodea4.png" alt="">
                 <input type="file" name="logo">
-                  <span>JPG or PNG file size up to 5mb only</span>
+                  <span>File size up to 5mb only</span>
                <span
             style="color:red;">
             <?php $__errorArgs = ['logo'];
@@ -79,12 +79,12 @@ unset($__errorArgs, $__bag); ?></span>
 
 
             <div class="requirements-title"> 
-            <p>Clear image of your menu<span> (Required)</span></p>
+            <p>Clear image of your menu<span> (Required JPG or PNG)</span></p>
                </div>
                 <div class="requirements">
             <img src="image/menu_sample.png" alt="">
               <input type="file" name="menu_photo">
-               <span>JPG or PNG file size up to 5mb only</span>
+               <span>File size up to 5mb only</span>
             <span
             style="color:red;">
             <?php $__errorArgs = ['menu_photo'];
@@ -101,12 +101,12 @@ unset($__errorArgs, $__bag); ?></span>
 
 
                 <div class="requirements-title"> 
-            <p>Business Permit<span> (Required)</span></p>
+            <p>Business Permit<span> (Required PDF)</span></p>
                </div>
                 <div class="requirements">
             <img src="image/business_permit.png" alt="">
               <input type="file" name="business_permit">
-               <span>PDF file size up to 5mb only</span>
+               <span>File size up to 5mb only</span>
             <span
             style="color:red;">
             <?php $__errorArgs = ['business_permit'];
@@ -122,12 +122,12 @@ unset($__errorArgs, $__bag); ?></span>
               </div>
 
                 <div class="requirements-title"> 
-            <p>BIR Certificate<span> (Required)</span></p>
+            <p>BIR Certificate<span> (Required PDF)</span></p>
                </div>
                 <div class="requirements">
             <img src="image/BIR.png" alt="">
               <input type="file" name="bir_cert">
-               <span>PDF file size up to 5mb only</span>
+               <span>File size up to 5mb only</span>
             <span
             style="color:red;">
             <?php $__errorArgs = ['bir_cert'];
@@ -143,12 +143,12 @@ unset($__errorArgs, $__bag); ?></span>
               </div>
 
                <div class="requirements-title"> 
-            <p>Barangay Permit <span>(Required)</span></p>
+            <p>Barangay Permit <span>(Required PDF)</span></p>
                </div>
                 <div class="requirements">
             <img src="image/barangay_permit.png" alt="">
               <input type="file" name="barangay_permit">
-               <span>PDF file size up to 5mb only</span>
+               <span>File size up to 5mb only</span>
             <span
             style="color:red;">
             <?php $__errorArgs = ['barangay_permit'];
@@ -164,12 +164,12 @@ unset($__errorArgs, $__bag); ?></span>
               </div>
 
                <div class="requirements-title">
-               <p>DTI Certificate <span> (Required)</span></p>
+               <p>DTI Certificate <span> (Required PDF)</span></p>
                </div>
                 <div class="requirements">
                   <img src="image/DTI.png" alt="">
                 <input type="file" name="dti_cert">
-                 <span>PDF file size up to 5mb only</span>
+                 <span>File size up to 5mb only</span>
                <span
             style="color:red;">
             <?php $__errorArgs = ['dti_cert'];
@@ -186,7 +186,7 @@ unset($__errorArgs, $__bag); ?></span>
 
            
                   <div class="requirements-title">
-              <p>Valid ID of the restaurant owner or the person in charge of the restaurant <span> (Required)</span></p>
+              <p>Valid Government issued ID <span> (Required JPG or PNG)</span></p>
               <br>
                <p>Types of valid ID (Driver's license, Passport, SSS ID, Postal ID, Voter ID)</p>
             
@@ -195,7 +195,7 @@ unset($__errorArgs, $__bag); ?></span>
                 <p>Front<span> (Required)</span></p>
                 <img src="image/front_id.png" alt="">
                 <input type="file" name="front_license">
-                 <span>JPG or PNG file size up to 5mb only</span>
+                 <span>File size up to 5mb only</span>
                    <span
                style="color:red;">
                <?php $__errorArgs = ['front_license'];
@@ -212,7 +212,7 @@ unset($__errorArgs, $__bag); ?></span>
                  <p>Back<span> (Required)</span></p>
                 <img src="image/back_id.png" alt="">
                  <input type="file" name="back_license">
-                 <span>JPG or PNG file size up to 5mb only</span>
+                 <span>File size up to 5mb only</span>
                <span
             style="color:red;">
             <?php $__errorArgs = ['back_license'];
