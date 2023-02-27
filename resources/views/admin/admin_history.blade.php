@@ -45,15 +45,6 @@
                 </div>
 
                 <div class="dropdown">
-                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Date </button>
-                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
-                    <a class="dropdown-item" href="#">Day</a>
-                    <a class="dropdown-item" href="#">Month</a>
-                    <a class="dropdown-item" href="#">Year</a>
-                  </div>
-                </div>
-
-                <div class="dropdown">
                   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Status </button>
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton4">
                     <a class="dropdown-item" href="#">Accepted</a>
@@ -72,7 +63,7 @@
                   <div class="card">
                     <div class="card-body">  
                       <div class="table-responsive text-center">
-                        <table class="table" id="myHistory">
+                        <table id="example" class="table" style="width:100%">
                           <thead>
                             <tr>
                               <th>Transaction ID</th>

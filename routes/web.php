@@ -266,14 +266,9 @@ Route::get('inventory', function(){
 });
 
 Route::view('merchant_index', 'admin.index');
-
-//Route::view('admin_history', 'admin.admin_history');
-Route::get('admin_history', function(){
-    $history = DB::table('tbl_transaction')->where('merchant_id', '=', session('loginID'))->get();
-
-    return view('admin.admin_history', ['history' => $history]);
-});
-
+ 
+//Admin History
+Route::get('/admin_history',[Admin_product::class, 'History']);
 // ORDERS ROUTE
 Route::get('/admin_orders', [Admin_product::class, 'Orders']);
 
