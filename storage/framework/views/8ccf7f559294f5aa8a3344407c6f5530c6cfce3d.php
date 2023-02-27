@@ -66,7 +66,7 @@
                             <tr>
                                  <a href="">
                                 <td>
-                                    <img class="circle mr-2" src="<?php echo e(url(('uploads/'. 'rider_documents'. '/'.$rider->rider_id. '_' .$rider->firstname. '_' .$rider->lastname. '/'). $rider->rider_photo)); ?>" alt="">
+                                    <img class="circle mr-2" src="<?php echo e(url(('uploads/'. 'riders_documents'. '/'.$rider->rider_id. '_' .$rider->firstname. '_' .$rider->lastname. '/'). $rider->rider_photo)); ?>" alt="">
                                     <?php echo e($rider->firstname. ' ' .$rider->lastname); ?>
 
                                 </td>
@@ -147,7 +147,7 @@
                                 <?php echo csrf_field(); ?>
                             <input type="hidden" name="status" value="Reviewing">
                             <input type="hidden" name="id" value="<?php echo e($rider->rider_application_id); ?>">
-                     
+                        
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn white-btn" data-dismiss="modal">Close</button>
@@ -164,8 +164,7 @@
                         <div class="modal-header">
                             <h5 class="modal-title white-font " id="exampleModalLongTitle">Update</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                 
-                                <span aria-hidden="true">&times;</span>
+                            <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
@@ -173,8 +172,8 @@
                             <form method="post" action="<?php echo e(route('Updatemodal')); ?>">
                                 <?php echo csrf_field(); ?>
                             <input type="hidden" name="status" value="Accepted">
-                            <input type="hidden" name="rider_id" value="<?php echo e($rider->rider_id); ?>">
                             <input type="hidden" name="id" value="<?php echo e($rider->rider_application_id); ?>">
+                       <input type="hidden" name="rider_id" value="<?php echo e($rider->rider_id); ?>">
                         </div>
                         <div class="modal-footer">
                              <button type="button" class="btn white-btn" data-dismiss="modal">Close</button>

@@ -59,7 +59,7 @@
                                     <div class="col-md-6 ml-5">
                                       <div class="row align-items-center ">
                                    
-                                      <img class="circle img-responsive mr-3" width="170" height="160" src="{{ url(('uploads/'. 'rider_documents'. '/'.$rider->rider_id. '_' .$rider->firstname. '_' .$rider->lastname. '/'). $rider->rider_photo) }}" alt="">
+                                      <img class="circle img-responsive mr-3" width="170" height="160" src="{{ url(('uploads/'.$rider->rider_id. '_' .$rider->firstname. '_' .$rider->lastname. '/'). $rider->rider_photo) }}" alt="">
                                       <div class="col flex-wrap">
                              
                                     
@@ -197,7 +197,10 @@
                                         <label class="black width">Authorization letter</label>
                                          <p class="black ml-5">{{ $rider->auth_letter }}</p>
                                       </div>
-                                        
+                                        <div class="row px-3 mt-2">
+                                        <label class="black width">Valid ID of the owner</label>
+                                         <p class="black ml-5">{{ $rider->owner_id }}</p>
+                                      </div>
                                       @endif
                                        @if ($rider->vehicle_ownership == 'Second-hand')
                                           <div class="row px-3 mt-2">
