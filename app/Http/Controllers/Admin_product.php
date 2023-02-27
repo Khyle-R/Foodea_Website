@@ -127,16 +127,16 @@ class Admin_product extends Controller
         }
     }
 
-    public function updateProduct($id)
-    {
-        $update = DB::table('tbl_product')->where('product_id','=', $id)->first();
+    // public function updateProduct($id)
+    // {
+    //     $update = DB::table('tbl_product')->where('product_id','=', $id)->first();
     
         
-        $this->product_name =$update->product_name;
+    //     $this->product_name =$update->product_name;
 
 
-      //return view('admin.product', ['update' => $update]);
-    }
+    //   //return view('admin.product', ['update' => $update]);
+    // }
 
     public  function updateProductInfo(Request $request)
     {
