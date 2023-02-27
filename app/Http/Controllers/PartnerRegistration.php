@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\tbl_activitylog;
 use Illuminate\Http\Request;
 use App\Models\tbl_merchant_info;
 use App\Models\tbl_rider_accounts;
@@ -214,7 +215,7 @@ class PartnerRegistration extends Controller
                 $status = tbl_merchant_application::where('merchant_id', $user->merchant_id)
                 ->first();
             
-                if($status->status == 'Pending'){
+                if($status->status == 'Pending' || $status->status == 'Reviewing' || $status->status == 'Rejected'){
                     
                      $Data = tbl_partner_accounts::join('tbl_merchant_info', 'tbl_merchant_account.merchant_id', '=', 'tbl_merchant_info.merchant_id')
                     ->join('merchant_application', 'tbl_merchant_account.merchant_id', '=', 'merchant_application.merchant_id')
@@ -225,9 +226,19 @@ class PartnerRegistration extends Controller
                     
                     return view('/partner_applicationstatus', compact('Data'));
                 }
-
+                else{
+                $log = new tbl_activitylog();
+                $log->merchant_id = $user->merchant_id;
+                $log->email = $user->email;
+                $log->name = $user->firstname. ' ' .$user->lastname;
+                $log->description = 'Has Log In';
+                $res = $log->save();
+                if($res){
                 $request->session()->put('loginID', $user->merchant_id);
                 return redirect('/index');
+                }
+            
+                }
             }else{
                   return back()->with('fail', 'Password does not match');
             }

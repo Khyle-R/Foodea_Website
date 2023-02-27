@@ -8,6 +8,7 @@ use App\Models\tbl_merchant_info;
 use App\Models\tbl_partner_accounts;
 use App\Models\tbl_category;
 use App\Models\tbl_voucher;
+use App\Models\tbl_activitylog;
 use Carbon\Carbon; // to retrieve current Date
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
@@ -25,8 +26,21 @@ class Admin_product extends Controller
     
    public function logout(){
     if(Session::has('loginID')){
-        Session::pull('loginID');
+        $user = tbl_partner_accounts::where('merchant_id', Session::get('loginID'))
+        ->first();
+        if($user)
+        {
+        $log = new tbl_activitylog();
+                $log->merchant_id = $user->merchant_id;
+                $log->email = $user->email;
+                $log->name = $user->firstname. ' ' .$user->lastname;
+                $log->description = 'Has Log Out';
+                $res = $log->save();
+                if($res){
+       Session::pull('loginID');
         return redirect('/login');
+                }
+        }
     }
 
    }
@@ -217,13 +231,6 @@ class Admin_product extends Controller
         
     }
 
-    public function infoAccount()
-    {
-        $id=session('loginID');
-
-        $accountInfo = DB::table('tbl_merchant_account')->where('merchant_id','=', $id)->first();
-        return view('admin.admin_personalinformation1');
-    }
 
     //CATEGORY
     public function addCategory(Request $request)
@@ -479,4 +486,24 @@ class Admin_product extends Controller
         return view('admin.admin_history', ['history' => $history]);
     }
 
+    public function ActivityLog(){
+
+        $log = tbl_activitylog::all()
+        ->where('merchant_id', Session::get('loginID'));
+        
+        return view('admin.admin_log', compact('log'));
+    }
+
+    public function AdminAccount(){
+        $id = Session::get('loginID');
+
+        $Data = tbl_partner_accounts::join('tbl_merchant_info', 'tbl_merchant_account.merchant_id', '=', 'tbl_merchant_info.merchant_id')
+    ->join('merchant_document', 'tbl_merchant_account.merchant_id', '=', 'merchant_document.merchant_id')
+    ->join('tbl_accepted_merchant', 'tbl_merchant_account.merchant_id', '=', 'tbl_accepted_merchant.merchant_id')
+    ->where('tbl_merchant_account.merchant_id', $id)
+    ->limit(1)
+    ->get();
+
+        return view('admin.admin_account', compact('Data'));
+    }
 }
