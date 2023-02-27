@@ -79,7 +79,7 @@
             </div>
 
             <div class="form-group">
-            <label>Suffix <a style="color:#BD9140;font-size: 12px;"> (Optional)</a></label>
+            <label>Suffix <a style="color:#FDC55E;font-size: 10px;">(Optional)</a></label>
             <input name="suffix" type="text"  class="form-control form-control-lg"/>
             </div>
 
@@ -115,7 +115,7 @@
           </div>
 
             <div class="form-group">
-            <label >Email Address <a style="color:#BD9140;font-size: 12px;">(For Email verification)</a></label>
+            <label >Email Address <a style="color:#FDC55E;font-size: 10px;">(For Email verification)</a></label>
             <input name="email" type="text" value="{{ old('email') }}" class="form-control form-control-lg"/>
              <span
             style="color:red;">

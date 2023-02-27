@@ -60,7 +60,7 @@
                                     <div class="col-md-6 ml-5">
                                       <div class="row align-items-center ">
                                    
-                                      <img class="circle img-responsive mr-3" width="170" height="160" src="<?php echo e(url('uploads/'. 'merchant_documents'. '/'. $partner->merchant_id. '/'. $partner->logo)); ?>" alt="">
+                                      <img class="circle img-responsive mr-3" width="170" height="160" src="<?php echo e(url('uploads/'. 'merchant_documents'. '/'. $partner->merchant_id. '_'. $partner->firstname. '_'. $partner->lastname. '/'. $partner->logo)); ?>" alt="">
                                       <div class="col flex-wrap">
                              
                                     
@@ -162,7 +162,7 @@
                                       </div>
                                        <div class="row px-3">
                                         <label class="black width">Store Email</label>
-                                        <p class="black ml-5"><?php echo e($partner->store_email); ?></p>
+                                        <p class="black ml-5"><?php echo e($partner->email); ?></p>
                                       </div>
                                        <div class="row px-3">
                                         <label class="black width">Business Address</label>
@@ -186,7 +186,7 @@
                        
                                        <div class="row px-3 mt-2">
                                         <label class="black width">Business Logo</label>
-                                             <p class="black ml-5"><?php echo e($partner->logo); ?></p>
+                                             <p class="black ml-5 spacing"><?php echo e($partner->logo); ?></p>
                                       </div>
                                        <div class="row px-3 mt-2">
                                         <label class="black width">Business Menu</label>
