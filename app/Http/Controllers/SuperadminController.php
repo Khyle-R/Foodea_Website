@@ -23,7 +23,9 @@ use Illuminate\Support\Facades\Response;
 class SuperadminController extends Controller
 {
     public function index(){
-        return view('superadmin.superadmin_dashboard');
+        $riders = tbl_accepted_rider::count();
+        $merchant = tbl_accepted_merchant::count();
+        return view('superadmin.superadmin_dashboard', compact('riders', 'merchant'));
     }
      public function changepass(){
         return view('superadmin.superadmin_changepassword');
@@ -648,9 +650,9 @@ class SuperadminController extends Controller
     
     /*VIEW PDF */
     /*DOWNLOAD */
-     public function ViewPDF($firstname, $lastname, $id, $name){
+     public function ViewPDF($id, $name){
 
-          return Response::make(file_get_contents('uploads/'. 'rider_documents'. '/' .$id. '_' .$firstname. '_'. $lastname. '/' .$name), 200, [
+          return Response::make(file_get_contents('uploads/'. 'rider_documents'. '/' .$id.  '/' .$name), 200, [
                          'content-type'=>'application/pdf',
                      ]);
      }
@@ -660,9 +662,9 @@ class SuperadminController extends Controller
                          'content-type'=>'application/pdf',
                      ]);
      }
-    public function Download($firstname, $lastname, $id, $name){
+    public function Download( $id, $name){
 
-              return response()->download(public_path('uploads/'. 'rider_documents'. '/'.$id. '_' .$firstname. '_'. $lastname. '/' .$name));        
+              return response()->download(public_path('uploads/'. 'rider_documents'. '/'.$id. '/' .$name));        
     }
 
     public function DownloadMerchant($id, $name){

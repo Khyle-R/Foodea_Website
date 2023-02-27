@@ -9,7 +9,7 @@
                     <div class="row">
                       <div class="col-9">
                         <div class="d-flex align-items-center align-self-start">
-                          <h3 class="mb-0">₱1200.34</h3>
+                          <h3 class="mb-0">₱0.00</h3>
                           <p class="text-success ml-2 mb-0 font-weight-medium">
                             +3.5%
                           </p>
@@ -35,10 +35,18 @@
                     <div class="row">
                       <div class="col-9">
                         <div class="d-flex align-items-center align-self-start">
-                          <h3 class="mb-0">35</h3>
+                          @if($riders)
+                          <h3 class="mb-0">{{ $riders }}</h3>
                           <p class="text-success ml-2 mb-0 font-weight-medium">
                             +11%
                           </p>
+                          
+                          @else
+                          <h3 class="mb-0">0</h3>
+                          <p class="text-success ml-2 mb-0 font-weight-medium">
+                            +11%
+                          </p>
+                          @endif
                         </div>
                       </div>
                       <div class="col-3">
@@ -61,10 +69,18 @@
                     <div class="row">
                       <div class="col-9">
                         <div class="d-flex align-items-center align-self-start">
-                          <h3 class="mb-0">45</h3>
-                          <p class="text-danger ml-2 mb-0 font-weight-medium">
-                            -2.4%
+                          @if($merchant)
+                          <h3 class="mb-0">{{ $merchant }}</h3>
+                          <p class="text-success ml-2 mb-0 font-weight-medium">
+                            +11%
                           </p>
+                          
+                          @else
+                          <h3 class="mb-0">0</h3>
+                          <p class="text-success ml-2 mb-0 font-weight-medium">
+                            +11%
+                          </p>
+                          @endif
                         </div>
                       </div>
                       <div class="col-3">
@@ -85,7 +101,7 @@
                     <div class="row">
                       <div class="col-9">
                         <div class="d-flex align-items-center align-self-start">
-                          <h3 class="mb-0">80</h3>
+                          <h3 class="mb-0">0</h3>
                           <p class="text-success ml-2 mb-0 font-weight-medium">
                             +3.5%
                           </p>

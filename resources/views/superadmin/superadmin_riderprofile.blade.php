@@ -40,7 +40,7 @@
                                     <div class="profile-img">
                                          @foreach ($Data as $rider)
                                      
-                                            <img alt="" src="{{ url(('uploads/'. 'rider_documents'. '/'.$rider->rider_id. '_' .$rider->firstname. '_' .$rider->lastname. '/'). $rider->rider_photo) }}">
+                                            <img alt="" src="{{ url(('uploads/'. 'rider_documents'. '/'.$rider->rider_id.  '/'). $rider->rider_photo) }}">
                                   
                                     </div>
                                 </div>

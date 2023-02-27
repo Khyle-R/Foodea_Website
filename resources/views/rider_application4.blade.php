@@ -108,7 +108,7 @@
             <p>Original Authorization letter <span> (Required PDF)</span></p>
                </div>
                 <div class="requirements">
-            <img src="image/cr.png" alt="">
+            <img src="image/auth_letter.png" alt="">
               <input type="file" name="auth_letter">
                <span>File size up to 5mb only</span>
             <span
@@ -126,7 +126,7 @@
             <p>Notarized Deed of Sale <span> (Required PDF)</span></p>
                </div>
                 <div class="requirements">
-            <img src="image/cr.png" alt="">
+            <img src="image/deed_sale.png" alt="">
               <input type="file" name="deed_sale">
                <span>File size up to 5mb only</span>
             <span

@@ -146,7 +146,7 @@ Route::post('/superadmin_accountemail', [SuperadminController::class, 'ChangeEma
 Route::get('/superadmin_sales', [SuperadminController::class, 'SalesIndex']);
 
 /*VIEW PDF */
-Route::get('/display_pdf/{firstname}/{lastname}/{id}/{name}', [SuperadminController::class, 'ViewPDF']);
+Route::get('/display_pdf/{id}/{name}', [SuperadminController::class, 'ViewPDF']);
 
 Route::get('/display_merchant_pdf/{id}/{name}', [SuperadminController::class, 'ViewMerchantPDF']);
 

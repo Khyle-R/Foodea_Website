@@ -28,7 +28,7 @@
                                     <div class="profile-img">
                                          @foreach ($Data as $rider)
                                      
-                                            <img alt="" src="{{ url(('uploads/'. 'rider_documents'. '/'.$rider->rider_id. '_' .$rider->firstname. '_' .$rider->lastname. '/'). $rider->rider_photo) }}">
+                                            <img alt="" src="{{ url(('uploads/'. 'rider_documents'. '/'.$rider->rider_id.  '/'). $rider->rider_photo) }}">
                                   
                                     </div>
                                 </div>
@@ -202,14 +202,14 @@
                                 <td>2x2 image Picture</td>
                                 <td>{{ $rider->rider_photo }}</td>
                                  <td><a class="red-btn" href="" data-toggle="modal" data-target="#ViewModal1"><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
-                                <td><a class="red-btn" href="/download_file/{{ $rider->firstname }}/{{ $rider->lastname }}/{{ $rider->rider_id }}/{{ $rider->rider_photo }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
+                                <td><a class="red-btn" href="/download_file/{{ $rider->rider_id }}/{{ $rider->rider_photo }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
 
                             </tr>
                              <tr>
                                 <td>Vehicle Photo</td>
                                 <td>{{ $rider->vehicle_front }}</td>
                                  <td><a class="red-btn" href="" data-toggle="modal" data-target="#ViewModal2"><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
-                                <td><a class="red-btn" href="/download_vehicle/{{ $rider->firstname }}/{{ $rider->lastname }}/{{ $rider->rider_id }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
+                                <td><a class="red-btn" href="/download_vehicle/{{ $rider->rider_id }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
 
                             </tr>
                              <tr>

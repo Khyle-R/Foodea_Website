@@ -223,16 +223,16 @@ class RiderRegistration extends Controller
 
             $name = tbl_rider_accounts::where('rider_id', $request->rider_id)->first();
              
-            $vehicle->move(('uploads/'. 'rider_documents'. '/'. $request->rider_id. '_'.$name->firstname. '_' .$name->lastname. '/' .'vehicle/'), $filename1);
-            $file ->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id. '_'.$name->firstname. '_' .$name->lastname. '/' .'driver license/'),  $filename2 );
-            $file2->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id. '_'.$name->firstname. '_' .$name->lastname), $filename3);
-            $file3 ->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id. '_'.$name->firstname. '_' .$name->lastname),  $filename4 );
-            $file4->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id. '_'.$name->firstname. '_' .$name->lastname), $filename5);
-            $file5 ->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id. '_'.$name->firstname. '_' .$name->lastname),  $filename6 );
-            $file6 ->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id. '_'.$name->firstname. '_' .$name->lastname),  $filename7 );
-            $file7->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id. '_'.$name->firstname. '_' .$name->lastname. '/' .'vehicle/'), $filename8);
-            $file8 ->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id. '_'.$name->firstname. '_' .$name->lastname. '/' .'vehicle/'),  $filename9 );
-            $file9 ->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id. '_'.$name->firstname. '_' .$name->lastname. '/' .'driver license/'),  $filename10 );
+            $vehicle->move(('uploads/'. 'rider_documents'. '/'. $request->rider_id.  '/' .'vehicle/'), $filename1);
+            $file ->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id. '/' .'driver license/'),  $filename2 );
+            $file2->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id), $filename3);
+            $file3 ->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id),  $filename4 );
+            $file4->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id), $filename5);
+            $file5 ->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id),  $filename6 );
+            $file6 ->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id),  $filename7 );
+            $file7->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id.  '/' .'vehicle/'), $filename8);
+            $file8 ->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id.  '/' .'vehicle/'),  $filename9 );
+            $file9 ->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id.  '/' .'driver license/'),  $filename10 );
              if(Session::get('vehicle') == 'Borrowed')
             {
             $file10->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id. '_'.$name->firstname. '_' .$name->lastname), $filename11);
