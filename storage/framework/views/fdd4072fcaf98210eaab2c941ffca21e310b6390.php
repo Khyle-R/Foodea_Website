@@ -166,7 +166,7 @@
             </a>
           </li>
           <li class="nav-item menu-items">
-            <a class="nav-link" href="pages/icons/mdi.html">
+            <a class="nav-link" href="/admin_log">
               <span class="menu-icon">
                 <i class="mdi mdi-library-books"></i>
               </span>
@@ -174,7 +174,7 @@
             </a>
           </li>
            <li class="nav-item menu-items">
-            <a class="nav-link" href="/account">
+            <a class="nav-link" href="/admin_account">
               <span class="menu-icon">
                 <i class="mdi mdi-account-box"></i>
               </span>

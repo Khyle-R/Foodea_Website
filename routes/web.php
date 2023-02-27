@@ -56,7 +56,6 @@ Route::get('/login',  [PartnerRegistration::class, 'LoginIndex']);
 
 Route::post('/login',  [PartnerRegistration::class, 'LoginMerchant'])->name('login.LoginMerchant');
 
-
 Route::get('/rider_application_agreement', [RiderRegistration::class, 'agreement']);
 
 Route::get('/merchant_application_agreement', [PartnerRegistration::class, 'agreement']);
@@ -311,19 +310,10 @@ Route::get('/orderpreparing', [Admin_product::class, 'OrderPreparing']);
 Route::get('/orderdelivering', [Admin_product::class, 'OrderDelivering']);
 Route::get('/orderdelivered', [Admin_product::class, 'OrderDelivered']);
 
+Route::get('/admin_log', [Admin_product::class, 'ActivityLog']);
+Route::get('/admin_account', [Admin_product::class, 'AdminAccount']);
 
-Route::get('/account', function(){
-    $id=session('loginID');
-    // I use left join to combine the two tables and get the information to the other table
-    //$accountInfo = DB::table('tbl_merchant_account')->where('merchant_id','=', $id)->first();
-    $accountInfo = DB::table('tbl_merchant_account')
-    ->leftJoin('tbl_merchant_info', 'tbl_merchant_account.merchant_id', '=', 'tbl_merchant_info.merchant_id')
-    ->select('*')
-    ->where('tbl_merchant_account.merchant_id','=',$id)
-    ->first();
 
-    return view('admin.admin_personalinformation1', ['accountInfo' => $accountInfo]);
-});
 
 Route::get('/business', function(){
     $id=session('loginID');
