@@ -103,7 +103,7 @@ unset($__errorArgs, $__bag); ?></span>
             </div>
 
             <div class="form-group">
-            <label>Suffix <a style="color:#BD9140;font-size: 12px;"> (Optional)</a></label>
+            <label>Suffix <a style="color:#9b7227;font-size: 13px;">(Optional)</a></label>
             <input name="suffix" type="text"  class="form-control form-control-lg"/>
             </div>
 
@@ -163,7 +163,7 @@ unset($__errorArgs, $__bag); ?></span>
           </div>
 
             <div class="form-group">
-            <label >Email Address <a style="color:#BD9140;font-size: 12px;">(For Email verification)</a></label>
+            <label >Email Address <a style="color:#9b7227;font-size: 13px;">(For Email verification)</a></label>
             <input name="email" type="text" value="<?php echo e(old('email')); ?>" class="form-control form-control-lg"/>
              <span
             style="color:red;">
@@ -197,7 +197,7 @@ unset($__errorArgs, $__bag); ?></span>
             </div>
 
             <div class="form-group">
-              <p style="color: #BD9140; padding: 10px;"> <small> Must be at least 6 characters long. 
+              <p style="color: #9b7227; padding: 10px;"> <small> Must be at least 6 characters long. 
               Password can contain letters, numbers and punctuation. </small>
               </p>
             </div>

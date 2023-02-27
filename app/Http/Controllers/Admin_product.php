@@ -472,5 +472,11 @@ class Admin_product extends Controller
         return view ('admin.voucher_claimed', ['claimedVoucher' => $claimedVoucher]);
     }
 
+    public function History()
+    {
+        $history = DB::table('tbl_transaction')->get();
+
+        return view('admin.admin_history', ['history' => $history]);
+    }
 
 }
