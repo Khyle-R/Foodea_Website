@@ -43,6 +43,15 @@ class Kernel extends HttpKernel
             'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
+        'superadminLogin' =>[
+            \App\Http\Middleware\SuperadminLogIn::class,
+        ],
+        'preventBack' =>[
+            \App\Http\Middleware\PreventBrowserBackHistory::class,
+        ],
+        'preventBackLogin' =>[
+            \App\Http\Middleware\PreventBackLogIn::class,
+        ]
     ];
 
     /**
@@ -63,5 +72,6 @@ class Kernel extends HttpKernel
         'signed' => \App\Http\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+
     ];
 }

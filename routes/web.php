@@ -66,100 +66,107 @@ Route::get('/partner_applicationstatus', [PartnerRegistration::class, 'PartnerAp
 
 // SUPER ADMIN ROUTE
 
-Route::get('/superadmin_index', [SuperadminController::class, 'index']);
+Route::group(['middleware'=>['preventBack']], function(){
+    
+Route::group(['middleware'=>['preventBackLogin']], function(){
+    
+    Route::get('/superadmin_login', [SuperadminController::class, 'login']);
 
-Route::get('/superadmin_changepass', [SuperadminController::class, 'changepass']);
+    Route::post('/superadmin_login', [SuperadminController::class, 'LoginAdmin'])->name('login.LoginAdmin');
 
-Route::get('/superadmin_login', [SuperadminController::class, 'login']);
+});
+Route::group(['middleware'=>['superadminLogin']], function(){
+        
+    Route::get('/superadmin_index', [SuperadminController::class, 'index']);
 
-Route::post('/superadmin_login', [SuperadminController::class, 'LoginAdmin'])->name('login.LoginAdmin');
+    Route::get('/superadmin_changepass', [SuperadminController::class, 'changepass']);
 
-Route::get('/superadmin_logout', [SuperadminController::class, 'AdminLogOut']);
+    Route::get('/superadmin_logout', [SuperadminController::class, 'AdminLogOut']);
 
-Route::get('/superadmin_application', [SuperadminController::class, 'ApplicationsRider']);
+    Route::get('/superadmin_application', [SuperadminController::class, 'ApplicationsRider']);
 
-Route::get('/superadmin_partnerdetails/{id}', [SuperadminController::class, 'PartnerDetails']);
+    Route::get('/superadmin_partnerdetails/{id}', [SuperadminController::class, 'PartnerDetails']);
 
-Route::get('/superadmin_profile', [SuperadminController::class, 'profile']);
+    Route::get('/superadmin_profile', [SuperadminController::class, 'profile']);
 
-Route::get('/superadmin_rider', [SuperadminController::class, 'Rider']);
+    Route::get('/superadmin_rider', [SuperadminController::class, 'Rider']);
 
-Route::get('/application_profile/{id}', [SuperadminController::class, 'ApplicationProfile']);
+    Route::get('/application_profile/{id}', [SuperadminController::class, 'ApplicationProfile']);
 
-Route::post('/superadmin_rider', [SuperadminController::class, 'Update'])->name('Updatemodal');
+    Route::post('/superadmin_rider', [SuperadminController::class, 'Update'])->name('Updatemodal');
 
-Route::get('/superadmin_riderprofile/{id}', [SuperadminController::class, 'RiderProfile']);
+    Route::get('/superadmin_riderprofile/{id}', [SuperadminController::class, 'RiderProfile']);
 
-Route::post('/superadmin_riderprofile', [SuperadminController::class, 'RiderProfileUpdate'])->name('RiderProfileUpdate');
+    Route::post('/superadmin_riderprofile', [SuperadminController::class, 'RiderProfileUpdate'])->name('RiderProfileUpdate');
 
-Route::get('/superadmin_pending', [SuperadminController::class, 'Pending']);
+    Route::get('/superadmin_pending', [SuperadminController::class, 'Pending']);
 
-Route::get('/superadmin_review', [SuperadminController::class, 'Review']);
+    Route::get('/superadmin_review', [SuperadminController::class, 'Review']);
 
-Route::get('/superadmin_accept', [SuperadminController::class, 'Accept']);
+    Route::get('/superadmin_accept', [SuperadminController::class, 'Accept']);
 
-Route::get('/superadmin_archive', [SuperadminController::class, 'Archive']);
+    Route::get('/superadmin_archive', [SuperadminController::class, 'Archive']);
 
-Route::get('/superadmin_merchantpending', [SuperadminController::class, 'MerchantPending']);
+    Route::get('/superadmin_merchantpending', [SuperadminController::class, 'MerchantPending']);
 
-Route::get('/superadmin_merchantreview', [SuperadminController::class, 'MerchantReview']);
+    Route::get('/superadmin_merchantreview', [SuperadminController::class, 'MerchantReview']);
 
-Route::get('/superadmin_merchantaccept', [SuperadminController::class, 'MerchantAccepted']);
+    Route::get('/superadmin_merchantaccept', [SuperadminController::class, 'MerchantAccepted']);
 
-Route::get('/superadmin_merchantarchive', [SuperadminController::class, 'MerchantRejected']);
+    Route::get('/superadmin_merchantarchive', [SuperadminController::class, 'MerchantRejected']);
 
-Route::get('/superadmin_partnerapplication', [SuperadminController::class, 'partner']);
+    Route::get('/superadmin_partnerapplication', [SuperadminController::class, 'partner']);
 
-Route::get('/superadmin_merchantproile/{id}', [SuperadminController::class, 'MerchantApplicationProfile']);
+    Route::get('/superadmin_merchantproile/{id}', [SuperadminController::class, 'MerchantApplicationProfile']);
 
-Route::post('/superadmin_partnerapplication', [SuperadminController::class, 'UpdateMerchant'])->name('UpdateMerchant');
+    Route::post('/superadmin_partnerapplication', [SuperadminController::class, 'UpdateMerchant'])->name('UpdateMerchant');
 
-Route::get('/superadmin_log', [SuperadminController::class, 'ActivityLog']);
+    Route::get('/superadmin_log', [SuperadminController::class, 'ActivityLog']);
 
-Route::get('/superadmin_riderdetails/{id}', [SuperadminController::class, 'RiderDetails']);
+    Route::get('/superadmin_riderdetails/{id}', [SuperadminController::class, 'RiderDetails']);
 
-Route::get('/superadmin_acceptedrider', [SuperadminController::class, 'AcceptedRider']);
+    Route::get('/superadmin_acceptedrider', [SuperadminController::class, 'AcceptedRider']);
 
-Route::get('/superadmin_acceptedpartner', [SuperadminController::class, 'AcceptedPartner']);
+    Route::get('/superadmin_acceptedpartner', [SuperadminController::class, 'AcceptedPartner']);
 
-Route::post('/superadmin_riderdetails', [SuperadminController::class, 'RiderAccept'])->name('RiderAccept');
+    Route::post('/superadmin_riderdetails', [SuperadminController::class, 'RiderAccept'])->name('RiderAccept');
 
-Route::post('/superadmin_accepted_rider', [SuperadminController::class, 'RemoveAcceptedRider'])->name('RemoveRider');
+    Route::post('/superadmin_accepted_rider', [SuperadminController::class, 'RemoveAcceptedRider'])->name('RemoveRider');
 
-Route::post('/superadmin_accepted_partner', [SuperadminController::class, 'RemoveAcceptedMerchant'])->name('RemoveMerchant');
+    Route::post('/superadmin_accepted_partner', [SuperadminController::class, 'RemoveAcceptedMerchant'])->name('RemoveMerchant');
 
-Route::post('/superadmin_acceptedrider', [SuperadminController::class, 'AcceptedRiderUpdate'])->name('UpdateAcceptedRider');
+    Route::post('/superadmin_acceptedrider', [SuperadminController::class, 'AcceptedRiderUpdate'])->name('UpdateAcceptedRider');
 
-Route::post('/superadmin_acceptedpartner', [SuperadminController::class, 'AcceptedPartnerUpdate'])->name('UpdateAcceptedPartner');
+    Route::post('/superadmin_acceptedpartner', [SuperadminController::class, 'AcceptedPartnerUpdate'])->name('UpdateAcceptedPartner');
 
-Route::post('/superadmin_partnerdetailsprofile', [SuperadminController::class, 'MerchantPersonalUpdate'])->name('MerchantPersonalUpdate');
+    Route::post('/superadmin_partnerdetailsprofile', [SuperadminController::class, 'MerchantPersonalUpdate'])->name('MerchantPersonalUpdate');
 
-Route::post('/superadmin_partnerdetailsbusiness', [SuperadminController::class, 'MerchantBusinessUpdate'])->name('MerchantBusinessUpdate');
+    Route::post('/superadmin_partnerdetailsbusiness', [SuperadminController::class, 'MerchantBusinessUpdate'])->name('MerchantBusinessUpdate');
 
-Route::get('/superadmin_account', [SuperadminController::class, 'AccountIndex']);
+    Route::get('/superadmin_account', [SuperadminController::class, 'AccountIndex']);
 
-Route::post('/superadmin_accountpass', [SuperadminController::class, 'ChangePassAdmin'])->name('ChangePassAdmin');
+    Route::post('/superadmin_accountpass', [SuperadminController::class, 'ChangePassAdmin'])->name('ChangePassAdmin');
 
-Route::post('/superadmin_accountemail', [SuperadminController::class, 'ChangeEmailAdmin'])->name('ChangeEmailAdmin');
+    Route::post('/superadmin_accountemail', [SuperadminController::class, 'ChangeEmailAdmin'])->name('ChangeEmailAdmin');
 
-Route::get('/superadmin_sales', [SuperadminController::class, 'SalesIndex']);
+    Route::get('/superadmin_sales', [SuperadminController::class, 'SalesIndex']);
 
-/*VIEW PDF */
-Route::get('/display_pdf/{id}/{name}', [SuperadminController::class, 'ViewPDF']);
+    /*VIEW PDF */
+    Route::get('/display_pdf/{id}/{name}', [SuperadminController::class, 'ViewPDF']);
 
-Route::get('/display_merchant_pdf/{id}/{name}', [SuperadminController::class, 'ViewMerchantPDF']);
+    Route::get('/display_merchant_pdf/{id}/{name}', [SuperadminController::class, 'ViewMerchantPDF']);
 
-Route::get('/download_file/{firstname}/{lastname}/{id}/{name}', [SuperadminController::class, 'Download']);
+    Route::get('/download_file/{firstname}/{lastname}/{id}/{name}', [SuperadminController::class, 'Download']);
 
-Route::get('/download_merchant_file/{id}/{name}', [SuperadminController::class, 'DownloadMerchant']);
+    Route::get('/download_merchant_file/{id}/{name}', [SuperadminController::class, 'DownloadMerchant']);
 
-Route::get('/download_vehicle/{firstname}/{lastname}/{id}', [SuperadminController::class, 'DownloadVehicleZip']);
+    Route::get('/download_vehicle/{firstname}/{lastname}/{id}', [SuperadminController::class, 'DownloadVehicleZip']);
 
-Route::get('/download_license/{firstname}/{lastname}/{id}', [SuperadminController::class, 'DownloadLicenseZip']);
+    Route::get('/download_license/{firstname}/{lastname}/{id}', [SuperadminController::class, 'DownloadLicenseZip']);
 
-Route::get('/download_valid_merchant/{id}', [SuperadminController::class, 'DownloadLicenseMerchantZip']);
-
-
+    Route::get('/download_valid_merchant/{id}', [SuperadminController::class, 'DownloadLicenseMerchantZip']);
+});
+});
 /* END SUPERADMIN */
 
 Route::get('/login_partner', function () {
