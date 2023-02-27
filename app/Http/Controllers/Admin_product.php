@@ -127,16 +127,16 @@ class Admin_product extends Controller
         }
     }
 
-    public function updateProduct($id)
-    {
-        $update = DB::table('tbl_product')->where('product_id','=', $id)->first();
+    // public function updateProduct($id)
+    // {
+    //     $update = DB::table('tbl_product')->where('product_id','=', $id)->first();
     
         
-        $this->product_name =$update->product_name;
+    //     $this->product_name =$update->product_name;
 
 
-      //return view('admin.product', ['update' => $update]);
-    }
+    //   //return view('admin.product', ['update' => $update]);
+    // }
 
     public  function updateProductInfo(Request $request)
     {
@@ -472,5 +472,11 @@ class Admin_product extends Controller
         return view ('admin.voucher_claimed', ['claimedVoucher' => $claimedVoucher]);
     }
 
+    public function History()
+    {
+        $history = DB::table('tbl_transaction')->get();
+
+        return view('admin.admin_history', ['history' => $history]);
+    }
 
 }
