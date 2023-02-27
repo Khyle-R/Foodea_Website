@@ -23,9 +23,7 @@ use Illuminate\Support\Facades\Response;
 class SuperadminController extends Controller
 {
     public function index(){
-        $riders = tbl_accepted_rider::count();
-        $merchant = tbl_accepted_merchant::count();
-        return view('superadmin.superadmin_dashboard', compact('riders', 'merchant'));
+        return view('superadmin.superadmin_dashboard');
     }
      public function changepass(){
         return view('superadmin.superadmin_changepassword');
@@ -426,16 +424,8 @@ class SuperadminController extends Controller
        ]);
         if($res)
         {
-            $accepted_id = tbl_merchant_application::where('merchant_application_id', $request->id)
-            ->value('merchant_id');
-
-            $remove = tbl_accepted_merchant::where('merchant_id', $accepted_id)
-            ->delete();
-            if($remove)
-            {
             $request->session()->put('success', 'Status Updated');
                return back();
-            }
         }
     }
    }
@@ -649,29 +639,21 @@ class SuperadminController extends Controller
     }
     
     /*VIEW PDF */
-    /*DOWNLOAD */
-     public function ViewPDF($id, $name){
+    // public function ViewPDF($firstname, $lastname, $id, $name){
+        
+    //     $rider = tbl_rider_application::where('rider_id', $id)->first();
+    
+    //      return Response::make(file_get_contents('uploads/'.$id. '_' .$firstname. '_'. $lastname. '/' .$name), 200, [
+    //                     'content-type'=>'application/pdf',
+    //                 ]);
+    // }
+    public function Download($firstname, $lastname, $id, $name){
 
-          return Response::make(file_get_contents('uploads/'. 'rider_documents'. '/' .$id.  '/' .$name), 200, [
-                         'content-type'=>'application/pdf',
-                     ]);
-     }
-     public function ViewMerchantPDF($id, $name){
-
-          return Response::make(file_get_contents('uploads/'. 'merchant_documents'. '/' .$id.  '/' .$name), 200, [
-                         'content-type'=>'application/pdf',
-                     ]);
-     }
-    public function Download( $id, $name){
-
-              return response()->download(public_path('uploads/'. 'rider_documents'. '/'.$id. '/' .$name));        
+    
+              return response()->download(public_path('uploads/'.$id. '_' .$firstname. '_'. $lastname. '/' .$name));
+        
+                
     }
-
-    public function DownloadMerchant($id, $name){
-
-              return response()->download(public_path('uploads/'. 'merchant_documents'. '/'.$id.  '/' .$name));        
-    }
-
     public function DownloadVehicleZip($firstname, $lastname, $id){
 
     
@@ -679,7 +661,7 @@ class SuperadminController extends Controller
         $fileName = mt_rand(1000, 9999).'.zip';
         if ($zip->open(public_path($fileName), \ZipArchive::CREATE)== TRUE)
         {
-            $files = File::files(public_path('uploads/'. 'rider_documents'. '/'.$id. '_' .$firstname. '_' .$lastname. '/'.'vehicle/'));
+            $files = File::files(public_path('uploads/'.$id. '_' .$firstname. '_' .$lastname. '/'.'vehicle/'));
        
               foreach ($files as $key => $value){
                 $relativeName = basename($value);
@@ -693,50 +675,9 @@ class SuperadminController extends Controller
         }
 
         return response()->download(public_path($fileName))->deleteFileAfterSend(true);
-    }
-     public function DownloadLicenseZip($firstname, $lastname, $id){
-
+     
     
-        $zip = new \ZipArchive();
-        $fileName = mt_rand(1000, 9999).'.zip';
-        if ($zip->open(public_path($fileName), \ZipArchive::CREATE)== TRUE)
-        {
-            $files = File::files(public_path('uploads/'. 'rider_documents'. '/'.$id. '_' .$firstname. '_' .$lastname. '/'.'driver license/'));
-       
-              foreach ($files as $key => $value){
-                $relativeName = basename($value);
-                $zip->addFile($value, $relativeName);
+                            
 
-            }
-            $zip->close();
-        }   
-        else{
-             $zip->close();
-        }
-
-        return response()->download(public_path($fileName))->deleteFileAfterSend(true);
-    }
-
-       public function DownloadLicenseMerchantZip($id){
-
-    
-        $zip = new \ZipArchive();
-        $fileName = mt_rand(1000, 9999).'.zip';
-        if ($zip->open(public_path($fileName), \ZipArchive::CREATE)== TRUE)
-        {
-            $files = File::files(public_path('uploads/'. 'merchant_documents'. '/'.$id.  '/' . 'valid id/'));
-       
-              foreach ($files as $key => $value){
-                $relativeName = basename($value);
-                $zip->addFile($value, $relativeName);
-
-            }
-            $zip->close();
-        }   
-        else{
-             $zip->close();
-        }
-
-        return response()->download(public_path($fileName))->deleteFileAfterSend(true);
     }
 }

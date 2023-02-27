@@ -57,7 +57,7 @@
           @endif
 
            <div class="requirements-title">
-               <p>Clear image of your logo <span>(Required JPG or PNG)</span></p>
+               <p>Clear image of your logo <span>(Required)</span></p>
                </div>
                <div class="requirements">
                  <img class="logo" src="image/foodea4.png" alt="">
@@ -71,7 +71,7 @@
 
 
             <div class="requirements-title"> 
-            <p>Clear image of your menu<span> (Required JPG or PNG)</span></p>
+            <p>Clear image of your menu<span> (Required)</span></p>
                </div>
                 <div class="requirements">
             <img src="image/menu_sample.png" alt="">
@@ -85,7 +85,7 @@
 
 
                 <div class="requirements-title"> 
-            <p>Business Permit<span> (Required PDF)</span></p>
+            <p>Business Permit<span> (Required)</span></p>
                </div>
                 <div class="requirements">
             <img src="image/business_permit.png" alt="">
@@ -98,7 +98,7 @@
               </div>
 
                 <div class="requirements-title"> 
-            <p>BIR Certificate<span> (Required PDF)</span></p>
+            <p>BIR Certificate<span> (Required)</span></p>
                </div>
                 <div class="requirements">
             <img src="image/BIR.png" alt="">
@@ -111,7 +111,7 @@
               </div>
 
                <div class="requirements-title"> 
-            <p>Barangay Permit <span>(Required PDF)</span></p>
+            <p>Barangay Permit <span>(Required)</span></p>
                </div>
                 <div class="requirements">
             <img src="image/barangay_permit.png" alt="">
@@ -124,7 +124,7 @@
               </div>
 
                <div class="requirements-title">
-               <p>DTI Certificate <span> (Required PDF)</span></p>
+               <p>DTI Certificate <span> (Required)</span></p>
                </div>
                 <div class="requirements">
                   <img src="image/DTI.png" alt="">
@@ -138,7 +138,7 @@
 
            
                   <div class="requirements-title">
-              <p>Valid Government issued ID <span> (Required JPG or PNG)</span></p>
+              <p>Valid Government issued ID <span> (Required)</span></p>
               <br>
                <p>Types of valid ID (Driver's license, Passport, SSS ID, Postal ID, Voter ID)</p>
             

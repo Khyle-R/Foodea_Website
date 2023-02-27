@@ -50,7 +50,7 @@
                 <div class="card">
                 <div class="card-body">
                     <div class="text-center">
-                        <img class="circle mb-2" height="87" width="90" src="{{ url('uploads/'. 'merchant_documents'. '/'. $partner->merchant_id. '/'. $partner->logo) }}" alt="">
+                        <img class="circle mb-2" height="87" width="90" src="{{ url('uploads/merchant_documents/'.$partner->logo) }}" alt="">
                         <p class="card-text black-name">{{ $partner->business_name }}</p>
                     </div>
                      <div class="dropdown profile-action">
