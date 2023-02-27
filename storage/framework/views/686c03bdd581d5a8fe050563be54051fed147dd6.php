@@ -121,12 +121,12 @@ unset($__errorArgs, $__bag); ?></span>
             </div>
 
             <div class="form-group">
-            <label>Suffix<a style="color:#9b7227;font-size: 13px;"> (Optional)</a></label>
+            <label>Suffix<a style="color:#BD9140;font-size: 12px;"> (Optional)</a></label>
             <input type="text" name="suffix" class="form-control form-control-lg"/>
             </div>
 
             <div class="form-group">
-            <label>Email Address <a style="color:#9b7227;font-size: 13px;"> (For Email verification)</a></label>
+            <label>Email Address <a style="color:#BD9140;font-size: 12px;"> (For Email verification)</a></label>
             <input type="text" name="email" class="form-control form-control-lg"/>
             <span
             style="color:red;">
@@ -143,7 +143,7 @@ unset($__errorArgs, $__bag); ?></span>
             </div>
 
             <div class="form-group">
-            <p style="color: #9b7227; padding: 10px;"> Password must be at least 6 characters long. 
+            <p style="color: #BD9140; padding: 10px;"> Password must be at least 6 characters long. 
               Password can contain letters, numbers and punctuation.
             </p>
             </div>
@@ -168,19 +168,7 @@ unset($__errorArgs, $__bag); ?></span>
             <div class="form-group">
             <label for="password">Confirm Password</label>
             <input type="password" name="password_confirmation" id="password_confirmation" class="form-control form-control-lg" >
-           <span
-            style="color:red;">
-            <?php $__errorArgs = ['password_confirmation'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?> <?php echo e($message); ?>
-
-            <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?></span>  
-          </div>
+            </div>
             
              <br><br>
              <div class="form-group">

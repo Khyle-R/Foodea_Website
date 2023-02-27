@@ -55,7 +55,7 @@
             @endif
 
                 <div class="requirements-title">
-               <p>2x2 image Picture <span>(Required)</span></p>
+               <p>2x2 image Picture <span>(Required JPG or PNG)</span></p>
                </div>
                <div class="requirements">
                  <img class="pic" src="image/1x1.png" alt="">
@@ -68,7 +68,7 @@
                    </div>
 
               <div class="requirements-title">
-              <p>Photo of your vehicle <span>(Required)</span></p>
+              <p>Photo of your vehicle <span>(Required JPG or PNG)</span></p>
 
                </div>
                 <div class="requirements">
@@ -105,7 +105,7 @@
                 
           
                <div class="requirements-title"> 
-            <p>Original Authorization letter <span> (Required)</span></p>
+            <p>Original Authorization letter <span> (Required PDF)</span></p>
                </div>
                 <div class="requirements">
             <img src="image/cr.png" alt="">
@@ -123,7 +123,7 @@
            @if(Session::get('vehicle') == 'Second-hand')
                   <!--- SECOND HAND-->  
                <div class="requirements-title"> 
-            <p>Notarized Deed of Sale <span> (Required)</span></p>
+            <p>Notarized Deed of Sale <span> (Required PDF)</span></p>
                </div>
                 <div class="requirements">
             <img src="image/cr.png" alt="">
@@ -136,7 +136,7 @@
               </div>
           @endif
                  <div class="requirements-title">
-              <p>Photo of your Professional drivers license ID <span> (Required)</span></p>
+              <p>Photo of your Professional drivers license ID <span> (Required JPG or PNG)</span></p>
                  </div>
                     <div class="requirements">
                 <p>Front<span> (Required)</span></p>
@@ -159,7 +159,7 @@
               </div>
 
                <div class="requirements-title"> 
-            <p>Certificate of Registration <span>(Required)</span></p>
+            <p>Certificate of Registration <span>(Required PDF)</span></p>
                </div>
                 <div class="requirements">
             <img src="image/cr.png" alt="">
@@ -172,7 +172,7 @@
               </div>
 
                <div class="requirements-title">
-               <p>Official Receipt of Vehicle Registration <span>(Required)</span></p>
+               <p>Official Receipt of Vehicle Registration <span>(Required PDF)</span></p>
                </div>
                 <div class="requirements">
                   <img src="image/or.png" alt="">
@@ -185,7 +185,7 @@
               </div>
 
                <div class="requirements-title">    
-              <p>Drug Test Result <span>(Optional)</span></p>
+              <p>Drug Test Result <span>(Optional PDF)</span></p>
                </div>
                 <div class="requirements">
                <img src="image/drug-test.png" alt="">
@@ -194,7 +194,7 @@
               </div>
 
                   <div class="requirements-title">
-              <p>NBI Clearance <span>(Required)</span></p>
+              <p>NBI Clearance <span>(Required PDF)</span></p>
                   </div>
                    <div class="requirements">
                <img src="image/nbi.png" alt="">
