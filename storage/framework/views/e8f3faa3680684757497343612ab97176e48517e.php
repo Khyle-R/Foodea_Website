@@ -143,7 +143,7 @@
 
 	<!-- SECTION 3 -->
 	<div class="context-three mx-auto mt-5 pt-5">
-	<div class="container pb-5">
+	<div class="container pb-5 ps-5">
         <h2 class="text-center text-dark text-md-start fw-bold">You only need a few things to get started</h2>
     </div>
     <div class="row container mx-auto align-items-start g-5">

@@ -146,20 +146,11 @@ Route::post('/superadmin_accountemail', [SuperadminController::class, 'ChangeEma
 Route::get('/superadmin_sales', [SuperadminController::class, 'SalesIndex']);
 
 /*VIEW PDF */
-Route::get('/display_pdf/{firstname}/{lastname}/{id}/{name}', [SuperadminController::class, 'ViewPDF']);
-
-Route::get('/display_merchant_pdf/{id}/{name}', [SuperadminController::class, 'ViewMerchantPDF']);
+// Route::get('/display_pdf/{firstname}/{lastname}/{id}/{name}', [SuperadminController::class, 'ViewPDF']);
 
 Route::get('/download_file/{firstname}/{lastname}/{id}/{name}', [SuperadminController::class, 'Download']);
 
-Route::get('/download_merchant_file/{id}/{name}', [SuperadminController::class, 'DownloadMerchant']);
-
 Route::get('/download_vehicle/{firstname}/{lastname}/{id}', [SuperadminController::class, 'DownloadVehicleZip']);
-
-Route::get('/download_license/{firstname}/{lastname}/{id}', [SuperadminController::class, 'DownloadLicenseZip']);
-
-Route::get('/download_valid_merchant/{id}', [SuperadminController::class, 'DownloadLicenseMerchantZip']);
-
 
 /* END SUPERADMIN */
 

@@ -55,12 +55,12 @@
             <?php endif; ?>
 
                 <div class="requirements-title">
-               <p>2x2 image Picture <span>(Required JPG or PNG)</span></p>
+               <p>2x2 image Picture <span>(Required)</span></p>
                </div>
                <div class="requirements">
                  <img class="pic" src="image/1x1.png" alt="">
                 <input type="file" name="image">
-                  <span>File size up to 5mb only</span>
+                  <span>JPG or PNG file size up to 5mb</span>
                <span
             style="color:red;">
             <?php $__errorArgs = ['image'];
@@ -76,14 +76,14 @@ unset($__errorArgs, $__bag); ?></span>
                    </div>
 
               <div class="requirements-title">
-              <p>Photo of your vehicle <span>(Required JPG or PNG)</span></p>
+              <p>Photo of your vehicle <span>(Required)</span></p>
 
                </div>
                 <div class="requirements">
               <p>Front view<span> (Required)</span></p>
               <img src="image/front.png" alt="">
               <input type="file" name="vehicle_front">
-               <span>File size up to 5mb only</span>
+               <span>JPG or PNG file size up to 5mb</span>
                  <span
               style="color:red;">
               <?php $__errorArgs = ['vehicle_front'];
@@ -100,7 +100,7 @@ unset($__errorArgs, $__bag); ?></span>
                <p>Side view<span> (Required)</span></p>
                  <img src="image/side.png" alt="">
                   <input type="file" name="vehicle_side">
-                   <span>File size up to 5mb only</span>
+                   <span>JPG or PNG file size up to 5mb</span>
                 <span
                 style="color:red;">
                 <?php $__errorArgs = ['vehicle_side'];
@@ -117,7 +117,7 @@ unset($__errorArgs, $__bag); ?></span>
                 <p>Back view<span> (Required)</span></p>
                   <img src="image/back.png" alt="">
                 <input type="file" name="vehicle_back">
-                 <span>File size up to 5mb only</span>
+                 <span>JPG or PNG file size up to 5mb</span>
                <span
             style="color:red;">
             <?php $__errorArgs = ['vehicle_back'];
@@ -137,12 +137,12 @@ unset($__errorArgs, $__bag); ?></span>
                 
           
                <div class="requirements-title"> 
-            <p>Original Authorization letter <span> (Required PDF)</span></p>
+            <p>Original Authorization letter <span> (Required)</span></p>
                </div>
                 <div class="requirements">
             <img src="image/cr.png" alt="">
               <input type="file" name="auth_letter">
-               <span>File size up to 5mb only</span>
+               <span>PDF File size up to 5mb only</span>
             <span
             style="color:red;">
             <?php $__errorArgs = ['auth_letter'];
@@ -163,12 +163,12 @@ unset($__errorArgs, $__bag); ?></span>
            <?php if(Session::get('vehicle') == 'Second-hand'): ?>
                   <!--- SECOND HAND-->  
                <div class="requirements-title"> 
-            <p>Notarized Deed of Sale <span> (Required PDF)</span></p>
+            <p>Notarized Deed of Sale <span> (Required)</span></p>
                </div>
                 <div class="requirements">
             <img src="image/cr.png" alt="">
               <input type="file" name="deed_sale">
-               <span>File size up to 5mb only</span>
+               <span>PDF File size up to 5mb only</span>
             <span
             style="color:red;">
             <?php $__errorArgs = ['deed_sale'];
@@ -184,13 +184,13 @@ unset($__errorArgs, $__bag); ?></span>
               </div>
           <?php endif; ?>
                  <div class="requirements-title">
-              <p>Photo of your Professional drivers license ID <span> (Required JPG or PNG)</span></p>
+              <p>Photo of your Professional drivers license ID <span> (Required)</span></p>
                  </div>
                     <div class="requirements">
                 <p>Front<span> (Required)</span></p>
                 <img src="image/front_id.png" alt="">
                 <input type="file" name="license">
-                 <span>File size up to 5mb only</span>
+                 <span>JPG or PNG File size up to 5mb only</span>
                    <span
                style="color:red;">
                <?php $__errorArgs = ['license'];
@@ -207,7 +207,7 @@ unset($__errorArgs, $__bag); ?></span>
                  <p>Back<span> (Required)</span></p>
                 <img src="image/back_id.png" alt="">
                  <input type="file" name="license_back">
-                 <span>File size up to 5mb only</span>
+                 <span>JPG or PNG File size up to 5mb only</span>
                <span
             style="color:red;">
             <?php $__errorArgs = ['license_back'];
@@ -223,12 +223,12 @@ unset($__errorArgs, $__bag); ?></span>
               </div>
 
                <div class="requirements-title"> 
-            <p>Certificate of Registration <span>(Required PDF)</span></p>
+            <p>Certificate of Registration <span>(Required)</span></p>
                </div>
                 <div class="requirements">
             <img src="image/cr.png" alt="">
               <input type="file" name="cr">
-               <span>File size up to 5mb only</span>
+               <span>PDF File size up to 5mb only</span>
             <span
             style="color:red;">
             <?php $__errorArgs = ['cr'];
@@ -244,12 +244,12 @@ unset($__errorArgs, $__bag); ?></span>
               </div>
 
                <div class="requirements-title">
-               <p>Official Receipt of Vehicle Registration <span>(Required PDF)</span></p>
+               <p>Official Receipt of Vehicle Registration <span>(Required)</span></p>
                </div>
                 <div class="requirements">
                   <img src="image/or.png" alt="">
                 <input type="file" name="or">
-                 <span>File size up to 5mb only</span>
+                 <span>PDF File size up to 5mb only</span>
                <span
             style="color:red;">
             <?php $__errorArgs = ['or'];
@@ -265,21 +265,21 @@ unset($__errorArgs, $__bag); ?></span>
               </div>
 
                <div class="requirements-title">    
-              <p>Drug Test Result <span>(Optional PDF)</span></p>
+              <p>Drug Test Result <span>(Optional)</span></p>
                </div>
                 <div class="requirements">
                <img src="image/drug-test.png" alt="">
                  <input type="file" name="drug_test">
-                  <span>File size up to 5mb only</span>
+                  <span>PDF File size up to 5mb only</span>
               </div>
 
                   <div class="requirements-title">
-              <p>NBI Clearance <span>(Required PDF)</span></p>
+              <p>NBI Clearance <span>(Required)</span></p>
                   </div>
                    <div class="requirements">
                <img src="image/nbi.png" alt="">
                 <input type="file" name="nbi">
-                   <span>File size up to 5mb only</span>
+                   <span>PDF File size up to 5mb only</span>
                
                  <span
             style="color:red;">
