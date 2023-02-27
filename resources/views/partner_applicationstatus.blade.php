@@ -60,7 +60,7 @@
                                     <div class="col-md-6 ml-5">
                                       <div class="row align-items-center ">
                                    
-                                      <img class="circle img-responsive mr-3" width="170" height="160" src="{{ url('uploads/merchant_documents/'. $partner->logo) }}" alt="">
+                                      <img class="circle img-responsive mr-3" width="170" height="160" src="{{ url('uploads/'. 'merchant_documents'. '/'. $partner->merchant_id. '/'. $partner->logo) }}" alt="">
                                       <div class="col flex-wrap">
                              
                                     
@@ -162,7 +162,7 @@
                                       </div>
                                        <div class="row px-3">
                                         <label class="black width">Store Email</label>
-                                        <p class="black ml-5">{{ $partner->email }}</p>
+                                        <p class="black ml-5">{{ $partner->store_email }}</p>
                                       </div>
                                        <div class="row px-3">
                                         <label class="black width">Business Address</label>
@@ -185,35 +185,35 @@
                                       <h4 class="title-border flex-wrap mb-4">Uploaded Documents</h4>
                        
                                        <div class="row px-3 mt-2">
-                                        <label class="black space">Business Logo</label>
+                                        <label class="black width">Business Logo</label>
                                              <p class="black ml-5">{{ $partner->logo }}</p>
                                       </div>
                                        <div class="row px-3 mt-2">
-                                        <label class="black space">Business Menu</label>
+                                        <label class="black width">Business Menu</label>
                                           <p class="black ml-5">{{ $partner->menu_photo }}</p>
                                       </div>
                                        <div class="row px-3 mt-2">
-                                        <label class="black space">Business Permit</label>
+                                        <label class="black width">Business Permit</label>
                                           <p class="black ml-5">{{ $partner->business_permit }}</p>
                                       </div>
                                        <div class="row px-3 mt-2">
-                                        <label class="black space">BIR Certificate</label>
+                                        <label class="black width">BIR Certificate</label>
                                           <p class="black ml-5">{{ $partner->bir_cert }}</p>
                                       </div>
                                        <div class="row px-3 mt-2">
-                                        <label class="black space">Barangay Permit</label>
+                                        <label class="black width">Barangay Permit</label>
                                          <p class="black ml-5">{{ $partner->barangay_permit }}</p>
                                       </div>
                                        <div class="row px-3 mt-2">
-                                        <label class="black space">DTI Certificate</label>
+                                        <label class="black width">DTI Certificate</label>
                                          <p class="black ml-5">{{ $partner->dti_cert }}</p>
                                       </div>
                                        <div class="row px-3 mt-2">
-                                        <label class="black space">Front License ID</label>
+                                        <label class="black width">Front License ID</label>
                                          <p class="black ml-5">{{ $partner->front_license }}</p>
                                       </div>
                                       <div class="row px-3 mt-2">
-                                        <label class="black space">Back License ID</label>
+                                        <label class="black width">Back License ID</label>
                                          <p class="black ml-5">{{ $partner->back_license }}</p>
                                       </div>
                                        @endforeach
