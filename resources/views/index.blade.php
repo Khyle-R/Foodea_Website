@@ -16,6 +16,13 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+
+
 
 </head>
 
@@ -99,7 +106,7 @@
     </nav>
     
     
-    <div class="section mx-auto my-5">
+    <div class="section mx-auto my-5" data-aos="fade-up">
             <div class="content text-center text-md-start">
                 <h1>Be The Fastest In Delivering Your <span>Food</span></h1>
                 <p class="text-center text-md-start">Our job filling your tummy with delicious food and with fast delivery</p>
@@ -111,19 +118,19 @@
     <div class="container pt-0">
         <div class="section-2">
             <div class="service">
-                <div class="rider">
+                <div class="rider" data-aos="fade-up">
                     <img src="image/rider.PNG" alt="">
                     <h3>Become a Rider</h3>
                     <p>As a delivery driver, you'll make reliable money working anytime, anywhere.</p>
                     <a href="/rider_landing">Start earning</a>
                 </div>
-                <div class="market">
+                <div class="market" data-aos="fade-up">
                     <img src="image/market.PNG" alt="">
                     <h3>Become a Partner</h3>
                     <p>Grow your business and reach new customers by partnering with us.</p>
                     <a href="/partner_landing">Sign up you store</a>
                 </div>
-                <div class="phone">
+                <div class="phone" data-aos="fade-up">
                     <img src="image/phone.PNG" alt="">
                     <h3>Try the App</h3>
                     <p>Experience the best your neighborhood has to offer, all in one app.</p>
@@ -133,7 +140,7 @@
         </div>
 
 
-        <div class="info-section">
+        <div class="info-section" data-aos="fade-up">
             <div class="image2">
                 <img src="image/eating.png" alt="">
             </div>
@@ -147,7 +154,7 @@
     </div>
 
     <!---CAROUSEL-->
-    <div class="container">
+    <div class="container" data-aos="fade-up">
         <h2>Our Partners</h2>
         <section class="customer-logos slider">
             <div class="slide"><img src="image/jollibee.png" alt="logo" /></div>
@@ -162,11 +169,11 @@
     </div>
     <!---ACOORDION-->
     <div class="container2">
-        <div class="accor-title">
+        <div class="accor-title" data-aos="fade-up">
             <h2>FAQs</h2>
             <p>Frequently Ask Questions</p>
         </div>
-        <div class="wrapper">
+        <div class="wrapper" data-aos="fade-up">
             <button class="toggle">
                 What is Foodea?
                 <i class="fas fa-plus icon"></i>
@@ -178,7 +185,7 @@
                 </p>
             </div>
         </div>
-        <div class="wrapper">
+        <div class="wrapper" data-aos="fade-up">
             <button class="toggle">
                 How does FOODEA support small food businesses?
                 <i class="fas fa-plus icon"></i>
@@ -190,7 +197,7 @@
                 </p>
             </div>
         </div>
-        <div class="wrapper">
+        <div class="wrapper" data-aos="fade-up">
             <button class="toggle">
                 Can FOODEA suggest healthy food options?
                 <i class="fas fa-plus icon"></i>
@@ -203,6 +210,27 @@
             </div>
         </div>
     </div>
+
+    <script src="dist/aos.js"></script>
+    <script>
+      document.querySelector('html').classList.remove('no-js');
+      if (!window.Cypress) {
+        const scrollCounter = document.querySelector('.js-scroll-counter');
+
+        AOS.init({
+          mirror: true
+        });
+
+        document.addEventListener('aos:in', function(e) {
+          console.log('in!', e.detail);
+        });
+
+        window.addEventListener('scroll', function() {
+          scrollCounter.innerHTML = window.pageYOffset;
+        });
+      }
+    </script>
+
     
     <div class="footer">
         <div class="footer-content py-4 py-md-5">
