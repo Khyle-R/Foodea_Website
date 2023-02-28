@@ -66,7 +66,6 @@ Route::get('/partner_applicationstatus', [PartnerRegistration::class, 'PartnerAp
 
 // SUPER ADMIN ROUTE
 
-Route::group(['middleware'=>['preventBack']], function(){
     
 Route::group(['middleware'=>['preventBackLogin']], function(){
     
@@ -166,7 +165,7 @@ Route::group(['middleware'=>['superadminLogin']], function(){
 
     Route::get('/download_valid_merchant/{id}', [SuperadminController::class, 'DownloadLicenseMerchantZip']);
 });
-});
+
 /* END SUPERADMIN */
 
 Route::get('/login_partner', function () {

@@ -239,6 +239,7 @@ class Admin_product extends Controller
 
         $addCategory->main_category = $request->categoryName;
         $addCategory->description = $request->description;
+        $addCategory->merchant_id = session('loginID');
 
         $addCategory->save();
         
@@ -430,7 +431,7 @@ class Admin_product extends Controller
 
     public function Disable_Voucher(Request $request) // Update the Voucher Status
     {
-        $affected = DB::table('tbl_voucher')->where(['voucher_id', $request->voucher_id]);
+        $affected = DB::table('tbl_voucher')->where('voucher_id', $request->voucher_id);
                 
         $resss=$affected->update(['status' => 'Disable'],);
               
