@@ -16,6 +16,12 @@
     />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link rel="stylesheet" type="text/css" href="css/contact.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+
 </head>
 
 <body>
@@ -81,13 +87,13 @@
               </li>
             </ul>
             <a
-            href="/login"
+            href="/account_type"
             class="text-secondary mt-2 mx-5"
             style="text-decoration: none;">
               Signup
             </a>
             <a
-              href="/login"
+              href="/login_type"
               class="btn btn-danger btn-sm py-2 px-5 rounded"
             >
               Login
@@ -102,7 +108,7 @@
     <div class="container">
 
     <!-- SECTION 1 -->
-    <section class="d-flex justify-content-center ">
+    <section class="d-flex justify-content-center " data-aos="fade-up">
       <div class="content1 mx-auto d-flex flex-column align-items-center gap-4 pt-4 pb-2 py-xs-3 py-md-4 py-lg-5">
         <h1 class="text-center">You’ve got questions?<br>We’ve got answers</h1>
         <div class="paragraph1 w-75"><p class="text-center">Want to know more about Foodea? Have a question that's not answered on our website? Please chat to our friendly team.</p></div>
@@ -111,7 +117,7 @@
     <!-- END SECTION 1 -->
 
     <!-- SEARCH BAR -->
-    <div class="input-box container d-flex justify content1 align-items-center mx-auto">
+    <div class="input-box container d-flex justify content1 align-items-center mx-auto" data-aos="fade-up">
       <i class="uil uil-search"></i>
       <input type="text" placeholder="Search" />
       <button class="button">Search</button>
@@ -121,7 +127,7 @@
     <!-- ACCORDITION -->
     <div class="accordion accordion-flush pt-3 mx-auto" id="accordionExample">
     <div class="accordion accordion-flush" id="accordionFlushExample">
-  <div class="accordion-item">
+  <div class="accordion-item" data-aos="fade-up">
     <h2 class="accordion-header" id="flush-headingOne">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
       How does Foodea generate its recommendations?
@@ -131,7 +137,7 @@
       <div class="accordion-body">Foodea uses a state-of-the-art algorithm that takes into account your dietary restrictions, favorite cuisines, and even your location to provide you with personalized meal suggestions.</div>
     </div>
   </div>
-  <div class="accordion-item">
+  <div class="accordion-item" data-aos="fade-up">
     <h2 class="accordion-header" id="flush-headingTwo">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
       Can I save my favorite meals for easy access?
@@ -141,7 +147,7 @@
       <div class="accordion-body">Yes, Foodea allows you to save your favorite meals for easy access in the "Favorites" section..</div>
     </div>
   </div>
-  <div class="accordion-item">
+  <div class="accordion-item" data-aos="fade-up">
     <h2 class="accordion-header" id="flush-headingThree">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
       How accurate are the map feature?
@@ -151,8 +157,7 @@
       <div class="accordion-body">Foodea uses your device location to provide you with accurate information, but the accuracy may depend on your device location settings and availability of information on that area.</div>
     </div>
   </div>
-
-  <div class="accordion-item">
+  <div class="accordion-item" data-aos="fade-up">
     <h2 class="accordion-header" id="flush-headingFour">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="fals e" aria-controls="flush-collapseFour">
       Can I use Foodea without an internet connection?
@@ -162,8 +167,7 @@
       <div class="accordion-body">No, Foodea requires an internet connection to function properly.</div>
     </div>
   </div>
-
-  <div class="accordion-item">
+  <div class="accordion-item" data-aos="fade-up">
     <h2 class="accordion-header" id="flush-headingFive">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
       Can I suggest a restaurant for Foodea to add?
@@ -178,10 +182,10 @@
 </div>
     <!-- FORM -->
     <div class="contact-container mx-auto d-flex flex-row flex-column-reverse flex-lg-row-reverse justify-content-center align-items-center gap-5">
-    <div class="left-side pb-5">
+    <div class="left-side pb-5" data-aos="fade-up">
         <img src="image/contact1.png" alt="calling a girl">
       </div>
-    <div class="contact-form m-4 my-md-5 mx-auto p-5">
+    <div class="contact-form m-4 my-md-5 mx-auto p-5" data-aos="fade-up">
     <div class="content">
       <div class="right-side">
         <div class="topic-text">Send us a message</div>
@@ -217,6 +221,26 @@
 
     </div>
     </div>
+    
+    <script src="dist/aos.js"></script>
+    <script>
+      document.querySelector('html').classList.remove('no-js');
+      if (!window.Cypress) {
+        const scrollCounter = document.querySelector('.js-scroll-counter');
+
+        AOS.init({
+          mirror: true
+        });
+
+        document.addEventListener('aos:in', function(e) {
+          console.log('in!', e.detail);
+        });
+
+        window.addEventListener('scroll', function() {
+          scrollCounter.innerHTML = window.pageYOffset;
+        });
+      }
+    </script>
 
     <!-- FOOTER -->
     <div class="footer">

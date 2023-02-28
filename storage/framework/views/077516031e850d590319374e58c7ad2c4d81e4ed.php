@@ -16,6 +16,11 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
 
 </head>
 
@@ -82,13 +87,13 @@
               </li>
             </ul>
             <a
-            href="/login"
+            href="/account_type"
             class="text-secondary mt-2 mx-5"
             style="text-decoration: none;">
               Signup
             </a>
             <a
-              href="/login"
+              href="/login_type"
               class="btn btn-danger btn-sm py-2 px-5 rounded"
             >
               Login
@@ -102,14 +107,14 @@
     <div class="container">
       <!-- SECTION 1 -->
     <section class="d-flex intro">
-      <div class="content pt-4 pb-2 py-xs-3 py-md-4 py-lg-5">
+      <div class="content pt-4 pb-2 py-xs-3 py-md-4 py-lg-5" data-aos="fade-up">
         <h1 class="text-center">Welcome to Foodea,<br>your ultimate food <br>recommendation app</h1>
       </div>
     </section>
     <!-- END SECTION 1 -->
 
     <!-- SECTION 2 -->
-    <section class="section2">
+    <section class="section2" data-aos="fade-up">
         <div class="images2 d-flex flex-column flex-md-row align-items-center gap-5 py-4">
           <img src="image/about3.png" class="" alt="man riding">
           <p>Say goodbye to meal-time indecision with Foodea - the ultimate food recommendation app. Our state-of-the-art algorithm takes into account your dietary restrictions, favorite cuisines, and location to provide personalized meal suggestions.</p>
@@ -118,7 +123,7 @@
     <!-- END SECTION 2 -->
 
     <!-- SECTION 3 -->
-    <section class="section3">
+    <section class="section3" data-aos="fade-up">
         <div class="images d-flex flex-column-reverse flex-md-row  align-items-center gap-3 gap-md-5 py-4">
           <p>Discover new dishes, save your favorites and earn rewards for trying new restaurants. Get the app now on Software Store or visit foodea.com for your next culinary adventure.</p>
           <img src="image/about2.png" class="img-fluid" alt="Delivering Order">
@@ -127,7 +132,7 @@
     <!-- END SECTION 3 -->
 
     <!-- SECTION 4 -->
-    <section class="d-flex">
+    <section class="d-flex" data-aos="fade-up">
       <div class="content pt-4 pb-2 py-xs-3 py-md-4 py-lg-5">
         <h1 class="text-center">Lunch made easy<br>with just a tap</h1>
       </div>
@@ -138,7 +143,7 @@
     <!-- TIMELINE -->
     <div class="timeline mx-auto">
       <div class="timeline-section">
-        <div class="timeline-content">
+        <div class="timeline-content" data-aos="fade-up">
           <ul>
               <li>
                 <div>
@@ -161,9 +166,30 @@
     </div>
     </div>
     <!-- SECTION 5 -->
-    <div class="container lastimage py-4 d-flex justify-content-center "><img src="image/about1.png" alt="calling"></div>
+    <div class="container lastimage py-4 d-flex justify-content-center" data-aos="fade-up"><img src="image/about1.png" alt="calling"></div>
     </div>
     </div>
+
+    <script src="dist/aos.js"></script>
+    <script>
+      document.querySelector('html').classList.remove('no-js');
+      if (!window.Cypress) {
+        const scrollCounter = document.querySelector('.js-scroll-counter');
+
+        AOS.init({
+          mirror: true
+        });
+
+        document.addEventListener('aos:in', function(e) {
+          console.log('in!', e.detail);
+        });
+
+        window.addEventListener('scroll', function() {
+          scrollCounter.innerHTML = window.pageYOffset;
+        });
+      }
+    </script>
+
     <!-- FOOTER -->
     <div class="footer">
         <div class="footer-content py-4 py-md-5">
