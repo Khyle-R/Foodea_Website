@@ -65,7 +65,7 @@
           <div class="offcanvas-body">
             <ul class="navbar-nav mx-auto">
               <li class="nav-item">
-                <a href="#" class="nav-link active">Home</a>
+                <a href="/" class="nav-link active">Home</a>
               </li>
               <li class="nav-item dropdown">
                 <a
