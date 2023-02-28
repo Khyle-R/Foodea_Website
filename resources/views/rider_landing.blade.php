@@ -16,6 +16,12 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+
 
 </head>
 
@@ -96,7 +102,7 @@
       </div>
     </nav>
 	<!-- SECTION 1 -->
-	<div class="context-one mx-auto">
+	<div class="context-one mx-auto" data-aos="fade-up">
     <div class="row container mx-auto px-5 align-items-center g-0">
 	   <div class="col-12 col-md-7 col-lg-6">
 	   		<div class="content text-center text-md-start d-flex flex-column align-items-center align-items-md-start">
@@ -112,7 +118,7 @@
     </div>
 	</div>
 	<!-- SECTION 2 -->
-	<div class="context-two mx-auto mt-5">
+	<div class="context-two mx-auto mt-5" data-aos="fade-up">
     <div class="row container mx-auto px-5 align-items-start g-3 g-md-5">
 	   <div class="col-12 col-md-4 col-lg-4">
 	   			<div class="rider text-center d-flex flex-column align-items-center justify-content-center">
@@ -143,14 +149,14 @@
 
 	<!-- SECTION 3 -->
 	<div class="context-three mx-auto mt-5 pt-5">
-	<div class="container pb-5">
+	<div class="container pb-5" data-aos="fade-up">
         <h2 class="text-center text-dark text-md-start fw-bold">You only need a few things to get started</h2>
     </div>
-    <div class="row container mx-auto align-items-start g-5">
+    <div class="row container mx-auto align-items-start g-5" data-aos="fade-up">
 	   	<div class="col-12 col-md-6 col-lg-6">
 		   <img class="img-fluid py-0" src="image/motorbg.png" alt="" />
     	</div>
-		<div class="col-12 col-md-6 col-lg-6">
+		<div class="col-12 col-md-6 col-lg-6" data-aos="fade-up">
 			<div class="radio_tabs pt-2">
 			<div class="border-bottom border-danger border-3 pb-4">
 				<label class="radio_wrap pe-4"  
@@ -167,7 +173,7 @@
 				</label>
 			</div>
 			
-			<div class="content pt-4">
+			<div class="content pt-4" data-aos="fade-up">
 			<div class="radio_content radio_1">
 				<div class="requirements">
 					<p class="text-justify">Please read carefully before submitting your application. 
@@ -221,7 +227,7 @@
 	</div>
 	
    <!-- SECTION 4 TIMELINE -->
-   <div class="container mx-auto mt-5 pt-5">
+   <div class="container mx-auto mt-5 pt-5" data-aos="fade-up">
    <div class="timeline-header px-3">
         <h2 class="fw-bold ">How food delivery works</h2>
         <p>If you are new to Foodea, 
@@ -267,7 +273,7 @@
 				<h1>Deliver orders</h1>
 				<p>The app provides navigation to your customers location
 					and if you need assistance you can call or message your customer
-					in the applcation.
+					in the application.
 				</p>
 			</div>
         </div>
@@ -288,12 +294,12 @@
 </div>
 </div>
     <!---ACOORDION-->
-    <div class="container2 mb-5 pb-5">
-        <div class="accor-title">
+    <div class="container2 mb-5 pb-5" data-aos="fade-up">
+        <div class="accor-title" data-aos="fade-up">
             <h2>FAQs</h2>
             <p>Frequently Ask Questions</p>
         </div>
-        <div class="wrappers">
+        <div class="wrappers" data-aos="fade-up">
             <button class="toggle">
               What is a FOODEA rider?
                 <i class="fas fa-plus icon"></i>
@@ -304,7 +310,7 @@
                 </p>
             </div>
         </div>
-        <div class="wrappers">
+        <div class="wrappers" data-aos="fade-up">
             <button class="toggle">
               How do I become a FOODEA rider?
                 <i class="fas fa-plus icon"></i>
@@ -316,7 +322,7 @@
                 </p>
             </div>
         </div>
-        <div class="wrappers">
+        <div class="wrappers" data-aos="fade-up">
             <button class="toggle">
               What are the requirements to become a FOODEA rider?
                 <i class="fas fa-plus icon"></i>
@@ -328,7 +334,7 @@
                 </p>
             </div>
         </div>
-        <div class="wrappers">
+        <div class="wrappers" data-aos="fade-up">
           <button class="toggle">
             What are the benefits of being a FOODEA rider?
               <i class="fas fa-plus icon"></i>
@@ -342,12 +348,34 @@
     </div>
 		<div class="background">
 			<img src="../image/bgmotor.png" alt="Nature" style="width:100%;">
-			<div class="text-block">
+			<div class="text-block" data-aos="fade-down">
 				<h2 class="start">Start your journey now as a Foodea rider</h2>
 				<p class="start-content">Sign up as a new Foodea rider, fill out the personal information and vehicle information, upload the required documents, and submit your application!</p>
 				<a class="start-btn text-decoration-none text-reset" href="/rider_application_agreement">Join Us</a>
 			</div>
 		</div>
+
+    <script src="dist/aos.js"></script>
+    <script>
+      document.querySelector('html').classList.remove('no-js');
+      if (!window.Cypress) {
+        const scrollCounter = document.querySelector('.js-scroll-counter');
+
+        AOS.init({
+          mirror: true
+        });
+
+        document.addEventListener('aos:in', function(e) {
+          console.log('in!', e.detail);
+        });
+
+        window.addEventListener('scroll', function() {
+          scrollCounter.innerHTML = window.pageYOffset;
+        });
+      }
+    </script>
+
+
 
 		<div class="footer">
         <div class="footer-content py-4 py-md-5">

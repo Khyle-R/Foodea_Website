@@ -10,6 +10,12 @@
     <link rel="icon" href="{{ url('image/foodea1.png') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+
 </head>
 
 <body>
@@ -87,7 +93,7 @@
         </div>
       </div>
     </nav>
-        <div class="section">
+        <div class="section" data-aos="fade-up">
             <div class="content text-center text-md-start">
                 <h1>Grow your business with <span>Foodea</span></h1>
                 <p class="text-center text-md-start">Expand your business by bringing your food out and filling up your customers tummy and reach new customers by partnering with us.</p>
@@ -99,7 +105,7 @@
             </div>
         </div>
 
-        <div class="section-2">
+        <div class="section-2" data-aos="fade-up">
             <div class="service">
                 <div class="rider">
                     <img src="image/attract.png" alt="">
@@ -120,14 +126,14 @@
         </div>
     </div>
 
-    <div class="step-bg">
+    <div class="step-bg" data-aos="fade-up">
      <div class="step-container">
         <div class="step-title">
           <h2>Get Started</h2>
         </div>
         <div class="step-content">
 
-        <div class="step1">
+        <div class="step1" data-aos="fade-up">
                 <div class="step1-container">
                     <div class="step1-content">
                     <h2>STEP 1:</h2>
@@ -150,12 +156,12 @@
            
         </div>
 
-         <div class="step-image img-fluid">
+         <div class="step-image img-fluid" data-aos="fade-up">
             <img src="image/phone-circle.png" alt="">
             <p class="number">2000 +</p>
         </div>
     
-        <div class="step2">    
+        <div class="step2" data-aos="fade-up">    
             <div class="step2-container">
             <div class="step2-content">
                 <h2>STEP 3:</h2>
@@ -183,7 +189,7 @@
     
     <div class="req-container">
         <div class="req-section">
-            <div class="row">
+            <div class="row" data-aos="fade-up">
                 <h2 class="text-center mb-4 text-md-center">Get your documents ready</h2>
                 <p class="mb-5">You can find the required documents as below. Please ensure that the 
                     following documents are original or else your application will be rejected.
@@ -254,11 +260,11 @@
 
     <!---ACOORDION-->
     <div class="container2">
-        <div class="accor-title">
+        <div class="accor-title" data-aos="fade-up">
             <h2>FAQs</h2>
             <p>Frequently Ask Questions</p>
         </div>
-        <div class="wrapper">
+        <div class="wrapper" data-aos="fade-up">
             <button class="toggle">
                 What is a FOODEA merchant?
                 <i class="fas fa-plus icon"></i>
@@ -270,7 +276,7 @@
                 </p>
             </div>
         </div>
-        <div class="wrapper">
+        <div class="wrapper" data-aos="fade-up">
             <button class="toggle">
                 How do I become a FOODEA merchant?
                 <i class="fas fa-plus icon"></i>
@@ -283,7 +289,7 @@
                 </p>
             </div>
         </div>
-        <div class="wrapper">
+        <div class="wrapper" data-aos="fade-up">
             <button class="toggle">
                 What are the benefits of partnering with FOODEA as a merchant?
                 <i class="fas fa-plus icon"></i>
@@ -295,7 +301,7 @@
                 </p>
             </div>
         </div>
-        <div class="wrapper">
+        <div class="wrapper" data-aos="fade-up">
             <button class="toggle">
                 What are the requirements to partner with FOODEA as a merchant?
                 <i class="fas fa-plus icon"></i>
@@ -308,6 +314,30 @@
             </div>
         </div>
     </div>
+
+
+    <script src="dist/aos.js"></script>
+    <script>
+      document.querySelector('html').classList.remove('no-js');
+      if (!window.Cypress) {
+        const scrollCounter = document.querySelector('.js-scroll-counter');
+
+        AOS.init({
+          mirror: true
+        });
+
+        document.addEventListener('aos:in', function(e) {
+          console.log('in!', e.detail);
+        });
+
+        window.addEventListener('scroll', function() {
+          scrollCounter.innerHTML = window.pageYOffset;
+        });
+      }
+    </script>
+
+
+
     <div class="footer">
         <div class="footer-content py-4 py-md-5">
             <div class="icon pb-3 pb-md-0">
