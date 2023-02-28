@@ -2,68 +2,24 @@
 <?php $__env->startSection('content'); ?>
           <div class="content-wrapper">
             <div class="row">
-              <div class="col-12 grid-margin stretch-card">
-                <div class="card corona-gradient-card">
-                  <div class="card-body py-0 px-0 px-sm-3">
-                    <div class="row align-items-center">
-                      <div class="col-4 col-sm-3 col-xl-2">
-                        <img
-                          src="assets/images/dashboard/Group126@2x.png"
-                          class="gradient-corona-img img-fluid"
-                          alt=""
-                        />
-                      </div>
-                      <div class="col-5 col-sm-7 col-xl-8 p-0">
-                        <h4 class=" mb-1 mb-sm-0" style="color: #FEEECB;">Want even more features?</h4>
-                        <p class="mb-0 font-weight-normal d-none d-sm-block">
-                          Your account has limited access, please complete the documents needed so you can access all features.
-                        </p>
-                      </div>
-                      <div class="col-3 col-sm-2 col-xl-2 pl-0 text-center">
-                        <span>
-                          <a href="#"
-                            class="btn btn-warning btn-rounded get-started-btn text-decoration-none"
-                            >Upload documents</a
-                          >
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              
             </div>
+            <div class="page-header">
+        <h3 class="page-title black">Transaction History</h3>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="#">Menu</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    Transaction History
+                </li>
+           
+            </ol>
+        </nav>
+    </div>
             <!-- rider table buttons -->
-            <div class="row justify-content-sm-between px-3">
-              <h4 class="card-title"></h4>
-              <div class="template-demo">
-                <div class="dropdown">
-                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Daily </button>
-                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                    <a class="dropdown-item" href="#">Weekly</a>
-                    <a class="dropdown-item" href="#">Monthly</a>
-                  </div>
-                </div>
-
-                <div class="dropdown">
-                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Date </button>
-                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
-                    <a class="dropdown-item" href="#">Day</a>
-                    <a class="dropdown-item" href="#">Month</a>
-                    <a class="dropdown-item" href="#">Year</a>
-                  </div>
-                </div>
-
-                <div class="dropdown">
-                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton4" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Status </button>
-                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton4">
-                    <a class="dropdown-item" href="#">Accepted</a>
-                    <a class="dropdown-item" href="#">Cancelled</a>
-                    <a class="dropdown-item" href="#">Delivered</a>
-                    <a class="dropdown-item" href="#">In Delivery</a>
-                  </div>
-                </div>
-              </div>
-            </div>
+            
 
       
            <!-- rider table -->
@@ -71,8 +27,8 @@
                 <div class="col-12 grid-margin">
                   <div class="card">
                     <div class="card-body">  
-                      <div class="table-responsive text-center">
-                        <table class="table" id="myHistory">
+                      <div class="table-responsive">
+                        <table id="example" class="table" style="width:100%">
                           <thead>
                             <tr>
                               <th>Transaction ID</th>
@@ -360,7 +316,7 @@
               </div>
             </div>
           </div>  
-
+          </div>
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.html -->
           <footer class="footer">

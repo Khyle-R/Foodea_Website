@@ -35,6 +35,7 @@ class RiderRegistration extends Controller
  
     public function addPostSubmit(Request $request)
     {
+
             $request->validate([
             'firstname' => 'required',
             'middlename' => 'required',
@@ -70,7 +71,7 @@ class RiderRegistration extends Controller
              $rider->barangay = $request-> barangay;
              $rider->zip_code = $request->  zip;
              $rider->birthdate = $request-> birthday;
-            $rider->emergency_name = $request-> name;
+             $rider->emergency_name = $request-> name;
              $rider->relationship = $request-> relationship;
              $rider->contact_number = $request->  phone;
              //from database = input request
@@ -85,13 +86,33 @@ class RiderRegistration extends Controller
                 $id->status = 'first';
                 $id->save();
                 
+                $request->session()->put('status', $id->status);
                 return redirect('/rider_application2');
             }else{
                 return back()->with('fail', 'Something is wrong');
             }
 
     }
-    
+    public function VerifyRider(){
+        return view('rider_application2');
+    }
+    public function RiderVerify(Request $request){
+  
+      $res =  tbl_rider_application::where('rider_id', Session::get('rider_id'))
+                ->update([
+                    'status' => "second"
+                ]);
+                
+      if($res){
+        $status = tbl_rider_application::where('rider_id', Session::get('rider_id'))
+        ->first();
+        
+         $request->session()->put('status', $status->status);
+         return redirect('/rider_application3');
+      }
+        
+    }
+
     public function step2index(){
         return view('/rider_application3');
     }
@@ -124,14 +145,16 @@ class RiderRegistration extends Controller
             tbl_rider_application::where('rider_id', $request->rider_id)
                 ->update([
                     'vehicle_id' => $id->vehicle_id,
-                    'status' => "second"
+                    'status' => "third"
                 ]);
               $vehicle = tbl_vehicle_infos::where('vehicle_ownership', $request->vehicle_ownership)
               ->distinct()
               ->value('vehicle_ownership');
 
                $request->session()->put('vehicle', $vehicle);
-               
+
+               $status = tbl_rider_application::where('rider_id', $request->rider_id)->first();
+               $request->session()->put('status', $status->status);
               return redirect('/rider_application4');
         }else{
              return back()->with('fail', 'Something is wrong');
@@ -272,7 +295,12 @@ class RiderRegistration extends Controller
                     'document_id' => $id->document_id,
                     'status' => "Pending"
                 ]);
-              
+                
+                  $status =   tbl_rider_application::where('rider_id', $request->rider_id)
+                  ->value('status');
+ 
+                  $request->session()->put('status', $status);
+                  
                   return redirect('/rider_application5');
         }
         else{

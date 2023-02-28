@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/dataTables.bootstrap5.min.css">
     {{-- // for Javascript --}}
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="assets/css/stylesadmin.css"/>
+    <link rel="stylesheet" href="assets/css/style.css"/>
     <link rel="stylesheet" href="assets/css/superadmin.css"/>
     <!-- End layout styles -->
     <link rel="icon" href="{{ url('image/foodea1.png') }}">
@@ -35,7 +35,7 @@
           class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top"
         >
           <a class="sidebar-brand brand-logo" href="index.html"
-            ><img src="assets/images/admin_logo.PNG" alt="logo"
+            ><img src="assets/images/foodea_logo.PNG" alt="logo"
           /></a>
           <a class="sidebar-brand brand-logo-mini" href="index.html"
             ><img src="/image/foodea.png" class="w-50" alt="logo"
@@ -65,19 +65,19 @@
                 class="dropdown-menu dropdown-menu-right sidebar-dropdown preview-list"
                 aria-labelledby="profile-dropdown"
               >
-                <a href="#" class="dropdown-item preview-item">
+                <a href="/admin_account" class="dropdown-item preview-item">
                   <div class="preview-thumbnail">
                     <div class="preview-icon bg-dark rounded-circle">
                       <i class="mdi mdi-settings text-primary"></i>
                     </div>
                   </div>
                   <div class="preview-item-content">
-                    <p class="preview-subject ellipsis mb-1 text-small text-dark">
+                    <p class="preview-subject ellipsis mb-1 text-small text-white">
                       Account settings
                     </p>
                   </div>
                 </a>
-                <div class="dropdown-divider"></div>
+                {{-- <div class="dropdown-divider"></div>
                 <a href="#" class="dropdown-item preview-item">
                   <div class="preview-thumbnail">
                     <div class="preview-icon bg-dark rounded-circle">
@@ -85,13 +85,13 @@
                     </div>
                   </div>
                   <div class="preview-item-content">
-                    <p class="preview-subject ellipsis mb-1 text-small text-dark">
+                    <p class="preview-subject ellipsis mb-1 text-small text-white">
                       Change Password
                     </p>
                   </div>
                 </a>
          
-              </div>
+              </div> --}}
             </div>
           </li>
           <li class="nav-item nav-category">
@@ -271,13 +271,13 @@
                   <div class="dropdown-divider"></div>
                   <p class="p-3 mb-0 text-center">See all projects</p>
                 </div>
-              </li>
+              {{-- </li>
               <li class="nav-item nav-settings d-none d-lg-block">
                 <a class="nav-link" href="#">
                   <i class="mdi mdi-view-grid"></i>
                 </a>
-              </li>
-              <li class="nav-item dropdown border-left">
+              </li> --}}
+              {{-- <li class="nav-item dropdown border-left">
                 <a
                   class="nav-link count-indicator dropdown-toggle"
                   id="messageDropdown"
@@ -344,8 +344,8 @@
                   <div class="dropdown-divider"></div>
                   <p class="p-3 mb-0 text-center bg-dark">4 new messages</p>
                 </div>
-              </li>
-              <li class="nav-item dropdown border-left">
+              </li> --}}
+              <li class="nav-item dropdown">
                 <a
                   class="nav-link count-indicator dropdown-toggle"
                   id="notificationDropdown"
