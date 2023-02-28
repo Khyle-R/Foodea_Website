@@ -18,14 +18,14 @@
               <!---/ALERT BOX --->
     </div>
     <div class="page-header">
-        <h3 class="page-title black">Partner Application</h3>
+        <h3 class="page-title black">Account</h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
                     <a href="#">Menu</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">
-                    Partner Application
+                    Account
                 </li>
            
             </ol>

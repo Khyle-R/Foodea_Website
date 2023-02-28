@@ -51,7 +51,29 @@ class Kernel extends HttpKernel
         ],
         'preventBackLogin' =>[
             \App\Http\Middleware\PreventBackLogIn::class,
-        ]
+        ],
+        'adminLogin' => [
+            \App\Http\Middleware\AdminLogin::class,
+        ],
+        'adminPreventBack' =>[
+            \App\Http\Middleware\AdminPreventback::class,
+        ],
+        'RiderStep1' =>[
+            \App\Http\Middleware\RiderStep1::class,
+        ],
+        'RiderStep2' =>[
+            \App\Http\Middleware\RiderStep2::class,
+        ],
+        'RiderStep3' =>[
+            \App\Http\Middleware\RiderStep3::class,
+        ],
+        'RiderStep4' =>[
+            \App\Http\Middleware\RiderStep4::class,
+        ],
+         'RiderStepFinal' =>[
+            \App\Http\Middleware\RiderStepFinal::class,
+        ],
+        
     ];
 
     /**
