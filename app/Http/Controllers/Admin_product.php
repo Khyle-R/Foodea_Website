@@ -474,7 +474,7 @@ class Admin_product extends Controller
     }
 
     public function ClaimedVoucher(Request $request){
-        $claimedVoucher = DB::table('tbl_claimed')->where([['voucher_code','=', $request->voucher_code],['merchant_id', '=', session('loginID')]])->get();
+        $claimedVoucher = DB::table('tbl_claimed')->where('voucher_code', $request->voucher_code)->get();
 
         return view ('admin.voucher_claimed', ['claimedVoucher' => $claimedVoucher]);
     }
