@@ -533,7 +533,7 @@ nav .navbar-brand span {
 }
 
 .content p{
-  font-size: clamp(0.625rem, 0.4107rem + 0.8571vw, 1rem);
+  font-size: clamp(0.8rem, 0.4107rem + 0.8571vw, 1rem);
   width: 90%;
   opacity: 70%;
   font-family: "Montserrat", sans-serif;
@@ -771,7 +771,6 @@ nav .navbar-brand span {
   }
   .timeline-header{
     width:100%;
-    text-align: justify;
   }
   .timeline-header p{
     width:100%;
