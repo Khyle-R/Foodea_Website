@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class Home extends Controller
 {
     //
     public function index(){
+        Session::pull('status');
         return view('index');
     }
     public function AccountType(){

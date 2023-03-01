@@ -105,7 +105,7 @@
 	<div class="context-one mx-auto" data-aos="fade-up">
     <div class="row container mx-auto px-5 align-items-center g-0">
 	   <div class="col-12 col-md-7 col-lg-6">
-	   		<div class="content text-center text-md-start d-flex flex-column align-items-center align-items-md-start">
+	   		<div class="content text-center text-md-start d-flex flex-column align-items-center align-items-md-start pt-4 pt-md-5">
 				<h1>Deliver Food With<span> Foodea</span></h1>
 				<p class="text-center text-md-start">Try becoming your own boss with Foodea as an alternative to 
 						conventional food delivery professions where the hours are fixed.</p>
@@ -229,13 +229,13 @@
    <!-- SECTION 4 TIMELINE -->
    <div class="container mx-auto mt-5 pt-5" data-aos="fade-up">
    <div class="timeline-header px-3">
-        <h2 class="fw-bold ">How food delivery works</h2>
+        <h2 class="fw-bold pb-4">How food delivery works</h2>
         <p>If you are new to Foodea, 
             you wll need to sign up to be a Foodea rider, and upload the required documents
              and images. Once your application is accepted, you can now log in and
             start earning using Foodea appllication</p>
     </div>
-	<div class="container pt-5 d-flex flex-row align-items-center justify-content-center">
+	<div class="container pt-4 d-flex flex-row align-items-center justify-content-center">
 	<div class="timeline">
     <div class="timeline-section">
     <div class="timeline-content">

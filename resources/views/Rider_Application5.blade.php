@@ -28,6 +28,7 @@
               <img src="image/foodea.png" style="width: 50px">FOODEA
             </a>
           </li>
+                           <li>{{ Session::get('status') }}</li>
                <li class="nav-item nav-category">Rider Application</li>
           <li>Step 1 &nbsp;&nbsp;&nbsp;Personal Information</li>
           <li>Step 2 &nbsp;&nbsp;&nbsp;Verify Phone Number</li>
