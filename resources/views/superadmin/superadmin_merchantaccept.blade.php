@@ -2,7 +2,19 @@
 @section('content')
 <div class="content-wrapper">
     <div class="row">
-
+      <!---ALERT BOX --->
+                    @if (Session::has('success'))
+                    <p style="display:none" class="popup"></p>
+            <div class="success hide">
+                <span class="fas fa-exclamation-circle"></span>
+                <span class="msg">{{ Session::pull('success') }}</span>
+                <div class="close-btn">
+                    <span class="fas fa-times"></span>
+                </div>
+            </div>
+                    @endif
+             
+              <!---/ALERT BOX --->
     </div>
     <div class="page-header">
         <h3 class="page-title black">Rider Application</h3>
@@ -54,7 +66,7 @@
                             <tr>
                                  <a href="">
                                 <td>
-                                    <img class="circle mr-2" src="{{ url('uploads/merchant_documents/'.$partner->logo) }}" alt="">
+                                    <img class="circle mr-2" src="{{ url('uploads/'. 'merchant_documents'. '/'. $partner->merchant_id. '/'. $partner->logo) }}" alt="">
                                    {{ $partner->business_name}}
                                 </td>
                                 <td>{{ $partner->business_type }}</td>
@@ -105,7 +117,7 @@
                                 <div class="dropdown">
                                     <a href="#" class="action-icon" data-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-vertical black-icon" aria-hidden="true"></i></a>
                                     <div class="bg-white dropdown-menu dropdown-menu-right">
-                                        <a class="action-btn dropdown-item black" href=""><i class="fa fa-pencil m-r-5"></i> View</a>
+                                        <a class="action-btn dropdown-item black" href="/superadmin_merchantproile/{{  $partner->merchant_id }}"><i class="fa fa-pencil m-r-5"></i> View</a>
                                         <a class="action-btn dropdown-item black" href=""><i class="fa fa-trash-o m-r-5"></i> Delete</a>
                                     </div>
                                 </div>

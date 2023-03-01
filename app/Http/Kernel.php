@@ -43,6 +43,37 @@ class Kernel extends HttpKernel
             'throttle:api',
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
         ],
+        'superadminLogin' =>[
+            \App\Http\Middleware\SuperadminLogIn::class,
+        ],
+        'preventBack' =>[
+            \App\Http\Middleware\PreventBrowserBackHistory::class,
+        ],
+        'preventBackLogin' =>[
+            \App\Http\Middleware\PreventBackLogIn::class,
+        ],
+        'adminLogin' => [
+            \App\Http\Middleware\AdminLogin::class,
+        ],
+        'adminPreventBack' =>[
+            \App\Http\Middleware\AdminPreventback::class,
+        ],
+        'RiderStep1' =>[
+            \App\Http\Middleware\RiderStep1::class,
+        ],
+        'RiderStep2' =>[
+            \App\Http\Middleware\RiderStep2::class,
+        ],
+        'RiderStep3' =>[
+            \App\Http\Middleware\RiderStep3::class,
+        ],
+        'RiderStep4' =>[
+            \App\Http\Middleware\RiderStep4::class,
+        ],
+         'RiderStepFinal' =>[
+            \App\Http\Middleware\RiderStepFinal::class,
+        ],
+        
     ];
 
     /**
@@ -63,5 +94,6 @@ class Kernel extends HttpKernel
         'signed' => \App\Http\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+
     ];
 }

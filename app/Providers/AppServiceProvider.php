@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {   
-        view()->composer(['admin.index', 'admin.dashboard', 'admin.admin_orders', 'admin.category'],function ($view){
+        view()->composer(['Admin_product','admin.index', 'admin.dashboard', 'admin.admin_orders', 'admin.category'],function ($view){
          $logIndata = array();
         if(Session::has('loginID')){
             $logIndata = tbl_partner_accounts::where('merchant_id', '=', Session::get('loginID'))->first();

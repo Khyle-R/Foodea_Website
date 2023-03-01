@@ -8,6 +8,7 @@ use App\Models\tbl_merchant_info;
 use App\Models\tbl_partner_accounts;
 use App\Models\tbl_category;
 use App\Models\tbl_voucher;
+use App\Models\tbl_activitylog;
 use Carbon\Carbon; // to retrieve current Date
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
@@ -25,8 +26,21 @@ class Admin_product extends Controller
     
    public function logout(){
     if(Session::has('loginID')){
-        Session::pull('loginID');
+        $user = tbl_partner_accounts::where('merchant_id', Session::get('loginID'))
+        ->first();
+        if($user)
+        {
+        $log = new tbl_activitylog();
+                $log->merchant_id = $user->merchant_id;
+                $log->email = $user->email;
+                $log->name = $user->firstname. ' ' .$user->lastname;
+                $log->description = 'Has Log Out';
+                $res = $log->save();
+                if($res){
+       Session::pull('loginID');
         return redirect('/login');
+                }
+        }
     }
 
    }
@@ -127,16 +141,16 @@ class Admin_product extends Controller
         }
     }
 
-    public function updateProduct($id)
-    {
-        $update = DB::table('tbl_product')->where('product_id','=', $id)->first();
+    // public function updateProduct($id)
+    // {
+    //     $update = DB::table('tbl_product')->where('product_id','=', $id)->first();
     
         
-        $this->product_name =$update->product_name;
+    //     $this->product_name =$update->product_name;
 
 
-      //return view('admin.product', ['update' => $update]);
-    }
+    //   //return view('admin.product', ['update' => $update]);
+    // }
 
     public  function updateProductInfo(Request $request)
     {
@@ -179,18 +193,8 @@ class Admin_product extends Controller
 
     public function addProduct(Request $request)
     {
-        $request->validate([
-            'product_name'=> 'required',
-            'category'=> 'required',
-            'type'=> 'required',
-            'description'=> 'required',
-            'product_image' => 'required',
-            'price'=> 'required',
-            'stock'=> 'required',
-            'status'=> 'required'
-        ]);
 
-
+        
         $addProd=new tbl_product();
 
        
@@ -205,7 +209,7 @@ class Admin_product extends Controller
 
             
 
-                $addProd->merchant_id = session('merchant_id');
+                $addProd->merchant_id = session('loginID');
                 $addProd->product_name =$request->product_name;
                 $addProd->stock = $request->stock;
                 $addProd->product_image =$image_p;
@@ -216,9 +220,7 @@ class Admin_product extends Controller
                 $addProd->description = $request->description;
                 $addProd->ingredients= $request->ingredients;
     
-                $currentTime = Carbon::now();// to get the current time
-    
-                $addProd->date = $currentTime;
+              
                
   
             }
@@ -229,13 +231,6 @@ class Admin_product extends Controller
         
     }
 
-    public function infoAccount()
-    {
-        $id=session('loginID');
-
-        $accountInfo = DB::table('tbl_merchant_account')->where('merchant_id','=', $id)->first();
-        return view('admin.admin_personalinformation1');
-    }
 
     //CATEGORY
     public function addCategory(Request $request)
@@ -244,6 +239,7 @@ class Admin_product extends Controller
 
         $addCategory->main_category = $request->categoryName;
         $addCategory->description = $request->description;
+        $addCategory->merchant_id = session('loginID');
 
         $addCategory->save();
         
@@ -365,36 +361,36 @@ class Admin_product extends Controller
 
 // Admin order Show the Table
     public function Orders(){
-        $orders = DB::table('tbl_orders')->get();
+        $orders = DB::table('tbl_orders')->where('merchant_id', '=', session('loginID'))->get();
 
-        $TotalOrders = DB::table('tbl_orders')->count();
-        $PendingOrders = DB::table('tbl_orders')->where('status','Pending')->count();
-        $PreparingOrders = DB::table('tbl_orders')->where('status','Preparing')->count();
-        $DeliveringOrders = DB::table('tbl_orders')->where('status','Delivering')->count();
-        $DeliveredOrders = DB::table('tbl_orders')->where('status','Delivered')->count();
+        $TotalOrders = DB::table('tbl_orders')->where('merchant_id', '=', session('loginID'))->count();
+        $PendingOrders = DB::table('tbl_orders')->where([['status','Pending'],['merchant_id', '=', session('loginID')]])->count();
+        $PreparingOrders = DB::table('tbl_orders')->where([['status','Preparing'],['merchant_id', '=', session('loginID')]])->count();
+        $DeliveringOrders = DB::table('tbl_orders')->where([['status','Delivering'],['merchant_id', '=', session('loginID')]])->count();
+        $DeliveredOrders = DB::table('tbl_orders')->where([['status','Delivered'],['merchant_id', '=', session('loginID')]])->count();
        
 
         return view('admin.admin_orders',['orders' => $orders, 'TotalOrders' => $TotalOrders, 'PendingOrders' => $PendingOrders, 'PreparingOrders' => $PreparingOrders, 'DeliveringOrders' => $DeliveringOrders, 'DeliveredOrders' => $DeliveringOrders]);
 
     }
     public function OrderPending(){
-        $pending_order = DB::table('tbl_orders')->where('status','=', 'Pending')->get();
+        $pending_order = DB::table('tbl_orders')->where([['status','=', 'Pending'],['merchant_id', '=', session('loginID')]])->get();
 
         return view ('admin.admin_orderpending', ['pending_order' => $pending_order]);
     }
     public function OrderPreparing(){
-        $preparing_order = DB::table('tbl_orders')->where('status','=', 'Preparing')->get();
+        $preparing_order = DB::table('tbl_orders')->where([['status','=', 'Preparing'],['merchant_id', '=', session('loginID')]])->get();
 
         return view ('admin.admin_orderpreparing', ['preparing_order' => $preparing_order]);
     }
     public function OrderDelivering(){
-        $delivering_order = DB::table('tbl_orders')->where('status','=', 'Delivering')->get();
+        $delivering_order = DB::table('tbl_orders')->where([['status','=', 'Delivering'],['merchant_id', '=', session('loginID')]])->get();
 
         return view ('admin.admin_orderdelivering', ['delivering_order' => $delivering_order]);
     }
 
     public function OrderDelivered(){
-        $delivered_order = DB::table('tbl_orders')->where('status','=', 'Delivered')->get();
+        $delivered_order = DB::table('tbl_orders')->where([['status','=', 'Delivered'],['merchant_id', '=', session('loginID')]])->get();
 
         return view ('admin.admin_orderdelivered', ['delivered_order' => $delivered_order]);
     }
@@ -402,7 +398,7 @@ class Admin_product extends Controller
 // VOUCHER 
 //VIEW
     public function VoucherIndex(){
-        $voucher = DB::table('tbl_voucher')->get();
+        $voucher = DB::table('tbl_voucher')->where('merchant_id', '=', session('loginID'))->get();
 
         $voucherCount = DB::table('tbl_voucher')->count();
         $EnableVoucher = DB::table('tbl_voucher')->where('status','Enable')->count();
@@ -413,13 +409,13 @@ class Admin_product extends Controller
     }
 
     public function EnableVoucher(){
-        $enableVoucher = DB::table('tbl_voucher')->where('status','=', 'Enable')->get();
+        $enableVoucher = DB::table('tbl_voucher')->where([['status', '=', 'Enable' ],['merchant_id',session('loginID')]])->get();
 
         return view ('admin.voucher_enable', ['enableVoucher' => $enableVoucher]);
     }
 
     public function DisableVoucher(){
-        $disableVoucher = DB::table('tbl_voucher')->where('status','=', 'Disable')->get();
+        $disableVoucher = DB::table('tbl_voucher')->where([['status', '=', 'Disable'],['merchant_id',session('loginID')]])->get();
 
         return view ('admin.voucher_disable', ['disableVoucher' => $disableVoucher]);
     }
@@ -456,6 +452,7 @@ class Admin_product extends Controller
        
         $addVoucher = new tbl_voucher();
 
+        $addVoucher->merchant_id = session('loginID');
         $addVoucher->voucher_name = $request->voucherName;
         $addVoucher->voucher_code =  $quickpass = substr( str_shuffle( str_repeat( 'abcdefghijklmnopqrstuvwxyz0123456789', 10 ) ), 0, 10 ); //Generate default codes
         $addVoucher->description = $request->description;
@@ -478,10 +475,36 @@ class Admin_product extends Controller
     }
 
     public function ClaimedVoucher(Request $request){
-        $claimedVoucher = DB::table('tbl_claimed')->where('voucher_code','=', $request->voucher_code)->get();
+        $claimedVoucher = DB::table('tbl_claimed')->where('voucher_code', $request->voucher_code)->get();
 
         return view ('admin.voucher_claimed', ['claimedVoucher' => $claimedVoucher]);
     }
 
+    public function History()
+    {
+        $history = DB::table('tbl_transaction')->get();
 
+        return view('admin.admin_history', ['history' => $history]);
+    }
+
+    public function ActivityLog(){
+
+        $log = tbl_activitylog::all()
+        ->where('merchant_id', Session::get('loginID'));
+        
+        return view('admin.admin_log', compact('log'));
+    }
+
+    public function AdminAccount(){
+        $id = Session::get('loginID');
+
+        $Data = tbl_partner_accounts::join('tbl_merchant_info', 'tbl_merchant_account.merchant_id', '=', 'tbl_merchant_info.merchant_id')
+    ->join('merchant_document', 'tbl_merchant_account.merchant_id', '=', 'merchant_document.merchant_id')
+    ->join('tbl_accepted_merchant', 'tbl_merchant_account.merchant_id', '=', 'tbl_accepted_merchant.merchant_id')
+    ->where('tbl_merchant_account.merchant_id', $id)
+    ->limit(1)
+    ->get();
+
+        return view('admin.admin_account', compact('Data'));
+    }
 }

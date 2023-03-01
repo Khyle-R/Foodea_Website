@@ -2,7 +2,19 @@
 @section('content')
 <div class="content-wrapper">
     <div class="row">
-
+        <!---ALERT BOX --->
+                    @if (Session::has('success'))
+                    <p style="display:none" class="popup"></p>
+            <div class="success hide">
+                <span class="fas fa-exclamation-circle"></span>
+                <span class="msg">{{ Session::pull('success') }}</span>
+                <div class="close-btn">
+                    <span class="fas fa-times"></span>
+                </div>
+            </div>
+                    @endif
+             
+              <!---/ALERT BOX --->
     </div>
     <div class="page-header">
         <h3 class="page-title black">Rider Application</h3>
@@ -55,7 +67,7 @@
                             <tr>
                                  <a href="">
                                 <td>
-                                    <img class="circle mr-2" src="{{ url('uploads/rider_documents/'.$rider->rider_photo) }}" alt="">
+                                    <img class="circle mr-2" src="{{ url(('uploads/'. 'rider_documents'. '/'.$rider->rider_id.  '/'). $rider->rider_photo) }}" alt="">
                                     {{ $rider->firstname. ' ' .$rider->lastname }}
                                 </td>
                                 <td>{{ $rider->vehicle_type }}</td>
@@ -105,7 +117,7 @@
                                 <div class="dropdown">
                                     <a href="#" class="action-icon" data-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-vertical black-icon" aria-hidden="true"></i></a>
                                     <div class="bg-white dropdown-menu dropdown-menu-right">
-                                        <a class="action-btn dropdown-item black" href=""><i class="fa fa-pencil m-r-5"></i> View</a>
+                                        <a class="action-btn dropdown-item black" href="/application_profile/{{ $rider->rider_id }}"><i class="fa fa-pencil m-r-5"></i> View</a>
                                         <a class="action-btn dropdown-item black" href=""><i class="fa fa-trash-o m-r-5"></i> Delete</a>
                                     </div>
                                 </div>
@@ -152,6 +164,7 @@
                             <form method="post" action="{{ route('Updatemodal') }}">
                                 @csrf
                             <input type="hidden" name="status" value="Accepted">
+                             <input type="hidden" name="rider_id" value="{{ $rider->rider_id }}">
                             <input type="hidden" name="id" value="{{ $rider->rider_application_id }}">
                         </div>
                         <div class="modal-footer">

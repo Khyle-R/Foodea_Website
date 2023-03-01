@@ -28,12 +28,13 @@
               <img src="image/foodea.png" style="width: 50px">FOODEA
             </a>
           </li>
-              <li class="nav-item nav-category">Rider Application</li>
-              <li>Step 1 &nbsp;&nbsp;&nbsp;Personal Information</li>
-              <li>Step 2 &nbsp;&nbsp;&nbsp;Business Information</li>
-              <li>Step 3 &nbsp;&nbsp;&nbsp;Verify Email Address</li>
-              <li class="red">Step 4 &nbsp;Requirements</li>
-              <li>Step 5 &nbsp;Application Status</li>
+                           <li>{{ Session::get('status') }}</li>
+               <li class="nav-item nav-category">Rider Application</li>
+          <li>Step 1 &nbsp;&nbsp;&nbsp;Personal Information</li>
+          <li>Step 2 &nbsp;&nbsp;&nbsp;Verify Phone Number</li>
+          <li>Step 3 &nbsp;&nbsp;&nbsp;Vehicle Information</li>
+          <li>Step 4 &nbsp;Requirements</li>
+          <li class="red">Step 5 &nbsp;Application Status</li>  
             </ul>
       </nav>
 
@@ -51,7 +52,7 @@
 
             <div class="form-group">
               <div class="col-auto d-flex justify-content-center">
-                <button Value="submit" type="submit" class="btn btn-danger w-50">Done</button>
+                <a href="/rider_applicationstatus" class="btn btn-danger w-50 px-2">Application Status</a>
               </div>
               </div>
               </div>

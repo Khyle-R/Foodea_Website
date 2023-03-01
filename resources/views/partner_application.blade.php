@@ -89,12 +89,12 @@
             </div>
 
             <div class="form-group">
-            <label>Suffix</label>
+            <label>Suffix<a style="color:#BD9140;font-size: 12px;"> (Optional)</a></label>
             <input type="text" name="suffix" class="form-control form-control-lg"/>
             </div>
 
             <div class="form-group">
-            <label>Email Address <a style="color:#FDC55E;font-size: 10px;">(For Email verification)</a></label>
+            <label>Email Address <a style="color:#BD9140;font-size: 12px;"> (For Email verification)</a></label>
             <input type="text" name="email" class="form-control form-control-lg"/>
             <span
             style="color:red;">
@@ -119,7 +119,7 @@
 
             <div class="form-group">
             <label for="password">Confirm Password</label>
-            <input type="password" id="conpassword" class="form-control form-control-lg" >
+            <input type="password" name="password_confirmation" id="password_confirmation" class="form-control form-control-lg" >
             </div>
             
              <br><br>

@@ -32,8 +32,8 @@
               <li>Step 1 &nbsp;&nbsp;&nbsp;Personal Information</li>
               <li>Step 2 &nbsp;&nbsp;&nbsp;Business Information</li>
               <li>Step 3 &nbsp;&nbsp;&nbsp;Verify Email Address</li>
-              <li class="red">Step 4 &nbsp;Requirements</li>
-              <li>Step 5 &nbsp;Application Status</li>
+              <li>Step 4 &nbsp;Requirements</li>
+              <li class="red">Step 5 &nbsp;Application Status</li>
             </ul>
       </nav>
 
@@ -51,7 +51,7 @@
 
             <div class="form-group">
               <div class="col-auto d-flex justify-content-center">
-                <button Value="submit" type="submit" class="btn btn-danger w-50">Done</button>
+                <a href="/partner_applicationstatus" class="btn btn-danger w-50 py-2">Application Status</a>
               </div>
               </div>
             </div>
@@ -59,6 +59,7 @@
         </div>
       </div>
     </div>
+    
     <!-- Scroller -->
     </div>
 

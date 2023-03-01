@@ -31,6 +31,7 @@
 
    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.2/css/dataTables.bootstrap5.min.css">
    
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
     <link
       rel="stylesheet"
       href="{{ asset('assets/vendors/owl-carousel-2/owl.theme.default.min.css') }}"
@@ -45,6 +46,7 @@
     <link rel="shortcut icon" href="{{ url('/image/foodea1.png') }}" />
   </head>
   <body>
+    
     <div class="container-scroller">
       <!-- partial:partials/_sidebar.html -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
@@ -73,7 +75,7 @@
                 <div class="profile-name">
 
 
-                  <h5 class="mb-0 font-weight-normal">Admin</h5>
+                  <h5 class="mb-0 font-weight-normal white-font">Admin</h5>
 
                   <span>Verified</span>
                 </div>
@@ -173,7 +175,14 @@
               <span class="menu-title">Merchants</span>
             </a>
           </li>
-          
+           <li class="nav-item menu-items">
+            <a class="nav-link" href="/superadmin_sales">
+              <span class="menu-icon">
+                <i class="mdi mdi-cash-usd"></i>
+              </span>
+              <span class="menu-title">Sales</span>
+            </a>
+          </li>
           <li class="nav-item menu-items">
             <a class="nav-link" href="/superadmin_log">
               <span class="menu-icon">
@@ -182,15 +191,15 @@
               <span class="menu-title">Activity Log</span>
             </a>
           </li>
+          
            <li class="nav-item menu-items">
-            <a class="nav-link" href="#">
+            <a class="nav-link" href="/superadmin_account">
               <span class="menu-icon">
                 <i class="mdi mdi-account-box"></i>
               </span>
               <span class="menu-title">Account</span>
             </a>
           </li>
-         
         </ul>
       </nav>
       <!-- partial -->
@@ -281,12 +290,12 @@
                   <p class="p-3 mb-0 text-center">See all projects</p>
                 </div>
               </li>
-              <li class="nav-item nav-settings d-none d-lg-block">
+              {{-- <li class="nav-item nav-settings d-none d-lg-block">
                 <a class="nav-link" href="#">
                   <i class="mdi mdi-view-grid"></i>
                 </a>
-              </li>
-              <li class="nav-item dropdown border-left">
+              </li> --}}
+              {{-- <li class="nav-item dropdown border-left">
                 <a
                   class="nav-link count-indicator dropdown-toggle"
                   id="messageDropdown"
@@ -353,8 +362,8 @@
                   <div class="dropdown-divider"></div>
                   <p class="p-3 mb-0 text-center">4 new messages</p>
                 </div>
-              </li>
-              <li class="nav-item dropdown border-left">
+              </li> --}}
+              <li class="nav-item dropdown">
                 <a
                   class="nav-link count-indicator dropdown-toggle"
                   id="notificationDropdown"
@@ -362,13 +371,15 @@
                   data-toggle="dropdown"
                 >
                   <i class="mdi mdi-bell"></i>
-                  <span class="count bg-danger"></span>
+                        <span class="count bg-success"></span>
+                  {{-- <span class="count bg-danger"></span> --}}
                 </a>
                 <div
                   class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
                   aria-labelledby="notificationDropdown"
                 >
-                  <h6 class="p-3 mb-0">Notifications</h6>
+                  <h6 class="p-3 mb-0 white-font">Notifications</h6>
+            
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item preview-item">
                     <div class="preview-thumbnail">
@@ -435,7 +446,7 @@
                   class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
                   aria-labelledby="profileDropdown"
                 >
-                  <h6 class="black p-3 mb-0">Profile</h6>
+                  <h6 class="p-3 mb-0 white-font">Profile</h6>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item preview-item">
                     <div class="preview-thumbnail">
@@ -475,6 +486,19 @@
         </nav>
         <!-- partial -->
         <div class="main-panel">
+            <!-- Loader -->
+      <div id="loader-wrapper">
+        <div id="loader">
+          <div class="loader-ellips">
+            <span class="loader-ellips__dot"></span>
+            <span class="loader-ellips__dot"></span>
+            <span class="loader-ellips__dot"></span>
+            <span class="loader-ellips__dot"></span>
+          </div>
+        </div>
+      </div>
+      <!-- /Loader -->
+      
           @yield('content')
         <!-- main-panel ends -->
       </div>
@@ -507,6 +531,7 @@
     <script src="{{ asset('assets/js/dashboard.js') }}"></script>
     <script src="{{ asset('assets/js/chart.js') }}"></script>
     <script src="{{ asset('assets/js/app.js') }}"></script>
+    <script src="{{ asset('assets/js/toast.js') }}"></script>
     <!-- End custom js for this page -->
   </body>
 </html>

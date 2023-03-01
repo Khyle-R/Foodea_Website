@@ -4,112 +4,239 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/Rider_ApplicationStatus.css" />
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
     <title>FOODEA</title>
     <link rel="shortcut icon" href="images/foodea.png" type="image">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
-  </head>
+  <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/superadmin.css') }}" />
+      <link rel="stylesheet" type="text/css" href="css/partner_application2.css" />
 
   <body>
-      <div class="container">
-        <div class="left">
-          <div class="left-content">
-            <div class="back">
-              <a href="partner_landing.html"><img src="images/vector.png" /></a>
-              <p>Back to website</p>
-            </div>
-            <div class="logo">
-              <a href="#"><img src="images/foodea.png" /></a>
-              <h2>FOODEA</h2>
-            </div>
 
-            <ul>
-              <h1>Merchant Application</h1>
-            <li><a href="rider_application.html">Step 1 &nbsp;&nbsp;&nbsp; Personal Information</a></li>
-            <li><a href="rider_application2.html">Step 2 &nbsp;&nbsp;&nbsp; Verify Phone Number</a></li>
-            <li><a href="rider_application3.html">Step 3 &nbsp;&nbsp;&nbsp; Vehicle Information</a></li>
-            <li><a href="rider_application4.html">Step 4 &nbsp;&nbsp;&nbsp; Requirements</a></li>
-            <li><a href="Rider_ApplicationStatus.html">Step 5 &nbsp;&nbsp;&nbsp; Application Status</a></li>
+       <div class="container-scroller">
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <ul class="nav">
+          <li class="nav-item back">
+              <div class="back-logo">
+                  <a href="/"> <img src="image/vector.png" alt=""/> </a>
+                  <h5 class="mb-0">Back to website</h5>
+              </div>
+          </li>
+          <li class="nav-item nav-category">
+            <a class="nav-link" href="/">
+              <img src="image/foodea.png" style="width: 50px">FOODEA
+            </a>
+          </li>
+              <li class="nav-item nav-category">Merchant Application</li>
+              <li>Step 1 &nbsp;&nbsp;&nbsp;Personal Information</li>
+              <li>Step 2 &nbsp;&nbsp;&nbsp;Business Information</li>
+              <li>Step 3 &nbsp;&nbsp;&nbsp;Verify Email Address</li>
+              <li>Step 4 &nbsp;Requirements</li>
+              <li class="red">Step 5 &nbsp;Application Status</li>
             </ul>
-          </div>
-        </div>
+      </nav>
 
-        <div class="right">
-          <div class="right-content">
-              <h2>Application Status</h2>
-            <div class="content">
-                      <div class="card">
-                        <div class="wrapper">
-                          {{-- <img src="images/download.jpg"> --}}
+      <div class="sign-form">
+     
+           <div class="content-wrapper">
+              <div class="right">
+               <h2>Application Status</h2>
+                 <div class="row px-3">
+                          
                         </div>
-                        <span>Juan Dela Cruz<br><samp>Motorcycle</samp></span>
-                        <button type="button" class="btn btn-warning">Waiting for Approval</button>
-                      </div>
-                    <br><br><br>
-                    <p>Rider Information</p><br><br>
-                    <hr><br><br>
-                     @if (Session::has('rider_id'))
-                   <input type="hidden" name="rider_id" value=" {{ Session::get('rider_id') }}">
-                      
-                   @endif
+                    
+                         @foreach ($Data as $partner)
+                        <div class="row px-3">
+                            <div class="col-12 grid-margin">
+                                <div class="card">
+                                    <div class="card-body">
 
-                        <div class="col">
-               
-                          <label>First Name</label>
-                          <div class="col-1"></div>
-                          <br><br><br>
-                          <label>Middle Name</label>
-                          <div class="col-1"></div>
-                          <br><br><br>
-                          <label>Last Name</label>
-                          <div class="col-2"></div>
-                          <br><br><br>
-                          <label>Email Address</label>
-                          <div class="col-3"></div>
-                          <br><br><br>
-                          <label>Mobile Number</label>
-                          <div class="col-4"></div>
-                          <label>City</label>
-                          <div class="col-3"></div>
-                          <br><br><br>
-                          <br><br><br><br><br>
+                                <div class="container-fluid px-5">
+
+                                  <div class="row align-items-center my-5">
+                                    <div class="col-md-6 ml-5">
+                                      <div class="row align-items-center ">
+                                   
+                                      <img class="circle img-responsive mr-3" width="170" height="160" src="{{ url('uploads/'. 'merchant_documents'. '/'. $partner->merchant_id. '/'. $partner->logo) }}" alt="">
+                                      <div class="col flex-wrap">
+                             
+                                    
+                            
+                                      <h2 class="red-name"> {{ $partner->firstname . " ". $partner->lastname  }} </h2>
+                                      <h2 class="sub-text">{{ $partner->vehicle_type }}</h2>
+                                      </div>
+                                      </div>
+                                    </div> 
+                                       
+
+                                    <div class="col-sm-5">
+                                      <div class="card-pending px-3">
+                                      <div class="curve card-body text-center">
+                                      <h4 class="yellow">{{ $partner->status }}</h4>
+                                      </div>
+                                      </div>
+                                    </div>  
+                                  </div>  
+
+                                  <div class="row justify-content-between">
+                                    <div class="col-sm-5 ml-sm-5">
+                                      <h4 class="title-border flex-wrap mb-4">Personal Information</h4>
+                       
+                                       <div class="row px-3">
+                                        <label class="black width">First Name</label>
+                                        <p class="black ml-5">{{ $partner->firstname }}</p>
+                                      </div>
+                                       <div class="row px-3">
+                                        <label class="black width">Middle Name</label>
+                                        <p class="black ml-5">{{ $partner->middlename }}</p>
+                                      </div>
+                                       <div class="row px-3">
+                                        <label class="black width">Last Name</label>
+                                        <p class="black ml-5">{{ $partner->lastname }}</p>
+                                      </div>
+                                       <div class="row px-3">
+                                        <label class="black width">Email Address</label>
+                                        <p class="black ml-5">{{ $partner->email }}</p>
+                                      </div>
+                                       <div class="row px-3">
+                                        <label class="black width">Mobile Number</label>
+                                        <p class="black ml-5">{{ $partner->store_number }}</p>
+                                      </div>
+                                     
+                                       <div class="row px-3">
+                                        <label class="black width">City</label>
+                                        <p class="black ml-5">{{ $partner->city }}</p>
+                                      </div>
+                                       <div class="row px-3">
+                                        <label class="black width">Barangay</label>
+                                        <p class="black ml-5">{{ $partner->barangay }}</p>
+                                      </div>
+                                       <div class="row px-3">
+                                        <label class="black width">Address</label>
+                                        <p class="black ml-5 spacing">{{ $partner->address }}</p>
+                                      </div>
+                                    </div>
+
+                                     <div class="col-sm-5 mr-5">
+                                      <h4 class="title-border mb-4">Business Information</h4>
+                                      <div class="row px-3">
+
+                                        <label class="black width">Business Name</label>
+                                        <p class=" black ml-5">{{ $partner->business_name }}</p>
+                                      </div>
+                                        <div class="row px-3">
+                                        <label class="black width">Business Type</label>
+                                        <p class="black ml-5">{{ $partner->business_type }}</p>
+                                      </div>
+                                        <div class="row px-3">
+                                        <label class="black width">Date Founded</label>
+                                        <p class="black ml-5">{{ $partner->date_founded }}</p>
+                                      </div>
+                                        <div class="row px-3">
+                                        <label class="black width">Country</label>
+                                        <p class="black ml-5">{{ $partner->country }}</p>
+                                      </div>
+                                       
+                                      <div class="row px-3">
+                                        <label class="black width">City</label>
+                                        <p class="black ml-5">{{ $partner->city }}</p>
+                                      </div>
+                                      <div class="row px-3">
+                                        <label class="black width">Registered Barangay</label>
+                                        <p class="black ml-5">{{ $partner->barangay }}</p>
+                                      </div>
+                                      <div class="row px-3">
+                                        <label class="black width">Registered Street</label>
+                                        <p class="black ml-5">{{ $partner->street }}</p>
+                                      </div>
+                                      <div class="row px-3">
+                                        <label class="black width">Registered Postal Code</label>
+                                        <p class="black ml-5">{{ $partner->postal_code }}</p>
+                                      </div>
+                                       <div class="row px-3">
+                                        <label class="black width">Store Number</label>
+                                        <p class="black ml-5">{{ $partner->store_number }}</p>
+                                      </div>
+                                       <div class="row px-3">
+                                        <label class="black width">Store Email</label>
+                                        <p class="black ml-5">{{ $partner->store_email }}</p>
+                                      </div>
+                                       <div class="row px-3">
+                                        <label class="black width">Business Address</label>
+                                        <p class="black ml-5 spacing">{{ $partner->address }}</p>
+                                      </div>
+                                       <div class="row px-3">
+                                        <label class="black width">Mission</label>
+                                        <p class="black ml-5 spacing">{{ $partner->mission }}</p>
+                                      </div>
+                                       <div class="row px-3">
+                                        <label class="black width">Store Vision</label>
+                                        <p class="black ml-5 spacing">{{ $partner->vision }}</p>
+                                      </div>
+                                      
+                                    </div>
+                                  </div>
+
+                                  <div class="row align-items-center justify-content-between mt-5">
+                                    <div class="col-sm-5 ml-sm-5">
+                                      <h4 class="title-border flex-wrap mb-4">Uploaded Documents</h4>
+                       
+                                       <div class="row px-3 mt-2">
+                                        <label class="black width">Business Logo</label>
+                                             <p class="black ml-5">{{ $partner->logo }}</p>
+                                      </div>
+                                       <div class="row px-3 mt-2">
+                                        <label class="black width">Business Menu</label>
+                                          <p class="black ml-5">{{ $partner->menu_photo }}</p>
+                                      </div>
+                                       <div class="row px-3 mt-2">
+                                        <label class="black width">Business Permit</label>
+                                          <p class="black ml-5">{{ $partner->business_permit }}</p>
+                                      </div>
+                                       <div class="row px-3 mt-2">
+                                        <label class="black width">BIR Certificate</label>
+                                          <p class="black ml-5">{{ $partner->bir_cert }}</p>
+                                      </div>
+                                       <div class="row px-3 mt-2">
+                                        <label class="black width">Barangay Permit</label>
+                                         <p class="black ml-5">{{ $partner->barangay_permit }}</p>
+                                      </div>
+                                       <div class="row px-3 mt-2">
+                                        <label class="black width">DTI Certificate</label>
+                                         <p class="black ml-5">{{ $partner->dti_cert }}</p>
+                                      </div>
+                                       <div class="row px-3 mt-2">
+                                        <label class="black width">Front License ID</label>
+                                         <p class="black ml-5">{{ $partner->front_license }}</p>
+                                      </div>
+                                      <div class="row px-3 mt-2">
+                                        <label class="black width">Back License ID</label>
+                                         <p class="black ml-5">{{ $partner->back_license }}</p>
+                                      </div>
+                                       @endforeach
+
+                                    </div>
+                                     <div class="col-sm-5 ml-sm-5">
+                                   <div class="row px-3 mt-2">
+                                    <a href="/" class="button-red btn btn-lg" data-toggle="modal" data-target="#exampleModalCenter">Done</a>
+                                 </div>
+                                 
+                                  </div> 
+                                  
+                                  </div>
+
+                                </div>      
+                                </div>
+                            </div>
+                            </div>
                         </div>
-                        <div class="form"> 
-                        <p>Uploaded Documents</p><br><br>
-                        <hr><br><br>                           
-                            <label>Photo of your Vehicle</label>
-                            <br><br><br>
-                            <label>Photo of your drivers license ID</label>
-                            <br><br><br>
-                            <label>Certificate of Registration and <br>
-                              Official Receipt of Vehicle Registration</label>
-                            <br><br><br>
-                            <label>Drug Test Result</label>
-                            {{-- <i class="bi bi-check-circle-fill"></i> --}}
-                          </div>
-                      <p>Vehicle Information</p><br><br>
-                        <hr><br><br>
-                          <div class="col">
-                            <label>Type</label>
-                            <div class="col-5"></div>
-                            <br><br><br>
-                            <label>Year model</label>
-                            <div class="col-6"></div>
-                            <br><br><br>
-                            <label>Plate Number</label>
-                            <div class="col-7"></div>
-                            <br><br><br>
-                            <label>Engine Number</label>
-                            <div class="col-8"></div>
-                          </div>
-                 
-                  <br><br><br>
-            </div>
-          </div>
-        </div>
-      </div>
+                    </div>
+    <!-- Scroller -->
+    </div>
+
 
   </body>
 </html>

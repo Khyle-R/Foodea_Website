@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1" name="viewport" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />  
     <title>FOODEA Contact Us</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css" rel="stylesheet" />
@@ -16,6 +16,12 @@
     />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link rel="stylesheet" type="text/css" href="css/contact.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+
 </head>
 
 <body>
@@ -24,7 +30,7 @@
     <!--- NAVBAR -->
     <nav class="navbar navbar-expand-lg px-2 mx -2 px-xs-3 px-md-4 px-lg-5 mx-xs-3 mx-md-4 mx-lg-5">
       <div class="container-fluid px-3">
-        <a href="#" class="navbar-brand">
+        <a href="/" class="navbar-brand">
           <img src="image/foodea1.png" alt="" />
           <span>FOODEA</span>
         </a>
@@ -81,13 +87,13 @@
               </li>
             </ul>
             <a
-            href="/login"
+            href="/account_type"
             class="text-secondary mt-2 mx-5"
             style="text-decoration: none;">
               Signup
             </a>
             <a
-              href="/login"
+              href="/login_type"
               class="btn btn-danger btn-sm py-2 px-5 rounded"
             >
               Login
@@ -96,13 +102,14 @@
         </div>
       </div>
     </nav>
+    
     </div>
     <!-- END OF NAVBAR -->
     <div class="container">
 
     <!-- SECTION 1 -->
-    <section class="d-flex justify-content-center ">
-      <div class="content mx-auto d-flex flex-column align-items-center gap-4 w-75 pt-4 pb-2 py-xs-3 py-md-4 py-lg-5">
+    <section class="d-flex justify-content-center " data-aos="fade-up">
+      <div class="content1 mx-auto d-flex flex-column align-items-center gap-4 pt-4 pb-2 py-xs-3 py-md-4 py-lg-5">
         <h1 class="text-center">You’ve got questions?<br>We’ve got answers</h1>
         <div class="paragraph1 w-75"><p class="text-center">Want to know more about Foodea? Have a question that's not answered on our website? Please chat to our friendly team.</p></div>
       </div>
@@ -110,7 +117,7 @@
     <!-- END SECTION 1 -->
 
     <!-- SEARCH BAR -->
-    <div class="input-box container d-flex justify content align-items-center mx-auto">
+    <div class="input-box container d-flex justify content1 align-items-center mx-auto" data-aos="fade-up">
       <i class="uil uil-search"></i>
       <input type="text" placeholder="Search" />
       <button class="button">Search</button>
@@ -120,7 +127,7 @@
     <!-- ACCORDITION -->
     <div class="accordion accordion-flush pt-3 mx-auto" id="accordionExample">
     <div class="accordion accordion-flush" id="accordionFlushExample">
-  <div class="accordion-item">
+  <div class="accordion-item" data-aos="fade-up">
     <h2 class="accordion-header" id="flush-headingOne">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
       How does Foodea generate its recommendations?
@@ -130,7 +137,7 @@
       <div class="accordion-body">Foodea uses a state-of-the-art algorithm that takes into account your dietary restrictions, favorite cuisines, and even your location to provide you with personalized meal suggestions.</div>
     </div>
   </div>
-  <div class="accordion-item">
+  <div class="accordion-item" data-aos="fade-up">
     <h2 class="accordion-header" id="flush-headingTwo">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
       Can I save my favorite meals for easy access?
@@ -140,7 +147,7 @@
       <div class="accordion-body">Yes, Foodea allows you to save your favorite meals for easy access in the "Favorites" section..</div>
     </div>
   </div>
-  <div class="accordion-item">
+  <div class="accordion-item" data-aos="fade-up">
     <h2 class="accordion-header" id="flush-headingThree">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
       How accurate are the map feature?
@@ -150,8 +157,7 @@
       <div class="accordion-body">Foodea uses your device location to provide you with accurate information, but the accuracy may depend on your device location settings and availability of information on that area.</div>
     </div>
   </div>
-
-  <div class="accordion-item">
+  <div class="accordion-item" data-aos="fade-up">
     <h2 class="accordion-header" id="flush-headingFour">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="fals e" aria-controls="flush-collapseFour">
       Can I use Foodea without an internet connection?
@@ -161,8 +167,7 @@
       <div class="accordion-body">No, Foodea requires an internet connection to function properly.</div>
     </div>
   </div>
-
-  <div class="accordion-item">
+  <div class="accordion-item" data-aos="fade-up">
     <h2 class="accordion-header" id="flush-headingFive">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
       Can I suggest a restaurant for Foodea to add?
@@ -175,24 +180,12 @@
 
 
 </div>
-
-    <!-- SECTION 2 -->
-    <section class="d-flex justify-content-center align-items-start">
-
-      <!-- IMAGE
-      <div class="content mx-auto d-flex flex-row pt-4 pb-2 py-xs-3 py-md-4 py-lg-5">
-        <img src="image/contact1.png" alt="calling a girl">
-      </div> -->
-
-    </section>
-    <!-- END SECTION 2 -->
-
     <!-- FORM -->
-    <div class="contact-container mx-auto d-flex flex-column-reverse  flex-md-row-reverse justify-content-center align-items-center gap-5">
-    <div class="left-side p-5">
+    <div class="contact-container mx-auto d-flex flex-row flex-column-reverse flex-lg-row-reverse justify-content-center align-items-center gap-5">
+    <div class="left-side pb-5" data-aos="fade-up">
         <img src="image/contact1.png" alt="calling a girl">
       </div>
-    <div class="contact-form m-4 my-md-5 mx-auto p-5">
+    <div class="contact-form m-4 my-md-5 mx-auto p-5" data-aos="fade-up">
     <div class="content">
       <div class="right-side">
         <div class="topic-text">Send us a message</div>
@@ -228,26 +221,63 @@
 
     </div>
     </div>
+    
+    <script src="dist/aos.js"></script>
+    <script>
+      document.querySelector('html').classList.remove('no-js');
+      if (!window.Cypress) {
+        const scrollCounter = document.querySelector('.js-scroll-counter');
+
+        AOS.init({
+          mirror: true
+        });
+
+        document.addEventListener('aos:in', function(e) {
+          console.log('in!', e.detail);
+        });
+
+        window.addEventListener('scroll', function() {
+          scrollCounter.innerHTML = window.pageYOffset;
+        });
+      }
+    </script>
 
     <!-- FOOTER -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="icon">
+    <div class="footer">
+        <div class="footer-content py-4 py-md-5">
+            <div class="icon pb-3 pb-md-0">
+                <a href="/" class="icon text-decoration-none">
                 <img src="image/foodea2.png" alt="">
-                <h1>FOODEA</h1>
-                <p>Follow Us</p>
+                <h1 class="text-light">FOODEA</h1>
+                </a>
+                <p class="text-center">Follow Us</p>
             </div>
             <div class="join">
                 <h2>Join Us</h2>
-                <p>Register as Rider</p>
-                <p>Be a Partner</p>
+                <a href="/rider_landing" class="text-reset text-decoration-none">
+                    <p>Register as Rider</p>
+                </a>
+                <a href="/partner_landing" class="text-reset text-decoration-none">
+                    <p>Be a Partner</p>
+                </a>
             </div>
             <div class="company">
                 <h2>Our Company</h2>
-                <p>About Us</p>
-                <p>Mission</p>
-                <p>Vision</p>
-                <p>Services</p>
+                <a href="/about" class="text-reset text-decoration-none">
+                    <p>About Us</p>
+                </a>
+                <a href="/contact" class="text-reset text-decoration-none">
+                    <p>Contact Us</p>
+                </a>
+                <a href="/" class="text-reset text-decoration-none">
+                    <p>Mission</p>
+                </a>
+                <a href="/" class="text-reset text-decoration-none">
+                    <p>Vision</p>
+                </a>
+                <a href="/" class="text-reset text-decoration-none">
+                    <p>Services</p>
+                </a>
             </div>
             <div class="footer-section">
                 <div class="inquire">
@@ -261,12 +291,12 @@
                 </div>
             </div>
         </div>
-        <div class="dark-footer">
-        <div class="dark-content">
-            <p>Copyright © 2022. All Rights Reserved</p>
+    </div>
+    <div class="dark-footer pt-3">
+        <div class="dark-content m-auto text-center">
+            <p class="">Copyright © 2022. All Rights Reserved</p>
         </div>
     </div>
-    </footer>
     <!-- END FOOTER -->
 
     <script src="js/script.js"></script>

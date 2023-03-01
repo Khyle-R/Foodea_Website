@@ -17301,7 +17301,7 @@ a.close.disabled {
     }
 
     .modal-sm {
-        max-width: 300px;
+        max-width: 650px;
     }
 }
 
@@ -17309,7 +17309,7 @@ a.close.disabled {
 
     .modal-lg,
     .modal-xl {
-        max-width: 90%;
+        max-width: 40%;
     }
 }
 

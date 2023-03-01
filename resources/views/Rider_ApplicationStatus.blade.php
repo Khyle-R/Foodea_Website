@@ -4,112 +4,255 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/Rider_ApplicationStatus.css" />
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
     <title>FOODEA</title>
     <link rel="shortcut icon" href="images/foodea.png" type="image">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
-  </head>
+  <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/superadmin.css') }}" />
+      <link rel="stylesheet" type="text/css" href="css/partner_application2.css" />
 
   <body>
-      <div class="container">
-        <div class="left">
-          <div class="left-content">
-            <div class="back">
-              <a href="partner_landing.html"><img src="images/vector.png" /></a>
-              <p>Back to website</p>
-            </div>
-            <div class="logo">
-              <a href="#"><img src="images/foodea.png" /></a>
-              <h2>FOODEA</h2>
-            </div>
 
-            <ul>
-              <h1>Merchant Application</h1>
-            <li><a href="rider_application.html">Step 1 &nbsp;&nbsp;&nbsp; Personal Information</a></li>
-            <li><a href="rider_application2.html">Step 2 &nbsp;&nbsp;&nbsp; Verify Phone Number</a></li>
-            <li><a href="rider_application3.html">Step 3 &nbsp;&nbsp;&nbsp; Vehicle Information</a></li>
-            <li><a href="rider_application4.html">Step 4 &nbsp;&nbsp;&nbsp; Requirements</a></li>
-            <li><a href="Rider_ApplicationStatus.html">Step 5 &nbsp;&nbsp;&nbsp; Application Status</a></li>
+       <div class="container-scroller">
+      <nav class="sidebar sidebar-offcanvas" id="sidebar">
+        <ul class="nav">
+          <li class="nav-item back">
+              <div class="back-logo">
+                  <a href="/"> <img src="image/vector.png" alt=""/> </a>
+                  <h5 class="mb-0">Back to website</h5>
+              </div>
+          </li>
+          <li class="nav-item nav-category">
+            <a class="nav-link" href="/">
+              <img src="image/foodea.png" style="width: 50px">FOODEA
+            </a>
+          </li>
+               <li class="nav-item nav-category">Rider Application</li>
+          <li>Step 1 &nbsp;&nbsp;&nbsp;Personal Information</li>
+          <li>Step 2 &nbsp;&nbsp;&nbsp;Verify Phone Number</li>
+          <li>Step 3 &nbsp;&nbsp;&nbsp;Vehicle Information</li>
+          <li>Step 4 &nbsp;Requirements</li>
+          <li class="red">Step 5 &nbsp;Application Status</li>  
             </ul>
-          </div>
-        </div>
+      </nav>
 
-        <div class="right">
-          <div class="right-content">
-              <h2>Application Status</h2>
-            <div class="content">
-                      <div class="card">
-                        <div class="wrapper">
-                          {{-- <img src="images/download.jpg"> --}}
+      <div class="sign-form">
+     
+           <div class="content-wrapper">
+              <div class="right">
+               <h2>Application Status</h2>
+                 <div class="row px-3">
                         </div>
-                        <span>Juan Dela Cruz<br><samp>Motorcycle</samp></span>
-                        <button type="button" class="btn btn-warning">Waiting for Approval</button>
-                      </div>
-                    <br><br><br>
-                    <p>Rider Information</p><br><br>
-                    <hr><br><br>
-                     @if (Session::has('rider_id'))
-                   <input type="hidden" name="rider_id" value=" {{ Session::get('rider_id') }}">
-                      
-                   @endif
+                    
+                         @foreach ($Data as $rider)
+                        <div class="row px-3">
+                            <div class="col-12 grid-margin">
+                                <div class="card">
+                                    <div class="card-body">
 
-                        <div class="col">
-                          @foreach ($Data as $row)
-                          <label>First Name</label>
-                          <div class="col-1">{{ $row->firstname }}</div>
-                          <br><br><br>
-                          <label>Middle Name</label>
-                          <div class="col-1">{{ $row->middlename }}</div>
-                          <br><br><br>
-                          <label>Last Name</label>
-                          <div class="col-2">{{ $row->lastname }}</div>
-                          <br><br><br>
-                          <label>Email Address</label>
-                          <div class="col-3">{{ $row->email }}</div>
-                          <br><br><br>
-                          <label>Mobile Number</label>
-                          <div class="col-4">{{ $row->mobile_number }}</div>
-                          <label>City</label>
-                          <div class="col-3">{{ $row->city }}</div>
-                          <br><br><br>
-                          <br><br><br><br><br>
+                                <div class="container-fluid px-5">
+
+                                  <div class="row align-items-center my-5">
+                                    <div class="col-md-6 ml-5">
+                                      <div class="row align-items-center ">
+                                   
+                                      <img class="circle img-responsive mr-3" width="170" height="160" src="{{ url(('uploads/'. 'rider_documents'. '/'.$rider->rider_id. '/'). $rider->rider_photo) }}" alt="">
+                                      <div class="col flex-wrap">
+                             
+                                    
+                            
+                                      <h2 class="red-name"> {{ $rider->firstname . " ". $rider->lastname  }} </h2>
+                                      </div>
+                                      </div>
+                                    </div> 
+                                       
+
+                                    <div class="col-sm-5">
+                                      <div class="card-pending px-3">
+                                      <div class="curve card-body text-center">
+                                      <h4 class="yellow">{{ $rider->status }}</h4>
+                                      </div>
+                                      </div>
+                                    </div>  
+                                  </div>  
+
+                                  <div class="row justify-content-between">
+                                    <div class="col-sm-5 ml-sm-5">
+                                      <h4 class="title-border flex-wrap mb-4">Personal Information</h4>
+                       
+                                       <div class="row px-3">
+                                        <label class="black width">First Name</label>
+                                        <p class="black ml-5">{{ $rider->firstname }}</p>
+                                      </div>
+                                       <div class="row px-3">
+                                        <label class="black width">Middle Name</label>
+                                        <p class="black ml-5">{{ $rider->middlename }}</p>
+                                      </div>
+                                       <div class="row px-3">
+                                        <label class="black width">Last Name</label>
+                                        <p class="black ml-5">{{ $rider->lastname }}</p>
+                                      </div>
+                                       <div class="row px-3">
+                                        <label class="black width">Email Address</label>
+                                        <p class="black ml-5">{{ $rider->email }}</p>
+                                      </div>
+                                       <div class="row px-3">
+                                        <label class="black width">Mobile Number</label>
+                                        <p class="black ml-5">{{ $rider->mobile_number }}</p>
+                                      </div>
+                                     
+                                       <div class="row px-3">
+                                        <label class="black width">City</label>
+                                        <p class="black ml-5">{{ $rider->city }}</p>
+                                      </div>
+                                       <div class="row px-3">
+                                        <label class="black width">Barangay</label>
+                                        <p class="black ml-5">{{ $rider->barangay }}</p>
+                                      </div>
+                                      <div class="row px-3">
+                                        <label class="black width">Zip Code</label>
+                                        <p class="black ml-5">{{ $rider->zip_code }}</p>
+                                      </div>
+                                       <div class="row px-3">
+                                        <label class="black width">Address</label>
+                                        <p class="black ml-5 spacing">{{ $rider->address }}</p>
+                                      </div>
+                                    </div>
+
+                                     <div class="col-sm-5 mr-5">
+                                      <h4 class="title-border mb-4">Vehicle Information</h4>
+                                      <div class="row px-3">
+
+                                        <label class="black width">Vehicle Type</label>
+                                        <p class=" black ml-5">{{ $rider->vehicle_type }}</p>
+                                      </div>
+                                      <div class="row px-3">
+                                        <label class="black width">Vehicle Ownership</label>
+                                        <p class="black ml-5">{{ $rider->vehicle_ownership }}</p>
+                                      </div>
+                                        <div class="row px-3">
+                                        <label class="black width">Plate Number</label>
+                                        <p class="black ml-5">{{ $rider->plate_number }}</p>
+                                      </div>
+                                        <div class="row px-3">
+                                        <label class="black width">Motorcycle Displacement</label>
+                                        <p class="black ml-5">{{ $rider->displacement }}</p>
+                                      </div>
+                                        <div class="row px-3">
+                                        <label class="black width">Engine Number</label>
+                                        <p class="black ml-5">{{ $rider->engine_number }}</p>
+                                      </div>
+                                       
+                                      <div class="row px-3">
+                                        <label class="black width">Year Model</label>
+                                        <p class="black ml-5">{{ $rider->year_model }}</p>
+                                      </div>
+                                       <h4 class="title-border mb-4 mt-4">Emergency Contact</h4>
+                                      <div class="row px-3">
+
+                                        <label class="black width">Name</label>
+                                        <p class=" black ml-5">{{ $rider->emergency_name }}</p>
+                                      </div>
+                                        <div class="row px-3">
+                                        <label class="black width">Relationship</label>
+                                        <p class="black ml-5">{{ $rider->relationship }}</p>
+                                      </div>
+                                        <div class="row px-3">
+                                        <label class="black width">Contact Number</label>
+                                        <p class="black ml-5">{{ $rider->contact_number }}</p>
+                                      </div>
+                                     
+                                    </div>
+                                  </div>
+
+                                  <div class="row align-items-center justify-content-between mt-5">
+                                    <div class="col-sm-5 ml-sm-5">
+                                      <h4 class="title-border flex-wrap mb-4">Uploaded Documents</h4>
+                       
+                                       <div class="row px-3 mt-2">
+                                        <label class="black width">Rider Photo</label>
+                                             <p class="black ml-5 spacing">{{ $rider->rider_photo }}</p>
+                                      </div>
+                                       <div class="row px-3 mt-2">
+                                        <label class="black width">Driver License</label>
+                                          <p class="black ml-5">{{ $rider->driver_license }}</p>
+                                      </div>
+                                      <div class="row px-3 mt-2">
+                                        <label class="black width">Licence back Back</label>
+                                         <p class="black ml-5">{{ $rider->license_back }}</p>
+                                      </div>
+                                       <div class="row px-3 mt-2">
+                                        <label class="black width">Official Receipt</label>
+                                          <p class="black ml-5">{{ $rider->official_receipt }}</p>
+                                      </div>
+                                       <div class="row px-3 mt-2">
+                                        <label class="black width">Certificate of Registration</label>
+                                          <p class="black ml-5">{{ $rider->cert_registration }}</p>
+                                      </div>
+                                      @if ($rider->vehicle_ownership == 'Borrowed')
+                                          <div class="row px-3 mt-2">
+                                        <label class="black width">Authorization letter</label>
+                                         <p class="black ml-5">{{ $rider->auth_letter }}</p>
+                                      </div>
+                                        
+                                      @endif
+                                       @if ($rider->vehicle_ownership == 'Second-hand')
+                                          <div class="row px-3 mt-2">
+                                        <label class="black width">Notarized Deed of Sale</label>
+                                         <p class="black ml-5">{{ $rider->deed_sale }}</p>
+                                      </div>
+                                        
+                                      @endif
+                                       <div class="row px-3 mt-2">
+                                        <label class="black width">NBI Clearance</label>
+                                         <p class="black ml-5">{{ $rider->nbi_clearance }}</p>
+                                      </div>
+                                       <div class="row px-3 mt-2">
+                                        <label class="black width">Drug Test</label>
+                                         <p class="black ml-5">{{ $rider->drug_test }}</p>
+                                      </div>
+                                       <div class="row px-3 mt-2">
+                                        <label class="black width">Vehicle Front</label>
+                                         <p class="black ml-5">{{ $rider->vehicle_front }}</p>
+                                      </div>
+                                      <div class="row px-3 mt-2">
+                                        <label class="black width ">Vehicle Side</label>
+                                         <p class="black ml-5">{{ $rider->vehicle_side }}</p>
+                                      </div>
+                                       <div class="row px-3 mt-2">
+                                        <label class="black width">Vehicle Back</label>
+                                         <p class="black ml-5">{{ $rider->vehicle_back }}</p>
+                                      </div>
+                                       @endforeach
+
+                                    </div>
+                                     <div class="col-sm-5 ml-sm-5">
+                                   <div class="row px-2 mt-2">
+
+                                      @if(Session::get('registerID'))
+                                    <a href="/rider_logout" class="button-red btn btn-lg" data-toggle="modal" data-target="#exampleModalCenter">Sign Out</a>
+                                 @else
+                                     <a href="/" class="button-red btn btn-lg" data-toggle="modal" data-target="#exampleModalCenter">Done</a>
+                                    @endif
+
+                                  </div>
+                                 
+                                  </div> 
+                                  
+                                  </div>
+
+                                </div>      
+                                </div>
+                            </div>
+                            </div>
                         </div>
-                        <div class="form"> 
-                        <p>Uploaded Documents</p><br><br>
-                        <hr><br><br>                           
-                            <label>Photo of your Vehicle</label>
-                            <br><br><br>
-                            <label>Photo of your drivers license ID</label>
-                            <br><br><br>
-                            <label>Certificate of Registration and <br>
-                              Official Receipt of Vehicle Registration</label>
-                            <br><br><br>
-                            <label>Drug Test Result</label>
-                            {{-- <i class="bi bi-check-circle-fill"></i> --}}
-                          </div>
-                      <p>Vehicle Information</p><br><br>
-                        <hr><br><br>
-                          <div class="col">
-                            <label>Type</label>
-                            <div class="col-5">{{ $row->vehicle_type }}</div>
-                            <br><br><br>
-                            <label>Year model</label>
-                            <div class="col-6">{{ $row->year_model }}</div>
-                            <br><br><br>
-                            <label>Plate Number</label>
-                            <div class="col-7">{{ $row->plate_number }}</div>
-                            <br><br><br>
-                            <label>Engine Number</label>
-                            <div class="col-8">{{ $row->engine_number }}</div>
-                          </div>
-                           @endforeach
-                  <br><br><br>
-            </div>
-          </div>
-        </div>
-      </div>
+                    </div>
+    <!-- Scroller -->
+    </div>
+
 
   </body>
 </html>

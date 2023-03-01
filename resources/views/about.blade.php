@@ -16,6 +16,11 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
 
 </head>
 
@@ -25,7 +30,7 @@
     <!--- NAVBAR -->
     <nav class="navbar navbar-expand-lg px-2 mx -2 px-xs-3 px-md-4 px-lg-5 mx-xs-3 mx-md-4 mx-lg-5">
       <div class="container-fluid px-3">
-        <a href="#" class="navbar-brand">
+        <a href="/" class="navbar-brand">
           <img src="image/foodea1.png" alt="" />
           <span>FOODEA</span>
         </a>
@@ -82,13 +87,13 @@
               </li>
             </ul>
             <a
-            href="/login"
+            href="/account_type"
             class="text-secondary mt-2 mx-5"
             style="text-decoration: none;">
               Signup
             </a>
             <a
-              href="/login"
+              href="/login_type"
               class="btn btn-danger btn-sm py-2 px-5 rounded"
             >
               Login
@@ -102,14 +107,14 @@
     <div class="container">
       <!-- SECTION 1 -->
     <section class="d-flex intro">
-      <div class="content pt-4 pb-2 py-xs-3 py-md-4 py-lg-5">
+      <div class="content pt-4 pb-2 py-xs-3 py-md-4 py-lg-5" data-aos="fade-up">
         <h1 class="text-center">Welcome to Foodea,<br>your ultimate food <br>recommendation app</h1>
       </div>
     </section>
     <!-- END SECTION 1 -->
 
     <!-- SECTION 2 -->
-    <section class="section2">
+    <section class="section2" data-aos="fade-up">
         <div class="images2 d-flex flex-column flex-md-row align-items-center gap-5 py-4">
           <img src="image/about3.png" class="" alt="man riding">
           <p>Say goodbye to meal-time indecision with Foodea - the ultimate food recommendation app. Our state-of-the-art algorithm takes into account your dietary restrictions, favorite cuisines, and location to provide personalized meal suggestions.</p>
@@ -118,7 +123,7 @@
     <!-- END SECTION 2 -->
 
     <!-- SECTION 3 -->
-    <section class="section3">
+    <section class="section3" data-aos="fade-up">
         <div class="images d-flex flex-column-reverse flex-md-row  align-items-center gap-3 gap-md-5 py-4">
           <p>Discover new dishes, save your favorites and earn rewards for trying new restaurants. Get the app now on Software Store or visit foodea.com for your next culinary adventure.</p>
           <img src="image/about2.png" class="img-fluid" alt="Delivering Order">
@@ -127,7 +132,7 @@
     <!-- END SECTION 3 -->
 
     <!-- SECTION 4 -->
-    <section class="d-flex">
+    <section class="d-flex" data-aos="fade-up">
       <div class="content pt-4 pb-2 py-xs-3 py-md-4 py-lg-5">
         <h1 class="text-center">Lunch made easy<br>with just a tap</h1>
       </div>
@@ -138,7 +143,7 @@
     <!-- TIMELINE -->
     <div class="timeline mx-auto">
       <div class="timeline-section">
-        <div class="timeline-content">
+        <div class="timeline-content" data-aos="fade-up">
           <ul>
               <li>
                 <div>
@@ -161,28 +166,66 @@
     </div>
     </div>
     <!-- SECTION 5 -->
-    <div class="container lastimage py-4 d-flex justify-content-center "><img src="image/about1.png" alt="calling"></div>
+    <div class="container lastimage py-4 d-flex justify-content-center" data-aos="fade-up"><img src="image/about1.png" alt="calling"></div>
     </div>
     </div>
+
+    <script src="dist/aos.js"></script>
+    <script>
+      document.querySelector('html').classList.remove('no-js');
+      if (!window.Cypress) {
+        const scrollCounter = document.querySelector('.js-scroll-counter');
+
+        AOS.init({
+          mirror: true
+        });
+
+        document.addEventListener('aos:in', function(e) {
+          console.log('in!', e.detail);
+        });
+
+        window.addEventListener('scroll', function() {
+          scrollCounter.innerHTML = window.pageYOffset;
+        });
+      }
+    </script>
+
     <!-- FOOTER -->
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="icon">
+    <div class="footer">
+        <div class="footer-content py-4 py-md-5">
+            <div class="icon pb-3 pb-md-0">
+                <a href="/" class="icon text-decoration-none">
                 <img src="image/foodea2.png" alt="">
-                <h1>FOODEA</h1>
-                <p>Follow Us</p>
+                <h1 class="text-light">FOODEA</h1>
+                </a>
+                <p class="text-center">Follow Us</p>
             </div>
             <div class="join">
                 <h2>Join Us</h2>
-                <p>Register as Rider</p>
-                <p>Be a Partner</p>
+                <a href="/rider_landing" class="text-reset text-decoration-none">
+                    <p>Register as Rider</p>
+                </a>
+                <a href="/partner_landing" class="text-reset text-decoration-none">
+                    <p>Be a Partner</p>
+                </a>
             </div>
             <div class="company">
                 <h2>Our Company</h2>
-                <p>About Us</p>
-                <p>Mission</p>
-                <p>Vision</p>
-                <p>Services</p>
+                <a href="/about" class="text-reset text-decoration-none">
+                    <p>About Us</p>
+                </a>
+                <a href="/contact" class="text-reset text-decoration-none">
+                    <p>Contact Us</p>
+                </a>
+                <a href="/" class="text-reset text-decoration-none">
+                    <p>Mission</p>
+                </a>
+                <a href="/" class="text-reset text-decoration-none">
+                    <p>Vision</p>
+                </a>
+                <a href="/" class="text-reset text-decoration-none">
+                    <p>Services</p>
+                </a>
             </div>
             <div class="footer-section">
                 <div class="inquire">
@@ -196,12 +239,12 @@
                 </div>
             </div>
         </div>
-        <div class="dark-footer">
-        <div class="dark-content">
-            <p>Copyright © 2022. All Rights Reserved</p>
+    </div>
+    <div class="dark-footer pt-3">
+        <div class="dark-content m-auto text-center">
+            <p class="">Copyright © 2022. All Rights Reserved</p>
         </div>
     </div>
-    </footer>
     <!-- END FOOTER -->
 
     <script src="js/script.js"></script>
