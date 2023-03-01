@@ -93,32 +93,17 @@
         </div>
       </div>
     </nav>
-        <!-- <div class="section" data-aos="fade-up">
-        <div class="content text-center text-md-start d-flex flex-column align-items-center align-items-md-start pt-4 pt-md-5">
+        <div class="section" data-aos="fade-up">
+            <div class="content text-center text-md-start">
                 <h1>Grow your business with <span>Foodea</span></h1>
                 <p class="text-center text-md-start">Expand your business by bringing your food out and filling up your customers tummy and reach new customers by partnering with us.</p>
-                <a class="text-decoration-none" href="/merchant_application_agreement">Apply Now </a>
+                <a href="/merchant_application_agreement">Apply Now </a>
                 {{-- <img src="image/vector.png" /> --}}
             </div>
             <div class="image">
                 <img src="image/market2.png" alt="">
             </div>
-        </div> -->
-
-    <div class="context-one mx-auto" data-aos="fade-up">
-    <div class="row container mx-auto px-5 align-items-center g-0">
-	   <div class="col-12 col-md-7 col-lg-6">
-	   		<div class="content text-center text-md-start d-flex flex-column align-items-center align-items-md-start pt-4 pt-md-5">
-				<h1>Grow your business with<span> Foodea</span></h1>
-				<p class="text-center text-md-start">Expand your business by bringing your food out and filling up your customers tummy and reach new customers by partnering with us.</p>
-				<a href="/merchant_application_agreement" class="text-decoration-none">Apply Now</a>
-          	</div>
-    	</div>
-		<div class="col-12 col-md-5 col-lg-6">
-				<img class="image1 d-none d-md-block" src="image/market2.png" alt="">
-		</div>
-    </div>
-	</div>
+        </div>
 
         <div class="section-2" data-aos="fade-up">
             <div class="service">
