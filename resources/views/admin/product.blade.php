@@ -164,8 +164,10 @@
                                              <div class="col form-group"><label for="exampleSelectGender" class="blackk">Category</label>
                                                 <select class="form-control" id="exampleSelectGender" style="border: 1px solid" name="category" required>
                                                    <option>{{ old('category') }}</option>
-                                                   <option>Chicken</option>
-                                                   <option>Pork</option>
+                                                   @foreach ($category as $key => $data)
+                                                   <option>{{ $data->main_category}}</option>
+                                                   @endforeach
+                                                   
                                                 </select>
                                                 <span style="color:red;">
                                                    @error('category')
@@ -175,7 +177,7 @@
                                              </div>
                                              <div class="col form-group">
                                                 {{-- use to get array in tags --}}
-                                                <input type=" text" id="tags_category" value="{{ old('tags_category') }}" name="tags_category">
+                                                <input type="hidden" id="tags_category" value="{{ old('tags_category') }}" name="tags_category">
                                                 <div class="wrapper">
                                                    <div class="content">
                                                       <p> Tags</p>
@@ -204,7 +206,7 @@
 
                                           <div class="form-group">
                                              <label for="exampleTextarea1" class="blackk">Description</label>
-                                             <textarea class="form-control"id="exampleTextarea1"rows="4" name="description" required>{{ old('description') }}</textarea>
+                                             <textarea class="form-control"id="exampleTextarea1"rows="4" name="description" maxlength="225" required>{{ old('description') }}</textarea>
                                              <span style="color:red;">
                                                 @error('description')
                                                    {{ $message }}
@@ -216,7 +218,7 @@
 
                                           <div class="form-group">
                                              <label for="exampleTextarea1" class="blackk">Ingredients</label>
-                                             <textarea class="form-control"id="exampleTextarea1"rows="4" name="ingredients" required>{{ old('ingredients') }}</textarea>
+                                             <textarea class="form-control"id="exampleTextarea1"rows="4" name="ingredients" maxlength="225" required>{{ old('ingredients') }}</textarea>
                                              <span style="color:red;">
                                                 @error('ingredients')
                                                    {{ $message }}
@@ -240,7 +242,7 @@
                                           <div class="row">
                                              <div class="col-md">
                                                 <label for="exampleInputName1" class="blackk">Price</label>
-                                                <input type="text"class="form-control" id="exampleInputName1" value="{{ old('price') }}" name="price" required/>
+                                                <input type="number"class="form-control" id="exampleInputName1" value="{{ old('price') }}" name="price" required/>
                                                 <span style="color:red;">
                                                    @error('price')
                                                       {{ $message }}
@@ -249,7 +251,7 @@
                                              </div>
                                              <div class="col-md">
                                                 <label for="exampleInputName1" class="blackk">Stock</label>
-                                                <input type="text"class="form-control" id="exampleInputName1" value="{{ old('stock') }}" name="stock" required/>
+                                                <input type="number"class="form-control" id="exampleInputName1" value="{{ old('stock') }}" name="stock" required/>
                                                 <span style="color:red;">
                                                    @error('stock')
                                                       {{ $message }}
@@ -362,16 +364,17 @@
                                                                <option>
                                                                   {{ $data->category_name}}
                                                                </option>
-                                                               <option>Chicken</option>
-                                                               <option>Pork</option>
+                                                               @foreach ($category as $key => $datas)
+                                                               <option>{{ $datas->main_category}}</option>
+                                                               @endforeach
                                                             </select>
                                                          </div>
                                                          <div class="col form-group">
-                                                            <input type=" text" id="tags_category" value="{{ $data->tags}}" name="tags_category">
+                                                            <input type="hidden" id="tags_category" value="{{ $data->tags}}" name="tags_category">
                                                             <div class="wrapper">
                                                                 <div class="content">
                                                                    <p> Tags</p>
-                                                                   <ul id="ul"><input id="input" value="" class="" type="text" name="tags"
+                                                                   <ul id="ul"><input id="input" value="{{ $data->tags }}" class="" type="text" name="tags"
                                                                          spellcheck="false"></ul>
                                                                    <span style="color:red;">
                                                                       @error('tags_category')
@@ -397,14 +400,14 @@
 
                                                       <div class="form-group">
                                                          <label for="exampleTextarea1" class="blackk">Description</label>
-                                                         <textarea class="form-control"id="exampleTextarea1"rows="4" placeholder="" name="description" required>{{ $data->description }}</textarea>
+                                                         <textarea class="form-control"id="exampleTextarea1"rows="4" placeholder="" name="description" maxlength="225" required>{{ $data->description }}</textarea>
                                                          <span class="gray">Do not exceed 100
                                                             characters when entering the product
                                                             details.</span>
                                                       </div>
                                                       <div class="form-group">
                                                         <label for="exampleTextarea1" class="blackk">Ingredients</label>
-                                                        <textarea class="form-control"id="exampleTextarea1"rows="4" placeholder="" name="ingredients" required>{{ $data->ingredients }}</textarea>
+                                                        <textarea class="form-control"id="exampleTextarea1"rows="4" placeholder="" name="ingredients" maxlength="225" required>{{ $data->ingredients }}</textarea>
                                                         <span class="gray">Do not exceed 100
                                                            characters when entering the product
                                                            details.</span>
@@ -419,12 +422,12 @@
                                                       <div class="row">
                                                          <div class="col-md">
                                                             <label for="exampleInputName1" class="blackk">Price</label>
-                                                            <input type="text"class="form-control" id="exampleInputName1" placeholder="" value="{{ $data->price }}"
+                                                            <input type="number"class="form-control" id="exampleInputName1" placeholder="" value="{{ $data->price }}"
                                                                name="price" required/>
                                                          </div>
                                                          <div class="col-md">
                                                             <label for="exampleInputName1" class="blackk">Stock</label>
-                                                            <input type="text"class="form-control" id="exampleInputName1" placeholder="" value="{{ $data->stock }}"
+                                                            <input type="number"class="form-control" id="exampleInputName1" placeholder="" value="{{ $data->stock }}"
                                                                name="stock" required/>
                                                          </div>
                                                          <div class="col-md">

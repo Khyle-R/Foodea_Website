@@ -166,7 +166,7 @@ class Admin_product extends Controller
             $file->move($path, $filename);
   
 
-            $resss=$affected->update(['product_name' => $request->product_name,'price' => $request->price,'stock' => $request->stock,'status' => $request->status,'description' => $request->description,'product_image'=> $filename],
+            $resss=$affected->update(['product_name' => $request->product_name,'price' => $request->price, 'tags' => $request->tags, 'stock' => $request->stock,'status' => $request->status,'description' => $request->description,'product_image'=> $filename],
               
             );
             if ($resss) {
@@ -179,7 +179,7 @@ class Admin_product extends Controller
         }
         else {
             // if the update dont have new profile upload
-            $resss=$affected->update(['product_name' => $request->product_name,'price' => $request->price,'stock' => $request->stock,'status' => $request->status,'description' => $request->description],  
+            $resss=$affected->update(['product_name' => $request->product_name,'price' => $request->price,'tags' => $request->tags, 'stock' => $request->stock,'status' => $request->status,'description' => $request->description],  
             );
             if ($resss) {
                 return redirect('product');
@@ -507,4 +507,5 @@ class Admin_product extends Controller
 
         return view('admin.admin_account', compact('Data'));
     }
+
 }
