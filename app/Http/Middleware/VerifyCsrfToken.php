@@ -17,7 +17,6 @@ class VerifyCsrfToken extends Middleware
         'rider_application3',
         'rider_application4',
         'rider_applicationstatus',
-        'login'
         //
     ];
 }
