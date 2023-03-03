@@ -111,6 +111,10 @@
             <div class="form-group">
             <label for="password">Password</label>
             <input type="password" id="password" name="password" class="form-control form-control-lg" >
+            <span class="eye mx-2" onclick="myFunction()">
+              <i class="fa fa-eye" id="hide1"></i>
+              <i class="fa fa-eye-slash" id="hide2"></i>
+            </span>
             <span
             style="color:red;">
             @error('password') {{ $message }}
@@ -120,6 +124,10 @@
             <div class="form-group">
             <label for="password">Confirm Password</label>
             <input type="password" name="password_confirmation" id="password_confirmation" class="form-control form-control-lg" >
+            <span class="eye2 mx-2" onclick="Function()">
+              <i class="fa fa-eye" id="hide3"></i>
+              <i class="fa fa-eye-slash" id="hide4"></i>
+            </span>
             </div>
             
              <br><br>
@@ -135,6 +143,47 @@
         </div>
         <!-- Scroller -->
       </div>
+
+
+      
+      <!-- Show Hide Password -->
+      <script>
+        function myFunction(){
+          var a = document.getElementById("password");
+          var b = document.getElementById("hide1");
+          var c = document.getElementById("hide2");
+    
+          if(a.type == 'password'){
+            a.type = "text";
+            b.style.display = "inline";
+            c.style.display = "none";
+          }
+          else{
+            a.type = "password";
+            b.style.display = "none";
+            c.style.display = "inline";
+          }
+        }
+     </script>
+   <!-- Show Hide Confirm Password -->
+<script>
+  function Function(){
+    var x = document.getElementById("password_confirmation");
+    var y = document.getElementById("hide3");
+    var z = document.getElementById("hide4");
+
+    if(x.type == 'password'){
+      x.type = "text";
+      y.style.display = "inline";
+      z.style.display = "none";
+    }
+    else{
+      x.type = "password";
+      y.style.display = "none";
+      z.style.display = "inline";
+    }
+  }
+</script>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>

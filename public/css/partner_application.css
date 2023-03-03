@@ -262,3 +262,27 @@ li {
 }
 
 
+.eye {
+  background: none;
+  border: none;
+  float: right;
+  transform: translateY(-150%);
+  z-index: 9;
+}
+
+#hide1 {
+    display: none;
+}
+
+.eye2 {
+  background: none;
+  border: none;
+  float: right;
+  transform: translateY(-150%);
+  z-index: 9;
+}
+
+#hide3 {
+    display: none;
+}
+

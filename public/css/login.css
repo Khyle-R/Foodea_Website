@@ -48,11 +48,21 @@ ul {
 
 .nav-link {
     color: #CB8403;
+    margin-right: -2.5rem;
 }
 
 .nav-link:hover {
     color: #835602;
 }
+
+.bg_image img{
+    width: 20rem;
+}
+
+.bg_image{
+    z-index: -1;
+}
+
 
 .btn {
     background-color: #F54748;
@@ -181,4 +191,26 @@ ul {
     color: #ce8500;
     font-size: 22px;
     line-height: 40px;
+}
+
+
+.eye {
+  background: none;
+  border: none;
+  display: inline;
+  float: right;
+  transform: translateY(-160%);
+  z-index: 9;
+  margin-right: .5rem;
+  clear: right;
+}
+
+#hide1 {
+    display: none;
+}
+
+@media (max-width:700px){ 
+.bg_image img{
+    width: 25rem;
+}
 }
