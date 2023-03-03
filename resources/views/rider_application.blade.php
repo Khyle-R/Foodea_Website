@@ -141,7 +141,7 @@
             <div class="form-group">
             <label>Password</label>
               <input type="password" id="password" name="password" class="form-control form-control-lg">
-              <span class="eye" onclick="myFunction()">
+              <span class="eye mx-2" onclick="myFunction()">
                 <i class="fa fa-eye" id="hide1"></i>
                 <i class="fa fa-eye-slash" id="hide2"></i>
               </span>
@@ -155,7 +155,7 @@
             <div class="form-group">
             <label>Confirm Password</label>
               <input type="password" id="password_confirmation" name="password_confirmation" class="form-control form-control-lg">
-              <span class="eye2" onclick="Function()">
+              <span class="eye2 mx-2" onclick="Function()">
                 <i class="fa fa-eye" id="hide3"></i>
                 <i class="fa fa-eye-slash" id="hide4"></i>
               </span>

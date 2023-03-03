@@ -264,8 +264,7 @@ li {
 .eye {
   background: none;
   border: none;
-  position: absolute;
-  right: 39%;
+  float: right;
   transform: translateY(-170%);
   z-index: 9;
 }
@@ -277,8 +276,7 @@ li {
 .eye2 {
   background: none;
   border: none;
-  position: absolute;
-  right: 39%;
+  float: right;
   transform: translateY(-170%);
   z-index: 9;
 }
@@ -287,62 +285,3 @@ li {
     display: none;
 }
 
-@media (max-width:769px) {
-  .eye {
-      right: 28%;
-      transform: translateY(-180%);
-    }
-    .eye2 {
-      right: 28%;
-      transform: translateY(-180%);
-    }
-}
-
-@media (max-width:426px) {
-  .eye {
-      right: 11%;
-      transform: translateY(-180%);
-    }
-    .eye2 {
-      right: 11%;
-      transform: translateY(-180%);
-    }
-    
-}
-
-
-@media (max-width:376px) {
-  .eye {
-      right: 11%;
-      transform: translateY(-180%);
-    }
-    .eye2 {
-      right: 11%;
-      transform: translateY(-180%);
-    }
-}
-
-
-
-@media (max-width:365px) {
-  .eye {
-      right: 11%;
-      transform: translateY(-180%);
-    }
-    .eye2 {
-      right: 11%;
-      transform: translateY(-180%);
-    }
-}
-
-
-@media (max-width:320px) {
-  .eye {
-      right: 11%;
-      transform: translateY(-180%);
-    }
-    .eye2 {
-      right: 11%;
-      transform: translateY(-180%);
-    }
-}
