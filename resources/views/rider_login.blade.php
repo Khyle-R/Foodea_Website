@@ -95,6 +95,10 @@
                                             class="form-control my-1 form-control-lg"
                                             placeholder="Password"
                                         />
+                                        <span class="eye" onclick="myFunction()">
+                                            <i class="fa fa-eye" id="hide1"></i>
+                                            <i class="fa fa-eye-slash" id="hide2"></i>
+                                            </span>
                                    <span
                                     class="error">
                                     @error('password') {{ $message }}
@@ -148,6 +152,28 @@
                 $('.success').addClass("hide");
             });
             </script>
+             
+             <!-- Show Hide Password -->
+             <script>
+                function myFunction(){
+                  var a = document.getElementById("password");
+                  var b = document.getElementById("hide1");
+                  var c = document.getElementById("hide2");
+            
+                  if(a.type == 'password'){
+                    a.type = "text";
+                    b.style.display = "inline";
+                    c.style.display = "none";
+                  }
+                  else{
+                    a.type = "password";
+                    b.style.display = "none";
+                    c.style.display = "inline";
+                  }
+                }
+             </script>
+
+
     <script
         src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
