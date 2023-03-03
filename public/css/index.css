@@ -303,7 +303,6 @@ nav .navbar-brand span{
 .slick-list {
   position: relative;
   display: block;
-  overflow: hidden;
   margin: 0;
   padding: 0;
 }
@@ -655,6 +654,11 @@ nav .navbar-brand span{
   .phone {
     padding-bottom: 40px;
   }
+
+  .slick-slide img {
+    width: 100%;
+  }
+  
   
   .rider h3,
   .market h3,
@@ -706,6 +710,11 @@ nav .navbar-brand span{
     color: #fff;
     padding: 70px 0;
   }
+
+  .slick-slide img {
+    width: 100%;
+  }
+  
   .container2 {
     width: 80%;
   }
