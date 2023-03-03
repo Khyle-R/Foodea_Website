@@ -1,48 +1,94 @@
 @extends('admin.index')
 @section('content')
+
    <style>
-      /* Style for Tag inside the add Category modal */
-      .wrapper {
-         width: 470px;
-
-         border-radius: 10px;
-
-
-      }
-
-      .wrapper :where(.title, li, li i, .details) {
-         display: flex;
-         align-items: center;
-      }
-
-      .title img {
-         max-width: 21px;
-      }
-
-      .title h2 {
-         font-size: 21px;
-         font-weight: 600;
-         margin-left: 8px;
-      }
-
-      .wrapper .content {
-         margin: 10px 0;
-      }
-
-      .content p {
-         font-size: 15px;
-      }
-
-      .content ul {
+    .wrapper{
+  width: 496px;
+  
+  border-radius: 10px;
+  padding: 18px 25px 20px;
+  box-shadow: 0 0 30px rgba(0,0,0,0.06);
+   }
+   .wrapper :where(.title, li, li i, .details){
+   display: flex;
+   align-items: center;
+   }
+   .title img{
+   max-width: 21px;
+   }
+   .title h2{
+   font-size: 21px;
+   font-weight: 600;
+   margin-left: 8px;
+   }
+   .wrapper .content{
+   margin: 10px 0;
+   }
+   .content p{
+   font-size: 15px;
+   }
+   .content ul{
+   display: flex;
+   flex-wrap: wrap;
+   padding: 7px;
+   margin: 12px 0;
+   border-radius: 5px;
+   border: 1px solid #a6a6a6;
+   }
+   .content ul  li{
+   color: #333;
+   margin: 4px 3px;
+   list-style: none;
+   border-radius: 5px;
+   background: #F2F2F2;
+   padding: 5px 8px 5px 10px;
+   border: 1px solid #e3e1e1;
+   }
+   .content ul li i{
+   height: 20px;
+   width: 20px;
+   color: #808080;
+   margin-left: 8px;
+   font-size: 12px;
+   cursor: pointer;
+   border-radius: 50%;
+   background: #dfdfdf;
+   justify-content: center;
+   }
+   .content ul input{
+   flex: 1;
+   padding: 5px;
+   border: none;
+   outline: none;
+   font-size: 16px;
+   }
+   .wrapper .details{
+   justify-content: space-between;
+   }
+   .details button{
+   border: none;
+   outline: none;
+   color: #fff;
+   font-size: 14px;
+   cursor: pointer;
+   padding: 9px 15px;
+   border-radius: 5px;
+   background: #5372F0;
+   transition: background 0.3s ease;
+   }
+   .details button:hover{
+   background: #2c52ed;
+   }
+      #tags_input{
+         flex: 1;
+         padding: 5px;
+         border: none;
+         outline: none;
+         font-size: 16px;
          display: flex;
          flex-wrap: wrap;
-         padding: 7px;
-         margin: 12px 0;
-         border-radius: 5px;
-         border: 1px solid #a6a6a6;
       }
-
-      .content ul li {
+      .label-info{
          color: #333;
          margin: 4px 3px;
          list-style: none;
@@ -52,33 +98,11 @@
          border: 1px solid #e3e1e1;
       }
 
-      .content ul li i {
-         height: 20px;
-         width: 20px;
-         color: #808080;
-         margin-left: 8px;
-         font-size: 12px;
-         cursor: pointer;
-         border-radius: 50%;
-         background: #dfdfdf;
-         justify-content: center;
-      }
 
-      .content ul input {
-         flex: 1;
-         padding: 4px;
-         border: none;
-         outline: none;
-         font-size: 16px;
-      }
-
-      .wrapper .details {
-         justify-content: space-between;
-      }
    </style>
    <div class="content-wrapper">
       <div class="row">
-         
+          
       </div>
       <div class="page-header">
          <h3 class="page-title black">Product</h3>
@@ -341,12 +365,19 @@
                                                                @endforeach
                                                             </select>
                                                          </div>
-                                                         <div class="col form-group">
-                                                            <input type="hidden" id="tags_category" value="{{ $data->tags}}" name="tags_category">
+                                                      </div>
+                                                      <div class="form-group">
+                                                         <label for="" class="blackk">Tags:</label>
+                                                         <input type="text" class="form-control" id="tags" name="tags" value="{{ $data->tags}}" data-role="tagsinput" name="tags_category">
+                                                      </div>
+
+                                                         
+                                                         {{-- <div class="col form-group">
+                                                            
                                                             <div class="wrapper">
                                                                 <div class="content">
                                                                    <p> Tags</p>
-                                                                   <ul id="ul"><input id="input" value="{{ $data->tags }}" class="" type="text" name="tags"
+                                                                   <ul id="ul"><input id="input1" value="{{ $data->tags }}" class="" type="text" name="tags"
                                                                          spellcheck="false"></ul>
                                                                    <span style="color:red;">
                                                                       @error('tags_category')
@@ -368,7 +399,7 @@
                                                              </span>
                                                           
                                                          </div>
-                                                      </div>
+                                                      </div> --}}
 
                                                       <div class="form-group">
                                                          <label for="exampleTextarea1" class="blackk">Description</label>
@@ -394,7 +425,7 @@
                                                       <div class="row">
                                                          <div class="col-md">
                                                             <label for="exampleInputName1" class="blackk">Price</label>
-                                                            <input type="number"class="form-control" id="exampleInputName1" placeholder="" value="{{ $data->price }}"
+                                                            <input type="number" min="0" step="0.01" class="form-control" id="exampleInputName1" placeholder="" value="{{ $data->price }}"
                                                                name="price" required/>
                                                          </div>
                                                          <div class="col-md">
@@ -426,6 +457,7 @@
                                              </div>
                                           </div>
                                        </div>
+
 
 
                                        <!-- Modal -->
@@ -506,12 +538,10 @@
 
          countTags();
          createTag();
-         
 
          function countTags() { // count tags to know the limits of arrays
             input.focus();
             tagNumb.innerText = maxTags - tags.length;
-
          }
 
          function gettingTags(gTag) {
@@ -530,7 +560,6 @@
 
                var tagString = JSON.stringify(tags); // convert the array into variable
                gettingTags(tagString);
-
             });
             countTags();
          }
@@ -565,6 +594,74 @@
             countTags();
          });
       </script>
+
+<script>
+
+   const ul = document.querySelector("#ul1"),
+      input = document.querySelector("#input1"), // input of tags
+      tagNumb = document.querySelector(".details span1"),
+      td = document.querySelector("#td");
+   let maxTags = 10,
+      tags = []; // array for tags
+
+   countTags();
+   createTag();
+
+   function countTags() { // count tags to know the limits of arrays
+      input.focus();
+      tagNumb.innerText = maxTags - tags.length;
+   }
+
+   function gettingTags(gTag) {
+      gTag = gTag.replace(/"/g, '');
+      gTag = gTag.replace('[', '');
+      gTag = gTag.replace(']', '');
+      document.getElementById('tags_category').value = gTag; // set the value of the input
+      console.log(gTag);
+   }
+
+   function createTag() {
+      ul.querySelectorAll("li").forEach(li => li.remove());
+      tags.slice().reverse().forEach(tag => {
+         let liTag = `<li>${tag} <i class="uit uit-multiply" onclick="remove(this, '${tag}')"></i></li>`;
+         ul.insertAdjacentHTML("afterbegin", liTag);
+
+         var tagString = JSON.stringify(tags); // convert the array into variable
+         gettingTags(tagString);
+      });
+      countTags();
+   }
+
+   function remove(element, tag) { // remove tags
+      let index = tags.indexOf(tag);
+      tags = [...tags.slice(0, index), ...tags.slice(index + 1)];
+      element.parentElement.remove();
+      countTags();
+   }
+
+   function addTag(e) {
+      if (e.key == "Enter") { // when you click space the tag will add
+         let tag = e.target.value.replace(/\s+/g, ' ');
+
+         if (tag.length > 1 && !tags.includes(tag)) {
+            if (tags.length < 10) {
+               tag.split(',').forEach(tag => {
+                  tags.push(tag);
+                  createTag();
+               });
+            }
+         }
+         e.target.value = "";
+      }
+   }
+   input.addEventListener("keyup", addTag);
+   const removeBtn = document.querySelector(".details button");
+   removeBtn.addEventListener("click", () => {
+      tags.length = 0;
+      ul.querySelectorAll("li").forEach(li => li.remove());
+      countTags();
+   });
+</script>
 
    </footer>
    <!-- partial -->
