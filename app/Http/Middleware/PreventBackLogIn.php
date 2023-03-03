@@ -18,7 +18,7 @@ class PreventBackLogIn
     public function handle(Request $request, Closure $next)
     {
          if(Session::get('adminID')){
-          return back();
+          return redirect('superadmin_index');
         }
           return $next($request);
           
