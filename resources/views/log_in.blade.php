@@ -106,11 +106,24 @@
                                     
 
                                     </div>
-                                    <div class="text-right mb-3">
-                                        <a href="#" class="nav-link"
-                                            >Forgot Password?</a
-                                        >
-                                    </div>
+                                  
+                                    <div class="form-row justify-content-between">
+                                        <div class="col-auto form-group my-2">
+                                            <div class="form-check">
+                                              <input class="form-check-input" type="checkbox" id="gridCheck">
+                                              <label class="form-check-label" for="gridCheck">
+                                                Remember Me
+                                              </label>
+                                            </div>
+                                          </div>
+    
+                                        <div class="text-right mb-3">
+                                            <a href="#" class="nav-link"
+                                                >Forgot Password?</a
+                                            >
+                                        </div>
+                                        </div>
+                                        
                                     <div class="text-center">
                                         <button
                                             type="submit"
