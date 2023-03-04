@@ -55,9 +55,9 @@ Route::get('//rider_logout', [RiderRegistration::class, 'RiderLogout']);
         //  });
     
 // Route::group(['middleware'=>['RiderStepFinal']], function(){
-    // Route::get('/rider_application4', function () {
+    Route::get('/rider_application4', function () {
      return view('rider_application4');
-    // });
+    });
       Route::post('/rider_application4', [RiderRegistration::class, 'SaveDocuments'])->name('rider_application4.SaveDocuments');
 
     //  });

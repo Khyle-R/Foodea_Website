@@ -33,7 +33,6 @@
                     <li>Step 2 &nbsp;&nbsp;&nbsp;Business Information</li>
                     <li>Step 3 &nbsp;&nbsp;&nbsp;Verify Email Address</li>
                     <li class="red">Step 4 &nbsp;Requirements</li>
-                    <li>Step 5 &nbsp;Application Status</li>
                   </ul>
             </nav>
 
@@ -42,9 +41,10 @@
           <div class="col-12 col-sm-10 col-md-11 col-lg-9 col-xl-6">
             <div class="right">
               <h2>Welcome, Juan</h2>
-              <p>Here's the required steps to set up your account. 
-                  Make sure the documents you upload matches the sample 
-                  document or else the application process will be delayed.</p>
+              <p>Here are some examples of required documents you have to submit to set up your account. 
+                  Make sure the documents you upload are clear
+                  and readable or else the application process will be delayed.
+                </p>
 
           <div class="form-container">
             <div class="btn-group">

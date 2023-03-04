@@ -20,39 +20,7 @@ class PartnerRegistration extends Controller
     }
     
     public function PersonalInfo(Request $request){
-        $request-> validate([
-            'salutation' => 'required',
-            'firstname' => 'required',
-            'middlename' => 'required',
-            'lastname' => 'required',
-            'email' => 'required|email|unique:tbl_merchant_account',
-            'password' => 'required|min:6|confirmed',
-            'password_confirmation' => 'required'
-        ]);
-
-        $merchant = new tbl_partner_accounts();
-        $merchant->salutation = $request->salutation;
-        $merchant->firstname = $request->firstname;
-        $merchant->middlename = $request->middlename;
-        $merchant->lastname = $request->lastname;
-        $merchant->suffix = $request->suffix;
-        $merchant->email = $request->email;
-        $merchant->password = Hash::make($request->password);
         
-        $res = $merchant->save();
-
-        if($res){
-            $request->session()->put('merchant_id', $merchant->id);
-
-            $id = new tbl_merchant_application();
-            $id->merchant_id = $merchant->id;
-            $id->status = 'first';
-            $id->save();
-            
-            return redirect('/partner_application2');
-        }else{
-            return back()->with('fail', 'Something is wrong');
-        }
     }
     public function partner2index(){
         return view('/partner_application2');
