@@ -19,7 +19,6 @@
     </head>
     <body>
          
-
         <nav class="navbar navbar-light nav-red">
             <a class="navbar-brand" href="/">
                 <img
@@ -60,7 +59,7 @@
 
         @endif
 
-        <section>
+        <div class="form_container">
             <div class="container mt-2 pt-5">
                 <div class="row">
                      <div class="col-12 col-sm-12 col-md-9 col-lg-6 m-auto">
@@ -148,8 +147,11 @@
                 
             </div>
                 
-        </section>
+            </div>
 
+        <div class="bg_image fixed-bottom">
+            <img class="" src="image/foodsbgleft.png" alt="">
+        </div>
     </body>
  <script>
             $('.popup').show(function() {
