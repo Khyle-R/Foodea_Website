@@ -18,7 +18,7 @@ class RiderStep1
     public function handle(Request $request, Closure $next)
     {
         if(!Session::get('status')){
-            return redirect('/rider_application');
+            return redirect('/account_type');
         }
         return $next($request);
     }

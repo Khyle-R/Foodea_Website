@@ -5,15 +5,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use App\Models\tbl_vehicle_infos;
 use App\Models\tbl_rider_accounts;
 use App\Models\tbl_rider_document;
+use App\Models\tbl_partner_accounts;
 use Illuminate\Support\Facades\DB;  
 use Illuminate\Support\Facades\Hash;
 use App\Models\tbl_rider_application;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Session;
-use App\Models\tbl_partner_accounts;
 use App\Models\tbl_merchant_application;
+
 
 class RiderRegistration extends Controller
 {
@@ -38,6 +41,7 @@ class RiderRegistration extends Controller
     {
 
             $request->validate([
+            'account_type' => 'required',    
             'firstname' => 'required',
             'middlename' => 'required',
             'lastname' => 'required',
@@ -99,12 +103,20 @@ class RiderRegistration extends Controller
         /*MERCHANT */
         if($request->account_type == 'Partner Merchant'){
             $request-> validate([
+            'account_type' => 'required',    
             'firstname' => 'required',
             'middlename' => 'required',
             'lastname' => 'required',
-            'email' => 'required|email|unique:tbl_merchant_account',
+            'age' => 'required',
+            'gender' => 'required',
+            'mobilenumber' => 'required',
             'password' => 'required|min:6|confirmed',
-            'password_confirmation' => 'required'
+            'password_confirmation' => 'required|min:6',
+            'address' => 'required',
+            'city' => 'required',
+            'barangay' => 'required',
+            'zip' => 'required',
+            'birthday' => 'required'
         ]);
 
         $merchant = new tbl_partner_accounts();
@@ -124,7 +136,6 @@ class RiderRegistration extends Controller
         $merchant->zip_code = $request->  zip;
 
         $res = $merchant->save();
-
         if($res){
             $request->session()->put('merchant_id', $merchant->id);
 
@@ -133,6 +144,7 @@ class RiderRegistration extends Controller
             $id->status = 'first';
             $id->save();
             
+            $request->session()->put('partnerstatus', $id->status);
             return redirect('/partner_application2');
         }else{
             return back()->with('fail', 'Something is wrong');
@@ -145,6 +157,7 @@ class RiderRegistration extends Controller
     public function VerifyRider(){
         return view('rider_application2');
     }
+    
     public function RiderVerify(Request $request){
   
       $res =  tbl_rider_application::where('rider_id', Session::get('rider_id'))
@@ -425,16 +438,47 @@ class RiderRegistration extends Controller
         return view('/rider_application_agreement');
     }
    
+    public function RiderLoginIndex(Request $request){
+        if(Cookie::has('email') && Cookie::has('password')){
+             $user = tbl_rider_accounts::where('email', '=', Cookie::get('email'))->first();
+              $Data = tbl_rider_accounts::join('tbl_vehicle_info', 'tbl_rider_account.rider_id', '=', 'tbl_vehicle_info.rider_id')
+                ->join('tbl_document_info', 'tbl_rider_account.rider_id', '=', 'tbl_document_info.rider_id')
+                ->join('rider_application', 'tbl_rider_account.rider_id', '=', 'rider_application.rider_id')
+                ->where('tbl_rider_account.rider_id', $user->rider_id)
+                ->limit(1)
+                ->get();
+
+                 $request->session()->put('registerID', $user->rider_id);
+                return view('/rider_applicationstatus', compact('Data'));
+            }
+            else{
+        return view('rider_login');
+            }
+    }
+    
     /* RIDER LOGIN */
     public function RiderLogIn(Request $request){
+          
          $request->validate([
             'email'=> 'required|email',
             'password'=> 'required|min:6'
         ]);
-        $user = tbl_rider_accounts::where('email', '=', $request->email)->first();
+      
+         $user = tbl_rider_accounts::where('email', '=', $request->email)->first();
         if($user){
+            
             if(Hash::check($request->password, $user->password)){
-
+                if($request->remember){
+                /*SET COOKIE */
+                
+                $response = new Response();
+                Cookie::queue(Cookie::forever('email', $request->email));
+                Cookie::queue(Cookie::forever('password', $request->password));
+                
+                /*FORGET COOKIE */
+                // Cookie::queue(Cookie::forget('email'));
+                // Cookie::queue(Cookie::forget('password'));  
+                }
                 $Data = tbl_rider_accounts::join('tbl_vehicle_info', 'tbl_rider_account.rider_id', '=', 'tbl_vehicle_info.rider_id')
                 ->join('tbl_document_info', 'tbl_rider_account.rider_id', '=', 'tbl_document_info.rider_id')
                 ->join('rider_application', 'tbl_rider_account.rider_id', '=', 'rider_application.rider_id')
@@ -444,16 +488,21 @@ class RiderRegistration extends Controller
                 
                 $request->session()->put('registerID', $user->rider_id);
                 return view('/rider_applicationstatus', compact('Data'));
-            }else{
+            }
+            else{
                   return back()->with('fail', 'Password does not match');
             }
         }else{
             return back()->with('fail', 'This is email is not registered');
         }
+        
+        
     }
     public function RiderLogout(){
         if(Session::has('registerID')){
             Session::pull('registerID');
+            Cookie::queue(Cookie::forget('email'));
+            Cookie::queue(Cookie::forget('password'));  
             return redirect('/');
         }
     }
