@@ -14,7 +14,9 @@ class UserFilter{
         'gender' => ['eq', 'like', 'ne'],
         'bmi' => ['eq', 'gt', 'lt', 'gte', 'lte'],
         'email' => ['eq', 'like', 'ne'],
-        'password' => ['eq', 'ne']
+        'password' => ['eq', 'ne'],
+        'address' => ['eq', 'like'],
+        'contact_number' => ['eq'],
     ];
 
     protected $operatorMap = [

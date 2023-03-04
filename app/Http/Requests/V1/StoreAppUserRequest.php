@@ -31,6 +31,8 @@ class StoreAppUserRequest extends FormRequest
             'height' => ['required', 'numeric'],
             'weight' => ['required', 'numeric'],
             'gender' => ['required', Rule::in(['M','F'])],
+            'address' => ['required'],
+            'contact_number' => ['required', 'numeric'],
             'bmi' => ['required', 'numeric'],
             'email' => ['required', 'email'],
             'password' => ['required'],

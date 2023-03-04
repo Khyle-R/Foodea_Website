@@ -16,6 +16,8 @@ class AppUser extends Model
         'height',
         'weight',
         'gender',
+        'address',
+        'contact_number',
         'bmi',
         'email',
         'password',
