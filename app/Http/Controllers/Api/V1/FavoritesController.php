@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Filters\V1\FavoritesFilter;
 use App\Http\Requests\V1\StoreFavoriteRequest;
+use App\Http\Requests\V1\UpdateFavoriteRequest;
 use App\Models\Favorites;
 
 class FavoritesController extends Controller
@@ -34,5 +35,9 @@ class FavoritesController extends Controller
     public function destroy(Request $request, Favorites $favorites){
         $id = $request->segment(count(request()->segments()));
         return $favorites::where('id', $id)->delete();
+    }
+
+    public function update(UpdateFavoriteRequest $request, Favorites $favorites){
+        $favorites->update($request->all());
     }
 }

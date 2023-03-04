@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Filters\V1\CartFilter;
 use App\Http\Requests\V1\StoreCartRequest;
+use App\Http\Requests\V1\UpdateCartRequest;
 use App\Models\Cart;
 
 class CartController extends Controller
@@ -33,5 +34,9 @@ class CartController extends Controller
     public function destroy(Request $request, Cart $cart){
         $id = $request->segment(count(request()->segments()));
         return $cart::where('id', $id)->delete();
+    }
+
+    public function update(UpdateCartRequest $request, Cart $cart){
+        $cart->update($request->all());
     }
 }
