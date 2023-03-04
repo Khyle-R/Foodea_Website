@@ -227,7 +227,6 @@
                                          <p class="black ml-5"><?php echo e($rider->vehicle_back); ?></p>
                                       </div>
                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
                                     </div>
                                      <div class="col-sm-5 ml-sm-5">
                                    <div class="row px-2 mt-2">

@@ -17,7 +17,9 @@ class RiderStep2
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Session::get('status') == 'first' || Session::get('status') == 'second' || Session::get('status') == 'third')
+
+         /*RIDERS */
+        if(Session::get('status') == 'first')
         {
             return redirect('rider_application2');
             
@@ -32,6 +34,33 @@ class RiderStep2
             return redirect('rider_application4');
             
         }
+         if( Session::get('status') == 'Pending')
+        {
+            return redirect('rider_application5');
+            
+        }
+        /*MERCHANT */
+         if(Session::get('partnerstatus') == 'first')
+        {
+            return redirect('partner_application2');
+            
+        }
+        if( Session::get('partnerstatus') == 'second')
+        {
+            return redirect('partner_application3');
+            
+        }
+        if(Session::get('partnerstatus') == 'Third')
+        {
+            return redirect('/partner_requirements');
+        }
+        
+         if( Session::get('partnerstatus') == 'Pending')
+        {
+            return redirect('partner_application4');
+            
+        }
+
         $response = $next($request);
         return $response->header('Cache-Control', 'no-cache, no-store, max-age=0, must-revalidate')
         ->header('Pragma', 'no-cache')

@@ -53,7 +53,7 @@
             <br><br><br><br><br><br>
             <div class="container pt-5">
                 <div class="row">
-                    <div class="col-12 col-sm-7 col-md-6 m-auto">
+                    <div class="col-12 col-sm-8 col-md-7 col-lg-6 m-auto">
                         <div class="card border-0 shadow">
                             <div class="card-body px-5 ">
                                 <div class="text-center">
@@ -74,6 +74,7 @@
                                         name="email"
                                         class="form-control my-1"
                                         placeholder="example@gmail.com"
+                                        value="<?php echo e(Cookie::get('email')); ?>"
                                     />
                                        <span
                                         class="error">
@@ -96,6 +97,7 @@ unset($__errorArgs, $__bag); ?></span>
                                             class="form-control my-1 form-control-lg"
                                             placeholder="example@gmail.com"
                                             id="password"
+                                            value="<?php echo e(Cookie::get('password')); ?>"
                                         />
                                         <span class="eye" onclick="myFunction()">
                                             <i class="fa fa-eye" id="hide1"></i>
@@ -119,7 +121,7 @@ unset($__errorArgs, $__bag); ?></span>
                                     <div class="form-row justify-content-between">
                                     <div class="col-auto form-group my-2">
                                         <div class="form-check">
-                                          <input class="form-check-input" type="checkbox" id="gridCheck">
+                                          <input class="form-check-input" type="checkbox" name="remember" id="gridCheck">
                                           <label class="form-check-label" for="gridCheck">
                                             Remember Me
                                           </label>

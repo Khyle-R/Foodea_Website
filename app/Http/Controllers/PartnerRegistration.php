@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\tbl_activitylog;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use App\Models\tbl_activitylog;
 use App\Models\tbl_merchant_info;
 use App\Models\tbl_rider_accounts;
 use App\Models\tbl_partner_accounts;
 use Illuminate\Support\Facades\Hash;
 use App\Models\tbl_merchant_document;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Session;
 use App\Models\tbl_merchant_application;
 
@@ -69,6 +71,10 @@ class PartnerRegistration extends Controller
                 'merchantinfo_id' => $id->merchantinfo_id,
                 'status' => 'second'
             ]);
+             $status =  tbl_merchant_application::where('merchant_id', $request->merchant_id)
+             ->first();
+            
+            $request->session()->put('partnerstatus', $status->status);
             return redirect('/partner_application3');
         }
         else{
@@ -78,6 +84,26 @@ class PartnerRegistration extends Controller
 
     }
 
+    public function PartnerVerifyIndex(){
+         return view('partner_application3');
+    }
+    
+    public function PartnerVerify(Request $request){
+            
+       $res = tbl_merchant_application::where('merchant_id',  Session::get('merchant_id'))
+        ->update([
+            'status' => 'third'
+        ]);
+        if($res){
+            $status =  tbl_merchant_application::where('merchant_id',Session::get('merchant_id'))
+             ->first();
+            
+            $request->session()->put('partnerstatus', $status->status);
+            return redirect('/partner_requirements');
+        }
+        
+    }
+    
     public function partnerrequirement(){
         return view('/partner_requirements');
     }
@@ -156,8 +182,13 @@ class PartnerRegistration extends Controller
         tbl_merchant_application::where('merchant_id', $request->merchant_id)
         ->update([
             'merchant_document_id' => $id->merchant_document_id,
-            'status' => 'Pending'
+            'status' => 'pending'
         ]);
+        
+         $status =  tbl_merchant_application::where('merchant_id', $request->merchant_id)
+             ->first();
+            
+        $request->session()->put('partnerstatus', $status->status);
         return redirect('partner_application4');
 
         }
@@ -167,8 +198,41 @@ class PartnerRegistration extends Controller
         }
     }
 
-    public function LoginIndex(){
-        return view('log_in');
+    public function LoginIndex(Request $request){
+         $user = tbl_partner_accounts::where('email', '=', Cookie::get('email'))->first();
+         
+        if(Cookie::get('email') && Cookie::get('password'))
+        {   
+              $status = tbl_merchant_application::where('merchant_id', $user->merchant_id)
+                ->first();
+
+                if($status->status == 'pending' || $status->status == 'Reviewing' || $status->status == 'Rejected'){
+                    
+                     $Data = tbl_partner_accounts::join('tbl_merchant_info', 'tbl_merchant_account.merchant_id', '=', 'tbl_merchant_info.merchant_id')
+                    ->join('merchant_application', 'tbl_merchant_account.merchant_id', '=', 'merchant_application.merchant_id')
+                    ->join('merchant_document', 'tbl_merchant_account.merchant_id', '=', 'merchant_document.merchant_id')
+                    ->where('merchant_application.merchant_id',  $user->merchant_id)
+                    ->limit(1)
+                    ->get();
+                    
+                    return view('/partner_applicationstatus', compact('Data'));
+                }
+                else{
+                    $log = new tbl_activitylog();
+                    $log->merchant_id = $user->merchant_id;
+                    $log->email = $user->email;
+                    $log->name = $user->firstname. ' ' .$user->lastname;
+                    $log->description = 'Has Log In';
+                    $res = $log->save();
+                    if($res){
+                    $request->session()->put('loginID', $user->merchant_id);
+                   return redirect('/index');
+                    }
+                }
+        }
+        else{
+         return view('log_in');
+        }
     }
     public function LoginMerchant(Request $request){
 
@@ -176,14 +240,20 @@ class PartnerRegistration extends Controller
             'email'=> 'required|email',
             'password'=> 'required|min:6'
         ]);
+       
         
         $user = tbl_partner_accounts::where('email', '=', $request->email)->first();
         if($user){
             if(Hash::check($request->password, $user->password)){
+                 if($request->remember){
+                    $minutes = 5;
+                    $response = new Response;
+                    Cookie::queue(Cookie::forever('email', $request->email, $minutes));
+                    Cookie::queue(Cookie::forever('password', $request->password, $minutes));
+                }
                 $status = tbl_merchant_application::where('merchant_id', $user->merchant_id)
                 ->first();
-            
-                if($status->status == 'Pending' || $status->status == 'Reviewing' || $status->status == 'Rejected'){
+                if($status->status == 'pending' || $status->status == 'Reviewing' || $status->status == 'Rejected'){
                     
                      $Data = tbl_partner_accounts::join('tbl_merchant_info', 'tbl_merchant_account.merchant_id', '=', 'tbl_merchant_info.merchant_id')
                     ->join('merchant_application', 'tbl_merchant_account.merchant_id', '=', 'merchant_application.merchant_id')
@@ -213,6 +283,7 @@ class PartnerRegistration extends Controller
         }else{
             return back()->with('fail', 'This is email is not registered');
         }
+        
     }
     
      public function agreement(){

@@ -15,34 +15,30 @@
   </head>
 
   <body>
-    <div class="container-scroller">
-      <nav class="sidebar sidebar-offcanvas" id="sidebar">
-        <ul class="nav">
-          <li class="nav-item back">
-              <div class="back-logo">
-                  <a href="/"> <img src="image/vector.png" alt=""/> </a>
-                  <h5 class="mb-0">Back to website</h5>
-              </div>
-          </li>
-          <li class="nav-item nav-category">
-            <a class="nav-link" href="/">
-              <img src="image/foodea.png" style="width: 50px">FOODEA
-            </a>
-          </li>
-          <li class="nav-item nav-category">Rider Application</li>
-          <li class="red">Step 1 Personal Information</li>
-          <li>Step 2 Verify Phone Number</li>
-          <li>Step 3 Vehicle Information</li>
-          <li>Step 4 Requirements</li>
-          <li>Step 5 Application Status</li>  
-        </ul>
-      </nav>
+   <div class="container-scroller">
+    <nav class="sidebar sidebar-offcanvas" id="sidebar">
+      <ul class="nav">
+        <li class="nav-item back">
+            <div class="back-logo">
+                <a href="/"> <img src="image/vector.png" alt=""/> </a>
+                <h5 class="mb-0">Back to website</h5>
+            </div>
+        </li>
+        <li class="nav-item nav-category">
+          <a class="nav-link" href="/">
+            <img src="image/foodea.png" style="width: 50px">FOODEA
+          </a>
+        </li>
+        <li class="nav-item nav-category">Foodea Application</li>
+        <li class="red">Step 1 &nbsp;&nbsp;&nbsp;Personal Information</li>
+      </ul>
+    </nav>
 
       <div class="sign-form">
         <div class="content-wrapper">
           <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-6">
            <div class="right">
-           <form action="/rider_application" method="get">
+           <form action="/account_type" method="get">
              <h2>Terms of Use</h2>
           <p>These Terms of Use govern your use of the Foodea website and application</p>
          <section>
