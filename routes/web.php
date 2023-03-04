@@ -24,6 +24,8 @@ Route::get('/vision', [Home::class, 'VisionIndex']);
 
 Route::get('/privacy', [Home::class, 'Privacy']);
 
+Route::get('/service', [Home::class, 'Service']);
+
 Route::get('/rider_login', [Home::class, 'RiderLoginIndex']);
 
 Route::get('/login_type', [Home::class, 'LoginType']);

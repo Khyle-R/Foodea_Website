@@ -27,6 +27,9 @@ class Home extends Controller
     public function Privacy(){
         return view ('privacy');
     }
+    public function Service(){
+        return view ('service');
+    }
      public function MissionIndex(){
         return view ('mission');
     }
