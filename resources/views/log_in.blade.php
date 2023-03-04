@@ -116,8 +116,8 @@
                                               </label>
                                             </div>
                                           </div>
-    
-                                        <div class="text-right mb-3">
+
+                                        <div class="col-auto mb-3">
                                             <a href="#" class="nav-link"
                                                 >Forgot Password?</a
                                             >

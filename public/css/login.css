@@ -48,6 +48,7 @@ ul {
 
 .nav-link {
     color: #CB8403;
+    margin-right: -2.5rem;
 }
 
 .nav-link:hover {
@@ -187,47 +188,14 @@ ul {
 .eye {
   background: none;
   border: none;
-  position: absolute;
-  right: 11%;
-  top: 57%;
-  transform: translateY(-57%);
+  display: inline;
+  float: right;
+  transform: translateY(-160%);
   z-index: 9;
+  margin-right: .5rem;
+  clear: right;
 }
 
 #hide1 {
     display: none;
-}
-
-@media (max-width:426px) {
-    .eye {
-        right: 15%;
-        top: 57%;
-        transform: translateY(-57%);
-      }
-}
-
-
-@media (max-width:376px) {
-    .eye {
-        right: 18%;
-        top: 57%;
-        transform: translateY(-57%);
-      }
-}
-
-@media (max-width:360px) {
-    .eye {
-        right: 18%;
-        top: 57%;
-        transform: translateY(-57%);
-      }
-}
-
-
-@media (max-width:320px) {
-    .eye {
-        right: 20%;
-        top: 54%;
-        transform: translateY(-54%);
-      }
 }
