@@ -29,4 +29,9 @@ class CartController extends Controller
         $id = $request->segment(count(request()->segments()));
         return $cart::where('id', $id)->get();
     }
+
+    public function destroy(Request $request, Cart $cart){
+        $id = $request->segment(count(request()->segments()));
+        return $cart::where('id', $id)->delete();
+    }
 }

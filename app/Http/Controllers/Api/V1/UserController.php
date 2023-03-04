@@ -29,4 +29,9 @@ class UserController extends Controller
         $id = $request->segment(count(request()->segments()));
         return $app_user::where('id', $id)->get();
     }
+
+    public function destroy(Request $request, AppUser $app_user){
+        $id = $request->segment(count(request()->segments()));
+        return $app_user::where('id', $id)->delete();
+    }
 }

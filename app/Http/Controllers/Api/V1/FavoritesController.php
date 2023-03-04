@@ -30,4 +30,9 @@ class FavoritesController extends Controller
         $id = $request->segment(count(request()->segments()));
         return $favorites::where('id', $id)->get();
     }
+
+    public function destroy(Request $request, Favorites $favorites){
+        $id = $request->segment(count(request()->segments()));
+        return $favorites::where('id', $id)->delete();
+    }
 }

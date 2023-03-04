@@ -30,4 +30,9 @@ class OrderController extends Controller
         $id = $request->segment(count(request()->segments()));
         return $order::where('order_id', $id)->get();
     }
+
+    public function destroy(Request $request, Order $order){
+        $id = $request->segment(count(request()->segments()));
+        return $order::where('order_id', $id)->delete();
+    }
 }
