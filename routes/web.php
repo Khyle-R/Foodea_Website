@@ -79,8 +79,6 @@ Route::group(['middleware'=>['RiderStatus']], function(){
     });
 });
    
-        
-    // Route::post('/partner_application', [PartnerRegistration::class, 'PersonalInfo'])->name('partner_application.PersonalInfo'); 
 
 });
 
@@ -109,11 +107,6 @@ Route::group(['middleware'=>['PartnerStep3']], function(){
   });
    
 });
-
-// Route::get('/merchant_application_agreement', [PartnerRegistration::class, 'agreement']);
-// Route::get('/partner_application', [PartnerRegistration::class, 'index']);
-
-// Route::get('/sample', [RiderRegistration::class, 'getAllData'])->name('sample.getAllData');
 
 // SUPER ADMIN ROUTE
 
