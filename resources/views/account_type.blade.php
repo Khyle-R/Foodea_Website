@@ -49,10 +49,10 @@
            
             <div class="form-group">
             <label>Account Type</label>
-            <select name="gender" id="" class="form-control form-control-lg">
+            <select name="account_type" id="" class="form-control form-control-lg">
               <option selected="true" disabled="disabled">- Select -</option>
               <option>Rider</option>
-              <option>PArnter Merchant</option>
+              <option>Partner Merchant</option>
             </select>
              <span
             style="color:red;">
@@ -211,35 +211,7 @@
             @error('zip') {{ $message }}
             @enderror</span>
             </div>
-{{-- 
-             <h5 class="mt-4">Emergency Contact</h5>
 
-             <div class="form-group">
-            <label>Name</label>
-            <input name="name" type="text" value="{{ old('zip') }}" class="form-control form-control-lg"/>
-             <span
-            style="color:red;">
-            @error('name') {{ $message }}
-            @enderror</span>
-            </div>
-
-             <div class="form-group">
-            <label>Relationship</label>
-            <input name="relationship" type="text" value="{{ old('zip') }}" class="form-control form-control-lg"/>
-             <span
-            style="color:red;">
-            @error('relationship') {{ $message }}
-            @enderror</span>
-            </div>
-
-             <div class="form-group">
-            <label>Phone</label>
-            <input name="phone" type="text" value="{{ old('zip') }}" class="form-control form-control-lg"/>
-             <span
-            style="color:red;">
-            @error('phone') {{ $message }}
-            @enderror</span>
-            </div> --}}
            <br><br>
            <div class="form-group">
             <div class="col-sm-10 d-flex justify-content-center">

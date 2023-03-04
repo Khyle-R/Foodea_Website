@@ -33,8 +33,6 @@
           <li>Step 1 &nbsp;&nbsp;&nbsp;Personal Information</li>
           <li>Step 2 &nbsp;&nbsp;&nbsp;Verify Phone Number</li>
           <li class="red">Step 3 &nbsp;&nbsp;&nbsp;Vehicle Information</li>
-          <li>Step 4 &nbsp;Requirements</li>
-          <li>Step 5 &nbsp;Application Status</li>  
         </ul>
       </nav>
 
@@ -123,7 +121,35 @@
             @error('year_model') {{ $message }}
             @enderror</span>
           </div>
+          
+            <h5 class="mt-4">Emergency Contact</h5>
 
+             <div class="form-group">
+            <label>Name</label>
+            <input name="name" type="text" value="{{ old('zip') }}" class="form-control form-control-lg"/>
+             <span
+            style="color:red;">
+            @error('name') {{ $message }}
+            @enderror</span>
+            </div>
+
+             <div class="form-group">
+            <label>Relationship</label>
+            <input name="relationship" type="text" value="{{ old('zip') }}" class="form-control form-control-lg"/>
+             <span
+            style="color:red;">
+            @error('relationship') {{ $message }}
+            @enderror</span>
+            </div>
+
+             <div class="form-group">
+            <label>Phone</label>
+            <input name="phone" type="text" value="{{ old('zip') }}" class="form-control form-control-lg"/>
+             <span
+            style="color:red;">
+            @error('phone') {{ $message }}
+            @enderror</span>
+            </div>
 
            <br><br>
            <div class="form-group">

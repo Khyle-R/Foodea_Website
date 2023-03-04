@@ -49,10 +49,10 @@
            
             <div class="form-group">
             <label>Account Type</label>
-            <select name="gender" id="" class="form-control form-control-lg">
+            <select name="account_type" id="" class="form-control form-control-lg">
               <option selected="true" disabled="disabled">- Select -</option>
               <option>Rider</option>
-              <option>PArnter Merchant</option>
+              <option>Partner Merchant</option>
             </select>
              <span
             style="color:red;">
