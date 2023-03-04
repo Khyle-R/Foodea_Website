@@ -18,7 +18,7 @@ class AdminPreventback
     public function handle(Request $request, Closure $next)
     {
         if(Session::get('loginID')){
-            return back();
+            return redirect('index');
         }
         return $next($request);
     }
