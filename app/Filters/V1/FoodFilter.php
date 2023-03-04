@@ -9,6 +9,7 @@ class FoodFilter{
         'merchant_id' => ['eq'],
         'category_id' => ['eq'],
         'product_name' => ['eq', 'like'],
+        'calories' => ['eq', 'lt', 'lte', 'gt', 'gte'],
         'price' => ['eq', 'gt', 'lt', 'gte', 'lte'],
         'stock' => ['eq', 'gt', 'lt', 'gte', 'lte'],
         'status' => ['ne', 'eq'],

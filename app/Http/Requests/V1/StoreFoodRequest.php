@@ -28,6 +28,7 @@ class StoreFoodRequest extends FormRequest
             'category_id' => ['required', 'numeric'],
             'product_name' => ['required'],
             'price' => ['required', 'numeric'],
+            'calories' => ['required', 'numeric'],
             'product_image' => ['required'],
             'stock' => ['required', 'numeric'],
             'status' => ['required'],
