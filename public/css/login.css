@@ -55,6 +55,15 @@ ul {
     color: #835602;
 }
 
+.bg_image img{
+    width: 20rem;
+}
+
+.bg_image{
+    z-index: -1;
+}
+
+
 .btn {
     background-color: #F54748;
     border-color: #F54748;
@@ -198,4 +207,10 @@ ul {
 
 #hide1 {
     display: none;
+}
+
+@media (max-width:700px){ 
+.bg_image img{
+    width: 25rem;
+}
 }
