@@ -22,7 +22,7 @@ Route::get('/mission', [Home::class, 'MissionIndex']);
 
 Route::get('/vision', [Home::class, 'VisionIndex']);
 
-Route::get('/privacy', [Home::class, 'TermsCondition']);
+Route::get('/privacy', [Home::class, 'Privacy']);
 
 Route::get('/rider_login', [Home::class, 'RiderLoginIndex']);
 
