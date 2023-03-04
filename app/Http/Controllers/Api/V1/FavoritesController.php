@@ -25,4 +25,9 @@ class FavoritesController extends Controller
     public function store(StoreFavoriteRequest $request){
         return Favorites::create($request->all());
     }
+
+    public function show(Request $request, Favorites $favorites){
+        $id = $request->segment(count(request()->segments()));
+        return $favorites::where('id', $id)->get();
+    }
 }

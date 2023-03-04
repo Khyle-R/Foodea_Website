@@ -12,6 +12,7 @@ class CartFilter{
         'price' => ['eq', 'gt', 'lt', 'gte', 'lte'],
         'stock' => ['eq', 'gt', 'lt', 'gte', 'lte'],
         'status' => ['ne', 'eq'],
+        'date' => ['eq'],
         'description' => ['eq']
     ];
 

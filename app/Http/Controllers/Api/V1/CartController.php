@@ -24,4 +24,9 @@ class CartController extends Controller
     public function store(StoreCartRequest $request){
         return Cart::create($request->all());
     }
+
+    public function show(Request $request, Cart $cart){
+        $id = $request->segment(count(request()->segments()));
+        return $cart::where('id', $id)->get();
+    }
 }

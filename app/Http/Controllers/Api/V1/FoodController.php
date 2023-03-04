@@ -24,4 +24,9 @@ class FoodController extends Controller
     public function store(StoreFoodRequest $request){
         return tbl_product::create($request->all());
     }
+
+    public function show(Request $request, tbl_product $tbl_product){
+        $id = $request->segment(count(request()->segments()));
+        return $tbl_product::where('product_id', $id)->get();
+    }
 }

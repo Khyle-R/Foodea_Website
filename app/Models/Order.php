@@ -19,4 +19,5 @@ class Order extends Model
         'payment_type',
         'date'
     ];
+    protected $primaryKey = 'order_id';
 }

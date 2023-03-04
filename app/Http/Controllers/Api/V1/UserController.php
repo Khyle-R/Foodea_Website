@@ -24,4 +24,9 @@ class UserController extends Controller
     public function store(StoreAppUserRequest $request){
         return AppUser::create($request->all());
     }
+
+    public function show(Request $request, AppUser $app_user){
+        $id = $request->segment(count(request()->segments()));
+        return $app_user::where('id', $id)->get();
+    }
 }

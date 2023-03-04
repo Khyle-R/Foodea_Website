@@ -25,4 +25,9 @@ class OrderController extends Controller
     public function store(StoreOrderRequest $request){
         return Order::create($request->all());
     }
+
+    public function show(Request $request, Order $order){
+        $id = $request->segment(count(request()->segments()));
+        return $order::where('order_id', $id)->get();
+    }
 }
