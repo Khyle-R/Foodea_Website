@@ -11,8 +11,18 @@ use App\Http\Controllers\sample;
 use App\Http\Controllers\SuperadminController;
 
 
+Route::get('/', [Home::class, 'index'])->name('home.index');
+
 
 Route::get('/account_type', [Home::class, 'AccountType']);
+
+Route::get('/terms_condition', [Home::class, 'TermsCondition']);
+
+Route::get('/mission', [Home::class, 'MissionIndex']);
+
+Route::get('/vision', [Home::class, 'VisionIndex']);
+
+Route::get('/privacy', [Home::class, 'TermsCondition']);
 
 Route::get('/rider_login', [Home::class, 'RiderLoginIndex']);
 
@@ -22,35 +32,35 @@ Route::post('/rider_login', [RiderRegistration::class, 'RiderLogIn'])->name('Rid
 
 Route::get('//rider_logout', [RiderRegistration::class, 'RiderLogout']);
 
-Route::get('/', [Home::class, 'index'])->name('home.index');
 
 
-Route::group(['middleware'=>['RiderStep2']], function(){
+
+// Route::group(['middleware'=>['RiderStep2']], function(){
     
     Route::get('/rider_application_agreement', [RiderRegistration::class, 'agreement']);
     Route::get('/rider_application', [RiderRegistration::class, 'index'])->name('rider_application.index');
     Route::post('/rider_applicationn', [RiderRegistration::class, 'addPostSubmit'])->name('rider_application.addPostSubmit');
-    });
+    // });
 
-Route::group(['middleware'=>['RiderStep1']], function(){
+// Route::group(['middleware'=>['RiderStep1']], function(){
 
-    Route::group(['middleware'=>['RiderStep3']], function(){
+    // Route::group(['middleware'=>['RiderStep3']], function(){
     Route::get('/rider_application2', [RiderRegistration::class, 'VerifyRider']);
     Route::get('/rider_application_2', [RiderRegistration::class, 'RiderVerify']);
-        });
+        // });
     
-Route::group(['middleware'=>['RiderStep4']], function(){
+// Route::group(['middleware'=>['RiderStep4']], function(){
     Route::get('/rider_application3', [RiderRegistration::class, 'step2index'])->name('rider_application3.step2index');
     Route::post('/rider_application3', [RiderRegistration::class, 'addVehicle'])->name('rider_application3.addVehicle');
-         });
+        //  });
     
-Route::group(['middleware'=>['RiderStepFinal']], function(){
+// Route::group(['middleware'=>['RiderStepFinal']], function(){
     Route::get('/rider_application4', function () {
      return view('rider_application4');
     });
       Route::post('/rider_application4', [RiderRegistration::class, 'SaveDocuments'])->name('rider_application4.SaveDocuments');
 
-     });
+    //  });
    
 
     // Route::get('/rider_application4', [RiderRegistration::class, 'step4index']);
@@ -63,7 +73,7 @@ Route::group(['middleware'=>['RiderStepFinal']], function(){
     Route::get('/rider_application5', function () {
         return view('rider_application5');
     });
-});
+// });
 
 
 Route::get('/partner_application', [PartnerRegistration::class, 'index']);

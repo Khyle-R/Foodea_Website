@@ -33,8 +33,6 @@
           <li>Step 1 &nbsp;&nbsp;&nbsp;Personal Information</li>
           <li>Step 2 &nbsp;&nbsp;&nbsp;Verify Phone Number</li>
           <li class="red">Step 3 &nbsp;&nbsp;&nbsp;Vehicle Information</li>
-          <li>Step 4 &nbsp;Requirements</li>
-          <li>Step 5 &nbsp;Application Status</li>  
         </ul>
       </nav>
 
@@ -155,7 +153,59 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?></span>
           </div>
+          
+            <h5 class="mt-4">Emergency Contact</h5>
 
+             <div class="form-group">
+            <label>Name</label>
+            <input name="name" type="text" value="<?php echo e(old('zip')); ?>" class="form-control form-control-lg"/>
+             <span
+            style="color:red;">
+            <?php $__errorArgs = ['name'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> <?php echo e($message); ?>
+
+            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?></span>
+            </div>
+
+             <div class="form-group">
+            <label>Relationship</label>
+            <input name="relationship" type="text" value="<?php echo e(old('zip')); ?>" class="form-control form-control-lg"/>
+             <span
+            style="color:red;">
+            <?php $__errorArgs = ['relationship'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> <?php echo e($message); ?>
+
+            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?></span>
+            </div>
+
+             <div class="form-group">
+            <label>Phone</label>
+            <input name="phone" type="text" value="<?php echo e(old('zip')); ?>" class="form-control form-control-lg"/>
+             <span
+            style="color:red;">
+            <?php $__errorArgs = ['phone'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> <?php echo e($message); ?>
+
+            <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?></span>
+            </div>
 
            <br><br>
            <div class="form-group">
