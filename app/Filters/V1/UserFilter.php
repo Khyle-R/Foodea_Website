@@ -5,7 +5,7 @@ use Illuminate\Http\Request;
 
 class UserFilter{
     protected $allowedParameters = [
-        'id' => ['eq'],
+        'user_id' => ['eq'],
         'firstname' => ['eq','like'],
         'middlename' => ['eq','like'],
         'lastname' => ['eq','like'],
