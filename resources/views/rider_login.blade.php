@@ -148,7 +148,10 @@
             </div>
                 
         </section>
-
+        
+        <div class="bg_image fixed-bottom">
+            <img class="" src="image/foodsbgleft.png" alt="">
+        </div>
     </body>
  <script>
             $('.popup').show(function() {
