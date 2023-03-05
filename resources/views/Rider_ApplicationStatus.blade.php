@@ -227,7 +227,6 @@
                                          <p class="black ml-5">{{ $rider->vehicle_back }}</p>
                                       </div>
                                        @endforeach
-
                                     </div>
                                      <div class="col-sm-5 ml-sm-5">
                                    <div class="row px-2 mt-2">

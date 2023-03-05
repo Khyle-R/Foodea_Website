@@ -17,6 +17,14 @@ class RiderStepFinal
      */
     public function handle(Request $request, Closure $next)
     {
+        if(Session::get('status') == 'first')
+        {
+            return redirect('/rider_application2');
+        }
+        if(Session::get('status') == 'second')
+        {
+            return redirect('/rider_application3');
+        }
        if(Session::get('status') == 'Pending')
         {
             return redirect('/rider_application5');

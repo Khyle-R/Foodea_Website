@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use App\Models\tbl_accepted_merchant;
 use App\Models\tbl_rider_application;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Session;
 use App\Models\tbl_merchant_application;
 use Illuminate\Support\Facades\Response;
@@ -30,8 +31,20 @@ class SuperadminController extends Controller
      public function changepass(){
         return view('superadmin.superadmin_changepassword');
     }
-    public function login(){
-        return view('superadmin.superadmin_login');
+    public function login(Request $request){
+ 
+        if(Cookie::get('email') && Cookie::get('password'))
+        {
+             $admin = admin_account::where('email', '=', Cookie::get('email'))->first();
+             $request->session()->put('adminID', $admin->admin_id);
+             $request->session()->put('adminEmail', $admin->email);
+            return redirect('/superadmin_index');
+            
+        }
+        else{
+    return view('superadmin.superadmin_login');
+        }
+      
     }
     
     public function LoginAdmin(Request $request){
@@ -40,10 +53,17 @@ class SuperadminController extends Controller
             'email'=> 'required|email',
             'password'=> 'required|min:6'
         ]);
-
+       
     $admin = admin_account::where('email', '=', $request->email)->first();
     if($admin){
         if(Hash::check($request->password, $admin->password)){
+            if($request->remember){
+            $minutes = 5;
+            $response = new Response();
+            Cookie::queue(Cookie::forever('email', $request->email, $minutes));
+            Cookie::queue(Cookie::forever('password', $request->password, $minutes));
+            
+        } 
          $log = new tbl_superadmin_log();
          $log->description = 'Has Log In';
          $log->email = $request->email;
@@ -60,6 +80,7 @@ class SuperadminController extends Controller
     else{
         return back()->with('fail', 'This email does not exist');
     }
+        
     }
    public function AdminLogOut(){
     if(Session::has('adminID')){
@@ -70,6 +91,8 @@ class SuperadminController extends Controller
         if($res){
         Session::pull('adminID');
         Session::pull('adminEmail');
+        Cookie::queue(Cookie::forget('email'));
+        Cookie::queue(Cookie::forget('password'));  
         return redirect('/superadmin_login');
         }
       
@@ -175,7 +198,7 @@ class SuperadminController extends Controller
     ->join('tbl_merchant_info', 'tbl_merchant_account.merchant_id', '=', 'tbl_merchant_info.merchant_id')
     ->distinct()
     ->limit(1)
-    ->get(['tbl_accepted_merchant.accepted_merchant_id', 'business_name', 'merchant_document.logo', 'tbl_merchant_account.merchant_id', 'business_type', 'barangay', 'city', 'address', 'store_email', 'store_number']);    
+    ->get(['tbl_accepted_merchant.accepted_merchant_id', 'business_name', 'merchant_document.logo', 'tbl_merchant_account.merchant_id', 'business_type', 'tbl_merchant_info.barangay', 'tbl_merchant_info.city', 'tbl_merchant_info.address', 'store_email', 'store_number']);    
 
     return view('superadmin.superadminapplication_accepted_partner', compact('Data'));
    }
@@ -672,14 +695,14 @@ class SuperadminController extends Controller
               return response()->download(public_path('uploads/'. 'merchant_documents'. '/'.$id.  '/' .$name));        
     }
 
-    public function DownloadVehicleZip($firstname, $lastname, $id){
+    public function DownloadVehicleZip($id){
 
     
         $zip = new \ZipArchive();
         $fileName = mt_rand(1000, 9999).'.zip';
         if ($zip->open(public_path($fileName), \ZipArchive::CREATE)== TRUE)
         {
-            $files = File::files(public_path('uploads/'. 'rider_documents'. '/'.$id. '_' .$firstname. '_' .$lastname. '/'.'vehicle/'));
+            $files = File::files(public_path('uploads/'. 'rider_documents'. '/'.$id. '/'.'vehicle/'));
        
               foreach ($files as $key => $value){
                 $relativeName = basename($value);
@@ -694,14 +717,14 @@ class SuperadminController extends Controller
 
         return response()->download(public_path($fileName))->deleteFileAfterSend(true);
     }
-     public function DownloadLicenseZip($firstname, $lastname, $id){
+     public function DownloadLicenseZip($id){
 
     
         $zip = new \ZipArchive();
         $fileName = mt_rand(1000, 9999).'.zip';
         if ($zip->open(public_path($fileName), \ZipArchive::CREATE)== TRUE)
         {
-            $files = File::files(public_path('uploads/'. 'rider_documents'. '/'.$id. '_' .$firstname. '_' .$lastname. '/'.'driver license/'));
+            $files = File::files(public_path('uploads/'. 'rider_documents'. '/'.$id. '/'.'driver license/'));
        
               foreach ($files as $key => $value){
                 $relativeName = basename($value);

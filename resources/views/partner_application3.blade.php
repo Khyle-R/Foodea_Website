@@ -31,8 +31,6 @@
               <li>Step 1 &nbsp;&nbsp;&nbsp;Personal Information</li>
               <li>Step 2 &nbsp;&nbsp;&nbsp;Business Information</li>
               <li class="red">Step 3 &nbsp;&nbsp;&nbsp;Verify Email Address</li>
-              <li>Step 4 &nbsp;Requirements</li>
-              <li>Step 5 &nbsp;Applicataion Status</li>
             </ul>
       </nav>
 
@@ -48,7 +46,7 @@
 
           <div class="form-group">
             <label>Didn't get an email?</label>
-            <a href="/partner_requirements">Resend email verification</a>
+            <a href="/partner_application_3">Resend email verification</a>
           </div>
 
       </div>

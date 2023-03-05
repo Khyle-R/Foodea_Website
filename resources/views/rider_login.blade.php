@@ -81,6 +81,7 @@
                                         name="email"
                                         class="form-control my-1"
                                         placeholder="example@gmail.com"
+                                        value="{{ Cookie::get('email') }}"
                                     />
                                        <span
                                         class="error">
@@ -95,6 +96,7 @@
                                             class="form-control my-1 form-control-lg"
                                             placeholder="Password"
                                             id="password"
+                                            value="{{ Cookie::get('password') }}"
                                         />
                                         <span class="eye" onclick="myFunction()">
                                             <i class="fa fa-eye" id="hide1"></i>
@@ -110,7 +112,7 @@
                                     <div class="form-row justify-content-between">
                                         <div class="col-auto form-group my-2">
                                             <div class="form-check">
-                                              <input class="form-check-input" type="checkbox" id="gridCheck">
+                                              <input class="form-check-input" type="checkbox" name="remember" id="gridCheck">
                                               <label class="form-check-label" for="gridCheck">
                                                 Remember Me
                                               </label>

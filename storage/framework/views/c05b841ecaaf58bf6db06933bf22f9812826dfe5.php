@@ -28,8 +28,7 @@
               <img src="image/foodea.png" style="width: 50px">FOODEA
             </a>
           </li>
-                           <li><?php echo e(Session::get('status')); ?></li>
-               <li class="nav-item nav-category">Rider Application</li>
+          <li class="nav-item nav-category">Rider Application</li>
           <li>Step 1 &nbsp;&nbsp;&nbsp;Personal Information</li>
           <li>Step 2 &nbsp;&nbsp;&nbsp;Verify Phone Number</li>
           <li>Step 3 &nbsp;&nbsp;&nbsp;Vehicle Information</li>

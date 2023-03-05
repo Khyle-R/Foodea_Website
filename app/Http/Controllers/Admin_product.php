@@ -1,17 +1,18 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\tbl_product;
+use App\Models\tbl_voucher;
+use App\Models\tbl_category;
 use Illuminate\Http\Request;
 use App\Models\tbl_inventory;
-use App\Models\tbl_product;
-use App\Models\tbl_merchant_info;
-use App\Models\tbl_partner_accounts;
-use App\Models\tbl_category;
-use App\Models\tbl_voucher;
 use App\Models\tbl_activitylog;
-use Carbon\Carbon; // to retrieve current Date
+use App\Models\tbl_merchant_info;
 use Illuminate\Support\Facades\DB;
+use App\Models\tbl_partner_accounts;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Session;
+use Carbon\Carbon; // to retrieve current Date
 
 class Admin_product extends Controller
 {
@@ -38,6 +39,8 @@ class Admin_product extends Controller
                 $res = $log->save();
                 if($res){
        Session::pull('loginID');
+       Cookie::queue(Cookie::forget('email'));
+        Cookie::queue(Cookie::forget('password'));  
         return redirect('/login');
                 }
         }
@@ -498,7 +501,7 @@ class Admin_product extends Controller
     public function AdminAccount(){
         $id = Session::get('loginID');
 
-        $Data = tbl_partner_accounts::join('tbl_merchant_info', 'tbl_merchant_account.merchant_id', '=', 'tbl_merchant_info.merchant_id')
+     $Data = tbl_partner_accounts::join('tbl_merchant_info', 'tbl_merchant_account.merchant_id', '=', 'tbl_merchant_info.merchant_id')
     ->join('merchant_document', 'tbl_merchant_account.merchant_id', '=', 'merchant_document.merchant_id')
     ->join('tbl_accepted_merchant', 'tbl_merchant_account.merchant_id', '=', 'tbl_accepted_merchant.merchant_id')
     ->where('tbl_merchant_account.merchant_id', $id)

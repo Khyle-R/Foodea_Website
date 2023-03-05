@@ -87,7 +87,7 @@
               </li>
             </ul>
             <a
-            href="/account_type"
+            href="/rider_application_agreement"
             class="text-secondary mt-2 mx-5"
             style="text-decoration: none;">
               Signup
