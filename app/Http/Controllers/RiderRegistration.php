@@ -12,7 +12,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\Models\tbl_rider_application;
 use Illuminate\Support\Facades\Session;
-
+use App\Models\tbl_partner_accounts;
+use App\Models\tbl_merchant_application;
 
 class RiderRegistration extends Controller
 {
@@ -42,7 +43,6 @@ class RiderRegistration extends Controller
             'lastname' => 'required',
             'age' => 'required',
             'gender' => 'required',
-            'email' => 'required|email|unique:tbl_rider_account',
             'mobilenumber' => 'required',
             'password' => 'required|min:6|confirmed',
             'password_confirmation' => 'required|min:6',
@@ -50,12 +50,17 @@ class RiderRegistration extends Controller
             'city' => 'required',
             'barangay' => 'required',
             'zip' => 'required',
-            'birthday' => 'required',
-            'relationship' => 'required',
-            'phone' => 'required',
-            'name' => 'required'
+            'birthday' => 'required'
+         
             ]);
 
+              /*RIDERS */
+            if($request->account_type == 'Rider'){
+              $request->validate([
+            'email' => 'required|email|unique:tbl_rider_account',
+          
+              ]);
+                
              $rider = new tbl_rider_accounts();
              $rider->firstname = $request-> firstname;
              $rider->middlename = $request-> middlename;
@@ -71,9 +76,6 @@ class RiderRegistration extends Controller
              $rider->barangay = $request-> barangay;
              $rider->zip_code = $request->  zip;
              $rider->birthdate = $request-> birthday;
-             $rider->emergency_name = $request-> name;
-             $rider->relationship = $request-> relationship;
-             $rider->contact_number = $request->  phone;
              //from database = input request
              $res = $rider -> save();
             
@@ -88,10 +90,57 @@ class RiderRegistration extends Controller
                 
                 $request->session()->put('status', $id->status);
                 return redirect('/rider_application2');
-            }else{
+            }
+            else{
                 return back()->with('fail', 'Something is wrong');
             }
+        }
+        
+        /*MERCHANT */
+        if($request->account_type == 'Partner Merchant'){
+            $request-> validate([
+            'firstname' => 'required',
+            'middlename' => 'required',
+            'lastname' => 'required',
+            'email' => 'required|email|unique:tbl_merchant_account',
+            'password' => 'required|min:6|confirmed',
+            'password_confirmation' => 'required'
+        ]);
 
+        $merchant = new tbl_partner_accounts();
+        $merchant->firstname = $request->firstname;
+        $merchant->middlename = $request->middlename;
+        $merchant->lastname = $request->lastname;
+        $merchant->suffix = $request->suffix;
+        $merchant->age = $request->  age;
+        $merchant->gender = $request->  gender;
+        $merchant->birthdate = $request-> birthday;
+        $merchant->email = $request->email;
+        $merchant->password = Hash::make($request->password);
+        $merchant->mobile_number = $request-> mobilenumber;
+        $merchant->address = $request->  address;
+        $merchant->city = $request-> city;
+        $merchant->barangay = $request-> barangay;
+        $merchant->zip_code = $request->  zip;
+
+        $res = $merchant->save();
+
+        if($res){
+            $request->session()->put('merchant_id', $merchant->id);
+
+            $id = new tbl_merchant_application();
+            $id->merchant_id = $merchant->id;
+            $id->status = 'first';
+            $id->save();
+            
+            return redirect('/partner_application2');
+        }else{
+            return back()->with('fail', 'Something is wrong');
+        }
+        }
+        else{
+            return back();
+        }
     }
     public function VerifyRider(){
         return view('rider_application2');
@@ -124,7 +173,10 @@ class RiderRegistration extends Controller
             'plate_number' => 'required',
             'displacement' => 'required',
             'engine_number' => 'required',
-            'year_model' => 'required'
+            'year_model' => 'required',
+            'relationship' => 'required',
+            'phone' => 'required',
+            'name' => 'required'
         ]);
         $vehicle = new tbl_vehicle_infos();
         $vehicle->rider_id = $request->rider_id;
@@ -134,6 +186,9 @@ class RiderRegistration extends Controller
         $vehicle->displacement = $request->displacement;
         $vehicle->engine_number = $request->engine_number;
         $vehicle->year_model = $request->year_model;
+        $vehicle->emergency_name = $request-> name;
+        $vehicle->relationship = $request-> relationship;
+        $vehicle->contact_number = $request->  phone;
         $res = $vehicle -> save();
 
         if($res){
@@ -165,6 +220,8 @@ class RiderRegistration extends Controller
         return view('/rider_application4');
     }
       public function SaveDocuments(Request $request){
+
+         if(Session::get('vehicle') == 'Fully_owned'){
         $request->validate([
             'image'=> 'required|mimes:jpeg,png,jpg|max:5000',
             'vehicle_front'=> 'required|mimes:jpeg,png,jpg|max:5000',
@@ -176,14 +233,44 @@ class RiderRegistration extends Controller
             'or'=> 'required|mimes:pdf|max:5000',
             'nbi'=> 'required|mimes:pdf|max:5000'
         ]);
+    }
+        /* BORROWED */
+        if(Session::get('vehicle') == 'Borrowed'){
+         $request->validate([
+            'image'=> 'required|mimes:jpeg,png,jpg|max:5000',
+            'vehicle_front'=> 'required|mimes:jpeg,png,jpg|max:5000',
+            'vehicle_side'=> 'required|mimes:jpeg,png,jpg|max:5000',
+            'vehicle_back'=> 'required|mimes:jpeg,png,jpg|max:5000',
+            'license'=> 'required|mimes:jpeg,png,jpg|max:5000',
+            'license_back'=> 'required|mimes:jpeg,png,jpg|max:5000',
+            'auth_letter'=> 'required|mimes:pdf|max:5000',
+            'cr'=> 'required|mimes:pdf|max:5000',
+            'or'=> 'required|mimes:pdf|max:5000',
+            'nbi'=> 'required|mimes:pdf|max:5000'
+        ]);
+        }
+
+         /* SECOND HAND */
+          if(Session::get('vehicle') == 'Second-hand'){
+         $request->validate([
+            'image'=> 'required|mimes:jpeg,png,jpg|max:5000',
+            'vehicle_front'=> 'required|mimes:jpeg,png,jpg|max:5000',
+            'vehicle_side'=> 'required|mimes:jpeg,png,jpg|max:5000',
+            'vehicle_back'=> 'required|mimes:jpeg,png,jpg|max:5000',
+            'license'=> 'required|mimes:jpeg,png,jpg|max:5000',
+            'license_back'=> 'required|mimes:jpeg,png,jpg|max:5000',
+            'deed_sale'=> 'required|mimes:pdf|max:5000',
+            'cr'=> 'required|mimes:pdf|max:5000',
+            'or'=> 'required|mimes:pdf|max:5000',
+            'nbi'=> 'required|mimes:pdf|max:5000'
+        ]);
+        }
         
         $document = new tbl_rider_document();
         $document->rider_id = $request->rider_id;
       
         
         if($request->hasFile('vehicle_front') && $request->hasFile('license') && $request->hasFile('image') && $request->hasFile('cr') && $request->hasFile('or') && $request->hasFile('drug_test') && $request->hasFile('nbi') && $request->hasFile('vehicle_side') && $request->hasFile('vehicle_back') && $request->hasFile('license_back')){
-            
-           
 
             $vehicle = $request->file('vehicle_front');
             $file = $request->file('license');
@@ -195,7 +282,7 @@ class RiderRegistration extends Controller
             $file7 = $request->file('vehicle_side');
             $file8 = $request->file('vehicle_back');
             $file9 = $request->file('license_back');
-            if(Session::get('vehicle') == 'Borrowed')
+            if($request->hasFile('auth_letter'))
             {
             $file10 = $request->file('auth_letter');
             }
@@ -215,7 +302,7 @@ class RiderRegistration extends Controller
             $side = $file7->getClientOriginalName();
             $back = $file8->getClientOriginalName();
             $license_back = $file9->getClientOriginalName();
-             if(Session::get('vehicle') == 'Borrowed')
+            if($request->hasFile('auth_letter'))
             {
             $auth = $file10->getClientOriginalName();
             }
@@ -235,7 +322,7 @@ class RiderRegistration extends Controller
             $filename8 = mt_rand(1000, 9999) . '_' .$side;
             $filename9 = mt_rand(1000, 9999) . '_' .$back;
             $filename10 =mt_rand(1000, 9999) . '_' .$license_back;
-              if(Session::get('vehicle') == 'Borrowed')
+             if($request->hasFile('auth_letter'))
             {
             $filename11 = mt_rand(1000, 9999) . '_' .$auth;
             }
@@ -256,7 +343,7 @@ class RiderRegistration extends Controller
             $file7->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id.  '/' .'vehicle/'), $filename8);
             $file8 ->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id.  '/' .'vehicle/'),  $filename9 );
             $file9 ->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id.  '/' .'driver license/'),  $filename10 );
-             if(Session::get('vehicle') == 'Borrowed')
+            if($request->hasFile('auth_letter'))
             {
             $file10->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id. '_'.$name->firstname. '_' .$name->lastname), $filename11);
             }
@@ -275,7 +362,7 @@ class RiderRegistration extends Controller
             $document->vehicle_side =  $filename8;
             $document->vehicle_back =  $filename9;
             $document->license_back =  $filename10;
-              if(Session::get('vehicle') == 'Borrowed')
+              if($request->hasFile('auth_letter'))
             {
             $document->auth_letter =  $filename11;
             }

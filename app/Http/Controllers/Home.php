@@ -21,4 +21,19 @@ class Home extends Controller
     public function LoginType(){
         return view ('login_type');
     }
+    public function TermsCondition(){
+        return view ('terms_condition');
+    }
+    public function Privacy(){
+        return view ('privacy');
+    }
+    public function Service(){
+        return view ('service');
+    }
+     public function MissionIndex(){
+        return view ('mission');
+    }
+     public function VisionIndex(){
+        return view ('vision');
+    }
 }

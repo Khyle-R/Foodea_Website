@@ -167,6 +167,7 @@
             <div class="slide"><img src="image/king.png" alt="logo" /></div>
         </section>
     </div>
+
     <!---ACOORDION-->
     <div class="container2">
         <div class="accor-title" data-aos="fade-up">
@@ -306,17 +307,18 @@
                 arrows: true,
                 dots: false,
                 pauseOnHover: false,
+                
                 responsive: [{
                         breakpoint: 700,
                         setting: {
                             slidesToShow: 4,
-                        },
+                        }
                     },
                     {
                         breakpoint: 520,
                         setting: {
                             slidesToShow: 3,
-                        },
+                        }
                     },
                 ],
             });
