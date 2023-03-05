@@ -17,18 +17,19 @@ return new class extends Migration
             $table->id('rider_id');
             $table->string('password');
             $table->string('firstname');
-            $table->string('lastname');
             $table->string('middlename');
-            $table->string('suffix')->nuLlable();
+            $table->string('lastname');
+            $table->string('suffix')->nullable();
             $table->integer('age');
             $table->string('gender');
+            $table->string('birthdate');
             $table->string('email');
-            $table->integer('mobile_number');
+            $table->string('mobile_number');
             $table->string('address');
             $table->string('city');
             $table->string('barangay');
             $table->integer('zip_code');
-            $table->timestamps();
+             $table->timestamp('date')->useCurrent();
         });
     }
 
