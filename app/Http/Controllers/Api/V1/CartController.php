@@ -16,9 +16,9 @@ class CartController extends Controller
         $queryItems = $filter->transform($request);
 
         if (!isset($queryItems)||count($queryItems) == 0 ) {
-            return Cart::all();
+            return Cart::with('product_details')->get();
         } else {
-            return Cart::where($queryItems)->get();
+            return Cart::with('product_details')->where($queryItems)->get();
         }
     }
 
