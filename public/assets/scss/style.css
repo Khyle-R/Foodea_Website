@@ -16913,7 +16913,7 @@ div.tagsinput span.tag a {
 /* Navbar */
 .navbar {
   font-weight: normal;
-  background: #F54748;
+  background: #191c24;
   left: 244px;
   transition: left 0.25s ease;
   -webkit-transition: left 0.25s ease;
@@ -16930,7 +16930,7 @@ div.tagsinput span.tag a {
   -webkit-transition: width 0.25s ease, background 0.25s ease;
   -moz-transition: width 0.25s ease, background 0.25s ease;
   -ms-transition: width 0.25s ease, background 0.25s ease;
-  background: #F54748;
+  background: #191c24;
   width: 244px;
   height: 70px;
 }
@@ -17052,7 +17052,7 @@ div.tagsinput span.tag a {
 .navbar .navbar-menu-wrapper .count-indicator .count-number {
   position: absolute;
   border-radius: 100%;
-  border: 2px solid #F54748;
+  border: 2px solid #191c24;
 }
 .navbar .navbar-menu-wrapper .count-indicator .count-symbol {
   top: 17px;
@@ -17280,7 +17280,7 @@ div.tagsinput span.tag a {
 /* Sidebar */
 .sidebar {
   min-height: calc(100vh - 70px);
-  background: #f54748;
+  background: #191c24;
   font-weight: normal;
   padding: 0;
   width: 244px;
@@ -17295,7 +17295,7 @@ div.tagsinput span.tag a {
   -webkit-transition: width 0.25s ease, background 0.25s ease;
   -moz-transition: width 0.25s ease, background 0.25s ease;
   -ms-transition: width 0.25s ease, background 0.25s ease;
-  background: #f54748;
+  background: #191c24;
   width: 244px;
   height: 70px;
 }
@@ -17317,10 +17317,10 @@ div.tagsinput span.tag a {
 }
 .sidebar .sidebar-brand-wrapper .sidebar-brand img {
   width: calc(244px - 120px );
-  vertical-align: middle;
   max-width: 100%;
-  height: 35px;
+  height: 28px;
   margin: auto;
+  vertical-align: middle;
 }
 .sidebar .sidebar-brand-wrapper .sidebar-brand.brand-logo-mini {
   display: none;
@@ -17357,7 +17357,7 @@ div.tagsinput span.tag a {
   align-items: center;
   white-space: nowrap;
   padding: 0.8rem 10px 0.8rem 1.188rem;
-  color: white;
+  color: #6c7293;
   transition-duration: 0.45s;
   transition-property: color;
   -webkit-transition-property: color;
@@ -17368,7 +17368,7 @@ div.tagsinput span.tag a {
   color: inherit;
 }
 .sidebar .nav .nav-item .nav-link i.menu-icon {
-  font-size: 2rem;
+  font-size: 1rem;
   line-height: 1;
   margin-left: auto;
   color: rgba(187, 168, 191, 0.9607843137);
@@ -17383,9 +17383,9 @@ div.tagsinput span.tag a {
 .sidebar .nav .nav-item .nav-link i.menu-arrow {
   font: normal normal normal 24px/1 "Material Design Icons";
   line-height: 1;
-  font-size: 2rem;
+  font-size: 1rem;
   margin-left: auto;
-  color: white;
+  color: rgba(108, 114, 147, 0.36);
 }
 .rtl .sidebar .nav .nav-item .nav-link i.menu-arrow {
   margin-left: 0;
@@ -17408,7 +17408,7 @@ div.tagsinput span.tag a {
   margin-left: 1rem;
 }
 .sidebar .nav .nav-item.active > .nav-link {
-  background: white;
+  background: #0f1015;
   position: relative;
 }
 .sidebar .nav .nav-item.active > .nav-link:before {
@@ -17422,7 +17422,7 @@ div.tagsinput span.tag a {
   top: 0;
 }
 .sidebar .nav .nav-item.active > .nav-link .menu-title {
-  color: #272727;
+  color: #ffffff;
 }
 .sidebar .nav .nav-item.active > .nav-link i {
   color: #ffffff;
@@ -17511,7 +17511,7 @@ div.tagsinput span.tag a {
 .sidebar .nav .nav-item.profile .profile-desc .profile-pic .count-indicator .count-number {
   position: absolute;
   border-radius: 100%;
-  border: 2px solid #F54748;
+  border: 2px solid #191c24;
 }
 .sidebar .nav .nav-item.profile .profile-desc .profile-pic .count-indicator .count-symbol {
   top: 17px;
@@ -17547,7 +17547,7 @@ div.tagsinput span.tag a {
 }
 .sidebar .nav .nav-item.profile .profile-desc .mdi-dots-vertical {
   font-size: 20px;
-  color: white;
+  color: #6c7293;
 }
 .sidebar .nav .nav-item.profile .profile-desc .dropdown-menu {
   padding: 0;
@@ -17610,7 +17610,7 @@ div.tagsinput span.tag a {
   padding: 0;
 }
 .sidebar .nav.sub-menu .nav-item .nav-link {
-  color: white;
+  color: #6c7293;
   padding: 0.5rem 0.35rem;
   position: relative;
   font-size: 0.855rem;
@@ -17619,18 +17619,18 @@ div.tagsinput span.tag a {
   border-top: 0;
 }
 .sidebar .nav.sub-menu .nav-item .nav-link.active {
-  color: #272727;
+  color: #ffffff;
   background: transparent;
 }
 .sidebar .nav.sub-menu .nav-item .nav-link:hover {
-  color: black;
+  color: #ffffff;
 }
 .sidebar .nav.sub-menu .nav-item:hover {
   background: transparent;
 }
 .sidebar .nav:not(.sub-menu) > .nav-item:hover:not(.nav-category):not(.account-dropdown) > .nav-link {
-  background: white;
-  color: #272727;
+  background: #0f1015;
+  color: #ffffff;
 }
 .sidebar .nav .menu-items:nth-child(5n+1) .nav-link .menu-icon i {
   color: #0090e7;
@@ -17676,7 +17676,7 @@ div.tagsinput span.tag a {
   color: white;
 }
 .sidebar-tinted .sidebar .nav .nav-item .nav-link i.menu-arrow {
-  color: rgba(12, 14, 14, 0.1);
+  color: rgba(255, 255, 255, 0.36);
 }
 .sidebar-tinted .sidebar .nav .nav-item.active > .nav-link {
   background: rgba(12, 14, 14, 0.1);
@@ -17784,7 +17784,7 @@ div.tagsinput span.tag a {
   .sidebar-icon-only .sidebar .nav .nav-item.hover-open .nav-link .menu-title {
     display: flex;
     align-items: center;
-    background: white;
+    background: #0f1015;
     padding: 0.5rem 1.4rem;
     left: 70px;
     position: absolute;
@@ -17796,7 +17796,7 @@ div.tagsinput span.tag a {
     line-height: 1.8;
   }
   .sidebar-dark.sidebar-icon-only .sidebar .nav .nav-item.hover-open .nav-link .menu-title {
-    background: white;
+    background: #0f1015;
   }
   .rtl.sidebar-icon-only .sidebar .nav .nav-item.hover-open .nav-link .menu-title {
     left: auto;
@@ -17810,14 +17810,14 @@ div.tagsinput span.tag a {
   .sidebar-icon-only .sidebar .nav .nav-item.hover-open .collapsing {
     display: block;
     padding: 0.5rem 0;
-    background: white;
+    background: #0f1015;
     border-radius: 0 0 5px 0;
     position: absolute;
     left: 70px;
     width: 190px;
   }
   .sidebar-dark.sidebar-icon-only .sidebar .nav .nav-item.hover-open .collapse, .sidebar-dark.sidebar-icon-only .sidebar .nav .nav-item.hover-open .collapsing {
-    background: #f54748;
+    background: #191c24;
   }
   .rtl.sidebar-icon-only .sidebar .nav .nav-item.hover-open .collapse, .rtl.sidebar-icon-only .sidebar .nav .nav-item.hover-open .collapsing {
     left: auto;
@@ -17837,7 +17837,7 @@ div.tagsinput span.tag a {
     width: 5px;
     height: 5px;
     border-radius: 50%;
-    background-color: white;
+    background-color: #6c7293;
     position: absolute;
     left: 0;
   }
