@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use App\Mail\MailVerification;
 use App\Models\tbl_activitylog;
 use App\Models\tbl_merchant_info;
 use App\Models\tbl_rider_accounts;
 use App\Models\tbl_partner_accounts;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use App\Models\tbl_merchant_document;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Session;
@@ -66,16 +68,32 @@ class PartnerRegistration extends Controller
             
             $id = tbl_merchant_info::where('merchant_id', $request->merchant_id)->first();
             
-            tbl_merchant_application::where('merchant_id', $request->merchant_id)
+           $success = tbl_merchant_application::where('merchant_id', $request->merchant_id)
             ->update([
                 'merchantinfo_id' => $id->merchantinfo_id,
                 'status' => 'second'
             ]);
              $status =  tbl_merchant_application::where('merchant_id', $request->merchant_id)
              ->first();
-            
+            if($success){
+              $email = tbl_partner_accounts::where('merchant_id', Session::get('merchant_id'))
+                        ->first();
+                        
+            $code = mt_rand(100000, 999999);
+              $mailData = [
+                'title' => 'Account Verification',
+                'body' => 'test',
+                'code' => $code,
+                'fname' => $email->firstname,
+                'lname' => $email->lastname,
+            ];
+             Mail::to($email)->send(new MailVerification($mailData));
+
+            $request->session()->put('verification', $code);
             $request->session()->put('partnerstatus', $status->status);
             return redirect('/partner_application3');
+            }
+           
         }
         else{
          
@@ -85,11 +103,38 @@ class PartnerRegistration extends Controller
     }
 
     public function PartnerVerifyIndex(){
-         return view('partner_application3');
+         $email = tbl_partner_accounts::where('merchant_id', Session::get('merchant_id'))
+                        ->first();
+      
+         return view('partner_application3', compact('email'));
+    }
+    
+    public function PartnerResendCode(Request $request){
+
+        $email = tbl_partner_accounts::where('merchant_id', Session::get('merchant_id'))
+                        ->first();
+                        
+         $code = mt_rand(100000, 999999);
+
+         $mailData = [
+         'title' => 'Account Verification',
+         'body' => 'test',
+          'code' => $code,
+         'fname' => $email->firstname,
+         'lname' => $email->lastname,
+        ];
+         Mail::to($email)->send(new MailVerification($mailData));
+
+         $request->session()->put('verification', $code);
+        return back();
     }
     
     public function PartnerVerify(Request $request){
-            
+        
+        $verify = $request->num1.$request->num2.$request->num3.$request->num4.$request->num5.$request->num6;
+ 
+      if($verify == Session::get('verification')){
+        Session::pull('verification');
        $res = tbl_merchant_application::where('merchant_id',  Session::get('merchant_id'))
         ->update([
             'status' => 'third'
@@ -101,7 +146,10 @@ class PartnerRegistration extends Controller
             $request->session()->put('partnerstatus', $status->status);
             return redirect('/partner_requirements');
         }
-        
+    }
+    else{
+         return back()->with('fail', 'Wrong verification code. Please try again!');
+    }
     }
     
     public function partnerrequirement(){

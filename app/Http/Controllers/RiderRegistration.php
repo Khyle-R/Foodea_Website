@@ -6,12 +6,14 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use App\Mail\MailVerification;
 use App\Models\tbl_vehicle_infos;
 use App\Models\tbl_rider_accounts;
 use App\Models\tbl_rider_document;
 use App\Models\tbl_partner_accounts;
 use Illuminate\Support\Facades\DB;  
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use App\Models\tbl_rider_application;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Session;
@@ -91,9 +93,26 @@ class RiderRegistration extends Controller
                 $id->rider_id = Session::get('rider_id');
                 $id->status = 'first';
                 $id->save();
-                
-                $request->session()->put('status', $id->status);
-                return redirect('/rider_application2');
+                if($id)
+                {
+                    $email = tbl_rider_accounts::where('rider_id', Session::get('rider_id'))
+                        ->first();
+                        
+                        $code = mt_rand(100000, 999999);
+                       $mailData = [
+                        'title' => 'Account Verification',
+                        'body' => 'test',
+                        'code' => $code,
+                        'fname' => $email->firstname,
+                        'lname' => $email->lastname,
+                       ];
+                       Mail::to($email)->send(new MailVerification($mailData));
+
+                    $request->session()->put('verification', $code);
+                     $request->session()->put('status', $id->status);
+                     return redirect('/rider_application2');
+                }
+               
             }
             else{
                 return back()->with('fail', 'Something is wrong');
@@ -102,22 +121,10 @@ class RiderRegistration extends Controller
         
         /*MERCHANT */
         if($request->account_type == 'Partner Merchant'){
-            $request-> validate([
-            'account_type' => 'required',    
-            'firstname' => 'required',
-            'middlename' => 'required',
-            'lastname' => 'required',
-            'age' => 'required',
-            'gender' => 'required',
-            'mobilenumber' => 'required',
-            'password' => 'required|min:6|confirmed',
-            'password_confirmation' => 'required|min:6',
-            'address' => 'required',
-            'city' => 'required',
-            'barangay' => 'required',
-            'zip' => 'required',
-            'birthday' => 'required'
-        ]);
+           $request->validate([
+            'email' => 'required|email|unique:tbl_merchant_account',
+              ]);
+  
 
         $merchant = new tbl_partner_accounts();
         $merchant->firstname = $request->firstname;
@@ -143,9 +150,11 @@ class RiderRegistration extends Controller
             $id->merchant_id = $merchant->id;
             $id->status = 'first';
             $id->save();
-            
+
             $request->session()->put('partnerstatus', $id->status);
             return redirect('/partner_application2');
+            
+          
         }else{
             return back()->with('fail', 'Something is wrong');
         }
@@ -154,12 +163,41 @@ class RiderRegistration extends Controller
             return back();
         }
     }
-    public function VerifyRider(){
-        return view('rider_application2');
+    
+    /*EMAIL VERIFICATION */
+    public function VerifyRider(Request $request){
+      $email = tbl_rider_accounts::where('rider_id', Session::get('rider_id'))
+                        ->first();
+      
+        return view('rider_application2', compact('email'));
     }
     
+    public function ResendCode(Request $request){
+
+        $email = tbl_rider_accounts::where('rider_id', Session::get('rider_id'))
+                        ->first();
+                        
+         $code = mt_rand(100000, 999999);
+
+                       $mailData = [
+                        'title' => 'Account Verification',
+                        'body' => 'test',
+                        'code' => $code,
+                        'fname' => $email->firstname,
+                        'lname' => $email->lastname,
+                       ];
+                       Mail::to($email)->send(new MailVerification($mailData));
+
+                    $request->session()->put('verification', $code);
+                     return back();
+    }
+
     public function RiderVerify(Request $request){
-  
+      
+      $verify = $request->num1.$request->num2.$request->num3.$request->num4.$request->num5.$request->num6;
+ 
+      if($verify == Session::get('verification')){
+        Session::pull('verification');
       $res =  tbl_rider_application::where('rider_id', Session::get('rider_id'))
                 ->update([
                     'status' => "second"
@@ -172,10 +210,14 @@ class RiderRegistration extends Controller
          $request->session()->put('status', $status->status);
          return redirect('/rider_application3');
       }
-        
+    }
+    else{
+        return back()->with('fail', 'Wrong verification code. Please try again!');
+    }
     }
 
     public function step2index(){
+    
         return view('/rider_application3');
     }
     

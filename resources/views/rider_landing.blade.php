@@ -168,8 +168,8 @@
 
 				<label class="radio_wrap" data-radio="radio_2">
 					<!-- <input type="radio" name="sports" class="input" /> -->
-					<input class="form-check-input" type="radio" name="sports" id="checkboxNoLabel" value="" aria-label="..." checked>
-					<span class="radio_mark fw-semibold"> Motorcycle Bicycle </span>
+					<input class="form-check-input" type="radio" name="sports" id="checkboxNoLabel" value="" aria-label="..." >
+					<span class="radio_mark fw-semibold"> Bike </span>
 				</label>
 			</div>
 			
@@ -181,12 +181,17 @@
 					your journey with Foodea.</p>
 				<h3>Motorcycle Rider Requirements</h3>
 				<ul class="square">
-					<li>Professional Driver’s License (Required)</li>
+					<li>Rider's Image</li>
+          <li>Professional Driver’s License (Required)</li>
 					<li>Must be 18-55 years old </li>
 					<li>Official Receipt (OR) and Certifation of Resgitration (CR) of Motorcycle</ol>
-					<li>Professional Driver’s License (Required)</li>
-					<li>NBI (Optional)</li>
+					<li>NBI (Required)</li>
 					<li>Drug Test (Optional)</li>
+          <li>Additional</li>
+            <ul class="indent">
+						<li>Borrowed - Original Authorization letter </li>
+            <li>Second-Hand - Deed of Sale </li>
+					</ul>
 					<li>Motorcycle year model 2010 above</li>
 					<ul class="indent">
 					<li>99-160cc Displacement</li>
@@ -196,6 +201,7 @@
 					<ul class="indent">
 						<li>Android 5.0 or higher</li>
 					</ul>
+          	
 				</ul>
 			</div>
 			</div>

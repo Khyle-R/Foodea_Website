@@ -1,8 +1,10 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration
 {
@@ -21,6 +23,13 @@ return new class extends Migration
             $table->timestamp('date')->useCurrent();
             });
 
+            $password = Hash::make('foodea2023');
+            DB::table('admin_account')->insert(
+             array(
+            'email' => 'foodea@gmail.com',
+            'password' =>  $password
+        )
+    );
     }
 
     /**

@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('vehicle_type');
             $table->string('vehicle_ownership');
             $table->string('plate_number');
-            $table->integer('displacement');
+            $table->string('displacement');
             $table->integer('engine_number');
             $table->integer('year_model');
             $table->string('emergency_name');
