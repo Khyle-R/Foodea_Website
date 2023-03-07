@@ -363,17 +363,19 @@
                             <tr>
                                 <th>Product Name</th>
                                 <th>Stock</th>
-                                <th>Amount</th>
+                                <th>Price</th>
                                 <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
+                            <?php $__currentLoopData = $product; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $products): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td><?php echo e($products->product_name); ?></td>
+                                <td><?php echo e($products->stock); ?></td>
+                                <td><?php echo e($products->price); ?></td>
+                                <td><?php echo e($products->status); ?></td>
                             </tr>
+                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </tbody>
                     
                     </table>

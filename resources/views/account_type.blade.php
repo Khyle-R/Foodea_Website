@@ -1,109 +1,281 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-       
-        <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"/>
+  <head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <link rel="icon" href="{{ url('image/foodea1.png') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css" />
+    <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css" />
+    <link rel="stylesheet" type="text/css" href="css/rider_application.css" />
+    <title>FOODEA Personal Information</title>
+  </head>
 
-        <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+  <body>
 
-        <link rel="stylesheet" type="text/css" href="css/account_type.css" />
-        <title>FOODEA</title>
-        <link rel="icon" href="{{ url('image/foodea1.png') }}">
-    </head>
-
-    <body>
-        <nav class="navbar navbar-light nav-red">
-            <a class="navbar-brand" href="/">
-                <img
-                    src="image/foodea.png"
-                    width="30"
-                    height="30"
-                    class="d-inline-block align-top ms-1 ms-md-5"
-                    alt=""
-                />
-                <span class="white">FOODEA</span>
-            </a>
-        </nav>
-
-        <section>
-            <div class="container mt-1 pt-4">
-                <div class="row">
-                     <div class="col-12 col-md-9 col-lg-7 col-xxl-5 m-auto mt-4">
-                        <div class="card border-0 shadow">
-                            <div class="card-body px-5">
-                                <div class="mt-2 text-center">
-                                  <img src="image/foodea4.png" alt="">
-                                  <h6 class="pt-4 fw-medium title">Select an Account type</h6>
-                                </div>
-                                <div class="radio mb-4 d-flex justify-content-center align-items-center">
-                                    <input type="radio"  name="card" id="card_one">
-                                    <input type="radio"  name="card" id="card_two">
-                                    <!-- <input type="radio" name="card" id="card_three"> -->
-                                       <!-- they should all have the same name attr but different ids -->
-                                    <label for="card_one">
-                                        <div class="cards">
-                                            <span class="checks_btn"><i class="fas fa-check"></i></span>
-                                            <div class="type">
-                                                <img class="imageRider" src="image/rider.png" alt="">
-                                            </div>
-                                            <h6 class="text-center">Rider</h5>
-                                            <ul>
-                                            </ul>
-                                        </div>
-                                    </label>
-                                    <label for="card_two">
-                                        <div class="cards">
-                                            <span class="checks_btn"><i class="fas fa-check"></i></span>
-                                            <div class="type">
-                                                <img class="imageMerchant" src="image/market.png" alt="">
-                                            </div>
-                                            <h6 class="text-center">Business Partner</h5>
-                                            <ul>
-                                            </ul>
-                                        </div>
-                                    </label>
-                                </div>
-
-                                <div class="d-flex flex-column ">
-                                    <a href="" class="btn btn-danger" id="submit" onclick='myFunction()'>Continue</a>
-
-                                    <div class="pt-4 mb-3 d-flex flex-column flex-md-row justify-content-center align-items-center">
-                                        <div>
-                                            <p class="mb-0 pe-2">Already have an account?</p>
-                                        </div>
-                                        <div>
-                                        <a href="/login_type" class="red">Log In</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+   <div class="container-scroller">
+    <nav class="sidebar sidebar-offcanvas" id="sidebar">
+      <ul class="nav">
+        <li class="nav-item back">
+            <div class="back-logo">
+                <a href="/"> <img src="image/vector.png" alt=""/> </a>
+                <h5 class="mb-0">Back to website</h5>
             </div>
-        </section>
-    </body>
+        </li>
+        <li class="nav-item nav-category">
+          <a class="nav-link" href="/">
+            <img src="image/foodea.png" style="width: 50px">FOODEA
+          </a>
+        </li>
+      
+        <li class="nav-item nav-category">Foodea Application</li>
+        <li class="red">Step 1 &nbsp;&nbsp;&nbsp;Personal Information</li>
+      </ul>
+    </nav>
+    
+    <!-- Form -->
+    <div class="sign-form">
+      <div class="content-wrapper">
+        <div class="col-12 col-sm-12 col-md-9 col-lg-6">
+           <div class="right">
+            <div class="right">
+             <div id="loader-wrapper">
+            <span id="loader"></span>
+              </div>
+            <h2>Create your Account</h2>
+            <p>Please fill up the form below.</p>
 
-    <script>
-    function myFunction() {
+           <form method="post" action="{{route('rider_application.addPostSubmit')}}">
+           @csrf
 
-        if(document.getElementById('card_one').checked) {
-            document.getElementById('submit').href = "/rider_application_agreement";
+           
+            <div class="form-group">
+            <label>Account Type</label>
+            <select name="account_type" id="" class="form-control form-control-lg">
+              <option selected="true" disabled="disabled">- Select -</option>
+              <option value="Rider" @if (old('account_type') == 'Rider') selected="selected" @endif>Rider</option>
+              <option value="Partner Merchant" @if (old('account_type') == 'Partner Merchant') selected="selected" @endif>Partner Merchant</option>
+            </select>
+             <span
+            style="color:red;">
+            @error('account_type') {{ $message }}
+            @enderror</span>
+            </div>
+
+           <div class="form-group">
+            <label>First Name</label>
+            <input name="firstname" type="text" value="{{ old('firstname') }}" class="form-control form-control-lg"/>
+            <span
+            style="color:red;">
+            @error('firstname') {{ $message }}
+            @enderror</span>
+           </div>
+      
+            
+            <div class="form-group">
+            <label>Middle Name</label>
+            <input name="middlename" type="text" value="{{ old('middlename') }}" class="form-control form-control-lg"/>
+             <span
+            style="color:red;">
+            @error('middlename') {{ $message }}
+            @enderror</span>
+            </div>
+          
+            <div class="form-group">
+            <label>Last Name</label>
+            <input name="lastname" type="text" value="{{ old('lastname') }}" class="form-control form-control-lg"/>
+             <span
+            style="color:red;">
+            @error('lastname') {{ $message }}
+            @enderror</span>
+            </div>
+
+            <div class="form-group">
+            <label>Suffix <a style="color:#BD9140;font-size: 12px;"> (Optional)</a></label>
+            <input name="suffix" type="text"  value="{{ old('suffix') }}" class="form-control form-control-lg"/>
+            </div>
+
+            <div class="form-group">
+            <label>Age</label> 
+            <input name="age" onkeypress="return event.charCode>=48 && event.charCode<=57" type="text" value="{{ old('age') }}" class="form-control form-control-lg"/>
+            @if (Session::has('age'))
+              <p style="color:red;">{{ Session::get('age') }}</p>
+            @endif 
+            <span
+            style="color:red;">
+            @error('age') {{ $message }}
+            @enderror</span>
+            </div>
+
+            <div class="form-group">
+            <label>Gender</label>
+            <select name="gender" id="" class="form-control form-control-lg">
+              <option selected="true" disabled="disabled">- Select -</option>
+              <option value="Male" @if(old('gender') == 'Male') selected="selected" @endif>Male</option>
+              <option value="Female" @if(old('gender') == 'Female') selected="selected" @endif>Female</option>
+            </select>
+             <span
+            style="color:red;">
+            @error('gender') {{ $message }}
+            @enderror</span>
+            </div>
+
+            <div class="form-group">
+            <label for="birthday">Birthdate</label>
+           <input class="form-control form-control-lg" type="date" id="birthday" name="birthday" value="{{ old('birthday') }}">
+          <span
+            style="color:red;">
+            @error('birthday') {{ $message }}
+            @enderror</span> 
+          </div>
+
+            <div class="form-group">
+            <label >Email Address <a style="color:#BD9140;font-size: 13px;">(For Email verification)</a></label>
+            <input name="email" type="text" value="{{ old('email') }}" class="form-control form-control-lg"/>
+             <span
+            style="color:red;">
+            @error('email') {{ $message }}
+            @enderror</span>
+            </div>
+
+            <div class="form-group">
+            <label>Mobile Number <a style="color:#BD9140;font-size: 13px;">(+63)</a></label>
+            <input name="mobilenumber" maxlength="10" onkeypress="return event.charCode>=48 && event.charCode<=57" type="text" value="{{ old('mobilenumber') }}" class="form-control form-control-lg" />
+             <span
+            style="color:red;">
+            @error('mobilenumber') {{ $message }}
+            @enderror</span>
+            </div>
+
+            <div class="form-group">
+            
+            </div>
+           
+            <div class="form-group">
+            <label>Password<a style="color:#BD9140;font-size: 13px;"> (Must be at least 8 characters long. 
+              Password must contain letters, numbers and symbols.)</a></label>
+              <input type="password" id="password" name="password" class="form-control form-control-lg">
+              <span class="eye mx-2" onclick="myFunction()">
+                <i class="fa fa-eye" id="hide1"></i>
+                <i class="fa fa-eye-slash" id="hide2"></i>
+              </span>
+              
+             <span
+            style="color:red;">
+            @error('password') {{ $message }}
+            @enderror</span>
+            </div>
+
+            <div class="form-group">
+            <label>Confirm Password</label>
+              <input type="password" id="password_confirmation" name="password_confirmation" class="form-control form-control-lg">
+              <span class="eye2 mx-2" onclick="Function()">
+                <i class="fa fa-eye" id="hide3"></i>
+                <i class="fa fa-eye-slash" id="hide4"></i>
+              </span>
+             <span
+            style="color:red;">
+            @error('password_confirmation') {{ $message }}
+            @enderror</span>
+            </div>
+
+            <div class="form-group">
+            <label>Address</label>
+            <input name="address" type="text" value="{{ old('address') }}" class="form-control form-control-lg"/>
+             <span
+            style="color:red;">
+            @error('address') {{ $message }}
+            @enderror</span>
+            </div>
+
+            <div class="form-group">
+            <label>City</label>
+            <input name="city" type="text" value="{{ old('city') }}" class="form-control form-control-lg"/>
+             <span
+            style="color:red;">
+            @error('city') {{ $message }}
+            @enderror</span>
+            </div>
+
+
+            <div class="form-group">
+            <label>Barangay</label>
+            <input name="barangay" type="text" value="{{ old('barangay') }}" class="form-control form-control-lg"/>
+             <span
+            style="color:red;">
+            @error('barangay') {{ $message }}
+            @enderror</span>
+            </div>
+
+            <div class="form-group">
+            <label>ZIP Code</label>
+            <input name="zip" maxlength="4" onkeypress="return event.charCode>=48 && event.charCode<=57" type="text" value="{{ old('zip') }}" class="form-control form-control-lg"/>
+            <span
+            style="color:red;">
+            @error('zip') {{ $message }}
+            @enderror</span>
+            </div>
+
+           <br><br>
+           <div class="form-group">
+            <div class="col-sm-10 d-flex justify-content-center">
+              <button Value="submit" type="submit" class="btn btn-danger w-50">Next</button>
+            </div>
+           </div>
+            </form>
+          </div>
+        </div>
+       </div>
+     </div>
+      <!-- Scroller -->
+    </div>
+
+
+      <!-- Show Hide Password -->
+      <script>
+        function myFunction(){
+          var a = document.getElementById("password");
+          var b = document.getElementById("hide1");
+          var c = document.getElementById("hide2");
+    
+          if(a.type == 'password'){
+            a.type = "text";
+            b.style.display = "inline";
+            c.style.display = "none";
+          }
+          else{
+            a.type = "password";
+            b.style.display = "none";
+            c.style.display = "inline";
+          }
         }
+     </script>
+   <!-- Show Hide Confirm Password -->
+<script>
+  function Function(){
+    var x = document.getElementById("password_confirmation");
+    var y = document.getElementById("hide3");
+    var z = document.getElementById("hide4");
 
-      if(document.getElementById('card_two').checked) {
-            document.getElementById('submit').href = "/merchant_application_agreement";
-        }
-
+    if(x.type == 'password'){
+      x.type = "text";
+      y.style.display = "inline";
+      z.style.display = "none";
     }
+    else{
+      x.type = "password";
+      y.style.display = "none";
+      z.style.display = "inline";
+    }
+  }
 </script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+
+    {{-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> --}}
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="{{ asset('assets/js/app.js') }}"></script>
+  </body>
 </html>

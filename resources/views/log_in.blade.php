@@ -11,10 +11,7 @@
             integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
             crossorigin="anonymous"
         />
-         <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-        />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
         <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
            <link rel="stylesheet" type="text/css" href="css/login.css" />
         <title>FOODEA</title>
@@ -22,7 +19,6 @@
     </head>
     <body>
          
-
         <nav class="navbar navbar-light nav-red">
             <a class="navbar-brand" href="/">
                 <img
@@ -44,6 +40,7 @@
                     <span class="fas fa-times"></span>
                 </div>
             </div>
+            
             <script>
                 $(".failed").show(function () {
                     $(".alert").addClass("show");
@@ -62,10 +59,10 @@
 
         @endif
 
-        <section>
+        <div class="form_container">
             <div class="container mt-2 pt-5">
                 <div class="row">
-                     <div class="col-12 col-sm-7  col-md-6 m-auto">
+                     <div class="col-12 col-sm-12 col-md-9 col-lg-6 m-auto">
                         <div class="card border-0 shadow">
                             <div class="card-body px-5 ">
                                 <div class="mt-4 text-center">
@@ -81,31 +78,53 @@
                                         name="email"
                                         class="form-control my-1"
                                         placeholder="example@gmail.com"
+                                        value="{{ Cookie::get('email') }}"
                                     />
                                        <span
                                         class="error">
                                         @error('email') {{ $message }}
                                         @enderror</span>
 
-                                    <div class="mt-3">
+                                    <div class="mt-3 ">
                                         <label for="password">Password</label>
                                         <input
                                             type="password"
                                             name="password"
                                             class="form-control my-1 form-control-lg"
                                             placeholder="Password"
+                                            id="password"
+                                            value="{{ Cookie::get('password') }}"
+                                            
                                         />
+                                            <span class="eye" onclick="myFunction()">
+                                            <i class="fa fa-eye" id="hide1"></i>
+                                            <i class="fa fa-eye-slash" id="hide2"></i>
+                                            </span>
                                    <span
                                     class="error">
                                     @error('password') {{ $message }}
-                                    @enderror</span>
+                                    @enderror </span>
+                                    
 
                                     </div>
-                                    <div class="text-right mb-3">
-                                        <a href="#" class="nav-link"
-                                            >Forgot Password?</a
-                                        >
-                                    </div>
+                                  
+                                    <div class="form-row justify-content-between">
+                                        <div class="col-auto form-group my-2">
+                                            <div class="form-check">
+                                              <input class="form-check-input" type="checkbox" name="remember" id="gridCheck">
+                                              <label class="form-check-label" for="gridCheck">
+                                                Remember Me
+                                              </label>
+                                            </div>
+                                          </div>
+
+                                        <div class="col-auto mb-3">
+                                            <a href="#" class="nav-link"
+                                                >Forgot Password?</a
+                                            >
+                                        </div>
+                                        </div>
+                                        
                                     <div class="text-center">
                                         <button
                                             type="submit"
@@ -119,7 +138,7 @@
                                             <p class="mr-2">
                                                 Don't have an account?
                                             </p>
-                                            <a href="/account_type" class="red">Sign Up</a>
+                                            <a href="/rider_application_agreement" class="red">Sign Up</a>
                                         </div>
                                     </div>
                                 </form>
@@ -130,8 +149,11 @@
                 
             </div>
                 
-        </section>
+            </div>
 
+        <div class="bg_image fixed-bottom">
+            <img class="" src="image/foodsbgleft.png" alt="">
+        </div>
     </body>
  <script>
             $('.popup').show(function() {
@@ -148,6 +170,29 @@
                 $('.success').addClass("hide");
             });
             </script>
+
+            
+           <!-- Show Hide Password -->
+           <script>
+            function myFunction(){
+              var a = document.getElementById("password");
+              var b = document.getElementById("hide1");
+              var c = document.getElementById("hide2");
+        
+              if(a.type == 'password'){
+                a.type = "text";
+                b.style.display = "inline";
+                c.style.display = "none";
+              }
+              else{
+                a.type = "password";
+                b.style.display = "none";
+                c.style.display = "inline";
+              }
+            }
+         </script>
+
+
     <script
         src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

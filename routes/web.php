@@ -7,42 +7,67 @@ use App\Http\Controllers\Admin_product;
 use App\Http\Controllers\RiderRegistration;
 use App\Http\Controllers\PartnerRegistration;
 use App\Http\Controllers\Admin_product\removeProduct;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\sample;
 use App\Http\Controllers\SuperadminController;
 
 
+Route::get('/', [Home::class, 'index'])->name('home.index');
 
-Route::get('/account_type', [Home::class, 'AccountType']);
+// Route::get('/email', [MailController::class, 'MailIndex']);
 
-Route::get('/rider_login', [Home::class, 'RiderLoginIndex']);
+Route::get('/terms_condition', [Home::class, 'TermsCondition']);
 
-Route::get('/login_type', [Home::class, 'LoginType']);
+Route::get('/mission', [Home::class, 'MissionIndex']);
+
+Route::get('/vision', [Home::class, 'VisionIndex']);
+
+Route::get('/privacy', [Home::class, 'Privacy']);
+
+Route::get('/service', [Home::class, 'Service']);
+
+Route::get('/rider_login', [RiderRegistration::class, 'RiderLoginIndex']);
 
 Route::post('/rider_login', [RiderRegistration::class, 'RiderLogIn'])->name('RiderLogIn');
 
-Route::get('//rider_logout', [RiderRegistration::class, 'RiderLogout']);
+Route::get('/login_type', [Home::class, 'LoginType']);
 
-Route::get('/', [Home::class, 'index'])->name('home.index');
+Route::get('/rider_logout', [RiderRegistration::class, 'RiderLogout']);
+
 
 
 Route::group(['middleware'=>['RiderStep2']], function(){
     
     Route::get('/rider_application_agreement', [RiderRegistration::class, 'agreement']);
-    Route::get('/rider_application', [RiderRegistration::class, 'index'])->name('rider_application.index');
+    Route::get('/account_type', [Home::class, 'AccountType']);
     Route::post('/rider_applicationn', [RiderRegistration::class, 'addPostSubmit'])->name('rider_application.addPostSubmit');
-    });
+       // Route::get('/rider_application', [RiderRegistration::class, 'index'])->name('rider_application.index');
+});
+
 
 Route::group(['middleware'=>['RiderStep1']], function(){
 
     Route::group(['middleware'=>['RiderStep3']], function(){
     Route::get('/rider_application2', [RiderRegistration::class, 'VerifyRider']);
-    Route::get('/rider_application_2', [RiderRegistration::class, 'RiderVerify']);
-        });
+    Route::post('/rider_application_2', [RiderRegistration::class, 'RiderVerify'])->name('RiderVerify');
+    Route::get('/rider_application2resend', [RiderRegistration::class, 'ResendCode']);
+});
     
+Route::group(['middleware'=>['RiderVehicle']], function(){
+    
+    Route::get('/rider_vehicle_type', [RiderRegistration::class, 'VehicleType']);
+    Route::post('/rider_vehicle_typeadd', [RiderRegistration::class, 'AddVehicleType'])->name('AddVehicleType');
+});
+
 Route::group(['middleware'=>['RiderStep4']], function(){
     Route::get('/rider_application3', [RiderRegistration::class, 'step2index'])->name('rider_application3.step2index');
     Route::post('/rider_application3', [RiderRegistration::class, 'addVehicle'])->name('rider_application3.addVehicle');
          });
+
+Route::group(['middleware'=>['BikeRequirements']], function(){
+    Route::get('/rider_bike_requirements', [RiderRegistration::class, 'RiderRequirements']);
+    Route::post('/rider_bike_requirement', [RiderRegistration::class, 'RiderRequirementsSubmit'])->name('RiderRequirementsSubmit');
+  });
     
 Route::group(['middleware'=>['RiderStepFinal']], function(){
     Route::get('/rider_application4', function () {
@@ -57,33 +82,43 @@ Route::group(['middleware'=>['RiderStepFinal']], function(){
 
     // Route::get('/rider_application5', [RiderRegistration::class, 'step5index']);
 
+Route::group(['middleware'=>['RiderStatus']], function(){
     Route::get('/rider_applicationstatus', [RiderRegistration::class, 'RiderApplicationStatus']);
-        
-      
+           
     Route::get('/rider_application5', function () {
         return view('rider_application5');
     });
 });
+   
 
+});
 
-Route::get('/partner_application', [PartnerRegistration::class, 'index']);
+Route::group(['middleware'=>['PartnerStep1']], function(){
 
-Route::post('/partner_application', [PartnerRegistration::class, 'PersonalInfo'])->name('partner_application.PersonalInfo');
+ Route::group(['middleware'=>['PartnerStep2']], function(){
+    Route::get('/partner_application2', [PartnerRegistration::class, 'partner2index']);
 
-Route::get('/partner_application2', [PartnerRegistration::class, 'partner2index']);
-
-Route::post('/partner_application2', [PartnerRegistration::class, 'partner2submit'])->name('partner_application2.partner2submit');
-
-Route::get('/partner_requirements', [PartnerRegistration::class, 'partnerrequirement']);
-
-Route::post('/partner_requirements', [PartnerRegistration::class, 'SaveDocuments'])->name('partner_requirements.SaveDocuments');;
-
-
-Route::get('/merchant_application_agreement', [PartnerRegistration::class, 'agreement']);
-
-Route::get('/partner_applicationstatus', [PartnerRegistration::class, 'PartnerApplicationStatus']);
-
-// Route::get('/sample', [RiderRegistration::class, 'getAllData'])->name('sample.getAllData');
+    Route::post('/partner_application2', [PartnerRegistration::class, 'partner2submit'])->name('partner_application2.partner2submit');
+ });
+ 
+Route::group(['middleware'=>['PartnerStep3']], function(){
+       Route::get('/partner_application3', [PartnerRegistration::class, 'PartnerVerifyIndex']);
+       Route::post('/partner_application_3', [PartnerRegistration::class, 'PartnerVerify'])->name('PartnerVerify');
+       Route::get('/partner_application3resend', [PartnerRegistration::class, 'PartnerResendCode']);
+    });
+ 
+ Route::group(['middleware'=>['PartnerStep4']], function(){
+     Route::get('/partner_requirements', [PartnerRegistration::class, 'partnerrequirement']);
+    Route::post('/partner_requirements', [PartnerRegistration::class, 'SaveDocuments'])->name('partner_requirements.SaveDocuments');;
+ });
+ Route::group(['middleware'=>['PartnerStepStatus']], function(){
+     Route::get('/partner_application4', function () {
+    return view('partner_application4');
+    });
+     Route::get('/partner_applicationstatus', [PartnerRegistration::class, 'PartnerApplicationStatus']);
+  });
+   
+});
 
 // SUPER ADMIN ROUTE
 
@@ -181,13 +216,13 @@ Route::group(['middleware'=>['superadminLogin']], function(){
 
     Route::get('/display_merchant_pdf/{id}/{name}', [SuperadminController::class, 'ViewMerchantPDF']);
 
-    Route::get('/download_file/{firstname}/{lastname}/{id}/{name}', [SuperadminController::class, 'Download']);
+    Route::get('/download_file/{id}/{name}', [SuperadminController::class, 'Download']);
 
     Route::get('/download_merchant_file/{id}/{name}', [SuperadminController::class, 'DownloadMerchant']);
 
-    Route::get('/download_vehicle/{firstname}/{lastname}/{id}', [SuperadminController::class, 'DownloadVehicleZip']);
+    Route::get('/download_vehicle/{id}', [SuperadminController::class, 'DownloadVehicleZip']);
 
-    Route::get('/download_license/{firstname}/{lastname}/{id}', [SuperadminController::class, 'DownloadLicenseZip']);
+    Route::get('/download_license/{id}', [SuperadminController::class, 'DownloadLicenseZip']);
 
     Route::get('/download_valid_merchant/{id}', [SuperadminController::class, 'DownloadLicenseMerchantZip']);
 /* END SUPERADMIN */
@@ -198,14 +233,6 @@ Route::get('/login_partner', function () {
 });
 
 
-Route::get('/partner_application4', function () {
-    return view('partner_application4');
-});
-
-
-Route::get('/partner_application3', function () {
-    return view('partner_application3');
-});
 
 Route::get('/partner_landing', function () {
     return view('partner_landing');

@@ -17,9 +17,25 @@ class RiderStep3
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Session::get('status') == 'second' || Session::get('status') == 'third')
+        if(Session::get('status') == 'second')
         {
-            return redirect('/rider_application3');
+            return redirect('/rider_vehicle_type');
+        }
+        if(Session::get('status') == 'vehicle_type')
+        {
+            return redirect('rider_application3');
+        }
+        if(Session::get('status') == 'bicycle')
+        {
+            return redirect('/rider_bike_requirements');
+        }
+        if(Session::get('status') == 'third')
+        {
+            return redirect('/rider_application4');
+        }
+        if(Session::get('status') == 'Pending')
+        {
+            return redirect('/rider_application5');
         }
          $response = $next($request);
         return $response->header('Cache-Control', 'no-cache, no-store, max-age=0, must-revalidate')

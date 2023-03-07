@@ -86,7 +86,7 @@
               </li>
             </ul>
             <a
-            href="/account_type"
+            href="/rider_application_agreement"
             class="text-secondary mt-2 mx-5"
             style="text-decoration: none;">
               Signup
@@ -105,7 +105,7 @@
 	<div class="context-one mx-auto" data-aos="fade-up">
     <div class="row container mx-auto px-5 align-items-center g-0">
 	   <div class="col-12 col-md-7 col-lg-6">
-	   		<div class="content text-center text-md-start d-flex flex-column align-items-center align-items-md-start">
+	   		<div class="content text-center text-md-start d-flex flex-column align-items-center align-items-md-start pt-4 pt-md-5">
 				<h1>Deliver Food With<span> Foodea</span></h1>
 				<p class="text-center text-md-start">Try becoming your own boss with Foodea as an alternative to 
 						conventional food delivery professions where the hours are fixed.</p>
@@ -168,8 +168,8 @@
 
 				<label class="radio_wrap" data-radio="radio_2">
 					<!-- <input type="radio" name="sports" class="input" /> -->
-					<input class="form-check-input" type="radio" name="sports" id="checkboxNoLabel" value="" aria-label="..." checked>
-					<span class="radio_mark fw-semibold"> Motorcycle Bicycle </span>
+					<input class="form-check-input" type="radio" name="sports" id="checkboxNoLabel" value="" aria-label="..." >
+					<span class="radio_mark fw-semibold"> Bike </span>
 				</label>
 			</div>
 			
@@ -181,12 +181,17 @@
 					your journey with Foodea.</p>
 				<h3>Motorcycle Rider Requirements</h3>
 				<ul class="square">
-					<li>Professional Driver’s License (Required)</li>
+					<li>Rider's Image</li>
+          <li>Professional Driver’s License (Required)</li>
 					<li>Must be 18-55 years old </li>
 					<li>Official Receipt (OR) and Certifation of Resgitration (CR) of Motorcycle</ol>
-					<li>Professional Driver’s License (Required)</li>
-					<li>NBI (Optional)</li>
+					<li>NBI (Required)</li>
 					<li>Drug Test (Optional)</li>
+          <li>Additional</li>
+            <ul class="indent">
+						<li>Borrowed - Original Authorization letter </li>
+            <li>Second-Hand - Deed of Sale </li>
+					</ul>
 					<li>Motorcycle year model 2010 above</li>
 					<ul class="indent">
 					<li>99-160cc Displacement</li>
@@ -196,6 +201,7 @@
 					<ul class="indent">
 						<li>Android 5.0 or higher</li>
 					</ul>
+          	
 				</ul>
 			</div>
 			</div>
@@ -207,11 +213,11 @@
 					your journey with Foodea.</p>
 				<h3>Bicycle Rider Requirements</h3>
 				<ul class="square">
+          <li>Rider's Image</li>
 					<li>Any valid government ID</li>
 					<li>Must be 18-55 Years old </li>
-					<li>NBI (Optional)</li>
+					<li>NBI (Required)</li>
 					<li>Drug Test (Optional)</li>
-					<li>Any brands of Bicycle</li>
 					<li>Smartphone</li>
 					<ul class="indent">
 						<li>Android 5.0 or higher</li>
@@ -229,13 +235,13 @@
    <!-- SECTION 4 TIMELINE -->
    <div class="container mx-auto mt-5 pt-5" data-aos="fade-up">
    <div class="timeline-header px-3">
-        <h2 class="fw-bold ">How food delivery works</h2>
+        <h2 class="fw-bold pb-4">How food delivery works</h2>
         <p>If you are new to Foodea, 
             you wll need to sign up to be a Foodea rider, and upload the required documents
              and images. Once your application is accepted, you can now log in and
             start earning using Foodea appllication</p>
     </div>
-	<div class="container pt-5 d-flex flex-row align-items-center justify-content-center">
+	<div class="container pt-4 d-flex flex-row align-items-center justify-content-center">
 	<div class="timeline">
     <div class="timeline-section">
     <div class="timeline-content">
@@ -403,13 +409,13 @@
                 <a href="/contact" class="text-reset text-decoration-none">
                     <p>Contact Us</p>
                 </a>
-                <a href="/" class="text-reset text-decoration-none">
+                <a href="/mission" class="text-reset text-decoration-none">
                     <p>Mission</p>
                 </a>
-                <a href="/" class="text-reset text-decoration-none">
+                <a href="/vision" class="text-reset text-decoration-none">
                     <p>Vision</p>
                 </a>
-                <a href="/" class="text-reset text-decoration-none">
+                <a href="/service" class="text-reset text-decoration-none">
                     <p>Services</p>
                 </a>
             </div>
@@ -420,8 +426,12 @@
                 </div>
                 <div class="legal">
                     <h2>Legal:</h2>
-                    <p>Terms and Condition</p>
-                    <p>Privacy Policy</p>
+                    <a href="/terms_condition" class="text-reset text-decoration-none">
+                      <p>Terms and Condition</p>
+                    </a>
+                    <a href="/privacy" class="text-reset text-decoration-none">
+                      <p>Privacy Policy</p>
+                    </a>
                 </div>
             </div>
         </div>

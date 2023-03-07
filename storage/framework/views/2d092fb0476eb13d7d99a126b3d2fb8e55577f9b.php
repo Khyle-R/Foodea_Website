@@ -17,7 +17,7 @@
         />
         <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 
-           <link rel="stylesheet" type="text/css" href="assets/css/login.css" />
+           <link rel="stylesheet" type="text/css" href="css/login.css" />
            
         <title>Document</title>
     </head>
@@ -53,7 +53,7 @@
             <br><br><br><br><br><br>
             <div class="container pt-5">
                 <div class="row">
-                    <div class="col-12 col-sm-7 col-md-6 m-auto">
+                    <div class="col-12 col-sm-8 col-md-7 col-lg-6 m-auto">
                         <div class="card border-0 shadow">
                             <div class="card-body px-5 ">
                                 <div class="text-center">
@@ -74,6 +74,7 @@
                                         name="email"
                                         class="form-control my-1"
                                         placeholder="example@gmail.com"
+                                        value="<?php echo e(Cookie::get('email')); ?>"
                                     />
                                        <span
                                         class="error">
@@ -95,7 +96,13 @@ unset($__errorArgs, $__bag); ?></span>
                                             name="password"
                                             class="form-control my-1 form-control-lg"
                                             placeholder="example@gmail.com"
+                                            id="password"
+                                            value="<?php echo e(Cookie::get('password')); ?>"
                                         />
+                                        <span class="eye" onclick="myFunction()">
+                                            <i class="fa fa-eye" id="hide1"></i>
+                                            <i class="fa fa-eye-slash" id="hide2"></i>
+                                            </span>
                                    <span
                                     class="error">
                                     <?php $__errorArgs = ['password'];
@@ -110,11 +117,24 @@ endif;
 unset($__errorArgs, $__bag); ?></span>
 
                                     </div>
+
+                                    <div class="form-row justify-content-between">
+                                    <div class="col-auto form-group my-2">
+                                        <div class="form-check">
+                                          <input class="form-check-input" type="checkbox" name="remember" id="gridCheck">
+                                          <label class="form-check-label" for="gridCheck">
+                                            Remember Me
+                                          </label>
+                                        </div>
+                                      </div>
+
                                     <div class="text-right mb-3">
                                         <a href="#" class="nav-link"
                                             >Forgot Password?</a
                                         >
                                     </div>
+                                    </div>
+
                                     <div class="text-center">
                                         <button
                                             type="submit"
@@ -125,10 +145,7 @@ unset($__errorArgs, $__bag); ?></span>
                                         <div
                                             class="d-flex flex-sm-wrap mt-3 justify-content-center"
                                         >
-                                            <p class="mr-2">
-                                                Don't have an account?
-                                            </p>
-                                            <a href="#" class="red">Sign Up</a>
+                                            
                                         </div>
                                     </div>
                                 </form>
@@ -157,6 +174,28 @@ unset($__errorArgs, $__bag); ?></span>
                 $('.success').addClass("hide");
             });
             </script>
+
+                         <!-- Show Hide Password -->
+             <script>
+                function myFunction(){
+                  var a = document.getElementById("password");
+                  var b = document.getElementById("hide1");
+                  var c = document.getElementById("hide2");
+            
+                  if(a.type == 'password'){
+                    a.type = "text";
+                    b.style.display = "inline";
+                    c.style.display = "none";
+                  }
+                  else{
+                    a.type = "password";
+                    b.style.display = "none";
+                    c.style.display = "inline";
+                  }
+                }
+             </script>
+
+
     <script
         src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

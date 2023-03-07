@@ -127,32 +127,35 @@ nav .navbar-brand span {
     justify-content: space-between;
 }
 
-.content {
-    margin-top: 40px;
-}
 
-.content span {
-    color: #f54748;
-    opacity: 100%;
-}
-
-.content h1 {
-    font-size: clamp(2rem, 1.0938rem + 4.0278vw, 5.625rem);
+/* CONTENT 1 */
+  .context-one{
+    width: 75%;
+  }
+  
+  .content h1 {
+    font-size: clamp(1.25rem, -0.5rem + 7vw, 5rem);
     color: #363636;
     font-family: "Montserrat", sans-serif;
     font-weight: bold;
-}
-
-.content p {
-    width: 65%;
+  }
+  
+  .content span {
+    color: #f54748;
+    opacity: 100%;
+  }
+  
+  .content p{
+    font-size: clamp(0.8rem, 0.4107rem + 0.8571vw, 1rem);
+    width: 90%;
     opacity: 70%;
     font-family: "Montserrat", sans-serif;
     line-height: 25px;
     margin-bottom: 35px;
     font-weight: medium;
-}
-
-.content a {
+  }
+  
+  .content a {
     background-color: #f54748;
     padding: 16px 40px;
     border-radius: 50px;
@@ -160,12 +163,19 @@ nav .navbar-brand span {
     letter-spacing: 1px;
     font-family: "Montserrat", sans-serif;
     color: #fff;
-}
-
-.content a:hover {
+  }
+  
+  .content a:hover {
     color: #fff;
     text-decoration: none;
-}
+  }
+  
+  .image1{
+    width: clamp(20rem, -22.75rem + 76vw, 43.75rem);
+  }
+  
+  /* END CONTENT 1 */
+
 
 .image img {
     width: clamp(22.5rem, -4.8214rem + 48.5714vw, 43.75rem);
@@ -179,7 +189,7 @@ nav .navbar-brand span {
 .service {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: start;
     flex-direction: row;
     flex-wrap: wrap;
 }
@@ -192,7 +202,6 @@ nav .navbar-brand span {
 .rider,
 .market,
 .phone {
-    width: 30%;
     margin: auto;
     text-align: center;
 }
@@ -209,7 +218,7 @@ nav .navbar-brand span {
 .rider p,
 .market p,
 .phone p {
-    width: 50%;
+    width: 80%;
     margin: 20px auto;
     opacity: 80%;
     font-family: "Montserrat", sans-serif;
@@ -271,19 +280,32 @@ nav .navbar-brand span {
     text-align: left;
 }
 
-.step-bg {
+/* .step-bg {
     background-image: url(../image/bg-circle.png);
     background-position: center;
     background-repeat: no-repeat;
+} */
+
+.step-title h2{
+    text-align: center;
+    font-size: 2rem;
+    font-family: "Montserrat", sans-serif;
+    font-weight: bolder;
 }
 
-.step-title {
-    text-align: center;
+.stepone h2,
+.steptwo h2,
+.stepthree h2,
+.stepfour h2 {
+    font-size: 2rem;
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+    opacity: 80%;
 }
 
 .step-container {
-    width: 75%;
-    margin: 10rem auto;
+    width: 85%;
+    margin: 7rem auto;
 }
 
 .step-content {
@@ -296,12 +318,45 @@ nav .navbar-brand span {
 
 .step-image img {
     height: 590px;
-    width: 330px;
     margin: 10px;
 }
 
-.step-image {
-    position: relative;
+/* SECTION 3 */
+.stepone p,
+.steptwo p{
+    padding-left: 60px;
+    text-align: right;
+    opacity: 80%;
+    font-family: "Montserrat", sans-serif;
+    line-height: 25px;
+}
+
+.stepthree p{
+    padding-right: 40px;
+    opacity: 80%;
+    font-family: "Montserrat", sans-serif;
+    line-height: 25px;
+}
+
+.stepfour p{
+    opacity: 80%;
+    font-family: "Montserrat", sans-serif;
+    line-height: 25px;
+}
+
+.section-last h2{
+    font-size: 2rem;
+    font-family: "Montserrat", sans-serif;
+    font-weight: bolder;
+}
+
+.image-center img{
+    width: clamp(12.5rem, -4.1667rem + 66.6667vw, 37.5rem);
+}
+
+.step-image img {
+    height: 590px;
+    margin: 10px;
 }
 
 .number {
@@ -379,7 +434,7 @@ nav .navbar-brand span {
 }
 
 .req-content {
-    width: 50%;
+    width: 100%;
 }
 
 .accordion {
@@ -390,7 +445,6 @@ nav .navbar-brand span {
 .accordion li {
     list-style: none;
     width: 100%;
-    margin: 20px 0;
     padding: 10px 0;
     border-radius: 8px;
     background-color: #ffffff;
@@ -447,7 +501,7 @@ input[type="radio"] {
 
 .container2 {
     width: 60%;
-    margin: 100px auto;
+    margin: 0px auto;
 }
 
 .container2 h2 {
@@ -488,6 +542,12 @@ input[type="radio"] {
     padding: 30px 50px;
     border-radius: 5px;
     box-shadow: 0 10px 20px rgba(0, 0, 50, 0.2);
+}
+
+.section-text{
+    text-align: justify;
+    font-family: "Montserrat", sans-serif;
+    opacity: 87%;
 }
 
 .toggle,
@@ -612,7 +672,7 @@ input[type="radio"] {
 
     .step-image img {
         height: 450px;
-        width: 80%;
+        /* width: 80%; */
         margin: 38px;
     }
 
@@ -620,12 +680,14 @@ input[type="radio"] {
         padding-left: 216px;
         position: absolute;
     }
+    .stepone p,
+    .steptwo p{
+    padding-left: 20px;
+    text-align: right;
+    }
 
-    .step-bg {
-        background-image: url(../image/bg-circle.png);
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: 1400px;
+    .stepthree p{
+        padding-right: 20px;
     }
 }
 
@@ -637,14 +699,6 @@ input[type="radio"] {
 
     .section-2 {
         width: 75%;
-    }
-
-    .rider,
-    .market,
-    .phone {
-        width: 40%;
-        margin: auto;
-        text-align: center;
     }
 
     .rider h3,
@@ -713,7 +767,7 @@ input[type="radio"] {
 
     .step-image img {
         height: 350px;
-        width: 70%;
+        /* width: 70%; */
         margin: 38px;
     }
 
@@ -722,12 +776,12 @@ input[type="radio"] {
         position: absolute;
     }
 
-    .step-bg {
+    /* .step-bg {
         background-image: url(../image/bg-circle.png);
         background-position: center;
         background-repeat: no-repeat;
         background-size: 990px;
-    }
+    } */
 
     .req-section {
         margin: 0 auto;
@@ -735,12 +789,6 @@ input[type="radio"] {
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
-    }
-
-    .req-image img {
-        width: 480px;
-        height: 350px;
-        border-radius: 15px;
     }
 
     .req-content {
@@ -752,12 +800,22 @@ input[type="radio"] {
         width: 100%;
         margin: 0px auto;
     }
-
+    .req-container {
+        width: 80%;
+        margin: 0 auto;
+    }
+    .container2 {
+        width: 80%;
+    }
 }
 
 @media (max-width:767px) {
     .image img {
         display: none;
+    }
+
+    .container2 {
+        width: 90%;
     }
 
     .px-5 {
@@ -787,12 +845,6 @@ input[type="radio"] {
         width: clamp(15.625rem, 4.6094rem + 37.5000vw, 19.375rem);
     }
 
-    .rider,
-    .market,
-    .phone {
-        width: 70%;
-    }
-
     .phone {
         padding-bottom: 40px;
     }
@@ -816,13 +868,13 @@ input[type="radio"] {
     }
 
     .step-container {
-        width: 75%;
-        margin: 10rem auto;
+        width: 90%;
+        margin: 3rem auto;
     }
 
     .step-image img {
         height: 180px;
-        width: 50%;
+        /* width: 50%; */
         margin: 38px;
     }
 
@@ -843,15 +895,19 @@ input[type="radio"] {
         align-items: center;
     }
 
-    .step-bg {
+    .req-container {
+        width: 90%;
+    }
+
+    /* .step-bg {
         background-image: url(../image/bg-circle.png);
         background-position: center;
         background-repeat: no-repeat;
         background-size: 500px;
-    }
+    } */
 
     .step-container {
-        width: 75%;
+        width: 95%;
         margin: 10rem auto;
     }
 
@@ -907,12 +963,6 @@ input[type="radio"] {
         align-items: center;
     }
 
-    .req-image img {
-        width: 280px;
-        height: 280px;
-        border-radius: 15px;
-    }
-
     .req-content {
         margin-top: 1rem;
         width: 100%;
@@ -922,6 +972,12 @@ input[type="radio"] {
         width: 100%;
         margin: 0px auto;
     }
+    .context-one{
+        width: 95%;
+    }
+    .req-image img {
+        display: none;
+    }
 
 }
 
@@ -930,6 +986,10 @@ input[type="radio"] {
     .service img {
         width: 250px;
         height: 215px;
+    }
+
+    .container2 {
+        width: 95%;
     }
 
     .icon {
@@ -956,7 +1016,7 @@ input[type="radio"] {
 
     .step-image img {
         height: 180px;
-        width: 50%;
+        /* width: 50%; */
         margin: 38px;
     }
 
@@ -977,16 +1037,16 @@ input[type="radio"] {
         align-items: center;
     }
 
-    .step-bg {
+    /* .step-bg {
         background-image: url(../image/bg-circle.png);
         background-position: center;
         background-repeat: no-repeat;
         background-size: 500px;
-    }
+    } */
 
     .step-container {
-        width: 75%;
-        margin: 10rem auto;
+        width: 100%;
+        margin: 1rem auto;
     }
 
     .step1-container {
@@ -1032,7 +1092,10 @@ input[type="radio"] {
         border-radius: 50px;
         margin-bottom: .8rem;
     }
-
+    .req-container {
+        width: 95%;
+        margin: 0 auto;
+    }
 }
 
 @media (min-width:315px) and (max-width:375px) {
@@ -1042,6 +1105,11 @@ input[type="radio"] {
         width: 250px;
         height: 215px;
     }
+
+    .container2 {
+        width: 97%;
+    }
+
 
     .icon {
         display: flex;
@@ -1081,12 +1149,6 @@ input[type="radio"] {
         padding: 10px;
     }
 
-    .step-image img {
-        height: 180px;
-        width: 50%;
-        margin: 38px;
-    }
-
     .step-image {
         padding-left: 37px;
         position: absolute;
@@ -1104,16 +1166,16 @@ input[type="radio"] {
         align-items: center;
     }
 
-    .step-bg {
+    /* .step-bg {
         background-image: url(../image/bg-circle.png);
         background-position: center;
         background-repeat: no-repeat;
         background-size: 500px;
-    }
+    } */
 
     .step-container {
-        width: 75%;
-        margin: 10rem auto;
+        width: 100%;
+        margin: 1rem auto;
     }
 
     .step1-container {
@@ -1169,12 +1231,6 @@ input[type="radio"] {
         align-items: center;
     }
 
-    .req-image img {
-        width: 280px;
-        height: 280px;
-        border-radius: 15px;
-    }
-
     .req-content {
         margin-top: 1rem;
         width: 100%;
@@ -1193,7 +1249,6 @@ input[type="radio"] {
       align-items: center;
       margin: 0 auto;
     }
-  
     .footer-content {
       width: 60%;
       margin: 0 auto;
@@ -1201,5 +1256,13 @@ input[type="radio"] {
       justify-content: space-between;
       color: #fff;
       padding: 70px 0;
+    }
+    .context-one{
+        width: 100%;
+    }
+    .rider p,
+    .market p,
+    .phone p {
+        width: 90%;
     }
   }

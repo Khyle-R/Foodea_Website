@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/rider_application4.css" />
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <link rel="icon" href="<?php echo e(url('image/foodea1.png')); ?>">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
     <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css" />
+    <link rel="stylesheet" type="text/css" href="css/rider_application4.css" />
     <title>FOODEA Rider Requirements</title>
   </head>
 
@@ -33,7 +33,6 @@
                     <li>Step 2 &nbsp;&nbsp;&nbsp;Business Information</li>
                     <li>Step 3 &nbsp;&nbsp;&nbsp;Verify Email Address</li>
                     <li class="red">Step 4 &nbsp;Requirements</li>
-                    <li>Step 5 &nbsp;Application Status</li>
                   </ul>
             </nav>
 
@@ -41,10 +40,15 @@
         <div class="content-wrapper">
           <div class="col-12 col-sm-10 col-md-11 col-lg-9 col-xl-6">
             <div class="right">
+              <div class="right">
+             <div id="loader-wrapper">
+            <span id="loader"></span>
+              </div>
               <h2>Welcome, Juan</h2>
-              <p>Here's the required steps to set up your account. 
-                  Make sure the documents you upload matches the sample 
-                  document or else the application process will be delayed.</p>
+              <p>Here are some examples of required documents you have to submit to set up your account. 
+                  Make sure the documents you upload are clear
+                  and readable or else the application process will be delayed.
+                </p>
 
           <div class="form-container">
             <div class="btn-group">
@@ -309,9 +313,9 @@ unset($__errorArgs, $__bag); ?></span>
       <!-- Scroller -->
     </div>  
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
+    <script src="<?php echo e(asset('assets/js/app.js')); ?>"></script>
   </body>
 </html><?php /**PATH E:\xampp\htdocs\Foodea_Website\resources\views/rider_application4.blade.php ENDPATH**/ ?>

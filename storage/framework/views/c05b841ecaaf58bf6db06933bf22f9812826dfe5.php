@@ -28,8 +28,7 @@
               <img src="image/foodea.png" style="width: 50px">FOODEA
             </a>
           </li>
-                           <li><?php echo e(Session::get('status')); ?></li>
-               <li class="nav-item nav-category">Rider Application</li>
+          <li class="nav-item nav-category">Rider Application</li>
           <li>Step 1 &nbsp;&nbsp;&nbsp;Personal Information</li>
           <li>Step 2 &nbsp;&nbsp;&nbsp;Verify Phone Number</li>
           <li>Step 3 &nbsp;&nbsp;&nbsp;Vehicle Information</li>
@@ -43,6 +42,9 @@
           <div class="row justify-content-center">
           <div class="col-12 col-sm-10 col-md-11 col-lg-10 col-xl-6">
             <div class="right"> 
+              <div id="loader-wrapper">
+            <span id="loader"></span>
+              </div>
               <div class="center">
                <img src="image/cashier.png" class="img-fluid"/>
                <h2>Thank you for trusting Foodea</h2>
@@ -65,10 +67,10 @@
     </div>
 
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
+    <script src="<?php echo e(asset('assets/js/app.js')); ?>"></script>
   </body>
 </html>
 <?php /**PATH E:\xampp\htdocs\Foodea_Website\resources\views/rider_application5.blade.php ENDPATH**/ ?>

@@ -15,6 +15,7 @@
   </head>
 
   <body>
+   
     <div class="container-scroller">
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
@@ -33,8 +34,6 @@
           <li>Step 1 &nbsp;&nbsp;&nbsp;Personal Information</li>
           <li>Step 2 &nbsp;&nbsp;&nbsp;Verify Phone Number</li>
           <li class="red">Step 3 &nbsp;&nbsp;&nbsp;Vehicle Information</li>
-          <li>Step 4 &nbsp;Requirements</li>
-          <li>Step 5 &nbsp;Application Status</li>  
         </ul>
       </nav>
 
@@ -43,7 +42,9 @@
       <div class="content-wrapper">
         <div class="col-12 col-sm-10 col-md-11 col-lg-9 col-xl-6">
            <div class="right">
-            
+             <div id="loader-wrapper">
+            <span id="loader"></span>
+              </div>
           <h2>Create your Account</h2>
           <p>Please fill up the form below.</p>
           <form method="post" action="<?php echo e(route('rider_application3.addVehicle')); ?>">
@@ -55,34 +56,16 @@
 
           <div class="form-group">
             
-            
-            <label>Vehicle</label>
-            <select class="form-control form-control-lg" name="vehicle_type">
-            <option selected="true" disabled="disabled">- Select -</option>
-            <option value="Motorcycle" <?php if(old('vehicle_type') == 'Motorcycle'): ?> selected="selected" <?php endif; ?>>Motorcycle  </option>
-            <option value="Bicycle" <?php if(old('vehicle_type') == 'Bicycle'): ?> selected="selected" <?php endif; ?>>Bicycle</option>
-            </select>
-            <span
-            style="color:red;">
-            <?php $__errorArgs = ['vehicle_type'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?> <?php echo e($message); ?>
 
-            <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?></span>
           </div>
 
              <div class="form-group">
             <label>Vehicle Ownership</label>
             <select class="form-control form-control-lg" name="vehicle_ownership">
             <option selected="true" disabled="disabled">- Select -</option>
-            <option value="Fully_owned" >Fully owned </option>
-            <option value="Borrowed">Borrowed</option>
-           <option value="Second-hand" >Second-hand</option> 
+            <option value="Fully_owned" <?php if(old('vehicle_ownership') == 'Fully_owned'): ?> selected="selected" <?php endif; ?>>Fully owned </option>
+            <option value="Borrowed" <?php if(old('vehicle_ownership') == 'Borrowed'): ?> selected="selected" <?php endif; ?>>Borrowed</option>
+           <option value="Second-hand" <?php if(old('vehicle_ownership') == 'Second-hand'): ?> selected="selected" <?php endif; ?>>Second-hand</option> 
           </select>
         
           </div>
@@ -105,10 +88,17 @@ endif;
 unset($__errorArgs, $__bag); ?></span>
           </div>
 
-          <div class="form-group">
-            <label>Motorcycle Displacement <samp style="color:#BD9140;font-size: 13px;">(CC 99-160)</samp></label>
-            <input type="text" name="displacement" value="<?php echo e(old('displacement')); ?>" class="form-control form-control-lg"/>
-            <span
+          
+          
+             <div class="form-group">
+             <label>Motorcycle Displacement <samp style="color:#BD9140;font-size: 13px;">(CC 99-160)</samp></label>
+            <select class="form-control form-control-lg" name="displacement">
+            <option selected="true" disabled="disabled">- Select -</option>
+             <?php for($i = 99; $i<=160; $i++): ?>
+             <option value="<?php echo e($i); ?>" <?php if(old('displacement') ==  $i ): ?> selected="selected" <?php endif; ?>><?php echo e($i); ?></option>
+            <?php endfor; ?>
+          </select>
+          <span
             style="color:red;">
             <?php $__errorArgs = ['displacement'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -139,24 +129,14 @@ endif;
 unset($__errorArgs, $__bag); ?></span>
           </div>
 
-          <div class="form-group">
-            <label>Year Model</label>
-            <input type="text" name="year_model" value="<?php echo e(old('year_model')); ?>" class="form-control form-control-lg"/>
-            <span
-            style="color:red;">
-            <?php $__errorArgs = ['year_model'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?> <?php echo e($message); ?>
-
-            <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?></span>
-          </div>
-
-
+           <div class="form-group">
+             <label>Year Model <samp style="color:#BD9140;font-size: 13px;">(Model 2010 above)</samp></label>
+            <select class="form-control form-control-lg" name="year_model">
+            <option selected="true" disabled="disabled">- Select -</option>
+             <?php for($i = 2010; $i<=2023; $i++): ?>
+             <option value="<?php echo e($i); ?>" <?php if(old('year_model') ==  $i ): ?> selected="selected" <?php endif; ?>><?php echo e($i); ?></option>
+            <?php endfor; ?>
+          </select>
            <br><br>
            <div class="form-group">
             <div class="col-sm-10 d-flex justify-content-center">
@@ -171,10 +151,11 @@ unset($__errorArgs, $__bag); ?></span>
       <!-- Scroller -->
     </div>  
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
+    
+    <script src="<?php echo e(asset('assets/js/app.js')); ?>"></script>
   </body>
 </html>
 <?php /**PATH E:\xampp\htdocs\Foodea_Website\resources\views//rider_application3.blade.php ENDPATH**/ ?>
