@@ -100,7 +100,7 @@
                 <div class="content text-center text-md-start d-flex flex-column align-items-center align-items-md-start pt-4 pt-md-5">
                     <h1>Grow your business with<span> Foodea</span></h1>
                     <p class="text-center text-md-start">Expand your business by bringing your food out and filling up your customers tummy and reach new customers by partnering with us.</p>
-                    <a href="/merchant_application_agreement" class="text-decoration-none">Apply Now</a>
+                    <a href="/rider_application_agreement" class="text-decoration-none">Apply Now</a>
                 </div>
             </div>
             <div class="col-12 col-md-5 col-lg-6">
