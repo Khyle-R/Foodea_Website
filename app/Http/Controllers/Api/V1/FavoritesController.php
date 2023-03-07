@@ -17,9 +17,9 @@ class FavoritesController extends Controller
         $queryItems = $filter->transform($request);
 
         if (!isset($queryItems)||count($queryItems) == 0 ) {
-            return Favorites::all();
+            return Favorites::with('product_details')->get();
         } else {
-            return Favorites::where($queryItems)->get();
+            return Favorites::with('product_details')->where($queryItems)->get();
         }
     }
 
@@ -29,7 +29,7 @@ class FavoritesController extends Controller
 
     public function show(Request $request, Favorites $favorites){
         $id = $request->segment(count(request()->segments()));
-        return $favorites::where('id', $id)->get();
+        return $favorites::with('product_details')->where('id', $id)->get();
     }
 
     public function destroy(Request $request, Favorites $favorites){
