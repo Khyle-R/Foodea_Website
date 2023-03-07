@@ -18,13 +18,13 @@ return new class extends Migration
             $table->id('document_id');
             $table->integer('rider_id');
             $table->string('driver_license');
-            $table->string('official_receipt');
-            $table->string('cert_registration');
+            $table->string('official_receipt')->nullable();
+            $table->string('cert_registration')->nullable();
             $table->string('nbi_clearance');
-            $table->string('drug_test');
+            $table->string('drug_test')->nullable();
             $table->string('rider_photo');
-            $table->string('vehicle_front');
-            $table->string('vehicle_back');
+            $table->string('vehicle_front')->nullable();
+            $table->string('vehicle_back')->nullable();
             $table->string('vehicle_side');
             $table->string('license_back');
             $table->string('auth_letter')->nullable();
