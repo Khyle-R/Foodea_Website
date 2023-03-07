@@ -21,6 +21,10 @@ class RiderStep4
         {
             return redirect('/rider_application2');
         }
+        if(Session::get('status') == 'second')
+        {
+            return redirect('/rider_vehicle_type');
+        }
         if(Session::get('status') == 'third')
         {
             return redirect('/rider_application4');

@@ -23,12 +23,17 @@ class RiderStatus
         }
          if(Session::get('status') == 'second')
         {
-            return redirect('/rider_application3');
+            return redirect('/rider_vehicle_type');
+        }
+         if(Session::get('status') == 'vehicle_type')
+        {
+            return redirect('rider_application3');
         }
         if(Session::get('status') == 'third')
         {
             return redirect('/rider_application4');
         }
+       
         
          $response = $next($request);
         return $response->header('Cache-Control', 'no-cache, no-store, max-age=0, must-revalidate')
