@@ -42,9 +42,6 @@
           <div class="row justify-content-center">
           <div class="col-12 col-sm-10 col-md-11 col-lg-10 col-xl-6">
             <div class="right"> 
-              <div id="loader-wrapper">
-            <span id="loader"></span>
-              </div>
               <div class="center">
                <img src="image/cashier.png" class="img-fluid"/>
                <h2>Thank you for trusting Foodea</h2>

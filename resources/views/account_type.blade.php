@@ -42,9 +42,6 @@
         <div class="col-12 col-sm-12 col-md-9 col-lg-6">
            <div class="right">
             <div class="right">
-             <div id="loader-wrapper">
-            <span id="loader"></span>
-              </div>
             <h2>Create your Account</h2>
             <p>Please fill up the form below.</p>
 

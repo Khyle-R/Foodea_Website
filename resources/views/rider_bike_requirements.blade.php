@@ -41,9 +41,6 @@
           <div class="col-12 col-sm-10 col-md-11 col-lg-9 col-xl-6">
             <div class="right">
                  <div class="right">
-             <div id="loader-wrapper">
-            <span id="loader"></span>
-              </div>
               <h2>Welcome, Juan</h2>
               <p>Here are some examples of required documents you have to submit to set up your account. 
                   Make sure the documents you upload are clear

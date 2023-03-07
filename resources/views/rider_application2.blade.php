@@ -40,9 +40,6 @@
         <div class="content-wrapper">
           <div class="col-12 col-sm-10 col-md-11 col-lg-9 col-xl-6">
             <div class="right">
-               <div id="loader-wrapper">
-            <span id="loader"></span>
-              </div>
                <h2>Verify your account</h2>
                <p>We emailed you the six digit code to 
                 <samp style="color:#F54748;">{{ $email->email }}</samp></p>
