@@ -17,9 +17,9 @@ class OrderController extends Controller
         $queryItems = $filter->transform($request);
 
         if (!isset($queryItems)||count($queryItems) == 0 ) {
-            return Order::all();
+            return Order::with('product_details')->get();
         } else {
-            return Order::where($queryItems)->get();
+            return Order::with('product_details')->where($queryItems)->get();
         }
     }
 
@@ -29,7 +29,7 @@ class OrderController extends Controller
 
     public function show(Request $request, Order $order){
         $id = $request->segment(count(request()->segments()));
-        return $order::where('order_id', $id)->get();
+        return $order::with('product_details')->where('order_id', $id)->get();
     }
 
     public function destroy(Request $request, Order $order){
