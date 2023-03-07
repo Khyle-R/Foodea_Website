@@ -79,6 +79,9 @@ class Kernel extends HttpKernel
          'RiderStatus' =>[
             \App\Http\Middleware\RiderStatus::class,
         ],
+         'BikeRequirements' =>[
+            \App\Http\Middleware\BikeRequirements::class,
+        ],
         'PartnerStep1' =>[
             \App\Http\Middleware\PartnerStep1::class,
         ],

@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
-class RiderStep4
+class BikeRequirements
 {
     /**
      * Handle an incoming request.
@@ -17,7 +17,7 @@ class RiderStep4
      */
     public function handle(Request $request, Closure $next)
     {
-        if(Session::get('status') == 'first')
+      if(Session::get('status') == 'first')
         {
             return redirect('/rider_application2');
         }
@@ -25,9 +25,9 @@ class RiderStep4
         {
             return redirect('/rider_vehicle_type');
         }
-        if(Session::get('status') == 'bicycle')
+          if(Session::get('status') == 'vehicle_type')
         {
-            return redirect('/rider_bike_requirements');
+            return redirect('rider_application3');
         }
         if(Session::get('status') == 'third')
         {
@@ -43,4 +43,4 @@ class RiderStep4
         ->header('Pragma', 'no-cache')
         ->header('Expires','Sun, 02 Jan 1990 00:00:00 GMT');
     }
- }
+}
