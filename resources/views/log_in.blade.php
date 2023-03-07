@@ -19,7 +19,6 @@
     </head>
     <body>
          
-
         <nav class="navbar navbar-light nav-red">
             <a class="navbar-brand" href="/">
                 <img
@@ -60,7 +59,7 @@
 
         @endif
 
-        <section>
+        <div class="form_container">
             <div class="container mt-2 pt-5">
                 <div class="row">
                      <div class="col-12 col-sm-12 col-md-9 col-lg-6 m-auto">
@@ -79,6 +78,7 @@
                                         name="email"
                                         class="form-control my-1"
                                         placeholder="example@gmail.com"
+                                        value="{{ Cookie::get('email') }}"
                                     />
                                        <span
                                         class="error">
@@ -93,6 +93,7 @@
                                             class="form-control my-1 form-control-lg"
                                             placeholder="Password"
                                             id="password"
+                                            value="{{ Cookie::get('password') }}"
                                             
                                         />
                                             <span class="eye" onclick="myFunction()">
@@ -110,7 +111,7 @@
                                     <div class="form-row justify-content-between">
                                         <div class="col-auto form-group my-2">
                                             <div class="form-check">
-                                              <input class="form-check-input" type="checkbox" id="gridCheck">
+                                              <input class="form-check-input" type="checkbox" name="remember" id="gridCheck">
                                               <label class="form-check-label" for="gridCheck">
                                                 Remember Me
                                               </label>
@@ -137,7 +138,7 @@
                                             <p class="mr-2">
                                                 Don't have an account?
                                             </p>
-                                            <a href="/account_type" class="red">Sign Up</a>
+                                            <a href="/rider_application_agreement" class="red">Sign Up</a>
                                         </div>
                                     </div>
                                 </form>
@@ -148,8 +149,11 @@
                 
             </div>
                 
-        </section>
+            </div>
 
+        <div class="bg_image fixed-bottom">
+            <img class="" src="image/foodsbgleft.png" alt="">
+        </div>
     </body>
  <script>
             $('.popup').show(function() {

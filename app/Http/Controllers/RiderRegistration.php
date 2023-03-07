@@ -5,15 +5,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use App\Mail\MailVerification;
 use App\Models\tbl_vehicle_infos;
 use App\Models\tbl_rider_accounts;
 use App\Models\tbl_rider_document;
+use App\Models\tbl_partner_accounts;
 use Illuminate\Support\Facades\DB;  
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use App\Models\tbl_rider_application;
+use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Session;
-use App\Models\tbl_partner_accounts;
 use App\Models\tbl_merchant_application;
+
 
 class RiderRegistration extends Controller
 {
@@ -38,6 +43,7 @@ class RiderRegistration extends Controller
     {
 
             $request->validate([
+            'account_type' => 'required',    
             'firstname' => 'required',
             'middlename' => 'required',
             'lastname' => 'required',
@@ -87,9 +93,26 @@ class RiderRegistration extends Controller
                 $id->rider_id = Session::get('rider_id');
                 $id->status = 'first';
                 $id->save();
-                
-                $request->session()->put('status', $id->status);
-                return redirect('/rider_application2');
+                if($id)
+                {
+                    $email = tbl_rider_accounts::where('rider_id', Session::get('rider_id'))
+                        ->first();
+                        
+                        $code = mt_rand(100000, 999999);
+                       $mailData = [
+                        'title' => 'Account Verification',
+                        'body' => 'test',
+                        'code' => $code,
+                        'fname' => $email->firstname,
+                        'lname' => $email->lastname,
+                       ];
+                       Mail::to($email)->send(new MailVerification($mailData));
+
+                    $request->session()->put('verification', $code);
+                     $request->session()->put('status', $id->status);
+                     return redirect('/rider_application2');
+                }
+               
             }
             else{
                 return back()->with('fail', 'Something is wrong');
@@ -98,14 +121,10 @@ class RiderRegistration extends Controller
         
         /*MERCHANT */
         if($request->account_type == 'Partner Merchant'){
-            $request-> validate([
-            'firstname' => 'required',
-            'middlename' => 'required',
-            'lastname' => 'required',
+           $request->validate([
             'email' => 'required|email|unique:tbl_merchant_account',
-            'password' => 'required|min:6|confirmed',
-            'password_confirmation' => 'required'
-        ]);
+              ]);
+  
 
         $merchant = new tbl_partner_accounts();
         $merchant->firstname = $request->firstname;
@@ -124,7 +143,6 @@ class RiderRegistration extends Controller
         $merchant->zip_code = $request->  zip;
 
         $res = $merchant->save();
-
         if($res){
             $request->session()->put('merchant_id', $merchant->id);
 
@@ -132,8 +150,11 @@ class RiderRegistration extends Controller
             $id->merchant_id = $merchant->id;
             $id->status = 'first';
             $id->save();
-            
+
+            $request->session()->put('partnerstatus', $id->status);
             return redirect('/partner_application2');
+            
+          
         }else{
             return back()->with('fail', 'Something is wrong');
         }
@@ -142,11 +163,41 @@ class RiderRegistration extends Controller
             return back();
         }
     }
-    public function VerifyRider(){
-        return view('rider_application2');
+    
+    /*EMAIL VERIFICATION */
+    public function VerifyRider(Request $request){
+      $email = tbl_rider_accounts::where('rider_id', Session::get('rider_id'))
+                        ->first();
+      
+        return view('rider_application2', compact('email'));
     }
+    
+    public function ResendCode(Request $request){
+
+        $email = tbl_rider_accounts::where('rider_id', Session::get('rider_id'))
+                        ->first();
+                        
+         $code = mt_rand(100000, 999999);
+
+                       $mailData = [
+                        'title' => 'Account Verification',
+                        'body' => 'test',
+                        'code' => $code,
+                        'fname' => $email->firstname,
+                        'lname' => $email->lastname,
+                       ];
+                       Mail::to($email)->send(new MailVerification($mailData));
+
+                    $request->session()->put('verification', $code);
+                     return back();
+    }
+
     public function RiderVerify(Request $request){
-  
+      
+      $verify = $request->num1.$request->num2.$request->num3.$request->num4.$request->num5.$request->num6;
+ 
+      if($verify == Session::get('verification')){
+        Session::pull('verification');
       $res =  tbl_rider_application::where('rider_id', Session::get('rider_id'))
                 ->update([
                     'status' => "second"
@@ -159,10 +210,14 @@ class RiderRegistration extends Controller
          $request->session()->put('status', $status->status);
          return redirect('/rider_application3');
       }
-        
+    }
+    else{
+        return back()->with('fail', 'Wrong verification code. Please try again!');
+    }
     }
 
     public function step2index(){
+    
         return view('/rider_application3');
     }
     
@@ -425,16 +480,47 @@ class RiderRegistration extends Controller
         return view('/rider_application_agreement');
     }
    
+    public function RiderLoginIndex(Request $request){
+        if(Cookie::has('email') && Cookie::has('password')){
+             $user = tbl_rider_accounts::where('email', '=', Cookie::get('email'))->first();
+              $Data = tbl_rider_accounts::join('tbl_vehicle_info', 'tbl_rider_account.rider_id', '=', 'tbl_vehicle_info.rider_id')
+                ->join('tbl_document_info', 'tbl_rider_account.rider_id', '=', 'tbl_document_info.rider_id')
+                ->join('rider_application', 'tbl_rider_account.rider_id', '=', 'rider_application.rider_id')
+                ->where('tbl_rider_account.rider_id', $user->rider_id)
+                ->limit(1)
+                ->get();
+
+                 $request->session()->put('registerID', $user->rider_id);
+                return view('/rider_applicationstatus', compact('Data'));
+            }
+            else{
+        return view('rider_login');
+            }
+    }
+    
     /* RIDER LOGIN */
     public function RiderLogIn(Request $request){
+          
          $request->validate([
             'email'=> 'required|email',
             'password'=> 'required|min:6'
         ]);
-        $user = tbl_rider_accounts::where('email', '=', $request->email)->first();
+      
+         $user = tbl_rider_accounts::where('email', '=', $request->email)->first();
         if($user){
+            
             if(Hash::check($request->password, $user->password)){
-
+                if($request->remember){
+                /*SET COOKIE */
+                
+                $response = new Response();
+                Cookie::queue(Cookie::forever('email', $request->email));
+                Cookie::queue(Cookie::forever('password', $request->password));
+                
+                /*FORGET COOKIE */
+                // Cookie::queue(Cookie::forget('email'));
+                // Cookie::queue(Cookie::forget('password'));  
+                }
                 $Data = tbl_rider_accounts::join('tbl_vehicle_info', 'tbl_rider_account.rider_id', '=', 'tbl_vehicle_info.rider_id')
                 ->join('tbl_document_info', 'tbl_rider_account.rider_id', '=', 'tbl_document_info.rider_id')
                 ->join('rider_application', 'tbl_rider_account.rider_id', '=', 'rider_application.rider_id')
@@ -444,16 +530,21 @@ class RiderRegistration extends Controller
                 
                 $request->session()->put('registerID', $user->rider_id);
                 return view('/rider_applicationstatus', compact('Data'));
-            }else{
+            }
+            else{
                   return back()->with('fail', 'Password does not match');
             }
         }else{
             return back()->with('fail', 'This is email is not registered');
         }
+        
+        
     }
     public function RiderLogout(){
         if(Session::has('registerID')){
             Session::pull('registerID');
+            Cookie::queue(Cookie::forget('email'));
+            Cookie::queue(Cookie::forget('password'));  
             return redirect('/');
         }
     }

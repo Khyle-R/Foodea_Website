@@ -61,7 +61,7 @@
             <option value="Second hand" @if (old('vehicle_type') == 'Second hand') selected="selected" @endif>Second hand</option>
            <option value="Reacquire Motor" @if (old('vehicle_type') == 'Reacquire Motor') selected="selected" @endif>Reacquire Motor</option>
           </select> --}}
-            
+      
             <label>Vehicle</label>
             <select class="form-control form-control-lg" name="vehicle_type">
             <option selected="true" disabled="disabled">- Select -</option>
@@ -95,10 +95,24 @@
             @enderror</span>
           </div>
 
-          <div class="form-group">
+          {{-- <div class="form-group">
             <label>Motorcycle Displacement <samp style="color:#BD9140;font-size: 13px;">(CC 99-160)</samp></label>
             <input type="text" name="displacement" value="{{ old('displacement') }}" class="form-control form-control-lg"/>
             <span
+            style="color:red;">
+            @error('displacement') {{ $message }}
+            @enderror</span>
+          </div> --}}
+          
+             <div class="form-group">
+             <label>Motorcycle Displacement <samp style="color:#BD9140;font-size: 13px;">(CC 99-160)</samp></label>
+            <select class="form-control form-control-lg" name="displacement">
+            <option selected="true" disabled="disabled">- Select -</option>
+             @for ($i = 99; $i<=160; $i++)
+             <option value="{{ $i.'CC' }}" >{{ $i}}</option>
+            @endfor
+          </select>
+          <span
             style="color:red;">
             @error('displacement') {{ $message }}
             @enderror</span>

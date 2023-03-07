@@ -17,10 +17,19 @@ class RiderStep4
      */
     public function handle(Request $request, Closure $next)
     {
+        if(Session::get('status') == 'first')
+        {
+            return redirect('/rider_application2');
+        }
         if(Session::get('status') == 'third')
         {
             return redirect('/rider_application4');
         }
+        if(Session::get('status') == 'Pending')
+        {
+            return redirect('/rider_application5');
+        }
+
          $response = $next($request);
         return $response->header('Cache-Control', 'no-cache, no-store, max-age=0, must-revalidate')
         ->header('Pragma', 'no-cache')

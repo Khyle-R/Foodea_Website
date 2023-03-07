@@ -30,6 +30,7 @@
             <img src="image/foodea.png" style="width: 50px">FOODEA
           </a>
         </li>
+      
         <li class="nav-item nav-category">Foodea Application</li>
         <li class="red">Step 1 &nbsp;&nbsp;&nbsp;Personal Information</li>
       </ul>
@@ -56,7 +57,7 @@
             </select>
              <span
             style="color:red;">
-            <?php $__errorArgs = ['gender'];
+            <?php $__errorArgs = ['account_type'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }

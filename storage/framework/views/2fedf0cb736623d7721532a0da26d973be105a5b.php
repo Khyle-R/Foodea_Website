@@ -53,7 +53,7 @@
 
           <div class="form-group">
             
-            
+      
             <label>Vehicle</label>
             <select class="form-control form-control-lg" name="vehicle_type">
             <option selected="true" disabled="disabled">- Select -</option>
@@ -103,10 +103,17 @@ endif;
 unset($__errorArgs, $__bag); ?></span>
           </div>
 
-          <div class="form-group">
-            <label>Motorcycle Displacement <samp style="color:#BD9140;font-size: 13px;">(CC 99-160)</samp></label>
-            <input type="text" name="displacement" value="<?php echo e(old('displacement')); ?>" class="form-control form-control-lg"/>
-            <span
+          
+          
+             <div class="form-group">
+             <label>Motorcycle Displacement <samp style="color:#BD9140;font-size: 13px;">(CC 99-160)</samp></label>
+            <select class="form-control form-control-lg" name="displacement">
+            <option selected="true" disabled="disabled">- Select -</option>
+             <?php for($i = 99; $i<=160; $i++): ?>
+             <option value="<?php echo e($i.'CC'); ?>" ><?php echo e($i); ?></option>
+            <?php endfor; ?>
+          </select>
+          <span
             style="color:red;">
             <?php $__errorArgs = ['displacement'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');

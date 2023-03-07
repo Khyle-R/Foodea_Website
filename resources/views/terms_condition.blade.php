@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />  
-    <title>FOODEA Contact Us</title>
+    <title>FOODEA Terms and Condition</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css" rel="stylesheet" />
     <link rel="icon" href="{{url('image/foodea1.png') }}">
@@ -15,18 +15,15 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-    <link rel="stylesheet" type="text/css" href="css/contact.css" />
+    <link rel="stylesheet" type="text/css" href="css/privacy.css" />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         AOS.init();
     </script>
-
 </head>
-
 <body>
     <div class="main-container">
-    <div class="header">
     <!--- NAVBAR -->
     <nav class="navbar navbar-expand-lg px-2 mx -2 px-xs-3 px-md-4 px-lg-5 mx-xs-3 mx-md-4 mx-lg-5">
       <div class="container-fluid px-3">
@@ -83,7 +80,7 @@
                 <a href="/about" class="nav-link">About Us</a>
               </li>
               <li class="nav-item">
-                <a href="/contact" class="nav-link active">Contact Us</a>
+                <a href="/contact" class="nav-link">Contact Us</a>
               </li>
             </ul>
             <a
@@ -102,19 +99,20 @@
         </div>
       </div>
     </nav>
-    
-    </div>
     <!-- END OF NAVBAR -->
     <div class="container">
 
     <!-- SECTION 1 -->
-    <section class="d-flex justify-content-center " data-aos="fade-up">
+    <section class="d-flex justify-content-center">
       <div class="content1 mx-auto d-flex flex-column align-items-center gap-4 pt-4 pb-2 py-xs-3 py-md-4 py-lg-5">
         <h1 class="text-center">Terms and Condition</h1>
-        <div class="paragraph1 w-75"><p class="text-center">Lorem ipsum dolor sit amet consectetur adipisicing elit. Pariatur neque a, vel, necessitatibus molestiae exercitationem officiis, beatae dolor harum dicta est? Amet quaerat at esse est aliquam veritatis, facilis necessitatibus iure saepe, ad, id modi asperiores? Illo vitae voluptatem, possimus ut nemo voluptates recusandae. Nemo accusamus placeat distinctio rem atque.</p></div>
       </div>
     </section>
     <!-- END SECTION 1 -->
+
+    </div>
+    </div>
+  
 
     <!-- FOOTER -->
     <div class="footer">
@@ -160,8 +158,12 @@
                 </div>
                 <div class="legal">
                     <h2>Legal:</h2>
-                    <p>Terms and Condition</p>
-                    <p>Privacy Policy</p>
+                    <a href="/terms_condition" class="text-reset text-decoration-none">
+                      <p>Terms and Condition</p>
+                    </a>
+                    <a href="/privacy" class="text-reset text-decoration-none">
+                      <p>Privacy Policy</p>
+                    </a>
                 </div>
             </div>
         </div>
