@@ -213,11 +213,11 @@
 					your journey with Foodea.</p>
 				<h3>Bicycle Rider Requirements</h3>
 				<ul class="square">
+          <li>Rider's Image</li>
 					<li>Any valid government ID</li>
 					<li>Must be 18-55 Years old </li>
-					<li>NBI (Optional)</li>
+					<li>NBI (Required)</li>
 					<li>Drug Test (Optional)</li>
-					<li>Any brands of Bicycle</li>
 					<li>Smartphone</li>
 					<ul class="indent">
 						<li>Android 5.0 or higher</li>

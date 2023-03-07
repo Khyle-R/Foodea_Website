@@ -17,15 +17,15 @@ return new class extends Migration
 
             $table->id('vehicle_id');
             $table->integer('rider_id');
-            $table->string('vehicle_type');
-            $table->string('vehicle_ownership');
-            $table->string('plate_number');
-            $table->string('displacement');
-            $table->integer('engine_number');
-            $table->integer('year_model');
-            $table->string('emergency_name');
-            $table->string('relationship');
-            $table->string('contact_number');
+            $table->string('vehicle_type')->nullable();
+            $table->string('vehicle_ownership')->nullable();
+            $table->string('plate_number')->nullable();
+            $table->string('displacement')->nullable();
+            $table->integer('engine_number')->nullable();
+            $table->integer('year_model')->nullable();
+            $table->string('emergency_name')->nullable();
+            $table->string('relationship')->nullable();
+            $table->string('contact_number')->nullable();
             $table->timestamp('datee')->useCurrent();
             });
 

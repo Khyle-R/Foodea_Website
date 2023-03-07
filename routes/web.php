@@ -32,9 +32,7 @@ Route::post('/rider_login', [RiderRegistration::class, 'RiderLogIn'])->name('Rid
 
 Route::get('/login_type', [Home::class, 'LoginType']);
 
-
-Route::get('//rider_logout', [RiderRegistration::class, 'RiderLogout']);
-
+Route::get('/rider_logout', [RiderRegistration::class, 'RiderLogout']);
 
 
 
@@ -55,10 +53,21 @@ Route::group(['middleware'=>['RiderStep1']], function(){
     Route::get('/rider_application2resend', [RiderRegistration::class, 'ResendCode']);
 });
     
+Route::group(['middleware'=>['RiderVehicle']], function(){
+    
+    Route::get('/rider_vehicle_type', [RiderRegistration::class, 'VehicleType']);
+    Route::post('/rider_vehicle_typeadd', [RiderRegistration::class, 'AddVehicleType'])->name('AddVehicleType');
+});
+
 Route::group(['middleware'=>['RiderStep4']], function(){
     Route::get('/rider_application3', [RiderRegistration::class, 'step2index'])->name('rider_application3.step2index');
     Route::post('/rider_application3', [RiderRegistration::class, 'addVehicle'])->name('rider_application3.addVehicle');
          });
+
+Route::group(['middleware'=>['BikeRequirements']], function(){
+    Route::get('/rider_bike_requirements', [RiderRegistration::class, 'RiderRequirements']);
+    Route::post('/rider_bike_requirement', [RiderRegistration::class, 'RiderRequirementsSubmit'])->name('RiderRequirementsSubmit');
+  });
     
 Route::group(['middleware'=>['RiderStepFinal']], function(){
     Route::get('/rider_application4', function () {
