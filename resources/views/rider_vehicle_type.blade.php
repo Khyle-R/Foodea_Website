@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8">
@@ -44,7 +44,7 @@
             
           <h2>Create your Account</h2>
           <p>Please fill up the form below.</p>
-          <form method="post" action="{{ route('rider_application3.addVehicle') }}">
+          <form method="post" action="{{ route('AddVehicleType') }}">
               @csrf
             <!--GET RIDER ID-->
             @if (Session::has('rider_id'))
@@ -61,8 +61,8 @@
             <option value="Second hand" @if (old('vehicle_type') == 'Second hand') selected="selected" @endif>Second hand</option>
            <option value="Reacquire Motor" @if (old('vehicle_type') == 'Reacquire Motor') selected="selected" @endif>Reacquire Motor</option>
           </select> --}}
-{{--       
-            <label>Vehicle</label>
+      
+            <label>Vehicle Type</label>
             <select class="form-control form-control-lg" name="vehicle_type">
             <option selected="true" disabled="disabled">- Select -</option>
             <option value="Motorcycle" @if (old('vehicle_type') == 'Motorcycle') selected="selected" @endif>Motorcycle  </option>
@@ -71,70 +71,38 @@
             <span
             style="color:red;">
             @error('vehicle_type') {{ $message }}
-            @enderror</span> --}}
+            @enderror</span>
           </div>
+
+            <h5 class="mt-4">Emergency Contact</h5>
 
              <div class="form-group">
-            <label>Vehicle Ownership</label>
-            <select class="form-control form-control-lg" name="vehicle_ownership">
-            <option selected="true" disabled="disabled">- Select -</option>
-            <option value="Fully_owned" >Fully owned </option>
-            <option value="Borrowed">Borrowed</option>
-           <option value="Second-hand" >Second-hand</option> 
-          </select>
-        
-          </div>
-      
-
-          <div class="form-group">
-            <label>Plate Number</label>
-            <input type="text" name="plate_number" value="{{ old('plate_number') }}" class="form-control form-control-lg"/>
-            <span
+            <label>Name</label>
+            <input name="name" type="text" value="{{ old('zip') }}" class="form-control form-control-lg"/>
+             <span
             style="color:red;">
-            @error('plate_number') {{ $message }}
+            @error('name') {{ $message }}
             @enderror</span>
-          </div>
+            </div>
 
-          {{-- <div class="form-group">
-            <label>Motorcycle Displacement <samp style="color:#BD9140;font-size: 13px;">(CC 99-160)</samp></label>
-            <input type="text" name="displacement" value="{{ old('displacement') }}" class="form-control form-control-lg"/>
-            <span
-            style="color:red;">
-            @error('displacement') {{ $message }}
-            @enderror</span>
-          </div> --}}
-          
              <div class="form-group">
-             <label>Motorcycle Displacement <samp style="color:#BD9140;font-size: 13px;">(CC 99-160)</samp></label>
-            <select class="form-control form-control-lg" name="displacement">
-            <option selected="true" disabled="disabled">- Select -</option>
-             @for ($i = 99; $i<=160; $i++)
-             <option value="{{ $i }}" >{{ $i}}</option>
-            @endfor
-          </select>
-          <span
+            <label>Relationship</label>
+            <input name="relationship" type="text" value="{{ old('zip') }}" class="form-control form-control-lg"/>
+             <span
             style="color:red;">
-            @error('displacement') {{ $message }}
+            @error('relationship') {{ $message }}
             @enderror</span>
-          </div>
+            </div>
 
-          <div class="form-group">
-            <label>Engine Number</label> 
-            <input type="text" name="engine_number" value="{{ old('engine_number') }}" class="form-control form-control-lg"/>
-            <span
+             <div class="form-group">
+            <label>Phone</label>
+            <input name="phone" type="text" value="{{ old('zip') }}" class="form-control form-control-lg"/>
+             <span
             style="color:red;">
-            @error('engine_number') {{ $message }}
+            @error('phone') {{ $message }}
             @enderror</span>
-          </div>
+            </div>
 
-           <div class="form-group">
-             <label>Year Model <samp style="color:#BD9140;font-size: 13px;">(Model 2010 above)</samp></label>
-            <select class="form-control form-control-lg" name="year_model">
-            <option selected="true" disabled="disabled">- Select -</option>
-             @for ($i = 2010; $i<=2023; $i++)
-             <option value="{{ $i }}" >{{ $i}}</option>
-            @endfor
-          </select>
            <br><br>
            <div class="form-group">
             <div class="col-sm-10 d-flex justify-content-center">

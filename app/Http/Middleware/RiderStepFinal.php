@@ -23,6 +23,10 @@ class RiderStepFinal
         }
         if(Session::get('status') == 'second')
         {
+            return redirect('/rider_vehicle_type');
+        }
+        if(Session::get('status') == 'vehicle_type')
+        {
             return redirect('/rider_application3');
         }
        if(Session::get('status') == 'Pending')

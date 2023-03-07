@@ -208,7 +208,7 @@ class RiderRegistration extends Controller
         ->first();
         
          $request->session()->put('status', $status->status);
-         return redirect('/rider_application3');
+         return redirect('/rider_vehicle_type');
       }
     }
     else{
@@ -216,19 +216,13 @@ class RiderRegistration extends Controller
     }
     }
 
-    public function step2index(){
-    
-        return view('/rider_application3');
+    public function VehicleType(){
+         return view('/rider_vehicle_type');
     }
-    
-    public function addVehicle(Request $request){
+
+    public function AddVehicleType(Request $request){
         $request -> validate([
             'vehicle_type' => 'required',
-            'vehicle_ownership' => 'required',
-            'plate_number' => 'required',
-            'displacement' => 'required',
-            'engine_number' => 'required',
-            'year_model' => 'required',
             'relationship' => 'required',
             'phone' => 'required',
             'name' => 'required'
@@ -236,14 +230,67 @@ class RiderRegistration extends Controller
         $vehicle = new tbl_vehicle_infos();
         $vehicle->rider_id = $request->rider_id;
         $vehicle->vehicle_type = $request->vehicle_type;
+        $vehicle->emergency_name = $request-> name;
+        $vehicle->relationship = $request-> relationship;
+        $vehicle->contact_number = $request->  phone;
+        $res = $vehicle->save();
+
+        if($res){
+            if($request->vehicle_type == 'Motorcycle'){
+                
+                 //Find rider_id in tbl_vehicle info
+            $id = tbl_vehicle_infos::where('rider_id', $request->rider_id)->first();
+         
+            //update tbl_Rider_application to insert vehicle id that equals to rider_id
+            tbl_rider_application::where('rider_id', $request->rider_id)
+                ->update([
+                    'vehicle_id' => $id->vehicle_id,
+                    'status' => "vehicle_type"
+                ]);
+            $status = tbl_rider_application::where('rider_id', $request->rider_id)->first();
+            $request->session()->put('status', $status->status);
+            return redirect('/rider_application3');
+
+            }
+            
+            if($request->vehicle_type == 'Bicycle'){
+                  //Find rider_id in tbl_vehicle info
+            $id = tbl_vehicle_infos::where('rider_id', $request->rider_id)->first();
+         
+            //update tbl_Rider_application to insert vehicle id that equals to rider_id
+            tbl_rider_application::where('rider_id', $request->rider_id)
+                ->update([
+                    'vehicle_id' => $id->vehicle_id,
+                    'status' => "third"
+                ]);
+                $status = tbl_rider_application::where('rider_id', $request->rider_id)->first();
+               $request->session()->put('status', $status->status);
+                return redirect('/rider_application4');
+            }
+        }
+        
+    }
+    
+    public function step2index(){
+    
+        return view('/rider_application3');
+    }
+    
+    public function addVehicle(Request $request){
+        $request -> validate([
+            'vehicle_ownership' => 'required',
+            'plate_number' => 'required',
+            'displacement' => 'required',
+            'engine_number' => 'required',
+            'year_model' => 'required',
+        ]);
+        $vehicle = new tbl_vehicle_infos();
+        $vehicle->rider_id = $request->rider_id;
         $vehicle->vehicle_ownership = $request->vehicle_ownership;
         $vehicle->plate_number = $request->plate_number;
         $vehicle->displacement = $request->displacement;
         $vehicle->engine_number = $request->engine_number;
         $vehicle->year_model = $request->year_model;
-        $vehicle->emergency_name = $request-> name;
-        $vehicle->relationship = $request-> relationship;
-        $vehicle->contact_number = $request->  phone;
         $res = $vehicle -> save();
 
         if($res){
