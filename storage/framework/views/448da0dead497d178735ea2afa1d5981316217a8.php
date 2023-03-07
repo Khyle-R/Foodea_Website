@@ -154,7 +154,7 @@ unset($__errorArgs, $__bag); ?></span>
                                             <p class="mr-2">
                                                 Don't have an account?
                                             </p>
-                                            <a href="/account_type" class="red">Sign Up</a>
+                                            <a href="/rider_application_agreement" class="red">Sign Up</a>
                                         </div>
                                     </div>
                                 </form>

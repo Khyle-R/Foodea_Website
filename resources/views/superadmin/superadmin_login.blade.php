@@ -129,10 +129,10 @@
                                         <div
                                             class="d-flex flex-sm-wrap mt-3 justify-content-center"
                                         >
-                                            <p class="mr-2">
+                                            {{-- <p class="mr-2">
                                                 Don't have an account?
                                             </p>
-                                            <a href="#" class="red">Sign Up</a>
+                                            <a href="#" class="red">Sign Up</a> --}}
                                         </div>
                                     </div>
                                 </form>

@@ -61,7 +61,7 @@
             <option value="Second hand" @if (old('vehicle_type') == 'Second hand') selected="selected" @endif>Second hand</option>
            <option value="Reacquire Motor" @if (old('vehicle_type') == 'Reacquire Motor') selected="selected" @endif>Reacquire Motor</option>
           </select> --}}
-            
+{{--       
             <label>Vehicle</label>
             <select class="form-control form-control-lg" name="vehicle_type">
             <option selected="true" disabled="disabled">- Select -</option>
@@ -71,7 +71,7 @@
             <span
             style="color:red;">
             @error('vehicle_type') {{ $message }}
-            @enderror</span>
+            @enderror</span> --}}
           </div>
 
              <div class="form-group">
@@ -95,10 +95,24 @@
             @enderror</span>
           </div>
 
-          <div class="form-group">
+          {{-- <div class="form-group">
             <label>Motorcycle Displacement <samp style="color:#BD9140;font-size: 13px;">(CC 99-160)</samp></label>
             <input type="text" name="displacement" value="{{ old('displacement') }}" class="form-control form-control-lg"/>
             <span
+            style="color:red;">
+            @error('displacement') {{ $message }}
+            @enderror</span>
+          </div> --}}
+          
+             <div class="form-group">
+             <label>Motorcycle Displacement <samp style="color:#BD9140;font-size: 13px;">(CC 99-160)</samp></label>
+            <select class="form-control form-control-lg" name="displacement">
+            <option selected="true" disabled="disabled">- Select -</option>
+             @for ($i = 99; $i<=160; $i++)
+             <option value="{{ $i }}" >{{ $i}}</option>
+            @endfor
+          </select>
+          <span
             style="color:red;">
             @error('displacement') {{ $message }}
             @enderror</span>
@@ -113,44 +127,14 @@
             @enderror</span>
           </div>
 
-          <div class="form-group">
-            <label>Year Model</label>
-            <input type="text" name="year_model" value="{{ old('year_model') }}" class="form-control form-control-lg"/>
-            <span
-            style="color:red;">
-            @error('year_model') {{ $message }}
-            @enderror</span>
-          </div>
-          
-            <h5 class="mt-4">Emergency Contact</h5>
-
-             <div class="form-group">
-            <label>Name</label>
-            <input name="name" type="text" value="{{ old('zip') }}" class="form-control form-control-lg"/>
-             <span
-            style="color:red;">
-            @error('name') {{ $message }}
-            @enderror</span>
-            </div>
-
-             <div class="form-group">
-            <label>Relationship</label>
-            <input name="relationship" type="text" value="{{ old('zip') }}" class="form-control form-control-lg"/>
-             <span
-            style="color:red;">
-            @error('relationship') {{ $message }}
-            @enderror</span>
-            </div>
-
-             <div class="form-group">
-            <label>Phone</label>
-            <input name="phone" type="text" value="{{ old('zip') }}" class="form-control form-control-lg"/>
-             <span
-            style="color:red;">
-            @error('phone') {{ $message }}
-            @enderror</span>
-            </div>
-
+           <div class="form-group">
+             <label>Year Model <samp style="color:#BD9140;font-size: 13px;">(Model 2010 above)</samp></label>
+            <select class="form-control form-control-lg" name="year_model">
+            <option selected="true" disabled="disabled">- Select -</option>
+             @for ($i = 2010; $i<=2023; $i++)
+             <option value="{{ $i }}" >{{ $i}}</option>
+            @endfor
+          </select>
            <br><br>
            <div class="form-group">
             <div class="col-sm-10 d-flex justify-content-center">

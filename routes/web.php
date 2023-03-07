@@ -7,13 +7,14 @@ use App\Http\Controllers\Admin_product;
 use App\Http\Controllers\RiderRegistration;
 use App\Http\Controllers\PartnerRegistration;
 use App\Http\Controllers\Admin_product\removeProduct;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\sample;
 use App\Http\Controllers\SuperadminController;
 
 
 Route::get('/', [Home::class, 'index'])->name('home.index');
 
-
+// Route::get('/email', [MailController::class, 'MailIndex']);
 
 Route::get('/terms_condition', [Home::class, 'TermsCondition']);
 
@@ -31,9 +32,7 @@ Route::post('/rider_login', [RiderRegistration::class, 'RiderLogIn'])->name('Rid
 
 Route::get('/login_type', [Home::class, 'LoginType']);
 
-
-Route::get('//rider_logout', [RiderRegistration::class, 'RiderLogout']);
-
+Route::get('/rider_logout', [RiderRegistration::class, 'RiderLogout']);
 
 
 
@@ -50,13 +49,25 @@ Route::group(['middleware'=>['RiderStep1']], function(){
 
     Route::group(['middleware'=>['RiderStep3']], function(){
     Route::get('/rider_application2', [RiderRegistration::class, 'VerifyRider']);
-    Route::get('/rider_application_2', [RiderRegistration::class, 'RiderVerify']);
-        });
+    Route::post('/rider_application_2', [RiderRegistration::class, 'RiderVerify'])->name('RiderVerify');
+    Route::get('/rider_application2resend', [RiderRegistration::class, 'ResendCode']);
+});
     
+Route::group(['middleware'=>['RiderVehicle']], function(){
+    
+    Route::get('/rider_vehicle_type', [RiderRegistration::class, 'VehicleType']);
+    Route::post('/rider_vehicle_typeadd', [RiderRegistration::class, 'AddVehicleType'])->name('AddVehicleType');
+});
+
 Route::group(['middleware'=>['RiderStep4']], function(){
     Route::get('/rider_application3', [RiderRegistration::class, 'step2index'])->name('rider_application3.step2index');
     Route::post('/rider_application3', [RiderRegistration::class, 'addVehicle'])->name('rider_application3.addVehicle');
          });
+
+Route::group(['middleware'=>['BikeRequirements']], function(){
+    Route::get('/rider_bike_requirements', [RiderRegistration::class, 'RiderRequirements']);
+    Route::post('/rider_bike_requirement', [RiderRegistration::class, 'RiderRequirementsSubmit'])->name('RiderRequirementsSubmit');
+  });
     
 Route::group(['middleware'=>['RiderStepFinal']], function(){
     Route::get('/rider_application4', function () {
@@ -92,8 +103,9 @@ Route::group(['middleware'=>['PartnerStep1']], function(){
  
 Route::group(['middleware'=>['PartnerStep3']], function(){
        Route::get('/partner_application3', [PartnerRegistration::class, 'PartnerVerifyIndex']);
-       Route::get('/partner_application_3', [PartnerRegistration::class, 'PartnerVerify']);
- });
+       Route::post('/partner_application_3', [PartnerRegistration::class, 'PartnerVerify'])->name('PartnerVerify');
+       Route::get('/partner_application3resend', [PartnerRegistration::class, 'PartnerResendCode']);
+    });
  
  Route::group(['middleware'=>['PartnerStep4']], function(){
      Route::get('/partner_requirements', [PartnerRegistration::class, 'partnerrequirement']);

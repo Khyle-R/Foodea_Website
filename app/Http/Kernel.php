@@ -67,6 +67,9 @@ class Kernel extends HttpKernel
         'RiderStep3' =>[
             \App\Http\Middleware\RiderStep3::class,
         ],
+         'RiderVehicle' =>[
+            \App\Http\Middleware\RiderVehicle::class,
+        ],
         'RiderStep4' =>[
             \App\Http\Middleware\RiderStep4::class,
         ],
@@ -75,6 +78,9 @@ class Kernel extends HttpKernel
         ],
          'RiderStatus' =>[
             \App\Http\Middleware\RiderStatus::class,
+        ],
+         'BikeRequirements' =>[
+            \App\Http\Middleware\BikeRequirements::class,
         ],
         'PartnerStep1' =>[
             \App\Http\Middleware\PartnerStep1::class,
