@@ -46,10 +46,7 @@
     </div>
     <!-- Content Here -->
     
-    <div class=" container mt-2 row content-wrapper d-flex flex-column justify-content-center mx-auto">
-         <div id="loader-wrapper">
-            <span id="loader"></span>
-              </div>        
+    <div class=" container mt-2 row content-wrapper d-flex flex-column justify-content-center mx-auto">     
       <h2 class="pt-4 pb-2">Terms of Use</h2>
               <h3 class="pb-2 pb-md-3">These Terms of Use govern your use of the Foodea website and application</h3>
               <div class="wrapper-all">
