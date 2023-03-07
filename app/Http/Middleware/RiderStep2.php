@@ -33,6 +33,10 @@ class RiderStep2
         {
             return redirect('rider_application3');
         }
+        if(Session::get('status') == 'bicycle')
+        {
+            return redirect('/rider_bike_requirements');
+        }
         if( Session::get('status') == 'third')
         {
             return redirect('rider_application4');

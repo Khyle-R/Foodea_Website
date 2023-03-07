@@ -261,7 +261,7 @@ class RiderRegistration extends Controller
             tbl_rider_application::where('rider_id', $request->rider_id)
                 ->update([
                     'vehicle_id' => $id->vehicle_id,
-                    'status' => "third"
+                    'status' => "bicycle"
                 ]);
                 $status = tbl_rider_application::where('rider_id', $request->rider_id)->first();
                $request->session()->put('status', $status->status);
