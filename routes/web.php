@@ -32,9 +32,10 @@ Route::post('/rider_login', [RiderRegistration::class, 'RiderLogIn'])->name('Rid
 
 Route::get('/login_type', [Home::class, 'LoginType']);
 
-
 Route::get('/rider_logout', [RiderRegistration::class, 'RiderLogout']);
 
+Route::get('/rider_bike_requirements', [RiderRegistration::class, 'RiderRequirements']);
+Route::post('/rider_bike_requirement', [RiderRegistration::class, 'RiderRequirementsSubmit'])->name('RiderRequirementsSubmit');
 
 
 Route::group(['middleware'=>['RiderStep2']], function(){
