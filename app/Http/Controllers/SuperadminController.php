@@ -19,6 +19,7 @@ use App\Models\tbl_rider_application;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Session;
 use App\Models\tbl_merchant_application;
+use App\Models\tbl_product;
 use Illuminate\Support\Facades\Response;
 
 class SuperadminController extends Controller
@@ -111,8 +112,10 @@ class SuperadminController extends Controller
     ->where('tbl_merchant_account.merchant_id', $id)
     ->limit(1)
     ->get();
-
-    return view('superadmin.superadmin_partnerdetails', compact('Data'));
+    
+    $product = tbl_product::where('merchant_id', $id)
+    ->get();
+    return view('superadmin.superadmin_partnerdetails', compact('Data', 'product'));
    }
    
    public function partner(){

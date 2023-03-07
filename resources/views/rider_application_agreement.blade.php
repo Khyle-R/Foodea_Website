@@ -47,7 +47,10 @@
     <!-- Content Here -->
     
     <div class=" container mt-2 row content-wrapper d-flex flex-column justify-content-center mx-auto">
-              <h2 class="pt-4 pb-2">Terms of Use</h2>
+         <div id="loader-wrapper">
+            <span id="loader"></span>
+              </div>        
+      <h2 class="pt-4 pb-2">Terms of Use</h2>
               <h3 class="pb-2 pb-md-3">These Terms of Use govern your use of the Foodea website and application</h3>
               <div class="wrapper-all">
                 <div class="wrapper">
@@ -83,9 +86,10 @@
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
       crossorigin="anonymous">
     </script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    {{-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> --}}
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="js/terms.js"></script>
     <script src = "js/sidebar.js"></script>
+    <script src="{{ asset('assets/js/app.js') }}"></script>
   </body>
 </html>
