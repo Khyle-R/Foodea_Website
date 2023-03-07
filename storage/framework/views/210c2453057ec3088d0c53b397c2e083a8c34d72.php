@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="css/rider_application.css" />
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <link rel="icon" href="<?php echo e(url('image/foodea1.png')); ?>">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css" />
     <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css" />
+    <link rel="stylesheet" type="text/css" href="css/rider_application.css" />
     <title>FOODEA Personal Information</title>
   </head>
 
@@ -41,6 +41,10 @@
       <div class="content-wrapper">
         <div class="col-12 col-sm-12 col-md-9 col-lg-6">
            <div class="right">
+            <div class="right">
+             <div id="loader-wrapper">
+            <span id="loader"></span>
+              </div>
             <h2>Create your Account</h2>
             <p>Please fill up the form below.</p>
 
@@ -52,8 +56,8 @@
             <label>Account Type</label>
             <select name="account_type" id="" class="form-control form-control-lg">
               <option selected="true" disabled="disabled">- Select -</option>
-              <option>Rider</option>
-              <option>Partner Merchant</option>
+              <option value="Rider" <?php if(old('account_type') == 'Rider'): ?> selected="selected" <?php endif; ?>>Rider</option>
+              <option value="Partner Merchant" <?php if(old('account_type') == 'Partner Merchant'): ?> selected="selected" <?php endif; ?>>Partner Merchant</option>
             </select>
              <span
             style="color:red;">
@@ -123,13 +127,16 @@ unset($__errorArgs, $__bag); ?></span>
 
             <div class="form-group">
             <label>Suffix <a style="color:#BD9140;font-size: 12px;"> (Optional)</a></label>
-            <input name="suffix" type="text"  class="form-control form-control-lg"/>
+            <input name="suffix" type="text"  value="<?php echo e(old('suffix')); ?>" class="form-control form-control-lg"/>
             </div>
 
             <div class="form-group">
             <label>Age</label> 
-            <input name="age" type="text" value="<?php echo e(old('age')); ?>" class="form-control form-control-lg"/>
-             <span
+            <input name="age" onkeypress="return event.charCode>=48 && event.charCode<=57" type="text" value="<?php echo e(old('age')); ?>" class="form-control form-control-lg"/>
+            <?php if(Session::has('age')): ?>
+              <p style="color:red;"><?php echo e(Session::get('age')); ?></p>
+            <?php endif; ?> 
+            <span
             style="color:red;">
             <?php $__errorArgs = ['age'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -147,8 +154,8 @@ unset($__errorArgs, $__bag); ?></span>
             <label>Gender</label>
             <select name="gender" id="" class="form-control form-control-lg">
               <option selected="true" disabled="disabled">- Select -</option>
-              <option>Male</option>
-              <option>Female</option>
+              <option value="Male" <?php if(old('gender') == 'Male'): ?> selected="selected" <?php endif; ?>>Male</option>
+              <option value="Female" <?php if(old('gender') == 'Female'): ?> selected="selected" <?php endif; ?>>Female</option>
             </select>
              <span
             style="color:red;">
@@ -166,7 +173,7 @@ unset($__errorArgs, $__bag); ?></span>
 
             <div class="form-group">
             <label for="birthday">Birthdate</label>
-           <input class="form-control form-control-lg" type="date" id="birthday" name="birthday">
+           <input class="form-control form-control-lg" type="date" id="birthday" name="birthday" value="<?php echo e(old('birthday')); ?>">
           <span
             style="color:red;">
             <?php $__errorArgs = ['birthday'];
@@ -182,7 +189,7 @@ unset($__errorArgs, $__bag); ?></span>
           </div>
 
             <div class="form-group">
-            <label >Email Address <a style="color:#BD9140;font-size: 12px;">(For Email verification)</a></label>
+            <label >Email Address <a style="color:#BD9140;font-size: 13px;">(For Email verification)</a></label>
             <input name="email" type="text" value="<?php echo e(old('email')); ?>" class="form-control form-control-lg"/>
              <span
             style="color:red;">
@@ -199,8 +206,8 @@ unset($__errorArgs, $__bag); ?></span>
             </div>
 
             <div class="form-group">
-            <label>Mobile Number</label>
-            <input name="mobilenumber" type="text" value="<?php echo e(old('mobilenumber')); ?>" class="form-control form-control-lg"/>
+            <label>Mobile Number <a style="color:#BD9140;font-size: 13px;">(+63)</a></label>
+            <input name="mobilenumber" maxlength="11" onkeypress="return event.charCode>=48 && event.charCode<=57" type="text" value="<?php echo e(old('mobilenumber')); ?>" class="form-control form-control-lg" />
              <span
             style="color:red;">
             <?php $__errorArgs = ['mobilenumber'];
@@ -216,13 +223,12 @@ unset($__errorArgs, $__bag); ?></span>
             </div>
 
             <div class="form-group">
-              <p style="color: #BD9140; padding: 10px;"> <small> Must be at least 6 characters long. 
-              Password can contain letters, numbers and punctuation. </small>
-              </p>
+            
             </div>
            
             <div class="form-group">
-            <label>Password</label>
+            <label>Password<a style="color:#BD9140;font-size: 13px;"> (Must be at least 8 characters long. 
+              Password must contain letters, numbers and symbols.)</a></label>
               <input type="password" id="password" name="password" class="form-control form-control-lg">
               <span class="eye mx-2" onclick="myFunction()">
                 <i class="fa fa-eye" id="hide1"></i>
@@ -318,8 +324,8 @@ unset($__errorArgs, $__bag); ?></span>
 
             <div class="form-group">
             <label>ZIP Code</label>
-            <input name="zip" type="text" value="<?php echo e(old('zip')); ?>" class="form-control form-control-lg"/>
-             <span
+            <input name="zip" maxlength="4" onkeypress="return event.charCode>=48 && event.charCode<=57" type="text" value="<?php echo e(old('zip')); ?>" class="form-control form-control-lg"/>
+            <span
             style="color:red;">
             <?php $__errorArgs = ['zip'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -387,10 +393,10 @@ unset($__errorArgs, $__bag); ?></span>
   }
 </script>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-  
+    <script src="<?php echo e(asset('assets/js/app.js')); ?>"></script>
   </body>
 </html>
 <?php /**PATH E:\xampp\htdocs\Foodea_Website\resources\views/account_type.blade.php ENDPATH**/ ?>

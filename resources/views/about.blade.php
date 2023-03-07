@@ -217,10 +217,10 @@
                 <a href="/contact" class="text-reset text-decoration-none">
                     <p>Contact Us</p>
                 </a>
-                <a href="/" class="text-reset text-decoration-none">
+                <a href="/mission" class="text-reset text-decoration-none">
                     <p>Mission</p>
                 </a>
-                <a href="/" class="text-reset text-decoration-none">
+                <a href="/vision" class="text-reset text-decoration-none">
                     <p>Vision</p>
                 </a>
                 <a href="/" class="text-reset text-decoration-none">

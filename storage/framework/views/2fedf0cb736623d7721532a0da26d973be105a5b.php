@@ -15,6 +15,7 @@
   </head>
 
   <body>
+   
     <div class="container-scroller">
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
@@ -41,7 +42,9 @@
       <div class="content-wrapper">
         <div class="col-12 col-sm-10 col-md-11 col-lg-9 col-xl-6">
            <div class="right">
-            
+             <div id="loader-wrapper">
+            <span id="loader"></span>
+              </div>
           <h2>Create your Account</h2>
           <p>Please fill up the form below.</p>
           <form method="post" action="<?php echo e(route('rider_application3.addVehicle')); ?>">
@@ -60,9 +63,9 @@
             <label>Vehicle Ownership</label>
             <select class="form-control form-control-lg" name="vehicle_ownership">
             <option selected="true" disabled="disabled">- Select -</option>
-            <option value="Fully_owned" >Fully owned </option>
-            <option value="Borrowed">Borrowed</option>
-           <option value="Second-hand" >Second-hand</option> 
+            <option value="Fully_owned" <?php if(old('vehicle_ownership') == 'Fully_owned'): ?> selected="selected" <?php endif; ?>>Fully owned </option>
+            <option value="Borrowed" <?php if(old('vehicle_ownership') == 'Borrowed'): ?> selected="selected" <?php endif; ?>>Borrowed</option>
+           <option value="Second-hand" <?php if(old('vehicle_ownership') == 'Second-hand'): ?> selected="selected" <?php endif; ?>>Second-hand</option> 
           </select>
         
           </div>
@@ -92,7 +95,7 @@ unset($__errorArgs, $__bag); ?></span>
             <select class="form-control form-control-lg" name="displacement">
             <option selected="true" disabled="disabled">- Select -</option>
              <?php for($i = 99; $i<=160; $i++): ?>
-             <option value="<?php echo e($i); ?>" ><?php echo e($i); ?></option>
+             <option value="<?php echo e($i); ?>" <?php if(old('displacement') ==  $i ): ?> selected="selected" <?php endif; ?>><?php echo e($i); ?></option>
             <?php endfor; ?>
           </select>
           <span
@@ -131,7 +134,7 @@ unset($__errorArgs, $__bag); ?></span>
             <select class="form-control form-control-lg" name="year_model">
             <option selected="true" disabled="disabled">- Select -</option>
              <?php for($i = 2010; $i<=2023; $i++): ?>
-             <option value="<?php echo e($i); ?>" ><?php echo e($i); ?></option>
+             <option value="<?php echo e($i); ?>" <?php if(old('year_model') ==  $i ): ?> selected="selected" <?php endif; ?>><?php echo e($i); ?></option>
             <?php endfor; ?>
           </select>
            <br><br>
@@ -148,10 +151,11 @@ unset($__errorArgs, $__bag); ?></span>
       <!-- Scroller -->
     </div>  
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
+    
+    <script src="<?php echo e(asset('assets/js/app.js')); ?>"></script>
   </body>
 </html>
 <?php /**PATH E:\xampp\htdocs\Foodea_Website\resources\views//rider_application3.blade.php ENDPATH**/ ?>
