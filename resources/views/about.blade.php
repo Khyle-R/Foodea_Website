@@ -232,10 +232,14 @@
                     <h2>For inquiries:</h2>
                     <p>foodea@gmail.com</p>
                 </div>
-                <div class="legal">
+               <div class="legal">
                     <h2>Legal:</h2>
-                    <p>Terms and Condition</p>
-                    <p>Privacy Policy</p>
+                    <a href="/terms_condition" class="text-reset text-decoration-none">
+                      <p>Terms and Condition</p>
+                    </a>
+                    <a href="/privacy" class="text-reset text-decoration-none">
+                      <p>Privacy Policy</p>
+                    </a>
                 </div>
             </div>
         </div>
