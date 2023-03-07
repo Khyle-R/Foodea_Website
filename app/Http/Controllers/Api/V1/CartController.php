@@ -28,7 +28,7 @@ class CartController extends Controller
 
     public function show(Request $request, Cart $cart){
         $id = $request->segment(count(request()->segments()));
-        return $cart::where('id', $id)->get();
+        return $cart::with('product_details')->where('id', $id)->get();
     }
 
     public function destroy(Request $request, Cart $cart){
