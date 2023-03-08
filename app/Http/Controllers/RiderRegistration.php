@@ -644,7 +644,7 @@ class RiderRegistration extends Controller
         ->limit(1)
         ->get();
         
-        return view('rider_applicationstatus', compact('Data'));
+        return view('Rider_ApplicationStatus', compact('Data'));
     }
     public function agreement(){
         return view('/rider_application_agreement');
