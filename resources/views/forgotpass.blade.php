@@ -66,17 +66,33 @@
                         <div class="card border-0 shadow">
                             <div class="card-body px-5 ">
                                 <div class="mt-4 text-center">
-                                  <i class="fa fa-circle-check fa-2x check"></i>
-                                  <h3>Password reset</h3>
-                                  <p>Your password has been successfully reset. Click continue to log in
+                                  <i class="fa fa-key fa-2x key"></i>
+                                  <h3>Forgot password?</h3>
+                                  <p>We'll happy to help out</p>
                                 </div>
-                                <form method="post" action="{{ route('login.LoginMerchant') }}" class="mt-4">
+                                <form method="" action="" class="mt-4">
                                    @csrf
+
+                                    <div class="form-group mb-4">
+                                    <label for="email">Email</label>
+                                    <input
+                                        type="email"
+                                        name="email"
+                                        class="form-control my-1"
+                                        placeholder="example@gmail.com"
+                                        value="{{ Cookie::get('email') }}"
+                                    />
+                                       <span
+                                        class="error">
+                                        @error('email') {{ $message }}
+                                        @enderror</span>
+
+                                    </div>
                                   
                                         
                                     <div class="text-center">
                                         <button
-                                            type="submit"
+                                            {{-- type="submit" --}}
                                             class="btn btn-primary btn-md btn-block"
                                         >
                                             Continue
@@ -93,6 +109,7 @@
                         </div>
                     </div>
                 </div>
+
                 
             </div>
                 
@@ -102,6 +119,42 @@
             <img class="" src="image/foodsbgleft.png" alt="">
         </div>
     </body>
+ <script>
+            $('.popup').show(function() {
+                $('.success').addClass("show");
+                $('.success').removeClass("hide");
+                $('.success').addClass("showAlert");
+                setTimeout(function() {
+                    $('.success').removeClass("show");
+                    $('.success').addClass("hide");
+                }, 5000);
+            });
+            $('.close-btn').click(function() {
+                $('.success').removeClass("show");
+                $('.success').addClass("hide");
+            });
+            </script>
+
+            
+           <!-- Show Hide Password -->
+           <script>
+            function myFunction(){
+              var a = document.getElementById("password");
+              var b = document.getElementById("hide1");
+              var c = document.getElementById("hide2");
+        
+              if(a.type == 'password'){
+                a.type = "text";
+                b.style.display = "inline";
+                c.style.display = "none";
+              }
+              else{
+                a.type = "password";
+                b.style.display = "none";
+                c.style.display = "inline";
+              }
+            }
+         </script>
 
 
     <script

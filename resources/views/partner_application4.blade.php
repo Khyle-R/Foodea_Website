@@ -40,23 +40,23 @@
               <i class="bx bx-grid-alt nav_icon"></i>
               <span class="nav_name">Term User</span>
             </div>
-            <div href="#" class="nav_link active py-3 ms-2">
+            <div class="nav_link active py-3 ms-2">
               <span class="nav_linknumber">1</span>
               <span class="nav_name">Personal Information</span>
             </div>
-            <div href="#" class="nav_link active py-3 ms-2">
+            <div class="nav_link active py-3 ms-2">
               <span class="nav_linknumber">2</span>
               <span class="nav_name">Business Information</span>
             </div>
-            <div href="#" class="nav_link active py-3 ms-2">
+            <div class="nav_link active py-3 ms-2">
               <span class="nav_linknumber">3</span>
               <span class="nav_name">Verify Phone Number</span>
             </div>
-            <div href="#" class="nav_link active py-3 ms-2">
+            <div class="nav_link active py-3 ms-2">
               <span class="nav_linknumber">4</span>
               <span class="nav_name">Requirements</span>
             </div>
-            <div href="#" class="nav_link active red py-3 ms-2">
+            <div class="nav_link active red py-3 ms-2">
               <span class="nav_linknumber">5</span> 
               <span class="nav_name">Application Status</span>
             </div>

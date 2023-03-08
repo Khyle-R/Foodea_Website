@@ -39,7 +39,7 @@ class SuperadminController extends Controller
     }
     public function login(Request $request){
  
-        if(Cookie::get('email') && Cookie::get('password'))
+        if(Cookie::get('superadmin_email') && Cookie::get('superadmin_password'))
         {
              $admin = admin_account::where('email', '=', Cookie::get('email'))->first();
              $request->session()->put('adminID', $admin->admin_id);
@@ -66,8 +66,8 @@ class SuperadminController extends Controller
             if($request->remember){
             $minutes = 5;
             $response = new Response();
-            Cookie::queue(Cookie::forever('email', $request->email, $minutes));
-            Cookie::queue(Cookie::forever('password', $request->password, $minutes));
+            Cookie::queue(Cookie::forever('superadmin_email', $request->email, $minutes));
+            Cookie::queue(Cookie::forever('superadmin_password', $request->password, $minutes));
             
         } 
          $log = new tbl_superadmin_log();
@@ -97,8 +97,8 @@ class SuperadminController extends Controller
         if($res){
         Session::pull('adminID');
         Session::pull('adminEmail');
-        Cookie::queue(Cookie::forget('email'));
-        Cookie::queue(Cookie::forget('password'));  
+        Cookie::queue(Cookie::forget('superadmin_email'));
+        Cookie::queue(Cookie::forget('superadmin_password'));  
         return redirect('/superadmin_login');
         }
       
@@ -544,6 +544,21 @@ class SuperadminController extends Controller
         }
 
       }
+
+      public function RiderEmergencyUpdate(Request $request){
+        $res = tbl_vehicle_infos::where('rider_id', $request->rider_id)
+        ->update([
+            'emergency_name' => $request->name,
+            'relationship' => $request->relationship,
+            'contact_number' => $request->contact_number
+        ]);
+        if($res){
+            $request->session()->put('success', 'Status Updated');
+            return back();
+        }
+
+      }
+
       public function AcceptedPartnerUpdate(Request $request){
         $id = tbl_accepted_merchant::where('accepted_merchant_id', $request->accepted_merchant_id)
         ->value('merchant_id');

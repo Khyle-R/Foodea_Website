@@ -15,7 +15,7 @@
       href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="css/rider_application.css">
+    <link rel="stylesheet" href="css/rider_application3.css">
   </head>
   
   <body id="body-pd">
