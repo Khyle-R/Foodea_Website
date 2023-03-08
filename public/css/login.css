@@ -36,6 +36,22 @@ ul {
     font-weight: bold;
 }
 
+.key {
+    padding-block: 10px;
+    padding-inline: 10px;
+    border-radius: 30px;
+    background-color: #ffbaba;
+    color: #F54748;
+}
+
+.check {
+    padding-block: 10px;
+    padding-inline: 10px;
+    border-radius: 30px;
+    background-color: #D2FDBB;
+    color: #77DD76;
+}
+
 .form-control {
     font-size: 18px;
 }
@@ -208,6 +224,20 @@ ul {
 #hide1 {
     display: none;
 }
+
+.eye2 {
+    background: none;
+    border: none;
+    float: right;
+    transform: translateY(-150%);
+    z-index: 9;
+    margin-right: .5rem;
+    clear: right;
+  }
+  
+#hide3 {
+      display: none;
+  }
 
 @media (max-width:700px){ 
 .bg_image img{

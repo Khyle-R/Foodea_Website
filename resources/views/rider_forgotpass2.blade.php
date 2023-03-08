@@ -67,41 +67,76 @@
                             <div class="card-body px-5 ">
                                 <div class="mt-4 text-center">
                                   <i class="fa fa-key fa-2x key"></i>
-                                  <h3>Forgot password?</h3>
-                                  <p>We'll happy to help out</p>
+                                  <h3>Set new password</h3>
+                                  <p>Your new password must be diﬀerent from your previous password.</p>
                                 </div>
                                 <form method="post" action="{{ route('login.LoginMerchant') }}" class="mt-4">
                                    @csrf
 
-                                    <div class="form-group mb-4">
-                                    <label for="email">Email</label>
+                                   <div class="mt-2 ">
+                                    <label for="password">Password</label>
                                     <input
-                                        type="email"
-                                        name="email"
-                                        class="form-control my-1"
-                                        placeholder="example@gmail.com"
-                                        value="{{ Cookie::get('email') }}"
+                                        type="password"
+                                        name="password"
+                                        class="form-control my-1 form-control-lg"
+                                        placeholder="Password"
+                                        id="password"
+                                        value="{{ Cookie::get('password') }}"
+                                        
                                     />
-                                       <span
-                                        class="error">
-                                        @error('email') {{ $message }}
-                                        @enderror</span>
+                                        <span class="eye" onclick="myFunction()">
+                                        <i class="fa fa-eye" id="hide1"></i>
+                                        <i class="fa fa-eye-slash" id="hide2"></i>
+                                        </span>
+                               <span
+                                class="error">
+                                @error('password') {{ $message }}
+                                @enderror </span>
+                                
 
-                                    </div>
+                                </div>
+
+                                <div class="my-2"> <a style="color:#BD9140;font-size: 12px;"> (Must be at least 8 characters long. 
+                                    Password must contain letters, numbers and symbols.)</a>
+                                </div>
+
+
+                                <div class="mt-2 ">
+                                    <label for="password">Confirm Password</label>
+                                    <input
+                                        type="password"
+                                        name="password"
+                                        class="form-control my-1 form-control-lg"
+                                        placeholder="Password"
+                                        id="conpassword"
+                                        value="{{ Cookie::get('password') }}"
+                                        
+                                    />
+                                        <span class="eye2" onclick="iFunction()">
+                                        <i class="fa fa-eye" id="hide3"></i>
+                                        <i class="fa fa-eye-slash" id="hide4"></i>
+                                        </span>
+                               <span
+                                class="error">
+                                @error('password') {{ $message }}
+                                @enderror </span>
+                                
+
+                                </div>
                                   
                                         
                                     <div class="text-center">
                                         <button
-                                            type="continue"
+                                            type=""
                                             class="btn btn-primary btn-md btn-block"
                                         >
-                                            Continue
+                                           Reset Password
                                         </button>
                                         <div
                                             class="d-flex mt-4 justify-content-center"
                                         >
                                             
-                                            <a href="/superadmin_login" class="red"><i class="fa fa-arrow-left mr-2"></i>Back to log in</a>
+                                            <a href="/login" class="red"><i class="fa fa-arrow-left mr-2"></i>Back to log in</a>
                                         </div>
                                     </div>
                                 </form>
@@ -155,6 +190,26 @@
               }
             }
          </script>
+
+
+<script>
+    function iFunction(){
+      var x = document.getElementById("conpassword");
+      var y = document.getElementById("hide3");
+      var z = document.getElementById("hide4");
+
+      if(x.type == 'password'){
+        x.type = "text";
+        y.style.display = "inline";
+        z.style.display = "none";
+      }
+      else{
+        x.type = "password";
+        y.style.display = "none";
+        z.style.display = "inline";
+      }
+    }
+ </script>
 
 
     <script
