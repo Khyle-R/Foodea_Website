@@ -24,6 +24,7 @@
     <!-- End layout styles -->
     <link rel="icon" href="{{ url('image/foodea1.png') }}">
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.js"> </script>
     {{-- Datatable plugins --}}
     
   </head>
@@ -466,6 +467,18 @@
         </nav>
         <!-- partial -->
         <div class="main-panel">
+           <!-- Loader -->
+      <div id="loader-wrapper">
+        <div id="loader">
+          <div class="loader-ellips">
+            <span class="loader-ellips__dot"></span>
+            <span class="loader-ellips__dot"></span>
+            <span class="loader-ellips__dot"></span>
+            <span class="loader-ellips__dot"></span>
+          </div>
+        </div>
+      </div>
+      <!-- /Loader -->
           @yield('content')
         <!-- main-panel ends -->
       </div>

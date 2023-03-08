@@ -169,7 +169,7 @@ class Admin_product extends Controller
             $file->move($path, $filename);
   
 
-            $resss=$affected->update(['product_name' => $request->product_name,'price' => $request->price,'stock' => $request->stock,'status' => $request->status,'description' => $request->description,'product_image'=> $filename],
+            $resss=$affected->update(['product_name' => $request->product_name,'price' => $request->price, 'tags' => $request->tags, 'stock' => $request->stock,'status' => $request->status,'description' => $request->description,'product_image'=> $filename],
               
             );
             if ($resss) {
@@ -182,7 +182,7 @@ class Admin_product extends Controller
         }
         else {
             // if the update dont have new profile upload
-            $resss=$affected->update(['product_name' => $request->product_name,'price' => $request->price,'stock' => $request->stock,'status' => $request->status,'description' => $request->description],  
+            $resss=$affected->update(['product_name' => $request->product_name,'price' => $request->price,'tags' => $request->tags, 'stock' => $request->stock,'status' => $request->status,'description' => $request->description],  
             );
             if ($resss) {
                 return redirect('product');
@@ -403,9 +403,9 @@ class Admin_product extends Controller
     public function VoucherIndex(){
         $voucher = DB::table('tbl_voucher')->where('merchant_id', '=', session('loginID'))->get();
 
-        $voucherCount = DB::table('tbl_voucher')->count();
-        $EnableVoucher = DB::table('tbl_voucher')->where('status','Enable')->count();
-        $DisableVoucher = DB::table('tbl_voucher')->where('status','Disable')->count();
+        $voucherCount = DB::table('tbl_voucher')->where('merchant_id', session('loginID'))->count();
+        $EnableVoucher = DB::table('tbl_voucher')->where([['status','Enable'],['merchant_id', '=', session('loginID')]])->count();
+        $DisableVoucher = DB::table('tbl_voucher')->where([['status','Disable'],['merchant_id', '=', session('loginID')]])->count();
 
        
         return view('admin.voucher',['voucher' => $voucher, 'EnableVoucher' => $EnableVoucher, 'DisableVoucher' => $DisableVoucher, 'voucherCount' => $voucherCount]);
@@ -508,6 +508,9 @@ class Admin_product extends Controller
     ->limit(1)
     ->get();
 
-        return view('admin.admin_account', compact('Data'));
+    $product = tbl_product::where('merchant_id', $id)
+    ->get();
+        return view('admin.admin_account', compact('Data', 'product'));
     }
+
 }

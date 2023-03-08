@@ -381,6 +381,18 @@
         </nav>
         <!-- partial -->
         <div class="main-panel">
+           <!-- Loader -->
+      <div id="loader-wrapper">
+        <div id="loader">
+          <div class="loader-ellips">
+            <span class="loader-ellips__dot"></span>
+            <span class="loader-ellips__dot"></span>
+            <span class="loader-ellips__dot"></span>
+            <span class="loader-ellips__dot"></span>
+          </div>
+        </div>
+      </div>
+      <!-- /Loader -->
           <?php echo $__env->yieldContent('content'); ?>
         <!-- main-panel ends -->
       </div>

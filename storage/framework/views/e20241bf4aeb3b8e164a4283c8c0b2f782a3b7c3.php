@@ -41,8 +41,7 @@
 
       <div class="sign-form">
      
-           <div class="content-wrapper">
-              <div class="right">
+           <div class="content-wrapper">  
                <h2>Application Status</h2>
                  <div class="row px-3">
                         </div>
@@ -271,7 +270,6 @@
                     </div>
     <!-- Scroller -->
     </div>
-
 
   </body>
 </html><?php /**PATH E:\xampp\htdocs\Foodea_Website\resources\views/rider_applicationstatus.blade.php ENDPATH**/ ?>
