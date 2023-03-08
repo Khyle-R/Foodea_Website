@@ -135,7 +135,7 @@ unset($__errorArgs, $__bag); ?> </span>
                                           </div>
 
                                         <div class="col-auto mb-3">
-                                            <a href="#" class="nav-link"
+                                            <a href="/partner_forgotpass" class="nav-link"
                                                 >Forgot Password?</a
                                             >
                                         </div>

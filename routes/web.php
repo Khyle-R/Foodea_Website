@@ -34,6 +34,12 @@ Route::get('/login_type', [Home::class, 'LoginType']);
 
 Route::get('/rider_logout', [RiderRegistration::class, 'RiderLogout']);
 
+Route::get('/partner_forgotpass', [PartnerRegistration::class, 'PartnerForgotPass']);
+
+Route::get('/rider_forgotpass', [RiderRegistration::class, 'RiderForgotPass']);
+
+Route::get('/superadmin_forgotpass', [SuperadminController::class, 'SuperadminForgotPass']);
+
 
 
 Route::group(['middleware'=>['RiderStep2']], function(){
@@ -86,7 +92,7 @@ Route::group(['middleware'=>['RiderStatus']], function(){
     Route::get('/rider_applicationstatus', [RiderRegistration::class, 'RiderApplicationStatus']);
            
     Route::get('/rider_application5', function () {
-        return view('rider_application5');
+        return view('Rider_Application5');
     });
 });
    

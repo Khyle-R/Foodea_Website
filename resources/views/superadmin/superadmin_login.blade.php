@@ -113,7 +113,7 @@
                                       </div>
 
                                     <div class="text-right mb-3">
-                                        <a href="#" class="nav-link"
+                                        <a href="/superadmin_forgotpass" class="nav-link"
                                             >Forgot Password?</a
                                         >
                                     </div>

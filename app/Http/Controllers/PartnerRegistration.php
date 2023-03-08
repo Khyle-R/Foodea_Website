@@ -29,6 +29,9 @@ class PartnerRegistration extends Controller
     public function partner2index(){
         return view('/partner_application2');
     }
+    public function PartnerForgotPass(){
+        return view('partner_forgotpass');
+    }
 
     public function partner2submit(Request $request){
 

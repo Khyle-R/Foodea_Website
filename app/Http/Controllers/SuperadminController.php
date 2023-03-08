@@ -29,6 +29,11 @@ class SuperadminController extends Controller
         $merchant = tbl_accepted_merchant::count();
         return view('superadmin.superadmin_dashboard', compact('riders', 'merchant'));
     }
+
+     public function SuperadminForgotPass(){
+        return view('superadmin.superadmin_forgotpass');
+    }
+    
      public function changepass(){
         return view('superadmin.superadmin_changepassword');
     }
