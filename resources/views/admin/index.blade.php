@@ -49,7 +49,7 @@
                 <div class="count-indicator">
                   <img
                     class="img-xs rounded-circle"
-                    src="assets/images/faces/face15.jpg"
+                    src="{{ url('uploads/'. 'merchant_documents'. '/'. $logIndata->merchant_id. '/'. $logIndata->logo) }}"
                     alt=""
                   />
                   <span class="count bg-success"></span>
@@ -193,7 +193,7 @@
             class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center"
           >
             <a class="navbar-brand brand-logo-mini" href="index.html"
-              ><img src="../../user/image/foodea.png" class="w-50" alt="logo"
+              ><img src="{{ url('uploads/'. 'merchant_documents'. '/'. $logIndata->merchant_id. '/'. $logIndata->logo) }}" class="w-50" alt="logo"
             /></a>
           </div>
           <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
@@ -413,7 +413,8 @@
                   <div class="navbar-profile">
                     <img
                       class="img-xs rounded-circle"
-                      src="assets/images/faces/face15.jpg"
+                      style="background-color: #fff"
+                      src="{{ url('uploads/'. 'merchant_documents'. '/'. $logIndata->merchant_id. '/'. $logIndata->logo) }}"
                       alt=""
                     />
                     <p class="mb-0 d-none d-sm-block navbar-profile-name">
@@ -429,7 +430,7 @@
                 >
                   <h6 class="dropdown-header text-white p-3 mb-0">Profile</h6>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item preview-item">
+                  <a href="/admin_account" class="dropdown-item preview-item">
                     <div class="preview-thumbnail">
                       <div class="preview-icon bg-dark rounded-circle">
                         <i class="mdi mdi-settings text-success"></i>

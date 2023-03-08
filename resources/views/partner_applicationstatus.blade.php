@@ -87,18 +87,18 @@
                                     <div class="col-md-6 ml-5">
                                       <div class="row align-items-center ">
                                    
-                                      <img class="circle img-responsive mr-3" width="170" height="160" src="{{ url('uploads/'. 'merchant_documents'. '/'. $partner->merchant_id. '/'. $partner->logo) }}" alt="">
-                                      <div class="col flex-wrap">
+                                          <div class="text-center">
+                                      <img class="circle img-fluid mr-3" src="{{ url('uploads/'. 'merchant_documents'. '/'. $partner->merchant_id. '/'. $partner->logo) }}" alt="">
+                                        </div>
                              
                                     
                             
                                       <h2 class="red-name text-center pt-3"> {{ $partner->firstname . " ". $partner->lastname  }} </h2>
-                                      <h2 class="sub-text">{{ $partner->vehicle_type }}</h2>
                                       </div>
                                       </div>
-                                    </div> 
+                                    
 
-                                    <div class="col-sm-5">
+                                    <div class="col-sm-12 col-lg-5">
                                       <div class="card-pending py-4 px-4 mx-0 mx-md-5 rounded">
                                       <div class="">
                                       <h4 class="text-center text-white">{{ $partner->status }}</h4>
@@ -247,7 +247,11 @@
                                     </div>
                                      <div class="col-sm-5 ml-sm-5">
                                    <div class="row px-2 mt-2">
-                                    <a href="/" class="button-red btn btn-lg" data-toggle="modal" data-target="#exampleModalCenter">Done</a>
+                                    @if(Session::get('partnerID'))
+                                    <a href="/partner_logout" class="button-red btn btn-lg w-75 text-white" data-toggle="modal" data-target="#exampleModalCenter">Sign Out</a>
+                                 @else
+                                     <a href="/" class="button-red btn btn-lg w-75 text-white" data-toggle="modal" data-target="#exampleModalCenter">Done</a>
+                                    @endif
                                  </div>
                                  
                                   </div> 

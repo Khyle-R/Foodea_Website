@@ -34,9 +34,17 @@ class RiderRegistration extends Controller
     }
     
      public function RiderForgotPass(){
-        return view('rider_forgotpass');
+        return view('forgotpass');
     }
-    
+     public function RiderForgotPass2(){
+        return view('rider_forgotpass1');
+     }
+     public function RiderForgotPass3(){
+        return view('rider_forgotpass2');
+     }
+     public function RiderForgotPass4(){
+        return view('rider_forgotpass3');
+     }
     public function index()
     {
         //
@@ -64,11 +72,10 @@ class RiderRegistration extends Controller
             'city' => 'required',
             'barangay' => 'required',
             'zip' => 'required|min:4',
-            'birthday' => 'required|after: 18 year old',
+            'birthday' => 'required|date|after: 17 year old',
           
         ],
         [
-            'birthday' => 'Must be 18 above'
         ]
         );
             
@@ -655,7 +662,7 @@ class RiderRegistration extends Controller
     }
    
     public function RiderLoginIndex(Request $request){
-        if(Cookie::has('email') && Cookie::has('password')){
+        if(Cookie::has('rider_email') && Cookie::has('rider_password')){
              $user = tbl_rider_accounts::where('email', '=', Cookie::get('email'))->first();
               $Data = tbl_rider_accounts::join('tbl_vehicle_info', 'tbl_rider_account.rider_id', '=', 'tbl_vehicle_info.rider_id')
                 ->join('tbl_document_info', 'tbl_rider_account.rider_id', '=', 'tbl_document_info.rider_id')
@@ -688,8 +695,8 @@ class RiderRegistration extends Controller
                 /*SET COOKIE */
                 
                 $response = new Response();
-                Cookie::queue(Cookie::forever('email', $request->email));
-                Cookie::queue(Cookie::forever('password', $request->password));
+                Cookie::queue(Cookie::forever('rider_email', $request->email));
+                Cookie::queue(Cookie::forever('rider_password', $request->password));
                 
                 /*FORGET COOKIE */
                 // Cookie::queue(Cookie::forget('email'));
@@ -717,9 +724,10 @@ class RiderRegistration extends Controller
     public function RiderLogout(){
         if(Session::has('registerID')){
             Session::pull('registerID');
-            Cookie::queue(Cookie::forget('email'));
-            Cookie::queue(Cookie::forget('password'));  
+            Cookie::queue(Cookie::forget('rider_email'));
+            Cookie::queue(Cookie::forget('rider_password'));  
             return redirect('/');
         }
+        
     }
     }

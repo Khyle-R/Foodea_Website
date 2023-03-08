@@ -250,9 +250,9 @@ class PartnerRegistration extends Controller
     }
 
     public function LoginIndex(Request $request){
-         $user = tbl_partner_accounts::where('email', '=', Cookie::get('email'))->first();
+         $user = tbl_partner_accounts::where('email', '=', Cookie::get('partner_email'))->first();
          
-        if(Cookie::get('email') && Cookie::get('password'))
+        if(Cookie::get('partner_email') && Cookie::get('partner_password'))
         {   
               $status = tbl_merchant_application::where('merchant_id', $user->merchant_id)
                 ->first();
@@ -299,8 +299,8 @@ class PartnerRegistration extends Controller
                  if($request->remember){
                     $minutes = 5;
                     $response = new Response;
-                    Cookie::queue(Cookie::forever('email', $request->email, $minutes));
-                    Cookie::queue(Cookie::forever('password', $request->password, $minutes));
+                    Cookie::queue(Cookie::forever('partner_email', $request->email, $minutes));
+                    Cookie::queue(Cookie::forever('partner_password', $request->password, $minutes));
                 }
                 $status = tbl_merchant_application::where('merchant_id', $user->merchant_id)
                 ->first();
@@ -313,6 +313,7 @@ class PartnerRegistration extends Controller
                     ->limit(1)
                     ->get();
                     
+                    $request->session()->put('partnerID', $user->merchant_id);
                     return view('/partner_applicationstatus', compact('Data'));
                 }
                 else{
@@ -336,7 +337,15 @@ class PartnerRegistration extends Controller
         }
         
     }
-    
+      public function PartnerLogout(){
+        if(Session::has('partnerID')){
+            Session::pull('partnerID');
+            Cookie::queue(Cookie::forget('partner_email'));
+            Cookie::queue(Cookie::forget('partner_password'));  
+            return redirect('/');
+        }
+        
+    }
      public function agreement(){
         return view('/merchant_application_agreement');
     }

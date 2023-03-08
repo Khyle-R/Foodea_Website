@@ -34,9 +34,17 @@ Route::get('/login_type', [Home::class, 'LoginType']);
 
 Route::get('/rider_logout', [RiderRegistration::class, 'RiderLogout']);
 
+Route::get('/partner_logout', [PartnerRegistration::class, 'PartnerLogout']);
+
 Route::get('/partner_forgotpass', [PartnerRegistration::class, 'PartnerForgotPass']);
 
 Route::get('/rider_forgotpass', [RiderRegistration::class, 'RiderForgotPass']);
+
+Route::get('/rider_forgotpass1', [RiderRegistration::class, 'RiderForgotPass2']);
+
+Route::get('/rider_forgotpass2', [RiderRegistration::class, 'RiderForgotPass3']);
+
+Route::get('/rider_forgotpass3', [RiderRegistration::class, 'RiderForgotPass4']);
 
 Route::get('/superadmin_forgotpass', [SuperadminController::class, 'SuperadminForgotPass']);
 
@@ -161,6 +169,8 @@ Route::group(['middleware'=>['superadminLogin']], function(){
 
     Route::post('/superadmin_riderprofile', [SuperadminController::class, 'RiderProfileUpdate'])->name('RiderProfileUpdate');
 
+    Route::post('/superadmin_riderprofileemergency', [SuperadminController::class, 'RiderEmergencyUpdate'])->name('RiderEmergencyUpdate');
+    
     Route::get('/superadmin_pending', [SuperadminController::class, 'Pending']);
 
     Route::get('/superadmin_review', [SuperadminController::class, 'Review']);

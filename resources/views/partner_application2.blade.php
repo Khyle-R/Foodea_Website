@@ -163,7 +163,7 @@
 
               <div class="form-group">
                 <label>Registered Postal Code</label>
-                <input type="text" name="postal_code" class="form-control form-control-lg"/>
+                <input type="text" maxlength="4" onkeypress="return event.charCode>=48 && event.charCode<=57" name="postal_code" class="form-control form-control-lg"/>
                 <span
                 style="color:red;">
                 @error('postal_code') {{ $message }}
@@ -172,7 +172,7 @@
 
               <div class="form-group">
                 <label>Store Phone No.</label>
-                <input type="text" name="store_number" class="form-control form-control-lg"/>
+                <input type="text" maxlength="10" onkeypress="return event.charCode>=48 && event.charCode<=57" name="store_number" class="form-control form-control-lg"/>
                 <span
                 style="color:red;">
                 @error('store_number') {{ $message }}
