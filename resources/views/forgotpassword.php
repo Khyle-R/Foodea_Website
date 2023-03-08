@@ -85,52 +85,81 @@
                                         @error('email') {{ $message }}
                                         @enderror</span>
 
-                                    <div class="mt-3 ">
-                                        <label for="password">Password</label>
-                                        <input
-                                            type="password"
-                                            name="password"
-                                            class="form-control my-1 form-control-lg"
-                                            placeholder="Password"
-                                            id="password"
-                                            value="{{ Cookie::get('password') }}"
-                                            
-                                        />
-                                            <span class="eye" onclick="myFunction()">
-                                            <i class="fa fa-eye" id="hide1"></i>
-                                            <i class="fa fa-eye-slash" id="hide2"></i>
-                                            </span>
-                                   <span
-                                    class="error">
-                                    @error('password') {{ $message }}
-                                    @enderror </span>
-                                    
+                                    </div>
+                                  
+                                        
+                                    <div class="text-center">
+                                        <button
+                                            type="continue"
+                                            class="btn btn-primary btn-md btn-block"
+                                        >
+                                            Continue
+                                        </button>
+                                        <div
+                                            class="d-flex mt-3 justify-content-center"
+                                        >
+                                            <p class="mr-2">
+                                                Don't have an account?
+                                            </p>
+                                            <a href="/rider_application_agreement" class="red">Sign Up</a>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                     <div class="col-12 col-sm-12 col-md-9 col-lg-6 m-auto">
+                        <div class="card border-0 shadow">
+                            <div class="card-body px-5 ">
+                                <div class="mt-4 text-center">
+                                  <img src="image/foodea4.png" alt="">
+                                </div>
+                                <form method="post" action="{{ route('login.LoginMerchant') }}" class="mt-4">
+                                   @csrf
+
+                                    <div class="form-group">
+                                    <label for="password">New Password</label>
+                                    <input
+                                        type="password"
+                                        name="password"
+                                        class="form-control my-1"
+                                        placeholder="Password"
+                                        value="{{ Cookie::get('password') }}"
+                                    />
+                                       <span
+                                        class="error">
+                                        @error('Password') {{ $message }}
+                                        @enderror</span>
+
+                                    </div>
+
+
+                                    <div class="form-group">
+                                    <label for="password">Confirm Password</label>
+                                    <input
+                                        type="password"
+                                        name="password"
+                                        class="form-control my-1"
+                                        placeholder="Password"
+                                        value="{{ Cookie::get('password') }}"
+                                    />
+                                       <span
+                                        class="error">
+                                        @error('Password') {{ $message }}
+                                        @enderror</span>
 
                                     </div>
                                   
-                                    <div class="form-row justify-content-between">
-                                        <div class="col-auto form-group my-2">
-                                            <div class="form-check">
-                                              <input class="form-check-input" type="checkbox" name="remember" id="gridCheck">
-                                              <label class="form-check-label" for="gridCheck">
-                                                Remember Me
-                                              </label>
-                                            </div>
-                                          </div>
-
-                                        <div class="col-auto mb-3">
-                                            <a href="/forgotpassword" class="nav-link"
-                                                >Forgot Password?</a
-                                            >
-                                        </div>
-                                        </div>
                                         
                                     <div class="text-center">
                                         <button
                                             type="submit"
                                             class="btn btn-primary btn-md btn-block"
                                         >
-                                            LOG IN
+                                            Reset Password
                                         </button>
                                         <div
                                             class="d-flex mt-3 justify-content-center"
