@@ -86,7 +86,7 @@ Route::group(['middleware'=>['RiderStatus']], function(){
     Route::get('/rider_applicationstatus', [RiderRegistration::class, 'RiderApplicationStatus']);
            
     Route::get('/rider_application5', function () {
-        return view('rider_application5');
+        return view('Rider_Application5');
     });
 });
    
