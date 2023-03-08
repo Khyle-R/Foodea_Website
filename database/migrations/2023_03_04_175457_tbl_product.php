@@ -23,6 +23,8 @@ return new class extends Migration
             $table->string('product_name');
             $table->decimal('price');
             $table->string('product_image');
+            $table->string('tags');
+            $table->string('ingredients');
             $table->integer('stock');
             $table->string('status');
             $table->string('description');

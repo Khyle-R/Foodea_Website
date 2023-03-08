@@ -318,8 +318,11 @@ Route::group(['middleware'=>['adminLogin']], function(){
 
         $products = DB::table('tbl_product')->where('merchant_id', '=', session('loginID'))->get();
 
-        return view('admin.product', ['products' => $products]);
-    });
+    $category = DB::table('tbl_category')->get();
+
+
+    return view('admin.product', ['products' => $products, 'category' => $category]);
+});
 
     Route::post('product',[Admin_product::class, 'addProduct'])->name('add_product');
 
