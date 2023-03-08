@@ -158,7 +158,7 @@
                         <div class="d-flex flex-row">
                             <div class="steptwo d-flex flex-end flex-column text-end">
                                 <h2>STEP 2:</h2>
-                                <p>Sign-Up online to be a Foodea partner.</p>
+                                <p>Upload required documents.</p>
                             </div>
                             <div class="step1-image">
                                 <img src="image/signup.png" alt="">
