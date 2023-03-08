@@ -18,7 +18,7 @@ use App\Models\tbl_rider_application;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Session;
 use App\Models\tbl_merchant_application;
-
+use Illuminate\Validation\Rules\Password;
 
 class RiderRegistration extends Controller
 {
@@ -40,8 +40,9 @@ class RiderRegistration extends Controller
     }
  
     public function addPostSubmit(Request $request)
-    {
-
+    {   
+           
+            
             $request->validate([
             'account_type' => 'required',    
             'firstname' => 'required',
@@ -49,17 +50,30 @@ class RiderRegistration extends Controller
             'lastname' => 'required',
             'age' => 'required',
             'gender' => 'required',
-            'mobilenumber' => 'required',
-            'password' => 'required|min:6|confirmed',
-            'password_confirmation' => 'required|min:6',
+            'mobilenumber' => 'required|min:10',
+            'password' => [
+            'required', 'confirmed',
+            Password::min(8)->letters()->numbers()->symbols()
+            ],
+            'password_confirmation' => 'required',
             'address' => 'required',
             'city' => 'required',
             'barangay' => 'required',
-            'zip' => 'required',
-            'birthday' => 'required'
-         
-            ]);
-
+            'zip' => 'required|min:4',
+            'birthday' => 'required|after: 18 year old',
+          
+        ],
+        [
+            'birthday' => 'Must be 18 above'
+        ]
+        );
+            
+              if($request->age < 18){
+                return back()->with('age','Age must be 18 above');
+            }
+            if($request->age >= 56){
+                return back()->with('age','Age must be 55 below');
+            }
               /*RIDERS */
             if($request->account_type == 'Rider'){
               $request->validate([
@@ -224,7 +238,7 @@ class RiderRegistration extends Controller
         $request -> validate([
             'vehicle_type' => 'required',
             'relationship' => 'required',
-            'phone' => 'required',
+            'phone' => 'required|min:10',
             'name' => 'required'
         ]);
         $vehicle = new tbl_vehicle_infos();

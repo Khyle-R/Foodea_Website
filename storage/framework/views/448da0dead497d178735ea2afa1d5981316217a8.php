@@ -224,5 +224,6 @@ unset($__errorArgs, $__bag); ?></span>
         crossorigin="anonymous"
     ></script>
     
+    
 </html>
 <?php /**PATH E:\xampp\htdocs\Foodea_Website\resources\views/rider_login.blade.php ENDPATH**/ ?>

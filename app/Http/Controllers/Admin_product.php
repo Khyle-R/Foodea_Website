@@ -508,7 +508,9 @@ class Admin_product extends Controller
     ->limit(1)
     ->get();
 
-        return view('admin.admin_account', compact('Data'));
+    $product = tbl_product::where('merchant_id', $id)
+    ->get();
+        return view('admin.admin_account', compact('Data', 'product'));
     }
 
 }

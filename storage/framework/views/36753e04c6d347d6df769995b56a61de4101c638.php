@@ -41,8 +41,7 @@
 
       <div class="sign-form">
      
-           <div class="content-wrapper">
-              <div class="right">
+           <div class="content-wrapper">  
                <h2>Application Status</h2>
                  <div class="row px-3">
                         </div>
@@ -129,27 +128,36 @@
                                         <label class="black width">Vehicle Type</label>
                                         <p class=" black ml-5"><?php echo e($rider->vehicle_type); ?></p>
                                       </div>
+                                      <?php if($rider->vehicle_ownership): ?> 
                                       <div class="row px-3">
                                         <label class="black width">Vehicle Ownership</label>
                                         <p class="black ml-5"><?php echo e($rider->vehicle_ownership); ?></p>
                                       </div>
+                                      <?php endif; ?>
+                                      <?php if($rider->plate_number): ?> 
                                         <div class="row px-3">
                                         <label class="black width">Plate Number</label>
                                         <p class="black ml-5"><?php echo e($rider->plate_number); ?></p>
                                       </div>
+                                      <?php endif; ?>
+                                      <?php if($rider->displacement): ?> 
                                         <div class="row px-3">
                                         <label class="black width">Motorcycle Displacement</label>
                                         <p class="black ml-5"><?php echo e($rider->displacement); ?></p>
                                       </div>
+                                      <?php endif; ?>
+                                      <?php if($rider->engine_number): ?> 
                                         <div class="row px-3">
                                         <label class="black width">Engine Number</label>
                                         <p class="black ml-5"><?php echo e($rider->engine_number); ?></p>
                                       </div>
-                                       
+                                      <?php endif; ?>
+                                       <?php if($rider->year_model): ?> 
                                       <div class="row px-3">
                                         <label class="black width">Year Model</label>
                                         <p class="black ml-5"><?php echo e($rider->year_model); ?></p>
                                       </div>
+                                      <?php endif; ?>
                                        <h4 class="title-border mb-4 mt-4">Emergency Contact</h4>
                                       <div class="row px-3">
 
@@ -184,14 +192,18 @@
                                         <label class="black width">Licence back Back</label>
                                          <p class="black ml-5"><?php echo e($rider->license_back); ?></p>
                                       </div>
+                                       <?php if($rider->official_receipt): ?> 
                                        <div class="row px-3 mt-2">
                                         <label class="black width">Official Receipt</label>
                                           <p class="black ml-5"><?php echo e($rider->official_receipt); ?></p>
                                       </div>
+                                        <?php endif; ?>
+                                         <?php if($rider->cert_registration): ?> 
                                        <div class="row px-3 mt-2">
                                         <label class="black width">Certificate of Registration</label>
                                           <p class="black ml-5"><?php echo e($rider->cert_registration); ?></p>
                                       </div>
+                                        <?php endif; ?>
                                       <?php if($rider->vehicle_ownership == 'Borrowed'): ?>
                                           <div class="row px-3 mt-2">
                                         <label class="black width">Authorization letter</label>
@@ -206,26 +218,33 @@
                                       </div>
                                         
                                       <?php endif; ?>
+                                    
                                        <div class="row px-3 mt-2">
                                         <label class="black width">NBI Clearance</label>
                                          <p class="black ml-5"><?php echo e($rider->nbi_clearance); ?></p>
                                       </div>
+                                       <?php if($rider->drug_test): ?> 
                                        <div class="row px-3 mt-2">
                                         <label class="black width">Drug Test</label>
                                          <p class="black ml-5"><?php echo e($rider->drug_test); ?></p>
                                       </div>
+                                      <?php endif; ?>
+                                       <?php if($rider->vehicle_front): ?> 
                                        <div class="row px-3 mt-2">
                                         <label class="black width">Vehicle Front</label>
                                          <p class="black ml-5"><?php echo e($rider->vehicle_front); ?></p>
                                       </div>
+                                      <?php endif; ?>
                                       <div class="row px-3 mt-2">
                                         <label class="black width ">Vehicle Side</label>
                                          <p class="black ml-5"><?php echo e($rider->vehicle_side); ?></p>
                                       </div>
+                                       <?php if($rider->vehicle_back): ?> 
                                        <div class="row px-3 mt-2">
                                         <label class="black width">Vehicle Back</label>
                                          <p class="black ml-5"><?php echo e($rider->vehicle_back); ?></p>
                                       </div>
+                                      <?php endif; ?>
                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </div>
                                      <div class="col-sm-5 ml-sm-5">
@@ -251,7 +270,6 @@
                     </div>
     <!-- Scroller -->
     </div>
-
 
   </body>
 </html><?php /**PATH E:\xampp\htdocs\Foodea_Website\resources\views//rider_applicationstatus.blade.php ENDPATH**/ ?>

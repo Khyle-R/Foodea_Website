@@ -373,13 +373,15 @@
                                 <th>Status</th>
                             </tr>
                         </thead>
-                        <tbody>
+                         <tbody>
+                            @foreach ($product as $products)
                             <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $products->product_name }}</td>
+                                <td>{{ $products->stock }}</td>
+                                <td>{{ $products->price }}</td>
+                                <td>{{ $products->status }}</td>
                             </tr>
+                             @endforeach
                         </tbody>
                     
                     </table>

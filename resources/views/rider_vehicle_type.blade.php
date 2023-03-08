@@ -41,7 +41,6 @@
       <div class="content-wrapper">
         <div class="col-12 col-sm-10 col-md-11 col-lg-9 col-xl-6">
            <div class="right">
-            
           <h2>Create your Account</h2>
           <p>Please fill up the form below.</p>
           <form method="post" action="{{ route('AddVehicleType') }}">
@@ -78,7 +77,7 @@
 
              <div class="form-group">
             <label>Name</label>
-            <input name="name" type="text" value="{{ old('zip') }}" class="form-control form-control-lg"/>
+            <input name="name" type="text" value="{{ old('name') }}" class="form-control form-control-lg"/>
              <span
             style="color:red;">
             @error('name') {{ $message }}
@@ -87,7 +86,7 @@
 
              <div class="form-group">
             <label>Relationship</label>
-            <input name="relationship" type="text" value="{{ old('zip') }}" class="form-control form-control-lg"/>
+            <input name="relationship" type="text" value="{{ old('relationship') }}" class="form-control form-control-lg"/>
              <span
             style="color:red;">
             @error('relationship') {{ $message }}
@@ -96,7 +95,7 @@
 
              <div class="form-group">
             <label>Phone</label>
-            <input name="phone" type="text" value="{{ old('zip') }}" class="form-control form-control-lg"/>
+            <input maxlength="10" onkeypress="return event.charCode>=48 && event.charCode<=57" name="phone" type="text" value="{{ old('phone') }}" class="form-control form-control-lg"/>
              <span
             style="color:red;">
             @error('phone') {{ $message }}
@@ -116,10 +115,10 @@
     </div>
       <!-- Scroller -->
     </div>  
-
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+{{-- 
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> --}}
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
+    <script src="{{ asset('assets/js/app.js') }}"></script>
   </body>
 </html>

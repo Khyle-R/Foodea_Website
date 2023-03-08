@@ -409,7 +409,7 @@
                 <a href="/contact" class="text-reset text-decoration-none">
                     <p>Contact Us</p>
                 </a>
-                <a href="/mision" class="text-reset text-decoration-none">
+                <a href="/mission" class="text-reset text-decoration-none">
                     <p>Mission</p>
                 </a>
                 <a href="/vision" class="text-reset text-decoration-none">
@@ -425,6 +425,7 @@
                     <p>foodea@gmail.com</p>
                 </div>
                 <div class="legal">
+                    <div class="legal">
                     <h2>Legal:</h2>
                     <a href="/terms_condition" class="text-reset text-decoration-none">
                       <p>Terms and Condition</p>
