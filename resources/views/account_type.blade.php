@@ -1,53 +1,80 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1" name="viewport" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/rider_application.css" />
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <link rel="icon" href="{{ url('image/foodea1.png') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css" />
     <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css" />
-    <link rel="stylesheet" type="text/css" href="css/rider_application.css" />
-    <title>FOODEA Personal Information</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/rider_application.css">
   </head>
-
-  <body>
-
-   <div class="container-scroller">
-    <nav class="sidebar sidebar-offcanvas" id="sidebar">
-      <ul class="nav">
-        <li class="nav-item back">
-            <div class="back-logo">
-                <a href="/"> <img src="image/vector.png" alt=""/> </a>
-                <h5 class="mb-0">Back to website</h5>
-            </div>
-        </li>
-        <li class="nav-item nav-category">
-          <a class="nav-link" href="/">
-            <img src="image/foodea.png" style="width: 50px">FOODEA
+  
+  <body id="body-pd">
+    <header class="header" id="header">
+      <div class="header_toggle">
+        <i class="bx bx-menu" id="header-toggle"></i>
+      </div>
+      <h3 class="header_title pt-2 pt-md-3">Foodea Application</h3>
+    </header>
+    <div class="l-navbar" id="nav-bar">
+      <nav class="nav">
+        <div>
+          <a href="/" class="nav_logo">
+              <i class="bx bx-log-out nav_icon text-white"></i>
+              <span class="nav_logo-name">Back to Website</span>
           </a>
-        </li>
-      
-        <li class="nav-item nav-category">Foodea Application</li>
-        <li class="red">Step 1 &nbsp;&nbsp;&nbsp;Personal Information</li>
-      </ul>
-    </nav>
-    
+            <div class="nav_list logos">
+              <div class="title d-flex pb-3 ps-2 gap-2 align-items-center">
+              <img src="image/foodea.png" style="width: 50px">FOODEA
+            </div>
+            <div class="nav_link active mt-3 py-3 ms-2">
+              <i class="bx bx-grid-alt nav_icon"></i>
+              <span class="nav_name">Term User</span>
+            </div>
+            <div href="#" class="nav_link active red py-3 ms-2">
+              <span class="nav_linknumber">1</span>
+              <span class="nav_name">Personal Information</span>
+            <!-- </div>
+            <div href="#" class="nav_link active py-3 ms-2">
+              <span class="nav_linknumber">2</span>
+              <span class="nav_name">Verify Phone Number</span>
+            </div>
+            <div href="#" class="nav_link active py-3 ms-2">
+              <span class="nav_linknumber">3</span>
+              <span class="nav_name">Vehicle Information</span>
+            </div>
+            <div href="#" class="nav_link active py-3 ms-2">
+              <span class="nav_linknumber">4</span>
+              <span class="nav_name">Requirements</span>
+            </div>
+            <div href="#" class="nav_link active py-3 ms-2">
+              <span class="nav_linknumber">5</span> 
+              <span class="nav_name">Application Status</span>
+            </div> -->
+          </div>
+        </div>
+        </div>
+      </nav>
+    </div>
+    <!-- Content Here -->
     <!-- Form -->
     <div class="sign-form">
       <div class="content-wrapper">
         <div class="col-12 col-sm-12 col-md-9 col-lg-6">
            <div class="right">
-            <div class="right">
             <h2>Create your Account</h2>
-            <p>Please fill up the form below.</p>
-
+            <h3>Please fill up the form below.</h3>
            <form method="post" action="{{route('rider_application.addPostSubmit')}}">
            @csrf
-
            
             <div class="form-group">
             <label>Account Type</label>
@@ -215,10 +242,11 @@
             @error('zip') {{ $message }}
             @enderror</span>
             </div>
-
-           <br><br>
+            <br>
+           <h3 class="notice text-center">Please make sure the details you have entered above is correct before you proceed to the next screen. You will not able to navigate back.</h3>
+           <br>
            <div class="form-group">
-            <div class="col-sm-10 d-flex justify-content-center">
+            <div class="col-sm-12 d-flex justify-content-center">
               <button Value="submit" type="submit" class="btn btn-danger w-50">Next</button>
             </div>
            </div>
@@ -226,13 +254,10 @@
           </div>
         </div>
        </div>
-     </div>
-      <!-- Scroller -->
-    </div>
-
-
-      <!-- Show Hide Password -->
-      <script>
+     <!-- </div> -->
+    <!-- End Content Here -->
+    <!-- Show Hide Password -->
+    <script>
         function myFunction(){
           var a = document.getElementById("password");
           var b = document.getElementById("hide1");
@@ -249,13 +274,13 @@
             c.style.display = "inline";
           }
         }
-     </script>
-   <!-- Show Hide Confirm Password -->
-<script>
-  function Function(){
-    var x = document.getElementById("password_confirmation");
-    var y = document.getElementById("hide3");
-    var z = document.getElementById("hide4");
+    </script>
+    <!-- Show Hide Confirm Password -->
+    <script>
+      function Function(){
+        var x = document.getElementById("password_confirmation");
+        var y = document.getElementById("hide3");
+        var z = document.getElementById("hide4");
 
     if(x.type == 'password'){
       x.type = "text";
@@ -270,9 +295,9 @@
   }
 </script>
 
-    {{-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> --}}
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="{{ asset('assets/js/app.js') }}"></script>
+  
   </body>
 </html>
