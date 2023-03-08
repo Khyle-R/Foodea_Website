@@ -403,9 +403,9 @@ class Admin_product extends Controller
     public function VoucherIndex(){
         $voucher = DB::table('tbl_voucher')->where('merchant_id', '=', session('loginID'))->get();
 
-        $voucherCount = DB::table('tbl_voucher')->count();
-        $EnableVoucher = DB::table('tbl_voucher')->where('status','Enable')->count();
-        $DisableVoucher = DB::table('tbl_voucher')->where('status','Disable')->count();
+        $voucherCount = DB::table('tbl_voucher')->where('merchant_id', session('loginID'))->count();
+        $EnableVoucher = DB::table('tbl_voucher')->where([['status','Enable'],['merchant_id', '=', session('loginID')]])->count();
+        $DisableVoucher = DB::table('tbl_voucher')->where([['status','Disable'],['merchant_id', '=', session('loginID')]])->count();
 
        
         return view('admin.voucher',['voucher' => $voucher, 'EnableVoucher' => $EnableVoucher, 'DisableVoucher' => $DisableVoucher, 'voucherCount' => $voucherCount]);
