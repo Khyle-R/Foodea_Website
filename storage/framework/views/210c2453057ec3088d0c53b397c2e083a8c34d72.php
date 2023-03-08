@@ -42,9 +42,6 @@
         <div class="col-12 col-sm-12 col-md-9 col-lg-6">
            <div class="right">
             <div class="right">
-             <div id="loader-wrapper">
-            <span id="loader"></span>
-              </div>
             <h2>Create your Account</h2>
             <p>Please fill up the form below.</p>
 
@@ -207,7 +204,7 @@ unset($__errorArgs, $__bag); ?></span>
 
             <div class="form-group">
             <label>Mobile Number <a style="color:#BD9140;font-size: 13px;">(+63)</a></label>
-            <input name="mobilenumber" maxlength="11" onkeypress="return event.charCode>=48 && event.charCode<=57" type="text" value="<?php echo e(old('mobilenumber')); ?>" class="form-control form-control-lg" />
+            <input name="mobilenumber" maxlength="10" onkeypress="return event.charCode>=48 && event.charCode<=57" type="text" value="<?php echo e(old('mobilenumber')); ?>" class="form-control form-control-lg" />
              <span
             style="color:red;">
             <?php $__errorArgs = ['mobilenumber'];

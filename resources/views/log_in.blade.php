@@ -119,7 +119,7 @@
                                           </div>
 
                                         <div class="col-auto mb-3">
-                                            <a href="/forgotpassword" class="nav-link"
+                                            <a href="/partner_forgotpass" class="nav-link"
                                                 >Forgot Password?</a
                                             >
                                         </div>
