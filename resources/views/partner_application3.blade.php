@@ -27,7 +27,7 @@
     <div class="l-navbar" id="nav-bar">
       <nav class="nav">
         <div>
-          <a href="/" class="nav_logo">
+           <a href="" data-bs-toggle="modal" data-bs-target="#ExitModal" class="nav_logo">
               <i class="bx bx-log-out nav_icon text-white"></i>
               <span class="nav_logo-name">Back to Website</span>
           </a>
@@ -115,7 +115,7 @@
                         </div>
                          <div class="form-group">
                           <div class="col-sm-12 d-flex justify-content-start mb-4">
-                            <button value="submit" type="submit" class="btn btn-danger w-50">Verify</button>
+                            <button value="submit" type="submit" class="btn btn-danger w-50 button">Verify</button>
                           </div>
                         </div>
                         </form>
@@ -126,9 +126,35 @@
             </div>
           </div>
      <!-- </div> -->
+
+     
+  <!-- EXIT Modal -->
+        <div class="modal fade" id="ExitModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title text-white" id="exampleModalLabel">Exit Signup</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <form action="{{ route('ExitSignup') }}">
+              <div class="modal-body">
+                Are you sure to discard your application?
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="white-btn" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="red-btn">Confirm</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
     <!-- End Content Here -->
     <!-- Show Hide Password -->
  
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"

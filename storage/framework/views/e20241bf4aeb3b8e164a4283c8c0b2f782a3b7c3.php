@@ -1,78 +1,107 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="<?php echo e(url('image/foodea1.png')); ?>">
     <title>FOODEA</title>
-    <link rel="shortcut icon" href="images/foodea.png" type="image">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/fontawesome.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="<?php echo e(asset('assets/css/style.css')); ?>" />
-    <link rel="stylesheet" href="<?php echo e(asset('assets/css/superadmin.css')); ?>" />
-      <link rel="stylesheet" type="text/css" href="css/partner_application2.css" />
-
-  <body>
-
-       <div class="container-scroller">
-      <nav class="sidebar sidebar-offcanvas" id="sidebar">
-        <ul class="nav">
-          <li class="nav-item back">
-              <div class="back-logo">
-                  <a href="/"> <img src="image/vector.png" alt=""/> </a>
-                  <h5 class="mb-0">Back to website</h5>
-              </div>
-          </li>
-          <li class="nav-item nav-category">
-            <a class="nav-link" href="/">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <link rel="icon" href="<?php echo e(url('image/foodea1.png')); ?>">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css" />
+    <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/partner_application2.css">
+  </head>
+  
+  <body id="body-pd">
+    <header class="header" id="header">
+      <div class="header_toggle">
+        <i class="bx bx-menu" id="header-toggle"></i>
+      </div>
+      <h3 class="header_title pt-2 pt-md-3">Rider Application</h3>
+    </header>
+    <div class="l-navbar" id="nav-bar">
+      <nav class="nav">
+        <div>
+          <a href="/" class="nav_logo">
+              <i class="bx bx-log-out nav_icon text-white"></i>
+              <span class="nav_logo-name">Back to Website</span>
+          </a>
+            <div class="nav_list logos">
+              <div class="title d-flex pb-3 ps-2 gap-2 align-items-center">
               <img src="image/foodea.png" style="width: 50px">FOODEA
-            </a>
-          </li>
-               <li class="nav-item nav-category">Rider Application</li>
-          <li>Step 1 &nbsp;&nbsp;&nbsp;Personal Information</li>
-          <li>Step 2 &nbsp;&nbsp;&nbsp;Verify Phone Number</li>
-          <li>Step 3 &nbsp;&nbsp;&nbsp;Vehicle Information</li>
-          <li>Step 4 &nbsp;Requirements</li>
-          <li class="red">Step 5 &nbsp;Application Status</li>  
-            </ul>
+            </div>
+            <div class="nav_link active mt-3 py-3 ms-2">
+              <i class="bx bx-grid-alt nav_icon"></i>
+              <span class="nav_name">Term User</span>
+            </div>
+            <div href="#" class="nav_link active py-3 ms-2">
+              <span class="nav_linknumber">1</span>
+              <span class="nav_name">Personal Information</span>
+            </div>
+            <div href="#" class="nav_link active py-3 ms-2">
+              <span class="nav_linknumber">2</span>
+              <span class="nav_name">Verify Phone Number</span>
+            </div>
+            <div href="#" class="nav_link active py-3 ms-2">
+              <span class="nav_linknumber">3</span>
+              <span class="nav_name">Vehicle Information</span> 
+            </div>
+            <div href="#" class="nav_link active py-3 ms-2">
+              <span class="nav_linknumber">4</span>
+              <span class="nav_name">Requirements</span>
+            </div>
+            <div href="#" class="nav_link active red py-3 ms-2">
+              <span class="nav_linknumber">5</span> 
+              <span class="nav_name">Application Status</span>
+            </div>
+          </div>
+        </div>
+        </div>
       </nav>
-
-      <div class="sign-form">
-     
-           <div class="content-wrapper">  
+    </div>
+    <!-- Content Here -->
+    <!-- Form -->
+    <!-- <div class="container sign-form"> -->
+    <div class="content-wrapper container mt-2">
+          <div class="right">
                <h2>Application Status</h2>
-                 <div class="row px-3">
+                 <div class="row px-2">
                         </div>
-                    
+
                          <?php $__currentLoopData = $Data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rider): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                        <div class="row px-3">
+                        <div class="row">
                             <div class="col-12 grid-margin">
                                 <div class="card">
                                     <div class="card-body">
 
-                                <div class="container-fluid px-5">
+                                <div class="container-fluid">
 
-                                  <div class="row align-items-center my-5">
+                                  <div class="row align-items-center my-5 gap-3">
                                     <div class="col-md-6 ml-5">
                                       <div class="row align-items-center ">
                                    
-                                      <img class="circle img-responsive mr-3" width="170" height="160" src="<?php echo e(url(('uploads/'. 'rider_documents'. '/'.$rider->rider_id. '/'). $rider->rider_photo)); ?>" alt="">
-                                      <div class="col flex-wrap">
+                                        <div class="text-center">
+                                      <img class="circle img-fluid mr-3" src="<?php echo e(url(('uploads/'. 'rider_documents'. '/'.$rider->rider_id. '/'). $rider->rider_photo)); ?>" alt="">
+                                     </div>
                              
                                     
                             
-                                      <h2 class="red-name"> <?php echo e($rider->firstname . " ". $rider->lastname); ?> </h2>
-                                      </div>
+                                      <h2 class="red-name text-center pt-3"> <?php echo e($rider->firstname . " ". $rider->lastname); ?> </h2>
+                                  
                                       </div>
                                     </div> 
                                        
 
-                                    <div class="col-sm-5">
-                                      <div class="card-pending px-3">
-                                      <div class="curve card-body text-center">
-                                      <h4 class="yellow"><?php echo e($rider->status); ?></h4>
+                                    <div class="col-sm-12 col-lg-5">
+                                      <div class="card-pending py-4 px-4 mx-0 mx-md-5 rounded">
+                                      <div class="">
+                                      <h4 class="text-center text-white"><?php echo e($rider->status); ?></h4>
                                       </div>
                                       </div>
                                     </div>  
@@ -82,93 +111,93 @@
                                     <div class="col-sm-5 ml-sm-5">
                                       <h4 class="title-border flex-wrap mb-4">Personal Information</h4>
                        
-                                       <div class="row px-3">
+                                       <div class="row px-2">
                                         <label class="black width">First Name</label>
                                         <p class="black ml-5"><?php echo e($rider->firstname); ?></p>
                                       </div>
-                                       <div class="row px-3">
+                                       <div class="row px-2">
                                         <label class="black width">Middle Name</label>
                                         <p class="black ml-5"><?php echo e($rider->middlename); ?></p>
                                       </div>
-                                       <div class="row px-3">
+                                       <div class="row px-2">
                                         <label class="black width">Last Name</label>
                                         <p class="black ml-5"><?php echo e($rider->lastname); ?></p>
                                       </div>
-                                       <div class="row px-3">
+                                       <div class="row px-2">
                                         <label class="black width">Email Address</label>
                                         <p class="black ml-5"><?php echo e($rider->email); ?></p>
                                       </div>
-                                       <div class="row px-3">
+                                       <div class="row px-2">
                                         <label class="black width">Mobile Number</label>
                                         <p class="black ml-5"><?php echo e($rider->mobile_number); ?></p>
                                       </div>
                                      
-                                       <div class="row px-3">
+                                       <div class="row px-2">
                                         <label class="black width">City</label>
                                         <p class="black ml-5"><?php echo e($rider->city); ?></p>
                                       </div>
-                                       <div class="row px-3">
+                                       <div class="row px-2">
                                         <label class="black width">Barangay</label>
                                         <p class="black ml-5"><?php echo e($rider->barangay); ?></p>
                                       </div>
-                                      <div class="row px-3">
+                                      <div class="row px-2">
                                         <label class="black width">Zip Code</label>
                                         <p class="black ml-5"><?php echo e($rider->zip_code); ?></p>
                                       </div>
-                                       <div class="row px-3">
+                                       <div class="row px-2">
                                         <label class="black width">Address</label>
                                         <p class="black ml-5 spacing"><?php echo e($rider->address); ?></p>
                                       </div>
                                     </div>
 
-                                     <div class="col-sm-5 mr-5">
+                                     <div class="col-sm-5 mt-3">
                                       <h4 class="title-border mb-4">Vehicle Information</h4>
-                                      <div class="row px-3">
+                                      <div class="row px-2">
 
                                         <label class="black width">Vehicle Type</label>
                                         <p class=" black ml-5"><?php echo e($rider->vehicle_type); ?></p>
                                       </div>
                                       <?php if($rider->vehicle_ownership): ?> 
-                                      <div class="row px-3">
+                                      <div class="row px-2">
                                         <label class="black width">Vehicle Ownership</label>
                                         <p class="black ml-5"><?php echo e($rider->vehicle_ownership); ?></p>
                                       </div>
                                       <?php endif; ?>
                                       <?php if($rider->plate_number): ?> 
-                                        <div class="row px-3">
+                                        <div class="row px-2">
                                         <label class="black width">Plate Number</label>
                                         <p class="black ml-5"><?php echo e($rider->plate_number); ?></p>
                                       </div>
                                       <?php endif; ?>
                                       <?php if($rider->displacement): ?> 
-                                        <div class="row px-3">
+                                        <div class="row px-2">
                                         <label class="black width">Motorcycle Displacement</label>
                                         <p class="black ml-5"><?php echo e($rider->displacement); ?></p>
                                       </div>
                                       <?php endif; ?>
                                       <?php if($rider->engine_number): ?> 
-                                        <div class="row px-3">
+                                        <div class="row px-2">
                                         <label class="black width">Engine Number</label>
                                         <p class="black ml-5"><?php echo e($rider->engine_number); ?></p>
                                       </div>
                                       <?php endif; ?>
                                        <?php if($rider->year_model): ?> 
-                                      <div class="row px-3">
+                                      <div class="row px-2">
                                         <label class="black width">Year Model</label>
                                         <p class="black ml-5"><?php echo e($rider->year_model); ?></p>
                                       </div>
                                       <?php endif; ?>
                                        <h4 class="title-border mb-4 mt-4">Emergency Contact</h4>
-                                      <div class="row px-3">
+                                      <div class="row px-2">
 
                                         <label class="black width">Name</label>
                                         <p class=" black ml-5"><?php echo e($rider->emergency_name); ?></p>
                                       </div>
-                                        <div class="row px-3">
+                                        <div class="row px-2">
                                         <label class="black width">Relationship</label>
                                         <p class="black ml-5"><?php echo e($rider->relationship); ?></p>
                                       </div>
-                                        <div class="row px-3">
+                                        <div class="row px-2">
                                         <label class="black width">Contact Number</label>
                                         <p class="black ml-5"><?php echo e($rider->contact_number); ?></p>
                                       </div>
@@ -180,67 +209,67 @@
                                     <div class="col-sm-5 ml-sm-5">
                                       <h4 class="title-border flex-wrap mb-4">Uploaded Documents</h4>
                        
-                                       <div class="row px-3 mt-2">
+                                       <div class="row px-2 mt-2">
                                         <label class="black width">Rider Photo</label>
                                              <p class="black ml-5 spacing"><?php echo e($rider->rider_photo); ?></p>
                                       </div>
-                                       <div class="row px-3 mt-2">
+                                       <div class="row px-2 mt-2">
                                         <label class="black width">Driver License</label>
                                           <p class="black ml-5"><?php echo e($rider->driver_license); ?></p>
                                       </div>
-                                      <div class="row px-3 mt-2">
+                                      <div class="row px-2 mt-2">
                                         <label class="black width">Licence back Back</label>
                                          <p class="black ml-5"><?php echo e($rider->license_back); ?></p>
                                       </div>
                                        <?php if($rider->official_receipt): ?> 
-                                       <div class="row px-3 mt-2">
+                                       <div class="row px-2 mt-2">
                                         <label class="black width">Official Receipt</label>
                                           <p class="black ml-5"><?php echo e($rider->official_receipt); ?></p>
                                       </div>
                                         <?php endif; ?>
                                          <?php if($rider->cert_registration): ?> 
-                                       <div class="row px-3 mt-2">
+                                       <div class="row px-2 mt-2">
                                         <label class="black width">Certificate of Registration</label>
                                           <p class="black ml-5"><?php echo e($rider->cert_registration); ?></p>
                                       </div>
                                         <?php endif; ?>
                                       <?php if($rider->vehicle_ownership == 'Borrowed'): ?>
-                                          <div class="row px-3 mt-2">
+                                          <div class="row px-2 mt-2">
                                         <label class="black width">Authorization letter</label>
                                          <p class="black ml-5"><?php echo e($rider->auth_letter); ?></p>
                                       </div>
                                         
                                       <?php endif; ?>
                                        <?php if($rider->vehicle_ownership == 'Second-hand'): ?>
-                                          <div class="row px-3 mt-2">
+                                          <div class="row px-2 mt-2">
                                         <label class="black width">Notarized Deed of Sale</label>
                                          <p class="black ml-5"><?php echo e($rider->deed_sale); ?></p>
                                       </div>
                                         
                                       <?php endif; ?>
                                     
-                                       <div class="row px-3 mt-2">
+                                       <div class="row px-2 mt-2">
                                         <label class="black width">NBI Clearance</label>
                                          <p class="black ml-5"><?php echo e($rider->nbi_clearance); ?></p>
                                       </div>
                                        <?php if($rider->drug_test): ?> 
-                                       <div class="row px-3 mt-2">
+                                       <div class="row px-2 mt-2">
                                         <label class="black width">Drug Test</label>
                                          <p class="black ml-5"><?php echo e($rider->drug_test); ?></p>
                                       </div>
                                       <?php endif; ?>
                                        <?php if($rider->vehicle_front): ?> 
-                                       <div class="row px-3 mt-2">
+                                       <div class="row px-2 mt-2">
                                         <label class="black width">Vehicle Front</label>
                                          <p class="black ml-5"><?php echo e($rider->vehicle_front); ?></p>
                                       </div>
                                       <?php endif; ?>
-                                      <div class="row px-3 mt-2">
+                                      <div class="row px-2 mt-2">
                                         <label class="black width ">Vehicle Side</label>
                                          <p class="black ml-5"><?php echo e($rider->vehicle_side); ?></p>
                                       </div>
                                        <?php if($rider->vehicle_back): ?> 
-                                       <div class="row px-3 mt-2">
+                                       <div class="row px-2 mt-2">
                                         <label class="black width">Vehicle Back</label>
                                          <p class="black ml-5"><?php echo e($rider->vehicle_back); ?></p>
                                       </div>
@@ -248,12 +277,12 @@
                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </div>
                                      <div class="col-sm-5 ml-sm-5">
-                                   <div class="row px-2 mt-2">
+                                   <div class="row px-2 mt-2 align-items-center justify-content-center">
 
                                       <?php if(Session::get('registerID')): ?>
-                                    <a href="/rider_logout" class="button-red btn btn-lg" data-toggle="modal" data-target="#exampleModalCenter">Sign Out</a>
+                                    <a href="/rider_logout" class="button-red btn btn-lg w-75 text-white" data-toggle="modal" data-target="#exampleModalCenter">Sign Out</a>
                                  <?php else: ?>
-                                     <a href="/" class="button-red btn btn-lg" data-toggle="modal" data-target="#exampleModalCenter">Done</a>
+                                     <a href="/" class="button-red btn btn-lg w-75 text-white" data-toggle="modal" data-target="#exampleModalCenter">Done</a>
                                     <?php endif; ?>
 
                                   </div>
@@ -268,8 +297,17 @@
                             </div>
                         </div>
                     </div>
-    <!-- Scroller -->
+        </div>
     </div>
-
+     <!-- </div> -->
+    <!-- End Content Here -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous">
+    </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src = "js/sidebar.js"></script>
   </body>
 </html><?php /**PATH E:\xampp\htdocs\Foodea_Website\resources\views/rider_applicationstatus.blade.php ENDPATH**/ ?>

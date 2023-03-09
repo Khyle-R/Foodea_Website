@@ -48,6 +48,7 @@ Route::get('/rider_forgotpass3', [RiderRegistration::class, 'RiderForgotPass4'])
 
 Route::get('/superadmin_forgotpass', [SuperadminController::class, 'SuperadminForgotPass']);
 
+Route::get('/rider_signupexit', [Home::class, 'ExitSignup'])->name('ExitSignup');
 
 
 Route::group(['middleware'=>['RiderStep2']], function(){
