@@ -14,8 +14,6 @@ use App\Http\Controllers\SuperadminController;
 
 Route::get('/', [Home::class, 'index'])->name('home.index');
 
-// Route::get('/email', [MailController::class, 'MailIndex']);
-
 Route::get('/terms_condition', [Home::class, 'TermsCondition']);
 
 Route::get('/mission', [Home::class, 'MissionIndex']);
@@ -56,7 +54,6 @@ Route::group(['middleware'=>['RiderStep2']], function(){
     Route::get('/rider_application_agreement', [RiderRegistration::class, 'agreement']);
     Route::get('/account_type', [Home::class, 'AccountType']);
     Route::post('/rider_applicationn', [RiderRegistration::class, 'addPostSubmit'])->name('rider_application.addPostSubmit');
-       // Route::get('/rider_application', [RiderRegistration::class, 'index'])->name('rider_application.index');
 });
 
 
@@ -92,11 +89,6 @@ Route::group(['middleware'=>['RiderStepFinal']], function(){
 
      });
    
-
-    // Route::get('/rider_application4', [RiderRegistration::class, 'step4index']);
-
-    // Route::get('/rider_application5', [RiderRegistration::class, 'step5index']);
-
 Route::group(['middleware'=>['RiderStatus']], function(){
     Route::get('/rider_applicationstatus', [RiderRegistration::class, 'RiderApplicationStatus']);
            
