@@ -133,7 +133,7 @@ a {
     font-size: 1.25rem;
 }
 
-.show {
+.showw {
     left: 0;
 }
 
@@ -165,7 +165,7 @@ a {
         padding: 1rem 1rem 0 0;
     }
 
-    .show {
+    .showw {
         width: calc(var(--nav-width) + 210px);
     }
 
@@ -275,82 +275,69 @@ p {
 
 }
 
-#loader-wrapper {
-    bottom: 0;
-    height: 100%;
-    left: 0;
-    background-color: #00000009;
-    position: fixed;
-    right: 0;
-    top: 0;
-    width: 100%;
-    z-index: 9999;
-
+.modal-header {
+    background-color: #F54748;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 1rem 1rem;
+    border-radius: 10px;
+    border-top-left-radius: calc(0.3rem - 1px);
+    border-top-right-radius: calc(0.3rem - 1px);
 }
 
-#loader {
-    background-repeat: no-repeat;
-    height: 100px;
-    left: 55%;
-    margin: -100px 0 0 -100px;
-    position: absolute;
-    top: 35%;
-    width: 100px;
+.red-btn {
+    background: #F54748;
+    padding: 10px 15px;
+    color: #fff;
+    border-radius: 10px;
+    cursor: pointer;
+    border: none;
 }
 
-
-#loader::before,
-#loader::after {
-    content: "";
-    box-sizing: border-box;
-    position: absolute;
-    inset: 0px;
-    border-radius: 50%;
-    border: 5px solid #242424;
-    animation: prixClipFix 2s linear infinite;
+.red-btn:hover {
+    background: #a53030;
+    color: #fff;
+    transition: 0.3s ease-in-out;
+    text-decoration: none;
 }
 
-#loader::after {
-    border-color: #F54748;
-    animation: prixClipFix 2s linear infinite, rotate 0.5s linear infinite reverse;
-    inset: 6px;
+.white-btn {
+    background: #fff;
+    border: 1px #00000069 solid;
+    padding: 10px 15px;
+    border-radius: 10px;
+    color: rgba(0, 0, 0, 0.795);
 }
 
-@media (max-width:550px) {
-    #loader {
-        left: 60%;
-        top: 35%;
-    }
+.modal-header .close {
+    color: #fff;
+    padding: 1rem 1rem;
+    margin: -25px -26px -25px auto;
 }
 
-@keyframes rotate {
-    0% {
-        transform: rotate(0deg)
-    }
-
-    100% {
-        transform: rotate(360deg)
-    }
+.close {
+    float: right;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    opacity: .5;
 }
 
-@keyframes prixClipFix {
-    0% {
-        clip-path: polygon(50% 50%, 0 0, 0 0, 0 0, 0 0, 0 0)
-    }
+.close:hover {
+    color: #00000017;
+    text-decoration: none;
+}
 
-    25% {
-        clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 0, 100% 0, 100% 0)
-    }
+.close:not(:disabled):not(.disabled):hover,
+.close:not(:disabled):not(.disabled):focus {
+    opacity: .75;
+}
 
-    50% {
-        clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 100% 100%, 100% 100%)
-    }
-
-    75% {
-        clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 100%)
-    }
-
-    100% {
-        clip-path: polygon(50% 50%, 0 0, 100% 0, 100% 100%, 0 100%, 0 0)
-    }
+button.close {
+    padding: 0;
+    background-color: transparent;
+    border: 0;
 }

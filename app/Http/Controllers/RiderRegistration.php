@@ -74,8 +74,6 @@ class RiderRegistration extends Controller
             'zip' => 'required|min:4',
             'birthday' => 'required|date|after: 17 year old',
           
-        ],
-        [
         ]
         );
             

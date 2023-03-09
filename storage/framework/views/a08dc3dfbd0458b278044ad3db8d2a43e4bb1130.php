@@ -247,7 +247,11 @@
                                     </div>
                                      <div class="col-sm-5 ml-sm-5">
                                    <div class="row px-2 mt-2">
-                                    <a href="/" class="button-red btn btn-lg text-white" data-toggle="modal" data-target="#exampleModalCenter">Done</a>
+                                    <?php if(Session::get('partnerID')): ?>
+                                    <a href="/partner_logout" class="button-red btn btn-lg w-75 text-white" data-toggle="modal" data-target="#exampleModalCenter">Sign Out</a>
+                                 <?php else: ?>
+                                     <a href="/" class="button-red btn btn-lg w-75 text-white" data-toggle="modal" data-target="#exampleModalCenter">Done</a>
+                                    <?php endif; ?>
                                  </div>
                                  
                                   </div> 
