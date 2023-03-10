@@ -70,7 +70,7 @@
                                   <h3>Set new password</h3>
                                   <p>Your new password must be diﬀerent from your previous password.</p>
                                 </div>
-                                <form method="post" action="{{ route('login.LoginMerchant') }}" class="mt-4">
+                                <form method="post" action="{{ route('RiderForgotReset') }}" class="mt-4">
                                    @csrf
 
                                    <div class="mt-2 ">
@@ -81,7 +81,6 @@
                                         class="form-control my-1 form-control-lg"
                                         placeholder="Password"
                                         id="password"
-                                        value="{{ Cookie::get('password') }}"
                                         
                                     />
                                         <span class="eye" onclick="myFunction()">
@@ -105,11 +104,10 @@
                                     <label for="password">Confirm Password</label>
                                     <input
                                         type="password"
-                                        name="password"
+                                        name="password_confirmation"
                                         class="form-control my-1 form-control-lg"
                                         placeholder="Password"
                                         id="conpassword"
-                                        value="{{ Cookie::get('password') }}"
                                         
                                     />
                                         <span class="eye2" onclick="iFunction()">
@@ -118,7 +116,7 @@
                                         </span>
                                <span
                                 class="error">
-                                @error('password') {{ $message }}
+                                @error('password_confirmation') {{ $message }}
                                 @enderror </span>
                                 
 
@@ -128,7 +126,7 @@
                                     <div class="text-center">
                                         <button
                                             type=""
-                                            class="btn btn-primary btn-md btn-block"
+                                            class="btn btn-primary btn-md btn-block mt-4"
                                         >
                                            Reset Password
                                         </button>
