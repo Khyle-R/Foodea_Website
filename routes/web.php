@@ -38,9 +38,15 @@ Route::get('/partner_forgotpass', [PartnerRegistration::class, 'PartnerForgotPas
 
 Route::get('/rider_forgotpass', [RiderRegistration::class, 'RiderForgotPass']);
 
+Route::post('/rider_forgotpasssend', [RiderRegistration::class, 'RiderForgetSend'])->name('RiderForgetSend');
+
 Route::get('/rider_forgotpass1', [RiderRegistration::class, 'RiderForgotPass2']);
 
+Route::post('/rider_forgotpassverify', [RiderRegistration::class, 'RiderForgotVerify'])->name('RiderForgotVerify');
+
 Route::get('/rider_forgotpass2', [RiderRegistration::class, 'RiderForgotPass3']);
+
+Route::post('/rider_forgotpassreset', [RiderRegistration::class, 'RiderForgotReset'])->name('RiderForgotReset');
 
 Route::get('/rider_forgotpass3', [RiderRegistration::class, 'RiderForgotPass4']);
 
