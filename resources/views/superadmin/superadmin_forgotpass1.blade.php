@@ -71,7 +71,7 @@
                                   <p>We emailed a link for password reset to
                                   <samp style="color:#F54748;">{{ $email->email }}</samp></p>
                                 </div>
-                                <form method="post" action="{{ route('RiderForgotVerify') }}" class="mt-4">
+                                <form method="post" action="{{ route('SuperadminForgotVerify') }}" class="mt-4">
                                    @csrf
                                   
                                     <div class="code-container">
@@ -89,13 +89,13 @@
                                         </button>
                                         <div class="d-flex mt-4 justify-content-center">
                                         <p class="mr-2">Didn't recieve the email?</p>
-                                        <a class="text-danger text-decoration-none" href="/rider_forgotpassresend">Resend email</a>
+                                        <a class="text-danger text-decoration-none" href="/superadmin_forgotpassresend">Resend email</a>
                                         </div>
                                         <div
                                             class="d-flex mt-3 justify-content-center"
                                         >
                                             
-                                            <a href="/rider_login" class="red"><i class="fa fa-arrow-left mr-2"></i>Back to log in</a>
+                                            <a href="/superadmin_login" class="red"><i class="fa fa-arrow-left mr-2"></i>Back to log in</a>
                                         </div>
                                     </div>
                                 </form>

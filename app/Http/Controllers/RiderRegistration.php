@@ -86,6 +86,27 @@ class RiderRegistration extends Controller
         }
      }
      
+     public function RiderForgotResend(Request $request){
+         $email = tbl_rider_accounts::where('email', Session::get('email'))
+          ->first();
+          
+          if($email){
+         $code = mt_rand(1000, 9999);
+
+                       $mailData = [
+                        'title' => 'Password Reset',
+                        'body' => 'test',
+                        'code' => $code,
+                        'fname' => $email->firstname,
+                        'lname' => $email->lastname,
+                       ];
+                       Mail::to($email)->send(new PasswordVerification($mailData));
+
+                    $request->session()->put('verification', $code);
+                     return back();
+     }
+    }
+    
      public function RiderForgotPass3(){
         return view('rider_forgotpass2');
      }
