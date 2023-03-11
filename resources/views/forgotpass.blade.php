@@ -101,7 +101,7 @@
                                             class="d-flex mt-4 justify-content-center"
                                         >
                                             
-                                            <a href="/login" class="red"><i class="fa fa-arrow-left mr-2"></i>Back to log in</a>
+                                            <a href="/rider_login" class="red"><i class="fa fa-arrow-left mr-2"></i>Back to log in</a>
                                         </div>
                                     </div>
                                 </form>

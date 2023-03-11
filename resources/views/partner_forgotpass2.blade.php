@@ -70,7 +70,7 @@
                                   <h3>Set new password</h3>
                                   <p>Your new password must be diﬀerent from your previous password.</p>
                                 </div>
-                                <form method="post" action="{{ route('RiderForgotReset') }}" class="mt-4">
+                                <form method="post" action="{{ route('PartnerForgotReset') }}" class="mt-4">
                                    @csrf
 
                                    <div class="mt-2 ">
@@ -134,7 +134,7 @@
                                             class="d-flex mt-4 justify-content-center"
                                         >
                                             
-                                            <a href="/rider_login" class="red"><i class="fa fa-arrow-left mr-2"></i>Back to log in</a>
+                                            <a href="/login" class="red"><i class="fa fa-arrow-left mr-2"></i>Back to log in</a>
                                         </div>
                                     </div>
                                 </form>

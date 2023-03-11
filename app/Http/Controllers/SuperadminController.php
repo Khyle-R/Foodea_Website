@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use ZipArchive;
+use App\Models\tbl_product;
 use Illuminate\Http\Request;
 use App\Models\admin_account;
 use App\Models\tbl_merchant_info;
 use App\Models\tbl_vehicle_infos;
+use App\Mail\PasswordVerification;
 use App\Models\tbl_accepted_rider;
 use App\Models\tbl_rider_accounts;
 use App\Models\tbl_rider_document;
@@ -14,13 +16,14 @@ use App\Models\tbl_superadmin_log;
 use App\Models\tbl_partner_accounts;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use App\Models\tbl_accepted_merchant;
 use App\Models\tbl_rider_application;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Session;
 use App\Models\tbl_merchant_application;
-use App\Models\tbl_product;
 use Illuminate\Support\Facades\Response;
+use Illuminate\Validation\Rules\Password;
 
 class SuperadminController extends Controller
 {
@@ -30,9 +33,105 @@ class SuperadminController extends Controller
         return view('superadmin.superadmin_dashboard', compact('riders', 'merchant'));
     }
 
-     public function SuperadminForgotPass(){
+    public function SuperadminForgotPass(){
         return view('superadmin.superadmin_forgotpass');
     }
+    public function SuperadminForgetSend(Request $request){
+        $request->validate([
+            'email' => 'required|email'
+        ]);
+
+         $email = admin_account::where('email', $request->email)
+          ->first();
+          
+          if($email){
+         $code = mt_rand(1000, 9999);
+
+                       $mailData = [
+                        'title' => 'Password Reset',
+                        'body' => 'test',
+                        'code' => $code,
+                        'fname' => $email->firstname,
+                        'lname' => $email->lastname,
+                       ];
+                       Mail::to($email)->send(new PasswordVerification($mailData));
+
+                    $request->session()->put('admin_verification', $code);
+                    $request->session()->put('admin_email', $request->email);
+                     return redirect('/superadmin_forgotpass1');
+         } 
+         else{
+            return back()->with('fail', 'Email does not exist');
+         }
+        
+    }
+     public function SuperadminForgotPass2(){
+        $email = admin_account::where('email', Session::get('admin_email'))
+        ->first();
+        
+        return view('superadmin.superadmin_forgotpass1', compact('email'));
+     }
+
+     public function SuperadminForgotVerify(Request $request){
+        $num1 = $request->num1;
+        $num2 = $request->num2;
+        $num3 = $request->num3;
+        $num4 = $request->num4;
+        if($num1. $num2 . $num3 . $num4 == Session::get('admin_verification')){
+            return redirect('/superadmin_forgotpass2');
+        }
+        else{
+            return back()->with('fail', 'Verification does not match');
+        }
+     }
+     
+     public function SuperadminForgotResend(Request $request){
+         $email = admin_account::where('email', Session::get('admin_email'))
+          ->first();
+          
+          if($email){
+         $code = mt_rand(1000, 9999);
+
+                       $mailData = [
+                        'title' => 'Password Reset',
+                        'body' => 'test',
+                        'code' => $code,
+                        'fname' => $email->firstname,
+                        'lname' => $email->lastname,
+                       ];
+                       Mail::to($email)->send(new PasswordVerification($mailData));
+
+                    $request->session()->put('admin_verification', $code);
+                     return back();
+     }
+    }
+     public function SuperadminForgotPass3(){
+        return view('superadmin.superadmin_forgotpass2');
+     }
+
+     public function SuperadminForgotReset(Request $request){
+        $request->validate([
+            'password' => 'required|confirmed',
+            'password_confirmation' => 'required'
+        ]);
+        if($request->password == $request->password_confirmation){
+            $hash = Hash::make($request->password_confirmation);
+            $res = admin_account::where('email', Session::get('admin_email'))
+            ->update([
+                'password' => $hash
+            ]);
+            if($res){
+                Session::pull('admin_email');
+                Session::pull('admin_verification');
+                return redirect('/superadmin_forgotpass3');
+            }
+        }
+        
+       
+     }
+     public function SuperadminForgotPass4(){
+        return view('superadmin.superadmin_forgotpass3');
+     }
     
      public function changepass(){
         return view('superadmin.superadmin_changepassword');

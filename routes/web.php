@@ -34,8 +34,6 @@ Route::get('/rider_logout', [RiderRegistration::class, 'RiderLogout']);
 
 Route::get('/partner_logout', [PartnerRegistration::class, 'PartnerLogout']);
 
-Route::get('/partner_forgotpass', [PartnerRegistration::class, 'PartnerForgotPass']);
-
 Route::get('/rider_forgotpass', [RiderRegistration::class, 'RiderForgotPass']);
 
 Route::post('/rider_forgotpasssend', [RiderRegistration::class, 'RiderForgetSend'])->name('RiderForgetSend');
@@ -44,15 +42,50 @@ Route::get('/rider_forgotpass1', [RiderRegistration::class, 'RiderForgotPass2'])
 
 Route::post('/rider_forgotpassverify', [RiderRegistration::class, 'RiderForgotVerify'])->name('RiderForgotVerify');
 
+Route::get('/rider_forgotpassresend', [RiderRegistration::class, 'RiderForgotResend']);
+
 Route::get('/rider_forgotpass2', [RiderRegistration::class, 'RiderForgotPass3']);
 
 Route::post('/rider_forgotpassreset', [RiderRegistration::class, 'RiderForgotReset'])->name('RiderForgotReset');
 
 Route::get('/rider_forgotpass3', [RiderRegistration::class, 'RiderForgotPass4']);
 
+Route::get('/rider_signupexit', [Home::class, 'ExitSignup'])->name('ExitSignup');
+
+
+
+Route::get('/partner_forgotpass', [PartnerRegistration::class, 'PartnerForgotPass']);
+
+Route::post('/partner_forgotpasssend', [PartnerRegistration::class, 'PartnerForgetSend'])->name('PartnerForgetSend');
+
+Route::get('/partner_forgotpass1', [PartnerRegistration::class, 'PartnerForgotPass2']);
+
+Route::post('/partner_forgotpassverify', [PartnerRegistration::class, 'PartnerForgotVerify'])->name('PartnerForgotVerify');
+
+Route::get('/partner_forgotpassresend', [PartnerRegistration::class, 'PartnerForgotResend']);
+
+Route::get('/partner_forgotpass2', [PartnerRegistration::class, 'PartnerForgotPass3']);
+
+Route::post('/partner_forgotpassreset', [PartnerRegistration::class, 'PartnerForgotReset'])->name('PartnerForgotReset');
+
+Route::get('/partner_forgotpass3', [PartnerRegistration::class, 'PartnerForgotPass4']);
+
+
 Route::get('/superadmin_forgotpass', [SuperadminController::class, 'SuperadminForgotPass']);
 
-Route::get('/rider_signupexit', [Home::class, 'ExitSignup'])->name('ExitSignup');
+Route::post('/superadmin_forgotpasssend', [SuperadminController::class, 'SuperadminForgetSend'])->name('SuperadminForgetSend');
+
+Route::get('/superadmin_forgotpass1', [SuperadminController::class, 'SuperadminForgotPass2']);
+
+Route::post('/superadmin_forgotpassverify', [SuperadminController::class, 'SuperadminForgotVerify'])->name('SuperadminForgotVerify');
+
+Route::get('/superadmin_forgotpassresend', [SuperadminController::class, 'SuperadminForgotResend']);
+
+Route::get('/superadmin_forgotpass2', [SuperadminController::class, 'SuperadminForgotPass3']);
+
+Route::post('/superadmin_forgotpassreset', [SuperadminController::class, 'SuperadminForgotReset'])->name('SuperadminForgotReset');
+
+Route::get('/superadmin_forgotpass3', [SuperadminController::class, 'SuperadminForgotPass4']);
 
 
 Route::group(['middleware'=>['RiderStep2']], function(){

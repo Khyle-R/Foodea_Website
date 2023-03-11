@@ -70,7 +70,7 @@
                                   <h3>Forgot password?</h3>
                                   <p>We'll happy to help out</p>
                                 </div>
-                                <form method="post" action="{{ route('login.LoginMerchant') }}" class="mt-4">
+                                <form method="post" action="{{ route('PartnerForgetSend') }}" class="mt-4">
                                    @csrf
 
                                     <div class="form-group mb-4">
@@ -80,7 +80,6 @@
                                         name="email"
                                         class="form-control my-1"
                                         placeholder="example@gmail.com"
-                                        value="{{ Cookie::get('email') }}"
                                     />
                                        <span
                                         class="error">

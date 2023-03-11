@@ -7,6 +7,7 @@ use Illuminate\Http\Response;
 use App\Mail\MailVerification;
 use App\Models\tbl_activitylog;
 use App\Models\tbl_merchant_info;
+use App\Mail\PasswordVerification;
 use App\Models\tbl_rider_accounts;
 use App\Models\tbl_partner_accounts;
 use Illuminate\Support\Facades\Hash;
@@ -15,6 +16,7 @@ use App\Models\tbl_merchant_document;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Session;
 use App\Models\tbl_merchant_application;
+use Illuminate\Validation\Rules\Password;
 
 class PartnerRegistration extends Controller
 {
@@ -32,6 +34,105 @@ class PartnerRegistration extends Controller
     public function PartnerForgotPass(){
         return view('partner_forgotpass');
     }
+    public function PartnerForgetSend(Request $request){
+        $request->validate([
+            'email' => 'required|email'
+        ]);
+
+         $email = tbl_partner_accounts::where('email', $request->email)
+          ->first();
+          
+          if($email){
+         $code = mt_rand(1000, 9999);
+
+                       $mailData = [
+                        'title' => 'Password Reset',
+                        'body' => 'test',
+                        'code' => $code,
+                        'fname' => $email->firstname,
+                        'lname' => $email->lastname,
+                       ];
+                       Mail::to($email)->send(new PasswordVerification($mailData));
+
+                    $request->session()->put('partner_verification', $code);
+                    $request->session()->put('partner_email', $request->email);
+                     return redirect('/partner_forgotpass1');
+         } 
+         else{
+            return back()->with('fail', 'Email does not exist');
+         }
+        
+    }
+     public function PartnerForgotPass2(){
+        $email = tbl_partner_accounts::where('email', Session::get('partner_email'))
+        ->first();
+        
+        return view('partner_forgotpass1', compact('email'));
+     }
+
+     public function PartnerForgotVerify(Request $request){
+        $num1 = $request->num1;
+        $num2 = $request->num2;
+        $num3 = $request->num3;
+        $num4 = $request->num4;
+        if($num1. $num2 . $num3 . $num4 == Session::get('partner_verification')){
+            return redirect('/partner_forgotpass2');
+        }
+        else{
+            return back()->with('fail', 'Verification does not match');
+        }
+     }
+     
+     public function PartnerForgotResend(Request $request){
+         $email = tbl_partner_accounts::where('email', Session::get('partner_email'))
+          ->first();
+          
+          if($email){
+         $code = mt_rand(1000, 9999);
+
+                       $mailData = [
+                        'title' => 'Password Reset',
+                        'body' => 'test',
+                        'code' => $code,
+                        'fname' => $email->firstname,
+                        'lname' => $email->lastname,
+                       ];
+                       Mail::to($email)->send(new PasswordVerification($mailData));
+
+                    $request->session()->put('partner_verification', $code);
+                     return back();
+     }
+    }
+     public function PartnerForgotPass3(){
+        return view('partner_forgotpass2');
+     }
+
+     public function PartnerForgotReset(Request $request){
+        $request->validate([
+            'password' => [
+            'required', 'confirmed',
+            Password::min(8)->letters()->numbers()->symbols()
+            ],
+            'password_confirmation' => 'required'
+        ]);
+        if($request->password == $request->password_confirmation){
+            $hash = Hash::make($request->password_confirmation);
+            $res = tbl_partner_accounts::where('email', Session::get('partner_email'))
+            ->update([
+                'password' => $hash
+            ]);
+            if($res){
+                Session::pull('partner_email');
+                Session::pull('partner_verification');
+                return redirect('/partner_forgotpass3');
+            }
+        }
+        
+       
+     }
+     public function PartnerForgotPass4(){
+        return view('partner_forgotpass3');
+     }
 
     public function partner2submit(Request $request){
 
