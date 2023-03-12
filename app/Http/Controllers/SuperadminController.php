@@ -295,8 +295,12 @@ class SuperadminController extends Controller
     ->distinct()
     ->get(['tbl_accepted_rider.accepted_rider_id' ,'tbl_rider_account.rider_id', 'firstname', 'lastname', 'tbl_document_info.rider_photo', 'suffix', 'email', 'mobile_number', 'address', 'city', 'barangay', 'middlename']);
    
-    return view('superadmin.superadminapplication_accepted_rider', compact('Data'));
-   }
+    if($Data)
+    {
+    $accepted = tbl_accepted_rider::count();
+    return view('superadmin.superadminapplication_accepted_rider', compact('Data', 'accepted'));
+    }
+}
    
     public function AcceptedPartner(){
     
@@ -306,8 +310,12 @@ class SuperadminController extends Controller
     ->distinct()
     ->get(['tbl_accepted_merchant.accepted_merchant_id', 'business_name', 'merchant_document.logo', 'tbl_merchant_account.merchant_id', 'business_type', 'tbl_merchant_info.barangay', 'tbl_merchant_info.city', 'tbl_merchant_info.address', 'store_email', 'store_number']);    
 
-    return view('superadmin.superadminapplication_accepted_partner', compact('Data'));
-   }
+    if($Data)
+    {
+    $accepted = tbl_accepted_merchant::count();
+    return view('superadmin.superadminapplication_accepted_partner', compact('Data', 'accepted'));
+    }
+}
 
    public function RiderAccept(Request $request){
 
@@ -394,6 +402,22 @@ class SuperadminController extends Controller
     return view('superadmin.superadmin_merchantapplicationprofile', compact('Data'));
    
    }
+   public function MerchantDeleteApplicationProfile(Request $request, $id){
+    $res = tbl_merchant_application::where('merchant_id', $id)
+    ->update([
+        'status' => 'Rejected'
+    ]);
+    if($res)
+    {
+        tbl_accepted_merchant::where('merchant_id', $id)
+        ->delete();
+        
+        $request->session()->put('success', 'Status Updated');
+        return back();
+    }
+   }
+
+
    public function MerchantReview(){
     
        $Data = tbl_partner_accounts::join('tbl_merchant_info', 'tbl_merchant_account.merchant_id', '=', 'tbl_merchant_info.merchant_id')
@@ -523,7 +547,20 @@ class SuperadminController extends Controller
     return view('superadmin.superadmin_applicationprofile', compact('Data', 'document'));
    }
    
-   
+   public function RiderDeleteApplicationProfile(Request $request, $id){
+    $res = tbl_rider_application::where('rider_id', $id)
+    ->update([
+        'status' => 'Rejected'
+    ]);
+    if($res)
+    {
+        tbl_accepted_rider::where('rider_id', $id)
+        ->delete();
+        
+        $request->session()->put('success', 'Status Updated');
+        return back();
+    }
+   }
 
    
    public function UpdateMerchant(Request $request){
@@ -592,10 +629,15 @@ class SuperadminController extends Controller
    }
       public function RemoveAcceptedRider(Request $request){
         
-        $res = tbl_accepted_rider::where('accepted_rider_id', $request->accepted_rider_id)
-        ->delete();
+         $res = tbl_rider_application::where('rider_id', $request->rider_id)
+        ->Update([
+            'status' => 'Rejected'            
+        ]);
         
         if($res){
+            tbl_accepted_rider::where('accepted_rider_id', $request->accepted_rider_id)
+            ->delete();
+            
             $request->session()->put('success', 'Status Updated');
             return back();
         }
@@ -603,10 +645,16 @@ class SuperadminController extends Controller
       
        public function RemoveAcceptedMerchant(Request $request){
         
-        $res = tbl_accepted_merchant::where('accepted_merchant_id', $request->accepted_merchant_id)
-        ->delete();
+        $res = tbl_merchant_application::where('merchant_id', $request->merchant_id)
+        ->Update([
+            'status' => 'Rejected'            
+        ]);
         
         if($res){
+            
+             tbl_accepted_merchant::where('accepted_merchant_id', $request->accepted_merchant_id)
+            ->delete();
+
             $request->session()->put('success', 'Status Updated');
             return back();
         }
