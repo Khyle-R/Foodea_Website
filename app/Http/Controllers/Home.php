@@ -2,16 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\tbl_merchant_application;
-use App\Models\tbl_merchant_document;
-use App\Models\tbl_merchant_info;
-use App\Models\tbl_partner_accounts;
-use App\Models\tbl_rider_accounts;
-use App\Models\tbl_rider_application;
-use App\Models\tbl_rider_document;
-use App\Models\tbl_vehicle_infos;
+use App\Mail\ContactUs;
+use App\Mail\PasswordVerification;
 use Illuminate\Http\Request;
+use App\Models\tbl_merchant_info;
+use App\Models\tbl_vehicle_infos;
+use App\Models\tbl_rider_accounts;
+use App\Models\tbl_rider_document;
+use App\Models\tbl_partner_accounts;
+use Illuminate\Support\Facades\Mail;
+use App\Models\tbl_merchant_document;
+use App\Models\tbl_rider_application;
 use Illuminate\Support\Facades\Session;
+use App\Models\tbl_merchant_application;
 
 class Home extends Controller
 {
@@ -95,5 +98,22 @@ class Home extends Controller
     }
      public function VisionIndex(){
         return view ('vision');
+    }
+
+    public function ContactIndex(){ 
+         return view('contact');
+    }
+
+    public function ContactUssend(Request $request){
+        $mailData = [
+            'title' => 'Password Reset',
+            'body' => 'test',
+            'name' => $request->name,
+            'text' => $request->text,
+            ];
+            Mail::to($request->email)->send(new ContactUs($mailData));     
+            
+            return back();
+        
     }
 }
