@@ -41,7 +41,7 @@
                                 <li class="nav-size nav-item"><a class="nav-link" href="/superadmin_pending">Pending</a></li>
                                 <li class="nav-size nav-item"><a class="nav-link" href="/superadmin_review">Reviewing</a></li>
                                 <li class="nav-size nav-item"><a class="nav-link" href="/superadmin_accept">Accepted</a></li>
-                                <li class="nav-size nav-item"><a class="nav-link" href="/superadmin_archive">Rejected</a></li>    
+                                <li class="nav-size nav-item"><a class="nav-link" href="/superadmin_archive">Archived</a></li>    
                                 </ul>
                             </div>
                         </div>

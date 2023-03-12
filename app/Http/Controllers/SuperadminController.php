@@ -9,6 +9,7 @@ use App\Models\admin_account;
 use App\Models\tbl_merchant_info;
 use App\Models\tbl_vehicle_infos;
 use App\Mail\PasswordVerification;
+use App\Mail\RiderAccepted;
 use App\Models\tbl_accepted_rider;
 use App\Models\tbl_rider_accounts;
 use App\Models\tbl_rider_document;
@@ -469,7 +470,18 @@ class SuperadminController extends Controller
 
         if($res)
         {
-            $request->session()->put('success', 'Status Updated');
+          $email = tbl_rider_accounts::where('rider_id',  $request->rider_id)
+          ->first();
+          
+             $mailData = [
+                'title' => 'Password Reset',
+                'body' => 'test',
+                'fname' => $email->firstname,
+                'lname' => $email->lastname,
+                ];
+                Mail::to($email->email)->send(new RiderAccepted($mailData));
+                
+              $request->session()->put('success', 'Status Updated');
                return back();
         }
      
@@ -541,6 +553,17 @@ class SuperadminController extends Controller
 
          if($res)
         {
+            $email = tbl_partner_accounts::where('merchant_id',  $request->merchant_id)
+          ->first();
+          
+             $mailData = [
+                'title' => 'Password Reset',
+                'body' => 'test',
+                'fname' => $email->firstname,
+                'lname' => $email->lastname,
+                ];
+                Mail::to($email->email)->send(new RiderAccepted($mailData));
+                
             $request->session()->put('success', 'Status Updated');
                return back();
         }
