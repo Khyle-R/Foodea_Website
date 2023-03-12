@@ -81,7 +81,7 @@
                                         name="email"
                                         class="form-control my-1"
                                         placeholder="example@gmail.com"
-                                        value="<?php echo e(Cookie::get('email')); ?>"
+                                        value="<?php echo e(Cookie::get('rider_email')); ?>"
                                     />
                                        <span
                                         class="error">
@@ -104,7 +104,7 @@ unset($__errorArgs, $__bag); ?></span>
                                             class="form-control my-1 form-control-lg"
                                             placeholder="Password"
                                             id="password"
-                                            value="<?php echo e(Cookie::get('password')); ?>"
+                                            value="<?php echo e(Cookie::get('rider_password')); ?>"
                                         />
                                         <span class="eye" onclick="myFunction()">
                                             <i class="fa fa-eye" id="hide1"></i>

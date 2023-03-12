@@ -69,12 +69,17 @@
                                   <i class="fa fa-envelope fa-2x key"></i>
                                   <h3>Check you Email</h3>
                                   <p>We emailed a link for password reset to
-                                  <samp style="color:#F54748;">@gmail.com</samp></p>
+                                  <samp style="color:#F54748;">{{ $email->email }}</samp></p>
                                 </div>
-                                <form method="post" action="{{ route('login.LoginMerchant') }}" class="mt-4">
+                                <form method="post" action="{{ route('RiderForgotVerify') }}" class="mt-4">
                                    @csrf
                                   
-                                        
+                                    <div class="code-container">
+                                    <input name="num1" type="number" class="code" placeholder="0" min="0" max="9" required>
+                                    <input name="num2" type="number" class="code" placeholder="0" min="0" max="9" required>
+                                    <input name="num3" type="number" class="code" placeholder="0" min="0" max="9" required>
+                                    <input name="num4" type="number" class="code" placeholder="0" min="0" max="9" required>
+                                    </div>   
                                     <div class="text-center">
                                         <button
                                             type="submit"
@@ -84,13 +89,13 @@
                                         </button>
                                         <div class="d-flex mt-4 justify-content-center">
                                         <p class="mr-2">Didn't recieve the email?</p>
-                                        <a class="text-danger text-decoration-none" href="partner_application3resend">Resend email</a>
+                                        <a class="text-danger text-decoration-none" href="/rider_forgotpassresend">Resend email</a>
                                         </div>
                                         <div
                                             class="d-flex mt-3 justify-content-center"
                                         >
                                             
-                                            <a href="/login" class="red"><i class="fa fa-arrow-left mr-2"></i>Back to log in</a>
+                                            <a href="/rider_login" class="red"><i class="fa fa-arrow-left mr-2"></i>Back to log in</a>
                                         </div>
                                     </div>
                                 </form>
@@ -124,5 +129,5 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"
     ></script>
-    
+     <script src="{{ asset('js/verification.js') }}"></script>
 </html>

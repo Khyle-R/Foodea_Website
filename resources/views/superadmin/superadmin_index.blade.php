@@ -61,13 +61,13 @@
           /></a>
         </div>
         <ul class="nav">
-          <li class="nav-item profile">
+          <li class="nav-item profile mt-3">
             <div class="profile-desc">
               <div class="profile-pic">
                 <div class="count-indicator">
                   <img
                     class="img-xs rounded-circle"
-                    src="{{ asset('assets/images/faces/face15.jpg') }}"
+                    src="{{ url('image/foodea1.png') }}"
                     alt=""
                   />
                   <span class="count bg-success"></span>
@@ -87,7 +87,7 @@
                 class="dropdown-menu dropdown-menu-right sidebar-dropdown preview-list"
                 aria-labelledby="profile-dropdown"
               >
-                <a href="#" class="dropdown-item preview-item">
+                <a href="/superadmin_account" class="dropdown-item preview-item">
                   <div class="preview-thumbnail">
                     <div class="preview-icon bg-dark rounded-circle">
                       <i class="mdi mdi-settings text-primary"></i>
@@ -100,7 +100,7 @@
                   </div>
                 </a>
                 <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item preview-item">
+                {{-- <a href="#" class="dropdown-item preview-item">
                   <div class="preview-thumbnail">
                     <div class="preview-icon bg-dark rounded-circle">
                       <i class="mdi mdi-onepassword text-info"></i>
@@ -111,7 +111,7 @@
                       Change Password
                     </p>
                   </div>
-                </a>
+                </a> --}}
          
               </div>
             </div>
@@ -432,7 +432,8 @@
                   <div class="navbar-profile">
                     <img
                       class="img-xs rounded-circle"
-                      src="{{ asset('assets/images/faces/face15.jpg') }}"
+                      style="background-color: #fff"
+                      src="{{ url('image/foodea1.png') }}"
                       alt=""
                     />
                     <p class="mb-0 d-none d-sm-block navbar-profile-name">
@@ -448,7 +449,7 @@
                 >
                   <h6 class="p-3 mb-0 white-font">Profile</h6>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item preview-item">
+                  <a href="/superadmin_account" class="dropdown-item preview-item">
                     <div class="preview-thumbnail">
                       <div class="preview-icon bg-dark rounded-circle">
                         <i class="mdi mdi-settings text-success"></i>

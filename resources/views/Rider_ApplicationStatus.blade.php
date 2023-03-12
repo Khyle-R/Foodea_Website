@@ -86,18 +86,19 @@
                                     <div class="col-md-6 ml-5">
                                       <div class="row align-items-center ">
                                    
-                                      <img class="circle img-responsive mr-3" width="170" height="160" src="{{ url(('uploads/'. 'rider_documents'. '/'.$rider->rider_id. '/'). $rider->rider_photo) }}" alt="">
-                                      <div class="col flex-wrap">
+                                        <div class="text-center">
+                                      <img class="circle img-fluid mr-3" src="{{ url(('uploads/'. 'rider_documents'. '/'.$rider->rider_id. '/'). $rider->rider_photo) }}" alt="">
+                                     </div>
                              
                                     
                             
                                       <h2 class="red-name text-center pt-3"> {{ $rider->firstname . " ". $rider->lastname  }} </h2>
-                                      </div>
+                                  
                                       </div>
                                     </div> 
                                        
 
-                                    <div class="col-sm-5">
+                                    <div class="col-sm-12 col-lg-5">
                                       <div class="card-pending py-4 px-4 mx-0 mx-md-5 rounded">
                                       <div class="">
                                       <h4 class="text-center text-white">{{ $rider->status }}</h4>
@@ -279,9 +280,9 @@
                                    <div class="row px-2 mt-2 align-items-center justify-content-center">
 
                                       @if(Session::get('registerID'))
-                                    <a href="/rider_logout" class="button-red btn btn-lg w-75" data-toggle="modal" data-target="#exampleModalCenter">Sign Out</a>
+                                    <a href="/rider_logout" class="button-red btn btn-lg w-75 text-white" data-toggle="modal" data-target="#exampleModalCenter">Sign Out</a>
                                  @else
-                                     <a href="/" class="button-red btn btn-lg w-75" data-toggle="modal" data-target="#exampleModalCenter">Done</a>
+                                     <a href="/" class="button-red btn btn-lg w-75 text-white" data-toggle="modal" data-target="#exampleModalCenter">Done</a>
                                     @endif
 
                                   </div>

@@ -1,7 +1,7 @@
-<!DOCTYPE html>
-<html>
+    <!DOCTYPE html>
+<html lang="en">
   <head>
-    <meta charset="utf-8" />
+     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" href="{{ url('image/foodea1.png') }}">
     <title>FOODEA Vehicle Informtion</title>
@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css" />
     <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css" />
-    <link
+     <link
       href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"
       rel="stylesheet"
     />
@@ -28,14 +28,14 @@
     <div class="l-navbar" id="nav-bar">
       <nav class="nav">
         <div>
-          <a href="/" class="nav_logo">
+          <a href="" data-bs-toggle="modal" data-bs-target="#ExitModal" class="nav_logo">
               <i class="bx bx-log-out nav_icon text-white"></i>
               <span class="nav_logo-name">Back to Website</span>
           </a>
             <div class="nav_list logos">
               <div class="title d-flex pb-3 ps-2 gap-2 align-items-center">
               <img src="image/foodea.png" style="width: 50px">FOODEA
-            </div>
+               </div>
             <div class="nav_link active mt-3 py-3 ms-2">
               <i class="bx bx-grid-alt nav_icon"></i>
               <span class="nav_name">Term User</span>
@@ -64,15 +64,14 @@
         </div>
         </div>
       </nav>
-    </div>
-    <!-- Content Here -->
-    <!-- Form -->
-    <!-- <div class="container sign-form"> -->
+      
+       <!-- Form -->
+    {{-- <div class="sign-form"> --}}
       <div class="content-wrapper container mt-5 pt-3 pt-md-4 px-3 px-md-5 py-2">
         <div class="col-12 col-sm-12 col-md-9 col-lg-7 justify-content-center align-items-center mx-auto px-0">
-            <div class="right">
+           <div class="right">
           <h2>Create your Account</h2>
-          <h3 class="pb-4">Please fill up the form below.</h3>
+          <p>Please fill up the form below.</p>
           <form method="post" action="{{ route('AddVehicleType') }}">
               @csrf
             <!--GET RIDER ID-->
@@ -131,19 +130,45 @@
             @error('phone') {{ $message }}
             @enderror</span>
             </div>
-            <br>
-           <h3 class="notice">Please make sure the details you have entered above is correct before you proceed to the next screen. You will not able to navigate back.</h3>
-           <br>
+
+           <br><br>
            <div class="form-group">
-            <div class="col-sm-12 d-flex justify-content-center">
+            <div class="col-sm-10 d-flex justify-content-center">
               <button Value="submit" type="submit" class="btn btn-danger w-50">Next</button>
             </div>
            </div>
             </form>
           </div>
         </div>
-       </div>
-     <!-- </div> -->
+      </div>
+      <!-- Scroller -->
+    </div>  
+
+    
+  <!-- EXIT Modal -->
+        <div class="modal fade" id="ExitModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title text-white" id="exampleModalLabel">Exit Signup</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <form action="{{ route('ExitSignup') }}">
+              <div class="modal-body">
+                Are you sure to discard your application?
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="white-btn" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="red-btn">Confirm</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+ <!-- </div> -->
     <!-- End Content Here -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"

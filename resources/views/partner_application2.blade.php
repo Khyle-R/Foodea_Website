@@ -27,7 +27,7 @@
     <div class="l-navbar" id="nav-bar">
       <nav class="nav">
         <div>
-          <a href="/" class="nav_logo">
+           <a href="" data-bs-toggle="modal" data-bs-target="#ExitModal" class="nav_logo">
               <i class="bx bx-log-out nav_icon text-white"></i>
               <span class="nav_logo-name">Back to Website</span>
           </a>
@@ -163,7 +163,7 @@
 
               <div class="form-group">
                 <label>Registered Postal Code</label>
-                <input type="text" name="postal_code" class="form-control form-control-lg"/>
+                <input type="text" maxlength="4" onkeypress="return event.charCode>=48 && event.charCode<=57" name="postal_code" class="form-control form-control-lg"/>
                 <span
                 style="color:red;">
                 @error('postal_code') {{ $message }}
@@ -172,7 +172,7 @@
 
               <div class="form-group">
                 <label>Store Phone No.</label>
-                <input type="text" name="store_number" class="form-control form-control-lg"/>
+                <input type="text" maxlength="10" onkeypress="return event.charCode>=48 && event.charCode<=57" name="store_number" class="form-control form-control-lg"/>
                 <span
                 style="color:red;">
                 @error('store_number') {{ $message }}
@@ -218,6 +218,31 @@
             </div>
           </div>
      <!-- </div> -->
+
+     
+  <!-- EXIT Modal -->
+        <div class="modal fade" id="ExitModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title text-white" id="exampleModalLabel">Exit Signup</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <form action="{{ route('ExitSignup') }}">
+              <div class="modal-body">
+                Are you sure to discard your application?
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="white-btn" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="red-btn">Confirm</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
     <!-- End Content Here -->
     <!-- Show Hide Password -->
  

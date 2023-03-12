@@ -17,6 +17,7 @@
     />
     <link rel="stylesheet" href="css/rider_application2.css">
   </head>
+  
   <body id="body-pd">
     <header class="header" id="header">
       <div class="header_toggle">
@@ -27,7 +28,7 @@
     <div class="l-navbar" id="nav-bar">
       <nav class="nav">
         <div>
-          <a href="/" class="nav_logo">
+           <a href="" data-bs-toggle="modal" data-bs-target="#ExitModal" class="nav_logo">
               <i class="bx bx-log-out nav_icon text-white"></i>
               <span class="nav_logo-name">Back to Website</span>
           </a>
@@ -64,6 +65,8 @@
         </div>
       </nav>
     </div>
+
+  
     <!-- Content Here -->
     <!-- Form -->
     <!-- <div class="container sign-form"> -->
@@ -83,7 +86,7 @@
                     <span class="fas fa-times"></span>
                 </div>
             </div>
-            
+
             <script>
                 $(".failed").show(function () {
                     $(".alert").addClass("show");
@@ -114,7 +117,7 @@
                         </div>
                          <div class="form-group">
                           <div class="col-sm-12 d-flex justify-content-start mb-4">
-                            <button value="submit" type="submit" class="btn btn-danger">Verify</button>
+                            <button value="submit" type="submit" class="btn btn-danger button">Verify</button>
                           </div>
                         </div>
                         </form>
@@ -124,6 +127,29 @@
                  </div>
             </div>
           </div>
+          
+             <!-- EXIT Modal -->
+        <div class="modal fade" id="ExitModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title text-white" id="exampleModalLabel">Exit Signup</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <form action="{{ route('ExitSignup') }}">
+              <div class="modal-body">
+                Are you sure to discard your application?
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="white-btn" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="red-btn">Confirm</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
      <!-- </div> -->
     <!-- End Content Here -->
     <!-- Show Hide Password -->
@@ -137,5 +163,7 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="{{ asset('js/verification.js') }}"></script>
     <script src = "js/sidebar.js"></script>
+    
   </body>
+  
 </html>

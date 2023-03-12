@@ -557,7 +557,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form method="post" action="">
+                            <form method="post" action="{{ route('RiderEmergencyUpdate') }}">
                                 @csrf
 
                             <div class="form-group">
@@ -567,45 +567,22 @@
                              <div class="form-row">
                             <div class="form-group col-md-6">
                             <label for="first">Name</label>
-                            <input type="text" value="{{ $rider->firstname }}" class="form-control input-border" id="first" placeholder="Firstname">
+                            <input name="name" type="text" value="{{ $rider->firstname }}" class="form-control input-border" id="first" placeholder="Firstname">
                             </div>
 
                             <div class="form-group col-md-6">
                             <label for="middle">Relationship</label>
-                            <input type="text" value="{{ $rider->middlename }}" class="form-control input-border" id="middle" placeholder="Middlename">
+                            <input name="relationship" type="text" value="{{ $rider->middlename }}" class="form-control input-border" id="middle" placeholder="Middlename">
                             </div>
                               </div>
                       
                              <div class="form-group">
                             <label for="barang">Contact Number</label>
-                            <input type="text" value="{{ $rider->zip_code }}" class="form-control input-border" id="barang">
+                            <input name="contact_number" type="text" value="{{ $rider->zip_code }}" class="form-control input-border" id="barang">
                             </div>
 
-                                
-                            <div class="form-group">
-                            <h5>Secondary</h5>
-                            </div>
-
-                             <div class="form-row">
-                            <div class="form-group col-md-6">
-                            <label for="first">Name</label>
-                            <input type="text" value="{{ $rider->firstname }}" class="form-control input-border" id="first" placeholder="Firstname">
-                            </div>
-
-                            <div class="form-group col-md-6">
-                            <label for="middle">Relationship</label>
-                            <input type="text" value="{{ $rider->middlename }}" class="form-control input-border" id="middle" placeholder="Middlename">
-                            </div>
-                              </div>
-                      
-                             <div class="form-group">
-                            <label for="barang">Contact Number</label>
-                            <input type="text" value="{{ $rider->zip_code }}" class="form-control input-border" id="barang">
-                            </div>
-
-                    
-                       
                             <input type="hidden" name="id" value="{{ $rider->accepted_rider_id }}">
+                             <input type="hidden" name="rider_id" value="{{ $rider->rider_id }}">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn white-btn" data-dismiss="modal">Close</button>

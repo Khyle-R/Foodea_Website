@@ -78,7 +78,7 @@
                                         name="email"
                                         class="form-control my-1"
                                         placeholder="example@gmail.com"
-                                        value="{{ Cookie::get('email') }}"
+                                        value="{{ Cookie::get('partner_email') }}"
                                     />
                                        <span
                                         class="error">
@@ -93,7 +93,7 @@
                                             class="form-control my-1 form-control-lg"
                                             placeholder="Password"
                                             id="password"
-                                            value="{{ Cookie::get('password') }}"
+                                            value="{{ Cookie::get('partner_password') }}"
                                             
                                         />
                                             <span class="eye" onclick="myFunction()">

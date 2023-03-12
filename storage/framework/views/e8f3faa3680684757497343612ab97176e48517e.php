@@ -425,6 +425,7 @@
                     <p>foodea@gmail.com</p>
                 </div>
                 <div class="legal">
+                    <div class="legal">
                     <h2>Legal:</h2>
                     <a href="/terms_condition" class="text-reset text-decoration-none">
                       <p>Terms and Condition</p>
