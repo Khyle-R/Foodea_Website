@@ -312,10 +312,9 @@ Route::get('/about', function () {
 });
 
 //ROUTE CONTACT
-Route::get('/contact', function () {
-    return view('contact');
-});
+Route::get('/contact', [Home::class, 'ContactIndex']);
 
+Route::post('/contact_send', [Home::class, 'ContactUssend'])->name('ContactUssend');
 
 Route::get('/rider_vehicle', function () {
     return view('rider_vehicle');
