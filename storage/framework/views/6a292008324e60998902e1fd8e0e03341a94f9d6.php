@@ -171,6 +171,7 @@
                                 <?php echo csrf_field(); ?>
                             <input type="hidden" name="status" value="Accepted">
                             <input type="hidden" name="id" value="<?php echo e($rider->rider_application_id); ?>">
+                             <input type="hidden" name="rider_id" value="<?php echo e($rider->rider_id); ?>">
                         </div>
                         <div class="modal-footer">
                              <button type="button" class="btn white-btn" data-dismiss="modal">Close</button>
