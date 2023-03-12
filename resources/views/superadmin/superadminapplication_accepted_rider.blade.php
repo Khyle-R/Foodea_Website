@@ -37,7 +37,12 @@
                 <div class="card-body">
                     <div class="row justify-content-sm-between px-3 mb-3">
                         <h5 class="card-title black">
-                            Showing 3 Applicants
+                             @if ($accepted)
+                                Showing {{ $accepted }} Applicants
+                                @else
+                                    Showing 0 Applicants 
+                             @endif
+                           
                         </h5>
                     </div>
                 
@@ -150,6 +155,7 @@
                             <form method="post" action="{{ route('RemoveRider') }}">
                                 @csrf
                             <input type="hidden" name="accepted_rider_id" value="{{ $rider->accepted_rider_id }}">
+                            <input type="hidden" name="rider_id" value="{{ $rider->rider_id }}">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn white-btn" data-dismiss="modal">Close</button>

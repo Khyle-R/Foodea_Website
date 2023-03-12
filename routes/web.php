@@ -195,6 +195,8 @@ Route::group(['middleware'=>['superadminLogin']], function(){
 
     Route::get('/application_profile/{id}', [SuperadminController::class, 'ApplicationProfile']);
 
+    Route::get('/application_profile_reject/{id}', [SuperadminController::class, 'RiderDeleteApplicationProfile']);
+
     Route::post('/superadmin_rider', [SuperadminController::class, 'Update'])->name('Updatemodal');
 
     Route::get('/superadmin_riderprofile/{id}', [SuperadminController::class, 'RiderProfile']);
@@ -222,6 +224,8 @@ Route::group(['middleware'=>['superadminLogin']], function(){
     Route::get('/superadmin_partnerapplication', [SuperadminController::class, 'partner']);
 
     Route::get('/superadmin_merchantproile/{id}', [SuperadminController::class, 'MerchantApplicationProfile']);
+
+    Route::get('/application_merchant_reject/{id}', [SuperadminController::class, 'MerchantDeleteApplicationProfile']);
 
     Route::post('/superadmin_partnerapplication', [SuperadminController::class, 'UpdateMerchant'])->name('UpdateMerchant');
 
