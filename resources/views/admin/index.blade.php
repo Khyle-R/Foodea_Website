@@ -26,7 +26,8 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.js"> </script>
     {{-- Datatable plugins --}}
-    
+    <!-- UIkit CSS -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.2.2/dist/css/uikit.min.css" />
   </head>
   <body>
     <div class="container-scroller">
@@ -513,4 +514,5 @@
     <!-- End custom js for this page -->
 
   </body>
+  
 </html>
