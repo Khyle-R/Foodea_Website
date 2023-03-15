@@ -3,23 +3,20 @@ namespace App\Filters\V1;
 
 use Illuminate\Http\Request;
 
-class RestaurantFilter{
+class RiderFilter{
     protected $allowedParameters = [
-        'merchantinfo_id' => ['eq'],
-        'merchant_id' => ['eq'],
-        'business_type' => ['eq', 'like'],
-        'business_name' => ['eq', 'like'],
-        'date_founded' => ['eq', 'like'],
-        'country' => ['eq', 'like'],
+        'firstname' => ['eq', 'like'],
+        'middlename' => ['eq', 'like'],
+        'lastname' => ['eq', 'like'],
+        'age' => ['eq', 'lte', 'lt', 'gte', 'gt'],
+        'gender' => ['eq', 'like'],
+        'birthdate' => ['like', 'eq'],
+        'email' => ['eq', 'like'],
+        'mobile_number' => ['eq'],
         'address' => ['eq', 'like'],
-        'city' => ['eq', 'like'],
+        'city' => ['like', 'eq'],
         'barangay' => ['eq', 'like'],
-        'street' => ['eq', 'like'],
-        'postal_code' => ['eq', 'like'],
-        'store_number' => ['eq', 'like'],
-        'store_email' => ['eq', 'like'],
-        'mission' => ['eq', 'like'],
-        'vision' => ['eq', 'like'],
+        'zip_code' => ['eq','like']
     ];
 
     protected $operatorMap = [

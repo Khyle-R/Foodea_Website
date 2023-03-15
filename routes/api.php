@@ -24,4 +24,7 @@ Route::group(['prefix' => 'v1', 'namespace' => 'App\Http\Controllers\Api\V1'], f
     Route::apiResource('orders', OrderController::class);
     Route::apiResource('favorites', FavoritesController::class);
     Route::apiResource('carts', CartController::class);
+    Route::apiResource('riders', RiderController::class);
+    Route::apiResource('restaurants', RestaurantController::class);
+    Route::apiResource('transactions', TransactionController::class);
 });
