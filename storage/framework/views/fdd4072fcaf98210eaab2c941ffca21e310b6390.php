@@ -23,10 +23,11 @@
     <link rel="stylesheet" href="assets/css/superadmin.css"/>
     <!-- End layout styles -->
     <link rel="icon" href="<?php echo e(url('image/foodea1.png')); ?>">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.js"> </script>
     
-    
+    <!-- UIkit CSS -->
+	
   </head>
   <body>
     <div class="container-scroller">
@@ -276,43 +277,11 @@
                 >
                   <h6 class="dropdown-header p-3 mb-0">Notifications</h6>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item preview-item">
-                    <div class="preview-thumbnail">
-                      <div class="preview-icon bg-dark rounded-circle">
-                        <i class="mdi mdi-calendar text-success"></i>
-                      </div>
-                    </div>
-                    <div class="preview-item-content">
-                      <p class="preview-subject mb-1">Event today</p>
-                      <p class="text-success ellipsis mb-0">
-                        Just a reminder that you have an event today
-                      </p>
-                    </div>
-                  </a>
+                  
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item preview-item">
-                    <div class="preview-thumbnail">
-                      <div class="preview-icon bg-dark rounded-circle">
-                        <i class="mdi mdi-settings text-danger"></i>
-                      </div>
-                    </div>
-                    <div class="preview-item-content">
-                      <p class="preview-subject mb-1">Settings</p>
-                      <p class="text-success ellipsis mb-0">Update dashboard</p>
-                    </div>
-                  </a>
+                  
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item preview-item">
-                    <div class="preview-thumbnail">
-                      <div class="preview-icon bg-dark rounded-circle">
-                        <i class="mdi mdi-link-variant text-warning"></i>
-                      </div>
-                    </div>
-                    <div class="preview-item-content">
-                      <p class="preview-subject mb-1">Launch Admin</p>
-                      <p class="text-success ellipsis mb-0">New admin wow!</p>
-                    </div>
-                  </a>
+                  
                   <div class="dropdown-divider"></div>
                   <p class="p-3 mb-0 text-center bg-dark">See all notifications</p>
                 </div>
@@ -426,8 +395,10 @@
     <script src="assets/js/dashboard.js"></script>
     <script src="assets/js/chart.js"></script>
     <script src="assets/js/app.js"></script>
+    <script src="<?php echo e(asset('assets/js/toast.js')); ?>"></script>
     <!-- End custom js for this page -->
 
   </body>
+  
 </html>
 <?php /**PATH E:\xampp\htdocs\Foodea_Website\resources\views/admin/index.blade.php ENDPATH**/ ?>

@@ -189,6 +189,8 @@ Route::group(['middleware'=>['superadminLogin']], function(){
 
     Route::get('/superadmin_partnerdetails/{id}', [SuperadminController::class, 'PartnerDetails']);
 
+    Route::post('/superadmin_partnerdetailsmessage', [SuperadminController::class, 'PartnerMessage'])->name('PartnerMessage');
+
     Route::get('/superadmin_profile', [SuperadminController::class, 'profile']);
 
     Route::get('/superadmin_rider', [SuperadminController::class, 'Rider']);
@@ -204,6 +206,8 @@ Route::group(['middleware'=>['superadminLogin']], function(){
     Route::post('/superadmin_riderprofile', [SuperadminController::class, 'RiderProfileUpdate'])->name('RiderProfileUpdate');
 
     Route::post('/superadmin_riderprofileemergency', [SuperadminController::class, 'RiderEmergencyUpdate'])->name('RiderEmergencyUpdate');
+    
+    Route::post('/superadmin_riderprofilemessage', [SuperadminController::class, 'RiderMessage'])->name('RiderMessage');
     
     Route::get('/superadmin_pending', [SuperadminController::class, 'Pending']);
 
@@ -424,7 +428,9 @@ Route::group(['middleware'=>['adminLogin']], function(){
 
     Route::get('/admin_log', [Admin_product::class, 'ActivityLog']);
     Route::get('/admin_account', [Admin_product::class, 'AdminAccount']);
-
+    Route::post('/admin_accountpass', [Admin_product::class, 'ChangePass'])->name('ChangePass');
+    Route::post('/admin_accountemail', [Admin_product::class, 'ChangeEmail'])->name('ChangeEmail');
+    
 
 
     Route::get('/business', function(){

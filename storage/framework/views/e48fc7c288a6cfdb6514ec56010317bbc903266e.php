@@ -61,7 +61,7 @@
                             <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-vertical black-icon" aria-hidden="true"></i></a>
                             <div class="bg-white dropdown-menu dropdown-menu-right">
                                 <a data-toggle="modal" data-target="#EditModal<?php echo e($partner->merchant_id); ?>" class="action-btn dropdown-item black" href=""><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                <a data-toggle="modal" data-target="#RemoveModal<?php echo e($partner->merchant_id); ?>" class="action-btn dropdown-item black" href=""><i class="fa fa-trash-o m-r-5"></i> Delete</a>
+                                <a data-toggle="modal" data-target="#RemoveModal<?php echo e($partner->merchant_id); ?>" class="action-btn dropdown-item black" href=""><i class="fa fa-trash-o m-r-5"></i> Remove</a>
                             </div>
                         </div>
                 </div>
@@ -179,13 +179,8 @@
 <!-- partial:../../partials/_footer.html -->
 <footer class="footer">
     <div class="d-sm-flex justify-content-center justify-content-sm-between">
-        <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com
-            2020</span>
-        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">
-            Free
-            <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin
-                templates</a>
-            from Bootstrapdash.com</span>
+        <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2022. All Rights Reserved</span>
+       
     </div>
 </footer>
 <!-- partial -->

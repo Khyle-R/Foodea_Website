@@ -157,121 +157,7 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <td>
-                              <div class="form-check form-check-muted m-0">
-                                <label class="form-check-label">
-                                  <input
-                                    type="checkbox"
-                                    class="form-check-input"
-                                  />
-                                </label>
-                              </div>
-                            </td>
-                            <td>
-                              <img
-                                src="assets/images/faces/face1.jpg"
-                                alt="image"
-                              />
-                              <span class="pl-2">Henry Klein</span>
-                            </td>
-                            <td>02312</td>
-                            <td>$14,500</td>
-                            <td>Dashboard</td>
-                            <td>Credit card</td>
-                            <td>04 Dec 2019</td>
-                            <td>
-                              <div class="badge badge-outline-success">
-                                Approved
-                              </div>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <div class="form-check form-check-muted m-0">
-                                <label class="form-check-label">
-                                  <input
-                                    type="checkbox"
-                                    class="form-check-input"
-                                  />
-                                </label>
-                              </div>
-                            </td>
-                            <td>
-                              <img
-                                src="assets/images/faces/face2.jpg"
-                                alt="image"
-                              />
-                              <span class="pl-2">Estella Bryan</span>
-                            </td>
-                            <td>02312</td>
-                            <td>$14,500</td>
-                            <td>Website</td>
-                            <td>Cash on delivered</td>
-                            <td>04 Dec 2019</td>
-                            <td>
-                              <div class="badge badge-outline-warning">
-                                Pending
-                              </div>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <div class="form-check form-check-muted m-0">
-                                <label class="form-check-label">
-                                  <input
-                                    type="checkbox"
-                                    class="form-check-input"
-                                  />
-                                </label>
-                              </div>
-                            </td>
-                            <td>
-                              <img
-                                src="assets/images/faces/face5.jpg"
-                                alt="image"
-                              />
-                              <span class="pl-2">Lucy Abbott</span>
-                            </td>
-                            <td>02312</td>
-                            <td>$14,500</td>
-                            <td>App design</td>
-                            <td>Credit card</td>
-                            <td>04 Dec 2019</td>
-                            <td>
-                              <div class="badge badge-outline-danger">
-                                Rejected
-                              </div>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <div class="form-check form-check-muted m-0">
-                                <label class="form-check-label">
-                                  <input
-                                    type="checkbox"
-                                    class="form-check-input"
-                                  />
-                                </label>
-                              </div>
-                            </td>
-                            <td>
-                              <img
-                                src="assets/images/faces/face3.jpg"
-                                alt="image"
-                              />
-                              <span class="pl-2">Peter Gill</span>
-                            </td>
-                            <td>02312</td>
-                            <td>$14,500</td>
-                            <td>Development</td>
-                            <td>Online Payment</td>
-                            <td>04 Dec 2019</td>
-                            <td>
-                              <div class="badge badge-outline-success">
-                                Approved
-                              </div>
-                            </td>
+                         
                           </tr>
                           <tr>
                             <td>
@@ -313,7 +199,7 @@
             
              <div class="row">
                  <div class="col-lg-4">
-                   <div class="card mb-4">
+                   {{-- <div class="card mb-4">
                      <div class="card-body">
                        <div class="d-flex flex-row justify-content-between">
                       <h4 class="card-title">Messages</h4>
@@ -410,9 +296,9 @@
                       </div>
                     </div>
                   </div>
-                    </div>
+                    </div> --}}
                       </div>
-                <div class="col-lg-8">
+                <div class="col-lg-12">
                   <div class="card mb-4">
                     <div class="card-body">
                       <div class="d-flex flex-row justify-content-between">
@@ -430,60 +316,7 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <td>1</td>
-                            <td>Fried Chicken</td>
-                            <td>Chicken</td>
-                            <td>5000</td>
-                          </tr>
-                          <tr>
-                            <td>2</td>
-                            <td>Milk Tea</td>
-                            <td>Drinks</td>
-                            <td>3000</td>
-                          </tr>
-                          <tr>
-                            <td>3</td>
-                            <td>Milk Tea</td>
-                            <td>Drinks</td>
-                            <td>2000</td>
-                          </tr>
-                          <tr>
-                            <td>4</td>
-                            <td>Milk Tea</td>
-                            <td>Drinks</td>
-                            <td>2000</td>
-                          </tr>
-                          <tr>
-                            <td>5</td>
-                            <td>Milk Tea</td>
-                            <td>Drinks</td>
-                            <td>2000</td>
-                          </tr>
-                           <tr>
-                            <td>6</td>
-                            <td>Fried Chicken</td>
-                            <td>Chicken</td>
-                            <td>5000</td>
-                          </tr>
-                           <tr>
-                            <td>7</td>
-                            <td>Fried Chicken</td>
-                            <td>Chicken</td>
-                            <td>5000</td>
-                          </tr>
-                           <tr>
-                            <td>8</td>
-                            <td>Fried Chicken</td>
-                            <td>Chicken</td>
-                            <td>5000</td>
-                          </tr>
-                           <tr>
-                            <td>9</td>
-                            <td>Fried Chicken</td>
-                            <td>Chicken</td>
-                            <td>5000</td>
-                          </tr>
+                          
                            <tr>
                             <td>10</td>
                             <td>Fried Chicken</td>

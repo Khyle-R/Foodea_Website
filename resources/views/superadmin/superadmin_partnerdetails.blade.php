@@ -56,7 +56,8 @@
                                                 
                                                 <div class="staff-id">{{ $partner->business_name }}</div>
                                                 <div class="small doj text-muted">Date Applied : {{ $partner->date }}</div>
-                                                <div class="staff-msg"><a class="red-btn" href="#">{{ $partner->ratings }}</a></div>
+                                                <div class="staff-msg"><a class="red-btn" href="#">{{ $partner->ratings }}</a>
+                                                <a class="red-btn" href="#" data-toggle="modal" data-target="#Contact_modal">Message</a></div>
                                             </div>
                                         </div>
                                         <div class="col-md-7">
@@ -455,6 +456,39 @@
                         
                        
                             <input type="hidden" name="accepted_merchant_id" value="{{ $partner->accepted_merchant_id }}">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn white-btn" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn red-btn">Confirm</button>
+                            </form>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+
+               <!-- Contact  Modal -->
+                    <div class="modal fade" id="Contact_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title white-font " id="exampleModalLongTitle">Message</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form method="post" action="{{ route('PartnerMessage') }}">
+                                @csrf
+                             
+                        
+                        <div class="form-group">
+                            <input type="text" name="subject" placeholder="Subject" value="" class="form-control input-border" id="email">
+                        </div>
+                         <div class="form-group">
+                            <textarea  name="message" placeholder="Message" value="" class="form-control input-border" rows="6" cols="50"></textarea>
+                        </div>   
+                            <input type="hidden" name="accepted_rider_id" value="{{ $partner->accepted_merchant_id }}">
+                             <input type="hidden" name="merchant_id" value="{{ $partner->merchant_id }}">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn white-btn" data-dismiss="modal">Close</button>
