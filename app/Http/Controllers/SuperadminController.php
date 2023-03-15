@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\MessageEmail;
 use ZipArchive;
 use App\Models\tbl_product;
 use Illuminate\Http\Request;
@@ -715,6 +716,40 @@ class SuperadminController extends Controller
 
       }
 
+      public function RiderMessage(Request $request){
+        $email = tbl_rider_accounts::where('rider_id', $request->rider_id)
+        ->first();
+        
+         $mailData = [
+            'title' => 'Password Reset',
+             'body' => 'test',
+             'fname' => $email->firstname,
+             'lname' => $email->lastname,
+             'subject' => $request->subject,
+             'message' => $request->message,
+             ];
+             Mail::to($email->email)->send(new MessageEmail($mailData));
+
+             return back()->with('success', 'Message has been sent');
+
+      }
+      public function PartnerMessage(Request $request){
+        $email = tbl_partner_accounts::where('merchant_id', $request->merchant_id)
+        ->first();
+        
+         $mailData = [
+            'title' => 'Password Reset',
+             'body' => 'test',
+             'fname' => $email->firstname,
+             'lname' => $email->lastname,
+             'subject' => $request->subject,
+             'message' => $request->message,
+             ];
+             Mail::to($email->email)->send(new MessageEmail($mailData));
+
+             return back()->with('success', 'Message has been sent');
+
+      }
       public function RiderEmergencyUpdate(Request $request){
         $res = tbl_vehicle_infos::where('rider_id', $request->rider_id)
         ->update([
@@ -809,8 +844,8 @@ class SuperadminController extends Controller
 
     public function ChangePassAdmin(Request $request){
        $request->validate([
-        'old_password' => 'required|min:6|max:50',
-        'new_password' => 'required|min:6|max:50',
+        'old_password' => 'required|min:8|max:50',
+        'new_password' => 'required|min:8|max:50',
         'confirm_password' => 'required| same:new_password',
        ]);
 

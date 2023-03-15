@@ -14,7 +14,16 @@
                 </div>
             </div>
                     @endif
-             
+              @if (Session::has('fail'))
+                    <p style="display:none" class="failed"></p>
+            <div class="alert hide">
+                <span class="fas fa-exclamation-circle"></span>
+                <span class="msg">{{ Session::pull('fail') }}</span>
+                <div class="close-btn">
+                    <span class="fas fa-times"></span>
+                </div>
+            </div>
+                    @endif
               <!---/ALERT BOX --->
     </div>
     <div class="page-header">
@@ -107,6 +116,7 @@
                     <div class="col-lg-12 col-md-12 col-sm-12 line-tabs">
                         <ul class="nav nav-tabs nav-tabs-bottom">
                             <li class="nav-item"><a href="#emp_profile" data-toggle="tab" class="nav-link tab-font active">Profile</a></li>
+                             <li class="nav-item"><a href="#emp_account" data-toggle="tab" class="nav-link tab-font">Account Settings</a></li>
                             <li class="nav-item"><a href="#emp_vehicle" data-toggle="tab" class="nav-link tab-font">Business</a></li>
                             <li class="nav-item"><a href="#emp_documents" data-toggle="tab" class="nav-link tab-font">Documents </a></li>
                             <li class="nav-item"><a href="#emp_products" data-toggle="tab" class="nav-link tab-font">Products </a></li>
@@ -193,7 +203,90 @@
                     </div>
                 </div>
                 <!-- /Profile Info Tab -->
+                 <!-- Account Settings Tab -->
+                 <div  id="emp_account" class="tab-pane fade" >
+                    <div class="row">
+                        <div class="col-md-6 d-flex mb-4">
+                            <div class="card profile-box flex-fill">
+                                <div class="card-body pr-5">
+                                    <h3 class="card-title">Change Password</h3>
 
+                                    <form method="post" action="{{ route('ChangePass') }}">
+                                        @csrf
+                                    <h5 class="section-title">Old Password</h5>
+
+                                    <div class="form-group">   
+                                   <input type="text" value="" name="old_password" class="form-control input-border" id="old_pass" placeholder="Enter New Password">
+                                     <span
+                                    class="red-link">
+                                    @error('old_password') {{ $message }}
+                                    @enderror</span>
+                                  </div>
+
+                                   <h5 class="section-title">New Password</h5>
+
+                                    <div class="form-group">
+                                   <input type="text" value="" name="password" class="form-control input-border" id="new_pass" placeholder="Enter New Password">
+                                    <span
+                                    class="red-link">
+                                    @error('password') {{ $message }}
+                                    @enderror</span>
+                                </div>
+
+                                   <h5 class="section-title">Confirm Password</h5>
+                                   
+                                   <div class="form-group">
+                                  <input type="text" name="password_confirmation" class="form-control input-border" id="confirm_pass" placeholder="Confirm Password">
+                                    <span
+                                    class="red-link">
+                                    @error('password_confirmation') {{ $message }}
+                                    @enderror</span>  
+                                </div>
+
+                                     <div class="staff-msg">
+                                        <button type="submit" id="id" class="red-btn">Update Password</button></div>
+                                     </form>
+                                  
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 d-flex mb-4">
+                            <div class="card profile-box flex-fill">
+                                <div class="card-body">
+                                    <h3 class="card-title">Change Email</h3>
+
+                                      <h5 class="section-title">Email</h5>
+                                    <form method="post" action="{{ route('ChangeEmail') }}">
+                                        @csrf
+                                    <div class="form-group">
+                                   <input type="text" value="" name="new_email" class="form-control input-border" id="new_pass" placeholder="Enter New Email">
+                                    <span
+                                    class="red-link">
+                                    @error('new_email') {{ $message }}
+                                    @enderror</span>
+                                </div>
+
+                                    <h5 class="section-title">Confirm Email</h5>
+
+                                    <div class="form-group">
+                                   <input type="text" value="" name="confirm_email" class="form-control input-border" id="new_pass" placeholder="Confirm Email">
+                                    <span
+                                    class="red-link">
+                                    @error('confirm_email') {{ $message }}
+                                    @enderror</span>
+                                </div>
+                                <div class="staff-msg">
+                                        <button type="submit" id="id" class="red-btn">Update Email</button></div>
+                                   </form>
+                                    
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Vehicle Info Tab -->
 
                   <!-- Documents Info Tab -->
                  <div class="tab-pane fade" id="emp_documents">
