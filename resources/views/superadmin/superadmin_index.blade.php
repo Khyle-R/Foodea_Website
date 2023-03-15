@@ -221,7 +221,7 @@
             >
               <span class="mdi mdi-menu"></span>
             </button>
-            <ul class="navbar-nav w-100">
+            {{-- <ul class="navbar-nav w-100">
               <li class="nav-item w-100">
                 <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
                   <input
@@ -231,7 +231,7 @@
                   />
                 </form>
               </li>
-            </ul>
+            </ul> --}}
             <ul class="navbar-nav navbar-nav-right">
               <li class="nav-item dropdown d-none d-lg-block">
                 <!-- <a
