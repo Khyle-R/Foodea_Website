@@ -31,7 +31,7 @@ class RiderAccepted extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Rider Accepted',
+            subject: 'Application Accepted',
         );
     }
 

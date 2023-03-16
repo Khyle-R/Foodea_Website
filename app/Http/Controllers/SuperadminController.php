@@ -32,9 +32,17 @@ class SuperadminController extends Controller
     public function index(){
         $riders = tbl_accepted_rider::count();
         $merchant = tbl_accepted_merchant::count();
-        return view('superadmin.superadmin_dashboard', compact('riders', 'merchant'));
-    }
 
+         $Data = tbl_rider_accounts::join('tbl_vehicle_info', 'tbl_rider_account.rider_id', '=', 'tbl_vehicle_info.rider_id')
+        ->join('rider_application', 'tbl_rider_account.rider_id', '=', 'rider_application.rider_id')
+        ->join('tbl_document_info', 'tbl_rider_account.rider_id', '=', 'tbl_document_info.rider_id')
+        ->where('rider_application.status', 'Pending')
+        ->distinct()
+        ->get(['rider_photo' ,'firstname', 'lastname' ,'vehicle_type', 'status', 'rider_application.date', 'rider_application.rider_application_id', 'tbl_rider_account.rider_id', 'email']);
+
+        return view('superadmin.superadmin_dashboard', compact('riders', 'merchant', 'Data'));
+    }
+ 
     public function SuperadminForgotPass(){
         return view('superadmin.superadmin_forgotpass');
     }

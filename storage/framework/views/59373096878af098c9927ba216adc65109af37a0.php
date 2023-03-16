@@ -17,19 +17,22 @@
                                 </ol>
                             </nav>
                         </div>
-
-
+                                 <div class="d-flex flex-row justify-content-end my-4">
+                        <div class="title">
+                    <a class="red-btn" href="#">Download Report</a>
+                    </div>
+                    
+                    </div>
 
                         <div class="row">
                             <div class="col-12 grid-margin">
 
                                 <div class="card">
                                     <div class="card-body">
+                               
                         <div class="table-responsive">
                     <table id="example" class="table" style="width:100%">
                         <thead>
-                           
-                                
                            
                             <tr>
                                 <th>Merchant ID</th>
@@ -52,7 +55,7 @@
                     </table>
                     </div>
             
-                                            </div>
+                                     </div>
                                 </div>
                             </div>
                         </div>

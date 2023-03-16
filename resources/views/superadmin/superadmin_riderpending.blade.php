@@ -53,7 +53,7 @@
                          <thead>
                             <tr>
                                 <th>Name</th>
-                                <th>Job Type</th>
+                                <th>Vehicle Type</th>
                                 <th>Email</th>
                                 <th>Status</th>
                                 <th>Date Application</th>
