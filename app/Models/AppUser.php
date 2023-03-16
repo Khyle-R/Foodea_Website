@@ -10,6 +10,7 @@ class AppUser extends Model
     use HasFactory;
     public $table = 'app_users';
     protected $fillable = [
+        'user_id',
         'firstname',
         'middlename',
         'lastname',
@@ -22,4 +23,5 @@ class AppUser extends Model
         'email',
         'password',
     ];
+    protected $primaryKey = 'user_id';
 }
