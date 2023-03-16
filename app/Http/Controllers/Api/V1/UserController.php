@@ -28,12 +28,12 @@ class UserController extends Controller
 
     public function show(Request $request, AppUser $app_user){
         $id = $request->segment(count(request()->segments()));
-        return $app_user::where('id', $id)->get();
+        return $app_user::where('user_id', $id)->get();
     }
 
     public function destroy(Request $request, AppUser $app_user){
         $id = $request->segment(count(request()->segments()));
-        return $app_user::where('id', $id)->delete();
+        return $app_user::where('user_id', $id)->delete();
     }
 
     public function update(UpdateAppUserRequest $request, AppUser $app_user){
