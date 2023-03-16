@@ -223,23 +223,28 @@
                     <table id="example2" class="table" style="width:100%">
                         <thead>
                             <tr>
-                                <th>ID</th>
                                 <th>Name</th>
+                                <th>Vehicle Type</th>
                                 <th>Email</th>
-                                <th>Description</th>
-                                <th>Date Time</th>
+                                <th>Status</th>
+                                <th>Date Application</th>
                             </tr>
                         </thead>
                         <tbody>
+                           @foreach ($Data as $recent)
                             <tr>
-                                <td> 
+                                <td>
+                                    <img class="circle mr-2" src="{{ url(('uploads/'. 'rider_documents'. '/'.$recent->rider_id. '/'). $recent->rider_photo) }}" alt="">
+                                    {{ $recent->firstname. ' ' .$recent->lastname }}
                                 </td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $recent->vehicle_type }}</td>
+                                <td>{{ $recent->email }}</td>
+                                <td>
+                                  <i class=" pending mdi mdi-radiobox-marked"></i>
+                                  {{ $recent->status }}</td>
+                                <td>{{ $recent->date }}</td>
                             </tr>
-                          
+                          @endforeach
                         </tbody>
                     
                     </table>
