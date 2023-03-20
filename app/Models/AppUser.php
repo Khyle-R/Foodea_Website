@@ -18,10 +18,13 @@ class AppUser extends Model
         'weight',
         'gender',
         'address',
+        'age',
         'contact_number',
         'bmi',
         'email',
         'password',
+        'lifestyle',
+        'preferences'
     ];
     protected $primaryKey = 'user_id';
 }

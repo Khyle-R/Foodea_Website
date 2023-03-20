@@ -35,10 +35,13 @@ class UpdateAppUserRequest extends FormRequest
                 'weight' => ['required', 'numeric'],
                 'gender' => ['required', Rule::in(['M','F'])],
                 'address' => ['required'],
+                'age' => ['required', 'numeric'],
                 'contact_number' => ['required', 'numeric'],
                 'bmi' => ['required', 'numeric'],
                 'email' => ['required', 'email'],
                 'password' => ['required'],
+                'lifestyle' => ['required'],
+                'preferences' => ['required'],
             ];
         } else {
             return [
@@ -49,10 +52,13 @@ class UpdateAppUserRequest extends FormRequest
                 'weight' => ['sometimes', 'required', 'numeric'],
                 'gender' => ['sometimes', 'required', Rule::in(['M','F'])],
                 'address' => ['sometimes', 'required'],
+                'age' => ['sometimes', 'required', 'numeric'],
                 'contact_number' => ['sometimes', 'required', 'numeric'],
                 'bmi' => ['sometimes', 'required', 'numeric'],
                 'email' => ['sometimes', 'required', 'email'],
                 'password' => ['sometimes', 'required'],
+                'lifestyle' => ['sometimes','required'],
+                'preferences' => ['sometimes','required'],
             ];
         }
     }
