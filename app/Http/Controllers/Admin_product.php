@@ -11,6 +11,7 @@ use App\Models\tbl_merchant_info;
 use Illuminate\Support\Facades\DB;
 use App\Models\tbl_merchant_account;
 use App\Models\tbl_partner_accounts;
+use App\Models\TemporaryFile;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Session;
@@ -568,5 +569,22 @@ class Admin_product extends Controller
             return back();
        }
 
+    }
+
+    public function tmpUpload(Request $request)
+    {
+        if($request->hasFile('product_image'))
+        {
+            $image = $request->file('product_image');
+            $filename = $image->getClientOriginalName();
+            $folder = uniqid('post', true);
+            $image->storeAs('posts/tmp/' .$folder, $filename);
+            TemporaryFile::create([
+                'folder' => $folder,
+                'file' => $filename
+            ]);
+            return $folder;
+        }
+        return '';
     }
 }

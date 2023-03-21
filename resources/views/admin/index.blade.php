@@ -27,7 +27,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.js"> </script>
     {{-- Datatable plugins --}}
     <!-- UIkit CSS -->
-	{{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.2.2/dist/css/uikit.min.css" /> --}}
+	  {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.2.2/dist/css/uikit.min.css" /> --}}
+
+    {{--File Pond--}}
+    <link href="https://unpkg.com/filepond@^4/dist/filepond.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css">
+
   </head>
   <body>
     <div class="container-scroller">
@@ -514,6 +519,31 @@
     <script src="assets/js/app.js"></script>
     <script src="{{ asset('assets/js/toast.js') }}"></script>
     <!-- End custom js for this page -->
+        
+    {{--File Pond--}}
+    
+    <script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+    
+    <script>
+        FilePond.registerPlugin(FilePondPluginImagePreview);
+        // Get a reference to the file input element
+        const profile = document.querySelector('input[type="file"]');
+         // Create a FilePond instance
+         const pond = FilePond.create(profile, {
+            //  instantUpload: false,
+             storeAsFile: true,
+             acceptedFileTypes: ['image/*'], 
+             server:{
+                 process: '/tmp-upload',
+                 revert: '/tmp-delete',
+                headers: {
+                 'X-CSRF-TOKEN': '{{csrf_token()}}'
+                }
+             },
+       
+         });
+    </script>
 
   </body>
   

@@ -466,5 +466,8 @@ Route::group(['middleware'=>['adminLogin']], function(){
     Route::post('/update_category',[Admin_product::class, 'updateCategory'])->name('update_category.updateCategory');
     Route::get('/delete_category/{id}',[Admin_product::class, 'deleteCategory']);
 
+    //Upload Pictures
+    Route::post('/tmp-upload', [Admin_product::class, 'tmpUpload']);
+    Route::delete('/tmp-upload', [Admin_product::class, 'tmpDelete']);
 });
 });
