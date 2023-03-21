@@ -11,15 +11,16 @@ class tbl_product extends Model
     public $table ="tbl_product";
     public $timestamps = false;
     protected $fillable = [
-        'product_id',
         'merchant_id',
-        'category_id',
         'product_name',
-        'price',
+        'stock' ,
         'product_image',
-        'stock',
+        'price',
+        'category_name',
         'status',
+        'tags',
         'description',
+        'ingredients'
     ];
     protected $primaryKey = 'product_id';
 }

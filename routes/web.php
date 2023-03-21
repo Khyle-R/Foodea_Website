@@ -371,7 +371,7 @@ Route::group(['middleware'=>['adminLogin']], function(){
     //View products
     Route::get('product', function () {
 
-        $products = DB::table('tbl_product')->where('merchant_id', '=', session('loginID'))->get();
+    $products = DB::table('tbl_product')->where('merchant_id', '=', session('loginID'))->get();
 
     $category = DB::table('tbl_category')->get();
 
