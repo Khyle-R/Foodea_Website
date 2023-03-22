@@ -1,108 +1,9 @@
 @extends('admin.index')
 @section('content')
-
-   <style>
-    .wrapper{
-  width: 496px;
   
-  border-radius: 10px;
-  padding: 18px 25px 20px;
-  box-shadow: 0 0 30px rgba(0,0,0,0.06);
-   }
-   .wrapper :where(.title, li, li i, .details){
-   display: flex;
-   align-items: center;
-   }
-   .title img{
-   max-width: 21px;
-   }
-   .title h2{
-   font-size: 21px;
-   font-weight: 600;
-   margin-left: 8px;
-   }
-   .wrapper .content{
-   margin: 10px 0;
-   }
-   .content p{
-   font-size: 15px;
-   }
-   .content ul{
-   display: flex;
-   flex-wrap: wrap;
-   padding: 7px;
-   margin: 12px 0;
-   border-radius: 5px;
-   border: 1px solid #a6a6a6;
-   }
-   .content ul  li{
-   color: #333;
-   margin: 4px 3px;
-   list-style: none;
-   border-radius: 5px;
-   background: #F2F2F2;
-   padding: 5px 8px 5px 10px;
-   border: 1px solid #e3e1e1;
-   }
-   .content ul li i{
-   height: 20px;
-   width: 20px;
-   color: #808080;
-   margin-left: 8px;
-   font-size: 12px;
-   cursor: pointer;
-   border-radius: 50%;
-   background: #dfdfdf;
-   justify-content: center;
-   }
-   .content ul input{
-   flex: 1;
-   padding: 5px;
-   border: none;
-   outline: none;
-   font-size: 16px;
-   }
-   .wrapper .details{
-   justify-content: space-between;
-   }
-   .details button{
-   border: none;
-   outline: none;
-   color: #fff;
-   font-size: 14px;
-   cursor: pointer;
-   padding: 9px 15px;
-   border-radius: 5px;
-   background: #5372F0;
-   transition: background 0.3s ease;
-   }
-   .details button:hover{
-   background: #2c52ed;
-   }
-      #tags_input{
-         flex: 1;
-         padding: 5px;
-         border: none;
-         outline: none;
-         font-size: 16px;
-         display: flex;
-         flex-wrap: wrap;
-      }
-      .label-info{
-         color: #333;
-         margin: 4px 3px;
-         list-style: none;
-         border-radius: 5px;
-         background: #F2F2F2;
-         padding: 5px 8px 5px 10px;
-         border: 1px solid #e3e1e1;
-      }
-
-
-   </style>
    <div class="content-wrapper">
       <div class="row">
-          
+
       </div>
       <div class="page-header">
          <h3 class="page-title black">Product</h3>
@@ -147,8 +48,8 @@
                                           @csrf
                                           <div class="form-group">
                                              <label for="exampleInputName1" class="blackk">Product Name</label>
-                                             <input type="text" class="form-control"id="exampleInputName1" placeholder="Name"value="{{ old('product_name') }}"
-                                                name="product_name" required/>
+                                             <input type="text" class="form-control"id="exampleInputName1" placeholder="Name"value="{{ old('product_name') }}" name="product_name"
+                                                required />
                                              <span style="color:red;">
                                                 @error('product_name')
                                                    {{ $message }}
@@ -156,48 +57,27 @@
                                              </span>
                                              <span class="gray">Do not exceed 20 characters when entering the product name.</span>
                                           </div>
-                                          <div class="row">
-                                             <div class="col form-group"><label for="exampleSelectGender" class="blackk">Category</label>
-                                                <select class="form-control" id="exampleSelectGender" style="border: 1px solid" name="category" required>
-                                                   <option>{{ old('category') }}</option>
-                                                   @foreach ($category as $key => $data)
-                                                   <option>{{ $data->main_category}}</option>
-                                                   @endforeach
-                                                   
-                                                </select>
-                                                <span style="color:red;">
-                                                   @error('category')
-                                                      {{ $message }}
-                                                   @enderror
-                                                </span>
-                                             </div>
-                                             <div class="col form-group">
-                                                {{-- use to get array in tags --}}
-                                                <input type="hidden" id="tags_category" value="{{ old('tags_category') }}" name="tags_category">
-                                                <div class="wrapper">
-                                                   <div class="content">
-                                                      <p> Tags</p>
-                                                      <ul id="ul"><input id="input" value="{{ old('tags') }}" class="" type="text" name="tags"
-                                                            spellcheck="false"></ul>
-                                                      <span style="color:red;">
-                                                         @error('tags_category')
-                                                            {{ $message }}
-                                                         @enderror
-                                                      </span>
-                                                      <p class="gray">Press enter or add a comma after
-                                                         each tag</p>
-                                                   </div>
-                                                   <div class="details">
-                                                      <p><span>10</span> tags are remaining</p>
-                                                      <button class="btn btn-warning btn-sm px-3 mr-3 py-2 px-3 rounded" type="button">Remove All</button>
-                                                   </div>
-                                                </div>
-                                                <span style="color:red;">
-                                                   @error('tags_category')
-                                                      {{ $message }}
-                                                   @enderror
-                                                </span>
-                                             </div>
+
+
+                                          <div class="col form-group"><label for="exampleSelectGender" class="blackk">Category</label>
+                                             <select class="form-control" id="exampleSelectGender" style="border: 1px solid" name="category" required>
+                                                <option>{{ old('category') }}</option>
+                                                @foreach ($category as $key => $data)
+                                                   <option>{{ $data->main_category }}</option>
+                                                @endforeach
+
+                                             </select>
+                                             <span style="color:red;">
+                                                @error('category')
+                                                   {{ $message }}
+                                                @enderror
+                                             </span>
+                                          </div>
+
+                                          <div class="form-group">
+                                             <label for="" class="blackk">Tags:</label>
+                                             <input type="text" class="form-control" id="tags_category" name="tags_category" value="" data-role="tagsinput"
+                                                name="tags_category">
                                           </div>
 
                                           <div class="form-group">
@@ -238,7 +118,7 @@
                                           <div class="row">
                                              <div class="col-md">
                                                 <label for="exampleInputName1" class="blackk">Price</label>
-                                                <input type="number"class="form-control" id="exampleInputName1" value="{{ old('price') }}" name="price" required/>
+                                                <input type="number"class="form-control" id="exampleInputName1" value="{{ old('price') }}" name="price" required />
                                                 <span style="color:red;">
                                                    @error('price')
                                                       {{ $message }}
@@ -247,7 +127,7 @@
                                              </div>
                                              <div class="col-md">
                                                 <label for="exampleInputName1" class="blackk">Stock</label>
-                                                <input type="number"class="form-control" id="exampleInputName1" value="{{ old('stock') }}" name="stock" required/>
+                                                <input type="number"class="form-control" id="exampleInputName1" value="{{ old('stock') }}" name="stock" required />
                                                 <span style="color:red;">
                                                    @error('stock')
                                                       {{ $message }}
@@ -323,11 +203,13 @@
                                     <div class="row">
                                        <div class="dropdown action-label">
                                           <a class=" btn-white-circle btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
-                                              <i class=" pending mdi mdi-radiobox-marked"></i> Status
+                                             <i class=" pending mdi mdi-radiobox-marked"></i> Status
                                           </a>
                                           <div class="bg-white dropdown-menu dropdown-menu-right">
-                                                <a data-toggle="modal" data-target="#deleteModal" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-success"></i> Remove Product</a>
-                                                <a data-toggle="modal" data-target="#EditModal{{ $data->product_id }}" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-danger"></i> Edit Product</a>
+                                             <a data-toggle="modal" data-target="#deleteModal" class="action-btn dropdown-item black" href="#"><i
+                                                   class="fa fa-dot-circle-o text-success"></i> Remove Product</a>
+                                             <a data-toggle="modal" data-target="#EditModal{{ $data->product_id }}" class="action-btn dropdown-item black" href="#"><i
+                                                   class="fa fa-dot-circle-o text-danger"></i> Edit Product</a>
                                           </div>
                                        </div>
 
@@ -348,7 +230,7 @@
                                                       <div class="form-group">
                                                          <label for="exampleInputName1" class="blackk">Product Name</label>
                                                          <input type="text" class="form-control" id="exampleInputName1" placeholder="Name" value="{{ $data->product_name }}"
-                                                            name="product_name" required/>
+                                                            name="product_name" required />
                                                          <span class="gray">Do not exceed 20
                                                             characters when entering the product
                                                             name.</span>
@@ -358,21 +240,22 @@
                                                             <label for="exampleSelectGender" class="blackk">Category</label>
                                                             <select class="form-control" id="exampleSelectGender" style="border: 1px solid" name="category" required>
                                                                <option>
-                                                                  {{ $data->category_name}}
+                                                                  {{ $data->category_name }}
                                                                </option>
                                                                @foreach ($category as $key => $datas)
-                                                               <option>{{ $datas->main_category}}</option>
+                                                                  <option>{{ $datas->main_category }}</option>
                                                                @endforeach
                                                             </select>
                                                          </div>
                                                       </div>
                                                       <div class="form-group">
                                                          <label for="" class="blackk">Tags:</label>
-                                                         <input type="text" class="form-control" id="tags" name="tags" value="{{ $data->tags}}" data-role="tagsinput" name="tags_category">
+                                                         <input type="text" class="form-control" id="tags" name="tags" value="{{ $data->tags }}"
+                                                            data-role="tagsinput" name="tags_category">
                                                       </div>
 
-                                                         
-                                                         {{-- <div class="col form-group">
+
+                                                      {{-- <div class="col form-group">
                                                             
                                                             <div class="wrapper">
                                                                 <div class="content">
@@ -409,12 +292,12 @@
                                                             details.</span>
                                                       </div>
                                                       <div class="form-group">
-                                                        <label for="exampleTextarea1" class="blackk">Ingredients</label>
-                                                        <textarea class="form-control"id="exampleTextarea1"rows="4" placeholder="" name="ingredients" maxlength="225" required>{{ $data->ingredients }}</textarea>
-                                                        <span class="gray">Do not exceed 100
-                                                           characters when entering the product
-                                                           details.</span>
-                                                     </div>
+                                                         <label for="exampleTextarea1" class="blackk">Ingredients</label>
+                                                         <textarea class="form-control"id="exampleTextarea1"rows="4" placeholder="" name="ingredients" maxlength="225" required>{{ $data->ingredients }}</textarea>
+                                                         <span class="gray">Do not exceed 100
+                                                            characters when entering the product
+                                                            details.</span>
+                                                      </div>
 
                                                       <div class="form-group">
                                                          <div class="file-loading">
@@ -425,13 +308,13 @@
                                                       <div class="row">
                                                          <div class="col-md">
                                                             <label for="exampleInputName1" class="blackk">Price</label>
-                                                            <input type="number" min="0" step="0.01" class="form-control" id="exampleInputName1" placeholder="" value="{{ $data->price }}"
-                                                               name="price" required/>
+                                                            <input type="number" min="0" step="0.01" class="form-control" id="exampleInputName1" placeholder=""
+                                                               value="{{ $data->price }}" name="price" required />
                                                          </div>
                                                          <div class="col-md">
                                                             <label for="exampleInputName1" class="blackk">Stock</label>
                                                             <input type="number"class="form-control" id="exampleInputName1" placeholder="" value="{{ $data->stock }}"
-                                                               name="stock" required/>
+                                                               name="stock" required />
                                                          </div>
                                                          <div class="col-md">
                                                             <label for="exampleSelectGender" class="blackk">Status</label>
@@ -501,14 +384,11 @@
    <!-- partial:../../partials/_footer.html -->
    <footer class="footer">
       <div class="d-sm-flex justify-content-center justify-content-sm-between">
-         <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com
-            2020</span>
-         <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">
-            Free
-            <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin
-               templates</a>
-            from Bootstrapdash.com</span>
+         <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2022. All Rights Reserved</span>
+       
       </div>
+
+
 
       <script>
          $(document).ready(function() { //this Jquery when you click the add button the type of the button become submit
@@ -525,143 +405,6 @@
             });
          });
       </script>
-
-
-      <script>
-
-         const ul = document.querySelector("#ul"),
-            input = document.querySelector("#input"), // input of tags
-            tagNumb = document.querySelector(".details span"),
-            td = document.querySelector("td");
-         let maxTags = 10,
-            tags = []; // array for tags
-
-         countTags();
-         createTag();
-
-         function countTags() { // count tags to know the limits of arrays
-            input.focus();
-            tagNumb.innerText = maxTags - tags.length;
-         }
-
-         function gettingTags(gTag) {
-            gTag = gTag.replace(/"/g, '');
-            gTag = gTag.replace('[', '');
-            gTag = gTag.replace(']', '');
-            document.getElementById('tags_category').value = gTag; // set the value of the input
-            console.log(gTag);
-         }
-
-         function createTag() {
-            ul.querySelectorAll("li").forEach(li => li.remove());
-            tags.slice().reverse().forEach(tag => {
-               let liTag = `<li>${tag} <i class="uit uit-multiply" onclick="remove(this, '${tag}')"></i></li>`;
-               ul.insertAdjacentHTML("afterbegin", liTag);
-
-               var tagString = JSON.stringify(tags); // convert the array into variable
-               gettingTags(tagString);
-            });
-            countTags();
-         }
-
-         function remove(element, tag) { // remove tags
-            let index = tags.indexOf(tag);
-            tags = [...tags.slice(0, index), ...tags.slice(index + 1)];
-            element.parentElement.remove();
-            countTags();
-         }
-
-         function addTag(e) {
-            if (e.key == "Enter") { // when you click space the tag will add
-               let tag = e.target.value.replace(/\s+/g, ' ');
-
-               if (tag.length > 1 && !tags.includes(tag)) {
-                  if (tags.length < 10) {
-                     tag.split(',').forEach(tag => {
-                        tags.push(tag);
-                        createTag();
-                     });
-                  }
-               }
-               e.target.value = "";
-            }
-         }
-         input.addEventListener("keyup", addTag);
-         const removeBtn = document.querySelector(".details button");
-         removeBtn.addEventListener("click", () => {
-            tags.length = 0;
-            ul.querySelectorAll("li").forEach(li => li.remove());
-            countTags();
-         });
-      </script>
-
-<script>
-
-   const ul = document.querySelector("#ul1"),
-      input = document.querySelector("#input1"), // input of tags
-      tagNumb = document.querySelector(".details span1"),
-      td = document.querySelector("#td");
-   let maxTags = 10,
-      tags = []; // array for tags
-
-   countTags();
-   createTag();
-
-   function countTags() { // count tags to know the limits of arrays
-      input.focus();
-      tagNumb.innerText = maxTags - tags.length;
-   }
-
-   function gettingTags(gTag) {
-      gTag = gTag.replace(/"/g, '');
-      gTag = gTag.replace('[', '');
-      gTag = gTag.replace(']', '');
-      document.getElementById('tags_category').value = gTag; // set the value of the input
-      console.log(gTag);
-   }
-
-   function createTag() {
-      ul.querySelectorAll("li").forEach(li => li.remove());
-      tags.slice().reverse().forEach(tag => {
-         let liTag = `<li>${tag} <i class="uit uit-multiply" onclick="remove(this, '${tag}')"></i></li>`;
-         ul.insertAdjacentHTML("afterbegin", liTag);
-
-         var tagString = JSON.stringify(tags); // convert the array into variable
-         gettingTags(tagString);
-      });
-      countTags();
-   }
-
-   function remove(element, tag) { // remove tags
-      let index = tags.indexOf(tag);
-      tags = [...tags.slice(0, index), ...tags.slice(index + 1)];
-      element.parentElement.remove();
-      countTags();
-   }
-
-   function addTag(e) {
-      if (e.key == "Enter") { // when you click space the tag will add
-         let tag = e.target.value.replace(/\s+/g, ' ');
-
-         if (tag.length > 1 && !tags.includes(tag)) {
-            if (tags.length < 10) {
-               tag.split(',').forEach(tag => {
-                  tags.push(tag);
-                  createTag();
-               });
-            }
-         }
-         e.target.value = "";
-      }
-   }
-   input.addEventListener("keyup", addTag);
-   const removeBtn = document.querySelector(".details button");
-   removeBtn.addEventListener("click", () => {
-      tags.length = 0;
-      ul.querySelectorAll("li").forEach(li => li.remove());
-      countTags();
-   });
-</script>
 
    </footer>
    <!-- partial -->

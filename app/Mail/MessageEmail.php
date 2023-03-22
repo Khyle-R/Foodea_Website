@@ -9,7 +9,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class RiderAccepted extends Mailable
+class MessageEmail extends Mailable
 {
     use Queueable, SerializesModels;
     public $mailData;
@@ -31,7 +31,7 @@ class RiderAccepted extends Mailable
     public function envelope()
     {
         return new Envelope(
-            subject: 'Application Accepted',
+            subject: 'Message Email',
         );
     }
 
@@ -46,8 +46,8 @@ class RiderAccepted extends Mailable
     //         view: 'view.name',
     //     );
     // }
-    public function build(){
-        return $this->markdown('email.RiderAccepted');
+     public function build(){
+        return $this->markdown('email.MessageEmail');
     }
     /**
      * Get the attachments for the message.

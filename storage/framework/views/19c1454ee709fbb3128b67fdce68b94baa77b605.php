@@ -56,7 +56,8 @@
                                                 
                                                 <div class="staff-id"><?php echo e($partner->business_name); ?></div>
                                                 <div class="small doj text-muted">Date Applied : <?php echo e($partner->date); ?></div>
-                                                <div class="staff-msg"><a class="red-btn" href="#"><?php echo e($partner->ratings); ?></a></div>
+                                                <div class="staff-msg"><a class="red-btn" href="#"><?php echo e($partner->ratings); ?></a>
+                                                <a class="red-btn" href="#" data-toggle="modal" data-target="#Contact_modal">Message</a></div>
                                             </div>
                                         </div>
                                         <div class="col-md-7">
@@ -459,6 +460,39 @@
                     </div>
                     </div>
 
+               <!-- Contact  Modal -->
+                    <div class="modal fade" id="Contact_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title white-font " id="exampleModalLongTitle">Message</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form method="post" action="<?php echo e(route('PartnerMessage')); ?>">
+                                <?php echo csrf_field(); ?>
+                             
+                        
+                        <div class="form-group">
+                            <input type="text" name="subject" placeholder="Subject" value="" class="form-control input-border" id="email">
+                        </div>
+                         <div class="form-group">
+                            <textarea  name="message" placeholder="Message" value="" class="form-control input-border" rows="6" cols="50"></textarea>
+                        </div>   
+                            <input type="hidden" name="accepted_rider_id" value="<?php echo e($partner->accepted_merchant_id); ?>">
+                             <input type="hidden" name="merchant_id" value="<?php echo e($partner->merchant_id); ?>">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn white-btn" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn red-btn">Confirm</button>
+                            </form>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
+
             <!-- Emergency Contact Modal -->
                     <div class="modal fade" id="Emergeny_contact_modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -690,8 +724,7 @@
 <!-- partial:../../partials/_footer.html -->
 <footer class="footer">
     <div class="d-sm-flex justify-content-center justify-content-sm-between">
-        <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com
-            2020</span>
+        <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2022. All Rights Reserved</span>
        
     </div>
 </footer>

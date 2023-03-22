@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\MessageEmail;
 use ZipArchive;
 use App\Models\tbl_product;
 use Illuminate\Http\Request;
@@ -31,9 +32,17 @@ class SuperadminController extends Controller
     public function index(){
         $riders = tbl_accepted_rider::count();
         $merchant = tbl_accepted_merchant::count();
-        return view('superadmin.superadmin_dashboard', compact('riders', 'merchant'));
-    }
 
+         $Data = tbl_rider_accounts::join('tbl_vehicle_info', 'tbl_rider_account.rider_id', '=', 'tbl_vehicle_info.rider_id')
+        ->join('rider_application', 'tbl_rider_account.rider_id', '=', 'rider_application.rider_id')
+        ->join('tbl_document_info', 'tbl_rider_account.rider_id', '=', 'tbl_document_info.rider_id')
+        ->where('rider_application.status', 'Pending')
+        ->distinct()
+        ->get(['rider_photo' ,'firstname', 'lastname' ,'vehicle_type', 'status', 'rider_application.date', 'rider_application.rider_application_id', 'tbl_rider_account.rider_id', 'email']);
+
+        return view('superadmin.superadmin_dashboard', compact('riders', 'merchant', 'Data'));
+    }
+ 
     public function SuperadminForgotPass(){
         return view('superadmin.superadmin_forgotpass');
     }
@@ -295,8 +304,12 @@ class SuperadminController extends Controller
     ->distinct()
     ->get(['tbl_accepted_rider.accepted_rider_id' ,'tbl_rider_account.rider_id', 'firstname', 'lastname', 'tbl_document_info.rider_photo', 'suffix', 'email', 'mobile_number', 'address', 'city', 'barangay', 'middlename']);
    
-    return view('superadmin.superadminapplication_accepted_rider', compact('Data'));
-   }
+    if($Data)
+    {
+    $accepted = tbl_accepted_rider::count();
+    return view('superadmin.superadminapplication_accepted_rider', compact('Data', 'accepted'));
+    }
+}
    
     public function AcceptedPartner(){
     
@@ -306,8 +319,12 @@ class SuperadminController extends Controller
     ->distinct()
     ->get(['tbl_accepted_merchant.accepted_merchant_id', 'business_name', 'merchant_document.logo', 'tbl_merchant_account.merchant_id', 'business_type', 'tbl_merchant_info.barangay', 'tbl_merchant_info.city', 'tbl_merchant_info.address', 'store_email', 'store_number']);    
 
-    return view('superadmin.superadminapplication_accepted_partner', compact('Data'));
-   }
+    if($Data)
+    {
+    $accepted = tbl_accepted_merchant::count();
+    return view('superadmin.superadminapplication_accepted_partner', compact('Data', 'accepted'));
+    }
+}
 
    public function RiderAccept(Request $request){
 
@@ -394,6 +411,22 @@ class SuperadminController extends Controller
     return view('superadmin.superadmin_merchantapplicationprofile', compact('Data'));
    
    }
+   public function MerchantDeleteApplicationProfile(Request $request, $id){
+    $res = tbl_merchant_application::where('merchant_id', $id)
+    ->update([
+        'status' => 'Rejected'
+    ]);
+    if($res)
+    {
+        tbl_accepted_merchant::where('merchant_id', $id)
+        ->delete();
+        
+        $request->session()->put('success', 'Status Updated');
+        return back();
+    }
+   }
+
+
    public function MerchantReview(){
     
        $Data = tbl_partner_accounts::join('tbl_merchant_info', 'tbl_merchant_account.merchant_id', '=', 'tbl_merchant_info.merchant_id')
@@ -523,7 +556,20 @@ class SuperadminController extends Controller
     return view('superadmin.superadmin_applicationprofile', compact('Data', 'document'));
    }
    
-   
+   public function RiderDeleteApplicationProfile(Request $request, $id){
+    $res = tbl_rider_application::where('rider_id', $id)
+    ->update([
+        'status' => 'Rejected'
+    ]);
+    if($res)
+    {
+        tbl_accepted_rider::where('rider_id', $id)
+        ->delete();
+        
+        $request->session()->put('success', 'Status Updated');
+        return back();
+    }
+   }
 
    
    public function UpdateMerchant(Request $request){
@@ -592,10 +638,15 @@ class SuperadminController extends Controller
    }
       public function RemoveAcceptedRider(Request $request){
         
-        $res = tbl_accepted_rider::where('accepted_rider_id', $request->accepted_rider_id)
-        ->delete();
+         $res = tbl_rider_application::where('rider_id', $request->rider_id)
+        ->Update([
+            'status' => 'Rejected'            
+        ]);
         
         if($res){
+            tbl_accepted_rider::where('accepted_rider_id', $request->accepted_rider_id)
+            ->delete();
+            
             $request->session()->put('success', 'Status Updated');
             return back();
         }
@@ -603,10 +654,16 @@ class SuperadminController extends Controller
       
        public function RemoveAcceptedMerchant(Request $request){
         
-        $res = tbl_accepted_merchant::where('accepted_merchant_id', $request->accepted_merchant_id)
-        ->delete();
+        $res = tbl_merchant_application::where('merchant_id', $request->merchant_id)
+        ->Update([
+            'status' => 'Rejected'            
+        ]);
         
         if($res){
+            
+             tbl_accepted_merchant::where('accepted_merchant_id', $request->accepted_merchant_id)
+            ->delete();
+
             $request->session()->put('success', 'Status Updated');
             return back();
         }
@@ -667,6 +724,40 @@ class SuperadminController extends Controller
 
       }
 
+      public function RiderMessage(Request $request){
+        $email = tbl_rider_accounts::where('rider_id', $request->rider_id)
+        ->first();
+        
+         $mailData = [
+            'title' => 'Password Reset',
+             'body' => 'test',
+             'fname' => $email->firstname,
+             'lname' => $email->lastname,
+             'subject' => $request->subject,
+             'message' => $request->message,
+             ];
+             Mail::to($email->email)->send(new MessageEmail($mailData));
+
+             return back()->with('success', 'Message has been sent');
+
+      }
+      public function PartnerMessage(Request $request){
+        $email = tbl_partner_accounts::where('merchant_id', $request->merchant_id)
+        ->first();
+        
+         $mailData = [
+            'title' => 'Password Reset',
+             'body' => 'test',
+             'fname' => $email->firstname,
+             'lname' => $email->lastname,
+             'subject' => $request->subject,
+             'message' => $request->message,
+             ];
+             Mail::to($email->email)->send(new MessageEmail($mailData));
+
+             return back()->with('success', 'Message has been sent');
+
+      }
       public function RiderEmergencyUpdate(Request $request){
         $res = tbl_vehicle_infos::where('rider_id', $request->rider_id)
         ->update([
@@ -761,8 +852,8 @@ class SuperadminController extends Controller
 
     public function ChangePassAdmin(Request $request){
        $request->validate([
-        'old_password' => 'required|min:6|max:50',
-        'new_password' => 'required|min:6|max:50',
+        'old_password' => 'required|min:8|max:50',
+        'new_password' => 'required|min:8|max:50',
         'confirm_password' => 'required| same:new_password',
        ]);
 

@@ -17,19 +17,22 @@
                                 </ol>
                             </nav>
                         </div>
-
-
+                                 <div class="d-flex flex-row justify-content-end my-4">
+                        <div class="title">
+                    <a class="red-btn" href="#">Download Report</a>
+                    </div>
+                    
+                    </div>
 
                         <div class="row">
                             <div class="col-12 grid-margin">
 
                                 <div class="card">
                                     <div class="card-body">
+                               
                         <div class="table-responsive">
                     <table id="example" class="table" style="width:100%">
                         <thead>
-                           
-                                
                            
                             <tr>
                                 <th>Merchant ID</th>
@@ -52,7 +55,7 @@
                     </table>
                     </div>
             
-                                            </div>
+                                     </div>
                                 </div>
                             </div>
                         </div>
@@ -65,19 +68,9 @@
                         >
                             <span
                                 class="text-muted d-block text-center text-sm-left d-sm-inline-block"
-                                >Copyright © bootstrapdash.com 2020</span
+                                >Copyright © 2022. All Rights Reserved</span
                             >
-                            <span
-                                class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"
-                            >
-                                Free
-                                <a
-                                    href="https://www.bootstrapdash.com/bootstrap-admin-template/"
-                                    target="_blank"
-                                    >Bootstrap admin templates</a
-                                >
-                                from Bootstrapdash.com</span
-                            >
+                           
                         </div>
                     </footer>
                     <!-- partial -->
