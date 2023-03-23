@@ -53,7 +53,7 @@
                          <thead>
                             <tr>
                                 <th>Name</th>
-                                <th>Job Type</th>
+                                <th>Business Type</th>
                                 <th>Email</th>
                                 <th>Status</th>
                                 <th>Date Application</th>
@@ -118,7 +118,7 @@
                                     <a href="#" class="action-icon" data-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-vertical black-icon" aria-hidden="true"></i></a>
                                     <div class="bg-white dropdown-menu dropdown-menu-right">
                                         <a class="action-btn dropdown-item black" href="/superadmin_merchantproile/{{  $partner->merchant_id }}"><i class="fa fa-pencil m-r-5"></i> View</a>
-                                        <a class="action-btn dropdown-item black" href=""><i class="fa fa-trash-o m-r-5"></i> Delete</a>
+                                        <a class="action-btn dropdown-item black" href="/application_merchant_reject/{{ $partner->merchant_id }}"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
                                     </div>
                                 </div>
                                     </td>
@@ -221,19 +221,9 @@
                         >
                             <span
                                 class="text-muted d-block text-center text-sm-left d-sm-inline-block"
-                                >Copyright © bootstrapdash.com 2020</span
+                                >Copyright © 2022. All Rights Reserved</span
                             >
-                            <span
-                                class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"
-                            >
-                                Free
-                                <a
-                                    href="https://www.bootstrapdash.com/bootstrap-admin-template/"
-                                    target="_blank"
-                                    >Bootstrap admin templates</a
-                                >
-                                from Bootstrapdash.com</span
-                            >
+                           
                         </div>
                     </footer>
                     <!-- partial -->

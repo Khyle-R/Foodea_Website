@@ -9,9 +9,12 @@ use App\Models\tbl_inventory;
 use App\Models\tbl_activitylog;
 use App\Models\tbl_merchant_info;
 use Illuminate\Support\Facades\DB;
+use App\Models\tbl_merchant_account;
 use App\Models\tbl_partner_accounts;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Validation\Rules\Password;
 use Carbon\Carbon; // to retrieve current Date
 
 class Admin_product extends Controller
@@ -513,4 +516,57 @@ class Admin_product extends Controller
         return view('admin.admin_account', compact('Data', 'product'));
     }
 
+    public function ChangePass(Request $request){
+        $request->validate([
+        'old_password' => 'required|min:8|max:50',
+        'password' => [
+            'required', 'confirmed',
+            Password::min(8)->letters()->numbers()->symbols()
+            ],
+            'password_confirmation' => 'required'
+        ]);
+
+        $pass = tbl_merchant_account::where('merchant_id', Session::get('loginID'))
+        ->value('password');
+    
+        if(Hash::check($request->old_password, $pass)){
+       
+        $res = tbl_merchant_account::where('merchant_id', Session::get('loginID'))
+        ->update([
+            'password' =>  bcrypt($request->password_confirmation)
+        ]);
+        if($res){
+            $request->session()->put('success', 'Password Updated');
+            return back();
+        }
+      
+      }
+      else{
+         $request->session()->put('fail', 'Old password does not match');
+            return back();
+      }
+    }
+    public function ChangeEmail(Request $request){
+        
+         $request->validate([
+        'new_email' => 'required|email|unique:tbl_merchant_account,email',
+        'confirm_email' => 'required|email'
+       ]);
+       
+       if($request->new_email == $request->confirm_email){
+        $res = tbl_partner_accounts::where('merchant_id', Session::get('loginID'))
+        ->update([
+            'email' => $request->confirm_email
+        ]);
+        if($res){
+            $request->session()->put('success', 'Email Updated');
+            return back();
+        }
+       }
+       else{
+          $request->session()->put('fail', 'Email does not match');
+            return back();
+       }
+
+    }
 }

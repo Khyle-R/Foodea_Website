@@ -1,51 +1,79 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
-    <meta charset="UTF-8">
-    <meta content="width=device-width, initial-scale=1" name="viewport" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="{{ url('image/foodea1.png') }}">
+    <title>FOODEA rider Requirements</title>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <link rel="icon" href="{{ url('image/foodea1.png') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css" />
     <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css" />
-    <link rel="stylesheet" type="text/css" href="css/rider_application4.css" />
-    <title>FOODEA Rider Requirements</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/rider_application4.css">
   </head>
-
-  <body>
-    <div class="container-scroller">
-            <nav class="sidebar sidebar-offcanvas" id="sidebar">
-              <ul class="nav">
-                <li class="nav-item back">
-                    <div class="back-logo">
-                        <a href="/"> <img src="image/vector.png" alt=""/> </a>
-                        <h5 class="mb-0">Back to website</h5>
-                    </div>
-                </li>
-                <li class="nav-item nav-category">
-                  <a class="nav-link" href="/">
-                    <img src="image/foodea.png" style="width: 50px">FOODEA
-                  </a>
-                </li>
-                    <li class="nav-item nav-category">Rider Application</li>
-                    <li>Step 1 &nbsp;&nbsp;&nbsp;Personal Information</li>
-                    <li>Step 2 &nbsp;&nbsp;&nbsp;Business Information</li>
-                    <li>Step 3 &nbsp;&nbsp;&nbsp;Verify Email Address</li>
-                    <li class="red">Step 4 &nbsp;Requirements</li>
-                  </ul>
-            </nav>
-
-      <div class="sign-form">
-        <div class="content-wrapper">
-          <div class="col-12 col-sm-10 col-md-11 col-lg-9 col-xl-6">
-            <div class="right">
-              <div class="right">
-              <h2>Welcome, Juan</h2>
-              <p>Here are some examples of required documents you have to submit to set up your account. 
-                  Make sure the documents you upload are clear
-                  and readable or else the application process will be delayed.
-                </p>
+  
+  <body id="body-pd">
+    <header class="header" id="header">
+      <div class="header_toggle">
+        <i class="bx bx-menu" id="header-toggle"></i>
+      </div>
+      <h3 class="header_title pt-2 pt-md-3">Rider Application</h3>
+    </header>
+    <div class="l-navbar" id="nav-bar">
+      <nav class="nav">
+        <div>
+           <a href="" data-bs-toggle="modal" data-bs-target="#ExitModal" class="nav_logo">
+              <i class="bx bx-log-out nav_icon text-white"></i>
+              <span class="nav_logo-name">Back to Website</span>
+          </a>
+            <div class="nav_list logos">
+              <div class="title d-flex pb-3 ps-2 gap-2 align-items-center">
+              <img src="image/foodea.png" style="width: 50px">FOODEA
+            </div>
+            <div class="nav_link active mt-3 py-3 ms-2">
+              <i class="bx bx-grid-alt nav_icon"></i>
+              <span class="nav_name">Term User</span>
+            </div>
+            <div href="#" class="nav_link active py-3 ms-2">
+              <span class="nav_linknumber">1</span>
+              <span class="nav_name">Personal Information</span>
+            </div>
+            <div href="#" class="nav_link active py-3 ms-2">
+              <span class="nav_linknumber">2</span>
+              <span class="nav_name">Verify Phone Number</span>
+            </div>
+            <div href="#" class="nav_link active py-3 ms-2">
+              <span class="nav_linknumber">3</span>
+              <span class="nav_name">Vehicle Information</span>
+            </div>
+            <div href="#" class="nav_link active red py-3 ms-2">
+              <span class="nav_linknumber">4</span>
+              <span class="nav_name">Requirements</span>
+            </div>
+            <!-- <div href="#" class="nav_link active py-3 ms-2">
+              <span class="nav_linknumber">5</span> 
+              <span class="nav_name">Application Status</span>
+            </div> -->
+          </div>
+        </div>
+        </div>
+      </nav>
+    </div>
+    <!-- Content Here -->
+    <!-- Form -->
+    <!-- <div class="container sign-form"> -->
+      <div class="content-wrapper container mt-2 px-3 px-md-5 py-2">
+        <div class="col-12 col-sm-12 col-md-9 col-lg-7 justify-content-center align-items-center mx-auto px-0">
+        <div class="right">
+              <h2>Welcome</h2>
+              <h3>Here are some examples of required documents you have to submit to set up your account. Make sure the documents you upload are clear and readable or else the application process will be delayed.
+              </h3>
 
           <div class="form-container">
             <div class="btn-group">
@@ -56,7 +84,7 @@
             @endif
 
                 <div class="requirements-title">
-               <p>2x2 image Picture <span>(Required JPG or PNG)</span></p>
+               <p class="text-danger">2x2 image Picture<span> (Required JPG or PNG)</span></p>
                </div>
                <div class="requirements">
                  <img class="pic" src="image/1x1.png" alt="">
@@ -67,11 +95,10 @@
             @error('image') {{ $message }}
             @enderror</span>
                    </div>
-
+              <hr class="new">
               <div class="requirements-title">
-              <p>Photo of your vehicle <span>(Required JPG or PNG)</span></p>
-
-               </div>
+              <p class="text-danger">Photo of your vehicle <span>(Required JPG or PNG)</span></p>
+              </div>
                 <div class="requirements">
               <p>Front view<span> (Required)</span></p>
               <img src="image/front.png" alt="">
@@ -136,8 +163,9 @@
             @enderror</span>
               </div>
           @endif
-                 <div class="requirements-title">
-              <p>Photo of your Professional drivers license ID <span> (Required JPG or PNG)</span></p>
+            <hr class="new">
+                <div class="requirements-title">
+              <p class="text-danger">Photo of your Professional drivers license ID <span> (Required JPG or PNG)</span></p>
                  </div>
                     <div class="requirements">
                 <p>Front<span> (Required)</span></p>
@@ -159,8 +187,9 @@
             @enderror</span>
               </div>
 
+              <hr class="new">
                <div class="requirements-title"> 
-            <p>Certificate of Registration <span>(Required PDF)</span></p>
+            <p class="text-danger">Certificate of Registration <span>(Required PDF)</span></p>
                </div>
                 <div class="requirements">
             <img src="image/cr.png" alt="">
@@ -171,9 +200,10 @@
             @error('cr') {{ $message }}
             @enderror</span>
               </div>
-
+              
+                <hr class="new">
                <div class="requirements-title">
-               <p>Official Receipt of Vehicle Registration <span>(Required PDF)</span></p>
+               <p class="text-danger">Official Receipt of Vehicle Registration <span>(Required PDF)</span></p>
                </div>
                 <div class="requirements">
                   <img src="image/or.png" alt="">
@@ -185,17 +215,18 @@
             @enderror</span>
               </div>
 
+              <hr class="new">
                <div class="requirements-title">    
-              <p>Drug Test Result <span>(Optional PDF)</span></p>
+              <p class="text-danger">Drug Test Result <span>(Optional PDF)</span></p>
                </div>
                 <div class="requirements">
                <img src="image/drug-test.png" alt="">
                  <input type="file" name="drug_test">
                   <span>File size up to 5mb only</span>
               </div>
-
+              <hr class="new">
                   <div class="requirements-title">
-              <p>NBI Clearance <span>(Required PDF)</span></p>
+              <p class="text-danger">NBI Clearance <span>(Required PDF)</span></p>
                   </div>
                    <div class="requirements">
                <img src="image/nbi.png" alt="">
@@ -212,19 +243,45 @@
                     <button Value="submit" type="submit" class="btn btn-danger w-50">Submit</button>
                   </div>
                   </div>
+                </div>
+              </form>
             </div>
-            
-      </form>
           </div>
-           </div>
-            </div>
-             </div>
-      <!-- Scroller -->
-    </div>  
+        </div>
+       </div>
+     <!-- </div> -->
 
-    {{-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> --}}
+     
+  <!-- EXIT Modal -->
+        <div class="modal fade" id="ExitModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title text-white" id="exampleModalLabel">Exit Signup</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <form action="{{ route('ExitSignup') }}">
+              <div class="modal-body">
+                Are you sure to discard your application?
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="white-btn" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="red-btn">Confirm</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+    <!-- End Content Here -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous">
+    </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="{{ asset('assets/js/app.js') }}"></script>
+    <script src = "js/sidebar.js"></script>
   </body>
 </html>

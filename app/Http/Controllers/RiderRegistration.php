@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Mail\MailVerification;
+use App\Mail\PasswordVerification;
 use App\Models\tbl_vehicle_infos;
 use App\Models\tbl_rider_accounts;
 use App\Models\tbl_rider_document;
@@ -33,6 +34,109 @@ class RiderRegistration extends Controller
         return view('sample', compact('Data'));
     }
     
+     public function RiderForgotPass(){
+        return view('forgotpass');
+    }
+    public function RiderForgetSend(Request $request){
+        $request->validate([
+            'email' => 'required|email'
+        ]);
+
+         $email = tbl_rider_accounts::where('email', $request->email)
+          ->first();
+          
+          if($email){
+         $code = mt_rand(1000, 9999);
+
+                       $mailData = [
+                        'title' => 'Password Reset',
+                        'body' => 'test',
+                        'code' => $code,
+                        'fname' => $email->firstname,
+                        'lname' => $email->lastname,
+                       ];
+                       Mail::to($email)->send(new PasswordVerification($mailData));
+
+                    $request->session()->put('verification', $code);
+                    $request->session()->put('email', $request->email);
+                     return redirect('/rider_forgotpass1');
+         } 
+         else{
+            return back()->with('fail', 'Email does not exist');
+         }
+        
+    }
+     public function RiderForgotPass2(){
+        $email = tbl_rider_accounts::where('email', Session::get('email'))
+        ->first();
+        
+        return view('rider_forgotpass1', compact('email'));
+     }
+
+     public function RiderForgotVerify(Request $request){
+        $num1 = $request->num1;
+        $num2 = $request->num2;
+        $num3 = $request->num3;
+        $num4 = $request->num4;
+        if($num1. $num2 . $num3 . $num4 == Session::get('verification')){
+            return redirect('/rider_forgotpass2');
+        }
+        else{
+            return back()->with('fail', 'Verification does not match');
+        }
+     }
+     
+     public function RiderForgotResend(Request $request){
+         $email = tbl_rider_accounts::where('email', Session::get('email'))
+          ->first();
+          
+          if($email){
+         $code = mt_rand(1000, 9999);
+
+                       $mailData = [
+                        'title' => 'Password Reset',
+                        'body' => 'test',
+                        'code' => $code,
+                        'fname' => $email->firstname,
+                        'lname' => $email->lastname,
+                       ];
+                       Mail::to($email)->send(new PasswordVerification($mailData));
+
+                    $request->session()->put('verification', $code);
+                     return back();
+     }
+    }
+    
+     public function RiderForgotPass3(){
+        return view('rider_forgotpass2');
+     }
+
+     public function RiderForgotReset(Request $request){
+        $request->validate([
+            'password' => [
+            'required', 'confirmed',
+            Password::min(8)->letters()->numbers()->symbols()
+            ],
+            'password_confirmation' => 'required'
+        ]);
+        if($request->password == $request->password_confirmation){
+            $hash = Hash::make($request->password_confirmation);
+            $res = tbl_rider_accounts::where('email', Session::get('email'))
+            ->update([
+                'password' => $hash
+            ]);
+            if($res){
+                Session::pull('email');
+                Session::pull('verification');
+                return redirect('/rider_forgotpass3');
+            }
+        }
+        
+       
+     }
+     public function RiderForgotPass4(){
+        return view('rider_forgotpass3');
+     }
     public function index()
     {
         //
@@ -60,11 +164,8 @@ class RiderRegistration extends Controller
             'city' => 'required',
             'barangay' => 'required',
             'zip' => 'required|min:4',
-            'birthday' => 'required|after: 18 year old',
+            'birthday' => 'required|date|after: 17 year old',
           
-        ],
-        [
-            'birthday' => 'Must be 18 above'
         ]
         );
             
@@ -120,7 +221,7 @@ class RiderRegistration extends Controller
                         'fname' => $email->firstname,
                         'lname' => $email->lastname,
                        ];
-                       Mail::to($email)->send(new MailVerification($mailData));
+                    Mail::to($email)->send(new MailVerification($mailData));
 
                     $request->session()->put('verification', $code);
                      $request->session()->put('status', $id->status);
@@ -651,7 +752,7 @@ class RiderRegistration extends Controller
     }
    
     public function RiderLoginIndex(Request $request){
-        if(Cookie::has('email') && Cookie::has('password')){
+        if(Cookie::has('rider_email') && Cookie::has('rider_password')){
              $user = tbl_rider_accounts::where('email', '=', Cookie::get('email'))->first();
               $Data = tbl_rider_accounts::join('tbl_vehicle_info', 'tbl_rider_account.rider_id', '=', 'tbl_vehicle_info.rider_id')
                 ->join('tbl_document_info', 'tbl_rider_account.rider_id', '=', 'tbl_document_info.rider_id')
@@ -684,8 +785,8 @@ class RiderRegistration extends Controller
                 /*SET COOKIE */
                 
                 $response = new Response();
-                Cookie::queue(Cookie::forever('email', $request->email));
-                Cookie::queue(Cookie::forever('password', $request->password));
+                Cookie::queue(Cookie::forever('rider_email', $request->email));
+                Cookie::queue(Cookie::forever('rider_password', $request->password));
                 
                 /*FORGET COOKIE */
                 // Cookie::queue(Cookie::forget('email'));
@@ -713,9 +814,10 @@ class RiderRegistration extends Controller
     public function RiderLogout(){
         if(Session::has('registerID')){
             Session::pull('registerID');
-            Cookie::queue(Cookie::forget('email'));
-            Cookie::queue(Cookie::forget('password'));  
+            Cookie::queue(Cookie::forget('rider_email'));
+            Cookie::queue(Cookie::forget('rider_password'));  
             return redirect('/');
         }
+        
     }
     }

@@ -223,23 +223,29 @@
                     <table id="example2" class="table" style="width:100%">
                         <thead>
                             <tr>
-                                <th>ID</th>
                                 <th>Name</th>
+                                <th>Vehicle Type</th>
                                 <th>Email</th>
-                                <th>Description</th>
-                                <th>Date Time</th>
+                                <th>Status</th>
+                                <th>Date Application</th>
                             </tr>
                         </thead>
                         <tbody>
+                           <?php $__currentLoopData = $Data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $recent): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <tr>
-                                <td> 
+                                <td>
+                                    <img class="circle mr-2" src="<?php echo e(url(('uploads/'. 'rider_documents'. '/'.$recent->rider_id. '/'). $recent->rider_photo)); ?>" alt="">
+                                    <?php echo e($recent->firstname. ' ' .$recent->lastname); ?>
+
                                 </td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td><?php echo e($recent->vehicle_type); ?></td>
+                                <td><?php echo e($recent->email); ?></td>
+                                <td>
+                                  <i class=" pending mdi mdi-radiobox-marked"></i>
+                                  <?php echo e($recent->status); ?></td>
+                                <td><?php echo e($recent->date); ?></td>
                             </tr>
-                          
+                          <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </tbody>
                     
                     </table>

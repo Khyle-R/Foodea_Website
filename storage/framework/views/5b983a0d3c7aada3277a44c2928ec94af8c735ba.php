@@ -18,17 +18,17 @@
     <link rel="stylesheet" href="css/rider_term.css">
   </head>
   
-  <div class="container-scroller">
   <body id="body-pd">
     <header class="header" id="header">
       <div class="header_toggle">
         <i class="bx bx-menu" id="header-toggle"></i>
       </div>
+      <h3 class="header_title pt-2 pt-md-3">Foodea Application</h3>
     </header>
     <div class="l-navbar" id="nav-bar">
       <nav class="nav">
         <div>
-          <a href="#" class="nav_logo">
+          <a href="/" class="nav_logo">
               <i class="bx bx-log-out nav_icon text-white"></i>
               <span class="nav_logo-name">Back to Website</span>
           </a>
@@ -36,22 +36,39 @@
               <div class="title d-flex pb-3 ps-2 gap-2 align-items-center">
               <img src="image/foodea.png" style="width: 50px">FOODEA
             </div>
-            <a href="#" class="nav_link active red rounded-end my-4 py-3">
+            <div class="nav_link active red mt-3 py-3 ms-2">
               <i class="bx bx-grid-alt nav_icon"></i>
               <span class="nav_name">Term User</span>
-            </a>
+            </div>
+            <!-- <div href="#" class="nav_link active red py-3 ms-2">
+              <span class="nav_linknumber">1</span>
+              <span class="nav_name">Personal Information</span>
+            </div>
+            <div href="#" class="nav_link active py-3 ms-2">
+              <span class="nav_linknumber">2</span>
+              <span class="nav_name">Verify Phone Number</span>
+            </div>
+            <div href="#" class="nav_link active py-3 ms-2">
+              <span class="nav_linknumber">3</span>
+              <span class="nav_name">Vehicle Information</span>
+            </div>
+            <div href="#" class="nav_link active py-3 ms-2">
+              <span class="nav_linknumber">4</span>
+              <span class="nav_name">Requirements</span>
+            </div>
+            <div href="#" class="nav_link active py-3 ms-2">
+              <span class="nav_linknumber">5</span> 
+              <span class="nav_name">Application Status</span>
+            </div> -->
           </div>
         </div>
       </nav>
     </div>
     <!-- Content Here -->
     
-    <div class=" container mt-2 row content-wrapper d-flex flex-column justify-content-center mx-auto">
-         <div id="loader-wrapper">
-            <span id="loader"></span>
-              </div>        
-      <h2 class="pt-4 pb-2">Terms of Use</h2>
-              <h3 class="pb-2 pb-md-3">These Terms of Use govern your use of the Foodea website and application</h3>
+    <div class="container mt-2 row content-wrapper d-flex flex-column justify-content-center mx-auto px-0">
+              <h2 class="pt-4 pb-2">Terms of Use</h2>
+              <h3 class="pb-2 pb-md-3">These terms of use govern your use of the Foodea website and application</h3>
               <div class="wrapper-all">
                 <div class="wrapper">
                   <div class="terms-and-conditions px-2 px-md-4">
@@ -67,9 +84,6 @@
               </div>
               <form class="pt-1 pt-md-3" action="/account_type">
                 <div class="pt-3 pb-2 pt-md-3 pb-md-3">
-                <input id="cb1" type="checkbox" name="checkbox3" value="yes" required><span class="ps-3">I have a professional driver's license.<span> 
-                </input>
-                <br>
                 <input id="cb1" class="mt-2" type="checkbox" name="checkbox4" value="yes" required><span class="ps-3">I certify that have read the above disclaimers and agree to the rules.</span> 
                 </input>
                 </div>
@@ -78,7 +92,6 @@
                 <button class="accept btn btn-danger" type="submit" disabled autocomplete="off">Accept</button>
                 </div>
               </form>
-        </div>
         </div>
     <!-- End Content Here -->
     <script

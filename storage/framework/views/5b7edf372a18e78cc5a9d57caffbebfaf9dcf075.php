@@ -61,13 +61,13 @@
           /></a>
         </div>
         <ul class="nav">
-          <li class="nav-item profile">
+          <li class="nav-item profile mt-3">
             <div class="profile-desc">
               <div class="profile-pic">
                 <div class="count-indicator">
                   <img
                     class="img-xs rounded-circle"
-                    src="<?php echo e(asset('assets/images/faces/face15.jpg')); ?>"
+                    src="<?php echo e(url('image/foodea1.png')); ?>"
                     alt=""
                   />
                   <span class="count bg-success"></span>
@@ -87,7 +87,7 @@
                 class="dropdown-menu dropdown-menu-right sidebar-dropdown preview-list"
                 aria-labelledby="profile-dropdown"
               >
-                <a href="#" class="dropdown-item preview-item">
+                <a href="/superadmin_account" class="dropdown-item preview-item">
                   <div class="preview-thumbnail">
                     <div class="preview-icon bg-dark rounded-circle">
                       <i class="mdi mdi-settings text-primary"></i>
@@ -100,18 +100,7 @@
                   </div>
                 </a>
                 <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                    <div class="preview-icon bg-dark rounded-circle">
-                      <i class="mdi mdi-onepassword text-info"></i>
-                    </div>
-                  </div>
-                  <div class="preview-item-content">
-                    <p class="preview-subject ellipsis mb-1 text-small">
-                      Change Password
-                    </p>
-                  </div>
-                </a>
+                
          
               </div>
             </div>
@@ -221,17 +210,7 @@
             >
               <span class="mdi mdi-menu"></span>
             </button>
-            <ul class="navbar-nav w-100">
-              <li class="nav-item w-100">
-                <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Search products"
-                  />
-                </form>
-              </li>
-            </ul>
+            
             <ul class="navbar-nav navbar-nav-right">
               <li class="nav-item dropdown d-none d-lg-block">
                 <!-- <a
@@ -300,7 +279,10 @@
                   data-toggle="dropdown"
                 >
                   <i class="mdi mdi-bell"></i>
+                    <?php if($ridercount || $merchantcount): ?>
                         <span class="count bg-success"></span>
+                        <?php else: ?>
+                         <?php endif; ?>
                   
                 </a>
                 <div
@@ -310,43 +292,57 @@
                   <h6 class="p-3 mb-0 white-font">Notifications</h6>
             
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item preview-item">
+                    <?php if($ridercount): ?>
+                  <a href="/superadmin_rider" class="dropdown-item preview-item">
                     <div class="preview-thumbnail">
                       <div class="preview-icon bg-dark rounded-circle">
                         <i class="mdi mdi-calendar text-success"></i>
                       </div>
                     </div>
+                  
                     <div class="preview-item-content">
-                      <p class="preview-subject mb-1">Event today</p>
+                      <p class="preview-subject mb-1">New Rider Applicants</p>
                       <p class="text-muted ellipsis mb-0">
-                        Just a reminder that you have an event today
+                        
+                        There are <?php echo e($ridercount); ?> new applicants
+                      
+                      </p>
+                    </div> 
+                  </a>
+
+                  <div class="dropdown-divider"></div>
+                    <?php elseif($merchantcount): ?>
+                  <a href="/superadmin_partnerapplication" class="dropdown-item preview-item">
+                    <div class="preview-thumbnail">
+                      <div class="preview-icon bg-dark rounded-circle">
+                        <i class="mdi mdi-calendar text-success"></i>
+                      </div>
+                    </div>
+                  
+                    <div class="preview-item-content">
+                      <p class="preview-subject mb-1">New Partner Applicants</p>
+                      <p class="text-muted ellipsis mb-0">
+                        
+                        There are <?php echo e($merchantcount); ?> new applicants
+                      
+                      </p>
+                    </div> 
+                  </a>
+
+                   <?php else: ?>
+                     <a class="dropdown-item preview-item">
+                    <div class="preview-item-content">
+                      <p class="text-muted ellipsis mb-0">
+                        You have 0 Notification
                       </p>
                     </div>
                   </a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item preview-item">
-                    <div class="preview-thumbnail">
-                      <div class="preview-icon bg-dark rounded-circle">
-                        <i class="mdi mdi-settings text-danger"></i>
-                      </div>
-                    </div>
-                    <div class="preview-item-content">
-                      <p class="preview-subject mb-1">Settings</p>
-                      <p class="text-muted ellipsis mb-0">Update dashboard</p>
-                    </div>
-                  </a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item preview-item">
-                    <div class="preview-thumbnail">
-                      <div class="preview-icon bg-dark rounded-circle">
-                        <i class="mdi mdi-link-variant text-warning"></i>
-                      </div>
-                    </div>
-                    <div class="preview-item-content">
-                      <p class="preview-subject mb-1">Launch Admin</p>
-                      <p class="text-muted ellipsis mb-0">New admin wow!</p>
-                    </div>
-                  </a>
+                    <?php endif; ?>
+                    
+                  
+                
+
+                  
                   <div class="dropdown-divider"></div>
                   <p class="p-3 mb-0 text-center">See all notifications</p>
                 </div>
@@ -361,7 +357,8 @@
                   <div class="navbar-profile">
                     <img
                       class="img-xs rounded-circle"
-                      src="<?php echo e(asset('assets/images/faces/face15.jpg')); ?>"
+                      style="background-color: #fff"
+                      src="<?php echo e(url('image/foodea1.png')); ?>"
                       alt=""
                     />
                     <p class="mb-0 d-none d-sm-block navbar-profile-name">
@@ -377,7 +374,7 @@
                 >
                   <h6 class="p-3 mb-0 white-font">Profile</h6>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item preview-item">
+                  <a href="/superadmin_account" class="dropdown-item preview-item">
                     <div class="preview-thumbnail">
                       <div class="preview-icon bg-dark rounded-circle">
                         <i class="mdi mdi-settings text-success"></i>
