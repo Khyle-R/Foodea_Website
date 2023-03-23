@@ -5,7 +5,7 @@ use Illuminate\Http\Request;
 
 class UserFilter{
     protected $allowedParameters = [
-        'id' => ['eq'],
+        'user_id' => ['eq'],
         'firstname' => ['eq','like'],
         'middlename' => ['eq','like'],
         'lastname' => ['eq','like'],
@@ -14,7 +14,12 @@ class UserFilter{
         'gender' => ['eq', 'like', 'ne'],
         'bmi' => ['eq', 'gt', 'lt', 'gte', 'lte'],
         'email' => ['eq', 'like', 'ne'],
-        'password' => ['eq', 'ne']
+        'password' => ['eq', 'ne'],
+        'address' => ['eq', 'like'],
+        'age' => ['eq', 'lt', 'gt', 'lte', 'gte'],
+        'contact_number' => ['eq'],
+        'lifestyle' => ['eq'],
+        'preferences' => ['like']
     ];
 
     protected $operatorMap = [

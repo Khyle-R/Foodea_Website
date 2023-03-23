@@ -3,17 +3,16 @@ namespace App\Filters\V1;
 
 use Illuminate\Http\Request;
 
-class FoodFilter{
+class CartFilter{
     protected $allowedParameters = [
+        'customer_id' => ['eq'],
         'product_id' => ['eq'],
-        'merchant_id' => ['eq'],
-        'category_id' => ['eq'],
-        'product_name' => ['eq', 'like'],
-        'calories' => ['eq', 'lt', 'lte', 'gt', 'gte'],
-        'price' => ['eq', 'gt', 'lt', 'gte', 'lte'],
-        'stock' => ['eq', 'gt', 'lt', 'gte', 'lte'],
-        'status' => ['ne', 'eq'],
-        'description' => ['eq']
+        'restaurant_id'  => ['eq',],
+        'quantity'  => ['eq', 'lt', 'lte', 'gt', 'gte'],
+        'total'  => ['eq', 'lt', 'lte', 'gt', 'gte'],
+        'status' => ['eq', 'ne'],
+        'payment_type' => ['eq', 'like'],
+        'date' => ['eq']
     ];
 
     protected $operatorMap = [

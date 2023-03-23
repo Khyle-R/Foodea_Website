@@ -745,7 +745,7 @@ class RiderRegistration extends Controller
         ->limit(1)
         ->get();
         
-        return view('rider_applicationstatus', compact('Data'));
+        return view('Rider_ApplicationStatus', compact('Data'));
     }
     public function agreement(){
         return view('/rider_application_agreement');
@@ -762,7 +762,7 @@ class RiderRegistration extends Controller
                 ->get();
 
                  $request->session()->put('registerID', $user->rider_id);
-                return view('/rider_applicationstatus', compact('Data'));
+                return view('/Rider_ApplicationStatus', compact('Data'));
             }
             else{
         return view('rider_login');
@@ -800,7 +800,7 @@ class RiderRegistration extends Controller
                 ->get();
                 
                 $request->session()->put('registerID', $user->rider_id);
-                return view('/rider_applicationstatus', compact('Data'));
+                return view('/Rider_ApplicationStatus', compact('Data'));
             }
             else{
                   return back()->with('fail', 'Password does not match');

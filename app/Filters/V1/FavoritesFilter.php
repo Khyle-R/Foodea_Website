@@ -3,17 +3,10 @@ namespace App\Filters\V1;
 
 use Illuminate\Http\Request;
 
-class FoodFilter{
+class FavoritesFilter{
     protected $allowedParameters = [
         'product_id' => ['eq'],
-        'merchant_id' => ['eq'],
-        'category_id' => ['eq'],
-        'product_name' => ['eq', 'like'],
-        'calories' => ['eq', 'lt', 'lte', 'gt', 'gte'],
-        'price' => ['eq', 'gt', 'lt', 'gte', 'lte'],
-        'stock' => ['eq', 'gt', 'lt', 'gte', 'lte'],
-        'status' => ['ne', 'eq'],
-        'description' => ['eq']
+        'user_id' => ['eq']
     ];
 
     protected $operatorMap = [

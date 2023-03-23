@@ -69,7 +69,7 @@
                                   <img src="image/foodea4.png" alt="">
                                 </div>
                                 <form method="post" action="{{ route('login.LoginMerchant') }}" class="mt-4">
-                                   @csrf
+                                   <input type="hidden" name="_token" value="{{ csrf_token() }}">
 
                                     <div class="form-group">
                                     <label for="email">Email</label>
