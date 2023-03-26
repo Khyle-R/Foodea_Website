@@ -134,7 +134,7 @@
     <!-- SECTION 4 -->
     <section class="d-flex" data-aos="fade-up">
       <div class="content pt-4 pb-2 py-xs-3 py-md-4 py-lg-5">
-        <h1 class="text-center">Lunch made easy<br>with just a tap</h1>
+        <h1 class="text-center">Meal made easy<br>with just a tap</h1>
       </div>
     </section>
     <!-- SECTION 4 -->
