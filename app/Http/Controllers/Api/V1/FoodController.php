@@ -14,14 +14,28 @@ class FoodController extends Controller
         $filter = new FoodFilter();
         $queryItems = $filter->transform($request);
 
-        if (!isset($queryItems)||count($queryItems) == 0 ) {
-            return tbl_product::all();
+        if(is_null($request->limit)){
+            if (!isset($queryItems)||count($queryItems) == 0 ) {
+                return tbl_product::all();
+            } else {
+                return tbl_product::where($queryItems)->get();
+            }
         } else {
-            return tbl_product::where($queryItems)->get();
+            $limit = $request->limit;
+            if (!isset($queryItems)||count($queryItems) == 0 ) {
+                return tbl_product::limit($limit)->get();
+            } else {
+                return tbl_product::where($queryItems)->limit($limit)->get();
+            }
         }
     }
 
     public function store(StoreFoodRequest $request){
         return tbl_product::create($request->all());
+    }
+
+    public function show(Request $request, tbl_product $tbl_product){
+        $id = $request->segment(count(request()->segments()));
+        return $tbl_product::where('product_id', $id)->get();
     }
 }

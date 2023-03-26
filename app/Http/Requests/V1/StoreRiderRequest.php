@@ -3,9 +3,8 @@
 namespace App\Http\Requests\V1;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 
-class StoreAppUserRequest extends FormRequest
+class StoreRiderRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,17 +27,15 @@ class StoreAppUserRequest extends FormRequest
             'firstname' => ['required'],
             'middlename' => ['required'],
             'lastname' => ['required'],
-            'height' => ['required', 'numeric'],
-            'weight' => ['required', 'numeric'],
-            'gender' => ['required', Rule::in(['M','F'])],
-            'address' => ['required'],
             'age' => ['required', 'numeric'],
-            'contact_number' => ['required', 'numeric'],
-            'bmi' => ['required', 'numeric'],
+            'gender' => ['required'],
+            'birthdate' => ['required'],
             'email' => ['required', 'email'],
-            'password' => ['required'],
-            'lifestyle' => ['required'],
-            'preferences' => ['required'],
+            'mobile_number' => ['required'],
+            'address' => ['required'],
+            'city' => ['required'],
+            'barangay' => ['required'],
+            'zip_code' => ['required','numeric']
         ];
     }
 }
