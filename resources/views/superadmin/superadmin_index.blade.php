@@ -213,7 +213,7 @@
               ><img src="{{ url('/image/foodea.png') }}" class="w-50" alt="logo"
             /></a>
           </div>
-          <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
+          <div class="navbar-menu-wrapper flex-shrink-0 d-flex align-items-stretch">
             <button
               class="navbar-toggler navbar-toggler align-self-center"
               type="button"
