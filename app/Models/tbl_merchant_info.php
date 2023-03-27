@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\tbl_merchant_account;
 use App\Models\tbl_merchant_document;
 use App\Models\tbl_category;
+use App\Models\tbl_voucher;
 
 class tbl_merchant_info extends Model
 {
@@ -45,4 +46,7 @@ class tbl_merchant_info extends Model
         return $this->hasMany(tbl_category::class, 'merchant_id', 'merchant_id');
     }
     
+    public function vouchers(){
+        return $this->hasMany(tbl_voucher::class, 'merchant_id', 'merchant_id');
+    }
 }
