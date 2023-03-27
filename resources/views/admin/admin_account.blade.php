@@ -49,7 +49,7 @@
                                     <div class="profile-img">
                                          @foreach ($Data as $partner)
                                      
-                                          <img alt="" src="{{ url('uploads/'. 'merchant_documents'. '/'. $partner->merchant_id. '/'. $partner->logo) }}">
+                                          <img alt="*" src="{{$partner->logo}}">
                                   
                                     </div>
                                 </div>
@@ -310,51 +310,51 @@
                             <tr>
                                 <td>Business Logo</td>
                                 <td>{{ $partner->logo }}</td>
-                                 <td><a class="red-btn" href="" data-toggle="modal" data-target="#ViewModal1"><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
-                                <td><a class="red-btn" href="/download_merchant_file/{{ $partner->merchant_id }}/{{ $partner->logo }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
+                                 <td><a class="red-btn" href="{{ $partner->logo }}" data-toggle="modal" data-target="#ViewModal1"><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
+                                <td><a class="red-btn" href="{{ $partner->logo }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
 
                             </tr>   
                             <tr>
                                 <td>Menu Photo</td>
                                 <td>{{ $partner->menu_photo }}</td>
-                               <td><a class="red-btn" data-toggle="modal" data-target="#ViewModal2"><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
-                                <td><a class="red-btn" href="/download_merchant_file/{{ $partner->merchant_id }}/{{ $partner->menu_photo }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
+                               <td><a class="red-btn" href="{{ $partner->menu_photo }}" data-toggle="modal" data-target="#ViewModal2"><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
+                                <td><a class="red-btn" href="{{ $partner->menu_photo }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
 
                             </tr>
 
                             <tr>
                                 <td>Business Permit</td>
                                 <td>{{ $partner->business_permit }}</td>
-                                 <td><a class="red-btn" href="/display_merchant_pdf/{{ $partner->merchant_id }}/{{ $partner->business_permit }}" ><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
-                                <td><a class="red-btn" href="/download_merchant_file/{{ $partner->merchant_id }}/{{ $partner->business_permit }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
+                                 <td><a class="red-btn" href="{{ $partner->business_permit }}" ><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
+                                <td><a class="red-btn" href="{{ $partner->business_permit }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
 
                             </tr>
                             <tr>
                                 <td>BIR Certificate</td>
                                 <td>{{ $partner->bir_cert }}</td>
-                                 <td><a class="red-btn" href="/display_merchant_pdf/{{ $partner->merchant_id }}/{{ $partner->bir_cert }}" ><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
-                                <td><a class="red-btn" href="/download_merchant_file/{{ $partner->merchant_id }}/{{ $partner->bir_cert }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
+                                 <td><a class="red-btn" href="{{ $partner->bir_cert }}" ><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
+                                <td><a class="red-btn" href="{{ $partner->bir_cert }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
 
                             </tr>
                             <tr>
                                 <td>Barangay Permit</td>
                                 <td>{{ $partner->barangay_permit }}</td>
-                                <td><a class="red-btn" href="/display_merchant_pdf/{{ $partner->merchant_id }}/{{ $partner->barangay_permit }}" ><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
-                                <td><a class="red-btn" href="/download_merchant_file/{{ $partner->merchant_id }}/{{ $partner->barangay_permit }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
+                                <td><a class="red-btn" href="{{ $partner->barangay_permit }}" ><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
+                                <td><a class="red-btn" href="{{ $partner->barangay_permit }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
 
                             </tr>
                            <tr>
                                 <td>DTI Certificate</td>
                                 <td>{{ $partner->dti_cert }}</td>
-                                 <td><a class="red-btn" href="/display_merchant_pdf/{{ $partner->merchant_id }}/{{ $partner->dti_cert }}" ><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
-                                <td><a class="red-btn" href="/download_merchant_file/{{ $partner->merchant_id }}/{{ $partner->dti_cert }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
+                                 <td><a class="red-btn" href="{{ $partner->dti_cert }}" ><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
+                                <td><a class="red-btn" href="{{ $partner->dti_cert }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
 
                             </tr>
                             <tr>
                                 <td>Valid Government ID</td>
                                 <td>{{ $partner->front_license }}</td>
-                                <td><a class="red-btn" data-toggle="modal" data-target="#ViewModal3" ><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
-                                <td><a class="red-btn" href="/download_valid_merchant/{{ $partner->merchant_id }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
+                                <td><a class="red-btn" href="{{ $partner->merchant_id }}" data-toggle="modal" data-target="#ViewModal3" ><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
+                                <td><a class="red-btn" href="{{ $partner->merchant_id }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
 
                             </tr>
                         </tbody>
@@ -428,7 +428,7 @@
                                         <div id="carouselExampleControl" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                            <img class="d-block" height="500" width="100%" src=" {{ asset('uploads/'. 'merchant_documents'. '/'. $partner->merchant_id. '/'. $partner->menu_photo) }} " alt="First slide">
+                            <img class="d-block" height="500" width="100%" src=" {{ $partner->menu_photo }} " alt="First slide">
                             </div>
                         </div>
                         {{-- <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -717,7 +717,7 @@
                         </div>
                         <div class="modal-body">
                             <div class="image text-center">
-                           <img height="400" width="400" src="{{ url('uploads/'. 'merchant_documents'. '/'. $partner->merchant_id. '/'. $partner->logo) }}" alt="">
+                           <img height="400" width="400" src="{{ $partner->logo }}" alt="">
                        </div>
                         </div>
                         </div>
@@ -738,7 +738,7 @@
                             <div id="carouselExampleContr" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                            <img class="d-block" height="650"  width="100%" src="{{ url('uploads/'. 'merchant_documents'. '/'. $partner->merchant_id. '/'. $partner->menu_photo) }}" alt="First slide">
+                            <img class="d-block" height="650"  width="100%" src="{{ $partner->menu_photo }}" alt="First slide">
                             </div>
         
                         </div>
@@ -771,10 +771,10 @@
                             <div id="carouselExampleControlss" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                            <img class="d-block" height="350"  width="100%" src="{{ url('uploads/'. 'merchant_documents'. '/'. $partner->merchant_id. '/'. 'valid id/'.$partner->front_license) }}" alt="First slide">
+                            <img class="d-block" height="350"  width="100%" src="{{ $partner->front_license }}" alt="First slide">
                             </div>
                             <div class="carousel-item">
-                            <img class="d-block" height="350" width="100%" src="{{ url('uploads/'. 'merchant_documents'. '/'. $partner->merchant_id. '/'. 'valid id/'.$partner->back_license) }}" alt="Second slide">
+                            <img class="d-block" height="350" width="100%" src="{{ $partner->back_license }}" alt="Second slide">
                             </div>
                         </div>
                         <a class="carousel-control-prev" href="#carouselExampleControlss" role="button" data-slide="prev">

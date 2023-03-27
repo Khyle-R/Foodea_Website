@@ -11,6 +11,9 @@ use App\Http\Controllers\MailController;
 use App\Http\Controllers\sample;
 use App\Http\Controllers\SuperadminController;
 
+Route::get('/test', [Home::class, 'test']);
+Route::post('/test', [Home::class, 'teststore']);
+Route::get('/testshow', [Home::class, 'testshow']);
 
 Route::get('/', [Home::class, 'index'])->name('home.index');
 

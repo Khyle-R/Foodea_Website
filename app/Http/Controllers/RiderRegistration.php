@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Session;
 use App\Models\tbl_merchant_application;
 use Illuminate\Validation\Rules\Password;
+use Illuminate\Support\Facades\Storage;
 
 class RiderRegistration extends Controller
 {
@@ -491,93 +492,95 @@ class RiderRegistration extends Controller
         
         if($request->hasFile('vehicle_front') && $request->hasFile('license') && $request->hasFile('image') && $request->hasFile('cr') && $request->hasFile('or') && $request->hasFile('nbi') && $request->hasFile('vehicle_side') && $request->hasFile('vehicle_back') && $request->hasFile('license_back')){
 
-            $vehicle = $request->file('vehicle_front');
-            $file = $request->file('license');
-            $file2 = $request->file('image');
-            $file3 = $request->file('cr');
-            $file4 = $request->file('or');
+            $name = tbl_rider_accounts::where('rider_id', $request->rider_id)->first();
+
+            $vehicle = $request->file('vehicle_front')->store('rider_documents/'.$request->rider_id.'/vehicle', 's3', ['visibility', 'public']);
+            $file = $request->file('license')->store('rider_documents/'.$request->rider_id.'/driver_license', 's3', ['visibility', 'public']);
+            $file2 = $request->file('image')->store('rider_documents/'.$request->rider_id.'', 's3', ['visibility', 'public']);
+            $file3 = $request->file('cr')->store('rider_documents/'.$request->rider_id.'', 's3', ['visibility', 'public']);
+            $file4 = $request->file('or')->store('rider_documents/'.$request->rider_id.'', 's3', ['visibility', 'public']);
              if($request->hasFile('drug_test')){
-            $file5 = $request->file('drug_test');
+            $file5 = $request->file('drug_test')->store('rider_documents/'.$request->rider_id.'', 's3', ['visibility', 'public']);
              }
-            $file6 = $request->file('nbi');
-            $file7 = $request->file('vehicle_side');
-            $file8 = $request->file('vehicle_back');
-            $file9 = $request->file('license_back');
+            $file6 = $request->file('nbi')->store('rider_documents/'.$request->rider_id.'', 's3', ['visibility', 'public']);
+            $file7 = $request->file('vehicle_side')->store('rider_documents/'.$request->rider_id.'/vehicle', 's3', ['visibility', 'public']);
+            $file8 = $request->file('vehicle_back')->store('rider_documents/'.$request->rider_id.'/vehicle', 's3', ['visibility', 'public']);
+            $file9 = $request->file('license_back')->store('rider_documents/'.$request->rider_id.'driver_license', 's3', ['visibility', 'public']);
             if($request->hasFile('auth_letter'))
             {
-            $file10 = $request->file('auth_letter');
+            $file10 = $request->file('auth_letter')->store('rider_documents/'.$request->rider_id.'_'.$name->firstname. '_' .$name->lastname, 's3', ['visibility', 'public']);
             }
             if(Session::get('vehicle') == 'Second-hand')
             {
-             $file12 = $request->file('deed_sale');
+             $file12 = $request->file('deed_sale')->store('rider_documents/'.$request->rider_id.'_'.$name->firstname. '_' .$name->lastname, 's3', ['visibility', 'public']);
            }
             
             
-            $photo = $vehicle->getClientOriginalName();
-            $license = $file->getClientOriginalName();
-            $image = $file2->getClientOriginalName();
-            $cr = $file3->getClientOriginalName();
-            $or = $file4->getClientOriginalName();
+            // $photo = $vehicle->getClientOriginalName();
+            // $license = $file->getClientOriginalName();
+            // $image = $file2->getClientOriginalName();
+            // $cr = $file3->getClientOriginalName();
+            // $or = $file4->getClientOriginalName();
+            //  if($request->hasFile('drug_test')){
+            // $drug = $file5->getClientOriginalName();
+            //  }
+            // $nbi = $file6->getClientOriginalName();
+            // $side = $file7->getClientOriginalName();
+            // $back = $file8->getClientOriginalName();
+            // $license_back = $file9->getClientOriginalName();
+            // if($request->hasFile('auth_letter'))
+            // {
+            // $auth = $file10->getClientOriginalName();
+            // }
+            // if(Session::get('vehicle') == 'Second-hand')
+            // {
+            //  $deed = $file12->getClientOriginalName();
+            // }
+
+            
+            $filename1 = Storage::disk('s3')->url($vehicle);
+            $filename2 = Storage::disk('s3')->url($file);
+            $filename3 = Storage::disk('s3')->url($file2);
+            $filename4 = Storage::disk('s3')->url($file3);
+            $filename5 = Storage::disk('s3')->url($file4);
              if($request->hasFile('drug_test')){
-            $drug = $file5->getClientOriginalName();
+            $filename6 = mt_rand(1000, 9999) . '_' .$file5;
              }
-            $nbi = $file6->getClientOriginalName();
-            $side = $file7->getClientOriginalName();
-            $back = $file8->getClientOriginalName();
-            $license_back = $file9->getClientOriginalName();
-            if($request->hasFile('auth_letter'))
+            $filename7 = Storage::disk('s3')->url($file6);
+            $filename8 = Storage::disk('s3')->url($file7);
+            $filename9 = Storage::disk('s3')->url($file8);
+            $filename10 = Storage::disk('s3')->url($file9);
+             if($request->hasFile('auth_letter'))
             {
-            $auth = $file10->getClientOriginalName();
+            $filename11 = Storage::disk('s3')->url($file10);
             }
             if(Session::get('vehicle') == 'Second-hand')
             {
-             $deed = $file12->getClientOriginalName();
+            $filename13 = Storage::disk('s3')->url($file12);
             }
 
             
-            $filename1 = mt_rand(1000, 9999) . '_' .$photo;
-            $filename2 = mt_rand(1000, 9999) . '_' .$license;
-            $filename3 = mt_rand(1000, 9999) . '_' .$image;
-            $filename4 = mt_rand(1000, 9999) . '_' .$cr;
-            $filename5 = mt_rand(1000, 9999) . '_' .$or;
-             if($request->hasFile('drug_test')){
-            $filename6 = mt_rand(1000, 9999) . '_' .$drug;
-             }
-            $filename7 = mt_rand(1000, 9999) . '_' .$nbi;
-            $filename8 = mt_rand(1000, 9999) . '_' .$side;
-            $filename9 = mt_rand(1000, 9999) . '_' .$back;
-            $filename10 =mt_rand(1000, 9999) . '_' .$license_back;
-             if($request->hasFile('auth_letter'))
-            {
-            $filename11 = mt_rand(1000, 9999) . '_' .$auth;
-            }
-            if(Session::get('vehicle') == 'Second-hand')
-            {
-            $filename13 = mt_rand(1000, 9999) . '_' .$deed;
-            }
-
-            $name = tbl_rider_accounts::where('rider_id', $request->rider_id)->first();
              
-            $vehicle->move(('uploads/'. 'rider_documents'. '/'. $request->rider_id.  '/' .'vehicle/'), $filename1);
-            $file ->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id. '/' .'driver license/'),  $filename2 );
-            $file2->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id), $filename3);
-            $file3 ->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id),  $filename4 );
-            $file4->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id), $filename5);
-             if($request->hasFile('drug_test')){
-            $file5 ->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id),  $filename6 );
-             }
-            $file6 ->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id),  $filename7 );
-            $file7->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id.  '/' .'vehicle/'), $filename8);
-            $file8 ->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id.  '/' .'vehicle/'),  $filename9 );
-            $file9 ->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id.  '/' .'driver license/'),  $filename10 );
-            if($request->hasFile('auth_letter'))
-            {
-            $file10->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id. '_'.$name->firstname. '_' .$name->lastname), $filename11);
-            }
-              if(Session::get('vehicle') == 'Second-hand')
-            {
-            $file12 ->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id. '_'.$name->firstname. '_' .$name->lastname),  $filename13 );
-            }
+            // $vehicle->move(('uploads/'. 'rider_documents'. '/'. $request->rider_id.  '/' .'vehicle/'), $filename1);
+            // $file ->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id. '/' .'driver license/'),  $filename2 );
+            // $file2->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id), $filename3);
+            // $file3 ->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id),  $filename4 );
+            // $file4->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id), $filename5);
+            //  if($request->hasFile('drug_test')){
+            // $file5 ->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id),  $filename6 );
+            //  }
+            // $file6 ->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id),  $filename7 );
+            // $file7->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id.  '/' .'vehicle/'), $filename8);
+            // $file8 ->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id.  '/' .'vehicle/'),  $filename9 );
+            // $file9 ->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id.  '/' .'driver license/'),  $filename10 );
+            // if($request->hasFile('auth_letter'))
+            // {
+            // $file10->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id. '_'.$name->firstname. '_' .$name->lastname), $filename11);
+            // }
+            //   if(Session::get('vehicle') == 'Second-hand')
+            // {
+            // $file12 ->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id. '_'.$name->firstname. '_' .$name->lastname),  $filename13 );
+            // }
 
             $document->vehicle_front = $filename1;
             $document->driver_license =  $filename2;
@@ -644,46 +647,46 @@ class RiderRegistration extends Controller
         
         if($request->hasFile('license') && $request->hasFile('image') && $request->hasFile('nbi') && $request->hasFile('vehicle_side') && $request->hasFile('license_back')){
 
-            $file = $request->file('license');
-            $file2 = $request->file('image');
+            $file = $request->file('license')->store('rider_documents/'.$request->rider_id.'/driver_license', 's3', ['visibility', 'public']);
+            $file2 = $request->file('image')->store('rider_documents/'.$request->rider_id.'', 's3', ['visibility', 'public']);
             if($request->hasFile('drug_test')){
-            $file5 = $request->file('drug_test');
+            $file5 = $request->file('drug_test')->store('rider_documents/'.$request->rider_id.'', 's3', ['visibility', 'public']);
             }
-            $file6 = $request->file('nbi');
-            $file7 = $request->file('vehicle_side');
-            $file9 = $request->file('license_back');
+            $file6 = $request->file('nbi')->store('rider_documents/'.$request->rider_id.'', 's3', ['visibility', 'public']);
+            $file7 = $request->file('vehicle_side')->store('rider_documents/'.$request->rider_id.'/vehicle', 's3', ['visibility', 'public']);
+            $file9 = $request->file('license_back')->store('rider_documents/'.$request->rider_id.'/driver_license', 's3', ['visibility', 'public']);
 
             
-            $license = $file->getClientOriginalName();
-            $image = $file2->getClientOriginalName();
-            if($request->hasFile('drug_test')){
-            $drug = $file5->getClientOriginalName();
-            }
-            $nbi = $file6->getClientOriginalName();
-            $side = $file7->getClientOriginalName();
-            $license_back = $file9->getClientOriginalName();
+            // $license = $file->getClientOriginalName();
+            // $image = $file2->getClientOriginalName();
+            // if($request->hasFile('drug_test')){
+            // $drug = $file5->getClientOriginalName();
+            // }
+            // $nbi = $file6->getClientOriginalName();
+            // $side = $file7->getClientOriginalName();
+            // $license_back = $file9->getClientOriginalName();
 
             
-            $filename2 = mt_rand(1000, 9999) . '_' .$license;
-            $filename3 = mt_rand(1000, 9999) . '_' .$image;
+            $filename2 = Storage::disk('s3')->url($file);
+            $filename3 = Storage::disk('s3')->url($file2);
             if($request->hasFile('drug_test')){
-            $filename6 = mt_rand(1000, 9999) . '_' .$drug;
+            $filename6 = Storage::disk('s3')->url($file5);
             }
-            $filename7 = mt_rand(1000, 9999) . '_' .$nbi;
-            $filename8 = mt_rand(1000, 9999) . '_' .$side;
-            $filename10 =mt_rand(1000, 9999) . '_' .$license_back;
+            $filename7 = Storage::disk('s3')->url($file6);
+            $filename8 = Storage::disk('s3')->url($file7);
+            $filename10 = Storage::disk('s3')->url($file9);
 
 
             $name = tbl_rider_accounts::where('rider_id', $request->rider_id)->first();
              
-            $file ->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id. '/' .'driver license/'),  $filename2 );
-            $file2->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id), $filename3);
-            if($request->hasFile('drug_test')){
-            $file5 ->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id),  $filename6 );
-            }
-            $file6 ->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id),  $filename7 );
-            $file7->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id.  '/' .'vehicle/'), $filename8);
-            $file9 ->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id.  '/' .'driver license/'),  $filename10 );
+            // $file ->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id. '/' .'driver license/'),  $filename2 );
+            // $file2->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id), $filename3);
+            // if($request->hasFile('drug_test')){
+            // $file5 ->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id),  $filename6 );
+            // }
+            // $file6 ->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id),  $filename7 );
+            // $file7->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id.  '/' .'vehicle/'), $filename8);
+            // $file9 ->move(('uploads/'. 'rider_documents'. '/'.$request->rider_id.  '/' .'driver license/'),  $filename10 );
 
 
             $document->driver_license =  $filename2;
