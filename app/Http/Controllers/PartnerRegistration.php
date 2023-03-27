@@ -397,7 +397,7 @@ class PartnerRegistration extends Controller
         
         $user = tbl_partner_accounts::where('email', '=', $request->email)->first();
         if($user){
-            if($request->password == $user->password){
+            if(Hash::check($request->password, $user->password)){
                  if($request->remember){
                     $minutes = 5;
                     $response = new Response;
