@@ -187,7 +187,7 @@ class PartnerRegistration extends Controller
             $status =  tbl_merchant_application::where('merchant_id', $request->merchant_id)->first();
             if($success){
                 $email = tbl_partner_accounts::where('merchant_id', Session::get('merchant_id'))->first();
-                dd($email);
+                // dd($email);
                 $code = mt_rand(100000, 999999);
                 //   $mailData = [
                 //     'title' => 'Account Verification',
