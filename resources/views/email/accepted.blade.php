@@ -13,5 +13,5 @@ Thank you for trusting foodea. If you have any question please message us.<br><b
 </p>
 
 <p>
-{{ config('app.name') }}
+Foodea
 </p>

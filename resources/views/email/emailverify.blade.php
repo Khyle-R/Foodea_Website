@@ -15,6 +15,6 @@ This email message was auto-generated. Please do not respond.<br><br>
 
 <p>
 Thank you,<br>
-{{ config('app.name') }}
+Foodea
 </p>
 @endcomponent
