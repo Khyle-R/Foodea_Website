@@ -16,6 +16,7 @@ use App\Models\tbl_rider_application;
 use Illuminate\Support\Facades\Session;
 use App\Models\tbl_merchant_application;
 use Illuminate\Support\Facades\Storage;
+use App\Clients\SendGridClient;
 
 class Home extends Controller
 {
@@ -106,13 +107,17 @@ class Home extends Controller
     }
 
     public function ContactUssend(Request $request){
-        $mailData = [
-            'title' => 'Password Reset',
-            'body' => 'test',
-            'name' => $request->name,
-            'text' => $request->text,
-            ];
-            Mail::to($request->email)->send(new ContactUs($mailData));     
+        // $mailData = [
+        //     'title' => 'Password Reset',
+        //     'body' => 'test',
+        //     'name' => $request->name,
+        //     'text' => $request->text,
+        //     ];
+        //     Mail::to($request->email)->send(new ContactUs($mailData));
+            
+            $text = $request->text;
+            $html = view('email.contact', compact('text'))->render();
+            SendGridClient::sendEmail($email->email, "Message from Foodea", $html);
             
             return back();
         

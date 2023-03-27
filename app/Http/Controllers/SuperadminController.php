@@ -26,6 +26,7 @@ use Illuminate\Support\Facades\Session;
 use App\Models\tbl_merchant_application;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Validation\Rules\Password;
+use App\Clients\SendGridClient;
 
 class SuperadminController extends Controller
 {
@@ -57,14 +58,17 @@ class SuperadminController extends Controller
           if($email){
          $code = mt_rand(1000, 9999);
 
-                       $mailData = [
-                        'title' => 'Password Reset',
-                        'body' => 'test',
-                        'code' => $code,
-                        'fname' => $email->firstname,
-                        'lname' => $email->lastname,
-                       ];
-                       Mail::to($email)->send(new PasswordVerification($mailData));
+                    //    $mailData = [
+                    //     'title' => 'Password Reset',
+                    //     'body' => 'test',
+                    //     'code' => $code,
+                    //     'fname' => $email->firstname,
+                    //     'lname' => $email->lastname,
+                    //    ];
+                    //    Mail::to($email)->send(new PasswordVerification($mailData));
+
+                    $html = view('email.forgotpass', compact('code'))->render();
+                    SendGridClient::sendEmail($request->email, "Password Reset", $html);
 
                     $request->session()->put('admin_verification', $code);
                     $request->session()->put('admin_email', $request->email);
@@ -102,14 +106,18 @@ class SuperadminController extends Controller
           if($email){
          $code = mt_rand(1000, 9999);
 
-                       $mailData = [
-                        'title' => 'Password Reset',
-                        'body' => 'test',
-                        'code' => $code,
-                        'fname' => $email->firstname,
-                        'lname' => $email->lastname,
-                       ];
-                       Mail::to($email)->send(new PasswordVerification($mailData));
+                    //    $mailData = [
+                    //     'title' => 'Password Reset',
+                    //     'body' => 'test',
+                    //     'code' => $code,
+                    //     'fname' => $email->firstname,
+                    //     'lname' => $email->lastname,
+                    //    ];
+                    //    Mail::to($email)->send(new PasswordVerification($mailData));
+
+                       $receiverEmail = Session::get('admin_email');
+                       $html = view('email.forgotpass', compact('code'))->render();
+                        SendGridClient::sendEmail($receiverEmail, "Password Reset", $html);
 
                     $request->session()->put('admin_verification', $code);
                      return back();
@@ -602,13 +610,17 @@ class SuperadminController extends Controller
             $email = tbl_partner_accounts::where('merchant_id',  $request->merchant_id)
           ->first();
           
-             $mailData = [
-                'title' => 'Password Reset',
-                'body' => 'test',
-                'fname' => $email->firstname,
-                'lname' => $email->lastname,
-                ];
-                Mail::to($email->email)->send(new RiderAccepted($mailData));
+            //  $mailData = [
+            //     'title' => 'Password Reset',
+            //     'body' => 'test',
+            //     'fname' => $email->firstname,
+            //     'lname' => $email->lastname,
+            //     ];
+            //     Mail::to($email->email)->send(new RiderAccepted($mailData));
+
+                $html = view('email.accepted')->render();
+                SendGridClient::sendEmail($email->email, "Application Successful", $html);
+                
                 
             $request->session()->put('success', 'Status Updated');
                return back();
@@ -728,15 +740,19 @@ class SuperadminController extends Controller
         $email = tbl_rider_accounts::where('rider_id', $request->rider_id)
         ->first();
         
-         $mailData = [
-            'title' => 'Password Reset',
-             'body' => 'test',
-             'fname' => $email->firstname,
-             'lname' => $email->lastname,
-             'subject' => $request->subject,
-             'message' => $request->message,
-             ];
-             Mail::to($email->email)->send(new MessageEmail($mailData));
+        //  $mailData = [
+        //     'title' => 'Password Reset',
+        //      'body' => 'test',
+        //      'fname' => $email->firstname,
+        //      'lname' => $email->lastname,
+        //      'subject' => $request->subject,
+        //      'message' => $request->message,
+        //      ];
+        //      Mail::to($email->email)->send(new MessageEmail($mailData));
+
+            $message = $request->message;
+            $html = view('email.message', compact('message'))->render();
+            SendGridClient::sendEmail($email->email, "Message from Foodea", $html);
 
              return back()->with('success', 'Message has been sent');
 
@@ -745,15 +761,19 @@ class SuperadminController extends Controller
         $email = tbl_partner_accounts::where('merchant_id', $request->merchant_id)
         ->first();
         
-         $mailData = [
-            'title' => 'Password Reset',
-             'body' => 'test',
-             'fname' => $email->firstname,
-             'lname' => $email->lastname,
-             'subject' => $request->subject,
-             'message' => $request->message,
-             ];
-             Mail::to($email->email)->send(new MessageEmail($mailData));
+        //  $mailData = [
+        //     'title' => 'Password Reset',
+        //      'body' => 'test',
+        //      'fname' => $email->firstname,
+        //      'lname' => $email->lastname,
+        //      'subject' => $request->subject,
+        //      'message' => $request->message,
+        //      ];
+        //      Mail::to($email->email)->send(new MessageEmail($mailData));
+
+             $message = $request->message;
+            $html = view('email.message', compact('message'))->render();
+            SendGridClient::sendEmail($email->email, "Message from Foodea", $html);
 
              return back()->with('success', 'Message has been sent');
 

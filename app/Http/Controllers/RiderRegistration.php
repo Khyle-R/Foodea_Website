@@ -21,6 +21,7 @@ use Illuminate\Support\Facades\Session;
 use App\Models\tbl_merchant_application;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Support\Facades\Storage;
+use App\Clients\SendGridClient;
 
 class RiderRegistration extends Controller
 {
@@ -49,14 +50,17 @@ class RiderRegistration extends Controller
           if($email){
          $code = mt_rand(1000, 9999);
 
-                       $mailData = [
-                        'title' => 'Password Reset',
-                        'body' => 'test',
-                        'code' => $code,
-                        'fname' => $email->firstname,
-                        'lname' => $email->lastname,
-                       ];
-                       Mail::to($email)->send(new PasswordVerification($mailData));
+                    //    $mailData = [
+                    //     'title' => 'Password Reset',
+                    //     'body' => 'test',
+                    //     'code' => $code,
+                    //     'fname' => $email->firstname,
+                    //     'lname' => $email->lastname,
+                    //    ];
+                    //    Mail::to($email)->send(new PasswordVerification($mailData));
+
+                       $html = view('email.forgotpass', compact('code'))->render();
+                    SendGridClient::sendEmail($request->email, "Password Reset", $html);
 
                     $request->session()->put('verification', $code);
                     $request->session()->put('email', $request->email);
@@ -94,14 +98,18 @@ class RiderRegistration extends Controller
           if($email){
          $code = mt_rand(1000, 9999);
 
-                       $mailData = [
-                        'title' => 'Password Reset',
-                        'body' => 'test',
-                        'code' => $code,
-                        'fname' => $email->firstname,
-                        'lname' => $email->lastname,
-                       ];
-                       Mail::to($email)->send(new PasswordVerification($mailData));
+                    //    $mailData = [
+                    //     'title' => 'Password Reset',
+                    //     'body' => 'test',
+                    //     'code' => $code,
+                    //     'fname' => $email->firstname,
+                    //     'lname' => $email->lastname,
+                    //    ];
+                    //    Mail::to($email)->send(new PasswordVerification($mailData));
+
+                       $receiverEmail = Session::get('email');
+                       $html = view('email.forgotpass', compact('code'))->render();
+                        SendGridClient::sendEmail($receiverEmail, "Password Reset", $html);
 
                     $request->session()->put('verification', $code);
                      return back();
@@ -215,14 +223,17 @@ class RiderRegistration extends Controller
                         ->first();
                         
                         $code = mt_rand(100000, 999999);
-                       $mailData = [
-                        'title' => 'Account Verification',
-                        'body' => 'test',
-                        'code' => $code,
-                        'fname' => $email->firstname,
-                        'lname' => $email->lastname,
-                       ];
-                    Mail::to($email)->send(new MailVerification($mailData));
+                    //    $mailData = [
+                    //     'title' => 'Account Verification',
+                    //     'body' => 'test',
+                    //     'code' => $code,
+                    //     'fname' => $email->firstname,
+                    //     'lname' => $email->lastname,
+                    //    ];
+                    // Mail::to($email)->send(new MailVerification($mailData));
+
+                    $html = view('email.emailverify', compact('code'))->render();
+                    SendGridClient::sendEmail($request->email, "Account Verification", $html);
 
                     $request->session()->put('verification', $code);
                      $request->session()->put('status', $id->status);
@@ -295,14 +306,17 @@ class RiderRegistration extends Controller
                         
          $code = mt_rand(100000, 999999);
 
-                       $mailData = [
-                        'title' => 'Account Verification',
-                        'body' => 'test',
-                        'code' => $code,
-                        'fname' => $email->firstname,
-                        'lname' => $email->lastname,
-                       ];
-                       Mail::to($email)->send(new MailVerification($mailData));
+                    //    $mailData = [
+                    //     'title' => 'Account Verification',
+                    //     'body' => 'test',
+                    //     'code' => $code,
+                    //     'fname' => $email->firstname,
+                    //     'lname' => $email->lastname,
+                    //    ];
+                    //    Mail::to($email)->send(new MailVerification($mailData));
+
+                        $html = view('email.emailverify', compact('code'))->render();
+                        SendGridClient::sendEmail($email->email, "Account Verification", $html);
 
                     $request->session()->put('verification', $code);
                      return back();

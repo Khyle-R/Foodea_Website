@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Session;
 use App\Models\tbl_merchant_application;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Support\Facades\Storage;
+use App\Clients\SendGridClient;
 
 class PartnerRegistration extends Controller
 {
@@ -40,24 +41,26 @@ class PartnerRegistration extends Controller
             'email' => 'required|email'
         ]);
 
-         $email = tbl_partner_accounts::where('email', $request->email)
-          ->first();
+        $email = tbl_partner_accounts::where('email', $request->email)->first();
           
-          if($email){
-         $code = mt_rand(1000, 9999);
+        if($email){
+            $code = mt_rand(1000, 9999);
+            // $mailData = [
+            // 'title' => 'Password Reset',
+            // 'body' => 'test',
+            // 'code' => $code,
+            // 'fname' => $email->firstname,
+            // 'lname' => $email->lastname,
+            // ];
+            // Mail::to($email)->send(new PasswordVerification($mailData));
 
-                       $mailData = [
-                        'title' => 'Password Reset',
-                        'body' => 'test',
-                        'code' => $code,
-                        'fname' => $email->firstname,
-                        'lname' => $email->lastname,
-                       ];
-                       Mail::to($email)->send(new PasswordVerification($mailData));
+            $html = view('email.forgotpass', compact('code'))->render();
+            SendGridClient::sendEmail($request->email,"Password Reset", $html);
 
-                    $request->session()->put('partner_verification', $code);
-                    $request->session()->put('partner_email', $request->email);
-                     return redirect('/partner_forgotpass1');
+            $request->session()->put('partner_verification', $code);
+            $request->session()->put('partner_email', $request->email);
+
+            return redirect('/partner_forgotpass1');
          } 
          else{
             return back()->with('fail', 'Email does not exist');
@@ -88,21 +91,25 @@ class PartnerRegistration extends Controller
          $email = tbl_partner_accounts::where('email', Session::get('partner_email'))
           ->first();
           
-          if($email){
-         $code = mt_rand(1000, 9999);
+        if($email){
+            $code = mt_rand(1000, 9999);
+            // $mailData = [
+            // 'title' => 'Password Reset',
+            // 'body' => 'test',
+            // 'code' => $code,
+            // 'fname' => $email->firstname,
+            // 'lname' => $email->lastname,
+            // ];
+            // Mail::to($email)->send(new PasswordVerification($mailData));
 
-                       $mailData = [
-                        'title' => 'Password Reset',
-                        'body' => 'test',
-                        'code' => $code,
-                        'fname' => $email->firstname,
-                        'lname' => $email->lastname,
-                       ];
-                       Mail::to($email)->send(new PasswordVerification($mailData));
+            $receiverEmail = Session::get('partner_email');
+            $html = view('email.forgotpass', compact('code'))->render();
+            SendGridClient::sendEmail($receiverEmail, "Password Reset", $html);
 
-                    $request->session()->put('partner_verification', $code);
-                     return back();
-     }
+            $request->session()->put('partner_verification', $code);
+
+            return back();
+        }
     }
      public function PartnerForgotPass3(){
         return view('partner_forgotpass2');
@@ -185,14 +192,17 @@ class PartnerRegistration extends Controller
                         ->first();
                         
             $code = mt_rand(100000, 999999);
-              $mailData = [
-                'title' => 'Account Verification',
-                'body' => 'test',
-                'code' => $code,
-                'fname' => $email->firstname,
-                'lname' => $email->lastname,
-            ];
-             Mail::to($email)->send(new MailVerification($mailData));
+            //   $mailData = [
+            //     'title' => 'Account Verification',
+            //     'body' => 'test',
+            //     'code' => $code,
+            //     'fname' => $email->firstname,
+            //     'lname' => $email->lastname,
+            // ];
+            //  Mail::to($email)->send(new MailVerification($mailData));
+
+            $html = view('email.emailverify', compact('code'))->render();
+            SendGridClient::sendEmail($email->email, "Account Verification", $html);
 
             $request->session()->put('verification', $code);
             $request->session()->put('partnerstatus', $status->status);
@@ -221,14 +231,17 @@ class PartnerRegistration extends Controller
                         
          $code = mt_rand(100000, 999999);
 
-         $mailData = [
-         'title' => 'Account Verification',
-         'body' => 'test',
-          'code' => $code,
-         'fname' => $email->firstname,
-         'lname' => $email->lastname,
-        ];
-         Mail::to($email)->send(new MailVerification($mailData));
+        //  $mailData = [
+        //  'title' => 'Account Verification',
+        //  'body' => 'test',
+        //   'code' => $code,
+        //  'fname' => $email->firstname,
+        //  'lname' => $email->lastname,
+        // ];
+        //  Mail::to($email)->send(new MailVerification($mailData));
+
+        $html = view('email.emailverify', compact('code'))->render();
+        SendGridClient::sendEmail($email->email, "Account Verification", $html);
 
          $request->session()->put('verification', $code);
         return back();
