@@ -30,6 +30,7 @@ class AppServiceProvider extends ServiceProvider
          $logIndata = array();
         if(Session::has('loginID')){
             $logIndata = tbl_partner_accounts::join('merchant_document', 'tbl_merchant_account.merchant_id', '=', 'merchant_document.merchant_id')
+            ->join('tbl_merchant_info', 'tbl_merchant_account.merchant_id', '=', 'tbl_merchant_info.merchant_id')
             ->where('tbl_merchant_account.merchant_id', '=', Session::get('loginID'))
             ->first();
             
