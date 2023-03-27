@@ -15,6 +15,7 @@ use App\Models\tbl_merchant_document;
 use App\Models\tbl_rider_application;
 use Illuminate\Support\Facades\Session;
 use App\Models\tbl_merchant_application;
+use Illuminate\Support\Facades\Storage;
 
 class Home extends Controller
 {
@@ -115,5 +116,24 @@ class Home extends Controller
             
             return back();
         
+    }
+
+    public function test(){
+        return view('test.form');
+    }
+
+    public function teststore(Request $request){
+        $id = 123;
+        $path = $request->file('image')->store('images/test/'. $id.'', 's3', ['visibility', 'public']);
+        // Storage::disk('s3')->setVisibility($path, 'public');
+
+        $saved_link = Storage::disk('s3')->url($path);
+
+        // return Storage::disk('s3')->response($path);
+        return $saved_link;
+    }
+
+    public function testshow(){
+
     }
 }

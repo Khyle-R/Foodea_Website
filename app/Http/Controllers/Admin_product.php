@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Validation\Rules\Password;
+use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon; // to retrieve current Date
 
 class Admin_product extends Controller
@@ -163,16 +164,18 @@ class Admin_product extends Controller
         $affected = DB::table('tbl_product')->where('product_id', $request->product_id);
               
         if($request->product_image != ''){        
-            $path = public_path().'/product_images';
+            // $path = public_path().'/product_images';
   
- 
             //upload new file
-            $file = $request->product_image;
-            $filename = $file->getClientOriginalName();
-            $file->move($path, $filename);
+            $prod_image = $request->file('product_image')->store('product_images', 's3', ['visibility', 'public']);
+            $image_p = Storage::disk('s3')->url($prod_image);
+            
+            // $file = $request->product_image;
+            // $filename = $file->getClientOriginalName();
+            // $file->move($path, $filename);
   
 
-            $resss=$affected->update(['product_name' => $request->product_name,'price' => $request->price, 'tags' => $request->tags, 'stock' => $request->stock,'status' => $request->status,'description' => $request->description,'product_image'=> $filename],
+            $resss=$affected->update(['product_name' => $request->product_name,'price' => $request->price, 'tags' => $request->tags, 'stock' => $request->stock,'status' => $request->status,'description' => $request->description,'product_image'=> $image_p],
               
             );
             if ($resss) {
@@ -207,13 +210,11 @@ class Admin_product extends Controller
 
             if ($request->hasFile('product_image')) 
             {
-                $prod_image = $request->file('product_image');
+                $prod_image = $request->file('product_image')->store('product_images', 's3', ['visibility', 'public']);
 
-                $image_p = $prod_image->getClientOriginalName();
+                $image_p = Storage::disk('s3')->url($prod_image);
 
-                $prod_image->move('product_images', $image_p);
-
-            
+                
 
                 $addProd->merchant_id = session('loginID');
                 $addProd->product_name =$request->product_name;

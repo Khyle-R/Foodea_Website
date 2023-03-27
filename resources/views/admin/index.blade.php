@@ -50,8 +50,8 @@
                 <div class="count-indicator">
                   <img
                     class="img-xs rounded-circle"
-                    src="{{ url('uploads/'. 'merchant_documents'. '/'. $logIndata->merchant_id. '/'. $logIndata->logo) }}"
-                    alt=""
+                    src="{{$logIndata->logo}}"
+                    alt="*"
                   />
                   <span class="count bg-success"></span>
                 </div>
@@ -194,7 +194,7 @@
             class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center"
           >
             <a class="navbar-brand brand-logo-mini" href="index.html"
-              ><img src="{{ url('uploads/'. 'merchant_documents'. '/'. $logIndata->merchant_id. '/'. $logIndata->logo) }}" class="w-50" alt="logo"
+              ><img src="{{ $logIndata->logo }}" class="w-50" alt="logo"
             /></a>
           </div>
           <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
@@ -415,7 +415,7 @@
                     <img
                       class="img-xs rounded-circle"
                       style="background-color: #fff"
-                      src="{{ url('uploads/'. 'merchant_documents'. '/'. $logIndata->merchant_id. '/'. $logIndata->logo) }}"
+                      src="{{ $logIndata->logo }}"
                       alt=""
                     />
                     <p class="mb-0 d-none d-sm-block navbar-profile-name">

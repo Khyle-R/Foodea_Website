@@ -19,7 +19,7 @@
   </head>
   
   <body id="body-pd">
-    <header class="header" id="header">
+  <!--  <header class="header" id="header">
       <div class="header_toggle">
         <i class="bx bx-menu" id="header-toggle"></i>
       </div>
@@ -62,7 +62,7 @@
             </div>
           </div>
         </div>
-        </div>
+        </div> -->
       </nav>
     </div>
     <!-- Content Here -->
@@ -99,10 +99,8 @@
                                        
 
                                     <div class="col-sm-12 col-lg-5">
-                                      <div class="card-pending py-4 px-4 mx-0 mx-md-5 rounded">
-                                      <div class="">
-                                      <h4 class="text-center text-white">{{ $rider->status }}</h4>
-                                      </div>
+                                      <div class="card-pending py-2 px-1 mx-sm-5 rounded">
+                                      <h5 class="text-center text-white">{{ $rider->status }}</h5>
                                       </div>
                                     </div>  
                                   </div>  

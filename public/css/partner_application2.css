@@ -315,7 +315,7 @@ p {
 }
 
 .card-pending {
-    background-color: rgb(245, 71, 72);
+    background-color: #4be934;
 }
 
 h4 {
@@ -326,6 +326,15 @@ h4 {
     font-size: 24px;
     opacity: 90%;
     margin-bottom: 0px;
+}
+
+h5 {
+    font-weight: 600;
+    font-family: 'Montserrat',
+        sans-serif;
+    font-size: 20px;
+    margin-bottom: 0px;
+
 }
 
 .button-red {
