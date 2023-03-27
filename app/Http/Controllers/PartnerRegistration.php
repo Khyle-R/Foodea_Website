@@ -31,6 +31,9 @@ class PartnerRegistration extends Controller
     public function partner2index(){
         return view('/partner_application2');
     }
+    public function partneraddproduct(){
+        return view('/partner_application_add');
+    }
     public function PartnerForgotPass(){
         return view('partner_forgotpass');
     }
@@ -443,7 +446,7 @@ class PartnerRegistration extends Controller
             Session::pull('partnerID');
             Cookie::queue(Cookie::forget('partner_email'));
             Cookie::queue(Cookie::forget('partner_password'));  
-            return redirect('/');
+            return redirect('/rider_login');
         }
         
     }

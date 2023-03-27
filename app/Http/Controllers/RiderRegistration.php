@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Mail\MailVerification;
 use App\Mail\PasswordVerification;
+use App\Models\tbl_activitylog;
+use App\Models\tbl_merchant_account;
 use App\Models\tbl_vehicle_infos;
 use App\Models\tbl_rider_accounts;
 use App\Models\tbl_rider_document;
@@ -145,8 +147,7 @@ class RiderRegistration extends Controller
  
     public function addPostSubmit(Request $request)
     {   
-           
-            
+     
             $request->validate([
             'account_type' => 'required',    
             'firstname' => 'required',
@@ -178,7 +179,7 @@ class RiderRegistration extends Controller
               /*RIDERS */
             if($request->account_type == 'Rider'){
               $request->validate([
-            'email' => 'required|email|unique:tbl_rider_account',
+            'email' => 'required|email|unique:tbl_rider_account|unique:tbl_merchant_account',
           
               ]);
                 
@@ -237,7 +238,7 @@ class RiderRegistration extends Controller
         /*MERCHANT */
         if($request->account_type == 'Partner Merchant'){
            $request->validate([
-            'email' => 'required|email|unique:tbl_merchant_account',
+            'email' => 'required|email|unique:tbl_merchant_account|unique:tbl_rider_account|',
               ]);
   
 
@@ -752,6 +753,8 @@ class RiderRegistration extends Controller
     }
    
     public function RiderLoginIndex(Request $request){
+        
+    /*RIDER CHECK COOKIE */
         if(Cookie::has('rider_email') && Cookie::has('rider_password')){
              $user = tbl_rider_accounts::where('email', '=', Cookie::get('email'))->first();
               $Data = tbl_rider_accounts::join('tbl_vehicle_info', 'tbl_rider_account.rider_id', '=', 'tbl_vehicle_info.rider_id')
@@ -764,8 +767,40 @@ class RiderRegistration extends Controller
                  $request->session()->put('registerID', $user->rider_id);
                 return view('/Rider_ApplicationStatus', compact('Data'));
             }
+            
+    /*MERCHANT CHECK COOKIE */
+      if(Cookie::get('partner_email') && Cookie::get('partner_password'))
+        {   
+             $merchant = tbl_partner_accounts::where('email', '=', Cookie::get('partner_email'))->first();
+              $status = tbl_merchant_application::where('merchant_id', $merchant->merchant_id)
+                ->first();
+
+                if($status->status == 'pending' || $status->status == 'Reviewing' || $status->status == 'Rejected'){
+                    
+                     $Data = tbl_partner_accounts::join('tbl_merchant_info', 'tbl_merchant_account.merchant_id', '=', 'tbl_merchant_info.merchant_id')
+                    ->join('merchant_application', 'tbl_merchant_account.merchant_id', '=', 'merchant_application.merchant_id')
+                    ->join('merchant_document', 'tbl_merchant_account.merchant_id', '=', 'merchant_document.merchant_id')
+                    ->where('merchant_application.merchant_id',  $merchant->merchant_id)
+                    ->limit(1)
+                    ->get();
+                    
+                    return view('/partner_applicationstatus', compact('Data'));
+                }
+                else{
+                    $log = new tbl_activitylog();
+                    $log->merchant_id = $merchant->merchant_id;
+                    $log->email = $merchant->email;
+                    $log->name = $merchant->firstname. ' ' .$merchant->lastname;
+                    $log->description = 'Has Log In';
+                    $res = $log->save();
+                    if($res){
+                    $request->session()->put('loginID', $merchant->merchant_id);
+                   return redirect('/index');
+                    }
+                }
+        }
             else{
-        return view('rider_login');
+        return view('/rider_login');
             }
     }
     
@@ -774,16 +809,20 @@ class RiderRegistration extends Controller
           
          $request->validate([
             'email'=> 'required|email',
-            'password'=> 'required|min:6'
+            'password'=> 'required|min:8'
         ]);
       
          $user = tbl_rider_accounts::where('email', '=', $request->email)->first();
-        if($user){
+         $merchant = tbl_merchant_account::where('email', '=', $request->email)->first();
+        
+         if($user){
             
             if(Hash::check($request->password, $user->password)){
+
+                /*IF CHECKBOX = TRUE */
                 if($request->remember){
+
                 /*SET COOKIE */
-                
                 $response = new Response();
                 Cookie::queue(Cookie::forever('rider_email', $request->email));
                 Cookie::queue(Cookie::forever('rider_password', $request->password));
@@ -791,7 +830,7 @@ class RiderRegistration extends Controller
                 /*FORGET COOKIE */
                 // Cookie::queue(Cookie::forget('email'));
                 // Cookie::queue(Cookie::forget('password'));  
-                }
+                }   
                 $Data = tbl_rider_accounts::join('tbl_vehicle_info', 'tbl_rider_account.rider_id', '=', 'tbl_vehicle_info.rider_id')
                 ->join('tbl_document_info', 'tbl_rider_account.rider_id', '=', 'tbl_document_info.rider_id')
                 ->join('rider_application', 'tbl_rider_account.rider_id', '=', 'rider_application.rider_id')
@@ -805,7 +844,54 @@ class RiderRegistration extends Controller
             else{
                   return back()->with('fail', 'Password does not match');
             }
-        }else{
+        }
+        
+         /* MERCHANT LOGIN */
+        if($merchant){
+            if(Hash::check($request->password, $merchant->password)){
+                
+                /*IF CHECKBOX = TRUE */
+                 if($request->remember){
+                    
+                    /*SET COOKIE*/
+                    $minutes = 5;
+                    $response = new Response;
+                    Cookie::queue(Cookie::forever('partner_email', $request->email, $minutes));
+                    Cookie::queue(Cookie::forever('partner_password', $request->password, $minutes));
+                }
+                $status = tbl_merchant_application::where('merchant_id', $merchant->merchant_id)
+                ->first();
+                if($status->status == 'pending' || $status->status == 'Reviewing' || $status->status == 'Rejected'){
+                    
+                     $Data = tbl_partner_accounts::join('tbl_merchant_info', 'tbl_merchant_account.merchant_id', '=', 'tbl_merchant_info.merchant_id')
+                    ->join('merchant_application', 'tbl_merchant_account.merchant_id', '=', 'merchant_application.merchant_id')
+                    ->join('merchant_document', 'tbl_merchant_account.merchant_id', '=', 'merchant_document.merchant_id')
+                    ->where('merchant_application.merchant_id',  $merchant->merchant_id)
+                    ->limit(1)
+                    ->get();
+                    
+                    $request->session()->put('partnerID', $merchant->merchant_id);
+                    return view('/partner_applicationstatus', compact('Data'));
+                }
+                else{
+                $log = new tbl_activitylog();
+                $log->merchant_id = $merchant->merchant_id;
+                $log->email = $merchant->email;
+                $log->name = $merchant->firstname. ' ' .$merchant->lastname;
+                $log->description = 'Has Log In';
+                $res = $log->save();
+                if($res){
+                $request->session()->put('loginID', $merchant->merchant_id);
+                return redirect('/index');
+                }
+            
+                }
+            }
+            else{
+                  return back()->with('fail', 'Password does not match');
+            }
+        }
+        else{
             return back()->with('fail', 'This is email is not registered');
         }
         
@@ -816,8 +902,8 @@ class RiderRegistration extends Controller
             Session::pull('registerID');
             Cookie::queue(Cookie::forget('rider_email'));
             Cookie::queue(Cookie::forget('rider_password'));  
-            return redirect('/');
+            return redirect('/rider_login');
         }
-        
+
     }
     }

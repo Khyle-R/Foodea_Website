@@ -31,6 +31,20 @@ a {
     text-decoration: none;
 }
 
+.requirements span {
+    font-size: 13px;
+    font-family: 'Montserrat',
+        sans-serif;
+    opacity: 90%;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.76);
+    margin-top: 0.5rem;
+}
+
+.requirements {
+    margin: 1rem 0;
+}
+
 .header {
     width: 100%;
     height: var(--header-height);

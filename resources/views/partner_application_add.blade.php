@@ -70,8 +70,10 @@
         <div class="content-wrapper container mt-2 px-3 py-2">
           <div class="col-12 col-sm-12 col-md-9 col-lg-7 justify-content-center align-items-center mx-auto px-0">
               <div class="right">
-              <h2>Secure your Account</h2>
-              <p>Please fill out the form below.</p>
+              <h2>Menu</h2>
+              <div class="d-flex justify-content-center">
+              <p>0 out of 5 Menu</p>
+              </div>
 
                 <!--GET PARTNER ID-->
 
@@ -81,21 +83,10 @@
                 <input type="hidden" name="merchant_id" value=" {{ Session::get('merchant_id') }}">
               @endif
 
-              <div class="form-group">
-                <label>Business Type</label>
-                <select name="business_type" id="" class="form-control form-control-lg">
-                  <option selected="true" disabled="disabled">- Select -</option>
-                  <option>Sole proprietorship</option>
-                  <option>Corporation</option>
-                </select>
-                <span
-                style="color:red;">
-                @error('business_type') {{ $message }}
-                @enderror</span>
-              </div>
+             
 
               <div class="form-group">
-                <label>Business Name</label>
+                <label>Product Name</label>
                 <input type="text" name="business_name" class="form-control form-control-lg"/>
                 <span
                 style="color:red;">
@@ -103,30 +94,22 @@
                 @enderror</span>
               </div>
 
-              
-            <div class="form-group">
-                <label for="birthday">Date Founded</label>
-              <input class="form-control form-control-lg" type="date" id="birthday" name="date_founded">
-            <span
-                style="color:red;">
-                @error('date_founded') {{ $message }}
-                @enderror</span>
-              </div>
-
-              <div class="form-group">
-                <label>Country</label>
-                <select name="country" id="" class="form-control form-control-lg">
+               <div class="form-group">
+                <label>Category</label>
+                <select name="business_type" id="" class="form-control form-control-lg">
                   <option selected="true" disabled="disabled">- Select -</option>
-                  <option>Philippines</option>
+                  {{-- <option>Sole proprietorship</option>
+                  <option>Corporation</option> --}}
                 </select>
                 <span
                 style="color:red;">
-                @error('country') {{ $message }}
+                @error('business_type') {{ $message }}
                 @enderror</span>
               </div>
+              
 
               <div class="form-group">
-                <label>Business Address</label>
+                <label>Tags</label>
                 <input type="text" name="address" class="form-control form-control-lg"/>
                 <span
                 style="color:red;">
@@ -134,8 +117,38 @@
                 @enderror</span>
               </div>
 
+                <div class="form-group">
+              <label for="exampleFormControlTextarea1">Description</label>
+              <textarea name="vision" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+              <span
+                style="color:red;">
+                @error('vision') {{ $message }}
+                @enderror</span>
+              </div>
+
               <div class="form-group">
-                <label>City</label> 
+              <label for="exampleFormControlTextarea1">Ingredients</label>
+              <textarea name="vision" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+              <span
+                style="color:red;">
+                @error('vision') {{ $message }}
+                @enderror</span>
+              </div>
+              
+                 <div class="form-group">
+              <label for="exampleFormControlTextarea1">Menu Photo</label>
+              <div class="requirements row">
+             <input type="file" name="logo">
+             <span>File size up to 5mb only</span>
+              <span
+                style="color:red;">
+                @error('vision') {{ $message }}
+                @enderror</span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Price</label> 
                 <input type="text" name="city" class="form-control form-control-lg"/>
                 <span
                 style="color:red;">
@@ -144,7 +157,7 @@
               </div>
 
               <div class="form-group">
-                <label>Registered Barangay</label>
+                <label>Stock</label>
                 <input type="text" name="barangay" class="form-control form-control-lg"/>
                 <span
                 style="color:red;">
@@ -152,60 +165,20 @@
                 @enderror</span>
               </div>
 
-              <div class="form-group">
-                <label>Registered Street</label>
-                <input type="text" name="street" class="form-control form-control-lg"/>
+                 <div class="form-group">
+                <label>Status</label>
+                <select name="business_type" id="" class="form-control form-control-lg">
+                  <option selected="true" disabled="disabled">- Select -</option>
+                  {{-- <option>Sole proprietorship</option>
+                  <option>Corporation</option> --}}
+                </select>
                 <span
                 style="color:red;">
-                @error('street') {{ $message }}
-                @enderror</span>
-              </div>
-
-              <div class="form-group">
-                <label>Registered Postal Code</label>
-                <input type="text" maxlength="4" onkeypress="return event.charCode>=48 && event.charCode<=57" name="postal_code" class="form-control form-control-lg"/>
-                <span
-                style="color:red;">
-                @error('postal_code') {{ $message }}
-                @enderror</span>
-              </div>
-
-              <div class="form-group">
-                <label>Store Phone No.</label>
-                <input type="text" maxlength="10" onkeypress="return event.charCode>=48 && event.charCode<=57" name="store_number" class="form-control form-control-lg"/>
-                <span
-                style="color:red;">
-                @error('store_number') {{ $message }}
-                @enderror</span>
-              </div>
-
-              <div class="form-group">
-                <label>Store Email Address</label>
-                <input type="text" name="store_email" class="form-control form-control-lg"/>
-                <span
-                style="color:red;">
-                @error('store_email') {{ $message }}
+                @error('business_type') {{ $message }}
                 @enderror</span>
               </div>
 
               
-              <div class="form-group">
-              <label for="exampleFormControlTextarea1">Mission</label>
-              <textarea name="mission" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-            <span
-                style="color:red;">
-                @error('mission') {{ $message }}
-                @enderror</span>
-            </div>
-
-                <div class="form-group">
-              <label for="exampleFormControlTextarea1">Vision</label>
-              <textarea name="vision" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-              <span
-                style="color:red;">
-                @error('vision') {{ $message }}
-                @enderror</span>
-              </div>
               <br>
               <br>
               <div class="form-group">
