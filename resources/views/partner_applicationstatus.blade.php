@@ -19,6 +19,7 @@
   </head>
   
   <body id="body-pd">
+  
     <header class="header" id="header">
       <div class="header_toggle">
         <i class="bx bx-menu" id="header-toggle"></i>
@@ -107,7 +108,7 @@
                                     </div>  
                                   </div>  
 
-                                  <div class="row justify-content-between">
+                                  <div class="row justify-content-around">
                                     <div class="col-sm-5 ml-sm-5">
                                       <h4 class="title-border flex-wrap mb-4">Personal Information</h4>
                        
@@ -206,7 +207,7 @@
                                     </div>
                                   </div>
 
-                                  <div class="row align-items-center justify-content-between mt-2">
+                                  <div class="row align-items-center justify-content-around mt-2">
                                     <div class="col-sm-5 ml-sm-5">
                                       <h4 class="title-border flex-wrap mb-4">Uploaded Documents</h4>
                        

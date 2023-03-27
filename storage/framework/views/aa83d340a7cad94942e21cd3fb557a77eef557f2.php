@@ -36,9 +36,9 @@
             <ul class="nav nav-tabs nav-tabs-solid nav-justified">
                 <li class="nav-size nav-item"><a class="nav-link" href="/superadmin_rider">All</a></li>
                 <li class="nav-size nav-item"><a class="nav-link" href="/superadmin_pending">Pending</a></li>
-                <li class="nav-size nav-item"><a class="nav-link" href="/superadmin_review">Reviewing</a></li>
+                
                 <li class="nav-size nav-item"><a class="nav-link active" href="">Accepted</a></li>
-                <li class="nav-size nav-item"><a class="nav-link" href="/superadmin_archive">Archived</a></li>
+                <li class="nav-size nav-item"><a class="nav-link" href="/superadmin_archive">Rejected</a></li>
 
             </ul>
         </div>

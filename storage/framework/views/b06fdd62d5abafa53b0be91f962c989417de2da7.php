@@ -69,7 +69,7 @@
                                   <img src="image/foodea4.png" alt="">
                                 </div>
                                 <form method="post" action="<?php echo e(route('login.LoginMerchant')); ?>" class="mt-4">
-                                   <?php echo csrf_field(); ?>
+                                   <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
 
                                     <div class="form-group">
                                     <label for="email">Email</label>

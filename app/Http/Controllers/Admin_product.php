@@ -44,9 +44,9 @@ class Admin_product extends Controller
                 $res = $log->save();
                 if($res){
        Session::pull('loginID');
-       Cookie::queue(Cookie::forget('email'));
-        Cookie::queue(Cookie::forget('password'));  
-        return redirect('/login');
+       Cookie::queue(Cookie::forget('partner_email'));
+        Cookie::queue(Cookie::forget('partner_password'));  
+        return redirect('/rider_login');
                 }
         }
     }

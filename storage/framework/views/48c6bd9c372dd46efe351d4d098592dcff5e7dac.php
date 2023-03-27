@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FOODEA</title>
     <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <link rel="stylesheet" href="css/carousel.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css" rel="stylesheet" />
     <link rel="icon" href="<?php echo e(url('image/foodea1.png')); ?>">
@@ -21,9 +22,6 @@
     <script>
         AOS.init();
     </script>
-
-
-
 </head>
 
 <body>
@@ -87,15 +85,9 @@
                 <a href="/contact" class="nav-link">Contact Us</a>
               </li>
             </ul>
+            
             <a
-              href="/rider_application_agreement"
-             class="text-secondary mt-2 mx-5"
-              style="text-decoration: none;"
-            >
-              Signup
-           </a>
-            <a
-              href="/login_type"
+              href="/rider_login"
               class="btn btn-danger btn-sm py-2 px-5 rounded"
             >
               Login
@@ -105,36 +97,90 @@
       </div>
     </nav>
     
-    
-    <div class="section mx-auto my-5" data-aos="fade-up">
-            <div class="content text-center text-md-start">
-                <h1>Be The Fastest In Delivering Your <span>Food</span></h1>
-                <p class="text-center text-md-start">Our job filling your tummy with delicious food and with fast delivery</p>
-                <a class="partnerbtn text-decoration-none" href="/partner_landing">Partner with us</a>
+    <!-- CAROUSEL -->
+    <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#hero-carousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      
+      <div class="carousel-inner">
+        <!---------ONE----------->
+        <div class="carousel-item active c-item">
+          <div class="carousel-caption d-flex justify-content-center align-items-center top-0 mt-2 mt-md-5">
+            <div class="section mb-2 mb-md-5" data-aos="fade-up">
+              <div class="content text-center text-md-start">
+                  <h1>Revolutionize The Way You Order<span> Food</span></h1>
+                  <p class="text-center text-md-start text-dark">Revolutionize your food orders with personalized recommendations and faster, hassle-free delivery.</p>
+                  <a class="partnerbtn text-decoration-none" href="/partner_landing">Order Now</a>
+              </div>
+              <div class="image">
+                <img src="image/Userbg.png" alt=""></div>
             </div>
-        <div class="image">
-            <img src="image/food.png" alt=""></div>
+          </div>
         </div>
-    <div class="container pt-0">
+        <!---------TWO----------->
+        <div class="carousel-item c-item">
+          <div class="carousel-caption d-flex justify-content-center align-items-center top-0 mt-2 mt-md-5">
+            <div class="section mb-2 mb-md-5" data-aos="fade-up">
+              <div class="content text-center text-md-start">
+                  <h1>Deliver Food with<span> Foodea</span></h1>
+                  <p class="text-center text-md-start text-dark">Try becoming your own boss with Foodea as an alternative to conventional food delivery professions where the hours are fixed.</p>
+                  <a class="partnerbtn text-decoration-none" href="/rider_application_agreement">Join as Foodea Rider</a>
+              </div>
+              <div class="imageOne">
+                <img src="image/food.png" alt=""></div>
+            </div>
+          </div>
+        </div>
+        <!---------THREE----------->
+        <div class="carousel-item c-item">
+          <div class="carousel-caption d-flex justify-content-center align-items-center top-0 mt-2 mt-md-5">
+            <div class="section mb-2 mb-md-5" data-aos="fade-up">
+              <div class="content text-center text-md-start">
+                  <h1>Grow your Business with <span>Foodea</span></h1>
+                  <p class="text-center text-md-start text-dark">Expand your business by bringing your food out and filling up your customers tummy and reach new customers by partnering with us.</p>
+                  <a class="partnerbtn text-decoration-none" href="/rider_application_agreement">Partner With Us</a>
+              </div>
+              <div class="imageTwo">
+                <img src="image/market2.png" alt=""></div>
+            </div>
+          </div>
+        </div>
+      </div>   
+      <!-- PREVIOS -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#hero-carousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <!-- NEXT -->
+      <button class="carousel-control-next" type="button" data-bs-target="#hero-carousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+    <!-- END OF CAROUSEL -->
+    <div class="container pt-3">
         <div class="section-2">
             <div class="service">
                 <div class="rider" data-aos="fade-up">
                     <img src="image/rider.PNG" alt="">
                     <h3>Become a Rider</h3>
                     <p>As a delivery driver, you'll make reliable money working anytime, anywhere.</p>
-                    <a href="/rider_landing">Start earning</a>
+                    
                 </div>
                 <div class="market" data-aos="fade-up">
                     <img src="image/market.PNG" alt="">
                     <h3>Become a Partner</h3>
                     <p>Grow your business and reach new customers by partnering with us.</p>
-                    <a href="/partner_landing">Sign up you store</a>
+                    
                 </div>
                 <div class="phone" data-aos="fade-up">
                     <img src="image/phone.PNG" alt="">
                     <h3>Try the App</h3>
                     <p>Experience the best your neighborhood has to offer, all in one app.</p>
-                    <a href="#">Get the app</a>
+                    
                 </div>
             </div>
         </div>

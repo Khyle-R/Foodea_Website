@@ -56,7 +56,7 @@
                   <span class="count bg-success"></span>
                 </div>
                 <div class="profile-name">
-                  <h5 class="mb-0 font-weight-normal text-white fs-4"><?php echo e($logIndata->firstname . " " . $logIndata->lastname); ?></h5>
+                  <h5 class="mb-0 font-weight-normal text-white fs-4"><?php echo e($logIndata->business_name); ?></h5>
                   <span>Verified</span>
                 </div>
               </div>
@@ -302,7 +302,7 @@
                     />
                     <p class="mb-0 d-none d-sm-block navbar-profile-name">
 
-                     <?php echo e($logIndata->firstname . " " . $logIndata->lastname); ?>
+                     <?php echo e($logIndata->business_name); ?>
 
                     </p>
                     <i class="mdi mdi-menu-down d-none d-sm-block"></i>

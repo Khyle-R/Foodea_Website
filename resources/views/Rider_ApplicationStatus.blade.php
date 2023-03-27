@@ -19,7 +19,7 @@
   </head>
   
   <body id="body-pd">
-    <header class="header" id="header">
+  <header class="header" id="header">
       <div class="header_toggle">
         <i class="bx bx-menu" id="header-toggle"></i>
       </div>
@@ -33,10 +33,16 @@
               <span class="nav_logo-name">Back to Website</span>
           </a>
             <div class="nav_list logos">
-              <div class="title d-flex pb-3 ps-2 gap-2 align-items-center">
+              <div class="title d-flex pb-3 ps-2 gap-1 align-items-center">
               <img src="image/foodea.png" style="width: 50px">FOODEA
             </div>
-            <div class="nav_link active mt-3 py-3 ms-2">
+              @if(Session::get('registerID'))
+            <div href="#" class="nav_link active red py-3 ms-2">
+              <span class="nav_linknumber"><i class="mdi mdi-account-circle"></i></span> 
+              <span class="nav_name">Application Status</span>
+            </div>  
+             @else
+              <div class="nav_link active mt-3 py-3 ms-2">
               <i class="bx bx-grid-alt nav_icon"></i>
               <span class="nav_name">Term User</span>
             </div>
@@ -60,9 +66,11 @@
               <span class="nav_linknumber">5</span> 
               <span class="nav_name">Application Status</span>
             </div>
+            @endif
+           
           </div>
         </div>
-        </div>
+        </div>  
       </nav>
     </div>
     <!-- Content Here -->
@@ -89,16 +97,14 @@
                                         <div class="text-center">
                                       <img class="circle img-fluid mr-3" src="{{ url(('uploads/'. 'rider_documents'. '/'.$rider->rider_id. '/'). $rider->rider_photo) }}" alt="">
                                      </div>
-                             
-                                    
-                            
+
                                       <h2 class="red-name text-center pt-3"> {{ $rider->firstname . " ". $rider->lastname  }} </h2>
                                   
                                       </div>
                                     </div> 
                                        
 
-                                    <div class="col-sm-12 col-lg-5">
+                                     <div class="col-sm-12 col-lg-5">
                                       <div class="card-pending py-4 px-4 mx-0 mx-md-5 rounded">
                                       <div class="">
                                       <h4 class="text-center text-white">{{ $rider->status }}</h4>
@@ -106,8 +112,8 @@
                                       </div>
                                     </div>  
                                   </div>  
-
-                                  <div class="row justify-content-between">
+                    
+                                  <div class="row justify-content-around">
                                     <div class="col-sm-5 ml-sm-5">
                                       <h4 class="title-border flex-wrap mb-4">Personal Information</h4>
                        
@@ -150,7 +156,7 @@
                                       </div>
                                     </div>
 
-                                     <div class="col-sm-5 mt-3">
+                                     <div class="col-sm-5">
                                       <h4 class="title-border mb-4">Vehicle Information</h4>
                                       <div class="row px-2">
 
@@ -205,7 +211,7 @@
                                     </div>
                                   </div>
 
-                                  <div class="row align-items-center justify-content-between mt-5">
+                                  <div class="row align-items-center justify-content-around mt-5">
                                     <div class="col-sm-5 ml-sm-5">
                                       <h4 class="title-border flex-wrap mb-4">Uploaded Documents</h4>
                        
