@@ -294,11 +294,11 @@ class PartnerRegistration extends Controller
             $logo = $request->file('logo')->store('merchant_documents/'.$request->merchant_id.'', 's3', ['visibility', 'public']);
             $menu = $request->file('menu_photo')->store('merchant_documents/'.$request->merchant_id.'', 's3', ['visibility', 'public']);
             $file = $request->file('business_permit')->store('merchant_documents/'.$request->merchant_id.'', 's3', ['visibility', 'public']);
-            $file2 = $request->file('bir_cert'->store('merchant_documents/'.$request->merchant_id.'', 's3', ['visibility', 'public']));
-            $file3 = $request->file('barangay_permit'->store('merchant_documents/'.$request->merchant_id.'', 's3', ['visibility', 'public']));
-            $file4 = $request->file('dti_cert'->store('merchant_documents/'.$request->merchant_id.'', 's3', ['visibility', 'public']));
-            $file5 = $request->file('front_license'->store('merchant_documents/'.$request->merchant_id.'/valid_id', 's3', ['visibility', 'public']));
-            $file6 = $request->file('back_license'->store('merchant_documents/'.$request->merchant_id.'/valid_id', 's3', ['visibility', 'public']));
+            $file2 = $request->file('bir_cert')->store('merchant_documents/'.$request->merchant_id.'', 's3', ['visibility', 'public']);
+            $file3 = $request->file('barangay_permit')->store('merchant_documents/'.$request->merchant_id.'', 's3', ['visibility', 'public']);
+            $file4 = $request->file('dti_cert')->store('merchant_documents/'.$request->merchant_id.'', 's3', ['visibility', 'public']);
+            $file5 = $request->file('front_license')->store('merchant_documents/'.$request->merchant_id.'/valid_id', 's3', ['visibility', 'public']);
+            $file6 = $request->file('back_license')->store('merchant_documents/'.$request->merchant_id.'/valid_id', 's3', ['visibility', 'public']);
 
             
             // $log = $logo->getClientOriginalName();
