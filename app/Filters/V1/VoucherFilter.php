@@ -3,7 +3,7 @@ namespace App\Filters\V1;
 
 use Illuminate\Http\Request;
 
-class CategoryFilter{
+class VoucherFilter{
     protected $allowedParameters = [
         'voucher_id' => ['eq'],
         'merchant_id' => ['eq'],
