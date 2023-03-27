@@ -180,7 +180,7 @@
                            @foreach ($products as $key => $data)
                               <tr>
                                  <td>
-                                    <img src="{{ $data->product_image) }}" alt="image" class="img-fluid"
+                                    <img src="{{ $data->product_image }}" alt="image" class="img-fluid"
                                        style=" height: 60px; width: 70px; border-radius: 2px;" />
                                     <span class="pl-2">{{ $data->product_name }}</span>
                                  </td>
