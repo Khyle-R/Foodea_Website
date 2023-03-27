@@ -11,6 +11,7 @@ use App\Http\Controllers\MailController;
 use App\Http\Controllers\sample;
 use App\Http\Controllers\SuperadminController;
 
+Route::get('/partner_application_add', [PartnerRegistration::class, 'partneraddproduct']);
 
 Route::get('/', [Home::class, 'index'])->name('home.index');
 

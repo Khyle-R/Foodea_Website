@@ -76,15 +76,9 @@
                 <a href="/contact" class="nav-link">Contact Us</a>
               </li>
             </ul>
+            
             <a
-              href="/rider_application_agreement"
-              class="text-secondary mt-2 mx-5"
-              style="text-decoration: none;"
-            >
-              Signup
-           </a>
-            <a
-              href="/login_type"
+              href="/rider_login"
               class="btn btn-danger btn-sm py-2 px-5 rounded"
             >
               Login

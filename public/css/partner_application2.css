@@ -97,6 +97,8 @@ a {
     overflow: hidden;
 }
 
+
+
 .nav_logo,
 .nav_link {
     display: grid;
@@ -315,7 +317,7 @@ p {
 }
 
 .card-pending {
-    background-color: #4be934;
+    background-color: #e9bf34;
 }
 
 h4 {
@@ -334,6 +336,7 @@ h5 {
         sans-serif;
     font-size: 20px;
     margin-bottom: 0px;
+
 
 }
 
