@@ -5,7 +5,6 @@ Hello!
 <h2>
 {{ $code }}
 </h2>
-@endcomponent
 
 <br>
 <p>
@@ -17,4 +16,3 @@ This email message was auto-generated. Please do not respond.<br><br>
 Thank you,<br>
 Foodea
 </p>
-@endcomponent

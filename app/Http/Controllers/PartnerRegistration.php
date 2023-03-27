@@ -181,33 +181,30 @@ class PartnerRegistration extends Controller
             $id = tbl_merchant_info::where('merchant_id', $request->merchant_id)->first();
             
            $success = tbl_merchant_application::where('merchant_id', $request->merchant_id)
-            ->update([
-                'merchantinfo_id' => $id->merchantinfo_id,
-                'status' => 'second'
-            ]);
-             $status =  tbl_merchant_application::where('merchant_id', $request->merchant_id)
-             ->first();
+                ->update([
+                    'merchantinfo_id' => $id->merchantinfo_id,
+                    'status' => 'second'
+                ]);
+            $status =  tbl_merchant_application::where('merchant_id', $request->merchant_id)->first();
             if($success){
-              $email = tbl_partner_accounts::where('merchant_id', Session::get('merchant_id'))
-                        ->first();
-                        
-            $code = mt_rand(100000, 999999);
-            //   $mailData = [
-            //     'title' => 'Account Verification',
-            //     'body' => 'test',
-            //     'code' => $code,
-            //     'fname' => $email->firstname,
-            //     'lname' => $email->lastname,
-            // ];
-            //  Mail::to($email)->send(new MailVerification($mailData));
-            dd($code);
-            $html = view('email.emailverify')->with('code', $code)->render();
-            
-            SendGridClient::sendEmail($email->email, "Account Verification", $html);
+                $email = tbl_partner_accounts::where('merchant_id', Session::get('merchant_id'))->first(); 
+                $code = mt_rand(100000, 999999);
+                //   $mailData = [
+                //     'title' => 'Account Verification',
+                //     'body' => 'test',
+                //     'code' => $code,
+                //     'fname' => $email->firstname,
+                //     'lname' => $email->lastname,
+                // ];
+                //  Mail::to($email)->send(new MailVerification($mailData));
+                $html = view('email.emailverify')->with('code', $code)->render();
+                
+                SendGridClient::sendEmail($email->email, "Account Verification", $html);
 
-            $request->session()->put('verification', $code);
-            $request->session()->put('partnerstatus', $status->status);
-            return redirect('/partner_application3');
+                $request->session()->put('verification', $code);
+                $request->session()->put('partnerstatus', $status->status);
+
+                return redirect('/partner_application3');
             }
            
         }
