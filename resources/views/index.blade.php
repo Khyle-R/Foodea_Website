@@ -119,7 +119,7 @@
               <div class="content text-center text-md-start">
                   <h1>Revolutionize The Way You Order<span> Food</span></h1>
                   <p class="text-center text-md-start text-dark">Revolutionize your food orders with personalized recommendations and faster, hassle-free delivery.</p>
-                  <a class="partnerbtn text-decoration-none" href="/partner_landing">Download the App</a>
+                  <a class="partnerbtn text-decoration-none" href="/partner_landing">Order Now</a>
               </div>
               <div class="image">
                 <img src="image/Userbg.png" alt=""></div>
@@ -133,10 +133,10 @@
               <div class="content text-center text-md-start">
                   <h1>Deliver Food with<span> Foodea</span></h1>
                   <p class="text-center text-md-start text-dark">Try becoming your own boss with Foodea as an alternative to conventional food delivery professions where the hours are fixed.</p>
-                  <a class="partnerbtn text-decoration-none" href="/rider_application_agreement">Join as Driver</a>
+                  <a class="partnerbtn text-decoration-none" href="/rider_application_agreement">Join as Foodea Rider</a>
               </div>
               <div class="imageOne">
-                <img src="image/pic.png" alt=""></div>
+                <img src="image/food.png" alt=""></div>
             </div>
           </div>
         </div>
@@ -167,7 +167,7 @@
       </button>
     </div>
     <!-- END OF CAROUSEL -->
-    <div class="container pt-0">
+    <div class="container pt-3">
         <div class="section-2">
             <div class="service">
                 <div class="rider" data-aos="fade-up">

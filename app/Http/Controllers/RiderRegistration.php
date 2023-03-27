@@ -46,7 +46,9 @@ class RiderRegistration extends Controller
 
          $email = tbl_rider_accounts::where('email', $request->email)
           ->first();
-          
+         $merchant = tbl_partner_accounts::where('email', $request->email)
+          ->first();
+
           if($email){
          $code = mt_rand(1000, 9999);
 
@@ -63,6 +65,22 @@ class RiderRegistration extends Controller
                     $request->session()->put('email', $request->email);
                      return redirect('/rider_forgotpass1');
          } 
+         if($merchant){
+            $code = mt_rand(1000, 9999);
+
+                       $mailData = [
+                        'title' => 'Password Reset',
+                        'body' => 'test',
+                        'code' => $code,
+                        'fname' => $merchant->firstname,
+                        'lname' => $merchant->lastname,
+                       ];
+                       Mail::to($merchant)->send(new PasswordVerification($mailData));
+
+                    $request->session()->put('verification', $code);
+                    $request->session()->put('email', $request->email);
+                     return redirect('/rider_forgotpass1');
+         }
          else{
             return back()->with('fail', 'Email does not exist');
          }
@@ -71,8 +89,14 @@ class RiderRegistration extends Controller
      public function RiderForgotPass2(){
         $email = tbl_rider_accounts::where('email', Session::get('email'))
         ->first();
-        
-        return view('rider_forgotpass1', compact('email'));
+        if($email){
+            return view('rider_forgotpass1', compact('email'));
+        }
+        $merchant = tbl_partner_accounts::where('email', Session::get('email'))
+        ->first();
+        if($merchant){
+            return view('rider_forgotpass1', compact('merchant'));
+        }
      }
 
      public function RiderForgotVerify(Request $request){
@@ -91,6 +115,8 @@ class RiderRegistration extends Controller
      public function RiderForgotResend(Request $request){
          $email = tbl_rider_accounts::where('email', Session::get('email'))
           ->first();
+          $merchant = tbl_partner_accounts::where('email', Session::get('email'))
+          ->first();
           
           if($email){
          $code = mt_rand(1000, 9999);
@@ -103,6 +129,21 @@ class RiderRegistration extends Controller
                         'lname' => $email->lastname,
                        ];
                        Mail::to($email)->send(new PasswordVerification($mailData));
+
+                    $request->session()->put('verification', $code);
+                     return back();
+     }
+     if($merchant){
+         $code = mt_rand(1000, 9999);
+
+                       $mailData = [
+                        'title' => 'Password Reset',
+                        'body' => 'test',
+                        'code' => $code,
+                        'fname' => $merchant->firstname,
+                        'lname' => $merchant->lastname,
+                       ];
+                       Mail::to($merchant)->send(new PasswordVerification($mailData));
 
                     $request->session()->put('verification', $code);
                      return back();
@@ -123,11 +164,24 @@ class RiderRegistration extends Controller
         ]);
         if($request->password == $request->password_confirmation){
             $hash = Hash::make($request->password_confirmation);
+            
             $res = tbl_rider_accounts::where('email', Session::get('email'))
-            ->update([
+             ->first();
+          
+            if($res){
+                 tbl_rider_accounts::where('email', Session::get('email'))
+                 ->update([
                 'password' => $hash
             ]);
-            if($res){
+                Session::pull('email');
+                Session::pull('verification');
+                return redirect('/rider_forgotpass3');
+            }
+            else{
+                tbl_partner_accounts::where('email', Session::get('email'))
+                 ->update([
+                'password' => $hash
+            ]);
                 Session::pull('email');
                 Session::pull('verification');
                 return redirect('/rider_forgotpass3');

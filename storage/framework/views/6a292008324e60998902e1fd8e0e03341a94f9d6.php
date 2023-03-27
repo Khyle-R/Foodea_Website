@@ -35,9 +35,9 @@
             <ul class="nav nav-tabs nav-tabs-solid nav-justified">
                 <li class="nav-size nav-item"><a class="nav-link" href="/superadmin_rider">All</a></li>
                 <li class="nav-size nav-item"><a class="nav-link active" href="">Pending</a></li>
-                <li class="nav-size nav-item"><a class="nav-link" href="/superadmin_review">Reviewing</a></li>
+                
                 <li class="nav-size nav-item"><a class="nav-link" href="/superadmin_accept">Accepted</a></li>
-                <li class="nav-size nav-item"><a class="nav-link" href="/superadmin_archive">Archived</a></li>
+                <li class="nav-size nav-item"><a class="nav-link" href="/superadmin_archive">Rejected</a></li>
 
             </ul>
         </div>
@@ -80,7 +80,7 @@
 
                                             </a>
                                             <div class="bg-white dropdown-menu dropdown-menu-right">
-                                                <a data-toggle="modal" data-target="#ReviewModal<?php echo e($rider->rider_id); ?>" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-success"></i> Reviewing</a>
+                                                
                                                 <a data-toggle="modal" data-target="#AcceptedModal<?php echo e($rider->rider_id); ?>" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-danger"></i> Accepted</a>
                                                 <a data-toggle="modal" data-target="#RejectModal<?php echo e($rider->rider_id); ?>" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-warning"></i> Rejected</a>
                                             </div>
