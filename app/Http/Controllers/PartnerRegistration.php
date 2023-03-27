@@ -202,6 +202,7 @@ class PartnerRegistration extends Controller
             //  Mail::to($email)->send(new MailVerification($mailData));
 
             $html = view('email.emailverify')->with('code', $code)->render();
+            dd($email->email);
             SendGridClient::sendEmail($email->email, "Account Verification", $html);
 
             $request->session()->put('verification', $code);
