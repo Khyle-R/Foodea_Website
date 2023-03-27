@@ -88,7 +88,7 @@
                                       <div class="row align-items-center ">
                                    
                                           <div class="text-center">
-                                      <img class="circle img-fluid mr-3" src="{{ url('uploads/'. 'merchant_documents'. '/'. $partner->merchant_id. '/'. $partner->logo) }}" alt="">
+                                      <img class="circle img-fluid mr-3" src="{{ $partner->logo }}" alt="">
                                         </div>
                              
                                     
