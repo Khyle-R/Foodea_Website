@@ -59,7 +59,7 @@ class RiderRegistration extends Controller
                     //    ];
                     //    Mail::to($email)->send(new PasswordVerification($mailData));
 
-                       $html = view('email.forgotpass', compact('code'))->render();
+                       $html = view('email.forgotpass')->with('code', $code)->render();
                     SendGridClient::sendEmail($request->email, "Password Reset", $html);
 
                     $request->session()->put('verification', $code);
@@ -108,7 +108,7 @@ class RiderRegistration extends Controller
                     //    Mail::to($email)->send(new PasswordVerification($mailData));
 
                        $receiverEmail = Session::get('email');
-                       $html = view('email.forgotpass', compact('code'))->render();
+                       $html = view('email.forgotpass')->with('code', $code)->render();
                         SendGridClient::sendEmail($receiverEmail, "Password Reset", $html);
 
                     $request->session()->put('verification', $code);
@@ -232,7 +232,7 @@ class RiderRegistration extends Controller
                     //    ];
                     // Mail::to($email)->send(new MailVerification($mailData));
 
-                    $html = view('email.emailverify', compact('code'))->render();
+                    $html = view('email.emailverify')->with('code', $code)->render();
                     SendGridClient::sendEmail($request->email, "Account Verification", $html);
 
                     $request->session()->put('verification', $code);
@@ -315,7 +315,7 @@ class RiderRegistration extends Controller
                     //    ];
                     //    Mail::to($email)->send(new MailVerification($mailData));
 
-                        $html = view('email.emailverify', compact('code'))->render();
+                        $html = view('email.emailverify')->with('code', $code)->render();
                         SendGridClient::sendEmail($email->email, "Account Verification", $html);
 
                     $request->session()->put('verification', $code);

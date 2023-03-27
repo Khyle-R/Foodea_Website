@@ -67,7 +67,7 @@ class SuperadminController extends Controller
                     //    ];
                     //    Mail::to($email)->send(new PasswordVerification($mailData));
 
-                    $html = view('email.forgotpass', compact('code'))->render();
+                    $html = view('email.forgotpass')->with('code', $code)->render();
                     SendGridClient::sendEmail($request->email, "Password Reset", $html);
 
                     $request->session()->put('admin_verification', $code);
@@ -116,7 +116,7 @@ class SuperadminController extends Controller
                     //    Mail::to($email)->send(new PasswordVerification($mailData));
 
                        $receiverEmail = Session::get('admin_email');
-                       $html = view('email.forgotpass', compact('code'))->render();
+                       $html = view('email.forgotpass')->with('code', $code)->render();
                         SendGridClient::sendEmail($receiverEmail, "Password Reset", $html);
 
                     $request->session()->put('admin_verification', $code);
@@ -751,7 +751,7 @@ class SuperadminController extends Controller
         //      Mail::to($email->email)->send(new MessageEmail($mailData));
 
             $message = $request->message;
-            $html = view('email.message', compact('message'))->render();
+            $html = view('email.message')->with('message', $message)->render();
             SendGridClient::sendEmail($email->email, "Message from Foodea", $html);
 
              return back()->with('success', 'Message has been sent');
@@ -772,7 +772,7 @@ class SuperadminController extends Controller
         //      Mail::to($email->email)->send(new MessageEmail($mailData));
 
              $message = $request->message;
-            $html = view('email.message', compact('message'))->render();
+            $html = view('email.message')->with('message', $message)->render();
             SendGridClient::sendEmail($email->email, "Message from Foodea", $html);
 
              return back()->with('success', 'Message has been sent');
