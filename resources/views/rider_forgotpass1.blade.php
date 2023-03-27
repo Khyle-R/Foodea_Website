@@ -69,7 +69,12 @@
                                   <i class="fa fa-envelope fa-2x key"></i>
                                   <h3>Check you Email</h3>
                                   <p>We emailed a link for password reset to
-                                  <samp style="color:#F54748;">{{ $email->email }}</samp></p>
+                                    @if (isset($merchant))
+                                     <samp style="color:#F54748;">{{ $merchant->email }}</samp></p>
+                                     @else
+                                     <samp style="color:#F54748;">{{ $email->email }}</samp></p>
+                                    @endif
+                                  
                                 </div>
                                 <form method="post" action="{{ route('RiderForgotVerify') }}" class="mt-4">
                                    @csrf

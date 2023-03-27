@@ -39,9 +39,9 @@
                                 <ul class="nav nav-tabs nav-tabs-solid nav-justified">
                                 <li class="nav-size nav-item"><a class="nav-link active" href="">All</a></li>
                                 <li class="nav-size nav-item"><a class="nav-link" href="/superadmin_pending">Pending</a></li>
-                                <li class="nav-size nav-item"><a class="nav-link" href="/superadmin_review">Reviewing</a></li>
+                                {{-- <li class="nav-size nav-item"><a class="nav-link" href="/superadmin_review">Reviewing</a></li> --}}
                                 <li class="nav-size nav-item"><a class="nav-link" href="/superadmin_accept">Accepted</a></li>
-                                <li class="nav-size nav-item"><a class="nav-link" href="/superadmin_archive">Archived</a></li>    
+                                <li class="nav-size nav-item"><a class="nav-link" href="/superadmin_archive">Rejected</a></li>    
                                 </ul>
                             </div>
                         </div>
@@ -81,7 +81,7 @@
                         </div>
                 </div>
             </div>
-            <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3 mb-3">
+            {{-- <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3 mb-3">
                 <div class="card dash-widget">
                       <div class="card-body">
                         <div class="d-flex align-items-center justify-content-between px-3">
@@ -98,7 +98,7 @@
                     </div>
                         </div>
                 </div>
-            </div>
+            </div> --}}
             <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3 mb-3">
                 <div class="card dash-widget">
                       <div class="card-body">
@@ -116,7 +116,7 @@
                         </div>
                 </div>
             </div>
-            {{-- <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3 mb-3">
+            <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3 mb-3">
                 <div class="card dash-widget">
                       <div class="card-body">
                         <div class="d-flex align-items-center justify-content-between px-3">
@@ -132,7 +132,7 @@
                     </div>
                         </div>
                 </div>
-            </div> --}}
+            </div>
         </div>
 
                     <div class="row">
@@ -170,12 +170,12 @@
                                                 <i class=" pending mdi mdi-radiobox-marked"></i> {{ $rider->status }}
                                             </a>
                                             <div class="bg-white dropdown-menu dropdown-menu-right">
-                                                <a data-toggle="modal" data-target="#ReviewModal{{ $rider->rider_id }}" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-success"></i> Reviewing</a>
+                                                {{-- <a data-toggle="modal" data-target="#ReviewModal{{ $rider->rider_id }}" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-success"></i> Reviewing</a> --}}
                                                 <a data-toggle="modal" data-target="#AcceptedModal{{ $rider->rider_id }}" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-danger"></i> Accepted</a>
                                                 <a data-toggle="modal" data-target="#RejectModal{{ $rider->rider_id }}" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-warning"></i> Rejected</a>
                                             </div>
                                         @endif
-                                          @if ($rider->status == 'reviewing' || $rider->status == 'Reviewing')
+                                          {{-- @if ($rider->status == 'reviewing' || $rider->status == 'Reviewing')
                                              <a class=" btn-white-circle btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
                                                 <i class=" review mdi mdi-radiobox-marked"></i> {{ $rider->status }}
                                             </a>
@@ -183,7 +183,7 @@
                                                 <a data-toggle="modal" data-target="#AcceptedModal{{ $rider->rider_id }}" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-danger"></i> Accepted</a>
                                                 <a data-toggle="modal" data-target="#RejectModal{{ $rider->rider_id }}" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-warning"></i> Rejected</a>
                                             </div>
-                                        @endif
+                                        @endif --}}
                                          @if ($rider->status == 'accepted' || $rider->status == 'Accepted')
                                              <a class=" btn-white-circle btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
                                                 <i class=" accepted mdi mdi-radiobox-marked"></i> {{ $rider->status }}

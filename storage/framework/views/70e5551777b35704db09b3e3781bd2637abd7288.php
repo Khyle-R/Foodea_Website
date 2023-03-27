@@ -17,14 +17,14 @@
               <!---/ALERT BOX --->
     </div>
     <div class="page-header">
-        <h3 class="page-title black">Rider Application</h3>
+        <h3 class="page-title black">Merchant Application</h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
                     <a href="#">Menu</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">
-                    Rider Application
+                    Merchant Application
                 </li>
             </ol>
         </nav>
@@ -37,7 +37,7 @@
                  <li class="nav-size nav-item"><a class="nav-link" href="/superadmin_merchantpending">Pending</a></li>
                                 <li class="nav-size nav-item"><a class="nav-link" href="/superadmin_merchantreview">Reviewing</a></li>
                                 <li class="nav-size nav-item"><a class="nav-link active" href="/superadmin_merchantaccept">Accepted</a></li>
-                                <li class="nav-size nav-item"><a class="nav-link" href="/superadmin_merchantarchive">Archived</a></li>
+                                <li class="nav-size nav-item"><a class="nav-link" href="/superadmin_merchantarchive">Rejected</a></li>
 
             </ul>
         </div>
