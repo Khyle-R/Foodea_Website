@@ -127,13 +127,14 @@
 
              <div class="tab-content">
                 <!-- Profile Info Tab -->
+                @foreach ($Data as $partner)
                 <div id="emp_profile" class="pro-overview tab-pane fade show active">
                     <div class="row">
                         <div class="col-md-6 d-flex mb-4">
                             <div class="card profile-box flex-fill">
                                 <div class="card-body">
                                     <h3 class="card-title">Personal Informations<a href="#" class="edit-icon" data-toggle="modal" data-target="#PersonalModal"><i class="mdi mdi-pencil"></i></a></h3>
-                                   
+                                    
                                     <ul class="personal-info">
                                         <li>
                                             <div class="title">Firstname</div>
@@ -487,7 +488,7 @@
                 </div>
                  <!-- /Documents Info Tab -->
              </div>
-             
+             @endforeach
         </div>
 
 
