@@ -15,9 +15,9 @@ class RestaurantController extends Controller
         $queryItems = $filter->transform($request);
 
         if (!isset($queryItems)||count($queryItems) == 0 ) {
-            return tbl_merchant_info::all();
+            return tbl_merchant_info::with('documents')->with('account_details')->with('categories')->get();
         } else {
-            return tbl_merchant_info::where($queryItems)->get();
+            return tbl_merchant_info::with('documents')->with('account_details')->with('categories')->where($queryItems)->get();
         }
     }
 
