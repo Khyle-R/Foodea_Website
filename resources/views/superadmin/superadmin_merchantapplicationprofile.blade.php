@@ -41,7 +41,7 @@
                                     <div class="profile-img">
                                          @foreach ($Data as $partner)
                                      
-                                            <img alt="" src="{{ url('uploads/'. 'merchant_documents'. '/'. $partner->merchant_id. '/'. $partner->logo) }}">
+                                            <img alt="" src="{{ $partner->logo }}">
                                   
                                     </div>
                                 </div>
@@ -321,7 +321,7 @@
                                         <div id="carouselExampleControl" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                            <img class="d-block" height="500" width="100%" src=" {{ asset('uploads/'. 'merchant_documents'. '/'. $partner->merchant_id. '/'. $partner->menu_photo) }} " alt="First slide">
+                            <img class="d-block" height="500" width="100%" src=" {{ $partner->menu_photo }} " alt="First slide">
                             </div>
                          
                         </div>
@@ -357,7 +357,7 @@
                         </div>
                         <div class="modal-body">
                             <div class="image text-center">
-                           <img height="400" width="400" src="{{ url('uploads/'. 'merchant_documents'. '/'. $partner->merchant_id. '/'. $partner->logo) }}" alt="">
+                           <img height="400" width="400" src="{{ $partner->logo }}" alt="">
                        </div>
                         </div>
                         </div>
@@ -378,7 +378,7 @@
                             <div id="carouselExampleContr" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                            <img class="d-block" height="650"  width="100%" src="{{ url('uploads/'. 'merchant_documents'. '/'. $partner->merchant_id. '/'. $partner->menu_photo) }}" alt="First slide">
+                            <img class="d-block" height="650"  width="100%" src="{{ $partner->menu_photo }}" alt="First slide">
                             </div>
         
                         </div>
@@ -411,10 +411,10 @@
                             <div id="carouselExampleControlss" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                            <img class="d-block" height="350"  width="100%" src="{{ url('uploads/'. 'merchant_documents'. '/'. $partner->merchant_id. '/'. 'valid id/'.$partner->front_license) }}" alt="First slide">
+                            <img class="d-block" height="350"  width="100%" src="{{ $partner->front_license }}" alt="First slide">
                             </div>
                             <div class="carousel-item">
-                            <img class="d-block" height="350" width="100%" src="{{ url('uploads/'. 'merchant_documents'. '/'. $partner->merchant_id. '/'. 'valid id/'.$partner->back_license) }}" alt="Second slide">
+                            <img class="d-block" height="350" width="100%" src="{{ $partner->back_license }}" alt="Second slide">
                             </div>
                         </div>
                         <a class="carousel-control-prev" href="#carouselExampleControlss" role="button" data-slide="prev">

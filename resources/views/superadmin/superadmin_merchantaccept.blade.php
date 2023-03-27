@@ -17,14 +17,14 @@
               <!---/ALERT BOX --->
     </div>
     <div class="page-header">
-        <h3 class="page-title black">Rider Application</h3>
+        <h3 class="page-title black">Merchant Application</h3>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item">
                     <a href="#">Menu</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">
-                    Rider Application
+                    Merchant Application
                 </li>
             </ol>
         </nav>
@@ -66,7 +66,7 @@
                             <tr>
                                  <a href="">
                                 <td>
-                                    <img class="circle mr-2" src="{{ url('uploads/'. 'merchant_documents'. '/'. $partner->merchant_id. '/'. $partner->logo) }}" alt="">
+                                    <img class="circle mr-2" src="{{ $partner->logo }}" alt="">
                                    {{ $partner->business_name}}
                                 </td>
                                 <td>{{ $partner->business_type }}</td>
