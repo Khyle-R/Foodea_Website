@@ -177,17 +177,17 @@ class PartnerRegistration extends Controller
         $merchant->vision = $request->vision; 
         $res = $merchant->save();
         if($res){
-            
             $id = tbl_merchant_info::where('merchant_id', $request->merchant_id)->first();
             
-           $success = tbl_merchant_application::where('merchant_id', $request->merchant_id)
+            $success = tbl_merchant_application::where('merchant_id', $request->merchant_id)
                 ->update([
                     'merchantinfo_id' => $id->merchantinfo_id,
                     'status' => 'second'
                 ]);
             $status =  tbl_merchant_application::where('merchant_id', $request->merchant_id)->first();
             if($success){
-                $email = tbl_partner_accounts::where('merchant_id', Session::get('merchant_id'))->first(); 
+                $email = tbl_partner_accounts::where('merchant_id', Session::get('merchant_id'))->first();
+                dd($email);
                 $code = mt_rand(100000, 999999);
                 //   $mailData = [
                 //     'title' => 'Account Verification',
@@ -197,6 +197,7 @@ class PartnerRegistration extends Controller
                 //     'lname' => $email->lastname,
                 // ];
                 //  Mail::to($email)->send(new MailVerification($mailData));
+                dd($code);
                 $html = view('email.emailverify')->with('code', $code)->render();
                 
                 SendGridClient::sendEmail($email->email, "Account Verification", $html);
