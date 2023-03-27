@@ -173,9 +173,10 @@ class Admin_product extends Controller
             // $file = $request->product_image;
             // $filename = $file->getClientOriginalName();
             // $file->move($path, $filename);
-  
+            $category=$request->category;
+            $category_parts = explode('|', $category);
 
-            $resss=$affected->update(['product_name' => $request->product_name,'price' => $request->price, 'tags' => $request->tags, 'stock' => $request->stock,'status' => $request->status,'description' => $request->description,'product_image'=> $image_p],
+            $resss=$affected->update(['product_name' => $request->product_name,'price' => $request->price,'price' => $request->price,'category_id' => $category_parts[0], 'category_name' => $category_parts[1], 'calories' => $request->calories, 'ingredients' => $request->ingredients, 'stock' => $request->stock,'status' => $request->status,'description' => $request->description,'product_image'=> $image_p],
               
             );
             if ($resss) {
@@ -188,7 +189,10 @@ class Admin_product extends Controller
         }
         else {
             // if the update dont have new profile upload
-            $resss=$affected->update(['product_name' => $request->product_name,'price' => $request->price,'tags' => $request->tags, 'stock' => $request->stock,'status' => $request->status,'description' => $request->description],  
+            $category=$request->category;
+            $category_parts = explode('|', $category);
+
+            $resss=$affected->update(['product_name' => $request->product_name,'price' => $request->price,'category_id' => $category_parts[0], 'category_name' => $category_parts[1], 'calories' => $request->calories, 'ingredients' => $request->ingredients, 'stock' => $request->stock,'status' => $request->status,'description' => $request->description],  
             );
             if ($resss) {
                 return redirect('product');
@@ -214,22 +218,21 @@ class Admin_product extends Controller
 
                 $image_p = Storage::disk('s3')->url($prod_image);
 
-                
-
                 $addProd->merchant_id = session('loginID');
                 $addProd->product_name =$request->product_name;
                 $addProd->stock = $request->stock;
                 $addProd->product_image =$image_p;
                 $addProd->price = $request->price;
-                $addProd->category_name=$request->category;
+                $addProd->calories = $request->calories;
+                $category=$request->category;
+                $category_parts = explode('|', $category);
+                $addProd->category_id = $category_parts[0];
+                $addProd->category_name = $category_parts[1];
                 $addProd->status = $request->status;
-                $addProd->tags=$request->tags_category;
+                // $addProd->tags=$request->tags_category;
                 $addProd->description = $request->description;
                 $addProd->ingredients= $request->ingredients;
     
-              
-               
-  
             }
 
             $addProd->save();

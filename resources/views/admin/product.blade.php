@@ -61,11 +61,10 @@
 
                                           <div class="col form-group"><label for="exampleSelectGender" class="blackk">Category</label>
                                              <select class="form-control" id="exampleSelectGender" style="border: 1px solid" name="category" required>
-                                                <option>{{ old('category') }}</option>
+                                                {{-- <option>{{ old('category') }}</option> --}}
                                                 @foreach ($category as $key => $data)
-                                                   <option>{{ $data->main_category }}</option>
+                                                   <option {{old('category') == $data->main_category ? 'selected' : ''}} value="{{$data->category_id}}|{{$data->main_category}}">{{ $data->main_category }}</option>
                                                 @endforeach
-
                                              </select>
                                              <span style="color:red;">
                                                 @error('category')
@@ -75,9 +74,8 @@
                                           </div>
 
                                           <div class="form-group">
-                                             <label for="" class="blackk">Tags:</label>
-                                             <input type="text" class="form-control" id="tags_category" name="tags_category" value="" data-role="tagsinput"
-                                                name="tags_category">
+                                             <label for="" class="blackk">Calories:</label>
+                                             <input type="text" class="form-control" id="tags_category" name="calories">
                                           </div>
 
                                           <div class="form-group">
@@ -239,19 +237,18 @@
                                                          <div class="col form-group">
                                                             <label for="exampleSelectGender" class="blackk">Category</label>
                                                             <select class="form-control" id="exampleSelectGender" style="border: 1px solid" name="category" required>
-                                                               <option>
+                                                               {{-- <option>
                                                                   {{ $data->category_name }}
-                                                               </option>
-                                                               @foreach ($category as $key => $datas)
-                                                                  <option>{{ $datas->main_category }}</option>
+                                                               </option> --}}
+                                                               @foreach ($category as $keys => $datas)
+                                                                  <option {{$data->category_name == $datas->main_category ? 'selected' : ''}} value="{{$datas->category_id}}|{{$datas->main_category}}">{{ $datas->main_category }}</option>
                                                                @endforeach
                                                             </select>
                                                          </div>
                                                       </div>
                                                       <div class="form-group">
-                                                         <label for="" class="blackk">Tags:</label>
-                                                         <input type="text" class="form-control" id="tags" name="tags" value="{{ $data->tags }}"
-                                                            data-role="tagsinput" name="tags_category">
+                                                         <label for="" class="blackk">Calories:</label>
+                                                         <input type="text" class="form-control" id="tags" name="calories" value="{{ $data->calories }}">
                                                       </div>
 
 
