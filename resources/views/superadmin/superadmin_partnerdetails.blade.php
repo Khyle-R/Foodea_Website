@@ -219,14 +219,14 @@
                                 <td>Business Logo</td>
                                 <td>{{ $partner->logo }}</td>
                                  <td><a class="red-btn" href="" data-toggle="modal" data-target="#ViewModal1"><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
-                                <td><a class="red-btn" href="{{ $partner->logo }}" download><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
+                                <td><a class="red-btn" href="{{ $partner->logo }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
 
                             </tr>   
                             <tr>
                                 <td>Menu Photo</td>
                                 <td>{{ $partner->menu_photo }}</td>
                                <td><a class="red-btn" data-toggle="modal" data-target="#ViewModal2"><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
-                                <td><a class="red-btn" href="{{ $partner->menu_photo }}" download><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
+                                <td><a class="red-btn" href="{{ $partner->menu_photo }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
 
                             </tr>
 
@@ -234,35 +234,35 @@
                                 <td>Business Permit</td>
                                 <td>{{ $partner->business_permit }}</td>
                                  <td><a class="red-btn" href="{{ $partner->business_permit }}" ><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
-                                <td><a class="red-btn" href="{{ $partner->business_permit }}" download><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
+                                <td><a class="red-btn" href="{{ $partner->business_permit }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
 
                             </tr>
                             <tr>
                                 <td>BIR Certificate</td>
                                 <td>{{ $partner->bir_cert }}</td>
                                  <td><a class="red-btn" href="{{ $partner->bir_cert }}" ><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
-                                <td><a class="red-btn" href="{{ $partner->bir_cert }}" download><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
+                                <td><a class="red-btn" href="{{ $partner->bir_cert }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
 
                             </tr>
                             <tr>
                                 <td>Barangay Permit</td>
                                 <td>{{ $partner->barangay_permit }}</td>
                                 <td><a class="red-btn" href="{{ $partner->barangay_permit }}" ><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
-                                <td><a class="red-btn" href="{{ $partner->barangay_permit }}" download><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
+                                <td><a class="red-btn" href="{{ $partner->barangay_permit }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
 
                             </tr>
                            <tr>
                                 <td>DTI Certificate</td>
                                 <td>{{ $partner->dti_cert }}</td>
                                  <td><a class="red-btn" href="{{ $partner->dti_cert }}" ><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
-                                <td><a class="red-btn" href="{{ $partner->dti_cert }}" download><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
+                                <td><a class="red-btn" href="{{ $partner->dti_cert }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
 
                             </tr>
                             <tr>
                                 <td>Valid Government ID</td>
                                 <td>{{ $partner->front_license }}</td>
                                 <td><a class="red-btn" data-toggle="modal" data-target="#ViewModal3" ><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
-                                <td><a class="red-btn" href="{{ $partner->merchant_id }}" download><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
+                                <td><a class="red-btn" href="{{ $partner->merchant_id }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
 
                             </tr>
                         </tbody>
