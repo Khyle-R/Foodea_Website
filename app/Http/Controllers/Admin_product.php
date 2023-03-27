@@ -505,15 +505,15 @@ class Admin_product extends Controller
     public function AdminAccount(){
         $id = Session::get('loginID');
 
-     $Data = tbl_partner_accounts::join('tbl_merchant_info', 'tbl_merchant_account.merchant_id', '=', 'tbl_merchant_info.merchant_id')
-    ->join('merchant_document', 'tbl_merchant_account.merchant_id', '=', 'merchant_document.merchant_id')
-    ->join('tbl_accepted_merchant', 'tbl_merchant_account.merchant_id', '=', 'tbl_accepted_merchant.merchant_id')
-    ->where('tbl_merchant_account.merchant_id', $id)
-    ->limit(1)
-    ->get();
+        $Data = tbl_partner_accounts::join('tbl_merchant_info', 'tbl_merchant_account.merchant_id', '=', 'tbl_merchant_info.merchant_id')
+        ->join('merchant_document', 'tbl_merchant_account.merchant_id', '=', 'merchant_document.merchant_id')
+        ->join('tbl_accepted_merchant', 'tbl_merchant_account.merchant_id', '=', 'tbl_accepted_merchant.merchant_id')
+        ->where('tbl_merchant_account.merchant_id', $id)
+        ->limit(1)
+        ->get();
 
-    $product = tbl_product::where('merchant_id', $id)
-    ->get();
+        $product = tbl_product::where('merchant_id', $id)
+        ->get();
         return view('admin.admin_account', compact('Data', 'product'));
     }
 
