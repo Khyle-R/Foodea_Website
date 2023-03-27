@@ -491,7 +491,7 @@
              @endforeach
         </div>
 
-
+        @foreach ($Data as $partner)
         <!-- Profile Modal -->
                     <div class="modal fade" id="PersonalModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -793,6 +793,7 @@
                         </div>
                     </div>
                     </div>
+    @endforeach
 <!-- content-wrapper ends -->
 <!-- partial:../../partials/_footer.html -->
 <footer class="footer">
