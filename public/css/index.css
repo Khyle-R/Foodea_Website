@@ -42,7 +42,7 @@ ul {
 }
 
 nav .navbar-brand span{
-  font-size: clamp(0.75rem, 0.8040rem + 1.3120vw, 1.16rem);
+  font-size: clamp(0.75rem, 0.6040rem + 1.3120vw, 1.16rem);
   position:relative;
   text-decoration: none;
   color: #f54748;
