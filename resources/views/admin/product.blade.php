@@ -104,7 +104,7 @@
                                                 the product details.</span>
                                           </div>
 
-
+{{-- 
                                           <div class="form-group">
                                              <div class="file-loading">
                                                 <input type="file" value="{{ old('product_image') }}" name="product_image" />
@@ -114,7 +114,21 @@
                                                    @enderror
                                                 </span>
                                              </div>
+                                          </div> --}}
+
+                                          
+                                          <div class="form-group">
+                                             <div class="file-loading">
+
+                                                <input type="file" class="product_image" name="product_image" multiple data-allow-reorder="true" data-max-file-size="3MB" data-max-files="1">
+                                                <span style="color:red;">
+                                                   @error('product_image')
+                                                      {{ $message }}
+                                                   @enderror
+                                                </span>
+                                             </div>
                                           </div>
+
                                           <div class="row">
                                              <div class="col-md">
                                                 <label for="exampleInputName1" class="blackk">Price</label>

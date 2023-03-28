@@ -11,11 +11,13 @@ use App\Models\tbl_merchant_info;
 use Illuminate\Support\Facades\DB;
 use App\Models\tbl_merchant_account;
 use App\Models\tbl_partner_accounts;
+use App\Models\TemporaryFile;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Validation\Rules\Password;
 use Carbon\Carbon; // to retrieve current Date
+use Illuminate\Support\Facades\Storage;
 
 class Admin_product extends Controller
 {
@@ -196,14 +198,16 @@ class Admin_product extends Controller
             }
         }
     }
-
+//
     public function addProduct(Request $request)
     {
 
         
-        $addProd=new tbl_product();
+      
 
        
+/*
+              $addProd=new tbl_product();
 
             if ($request->hasFile('product_image')) 
             {
@@ -214,7 +218,6 @@ class Admin_product extends Controller
                 $prod_image->move('product_images', $image_p);
 
             
-
                 $addProd->merchant_id = session('loginID');
                 $addProd->product_name =$request->product_name;
                 $addProd->stock = $request->stock;
@@ -225,16 +228,39 @@ class Admin_product extends Controller
                 $addProd->tags=$request->tags_category;
                 $addProd->description = $request->description;
                 $addProd->ingredients= $request->ingredients;
-    
-              
-               
-  
             }
 
             $addProd->save();
             
             return redirect('product');
-        
+*/
+
+
+            $tmp_file = TemporaryFile::where('folder', $request->product_image)->first();
+
+            if($tmp_file)
+            {
+                Storage::copy('posts/tmp/'. $tmp_file->folder. '/' . $tmp_file->file, 'posts/' .$tmp_file->folder . '/' .$tmp_file->file);
+
+                tbl_product::create([
+                    'merchant_id' => session('loginID'),
+                    'product_name' => $request->product_name,
+                    'stock' => $request->stock,
+                    'product_image' => $tmp_file->folder. '/' .$tmp_file->file_name,
+                    'price' => $request->price,
+                    'category_name' => $request->category,
+                    'status' => $request->status,
+                    'tags' => $request->tags_category,
+                    'description' => $request->description,
+                    'ingredients' => $request->ingredients
+                ]);
+                Storage::deleteDirectory('posts/tmp/'. $tmp_file->folder);
+                $tmp_file->delete();
+                return redirect('/')->with('success', 'Added Success.');
+            }
+            return redirect('/')->with('danger', 'Please Upload an Image.');
+
+
     }
 
 
@@ -568,5 +594,22 @@ class Admin_product extends Controller
             return back();
        }
 
+    }
+
+    public function tmpUpload(Request $request)
+    {
+        if($request->hasFile('product_image'))
+        {
+            $image = $request->file('product_image');
+            $filename = $image->getClientOriginalName();
+            $folder = uniqid('post', true);
+            $image->storeAs('posts/tmp/' .$folder, $filename);
+            TemporaryFile::create([
+                'folder' => $folder,
+                'file' => $filename
+            ]);
+            return $folder;
+        }
+        return '';
     }
 }
