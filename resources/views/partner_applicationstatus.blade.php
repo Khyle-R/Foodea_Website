@@ -37,6 +37,12 @@
               <div class="title d-flex pb-3 ps-2 gap-2 align-items-center">
               <img src="image/foodea.png" style="width: 50px">FOODEA
             </div>
+            @if(Session::get('partnerID'))
+               <div href="#" class="nav_link active red py-3 ms-2">
+              <span class="nav_linknumber"><i class="mdi mdi-account-circle"></i></span> 
+              <span class="nav_name">Application Status</span>
+            </div>  
+             @else
             <div class="nav_link active mt-3 py-3 ms-2">
               <i class="bx bx-grid-alt nav_icon"></i>
               <span class="nav_name">Term User</span>
@@ -61,6 +67,7 @@
               <span class="nav_linknumber">5</span> 
               <span class="nav_name">Application Status</span>
             </div>
+            @endif
           </div>
         </div>
         </div>
@@ -100,7 +107,12 @@
                                     
 
                                     <div class="col-sm-12 col-lg-5">
+                                      @if($partner->status == 'Rejected')
+                                      <div class="card-rejected py-4 px-4 mx-0 mx-md-5 rounded">
+                                      @elseif($partner->status == 'pending')
                                       <div class="card-pending py-4 px-4 mx-0 mx-md-5 rounded">
+              
+                                        @endif
                                       <div class="">
                                       <h4 class="text-center text-white">{{ $partner->status }}</h4>
                                       </div>
