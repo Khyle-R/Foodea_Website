@@ -282,11 +282,14 @@ Route::group(['middleware'=>['superadminLogin']], function(){
 
     Route::get('/superadmin_sales', [SuperadminController::class, 'SalesIndex']);
 
+    
    
 });
 
 });
  /*VIEW PDF */
+    Route::get('/superadmin_exportsales', [SuperadminController::class, 'ExportSalesExcel']);
+    
     Route::get('/display_pdf/{id}/{name}', [SuperadminController::class, 'ViewPDF']);
 
     Route::get('/display_merchant_pdf/{id}/{name}', [SuperadminController::class, 'ViewMerchantPDF']);
