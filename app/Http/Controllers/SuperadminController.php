@@ -301,8 +301,6 @@ class SuperadminController extends Controller
      $Data = tbl_rider_accounts::join('tbl_accepted_rider', 'tbl_rider_account.rider_id', '=', 'tbl_accepted_rider.rider_id')
     ->join('tbl_document_info', 'tbl_rider_account.rider_id', '=', 'tbl_document_info.rider_id')
     ->join('tbl_vehicle_info', 'tbl_rider_account.rider_id', '=', 'tbl_vehicle_info.rider_id')
-    ->join('rider_application', 'tbl_rider_account.rider_id', '=', 'rider_application.rider_id')
-    ->where('rider_application.status', 'Accepted')
     ->distinct()
     ->get(['tbl_accepted_rider.accepted_rider_id' ,'tbl_rider_account.rider_id', 'firstname', 'lastname', 'tbl_document_info.rider_photo', 'suffix', 'email', 'mobile_number', 'address', 'city', 'barangay', 'middlename']);
    
@@ -315,12 +313,9 @@ class SuperadminController extends Controller
    
     public function AcceptedPartner(){
     
-    
     $Data = tbl_partner_accounts::join('tbl_accepted_merchant', 'tbl_merchant_account.merchant_id', '=', 'tbl_accepted_merchant.merchant_id')
     ->join('merchant_document', 'tbl_merchant_account.merchant_id', '=', 'merchant_document.merchant_id')
     ->join('tbl_merchant_info', 'tbl_merchant_account.merchant_id', '=', 'tbl_merchant_info.merchant_id')
-    ->join('merchant_application', 'tbl_merchant_account.merchant_id', '=', 'merchant_application.merchant_id')
-    ->where('merchant_application.status', 'Accepted')
     ->distinct()
     ->get(['tbl_accepted_merchant.accepted_merchant_id', 'business_name', 'merchant_document.logo', 'tbl_merchant_account.merchant_id', 'business_type', 'tbl_merchant_info.barangay', 'tbl_merchant_info.city', 'tbl_merchant_info.address', 'store_email', 'store_number']);    
 

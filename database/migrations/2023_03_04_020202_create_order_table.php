@@ -16,7 +16,6 @@ return new class extends Migration
         Schema::create('tbl_orders', function (Blueprint $table) {
             $table->id('order_id');
             $table->integer('customer_id');
-            $table->integer('merchant_id');
             $table->integer('product_id');
             $table->integer('restaurant_id');
             $table->integer('quantity');
@@ -27,7 +26,6 @@ return new class extends Migration
             $table->timestamps();
         });
     }
-    
 
     /**
      * Reverse the migrations.
