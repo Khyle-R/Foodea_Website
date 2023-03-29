@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Models\tbl_merchant_document;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Session;
+use App\Models\tbl_product;
 use App\Models\tbl_merchant_application;
 use Illuminate\Validation\Rules\Password;
 
@@ -32,7 +33,159 @@ class PartnerRegistration extends Controller
         return view('/partner_application2');
     }
     public function partneraddproduct(){
+
         return view('/partner_application_add');
+    }
+    public function partneraddproduct2(){
+
+        return view('/partner_application_add2');
+    }
+    public function partneraddproduct3(){
+
+        return view('/partner_application_add3');
+    }
+    public function partneraddproduct4(){
+
+        return view('/partner_application_add4');
+    }
+    public function partneraddproduct5(){
+
+        return view('/partner_application_add5');
+    }
+    public function addProductPartner(Request $request)
+    {
+        $addProd=new tbl_product();
+
+        if ($request->hasFile('product_image')) 
+        {
+            $prod_image = $request->file('product_image');
+            $image_p = $prod_image->getClientOriginalName();
+            $prod_image->move('product_images', $image_p);
+        
+            $addProd->merchant_id = $request->merchant_id;
+            $addProd->product_name =$request->product_name;
+            $addProd->stock = $request->stock;
+            $addProd->product_image =$image_p;
+            $addProd->price = $request->price;
+            $addProd->category_name=$request->category;
+            $addProd->status = $request->status;
+            $addProd->tags=$request->tags_category;
+            $addProd->description = $request->description;
+            $addProd->ingredients= $request->ingredients;
+
+        }
+
+        $addProd->save();
+
+        return redirect('/partner_application_add2');
+    }
+    public function addProductPartner2(Request $request)
+    {
+        $addProd=new tbl_product();
+
+        if ($request->hasFile('product_image')) 
+        {
+            $prod_image = $request->file('product_image');
+            $image_p = $prod_image->getClientOriginalName();
+            $prod_image->move('product_images', $image_p);
+        
+            $addProd->merchant_id = $request->merchant_id;
+            $addProd->product_name =$request->product_name;
+            $addProd->stock = $request->stock;
+            $addProd->product_image =$image_p;
+            $addProd->price = $request->price;
+            $addProd->category_name=$request->category;
+            $addProd->status = $request->status;
+            $addProd->tags=$request->tags_category;
+            $addProd->description = $request->description;
+            $addProd->ingredients= $request->ingredients;
+
+        }
+
+        $addProd->save();
+
+        return redirect('/partner_application_add3');
+    }
+    public function addProductPartner3(Request $request)
+    {
+        $addProd=new tbl_product();
+
+        if ($request->hasFile('product_image')) 
+        {
+            $prod_image = $request->file('product_image');
+            $image_p = $prod_image->getClientOriginalName();
+            $prod_image->move('product_images', $image_p);
+        
+            $addProd->merchant_id = $request->merchant_id;
+            $addProd->product_name =$request->product_name;
+            $addProd->stock = $request->stock;
+            $addProd->product_image =$image_p;
+            $addProd->price = $request->price;
+            $addProd->category_name=$request->category;
+            $addProd->status = $request->status;
+            $addProd->tags=$request->tags_category;
+            $addProd->description = $request->description;
+            $addProd->ingredients= $request->ingredients;
+
+        }
+
+        $addProd->save();
+
+        return redirect('/partner_application_add4');
+    }
+    public function addProductPartner4(Request $request)
+    {
+        $addProd=new tbl_product();
+
+        if ($request->hasFile('product_image')) 
+        {
+            $prod_image = $request->file('product_image');
+            $image_p = $prod_image->getClientOriginalName();
+            $prod_image->move('product_images', $image_p);
+        
+            $addProd->merchant_id = $request->merchant_id;
+            $addProd->product_name =$request->product_name;
+            $addProd->stock = $request->stock;
+            $addProd->product_image =$image_p;
+            $addProd->price = $request->price;
+            $addProd->category_name=$request->category;
+            $addProd->status = $request->status;
+            $addProd->tags=$request->tags_category;
+            $addProd->description = $request->description;
+            $addProd->ingredients= $request->ingredients;
+
+        }
+
+        $addProd->save();
+
+        return redirect('/partner_application_add5');
+    }
+    public function addProductPartner5(Request $request)
+    {
+        $addProd=new tbl_product();
+
+        if ($request->hasFile('product_image')) 
+        {
+            $prod_image = $request->file('product_image');
+            $image_p = $prod_image->getClientOriginalName();
+            $prod_image->move('product_images', $image_p);
+        
+            $addProd->merchant_id = $request->merchant_id;
+            $addProd->product_name =$request->product_name;
+            $addProd->stock = $request->stock;
+            $addProd->product_image =$image_p;
+            $addProd->price = $request->price;
+            $addProd->category_name=$request->category;
+            $addProd->status = $request->status;
+            $addProd->tags=$request->tags_category;
+            $addProd->description = $request->description;
+            $addProd->ingredients= $request->ingredients;
+
+        }
+
+        $addProd->save();
+
+        return redirect('/partner_application_add5'); //Next Step here<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     }
     public function PartnerForgotPass(){
         return view('partner_forgotpass');

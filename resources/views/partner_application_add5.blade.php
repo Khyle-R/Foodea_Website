@@ -103,12 +103,12 @@
           <div class="right">
             <h2>Menu</h2>
           <div class="d-flex justify-content-center">
-            <p>1 out of 5 Menu</p>
+            <p>5 out of 5 Menu</p>
           </div>
 
               <!--GET PARTNER ID-->
 
-            <form method="post" action="{{ route('addproductpartner')}}" enctype="multipart/form-data">
+            <form method="post" action="{{ route('addproductpartner5')}}" enctype="multipart/form-data">
           @csrf
               @if (Session::has('merchant_id'))
               <input type="text" name="merchant_id" value=" {{ Session::get('merchant_id') }}">
