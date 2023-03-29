@@ -25,12 +25,14 @@ class Order extends Model
     ];
     protected $primaryKey = 'order_id';
 
+    
+
     public function product_details(){
         return $this->hasOne(tbl_product::class, 'product_id', 'product_id');
     }
 
     public function user_details(){
-        return $this->hasOne(AppUser::class, 'user_id', 'customer_id');
+        return $this->hasOne(AppUser::class, 'id', 'customer_id');
     }
 
     public function restaurant_details(){
