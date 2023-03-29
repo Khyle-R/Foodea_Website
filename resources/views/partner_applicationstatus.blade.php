@@ -225,34 +225,42 @@
                        
                                        <div class="row px-2 mt-2">
                                         <label class="black width">Business Logo</label>
+                                              <img src="{{ $partner->logo}}" alt="">
                                              <p class="black ml-5">{{ $partner->logo }}</p>
                                       </div>
                                        <div class="row px-2 mt-2">
                                         <label class="black width">Business Menu</label>
+                                        <img src="{{ $partner->menu_logo}}" alt="">
                                           <p class="black ml-5">{{ $partner->menu_photo }}</p>
                                       </div>
                                        <div class="row px-2 mt-2">
                                         <label class="black width">Business Permit</label>
+                                        <button src="{{ $partner->logo}}">Download</button>
                                           <p class="black ml-5">{{ $partner->business_permit }}</p>
                                       </div>
                                        <div class="row px-2 mt-2">
                                         <label class="black width">BIR Certificate</label>
+                                        <button src="{{ $partner->bir_cert}}">Download</button>
                                           <p class="black ml-5">{{ $partner->bir_cert }}</p>
                                       </div>
                                        <div class="row px-2 mt-2">
                                         <label class="black width">Barangay Permit</label>
+                                        <button src="{{ $partner->barangay_permit}}">Download</button>
                                          <p class="black ml-5">{{ $partner->barangay_permit }}</p>
                                       </div>
                                        <div class="row px-2 mt-2">
                                         <label class="black width">DTI Certificate</label>
+                                        <button src="{{ $partner->dti_cert}}">Download</button>
                                          <p class="black ml-5">{{ $partner->dti_cert }}</p>
                                       </div>
                                        <div class="row px-2 mt-2">
                                         <label class="black width">Front License ID</label>
+                                        <img src="{{ $partner->front_license}}" alt="">
                                          <p class="black ml-5">{{ $partner->front_license }}</p>
                                       </div>
                                       <div class="row px-2 mt-2">
                                         <label class="black width">Back License ID</label>
+                                        <img src="{{ $partner->back_license}}" alt="">
                                          <p class="black ml-5">{{ $partner->back_license }}</p>
                                       </div>
                                        @endforeach
