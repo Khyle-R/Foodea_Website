@@ -54,6 +54,12 @@ class OrderController extends Controller
                 if(!$value == '' || !$value == NULL){
                     $data->put('order_key', $value);
                     $query = Order::where('order_key', $value)->with('product_details')->with('user_details')->with('restaurant_details')->where($queryItems);
+                    
+                    $totalPrice = 0;
+                    foreach($query->get() as $q){
+                        $totalPrice = $totalPrice + $q->total;
+                    }
+                    $data->put('order_totalPrice', $totalPrice);
 
                     if(!$query->count() == 0){
                         $data->put('order_details', $query->get());
