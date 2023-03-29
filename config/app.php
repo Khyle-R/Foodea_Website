@@ -195,7 +195,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\SuperAdminProvider::class,
-        Maatwebsite\Excel\ExcelServiceProvider::class,
+
     ],
 
     /*
@@ -211,7 +211,6 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
-        'Excel' => Maatwebiste\Excel\Facades\Excel::class,
     ])->toArray(),
 
 ];

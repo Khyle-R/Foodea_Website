@@ -5,21 +5,21 @@
                           
                         </div>
                         <div class="page-header">
-                            <h3 class="page-title black"> Sales Report</h3>
+                            <h3 class="page-title black"> Activity Log</h3>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">
                                         <a href="#">Menu</a>
                                     </li>
                                     <li class="breadcrumb-item active" aria-current="page">
-                                       Sales Report
+                                       Activity Log
                                     </li>
                                 </ol>
                             </nav>
                         </div>
                                  <div class="d-flex flex-row justify-content-end my-4">
                         <div class="title">
-                    <a class="red-btn" href="superadmin_exportsales">Download Report</a>
+                    <a class="red-btn" href="#">Download Report</a>
                     </div>
                     
                     </div>
@@ -42,15 +42,13 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <?php $__currentLoopData = $sales; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sale): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                <tr>
-                                <td><?php echo e($sale->merchant_id); ?></td>
-                                <td><?php echo e($sale->name); ?></td>
-                                <td><?php echo e($sale->total); ?></td>
-                                <td><?php echo e($sale->date); ?></td>
+                     
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
                             </tr>
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                            
                        
                         </tbody>
                     
