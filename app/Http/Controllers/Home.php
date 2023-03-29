@@ -104,6 +104,9 @@ class Home extends Controller
          return view('contact');
     }
 
+    public function DownloadAppIndex(){ 
+         return view('download_app');
+    }
     public function ContactUssend(Request $request){
         $mailData = [
             'title' => 'Password Reset',

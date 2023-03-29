@@ -8,6 +8,7 @@ use App\Mail\MailVerification;
 use App\Models\tbl_activitylog;
 use App\Models\tbl_merchant_info;
 use App\Mail\PasswordVerification;
+use App\Models\tbl_category;
 use App\Models\tbl_rider_accounts;
 use App\Models\tbl_partner_accounts;
 use Illuminate\Support\Facades\Hash;
@@ -32,161 +33,8 @@ class PartnerRegistration extends Controller
     public function partner2index(){
         return view('/partner_application2');
     }
-    public function partneraddproduct(){
-
-        return view('/partner_application_add');
-    }
-    public function partneraddproduct2(){
-
-        return view('/partner_application_add2');
-    }
-    public function partneraddproduct3(){
-
-        return view('/partner_application_add3');
-    }
-    public function partneraddproduct4(){
-
-        return view('/partner_application_add4');
-    }
-    public function partneraddproduct5(){
-
-        return view('/partner_application_add5');
-    }
-    public function addProductPartner(Request $request)
-    {
-        $addProd=new tbl_product();
-
-        if ($request->hasFile('product_image')) 
-        {
-            $prod_image = $request->file('product_image');
-            $image_p = $prod_image->getClientOriginalName();
-            $prod_image->move('product_images', $image_p);
-        
-            $addProd->merchant_id = $request->merchant_id;
-            $addProd->product_name =$request->product_name;
-            $addProd->stock = $request->stock;
-            $addProd->product_image =$image_p;
-            $addProd->price = $request->price;
-            $addProd->category_name=$request->category;
-            $addProd->status = $request->status;
-            $addProd->tags=$request->tags_category;
-            $addProd->description = $request->description;
-            $addProd->ingredients= $request->ingredients;
-
-        }
-
-        $addProd->save();
-
-        return redirect('/partner_application_add2');
-    }
-    public function addProductPartner2(Request $request)
-    {
-        $addProd=new tbl_product();
-
-        if ($request->hasFile('product_image')) 
-        {
-            $prod_image = $request->file('product_image');
-            $image_p = $prod_image->getClientOriginalName();
-            $prod_image->move('product_images', $image_p);
-        
-            $addProd->merchant_id = $request->merchant_id;
-            $addProd->product_name =$request->product_name;
-            $addProd->stock = $request->stock;
-            $addProd->product_image =$image_p;
-            $addProd->price = $request->price;
-            $addProd->category_name=$request->category;
-            $addProd->status = $request->status;
-            $addProd->tags=$request->tags_category;
-            $addProd->description = $request->description;
-            $addProd->ingredients= $request->ingredients;
-
-        }
-
-        $addProd->save();
-
-        return redirect('/partner_application_add3');
-    }
-    public function addProductPartner3(Request $request)
-    {
-        $addProd=new tbl_product();
-
-        if ($request->hasFile('product_image')) 
-        {
-            $prod_image = $request->file('product_image');
-            $image_p = $prod_image->getClientOriginalName();
-            $prod_image->move('product_images', $image_p);
-        
-            $addProd->merchant_id = $request->merchant_id;
-            $addProd->product_name =$request->product_name;
-            $addProd->stock = $request->stock;
-            $addProd->product_image =$image_p;
-            $addProd->price = $request->price;
-            $addProd->category_name=$request->category;
-            $addProd->status = $request->status;
-            $addProd->tags=$request->tags_category;
-            $addProd->description = $request->description;
-            $addProd->ingredients= $request->ingredients;
-
-        }
-
-        $addProd->save();
-
-        return redirect('/partner_application_add4');
-    }
-    public function addProductPartner4(Request $request)
-    {
-        $addProd=new tbl_product();
-
-        if ($request->hasFile('product_image')) 
-        {
-            $prod_image = $request->file('product_image');
-            $image_p = $prod_image->getClientOriginalName();
-            $prod_image->move('product_images', $image_p);
-        
-            $addProd->merchant_id = $request->merchant_id;
-            $addProd->product_name =$request->product_name;
-            $addProd->stock = $request->stock;
-            $addProd->product_image =$image_p;
-            $addProd->price = $request->price;
-            $addProd->category_name=$request->category;
-            $addProd->status = $request->status;
-            $addProd->tags=$request->tags_category;
-            $addProd->description = $request->description;
-            $addProd->ingredients= $request->ingredients;
-
-        }
-
-        $addProd->save();
-
-        return redirect('/partner_application_add5');
-    }
-    public function addProductPartner5(Request $request)
-    {
-        $addProd=new tbl_product();
-
-        if ($request->hasFile('product_image')) 
-        {
-            $prod_image = $request->file('product_image');
-            $image_p = $prod_image->getClientOriginalName();
-            $prod_image->move('product_images', $image_p);
-        
-            $addProd->merchant_id = $request->merchant_id;
-            $addProd->product_name =$request->product_name;
-            $addProd->stock = $request->stock;
-            $addProd->product_image =$image_p;
-            $addProd->price = $request->price;
-            $addProd->category_name=$request->category;
-            $addProd->status = $request->status;
-            $addProd->tags=$request->tags_category;
-            $addProd->description = $request->description;
-            $addProd->ingredients= $request->ingredients;
-
-        }
-
-        $addProd->save();
-
-        return redirect('/partner_application_add5'); //Next Step here<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-    }
+    
+    
     public function PartnerForgotPass(){
         return view('partner_forgotpass');
     }
@@ -336,7 +184,88 @@ class PartnerRegistration extends Controller
              $status =  tbl_merchant_application::where('merchant_id', $request->merchant_id)
              ->first();
             if($success){
-              $email = tbl_partner_accounts::where('merchant_id', Session::get('merchant_id'))
+            //   $email = tbl_partner_accounts::where('merchant_id', Session::get('merchant_id'))
+            //             ->first();
+                        
+            // $code = mt_rand(100000, 999999);
+            //   $mailData = [
+            //     'title' => 'Account Verification',
+            //     'body' => 'test',
+            //     'code' => $code,
+            //     'fname' => $email->firstname,
+            //     'lname' => $email->lastname,
+            // ];
+            //  Mail::to($email)->send(new MailVerification($mailData));
+
+            // $request->session()->put('verification', $code);
+            $request->session()->put('partnerstatus', $status->status);
+            return redirect('/partner_application_add');
+            }
+           
+        }
+        else{
+         
+        }
+    }
+
+    public function partneraddproduct(Request $request){
+
+        $category = tbl_category::where('merchant_id', Session::get('merchant_id'))
+        ->get();
+
+        if(Session::get('loops') > 1){
+             $loop = Session::get('loops');
+        }
+        else{
+            
+        $loop = 1;
+        $request->session()->put('loops', $loop);
+        }
+       
+        return view('/partner_application_add', compact('category'));
+    }
+   
+    public function addProductPartner(Request $request)
+    {
+        $request->validate([
+            'product_name' => 'required',
+            'category' => 'required',
+            'tags_category' => 'required',
+            'description' => 'required',
+            'ingredients' => 'required',
+            'product_image' => 'required|mimes:jpeg,png,jpg|max:5000',
+            'price' => 'required',
+            'stock' => 'required',
+            'status' => 'required'
+        ]);
+        $addProd=new tbl_product();
+
+        if ($request->hasFile('product_image')) 
+        {
+            $prod_image = $request->file('product_image');
+            $image_p = $prod_image->getClientOriginalName();
+            $prod_image->move('product_images', $image_p);
+        
+            $addProd->merchant_id = Session::get('merchant_id');
+            $addProd->product_name = $request->product_name;
+            $addProd->stock = $request->stock;
+            $addProd->product_image =$image_p;
+            $addProd->price = $request->price;
+            $addProd->category_name=$request->category;
+            $addProd->status = $request->status;
+            $addProd->tags=$request->tags_category;
+            $addProd->description = $request->description;
+            $addProd->ingredients= $request->ingredients;
+             $addProd->save();
+
+        $loop = Session::get('loops');
+        $loop = $loop + 1;
+        $request->session()->put('loops', $loop);
+        }
+        if(Session::get('loops') == 6){
+            Session::pull('loops');
+           
+            $email = tbl_partner_accounts::where('merchant_id', Session::get('merchant_id'))
                         ->first();
                         
             $code = mt_rand(100000, 999999);
@@ -348,20 +277,28 @@ class PartnerRegistration extends Controller
                 'lname' => $email->lastname,
             ];
              Mail::to($email)->send(new MailVerification($mailData));
-
             $request->session()->put('verification', $code);
-            $request->session()->put('partnerstatus', $status->status);
-            return redirect('/partner_application3');
-            }
-           
+            return redirect('partner_application3');
         }
         else{
-         
+            return redirect('partner_application_add');
         }
-
-
     }
+    
+    //CATEGORY
+    public function addCategory(Request $request)
+    {
+        $addCategory = new tbl_category();
+        $addCategory->main_category = $request->categoryName;
+        $addCategory->description = $request->description;
+        $addCategory->merchant_id = session('merchant_id');
 
+        $addCategory->save();
+        
+        return back();
+        
+    }
+    
     public function PartnerVerifyIndex(){
          $email = tbl_partner_accounts::where('merchant_id', Session::get('merchant_id'))
                         ->first();
@@ -606,17 +543,37 @@ class PartnerRegistration extends Controller
      public function agreement(){
         return view('/merchant_application_agreement');
     }
-    public function PartnerApplicationStatus(){
+    
+    public function PartnerApplicationStatus(Request $request){
         $id = Session::get('merchant_id');
 
+    $status = tbl_merchant_application::where('merchant_id', $id)
+    ->first();    
+   
+    if($status->status == 'Accepted')
+    {
+        $user = tbl_partner_accounts::where('merchant_id', '=', $id)->first();
+        $log = new tbl_activitylog();
+                $log->merchant_id = $user->merchant_id;
+                $log->email = $user->email;
+                $log->name = $user->firstname. ' ' .$user->lastname;
+                $log->description = 'Has Log In';
+                $res = $log->save();
+                if($res){
+                $request->session()->put('loginID', $user->merchant_id);
+                return redirect('/index');
+                }
+    }
+    else{
         $Data = tbl_partner_accounts::join('tbl_merchant_info', 'tbl_merchant_account.merchant_id', '=', 'tbl_merchant_info.merchant_id')
     ->join('merchant_application', 'tbl_merchant_account.merchant_id', '=', 'merchant_application.merchant_id')
     ->join('merchant_document', 'tbl_merchant_account.merchant_id', '=', 'merchant_document.merchant_id')
     ->where('merchant_application.merchant_id',  $id)
     ->limit(1)
     ->get();
-        
+    
      return view('partner_applicationstatus', compact('Data'));
 
     }
+}
 }
