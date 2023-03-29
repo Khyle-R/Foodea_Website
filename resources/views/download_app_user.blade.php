@@ -75,26 +75,25 @@
         <div class="context-app mx-5 mb-5 pb-5 my-5" data-aos="fade-up">
             <div class="row flex-container mx-4 mb-5 align-items-start gx-5">
                 <div class="col-12 col-md-7 col-lg-6">
-                    <img class="image2 d-none d-md-block" src="image/pic.png" alt="">
+                    <img class="image2 d-none d-md-block" src="image/download_app.png" alt="">
                 </div>
 
                 <div class="col-12 col-md-5 col-lg-6">
                     <div
                         class="content-app text-center text-md-start d-flex flex-column align-items-center align-items-md-start ">
-                        <h1>Download The<span> Foodea</span> Rider App Now!</h1>
+                        <h1>Download The<span> Foodea</span> App Now!</h1>
                         <div class="row flex-container align-items-start gx-5 mt-5">
                             <div class="col-auto col-md-6 col-lg-6">
                                 <img class="imageqr" src="image/frame.png" alt="">
                             </div>
-                            <div class="col-auto col-md-6 col-lg-6 align-items-center">
-                               
-                                <!-- <a href="#" class="btn btn-link">
-                                    <img class="imagedl mt-5" src="image/gplay.png" alt=""></button>
-                                </a> -->
+                            <div class="col-auto col-md-6 col-lg-6 ">
                                 <a href="https://expo.dev/accounts/kennyyy.023/projects/navigation/builds/76488489-9623-45ca-bd9d-714946b81e7a?fbclid=IwAR20KUUp88V3inKVXFQkHUMMVnab_LhCEaHgzU-igWnKQr9jCyRqW23-aTw"
                                     class="btn btn-link">
                                     <img class="imagedl mt-4" src="image/download_now.png" alt=""></button>
                                 </a>
+                                {{-- <a href="#" class="btn btn-link">
+                                    <img class="imagedl mt-5" src="image/gplay.png" alt=""></button>
+                                </a> --}}
                             </div>
                         </div>
 

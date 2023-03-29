@@ -119,7 +119,7 @@
               <div class="content text-center text-md-start">
                   <h1>Revolutionize The Way You Order<span> Food</span></h1>
                   <p class="text-center text-md-start text-dark">Revolutionize your food orders with personalized recommendations and faster, hassle-free delivery.</p>
-                  <a class="partnerbtn text-decoration-none" href="/partner_landing">Order Now</a>
+                  <a class="partnerbtn text-decoration-none" href="/download_app_user">Order Now</a>
               </div>
               <div class="image">
                 <img src="image/Userbg.png" alt=""></div>
