@@ -116,7 +116,7 @@
                                       <h4 class="text-center text-white">{{ $rider->status }}</h4>
                                       </div>
                                           @elseif($rider->status == 'Accepted')
-                                           <a href="#">
+                                           <a href="/download_app">
                                         <div class="card-accepted py-4 px-4 mx-0 mx-md-5 rounded">
                                            <div class="">
                                         <h4 class="text-center text-white">
