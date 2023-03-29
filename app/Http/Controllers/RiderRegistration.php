@@ -810,7 +810,7 @@ class RiderRegistration extends Controller
         
     /*RIDER CHECK COOKIE */
         if(Cookie::has('rider_email') && Cookie::has('rider_password')){
-             $user = tbl_rider_accounts::where('email', '=', Cookie::get('email'))->first();
+             $user = tbl_rider_accounts::where('email', '=', Cookie::get('rider_email'))->first();
               $Data = tbl_rider_accounts::join('tbl_vehicle_info', 'tbl_rider_account.rider_id', '=', 'tbl_vehicle_info.rider_id')
                 ->join('tbl_document_info', 'tbl_rider_account.rider_id', '=', 'tbl_document_info.rider_id')
                 ->join('rider_application', 'tbl_rider_account.rider_id', '=', 'rider_application.rider_id')
@@ -838,6 +838,7 @@ class RiderRegistration extends Controller
                     ->limit(1)
                     ->get();
                     
+                    $request->session()->put('partnerID', $merchant->merchant_id);
                     return view('/partner_applicationstatus', compact('Data'));
                 }
                 else{

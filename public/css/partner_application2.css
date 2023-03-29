@@ -320,6 +320,14 @@ p {
     background-color: #e9bf34;
 }
 
+.card-accepted {
+    background-color: #128612;
+}
+
+.card-rejected {
+    background-color: #F54748;
+}
+
 h4 {
     font-weight: 670;
     font-family: 'Montserrat',
