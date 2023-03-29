@@ -29,7 +29,7 @@ class Order extends Model
     }
 
     public function user_details(){
-        return $this->hasOne(AppUser::class, 'id', 'customer_id');
+        return $this->hasOne(AppUser::class, 'user_id', 'customer_id');
     }
 
     public function restaurant_details(){
