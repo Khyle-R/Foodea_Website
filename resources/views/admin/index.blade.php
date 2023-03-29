@@ -27,7 +27,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.js"> </script>
     {{-- Datatable plugins --}}
     <!-- UIkit CSS -->
-	{{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.2.2/dist/css/uikit.min.css" /> --}}
+	  {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.2.2/dist/css/uikit.min.css" /> --}}
+
+    {{--File Pond--}}
+    <link href="https://unpkg.com/filepond@^4/dist/filepond.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css">
+
   </head>
   <body>
     <div class="container-scroller">
@@ -50,8 +55,8 @@
                 <div class="count-indicator">
                   <img
                     class="img-xs rounded-circle"
-                    src="{{ url('uploads/'. 'merchant_documents'. '/'. $logIndata->merchant_id. '/'. $logIndata->logo) }}"
-                    alt=""
+                    src="{{$logIndata->logo}}"
+                    alt="*"
                   />
                   <span class="count bg-success"></span>
                 </div>
@@ -194,7 +199,7 @@
             class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center"
           >
             <a class="navbar-brand brand-logo-mini" href="index.html"
-              ><img src="{{ url('uploads/'. 'merchant_documents'. '/'. $logIndata->merchant_id. '/'. $logIndata->logo) }}" class="w-50" alt="logo"
+              ><img src="{{ $logIndata->logo }}" class="w-50" alt="logo"
             /></a>
           </div>
           <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
@@ -415,7 +420,7 @@
                     <img
                       class="img-xs rounded-circle"
                       style="background-color: #fff"
-                      src="{{ url('uploads/'. 'merchant_documents'. '/'. $logIndata->merchant_id. '/'. $logIndata->logo) }}"
+                      src="{{ $logIndata->logo }}"
                       alt=""
                     />
                     <p class="mb-0 d-none d-sm-block navbar-profile-name">
@@ -514,6 +519,31 @@
     <script src="assets/js/app.js"></script>
     <script src="{{ asset('assets/js/toast.js') }}"></script>
     <!-- End custom js for this page -->
+        
+    {{--File Pond--}}
+    
+    <script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+    
+    <script>
+        FilePond.registerPlugin(FilePondPluginImagePreview);
+        // Get a reference to the file input element
+        const profile = document.querySelector('input[type="file"]');
+         // Create a FilePond instance
+         const pond = FilePond.create(profile, {
+            //  instantUpload: false,
+             storeAsFile: true,
+             acceptedFileTypes: ['image/*'], 
+             server:{
+                 process: '/tmp-upload',
+                 revert: '/tmp-delete',
+                headers: {
+                 'X-CSRF-TOKEN': '{{csrf_token()}}'
+                }
+             },
+       
+         });
+    </script>
 
   </body>
   

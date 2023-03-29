@@ -13,7 +13,18 @@ use App\Http\Controllers\SuperadminController;
 
 Route::get('/partner_application_add', [PartnerRegistration::class, 'partneraddproduct']);
 
+Route::post('/partner_application_category', [PartnerRegistration::class, 'addCategory'])->name('addCategory');
+
+Route::post('/partner_application_add', [PartnerRegistration::class, 'addProductPartner'])->name('addproductpartner');
+Route::get('/test', [Home::class, 'test']);
+Route::post('/test', [Home::class, 'teststore']);
+Route::get('/testshow', [Home::class, 'testshow']);
+
 Route::get('/', [Home::class, 'index'])->name('home.index');
+
+Route::get('/download_app', [Home::class, 'DownloadAppIndex']);
+
+Route::get('/download_app_user', [Home::class, 'DownloadAppUserIndex']);
 
 Route::get('/terms_condition', [Home::class, 'TermsCondition']);
 
@@ -372,9 +383,9 @@ Route::group(['middleware'=>['adminLogin']], function(){
     //View products
     Route::get('product', function () {
 
-        $products = DB::table('tbl_product')->where('merchant_id', '=', session('loginID'))->get();
+    $products = DB::table('tbl_product')->where('merchant_id', '=', session('loginID'))->get();
 
-    $category = DB::table('tbl_category')->get();
+    $category = DB::table('tbl_category')->where('merchant_id', '=', session('loginID'))->get();
 
 
     return view('admin.product', ['products' => $products, 'category' => $category]);
@@ -467,5 +478,8 @@ Route::group(['middleware'=>['adminLogin']], function(){
     Route::post('/update_category',[Admin_product::class, 'updateCategory'])->name('update_category.updateCategory');
     Route::get('/delete_category/{id}',[Admin_product::class, 'deleteCategory']);
 
+    //Upload Pictures
+    Route::post('/tmp-upload', [Admin_product::class, 'tmpUpload']);
+    Route::delete('/tmp-upload', [Admin_product::class, 'tmpDelete']);
 });
 });

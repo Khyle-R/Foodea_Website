@@ -15,6 +15,8 @@ use App\Models\tbl_merchant_document;
 use App\Models\tbl_rider_application;
 use Illuminate\Support\Facades\Session;
 use App\Models\tbl_merchant_application;
+use Illuminate\Support\Facades\Storage;
+use App\Clients\SendGridClient;
 
 class Home extends Controller
 {
@@ -104,16 +106,45 @@ class Home extends Controller
          return view('contact');
     }
 
+    public function DownloadAppIndex(){ 
+         return view('download_app');
+    }
+    public function DownloadAppUserIndex(){
+        return view('download_app_user');
+    }
     public function ContactUssend(Request $request){
-        $mailData = [
-            'title' => 'Password Reset',
-            'body' => 'test',
-            'name' => $request->name,
-            'text' => $request->text,
-            ];
-            Mail::to($request->email)->send(new ContactUs($mailData));     
+        // $mailData = [
+        //     'title' => 'Password Reset',
+        //     'body' => 'test',
+        //     'name' => $request->name,
+        //     'text' => $request->text,
+        //     ];
+        //     Mail::to($request->email)->send(new ContactUs($mailData));
+            
+            $text = $request->text;
+            $html = view('email.contact')->with('text', $text)->render();
+            SendGridClient::sendEmail($email->email, "Message from Foodea", $html);
             
             return back();
         
+    }
+
+    public function test(){
+        return view('test.form');
+    }
+
+    public function teststore(Request $request){
+        $id = 123;
+        $path = $request->file('image')->store('images/test/'. $id.'', 's3', ['visibility', 'public']);
+        // Storage::disk('s3')->setVisibility($path, 'public');
+
+        $saved_link = Storage::disk('s3')->url($path);
+
+        // return Storage::disk('s3')->response($path);
+        return $saved_link;
+    }
+
+    public function testshow(){
+
     }
 }

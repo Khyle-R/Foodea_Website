@@ -11,10 +11,12 @@ use App\Models\tbl_merchant_info;
 use Illuminate\Support\Facades\DB;
 use App\Models\tbl_merchant_account;
 use App\Models\tbl_partner_accounts;
+use App\Models\TemporaryFile;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Validation\Rules\Password;
+use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon; // to retrieve current Date
 
 class Admin_product extends Controller
@@ -163,16 +165,19 @@ class Admin_product extends Controller
         $affected = DB::table('tbl_product')->where('product_id', $request->product_id);
               
         if($request->product_image != ''){        
-            $path = public_path().'/product_images';
+            // $path = public_path().'/product_images';
   
- 
             //upload new file
-            $file = $request->product_image;
-            $filename = $file->getClientOriginalName();
-            $file->move($path, $filename);
-  
+            $prod_image = $request->file('product_image')->store('product_images', 's3', ['visibility', 'public']);
+            $image_p = Storage::disk('s3')->url($prod_image);
+            
+            // $file = $request->product_image;
+            // $filename = $file->getClientOriginalName();
+            // $file->move($path, $filename);
+            $category=$request->category;
+            $category_parts = explode('|', $category);
 
-            $resss=$affected->update(['product_name' => $request->product_name,'price' => $request->price, 'tags' => $request->tags, 'stock' => $request->stock,'status' => $request->status,'description' => $request->description,'product_image'=> $filename],
+            $resss=$affected->update(['product_name' => $request->product_name,'price' => $request->price,'price' => $request->price,'category_id' => $category_parts[0], 'category_name' => $category_parts[1], 'calories' => $request->calories, 'ingredients' => $request->ingredients, 'stock' => $request->stock,'status' => $request->status,'description' => $request->description,'product_image'=> $image_p],
               
             );
             if ($resss) {
@@ -185,7 +190,10 @@ class Admin_product extends Controller
         }
         else {
             // if the update dont have new profile upload
-            $resss=$affected->update(['product_name' => $request->product_name,'price' => $request->price,'tags' => $request->tags, 'stock' => $request->stock,'status' => $request->status,'description' => $request->description],  
+            $category=$request->category;
+            $category_parts = explode('|', $category);
+
+            $resss=$affected->update(['product_name' => $request->product_name,'price' => $request->price,'category_id' => $category_parts[0], 'category_name' => $category_parts[1], 'calories' => $request->calories, 'ingredients' => $request->ingredients, 'stock' => $request->stock,'status' => $request->status,'description' => $request->description],  
             );
             if ($resss) {
                 return redirect('product');
@@ -196,45 +204,69 @@ class Admin_product extends Controller
             }
         }
     }
-
+//
     public function addProduct(Request $request)
     {
 
         
-        $addProd=new tbl_product();
+      
 
        
 
+              $addProd=new tbl_product();
+
             if ($request->hasFile('product_image')) 
             {
-                $prod_image = $request->file('product_image');
+                $prod_image = $request->file('product_image')->store('product_images', 's3', ['visibility', 'public']);
 
-                $image_p = $prod_image->getClientOriginalName();
-
-                $prod_image->move('product_images', $image_p);
-
-            
+                $image_p = Storage::disk('s3')->url($prod_image);
 
                 $addProd->merchant_id = session('loginID');
                 $addProd->product_name =$request->product_name;
                 $addProd->stock = $request->stock;
                 $addProd->product_image =$image_p;
                 $addProd->price = $request->price;
-                $addProd->category_name=$request->category;
+                $addProd->calories = $request->calories;
+                $category=$request->category;
+                $category_parts = explode('|', $category);
+                $addProd->category_id = $category_parts[0];
+                $addProd->category_name = $category_parts[1];
                 $addProd->status = $request->status;
-                $addProd->tags=$request->tags_category;
+                // $addProd->tags=$request->tags_category;
                 $addProd->description = $request->description;
                 $addProd->ingredients= $request->ingredients;
-    
-              
-               
-  
             }
 
             $addProd->save();
             
             return redirect('product');
-        
+
+
+            $tmp_file = TemporaryFile::where('folder', $request->product_image)->first();
+
+            if($tmp_file)
+            {
+                Storage::copy('posts/tmp/'. $tmp_file->folder. '/' . $tmp_file->file, 'posts/' .$tmp_file->folder . '/' .$tmp_file->file);
+
+                tbl_product::create([
+                    'merchant_id' => session('loginID'),
+                    'product_name' => $request->product_name,
+                    'stock' => $request->stock,
+                    'product_image' => $tmp_file->folder. '/' .$tmp_file->file_name,
+                    'price' => $request->price,
+                    'category_name' => $request->category,
+                    'status' => $request->status,
+                    'tags' => $request->tags_category,
+                    'description' => $request->description,
+                    'ingredients' => $request->ingredients
+                ]);
+                Storage::deleteDirectory('posts/tmp/'. $tmp_file->folder);
+                $tmp_file->delete();
+                return redirect('/')->with('success', 'Added Success.');
+            }
+            return redirect('/')->with('danger', 'Please Upload an Image.');
+
+
     }
 
 
@@ -504,15 +536,15 @@ class Admin_product extends Controller
     public function AdminAccount(){
         $id = Session::get('loginID');
 
-     $Data = tbl_partner_accounts::join('tbl_merchant_info', 'tbl_merchant_account.merchant_id', '=', 'tbl_merchant_info.merchant_id')
-    ->join('merchant_document', 'tbl_merchant_account.merchant_id', '=', 'merchant_document.merchant_id')
-    ->join('tbl_accepted_merchant', 'tbl_merchant_account.merchant_id', '=', 'tbl_accepted_merchant.merchant_id')
-    ->where('tbl_merchant_account.merchant_id', $id)
-    ->limit(1)
-    ->get();
+        $Data = tbl_partner_accounts::join('tbl_merchant_info', 'tbl_merchant_account.merchant_id', '=', 'tbl_merchant_info.merchant_id')
+        ->join('merchant_document', 'tbl_merchant_account.merchant_id', '=', 'merchant_document.merchant_id')
+        ->join('tbl_accepted_merchant', 'tbl_merchant_account.merchant_id', '=', 'tbl_accepted_merchant.merchant_id')
+        ->where('tbl_merchant_account.merchant_id', $id)
+        ->limit(1)
+        ->get();
 
-    $product = tbl_product::where('merchant_id', $id)
-    ->get();
+        $product = tbl_product::where('merchant_id', $id)
+        ->get();
         return view('admin.admin_account', compact('Data', 'product'));
     }
 
@@ -568,5 +600,22 @@ class Admin_product extends Controller
             return back();
        }
 
+    }
+
+    public function tmpUpload(Request $request)
+    {
+        if($request->hasFile('product_image'))
+        {
+            $image = $request->file('product_image');
+            $filename = $image->getClientOriginalName();
+            $folder = uniqid('post', true);
+            $image->storeAs('posts/tmp/' .$folder, $filename);
+            TemporaryFile::create([
+                'folder' => $folder,
+                'file' => $filename
+            ]);
+            return $folder;
+        }
+        return '';
     }
 }

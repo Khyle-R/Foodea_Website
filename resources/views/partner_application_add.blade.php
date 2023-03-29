@@ -10,6 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link rel="stylesheet" href="assets/vendors/mdi/css/materialdesignicons.min.css" />
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.js"> </script>
     <link rel="stylesheet" href="assets/vendors/css/vendor.bundle.base.css" />
     <link
       href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css"
@@ -66,131 +67,7 @@
     </div>
     <!-- Content Here -->
     <!-- Form -->
-    <!-- <div class="container sign-form"> -->
-        <div class="content-wrapper container mt-2 px-3 py-2">
-          <div class="col-12 col-sm-12 col-md-9 col-lg-7 justify-content-center align-items-center mx-auto px-0">
-              <div class="right">
-              <h2>Menu</h2>
-              <div class="d-flex justify-content-center">
-              <p>0 out of 5 Menu</p>
-              </div>
 
-                <!--GET PARTNER ID-->
-
-              <form method="post" action="{{ route('partner_application2.partner2submit') }}">
-            @csrf
-                @if (Session::has('merchant_id'))
-                <input type="hidden" name="merchant_id" value=" {{ Session::get('merchant_id') }}">
-              @endif
-
-             
-
-              <div class="form-group">
-                <label>Product Name</label>
-                <input type="text" name="business_name" class="form-control form-control-lg"/>
-                <span
-                style="color:red;">
-                @error('business_name') {{ $message }}
-                @enderror</span>
-              </div>
-
-               <div class="form-group">
-                <label>Category</label>
-                <select name="business_type" id="" class="form-control form-control-lg">
-                  <option selected="true" disabled="disabled">- Select -</option>
-                  {{-- <option>Sole proprietorship</option>
-                  <option>Corporation</option> --}}
-                </select>
-                <span
-                style="color:red;">
-                @error('business_type') {{ $message }}
-                @enderror</span>
-              </div>
-              
-
-              <div class="form-group">
-                <label>Tags</label>
-                <input type="text" name="address" class="form-control form-control-lg"/>
-                <span
-                style="color:red;">
-                @error('address') {{ $message }}
-                @enderror</span>
-              </div>
-
-                <div class="form-group">
-              <label for="exampleFormControlTextarea1">Description</label>
-              <textarea name="vision" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-              <span
-                style="color:red;">
-                @error('vision') {{ $message }}
-                @enderror</span>
-              </div>
-
-              <div class="form-group">
-              <label for="exampleFormControlTextarea1">Ingredients</label>
-              <textarea name="vision" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-              <span
-                style="color:red;">
-                @error('vision') {{ $message }}
-                @enderror</span>
-              </div>
-              
-                 <div class="form-group">
-              <label for="exampleFormControlTextarea1">Menu Photo</label>
-              <div class="requirements row">
-             <input type="file" name="logo">
-             <span>File size up to 5mb only</span>
-              <span
-                style="color:red;">
-                @error('vision') {{ $message }}
-                @enderror</span>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label>Price</label> 
-                <input type="text" name="city" class="form-control form-control-lg"/>
-                <span
-                style="color:red;">
-                @error('city') {{ $message }}
-                @enderror</span>
-              </div>
-
-              <div class="form-group">
-                <label>Stock</label>
-                <input type="text" name="barangay" class="form-control form-control-lg"/>
-                <span
-                style="color:red;">
-                @error('barangay') {{ $message }}
-                @enderror</span>
-              </div>
-
-                 <div class="form-group">
-                <label>Status</label>
-                <select name="business_type" id="" class="form-control form-control-lg">
-                  <option selected="true" disabled="disabled">- Select -</option>
-                  {{-- <option>Sole proprietorship</option>
-                  <option>Corporation</option> --}}
-                </select>
-                <span
-                style="color:red;">
-                @error('business_type') {{ $message }}
-                @enderror</span>
-              </div>
-
-              
-              <br>
-              <br>
-              <div class="form-group">
-                <div class="col-sm-12 d-flex justify-content-center">
-                  <button Value="submit" type="submit" class="btn btn-danger w-50">Next</button>
-                </div>
-              </div>
-              </form>
-              </div>
-            </div>
-          </div>
-     <!-- </div> -->
 
      
   <!-- EXIT Modal -->
@@ -217,6 +94,194 @@
         </div>
 
     <!-- End Content Here -->
+
+
+    <!-- <div class="container sign-form"> -->
+      <div class="content-wrapper container mt-2 px-3 py-2">
+        <div class="col-12 col-sm-12 col-md-9 col-lg-7 justify-content-center align-items-center mx-auto px-0">
+
+          <div class="right">
+            <h2>Menu</h2>
+          <div class="d-flex justify-content-center">
+            <p>{{ Session::get('loops') }} out of 5 Menu</p>
+          </div>
+
+              <!--GET PARTNER ID-->
+
+            <form method="post" action="{{ route('addproductpartner')}}" enctype="multipart/form-data">
+          @csrf
+         
+            <div class="form-group">
+              <label>Product Name</label>
+              <input type="text" name="product_name" class="form-control form-control-lg" />
+              <span
+                style="color:red;">
+                  @error('product_name')
+                    {{ $message }}
+                  @enderror
+              </span>
+            </div>
+
+            <div class="form-group mt-3">
+              <div class="d-flex justify-content-between align-items-center">
+              <label>Category</label>
+              <a class="add-cat" href="#" data-bs-toggle="modal" data-bs-target="#addCategory">Add Category</a>
+              </div>
+              <select name="category" id="category" class="form-control form-control-lg"  >
+                <option selected="true" disabled="disabled">- Select -</option>
+                @foreach ($category as $cat)
+                  <option value={{ $cat->main_category }}>{{ $cat->main_category }}</option>
+                @endforeach
+              </select>
+              
+              <span style="color:red;">
+                @error('category') 
+                  {{ $message }}
+                @enderror
+              </span>
+           
+            </div>
+            
+
+            <div class="form-group mt-2">
+              <label>Tags <a style="color:#BD9140;font-size: 14px;"> (Press enter to input tags)</a></label>
+              <input type="text" class="form-control" id="tags_category" name="tags_category" value="" data-role="tagsinput" name="tags_category">
+              <span style="color:red;">
+                @error('tags_category')
+                  {{ $message }}
+                @enderror
+              </span>
+            </div>
+
+            <div class="form-group">
+            <label for="exampleFormControlTextarea1">Description</label>
+            <textarea name="description" class="form-control" id="exampleFormControlTextarea1" rows="3" ></textarea>
+            <span
+              style="color:red;">
+              @error('description') {{ $message }}
+              @enderror</span>
+            </div>
+
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">Ingredients</label>
+              <textarea name="ingredients" class="form-control" id="exampleFormControlTextarea1" rows="3" ></textarea>
+              <span style="color:red;">
+                @error('ingredients')
+                  {{ $message }}
+                @enderror
+              </span>
+            </div>
+            
+              {{-- <div class="form-group">
+            <label for="exampleFormControlTextarea1">Menu Photo</label>
+            <div class="requirements row">
+          <input type="file" name="logo">
+          <span>File size up to 5mb only</span>
+            <span
+              style="color:red;">
+              @error('vision') {{ $message }}
+              @enderror</span>
+              </div>
+            </div> --}}
+
+            <div class="form-group">
+              <div class="requirements row">
+                <input type="file" value="{{ old('product_image') }}" name="product_image"  />
+                <span>File size up to 5mb only</span>
+                <span style="color:red;">
+                    @error('product_image')
+                      {{ $message }}
+                    @enderror
+                </span>
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <label>Price</label> 
+                <input type="number" name="price" class="form-control form-control-lg"  />
+                <span style="color:red;">
+                  @error('price')
+                    {{ $message }}
+                  @enderror
+                </span>
+            </div>
+
+            <div class="form-group">
+              <label>Stock</label>
+                <input type="number" name="stock" class="form-control form-control-lg"  />
+                <span style="color:red;">
+                  @error('stock')
+                    {{ $message }}
+                  @enderror</span>
+            </div>
+
+            <div class="form-group">
+              <label>Status</label>
+                <select name="status" id="" class="form-control form-control-lg"  >
+                  <option selected="true" disabled="disabled">- Select -</option>
+                  <option>Enable</option>
+                  <option>Disable</option> 
+                </select>
+                <span style="color:red;">
+                  @error('status')
+                    {{ $message }}
+                  @enderror</span>
+            </div>
+
+            
+            <br>
+            <br>
+            <div class="form-group">
+              <div class="col-sm-12 d-flex justify-content-center">
+                <button Value="submit" type="submit" class="btn btn-danger w-50">Next</button>
+              </div>
+            </div>
+            </form>
+          </div>
+        </div>
+      </div>
+  <!-- </div> -->
+
+
+
+      </div>
+      </div>
+    
+        <!-- ADD MODAL -->
+                     <div class="modal fade" id="addCategory" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                           <div class="modal-content">
+                              <!-- MODAL HEADER -->
+                              <div class="modal-header d-flex justify-content-between">
+                                 <h5 class="modal-title text-white" id="exampleModalLongTitle">Add</h5>
+                                  <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                 </button>
+                              </div>
+                              <!-- MODAL BODY -->
+                            <div class="modal-body text-dark">
+                                 <div class="form-group">
+                                    <form method="post" action="{{ route('addCategory') }}">
+                                       @csrf
+                                       <label>Category Name</label>
+                                       <input id="categoryName" name="categoryName" type="text" class="form-control" required>
+                                 </div>
+                                 <div class="form-group">
+                                    <label> Description</label>
+                                    <textarea class="form-control" id="description" name="description" rows="4"></textarea>
+                                </div>
+                            </div>
+                           <!-- MODAL FOOTER -->
+                            <div class="modal-footer">
+                          <button type="button" class="white-btn" data-bs-dismiss="modal">Close</button>
+                          <button type="submit" class="red-btn">Confirm</button>
+                          </form>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
     <!-- Show Hide Password -->
  
     <script

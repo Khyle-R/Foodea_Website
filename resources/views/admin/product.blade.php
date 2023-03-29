@@ -61,11 +61,10 @@
 
                                           <div class="col form-group"><label for="exampleSelectGender" class="blackk">Category</label>
                                              <select class="form-control" id="exampleSelectGender" style="border: 1px solid" name="category" required>
-                                                <option>{{ old('category') }}</option>
+                                                {{-- <option>{{ old('category') }}</option> --}}
                                                 @foreach ($category as $key => $data)
-                                                   <option>{{ $data->main_category }}</option>
+                                                   <option {{old('category') == $data->main_category ? 'selected' : ''}} value="{{$data->category_id}}|{{$data->main_category}}">{{ $data->main_category }}</option>
                                                 @endforeach
-
                                              </select>
                                              <span style="color:red;">
                                                 @error('category')
@@ -75,9 +74,8 @@
                                           </div>
 
                                           <div class="form-group">
-                                             <label for="" class="blackk">Tags:</label>
-                                             <input type="text" class="form-control" id="tags_category" name="tags_category" value="" data-role="tagsinput"
-                                                name="tags_category">
+                                             <label for="" class="blackk">Calories:</label>
+                                             <input type="text" class="form-control" id="tags_category" name="calories">
                                           </div>
 
                                           <div class="form-group">
@@ -104,7 +102,7 @@
                                                 the product details.</span>
                                           </div>
 
-
+{{-- 
                                           <div class="form-group">
                                              <div class="file-loading">
                                                 <input type="file" value="{{ old('product_image') }}" name="product_image" />
@@ -114,7 +112,21 @@
                                                    @enderror
                                                 </span>
                                              </div>
+                                          </div> --}}
+
+                                          
+                                          <div class="form-group">
+                                             <div class="file-loading">
+
+                                                <input type="file" class="product_image" name="product_image" multiple data-allow-reorder="true" data-max-file-size="3MB" data-max-files="1">
+                                                <span style="color:red;">
+                                                   @error('product_image')
+                                                      {{ $message }}
+                                                   @enderror
+                                                </span>
+                                             </div>
                                           </div>
+
                                           <div class="row">
                                              <div class="col-md">
                                                 <label for="exampleInputName1" class="blackk">Price</label>
@@ -180,7 +192,7 @@
                            @foreach ($products as $key => $data)
                               <tr>
                                  <td>
-                                    <img src="{{ asset('product_images/' . $data->product_image) }}" alt="image" class="img-fluid"
+                                    <img src="{{ $data->product_image }}" alt="image" class="img-fluid"
                                        style=" height: 60px; width: 70px; border-radius: 2px;" />
                                     <span class="pl-2">{{ $data->product_name }}</span>
                                  </td>
@@ -239,19 +251,18 @@
                                                          <div class="col form-group">
                                                             <label for="exampleSelectGender" class="blackk">Category</label>
                                                             <select class="form-control" id="exampleSelectGender" style="border: 1px solid" name="category" required>
-                                                               <option>
+                                                               {{-- <option>
                                                                   {{ $data->category_name }}
-                                                               </option>
-                                                               @foreach ($category as $key => $datas)
-                                                                  <option>{{ $datas->main_category }}</option>
+                                                               </option> --}}
+                                                               @foreach ($category as $keys => $datas)
+                                                                  <option {{$data->category_name == $datas->main_category ? 'selected' : ''}} value="{{$datas->category_id}}|{{$datas->main_category}}">{{ $datas->main_category }}</option>
                                                                @endforeach
                                                             </select>
                                                          </div>
                                                       </div>
                                                       <div class="form-group">
-                                                         <label for="" class="blackk">Tags:</label>
-                                                         <input type="text" class="form-control" id="tags" name="tags" value="{{ $data->tags }}"
-                                                            data-role="tagsinput" name="tags_category">
+                                                         <label for="" class="blackk">Calories:</label>
+                                                         <input type="text" class="form-control" id="tags" name="calories" value="{{ $data->calories }}">
                                                       </div>
 
 

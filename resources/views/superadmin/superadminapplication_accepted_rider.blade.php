@@ -54,7 +54,7 @@
                 <div class="card">
                 <div class="card-body">
                     <div class="text-center">
-                        <img class="circle mb-2" height="87" width="90" src="{{ url(('uploads/'. 'rider_documents'. '/'.$rider->rider_id.  '/'). $rider->rider_photo) }}" alt="">
+                        <img class="circle mb-2" height="87" width="90" src="{{ $rider->rider_photo }}" alt="">
                         <p class="card-text black-name">{{ $rider->firstname. ' ' .$rider->lastname }}</p>
                     </div>
                      <div class="dropdown profile-action">
