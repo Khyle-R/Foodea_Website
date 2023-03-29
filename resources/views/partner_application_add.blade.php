@@ -110,6 +110,27 @@
 
             <form method="post" action="{{ route('addproductpartner')}}" enctype="multipart/form-data">
           @csrf
+
+
+          <div class="form-group mt-3">
+            <div class="d-flex justify-content-between align-items-center">
+            <label>Category</label>
+            <a class="add-cat" href="#" data-bs-toggle="modal" data-bs-target="#addCategory">Add Category</a>
+            </div>
+            <select name="category" id="category" class="form-control form-control-lg"  >
+              <option selected="true" disabled="disabled">- Select -</option>
+              @foreach ($category as $cat)
+                <option value={{ $cat->main_category }}>{{ $cat->main_category }}</option>
+              @endforeach
+            </select>
+            
+            <span style="color:red;">
+              @error('category') 
+                {{ $message }}
+              @enderror
+            </span>
+         
+          </div>
          
             <div class="form-group">
               <label>Product Name</label>
@@ -122,25 +143,7 @@
               </span>
             </div>
 
-            <div class="form-group mt-3">
-              <div class="d-flex justify-content-between align-items-center">
-              <label>Category</label>
-              <a class="add-cat" href="#" data-bs-toggle="modal" data-bs-target="#addCategory">Add Category</a>
-              </div>
-              <select name="category" id="category" class="form-control form-control-lg"  >
-                <option selected="true" disabled="disabled">- Select -</option>
-                @foreach ($category as $cat)
-                  <option value={{ $cat->main_category }}>{{ $cat->main_category }}</option>
-                @endforeach
-              </select>
-              
-              <span style="color:red;">
-                @error('category') 
-                  {{ $message }}
-                @enderror
-              </span>
-           
-            </div>
+       
             
 
             <div class="form-group mt-2">

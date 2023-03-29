@@ -361,6 +361,7 @@ class RiderRegistration extends Controller
                         
          $code = mt_rand(100000, 999999);
 
+<<<<<<< Updated upstream
                     //    $mailData = [
                     //     'title' => 'Account Verification',
                     //     'body' => 'test',
@@ -372,6 +373,22 @@ class RiderRegistration extends Controller
 
                         $html = view('email.emailverify')->with('code', $code)->render();
                         SendGridClient::sendEmail($email->email, "Account Verification", $html);
+=======
+                       $mailData = [
+                        'title' => 'Account Verification',
+                        'body' => 'test',
+                        'code' => $code,
+                        'fname' => $email->firstname,
+                        'lname' => $email->lastname,
+                       ];
+                       Mail::to($email)->send(new MailVerification($mailData));
+<<<<<<< Updated upstream
+=======
+
+                        $html = view('email.emailverify')->with('code', $code)->render();
+                        SendGridClient::sendEmail($email->email, "Account Verification", $html);
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
 
                     $request->session()->put('verification', $code);
                      return back();

@@ -95,7 +95,7 @@
                                       <div class="row align-items-center ">
                                    
                                         <div class="text-center">
-                                      <img class="circle img-fluid mr-3" src="{{ url(('uploads/'. 'rider_documents'. '/'.$rider->rider_id. '/'). $rider->rider_photo) }}" alt="">
+                                      <img class="circle img-fluid mr-3" src="{{ $rider->rider_photo }}" alt="">
                                      </div>
 
                                       <h2 class="red-name text-center pt-3"> {{ $rider->firstname . " ". $rider->lastname  }} </h2>
@@ -234,31 +234,37 @@
                        
                                        <div class="row px-2 mt-2">
                                         <label class="black width">Rider Photo</label>
+                                        <img src="{{$rider->rider_photo}}" alt="">
                                              <p class="black ml-5 spacing">{{ $rider->rider_photo }}</p>
                                       </div>
                                        <div class="row px-2 mt-2">
                                         <label class="black width">Driver License</label>
+                                        <img src="{{$rider->driver_license}}" alt="">
                                           <p class="black ml-5">{{ $rider->driver_license }}</p>
                                       </div>
                                       <div class="row px-2 mt-2">
                                         <label class="black width">Licence back Back</label>
-                                         <p class="black ml-5">{{ $rider->license_back }}</p>
+                                        <img src="{{$rider->license_back}}" alt=""> 
+                                        <p class="black ml-5">{{ $rider->license_back }}</p>
                                       </div>
                                        @if($rider->official_receipt) 
                                        <div class="row px-2 mt-2">
                                         <label class="black width">Official Receipt</label>
+                                        <a href="{{$rider->official_receipt }}"><button>Download</button></a>
                                           <p class="black ml-5">{{ $rider->official_receipt }}</p>
                                       </div>
                                         @endif
                                          @if($rider->cert_registration) 
                                        <div class="row px-2 mt-2">
                                         <label class="black width">Certificate of Registration</label>
+                                        <a href="{{$rider->cert_registration}}"><button>Download</button></a>
                                           <p class="black ml-5">{{ $rider->cert_registration }}</p>
                                       </div>
                                         @endif
                                       @if ($rider->vehicle_ownership == 'Borrowed')
                                           <div class="row px-2 mt-2">
                                         <label class="black width">Authorization letter</label>
+                                        <a href="{{$rider->auth_letter}}"><button>Download</button></a>
                                          <p class="black ml-5">{{ $rider->auth_letter }}</p>
                                       </div>
                                         
@@ -266,6 +272,7 @@
                                        @if ($rider->vehicle_ownership == 'Second-hand')
                                           <div class="row px-2 mt-2">
                                         <label class="black width">Notarized Deed of Sale</label>
+                                        <a href="{{$rider->deed_sale}}"><button>Download</button></a>
                                          <p class="black ml-5">{{ $rider->deed_sale }}</p>
                                       </div>
                                         
@@ -273,27 +280,32 @@
                                     
                                        <div class="row px-2 mt-2">
                                         <label class="black width">NBI Clearance</label>
+                                        <a href="{{$rider->nbi_clearance}}"><button>Download</button></a>
                                          <p class="black ml-5">{{ $rider->nbi_clearance }}</p>
                                       </div>
                                        @if($rider->drug_test) 
                                        <div class="row px-2 mt-2">
                                         <label class="black width">Drug Test</label>
+                                        <a href="{{$rider->drug_test}}"><button>Download</button></a>
                                          <p class="black ml-5">{{ $rider->drug_test }}</p>
                                       </div>
                                       @endif
                                        @if($rider->vehicle_front) 
                                        <div class="row px-2 mt-2">
                                         <label class="black width">Vehicle Front</label>
+                                        <img src="{{$rider->vehicle_front}}" alt="">
                                          <p class="black ml-5">{{ $rider->vehicle_front }}</p>
                                       </div>
                                       @endif
                                       <div class="row px-2 mt-2">
                                         <label class="black width ">Vehicle Side</label>
+                                        <img src="{{$rider->vehicle_side}}" alt="">
                                          <p class="black ml-5">{{ $rider->vehicle_side }}</p>
                                       </div>
                                        @if($rider->vehicle_back) 
                                        <div class="row px-2 mt-2">
                                         <label class="black width">Vehicle Back</label>
+                                        <img src="{{$rider->vehicle_back}}" alt="">
                                          <p class="black ml-5">{{ $rider->vehicle_back }}</p>
                                       </div>
                                       @endif
