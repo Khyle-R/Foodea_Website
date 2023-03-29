@@ -18,7 +18,6 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon; // to retrieve current Date
-use Illuminate\Support\Facades\Storage;
 
 class Admin_product extends Controller
 {
