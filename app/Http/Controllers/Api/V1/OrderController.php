@@ -21,25 +21,23 @@ class OrderController extends Controller
             $order_keys = Order::select('order_key')->distinct()->get();
 
             foreach($order_keys as $order_key){
+                $data = collect();
                 $value = $order_key->order_key;
                 if(!$value == '' || !$value == NULL){
-                    $query = Order::with('product_details')->with('user_details')->with('restaurant_details')->where('order_key', $value);
+                    $data->put('order_key', $value);
+                    $query = Order::where('order_key', $value)->with('product_details')->with('user_details')->with('restaurant_details');
 
-                
                     if(!$query->count() == 0){
-                        $order_details->put($value, $query->get());
+                        $data->put('order_details', $query->get());
                     } else {
-                        $order_details->put($value, 'No orders');
+                        continue;
                     }
                 } else {
                     continue;
                 }
+                $order_details->push($data);
             }
-
             return $order_details;
-            // return $order->select('order_key')->groupBy('order_key')->get();
-            // $order_keys = Order::select('order_key')->groupBy('order_key');
-
             
 
             // return Order::whereHas('product_details')->whereHas('user_details')->whereHas('restaurant_details')->with('product_details')->with('user_details')->with('restaurant_details')->groupBy(function($user) {
@@ -51,20 +49,22 @@ class OrderController extends Controller
             $order_keys = Order::select('order_key')->distinct()->get();
 
             foreach($order_keys as $order_key){
+                $data = collect();
                 $value = $order_key->order_key;
                 if(!$value == '' || !$value == NULL){
-                    $query = Order::with('product_details')->with('user_details')->with('restaurant_details')->where('order_key', $value)->where($queryItems);
+                    $data->put('order_key', $value);
+                    $query = Order::where('order_key', $value)->with('product_details')->with('user_details')->with('restaurant_details')->where($queryItems);
 
                     if(!$query->count() == 0){
-                        $order_details->put($value, $query->get());
+                        $data->put('order_details', $query->get());
                     } else {
-                        $order_details->put($value, "No available data");
+                        continue;
                     }
+                    
                 } else {
                     continue;
                 }
-                
-                // $order_details->put($value, $query);
+                $order_details->push($data);
             }
 
             return $order_details;
