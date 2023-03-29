@@ -29,7 +29,7 @@ class UpdateOrderRequest extends FormRequest
             return [
                 'customer_id' => ['required', 'numeric'],
                 'product_id' => ['required', 'numeric'],
-                'order_key' => ['required', 'numeric'],
+                'order_key' => ['required'],
                 'restaurant_id'  => ['required', 'numeric'],
                 'quantity'  => ['required', 'numeric'],
                 'total'  => ['required', 'numeric'],
@@ -41,7 +41,7 @@ class UpdateOrderRequest extends FormRequest
             return [
                 'customer_id' => ['sometimes', 'required', 'numeric'],
                 'product_id' => ['sometimes', 'required', 'numeric'],
-                'order_key' => ['sometimes', 'required', 'numeric'],
+                'order_key' => ['sometimes', 'required'],
                 'restaurant_id'  => ['sometimes', 'required', 'numeric'],
                 'quantity'  => ['sometimes', 'required', 'numeric'],
                 'total'  => ['sometimes', 'required', 'numeric'],
