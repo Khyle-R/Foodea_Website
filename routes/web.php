@@ -21,6 +21,8 @@ Route::get('/', [Home::class, 'index'])->name('home.index');
 
 Route::get('/download_app', [Home::class, 'DownloadAppIndex']);
 
+Route::get('/download_app_user', [Home::class, 'DownloadAppUserIndex']);
+
 Route::get('/terms_condition', [Home::class, 'TermsCondition']);
 
 Route::get('/mission', [Home::class, 'MissionIndex']);
