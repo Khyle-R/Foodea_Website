@@ -45,6 +45,17 @@ a {
     margin: 1rem 0;
 }
 
+.add-cat {
+    font-size: 13px;
+    color: #F54748;
+    font-weight: 600;
+}
+
+.add-cat:hover {
+    font-size: 13px;
+    color: #861c1c;
+}
+
 .header {
     width: 100%;
     height: var(--header-height);
@@ -523,7 +534,7 @@ button.close {
 /* Tagsinput */
 .bootstrap-tagsinput {
     background-color: #fff;
-    border: 1px solid #000000;
+    border: 1px solid #57575754;
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
     display: inline-block;
     padding: 4px 6px;
@@ -623,6 +634,7 @@ button.close {
     margin-bottom: 2rem;
     position: relative;
 }
+
 .step-button {
     width: 50px;
     height: 50px;
@@ -631,22 +643,26 @@ button.close {
     background-color: var(--prm-gray);
     transition: .4s;
 }
+
 .step-button[aria-expanded="true"] {
     width: 60px;
     height: 60px;
     background-color: var(--prm-color);
     color: #ff7931;
 }
+
 .done {
     background-color: var(--prm-color);
     color: #ff7931;
 }
+
 .step-item {
     z-index: 10;
     text-align: center;
 }
+
 #progress {
-  -webkit-appearance:none;
+    -webkit-appearance: none;
     position: absolute;
     width: 95%;
     z-index: 5;
@@ -654,11 +670,13 @@ button.close {
     margin-left: 18px;
     margin-bottom: 18px;
 }
+
 /* to customize progress bar */
 #progress::-webkit-progress-value {
     background-color: var(--prm-color);
     transition: .5s ease;
 }
+
 #progress::-webkit-progress-bar {
     background-color: var(--prm-gray);
 

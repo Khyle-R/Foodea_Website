@@ -19,6 +19,7 @@
   </head>
   
   <body id="body-pd">
+  
     <header class="header" id="header">
       <div class="header_toggle">
         <i class="bx bx-menu" id="header-toggle"></i>
@@ -36,6 +37,12 @@
               <div class="title d-flex pb-3 ps-2 gap-2 align-items-center">
               <img src="image/foodea.png" style="width: 50px">FOODEA
             </div>
+            <?php if(Session::get('partnerID')): ?>
+               <div href="#" class="nav_link active red py-3 ms-2">
+              <span class="nav_linknumber"><i class="mdi mdi-account-circle"></i></span> 
+              <span class="nav_name">Application Status</span>
+            </div>  
+             <?php else: ?>
             <div class="nav_link active mt-3 py-3 ms-2">
               <i class="bx bx-grid-alt nav_icon"></i>
               <span class="nav_name">Term User</span>
@@ -60,6 +67,7 @@
               <span class="nav_linknumber">5</span> 
               <span class="nav_name">Application Status</span>
             </div>
+            <?php endif; ?>
           </div>
         </div>
         </div>
@@ -99,7 +107,12 @@
                                     
 
                                     <div class="col-sm-12 col-lg-5">
+                                      <?php if($partner->status == 'Rejected'): ?>
+                                      <div class="card-rejected py-4 px-4 mx-0 mx-md-5 rounded">
+                                      <?php elseif($partner->status == 'pending'): ?>
                                       <div class="card-pending py-4 px-4 mx-0 mx-md-5 rounded">
+              
+                                        <?php endif; ?>
                                       <div class="">
                                       <h4 class="text-center text-white"><?php echo e($partner->status); ?></h4>
                                       </div>
@@ -107,7 +120,7 @@
                                     </div>  
                                   </div>  
 
-                                  <div class="row justify-content-between">
+                                  <div class="row justify-content-around">
                                     <div class="col-sm-5 ml-sm-5">
                                       <h4 class="title-border flex-wrap mb-4">Personal Information</h4>
                        
@@ -206,7 +219,7 @@
                                     </div>
                                   </div>
 
-                                  <div class="row align-items-center justify-content-between mt-2">
+                                  <div class="row align-items-center justify-content-around mt-2">
                                     <div class="col-sm-5 ml-sm-5">
                                       <h4 class="title-border flex-wrap mb-4">Uploaded Documents</h4>
                        
