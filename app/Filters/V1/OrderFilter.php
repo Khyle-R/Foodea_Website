@@ -14,6 +14,8 @@ class OrderFilter{
         'total'  => ['eq', 'lt', 'lte', 'gt', 'gte'],
         'status' => ['eq', 'like'],
         'payment_type' => ['eq', 'like'],
+        'longitude' => ['eq', 'lt', 'lte', 'gt', 'gte'],
+        'latitude' => ['eq', 'lt', 'lte', 'gt', 'gte'],
         'date' => ['eq', 'lt', 'lte', 'gt', 'gte']
     ];
 

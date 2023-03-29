@@ -35,6 +35,8 @@ class UpdateOrderRequest extends FormRequest
                 'total'  => ['required', 'numeric'],
                 'status' => ['required'],
                 'payment_type' => ['required'],
+                'latitude' => ['required', 'numeric'],
+                'longitude' => ['required', 'numeric'],
                 'date' => ['date']
             ];
         } else {
@@ -47,6 +49,8 @@ class UpdateOrderRequest extends FormRequest
                 'total'  => ['sometimes', 'required', 'numeric'],
                 'status' => ['sometimes', 'required'],
                 'payment_type' => ['sometimes', 'required'],
+                'latitude' => ['sometimes','required', 'numeric'],
+                'longitude' => ['sometimes', 'required', 'numeric'],
                 'date' => ['sometimes', 'date']
             ];
         }

@@ -32,6 +32,8 @@ class StoreOrderRequest extends FormRequest
             'total'  => ['required', 'numeric'],
             'status' => ['required'],
             'payment_type' => ['required'],
+            'latitude' => ['required', 'numeric'],
+            'longitude' => ['required', 'numeric'],
             'date' => ['date']
         ];
     }

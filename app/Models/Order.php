@@ -21,6 +21,8 @@ class Order extends Model
         'total',
         'status',
         'payment_type',
+        'latitude',
+        'longitude',
         'date'
     ];
     protected $primaryKey = 'order_id';
