@@ -38,15 +38,19 @@ class tbl_merchant_info extends Model
         return $this->hasOne(tbl_merchant_document::class, 'merchant_id', 'merchant_id');
     }
 
+
     public function account_details(){
         return $this->hasOne(tbl_merchant_account::class, 'merchant_id', 'merchant_id');
     }
 
+
     public function categories(){
         return $this->hasMany(tbl_category::class, 'merchant_id', 'merchant_id');
     }
+
     
     public function vouchers(){
         return $this->hasMany(tbl_voucher::class, 'merchant_id', 'merchant_id');
     }
+
 }
