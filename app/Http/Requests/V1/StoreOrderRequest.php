@@ -26,6 +26,7 @@ class StoreOrderRequest extends FormRequest
         return [
             'customer_id' => ['required', 'numeric'],
             'product_id' => ['required', 'numeric'],
+            'order_key' => ['required', 'numeric'],
             'restaurant_id'  => ['required', 'numeric'],
             'quantity'  => ['required', 'numeric'],
             'total'  => ['required', 'numeric'],

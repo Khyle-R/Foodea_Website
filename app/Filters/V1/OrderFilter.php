@@ -8,6 +8,7 @@ class OrderFilter{
         'order_id' => ['eq'],
         'customer_id' => ['eq'],
         'product_id' => ['eq'],
+        'order_key' => ['eq'],
         'restaurant_id'  => ['eq'],
         'quantity'  => ['eq', 'lt', 'lte', 'gt', 'gte'],
         'total'  => ['eq', 'lt', 'lte', 'gt', 'gte'],
