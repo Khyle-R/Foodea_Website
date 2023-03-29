@@ -19,6 +19,8 @@ use Illuminate\Support\Facades\Session;
 use App\Models\tbl_product;
 use App\Models\tbl_merchant_application;
 use Illuminate\Validation\Rules\Password;
+use Illuminate\Support\Facades\Storage;
+use App\Clients\SendGridClient;
 
 class PartnerRegistration extends Controller
 {
@@ -43,24 +45,26 @@ class PartnerRegistration extends Controller
             'email' => 'required|email'
         ]);
 
-         $email = tbl_partner_accounts::where('email', $request->email)
-          ->first();
+        $email = tbl_partner_accounts::where('email', $request->email)->first();
           
-          if($email){
-         $code = mt_rand(1000, 9999);
+        if($email){
+            $code = mt_rand(1000, 9999);
+            // $mailData = [
+            // 'title' => 'Password Reset',
+            // 'body' => 'test',
+            // 'code' => $code,
+            // 'fname' => $email->firstname,
+            // 'lname' => $email->lastname,
+            // ];
+            // Mail::to($email)->send(new PasswordVerification($mailData));
 
-                       $mailData = [
-                        'title' => 'Password Reset',
-                        'body' => 'test',
-                        'code' => $code,
-                        'fname' => $email->firstname,
-                        'lname' => $email->lastname,
-                       ];
-                       Mail::to($email)->send(new PasswordVerification($mailData));
+            $html = view('email.forgotpass')->with('code', $code)->render();
+            SendGridClient::sendEmail($request->email,"Password Reset", $html);
 
-                    $request->session()->put('partner_verification', $code);
-                    $request->session()->put('partner_email', $request->email);
-                     return redirect('/partner_forgotpass1');
+            $request->session()->put('partner_verification', $code);
+            $request->session()->put('partner_email', $request->email);
+
+            return redirect('/partner_forgotpass1');
          } 
          else{
             return back()->with('fail', 'Email does not exist');
@@ -91,21 +95,25 @@ class PartnerRegistration extends Controller
          $email = tbl_partner_accounts::where('email', Session::get('partner_email'))
           ->first();
           
-          if($email){
-         $code = mt_rand(1000, 9999);
+        if($email){
+            $code = mt_rand(1000, 9999);
+            // $mailData = [
+            // 'title' => 'Password Reset',
+            // 'body' => 'test',
+            // 'code' => $code,
+            // 'fname' => $email->firstname,
+            // 'lname' => $email->lastname,
+            // ];
+            // Mail::to($email)->send(new PasswordVerification($mailData));
 
-                       $mailData = [
-                        'title' => 'Password Reset',
-                        'body' => 'test',
-                        'code' => $code,
-                        'fname' => $email->firstname,
-                        'lname' => $email->lastname,
-                       ];
-                       Mail::to($email)->send(new PasswordVerification($mailData));
+            $receiverEmail = Session::get('partner_email');
+            $html = view('email.forgotpass')->with('code', $code)->render();
+            SendGridClient::sendEmail($receiverEmail, "Password Reset", $html);
 
-                    $request->session()->put('partner_verification', $code);
-                     return back();
-     }
+            $request->session()->put('partner_verification', $code);
+
+            return back();
+        }
     }
      public function PartnerForgotPass3(){
         return view('partner_forgotpass2');
@@ -173,16 +181,14 @@ class PartnerRegistration extends Controller
         $merchant->vision = $request->vision; 
         $res = $merchant->save();
         if($res){
-            
             $id = tbl_merchant_info::where('merchant_id', $request->merchant_id)->first();
             
-           $success = tbl_merchant_application::where('merchant_id', $request->merchant_id)
-            ->update([
-                'merchantinfo_id' => $id->merchantinfo_id,
-                'status' => 'second'
-            ]);
-             $status =  tbl_merchant_application::where('merchant_id', $request->merchant_id)
-             ->first();
+            $success = tbl_merchant_application::where('merchant_id', $request->merchant_id)
+                ->update([
+                    'merchantinfo_id' => $id->merchantinfo_id,
+                    'status' => 'second'
+                ]);
+            $status =  tbl_merchant_application::where('merchant_id', $request->merchant_id)->first();
             if($success){
             //   $email = tbl_partner_accounts::where('merchant_id', Session::get('merchant_id'))
             //             ->first();
@@ -313,14 +319,17 @@ class PartnerRegistration extends Controller
                         
          $code = mt_rand(100000, 999999);
 
-         $mailData = [
-         'title' => 'Account Verification',
-         'body' => 'test',
-          'code' => $code,
-         'fname' => $email->firstname,
-         'lname' => $email->lastname,
-        ];
-         Mail::to($email)->send(new MailVerification($mailData));
+        //  $mailData = [
+        //  'title' => 'Account Verification',
+        //  'body' => 'test',
+        //   'code' => $code,
+        //  'fname' => $email->firstname,
+        //  'lname' => $email->lastname,
+        // ];
+        //  Mail::to($email)->send(new MailVerification($mailData));
+
+        $html = view('email.emailverify')->with('code', $code)->render();
+        SendGridClient::sendEmail($email->email, "Account Verification", $html);
 
          $request->session()->put('verification', $code);
         return back();
@@ -371,42 +380,42 @@ class PartnerRegistration extends Controller
         
         if($request->hasFile('menu_photo') && $request->hasfile('logo') && $request->hasFile('business_permit') && $request->hasFile('bir_cert') && $request->hasFile('dti_cert') && $request->hasFile('front_license') && $request->hasFile('back_license')){
           
-            $logo = $request->file('logo');
-            $menu = $request->file('menu_photo');
-            $file = $request->file('business_permit');
-            $file2 = $request->file('bir_cert');
-            $file3 = $request->file('barangay_permit');
-            $file4 = $request->file('dti_cert');
-            $file5 = $request->file('front_license');
-            $file6 = $request->file('back_license');
+            $logo = $request->file('logo')->store('merchant_documents/'.$request->merchant_id.'', 's3', ['visibility', 'public']);
+            $menu = $request->file('menu_photo')->store('merchant_documents/'.$request->merchant_id.'', 's3', ['visibility', 'public']);
+            $file = $request->file('business_permit')->store('merchant_documents/'.$request->merchant_id.'', 's3', ['visibility', 'public']);
+            $file2 = $request->file('bir_cert')->store('merchant_documents/'.$request->merchant_id.'', 's3', ['visibility', 'public']);
+            $file3 = $request->file('barangay_permit')->store('merchant_documents/'.$request->merchant_id.'', 's3', ['visibility', 'public']);
+            $file4 = $request->file('dti_cert')->store('merchant_documents/'.$request->merchant_id.'', 's3', ['visibility', 'public']);
+            $file5 = $request->file('front_license')->store('merchant_documents/'.$request->merchant_id.'/valid_id', 's3', ['visibility', 'public']);
+            $file6 = $request->file('back_license')->store('merchant_documents/'.$request->merchant_id.'/valid_id', 's3', ['visibility', 'public']);
 
             
-            $log = $logo->getClientOriginalName();
-            $photo = $menu->getClientOriginalName();
-            $permit = $file->getClientOriginalName();
-            $bir = $file2->getClientOriginalName();
-            $barangay = $file3->getClientOriginalName();
-            $dti = $file4->getClientOriginalName();
-            $front = $file5->getClientOriginalName();
-            $back = $file6->getClientOriginalName();
+            // $log = $logo->getClientOriginalName();
+            // $photo = $menu->getClientOriginalName();
+            // $permit = $file->getClientOriginalName();
+            // $bir = $file2->getClientOriginalName();
+            // $barangay = $file3->getClientOriginalName();
+            // $dti = $file4->getClientOriginalName();
+            // $front = $file5->getClientOriginalName();
+            // $back = $file6->getClientOriginalName();
 
-            $filename1 = mt_rand(1000, 9999) . '_' .$log;
-            $filename2 = mt_rand(1000, 9999) . '_' .$photo;
-            $filename3 = mt_rand(1000, 9999) . '_' .$permit;
-            $filename4 = mt_rand(1000, 9999) . '_' .$bir;
-            $filename5 = mt_rand(1000, 9999) . '_' .$barangay;
-            $filename6 = mt_rand(1000, 9999) . '_' .$dti;
-            $filename7 = mt_rand(1000, 9999) . '_' .$front;
-            $filename8 = mt_rand(1000, 9999) . '_' .$back;
+            $filename1 = Storage::disk('s3')->url($logo);
+            $filename2 = Storage::disk('s3')->url($menu);
+            $filename3 = Storage::disk('s3')->url($file);
+            $filename4 = Storage::disk('s3')->url($file2);
+            $filename5 = Storage::disk('s3')->url($file3);
+            $filename6 = Storage::disk('s3')->url($file4);
+            $filename7 = Storage::disk('s3')->url($file5);
+            $filename8 = Storage::disk('s3')->url($file6);
          
-            $logo->move(('uploads/'. 'merchant_documents'. '/'.$request->merchant_id), $filename1);
-            $menu->move(('uploads/'. 'merchant_documents'. '/'.$request->merchant_id), $filename2);
-            $file ->move(('uploads/'. 'merchant_documents'. '/'.$request->merchant_id), $filename3);
-            $file2->move(('uploads/'. 'merchant_documents'. '/'.$request->merchant_id), $filename4);
-            $file3 ->move(('uploads/'. 'merchant_documents'. '/'.$request->merchant_id), $filename5);
-            $file4->move(('uploads/'. 'merchant_documents'. '/'.$request->merchant_id), $filename6);
-            $file5 ->move(('uploads/'. 'merchant_documents'. '/'.$request->merchant_id. '/'. 'valid id/'), $filename7);
-            $file6 ->move(('uploads/'. 'merchant_documents'. '/'.$request->merchant_id. '/'. 'valid id/'), $filename8);
+            // $logo->move(('uploads/'. 'merchant_documents'. '/'.$request->merchant_id), $filename1);
+            // $menu->move(('uploads/'. 'merchant_documents'. '/'.$request->merchant_id), $filename2);
+            // $file ->move(('uploads/'. 'merchant_documents'. '/'.$request->merchant_id), $filename3);
+            // $file2->move(('uploads/'. 'merchant_documents'. '/'.$request->merchant_id), $filename4);
+            // $file3 ->move(('uploads/'. 'merchant_documents'. '/'.$request->merchant_id), $filename5);
+            // $file4->move(('uploads/'. 'merchant_documents'. '/'.$request->merchant_id), $filename6);
+            // $file5 ->move(('uploads/'. 'merchant_documents'. '/'.$request->merchant_id. '/'. 'valid id/'), $filename7);
+            // $file6 ->move(('uploads/'. 'merchant_documents'. '/'.$request->merchant_id. '/'. 'valid id/'), $filename8);
 
             $document->logo = $filename1;
             $document->menu_photo = $filename2;

@@ -16,6 +16,9 @@ Route::get('/partner_application_add', [PartnerRegistration::class, 'partneraddp
 Route::post('/partner_application_category', [PartnerRegistration::class, 'addCategory'])->name('addCategory');
 
 Route::post('/partner_application_add', [PartnerRegistration::class, 'addProductPartner'])->name('addproductpartner');
+Route::get('/test', [Home::class, 'test']);
+Route::post('/test', [Home::class, 'teststore']);
+Route::get('/testshow', [Home::class, 'testshow']);
 
 Route::get('/', [Home::class, 'index'])->name('home.index');
 
@@ -382,7 +385,7 @@ Route::group(['middleware'=>['adminLogin']], function(){
 
     $products = DB::table('tbl_product')->where('merchant_id', '=', session('loginID'))->get();
 
-    $category = DB::table('tbl_category')->get();
+    $category = DB::table('tbl_category')->where('merchant_id', '=', session('loginID'))->get();
 
 
     return view('admin.product', ['products' => $products, 'category' => $category]);

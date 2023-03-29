@@ -27,4 +27,6 @@ Route::group(['prefix' => 'v1', 'namespace' => 'App\Http\Controllers\Api\V1'], f
     Route::apiResource('riders', RiderController::class);
     Route::apiResource('restaurants', RestaurantController::class);
     Route::apiResource('transactions', TransactionController::class);
+    Route::apiResource('categories', CategoryController::class);
+    Route::apiResource('vouchers', VoucherController::class);
 });

@@ -40,7 +40,7 @@
                                     <div class="profile-img">
                                          @foreach ($Data as $rider)
                                      
-                                            <img alt="" src="{{ url(('uploads/'. 'rider_documents'. '/'.$rider->rider_id.  '/'). $rider->rider_photo) }}">
+                                            <img alt="" src="{{ $rider->rider_photo }}">
                                   
                                     </div>
                                 </div>
@@ -217,29 +217,29 @@
                                 <td>2x2 image Picture</td>
                                 <td>{{ $rider->rider_photo }}</td>
                                  <td><a class="red-btn" href="" data-toggle="modal" data-target="#ViewModal1"><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
-                                <td><a class="red-btn" href="/download_file/{{ $rider->rider_id }}/{{ $rider->rider_photo }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
+                                <td><a class="red-btn" href="{{ $rider->rider_photo }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
 
                             </tr>
                              <tr>
                                 <td>Vehicle Photo</td>
                                 <td>{{ $rider->vehicle_side }}</td>
                                  <td><a class="red-btn" href="" data-toggle="modal" data-target="#ViewModal2"><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
-                                <td><a class="red-btn" href="/download_vehicle/{{ $rider->rider_id }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
+                                <td><a class="red-btn" href="{{ $rider->rider_id }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
 
                             </tr>
                              <tr>
                                 <td>Professional Drivers license ID</td>
                                 <td>{{ $rider->driver_license }}</td>
                                  <td><a class="red-btn" href="" data-toggle="modal" data-target="#ViewModal3"><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
-                                <td><a class="red-btn" href="/download_license/{{ $rider->rider_id }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
+                                <td><a class="red-btn" href="{{ $rider->rider_id }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
 
                             </tr>
                             @if($rider->cert_registration) 
                             <tr>
                                 <td>Certificate of Registration</td>
                                 <td>{{ $rider->cert_registration }}</td>
-                               <td><a class="red-btn" href="/display_pdf/{{ $rider->rider_id }}/{{ $rider->cert_registration }}"><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
-                                <td><a class="red-btn" href="/download_file/{{ $rider->rider_id }}/{{ $rider->cert_registration }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
+                               <td><a class="red-btn" href="{{ $rider->cert_registration }}"><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
+                                <td><a class="red-btn" href="{{ $rider->cert_registration }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
                             </tr>
                             @endif
                             
@@ -247,8 +247,8 @@
                               <tr>
                                 <td>Authorization letter</td>
                                 <td>{{ $rider->auth_letter }}</td>
-                                <td><a class="red-btn" href="/display_pdf/{{ $rider->rider_id }}/{{ $rider->auth_letter }}"><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
-                                <td><a class="red-btn" href="/download_file/{{ $rider->rider_id }}/{{ $rider->auth_letter }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
+                                <td><a class="red-btn" href="{{ $rider->auth_letter }}"><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
+                                <td><a class="red-btn" href="{{ $rider->auth_letter }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
 
                             </tr>
    
@@ -257,8 +257,8 @@
                               <tr>
                                 <td>Deed Of Sale</td>
                                 <td>{{ $rider->deed_sale}}</td>
-                                 <td><a class="red-btn" href="/display_pdf/{{ $rider->rider_id }}/{{ $rider->deed_sale }}"><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
-                                <td><a class="red-btn" href="/download_file/{{ $rider->rider_id }}/{{ $rider->deed_sale }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
+                                 <td><a class="red-btn" href="{{ $rider->deed_sale }}"><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
+                                <td><a class="red-btn" href="{{ $rider->deed_sale }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
 
                             </tr>
                               @endif
@@ -267,7 +267,7 @@
                                 <td>Official Receipt of Vehicle Registration</td>
                                 <td>{{ $rider->official_receipt }}</td>
                                  <td><a class="red-btn" href="/display_pdf/{{ $rider->rider_id }}/{{ $rider->official_receipt }}" ><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
-                                <td><a class="red-btn" href="/download_file/{{ $rider->rider_id }}/{{ $rider->official_receipt }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
+                                <td><a class="red-btn" href="{{ $rider->official_receipt }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
 
                             </tr>
                             @endif
@@ -275,16 +275,16 @@
                             <tr>
                                 <td>Drug Test Result</td>
                                 <td>{{ $rider->drug_test }}</td>
-                                 <td><a class="red-btn" href="/display_pdf/{{ $rider->rider_id }}/{{ $rider->drug_test }}" ><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
-                                <td><a class="red-btn" href="/download_file/{{ $rider->rider_id }}/{{ $rider->drug_test }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
+                                 <td><a class="red-btn" href="{{ $rider->drug_test }}" ><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
+                                <td><a class="red-btn" href="{{ $rider->drug_test }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
 
                             </tr>
                             @endif
                             <tr>
                                 <td>NBI Clearance</td>
                                 <td>{{ $rider->nbi_clearance }}</td>
-                                <td><a class="red-btn" href="/display_pdf/{{ $rider->rider_id }}/{{ $rider->nbi_clearance }}" ><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
-                                <td><a class="red-btn" href="/download_file/{{ $rider->rider_id }}/{{ $rider->nbi_clearance }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
+                                <td><a class="red-btn" href="{{ $rider->nbi_clearance }}" ><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
+                                <td><a class="red-btn" href="{{ $rider->nbi_clearance }}" ><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
 
                             </tr>
                           
@@ -361,13 +361,13 @@
                         <div class="carousel-inner">
                             
                             <div class="carousel-item active">
-                            <img class="d-block" height="600" width="100%" src="{{ url(('uploads/'. 'rider_documents'. '/'.$rider->rider_id.  '/'.'vehicle/'). $rider->vehicle_front) }}" alt="First slide">
+                            <img class="d-block" height="600" width="100%" src="{{ $rider->vehicle_front }}" alt="First slide">
                             </div>
                             <div class="carousel-item">
-                            <img class="d-block" height="600" width="100%" src="{{ url(('uploads/'. 'rider_documents'. '/'.$rider->rider_id.  '/'.'vehicle/'). $rider->vehicle_side) }}" alt="Second slide">
+                            <img class="d-block" height="600" width="100%" src="{{ $rider->vehicle_side }}" alt="Second slide">
                             </div>
                             <div class="carousel-item">
-                            <img class="d-block" height="600" width="100%" src="{{ url(('uploads/'. 'rider_documents'. '/'.$rider->rider_id.  '/'.'vehicle/'). $rider->vehicle_back) }}" alt="Third slide">
+                            <img class="d-block" height="600" width="100%" src="{{ $rider->vehicle_back }}" alt="Third slide">
                             </div>
                         </div>
                         <a class="carousel-control-prev" href="#carouselExampleControls1" role="button" data-slide="prev">
@@ -388,13 +388,13 @@
                         <div class="carousel-inner">
                             
                             <div class="carousel-item active">
-                            <img class="d-block" height="500" width="100%" src="{{ url(('uploads/'. 'rider_documents'. '/'.$rider->rider_id.  '/'.'vehicle/'). $rider->vehicle_side) }}" alt="First slide">
+                            <img class="d-block" height="500" width="100%" src="{{ $rider->vehicle_side }}" alt="First slide">
                             </div>
                             <div class="carousel-item">
-                            <img class="d-block" height="500" width="100%" src="{{ url(('uploads/'. 'rider_documents'. '/'.$rider->rider_id.  '/'.'vehicle/'). $rider->vehicle_side) }}" alt="Second slide">
+                            <img class="d-block" height="500" width="100%" src="{{ $rider->vehicle_side }}" alt="Second slide">
                             </div>
                             <div class="carousel-item">
-                            <img class="d-block" height="500" width="100%" src="{{ url(('uploads/'. 'rider_documents'. '/'.$rider->rider_id.  '/'.'vehicle/'). $rider->vehicle_back) }}" alt="Third slide">
+                            <img class="d-block" height="500" width="100%" src="{{ $rider->vehicle_back }}" alt="Third slide">
                             </div>
                         </div>
                         {{-- <a class="carousel-control-prev" href="#carouselExampleControls1dds" role="button" data-slide="prev">
@@ -639,7 +639,7 @@
                         </div>
                         <div class="modal-body">
                             <div class="image text-center">
-                           <img height="400" width="400" src="{{ url(('uploads/'. 'rider_documents'. '/'.$rider->rider_id.  '/'). $rider->rider_photo) }}" alt="">
+                           <img height="400" width="400" src="{{ $rider->rider_photo }}" alt="">
                        </div>
                         </div>
                         </div>
@@ -661,13 +661,13 @@
                             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                            <img class="d-block" height="600"  width="100%" src="{{ url(('uploads/'. 'rider_documents'. '/'.$rider->rider_id.  '/'. 'vehicle/'). $rider->vehicle_front) }}" alt="First slide">
+                            <img class="d-block" height="600"  width="100%" src="{{ $rider->vehicle_front }}" alt="First slide">
                             </div>
                             <div class="carousel-item">
-                            <img class="d-block" height="600" width="100%" src="{{ url(('uploads/'. 'rider_documents'. '/'.$rider->rider_id.  '/'. 'vehicle/'). $rider->vehicle_side) }}" alt="Second slide">
+                            <img class="d-block" height="600" width="100%" src="{{ $rider->vehicle_side }}" alt="Second slide">
                             </div>
                             <div class="carousel-item">
-                            <img class="d-block" height="600"  width="100%" src="{{ url(('uploads/'. 'rider_documents'. '/'.$rider->rider_id.  '/'. 'vehicle/'). $rider->vehicle_back) }}" alt="Third slide">
+                            <img class="d-block" height="600"  width="100%" src="{{ $rider->vehicle_back }}" alt="Third slide">
                             </div>
                         </div>
                         <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -684,13 +684,13 @@
                             <div id="carouselExampleControlsassd" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                            <img class="d-block" height="600"  width="100%" src="{{ url(('uploads/'. 'rider_documents'. '/'.$rider->rider_id.  '/'. 'vehicle/'). $rider->vehicle_side) }}" alt="First slide">
+                            <img class="d-block" height="600"  width="100%" src="{{ $rider->vehicle_side }}" alt="First slide">
                             </div>
                             <div class="carousel-item">
-                            <img class="d-block" height="600" width="100%" src="{{ url(('uploads/'. 'rider_documents'. '/'.$rider->rider_id.  '/'. 'vehicle/'). $rider->vehicle_side) }}" alt="Second slide">
+                            <img class="d-block" height="600" width="100%" src="{{ $rider->vehicle_side }}" alt="Second slide">
                             </div>
                             <div class="carousel-item">
-                            <img class="d-block" height="600"  width="100%" src="{{ url(('uploads/'. 'rider_documents'. '/'.$rider->rider_id.  '/'. 'vehicle/'). $rider->vehicle_back) }}" alt="Third slide">
+                            <img class="d-block" height="600"  width="100%" src="{{ $rider->vehicle_back }}" alt="Third slide">
                             </div>
                         </div>
                         {{-- <a class="carousel-control-prev" href="#carouselExampleControlssdx" role="button" data-slide="prev">
@@ -722,10 +722,10 @@
                             <div id="carouselExampleControlss" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                            <img class="d-block" height="350"  width="100%" src="{{ url(('uploads/'. 'rider_documents'. '/'. $rider->rider_id.  '/'. 'driver license/'). $rider->driver_license) }}" alt="First slide">
+                            <img class="d-block" height="350"  width="100%" src="{{ $rider->driver_license }}" alt="First slide">
                             </div>
                             <div class="carousel-item">
-                            <img class="d-block" height="350" width="100%" src="{{ url(('uploads/'. 'rider_documents'. '/'.$rider->rider_id.  '/'. 'driver license/'). $rider->license_back) }}" alt="Second slide">
+                            <img class="d-block" height="350" width="100%" src="{{ $rider->license_back }}" alt="Second slide">
                             </div>
                         </div>
                         <a class="carousel-control-prev" href="#carouselExampleControlss" role="button" data-slide="prev">
