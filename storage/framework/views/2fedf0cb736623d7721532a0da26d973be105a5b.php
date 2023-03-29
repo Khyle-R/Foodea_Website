@@ -72,7 +72,7 @@
         <div class="col-12 col-sm-12 col-md-9 col-lg-7 justify-content-center align-items-center mx-auto px-0">
         <div class="right">
           <h2>Create your Account</h2>
-          <p>Please fill up the form below.</p>
+          <p>Please fill out the form below.</p>
           <form method="post" action="<?php echo e(route('rider_application3.addVehicle')); ?>">
               <?php echo csrf_field(); ?>
             <!--GET RIDER ID-->

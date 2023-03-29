@@ -103,50 +103,51 @@
           <div class="right">
             <h2>Menu</h2>
           <div class="d-flex justify-content-center">
-            <p>1 out of 5 Menu</p>
+            <p>{{ Session::get('loops') }} out of 5 Menu</p>
           </div>
 
               <!--GET PARTNER ID-->
 
             <form method="post" action="{{ route('addproductpartner')}}" enctype="multipart/form-data">
           @csrf
-              @if (Session::has('merchant_id'))
-              <input type="text" name="merchant_id" value=" {{ Session::get('merchant_id') }}">
-          @endif
-
-          <input type="text" name="merchant_id" value=" {{ Session::get('merchant_id') }}">
-
+         
             <div class="form-group">
               <label>Product Name</label>
-              <input type="text" name="product_name" class="form-control form-control-lg" required/>
+              <input type="text" name="product_name" class="form-control form-control-lg" />
               <span
                 style="color:red;">
-                  @error('business_name')
+                  @error('product_name')
                     {{ $message }}
                   @enderror
               </span>
             </div>
 
-            <div class="form-group">
+            <div class="form-group mt-3">
+              <div class="d-flex justify-content-between align-items-center">
               <label>Category</label>
-              <select name="category" id="category" class="form-control form-control-lg" required>
-                <option>New Product</option>
-                {{-- <option>Sole proprietorship</option>
-                <option>Corporation</option> --}}
+              <a class="add-cat" href="#" data-bs-toggle="modal" data-bs-target="#addCategory">Add Category</a>
+              </div>
+              <select name="category" id="category" class="form-control form-control-lg"  >
+                <option selected="true" disabled="disabled">- Select -</option>
+                @foreach ($category as $cat)
+                  <option value={{ $cat->main_category }}>{{ $cat->main_category }}</option>
+                @endforeach
               </select>
+              
               <span style="color:red;">
-                @error('business_type') 
+                @error('category') 
                   {{ $message }}
                 @enderror
               </span>
+           
             </div>
             
 
-            <div class="form-group">
-              <label>Tags</label>
-              <input type="text" class="form-control" id="tags_category" name="tags_category" value="" data-role="tagsinput" name="tags_category" required>
+            <div class="form-group mt-2">
+              <label>Tags <a style="color:#BD9140;font-size: 14px;"> (Press enter to input tags)</a></label>
+              <input type="text" class="form-control" id="tags_category" name="tags_category" value="" data-role="tagsinput" name="tags_category">
               <span style="color:red;">
-                @error('address')
+                @error('tags_category')
                   {{ $message }}
                 @enderror
               </span>
@@ -154,7 +155,7 @@
 
             <div class="form-group">
             <label for="exampleFormControlTextarea1">Description</label>
-            <textarea name="description" class="form-control" id="exampleFormControlTextarea1" rows="3" required></textarea>
+            <textarea name="description" class="form-control" id="exampleFormControlTextarea1" rows="3" ></textarea>
             <span
               style="color:red;">
               @error('description') {{ $message }}
@@ -163,7 +164,7 @@
 
             <div class="form-group">
               <label for="exampleFormControlTextarea1">Ingredients</label>
-              <textarea name="ingredients" class="form-control" id="exampleFormControlTextarea1" rows="3" required></textarea>
+              <textarea name="ingredients" class="form-control" id="exampleFormControlTextarea1" rows="3" ></textarea>
               <span style="color:red;">
                 @error('ingredients')
                   {{ $message }}
@@ -185,7 +186,8 @@
 
             <div class="form-group">
               <div class="requirements row">
-                <input type="file" value="{{ old('product_image') }}" name="product_image" required/>
+                <input type="file" value="{{ old('product_image') }}" name="product_image"  />
+                <span>File size up to 5mb only</span>
                 <span style="color:red;">
                     @error('product_image')
                       {{ $message }}
@@ -197,9 +199,9 @@
 
             <div class="form-group">
               <label>Price</label> 
-                <input type="number" name="price" class="form-control form-control-lg" required/>
+                <input type="number" name="price" class="form-control form-control-lg"  />
                 <span style="color:red;">
-                  @error('city')
+                  @error('price')
                     {{ $message }}
                   @enderror
                 </span>
@@ -207,21 +209,22 @@
 
             <div class="form-group">
               <label>Stock</label>
-                <input type="number" name="stock" class="form-control form-control-lg" required/>
+                <input type="number" name="stock" class="form-control form-control-lg"  />
                 <span style="color:red;">
-                  @error('barangay')
+                  @error('stock')
                     {{ $message }}
                   @enderror</span>
             </div>
 
             <div class="form-group">
               <label>Status</label>
-                <select name="status" id="" class="form-control form-control-lg" required>
+                <select name="status" id="" class="form-control form-control-lg"  >
+                  <option selected="true" disabled="disabled">- Select -</option>
                   <option>Enable</option>
                   <option>Disable</option> 
                 </select>
                 <span style="color:red;">
-                  @error('business_type')
+                  @error('status')
                     {{ $message }}
                   @enderror</span>
             </div>
@@ -245,6 +248,40 @@
       </div>
       </div>
     
+        <!-- ADD MODAL -->
+                     <div class="modal fade" id="addCategory" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                           <div class="modal-content">
+                              <!-- MODAL HEADER -->
+                              <div class="modal-header d-flex justify-content-between">
+                                 <h5 class="modal-title text-white" id="exampleModalLongTitle">Add</h5>
+                                  <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                 </button>
+                              </div>
+                              <!-- MODAL BODY -->
+                            <div class="modal-body text-dark">
+                                 <div class="form-group">
+                                    <form method="post" action="{{ route('addCategory') }}">
+                                       @csrf
+                                       <label>Category Name</label>
+                                       <input id="categoryName" name="categoryName" type="text" class="form-control" required>
+                                 </div>
+                                 <div class="form-group">
+                                    <label> Description</label>
+                                    <textarea class="form-control" id="description" name="description" rows="4"></textarea>
+                                </div>
+                            </div>
+                           <!-- MODAL FOOTER -->
+                            <div class="modal-footer">
+                          <button type="button" class="white-btn" data-bs-dismiss="modal">Close</button>
+                          <button type="submit" class="red-btn">Confirm</button>
+                          </form>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+
     <!-- Show Hide Password -->
  
     <script

@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use ZipArchive;
 use App\Mail\MessageEmail;
-use App\Mail\RiderAccepted;
+use ZipArchive;
 use App\Models\tbl_product;
 use Illuminate\Http\Request;
 use App\Models\admin_account;
-use App\Models\superadmin_sales;
 use App\Models\tbl_merchant_info;
 use App\Models\tbl_vehicle_infos;
 use App\Mail\PasswordVerification;
+use App\Mail\RiderAccepted;
 use App\Models\tbl_accepted_rider;
 use App\Models\tbl_rider_accounts;
 use App\Models\tbl_rider_document;
@@ -20,8 +19,6 @@ use App\Models\tbl_partner_accounts;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
-use Maatwebsite\Excel\Facades\Excel;
-use App\Exports\SuperadminSaleExport;
 use App\Models\tbl_accepted_merchant;
 use App\Models\tbl_rider_application;
 use Illuminate\Support\Facades\Cookie;
@@ -910,13 +907,9 @@ class SuperadminController extends Controller
 
     }
     public function SalesIndex(){
-         $sales = superadmin_sales::all();
-          
-        return view('superadmin.superadmin_sales', compact('sales'));
+        return view('superadmin.superadmin_sales');
     }
-    public function ExportSalesExcel(){
-        return Excel::download(new SuperadminSaleExport,'superadmin-sales.xlsx');
-    }
+    
     /*VIEW PDF */
     /*DOWNLOAD */
      public function ViewPDF($id, $name){
