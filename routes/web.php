@@ -13,6 +13,24 @@ use App\Http\Controllers\SuperadminController;
 
 Route::get('/partner_application_add', [PartnerRegistration::class, 'partneraddproduct']);
 
+Route::post('/partner_application_add', [PartnerRegistration::class, 'addProductPartner'])->name('addproductpartner');
+
+Route::get('/partner_application_add2', [PartnerRegistration::class, 'partneraddproduct2']);
+
+Route::post('/partner_application_add2', [PartnerRegistration::class, 'addProductPartner2'])->name('addproductpartner2');
+
+Route::get('/partner_application_add3', [PartnerRegistration::class, 'partneraddproduct3']);
+
+Route::post('/partner_application_add3', [PartnerRegistration::class, 'addProductPartner3'])->name('addproductpartner3');
+
+Route::get('/partner_application_add4', [PartnerRegistration::class, 'partneraddproduct4']);
+
+Route::post('/partner_application_add4', [PartnerRegistration::class, 'addProductPartner4'])->name('addproductpartner4');
+
+Route::get('/partner_application_add5', [PartnerRegistration::class, 'partneraddproduct5']);
+
+Route::post('/partner_application_add5', [PartnerRegistration::class, 'addProductPartner5'])->name('addproductpartner5');
+
 Route::get('/', [Home::class, 'index'])->name('home.index');
 
 Route::get('/terms_condition', [Home::class, 'TermsCondition']);
@@ -264,11 +282,14 @@ Route::group(['middleware'=>['superadminLogin']], function(){
 
     Route::get('/superadmin_sales', [SuperadminController::class, 'SalesIndex']);
 
+    
    
 });
 
 });
  /*VIEW PDF */
+    Route::get('/superadmin_exportsales', [SuperadminController::class, 'ExportSalesExcel']);
+    
     Route::get('/display_pdf/{id}/{name}', [SuperadminController::class, 'ViewPDF']);
 
     Route::get('/display_merchant_pdf/{id}/{name}', [SuperadminController::class, 'ViewMerchantPDF']);
@@ -372,7 +393,7 @@ Route::group(['middleware'=>['adminLogin']], function(){
     //View products
     Route::get('product', function () {
 
-        $products = DB::table('tbl_product')->where('merchant_id', '=', session('loginID'))->get();
+    $products = DB::table('tbl_product')->where('merchant_id', '=', session('loginID'))->get();
 
     $category = DB::table('tbl_category')->get();
 
@@ -467,5 +488,8 @@ Route::group(['middleware'=>['adminLogin']], function(){
     Route::post('/update_category',[Admin_product::class, 'updateCategory'])->name('update_category.updateCategory');
     Route::get('/delete_category/{id}',[Admin_product::class, 'deleteCategory']);
 
+    //Upload Pictures
+    Route::post('/tmp-upload', [Admin_product::class, 'tmpUpload']);
+    Route::delete('/tmp-upload', [Admin_product::class, 'tmpDelete']);
 });
 });
