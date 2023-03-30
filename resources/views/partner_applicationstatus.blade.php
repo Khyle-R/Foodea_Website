@@ -231,23 +231,23 @@
                                       </div>
                                        <div class="row px-2 mt-2">
                                         <label class="black width">Business Permit</label>
-                                        <a href="{{ $partner->logo}}"><button src="">Download</button></a>
-                                          <p class="black ml-5">{{ $partner->business_permit }}</p>
+                                        <p class="black ml-5">{{ $partner->business_permit }}</p>
+                                        <a href="{{ $partner->business_permit}}"><button>Download</button></a> 
                                       </div>
                                        <div class="row px-2 mt-2">
                                         <label class="black width">BIR Certificate</label>
-                                        <a href="{{ $partner->bir_cert}}"><button src="">Download</button></a>
+                                        <a href="{{ $partner->bir_cert}}"><button>Download</button></a>
                                           <p class="black ml-5">{{ $partner->bir_cert }}</p>
                                       </div>
                                        <div class="row px-2 mt-2">
                                         <label class="black width">Barangay Permit</label>
-                                        <a href="{{ $partner->barangay_permit}}"><button src="">Download</button></a>
-                                         <p class="black ml-5">{{ $partner->barangay_permit }}</p>
+                                        <p class="black ml-5">{{ $partner->barangay_permit }}</p>
+                                         <a href="{{ $partner->barangay_permit}}"><button>Download</button></a>
                                       </div>
                                        <div class="row px-2 mt-2">
                                         <label class="black width">DTI Certificate</label>
-                                       <a href="{{ $partner->dti_cert}}"><button src="">Download</button></a>
-                                         <p class="black ml-5">{{ $partner->dti_cert }}</p>
+                                        <p class="black ml-5">{{ $partner->dti_cert }}</p>
+                                        <a href="{{ $partner->dti_cert}}"><button>Download</button></a>
                                       </div>
                                        <div class="row px-2 mt-2">
                                         <label class="black width">Front License ID</label>

@@ -113,10 +113,10 @@
               <div class="content text-center text-md-start">
                   <h1>Revolutionize The Way You Order<span> Food</span></h1>
                   <p class="text-center text-md-start text-dark">Revolutionize your food orders with personalized recommendations and faster, hassle-free delivery.</p>
-                  <a class="partnerbtn text-decoration-none" href="/partner_landing">Order Now</a>
+                  <a class="partnerbtn text-decoration-none" href="/download_app_user">Order Now</a>
               </div>
               <div class="image">
-                <img src="image/Userbg.png" alt=""></div>
+                <img src="<?php echo e(asset('newimage/Userbg.png')); ?>" alt=""></div>
             </div>
           </div>
         </div>
@@ -130,7 +130,7 @@
                   <a class="partnerbtn text-decoration-none" href="/rider_application_agreement">Join as Foodea Rider</a>
               </div>
               <div class="imageOne">
-                <img src="image/food.png" alt=""></div>
+                <img src="<?php echo e(asset('newimage/food.png')); ?>" alt=""></div>
             </div>
           </div>
         </div>
@@ -144,7 +144,7 @@
                   <a class="partnerbtn text-decoration-none" href="/rider_application_agreement">Partner With Us</a>
               </div>
               <div class="imageTwo">
-                <img src="image/market2.png" alt=""></div>
+                <img src="<?php echo e(asset('newimage/market2.png')); ?>" alt=""></div>
             </div>
           </div>
         </div>

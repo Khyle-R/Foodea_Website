@@ -18,9 +18,11 @@ return new class extends Migration
             $table->id('product_id');
             $table->integer('merchant_id');
             $table->string('category_name');
+            $table->integer('category_id');
             $table->string('ingredients');
             $table->string('product_name');
             $table->decimal('price');
+            $table->integer('calories');
             $table->string('product_image');
             $table->string('tags');
             $table->integer('stock');

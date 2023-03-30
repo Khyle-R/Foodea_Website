@@ -104,6 +104,8 @@
           <li class="nav-item nav-category">
             <span class="nav-link">Navigation</span>
           </li>
+
+          @if(Session::get('Admin') == 'Admin')
           <li class="nav-item menu-items">
             <a class="nav-link" href="/index">
               <span class="menu-icon">
@@ -112,6 +114,18 @@
               <span class="menu-title">Dashboard</span>
             </a>
           </li>
+
+            <li class="nav-item menu-items">
+            <a class="nav-link" href="/admin_add_account">
+              <span class="menu-icon">
+                <i class="mdi mdi mdi-account-box"></i>
+              </span>
+              <span class="menu-title">Add Account</span>
+            </a>
+          </li>
+          @endif
+
+          @if(Session::get('AdminRole') == 'Inventory Officer')
           <li class="nav-item menu-items">
             <a
               class="nav-link"
@@ -148,6 +162,9 @@
               </ul>
             </div>
           </li>
+          @endif
+
+           @if(Session::get('AdminRole') == 'Sales Officer')
           <li class="nav-item menu-items">
             <a class="nav-link" href="/admin_orders">
               <span class="menu-icon">
@@ -172,6 +189,8 @@
               <span class="menu-title">Voucher</span>
             </a>
           </li>
+          @endif
+
           <li class="nav-item menu-items">
             <a class="nav-link" href="/admin_log">
               <span class="menu-icon">
@@ -180,15 +199,45 @@
               <span class="menu-title">Activity log</span>
             </a>
           </li>
-           <li class="nav-item menu-items">
-            <a class="nav-link" href="/admin_account">
+         {{-- <li class="nav-item menu-items">
+            <a
+              class="nav-link"
+              data-toggle="collapse"
+              href="#ui-basicc"
+              aria-expanded="false"
+              aria-controls="ui-basicc"
+            >
               <span class="menu-icon">
                 <i class="mdi mdi-account-box"></i>
               </span>
               <span class="menu-title">Account</span>
+              <i class="menu-arrow"></i>
+            </a>
+
+            <div class="collapse" id="ui-basicc">
+              <ul class="nav flex-column sub-menu">
+
+                <li class="nav-item">
+                  <a class="nav-link" href="/admin_account"
+                    >Account Settings</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/admin_add_account"
+                    >Add Account</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </li> --}}
+               <li class="nav-item menu-items">
+            <a class="nav-link" href="/admin_account">
+              <span class="menu-icon">
+                <i class="mdi mdi mdi-account-box"></i>
+              </span>
+              <span class="menu-title">Account Settings</span>
             </a>
           </li>
-         
         </ul>
       </nav>
       <!-- partial -->

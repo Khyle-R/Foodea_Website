@@ -108,7 +108,7 @@
           	</div>
     	</div>
 		<div class="col-12 col-md-5 col-lg-6">
-				<img class="image1 d-none d-md-block" src="image/pic.png" alt="">
+				<img class="image1 d-none d-md-block" src="<?php echo e(asset('newimage/pic.png')); ?>" alt="">
 		</div>
     </div>
 	</div>

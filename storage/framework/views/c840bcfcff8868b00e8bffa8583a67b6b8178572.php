@@ -54,7 +54,7 @@
                 <div class="card">
                 <div class="card-body">
                     <div class="text-center">
-                        <img class="circle mb-2" height="87" width="90" src="<?php echo e(url(('uploads/'. 'rider_documents'. '/'.$rider->rider_id.  '/'). $rider->rider_photo)); ?>" alt="">
+                        <img class="circle mb-2" height="87" width="90" src="<?php echo e($rider->rider_photo); ?>" alt="">
                         <p class="card-text black-name"><?php echo e($rider->firstname. ' ' .$rider->lastname); ?></p>
                     </div>
                      <div class="dropdown profile-action">
