@@ -13313,11 +13313,33 @@ input[type="button"].btn-block {
     border: 0;
 }
 
+.dropdown-items {
+    display: block;
+    width: 100%;
+    padding: 0.4rem 1.5rem;
+    clear: both;
+    font-weight: 400;
+    color: #ffffff;
+    text-align: inherit;
+    white-space: nowrap;
+    background-color: transparent;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.164);
+}
+
 .dropdown-item:hover,
 .dropdown-item:focus {
     color: #16181b;
     text-decoration: none;
     background-color: #13151b;
+}
+
+.dropdown-items:hover,
+.dropdown-items:focus {
+    color: #16181b;
+    border-radius: 20px;
+    text-decoration: none;
+    cursor: pointer;
+    background-color: #3b76f43b;
 }
 
 .dropdown-item.active,

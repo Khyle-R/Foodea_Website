@@ -181,13 +181,37 @@
             </a>
           </li>
           
-           <li class="nav-item menu-items">
-            <a class="nav-link" href="/superadmin_account">
+
+          <li class="nav-item menu-items">
+            <a
+              class="nav-link"
+              data-toggle="collapse"
+              href="#ui-basicc"
+              aria-expanded="false"
+              aria-controls="ui-basic"
+            >
               <span class="menu-icon">
-                <i class="mdi mdi-account-box"></i>
+                  <i class="mdi mdi-account-box"></i>
               </span>
               <span class="menu-title">Account</span>
+              <i class="menu-arrow"></i>
             </a>
+            <div class="collapse" id="ui-basicc">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item">
+
+                  <a class="nav-link" href="/superadmin_account"
+
+                    >Account Settings
+                <li class="nav-item">
+                  <a class="nav-link" href=""
+                    >Add Account</a
+                  >
+                </li>
+                
+              </ul>
+            </div>
+            
           </li>
         </ul>
       </nav>

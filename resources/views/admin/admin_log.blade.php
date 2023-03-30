@@ -42,7 +42,7 @@
                              @foreach ($log as $actlog)
                             <tr>
                                 <td>{{ $actlog->email }}</td>
-                                <td>Admin</td>
+                                 <td>{{ $actlog->name }}</td>
                                 <td>{{ $actlog->description }}</td>
                                 <td>{{ $actlog->date }}</td>
                             </tr>

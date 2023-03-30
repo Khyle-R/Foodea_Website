@@ -101,12 +101,9 @@
                             <span class="gray">Do not exceed 100 characters when entering the product details.</span>
                           </div>
                         
-                      
-                     
-
                           <div class="form-group">
                             <div class="file-loading">
-                              <input type="file" value="{{old('product_image')}}" name="product_image"/>
+                              <input type="file"  name="product_image"/>
                               <span style="color:red;">
                                 @error('product_image') {{ $message }}
                                 @enderror</span>

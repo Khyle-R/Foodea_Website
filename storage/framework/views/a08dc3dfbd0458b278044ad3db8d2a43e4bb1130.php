@@ -96,7 +96,7 @@
                                       <div class="row align-items-center ">
                                    
                                           <div class="text-center">
-                                      <img class="circle img-fluid mr-3" src="<?php echo e(url('uploads/'. 'merchant_documents'. '/'. $partner->merchant_id. '/'. $partner->logo)); ?>" alt="">
+                                      <img class="circle img-fluid mr-3" src="<?php echo e($partner->logo); ?>" alt="">
                                         </div>
                              
                                     
@@ -225,34 +225,42 @@
                        
                                        <div class="row px-2 mt-2">
                                         <label class="black width">Business Logo</label>
+                                              <img src="<?php echo e($partner->logo); ?>" alt="">
                                              <p class="black ml-5"><?php echo e($partner->logo); ?></p>
                                       </div>
                                        <div class="row px-2 mt-2">
                                         <label class="black width">Business Menu</label>
+                                        <img src="<?php echo e($partner->menu_logo); ?>" alt="">
                                           <p class="black ml-5"><?php echo e($partner->menu_photo); ?></p>
                                       </div>
                                        <div class="row px-2 mt-2">
                                         <label class="black width">Business Permit</label>
+                                        <a href="<?php echo e($partner->business_permit); ?>"><button>Download</button></a>
                                           <p class="black ml-5"><?php echo e($partner->business_permit); ?></p>
                                       </div>
                                        <div class="row px-2 mt-2">
                                         <label class="black width">BIR Certificate</label>
+                                        <a href="<?php echo e($partner->bir_cert); ?>"><button>Download</button></a>
                                           <p class="black ml-5"><?php echo e($partner->bir_cert); ?></p>
                                       </div>
                                        <div class="row px-2 mt-2">
                                         <label class="black width">Barangay Permit</label>
+                                         <a href="<?php echo e($partner->barangay_permit); ?>"><button>Download</button></a>
                                          <p class="black ml-5"><?php echo e($partner->barangay_permit); ?></p>
                                       </div>
                                        <div class="row px-2 mt-2">
                                         <label class="black width">DTI Certificate</label>
+                                        <a href="<?php echo e($partner->dti_cert); ?>"><button>Download</button></a>
                                          <p class="black ml-5"><?php echo e($partner->dti_cert); ?></p>
                                       </div>
                                        <div class="row px-2 mt-2">
                                         <label class="black width">Front License ID</label>
+                                        <img src="<?php echo e($partner->front_license); ?>" alt="">
                                          <p class="black ml-5"><?php echo e($partner->front_license); ?></p>
                                       </div>
                                       <div class="row px-2 mt-2">
                                         <label class="black width">Back License ID</label>
+                                        <img src="<?php echo e($partner->back_license); ?>" alt="">
                                          <p class="black ml-5"><?php echo e($partner->back_license); ?></p>
                                       </div>
                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

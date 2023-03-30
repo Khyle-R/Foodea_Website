@@ -104,7 +104,7 @@
                 </div>
             </div>
             <div class="col-12 col-md-5 col-lg-6">
-                    <img class="image1 d-none d-md-block" src="image/market2.png" alt="">
+                    <img class="image1 d-none d-md-block" src="{{ asset('newimage/market2.png') }}" alt="">
             </div>
         </div>
         </div>

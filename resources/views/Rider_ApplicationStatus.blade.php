@@ -246,44 +246,44 @@
                                        @if($rider->official_receipt) 
                                        <div class="row px-2 mt-2">
                                         <label class="black width">Official Receipt</label>
+                                        <p class="black ml-5">{{ $rider->official_receipt }}</p>
                                         <a href="{{$rider->official_receipt }}"><button>Download</button></a>
-                                          <p class="black ml-5">{{ $rider->official_receipt }}</p>
                                       </div>
                                         @endif
                                          @if($rider->cert_registration) 
                                        <div class="row px-2 mt-2">
                                         <label class="black width">Certificate of Registration</label>
-                                        <a href="{{$rider->cert_registration}}"><button>Download</button></a>
-                                          <p class="black ml-5">{{ $rider->cert_registration }}</p>
+                                        <p class="black ml-5">{{ $rider->cert_registration }}</p>
+                                        <a href="{{$rider->cert_registration}}"><button>Download</button></a> 
                                       </div>
                                         @endif
                                       @if ($rider->vehicle_ownership == 'Borrowed')
                                           <div class="row px-2 mt-2">
                                         <label class="black width">Authorization letter</label>
+                                        <p class="black ml-5">{{ $rider->auth_letter }}</p>
                                         <a href="{{$rider->auth_letter}}"><button>Download</button></a>
-                                         <p class="black ml-5">{{ $rider->auth_letter }}</p>
                                       </div>
                                         
                                       @endif
                                        @if ($rider->vehicle_ownership == 'Second-hand')
                                           <div class="row px-2 mt-2">
                                         <label class="black width">Notarized Deed of Sale</label>
-                                        <a href="{{$rider->deed_sale}}"><button>Download</button></a>
-                                         <p class="black ml-5">{{ $rider->deed_sale }}</p>
+                                        <p class="black ml-5">{{ $rider->deed_sale }}</p>
+                                        <a href="{{$rider->deed_sale}}"><button>Download</button></a> 
                                       </div>
                                         
                                       @endif
                                     
                                        <div class="row px-2 mt-2">
                                         <label class="black width">NBI Clearance</label>
-                                        <a href="{{$rider->nbi_clearance}}"><button>Download</button></a>
-                                         <p class="black ml-5">{{ $rider->nbi_clearance }}</p>
+                                        <p class="black ml-5">{{ $rider->nbi_clearance }}</p>
+                                        <a href="{{$rider->nbi_clearance}}"><button>Download</button></a> 
                                       </div>
                                        @if($rider->drug_test) 
                                        <div class="row px-2 mt-2">
                                         <label class="black width">Drug Test</label>
-                                        <a href="{{$rider->drug_test}}"><button>Download</button></a>
-                                         <p class="black ml-5">{{ $rider->drug_test }}</p>
+                                        <p class="black ml-5">{{ $rider->drug_test }}</p>
+                                        <a href="{{$rider->drug_test}}"><button>Download</button></a> 
                                       </div>
                                       @endif
                                        @if($rider->vehicle_front) 
