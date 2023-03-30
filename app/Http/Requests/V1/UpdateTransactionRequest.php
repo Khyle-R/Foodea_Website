@@ -27,20 +27,20 @@ class UpdateTransactionRequest extends FormRequest
 
         if($method == 'PUT'){
             return [
-                'order_id' => ['required', 'numeric'],
+                'order_key' => ['required'],
                 'merchant_id' => ['required', 'numeric'],
                 'customer_id' => ['required', 'numeric'],
                 'rider_id' => ['required', 'numeric'],
-                'product_id' => ['required', 'numeric'],
-                'order_status' => ['required'],
+                'products_id' => ['required', 'numeric'],
+                'order_status' => ['required']
             ];
         } else {
             return [
-                'order_id' => ['sometimes', 'required', 'numeric'],
+                'order_key' => ['sometimes', 'required'],
                 'merchant_id' => ['sometimes', 'required', 'numeric'],
                 'customer_id' => ['sometimes', 'required', 'numeric'],
                 'rider_id' => ['sometimes', 'required', 'numeric'],
-                'product_id' => ['sometimes', 'required', 'numeric'],
+                'products_id' => ['sometimes', 'required', 'numeric'],
                 'order_status' => ['sometimes', 'required'],
             ];
         }
