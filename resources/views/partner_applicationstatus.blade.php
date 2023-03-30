@@ -220,14 +220,10 @@
                                   </div>
 
                                   <div class="row align-items-center justify-content-around mt-2">
-                                    <div class="col-sm-5 ml-sm-5">
+                                    <div class="updoc col-sm-5 ml-sm-5">
                                       <h4 class="title-border flex-wrap mb-4">Uploaded Documents</h4>
                        
-                                       <div class="row px-2 mt-2">
-                                        <label class="black width">Business Logo</label>
-                                              <img src="{{ $partner->logo}}" alt="">
-                                             <p class="black ml-5">{{ $partner->logo }}</p>
-                                      </div>
+                                  
                                        <div class="row px-2 mt-2">
                                         <label class="black width">Business Menu</label>
                                         <img src="{{ $partner->menu_logo}}" alt="">
@@ -235,22 +231,22 @@
                                       </div>
                                        <div class="row px-2 mt-2">
                                         <label class="black width">Business Permit</label>
-                                        <button src="{{ $partner->logo}}">Download</button>
+                                        <a href="{{ $partner->logo}}"><button src="">Download</button></a>
                                           <p class="black ml-5">{{ $partner->business_permit }}</p>
                                       </div>
                                        <div class="row px-2 mt-2">
                                         <label class="black width">BIR Certificate</label>
-                                        <button src="{{ $partner->bir_cert}}">Download</button>
+                                        <a href="{{ $partner->bir_cert}}"><button src="">Download</button></a>
                                           <p class="black ml-5">{{ $partner->bir_cert }}</p>
                                       </div>
                                        <div class="row px-2 mt-2">
                                         <label class="black width">Barangay Permit</label>
-                                        <button src="{{ $partner->barangay_permit}}">Download</button>
+                                        <a href="{{ $partner->barangay_permit}}"><button src="">Download</button></a>
                                          <p class="black ml-5">{{ $partner->barangay_permit }}</p>
                                       </div>
                                        <div class="row px-2 mt-2">
                                         <label class="black width">DTI Certificate</label>
-                                        <button src="{{ $partner->dti_cert}}">Download</button>
+                                       <a href="{{ $partner->dti_cert}}"><button src="">Download</button></a>
                                          <p class="black ml-5">{{ $partner->dti_cert }}</p>
                                       </div>
                                        <div class="row px-2 mt-2">
@@ -266,6 +262,7 @@
                                        @endforeach
 
                                     </div>
+                                    
                                      <div class="col-sm-5 ml-sm-5">
                                    <div class="row px-2 mt-2">
                                     @if(Session::get('partnerID'))
@@ -285,6 +282,7 @@
                             </div>
                         </div>
                     </div>
+                    
         
     </div>
      <!-- </div> -->
