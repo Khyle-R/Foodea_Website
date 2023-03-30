@@ -229,14 +229,10 @@
                                   </div>
 
                                   <div class="row align-items-center justify-content-around mt-5">
-                                    <div class="col-sm-5 ml-sm-5">
+                                    <div class="updoc col-sm-5 ml-sm-5">
                                       <h4 class="title-border flex-wrap mb-4">Uploaded Documents</h4>
                        
-                                       <div class="row px-2 mt-2">
-                                        <label class="black width">Rider Photo</label>
-                                        <img src="{{$rider->rider_photo}}" alt="">
-                                             <p class="black ml-5 spacing">{{ $rider->rider_photo }}</p>
-                                      </div>
+                              
                                        <div class="row px-2 mt-2">
                                         <label class="black width">Driver License</label>
                                         <img src="{{$rider->driver_license}}" alt="">
