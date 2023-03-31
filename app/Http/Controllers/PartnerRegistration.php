@@ -322,6 +322,13 @@ class PartnerRegistration extends Controller
 
             $addCategory->save();
             }
+        } else {
+            $addCategory = new tbl_category();
+            $addCategory->main_category = $request->categoryName;
+            $addCategory->description = $request->description;
+            $addCategory->merchant_id = session('merchant_id');
+
+            $addCategory->save();
         }
         
         return back();
