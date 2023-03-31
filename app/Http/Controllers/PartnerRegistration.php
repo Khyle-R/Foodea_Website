@@ -255,7 +255,7 @@ class PartnerRegistration extends Controller
 
         if ($request->hasFile('product_image')) 
         {
-            $image_p = $request->file('product_image')->store('merchant_documents/'.$request->merchant_id.'', 's3', ['visibility', 'public']);
+            $image_p = $request->file('product_image')->store('product_images', 's3', ['visibility', 'public']);
             $filename1 = Storage::disk('s3')->url($image_p);
         
             $addProd->merchant_id = Session::get('merchant_id');

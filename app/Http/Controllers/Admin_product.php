@@ -41,26 +41,26 @@ class Admin_product extends Controller
         ->first();
         if($user)
         {
-        $log = new tbl_activitylog();
-                $log->merchant_id = $user->merchant_id;
-                $log->email = $user->email;
+            $log = new tbl_activitylog();
+            $log->merchant_id = $user->merchant_id;
+            $log->email = $user->email;
                 if(Session::get('AdminRole')){
-                     $log->name = Session::get('AdminRole');
+                        $log->name = Session::get('AdminRole');
                 }
                 else{
                     $log->name = Session::get('Admin');
                 }
-               
-                $log->description = 'Has Log Out';
-                $res = $log->save();
-                if($res){
-       Session::pull('loginID');
-       Session::pull('AdminRole');
-       Session::pull('Admin');
-       Cookie::queue(Cookie::forget('partner_email'));
-        Cookie::queue(Cookie::forget('partner_password'));  
-        return redirect('/rider_login');
-                }
+            
+            $log->description = 'Has Log Out';
+            $res = $log->save();
+            if($res){
+                Session::pull('loginID');
+                Session::pull('AdminRole');
+                Session::pull('Admin');
+                Cookie::queue(Cookie::forget('partner_email'));
+                Cookie::queue(Cookie::forget('partner_password'));  
+                return redirect('/rider_login');
+            }
         }
     }
 
