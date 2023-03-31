@@ -102,12 +102,10 @@
                           </div>
                         
                           <div class="form-group">
-                            <div class="file-loading">
-                              <input type="file"  name="product_image"/>
-                              <span style="color:red;">
-                                @error('product_image') {{ $message }}
-                                @enderror</span>
-                            </div>
+                            <input type="file"  name="product_image"/>
+                            <span style="color:red;">
+                              @error('product_image') {{ $message }}
+                              @enderror</span>
                           </div>
                           <div class="row">
                             <div class="col-md">
