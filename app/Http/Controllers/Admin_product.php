@@ -240,12 +240,13 @@ class Admin_product extends Controller
 
             if($tmp_file)
             {
-                
+                Storage::copy('posts/tmp/'. $tmp_file->folder. '/' . $tmp_file->file, 'posts/' .$tmp_file->folder . '/' .$tmp_file->file);
+
                 tbl_product::create([
                     'merchant_id' => session('loginID'),
                     'product_name' => $request->product_name,
                     'stock' => $request->stock,
-                    'product_image' => $tmp_file->file,
+                    'product_image' => $tmp_file->folder. '/' .$tmp_file->file_name,
                     'price' => $request->price,
                     'category_name' => $request->category,
                     'status' => $request->status,
@@ -253,37 +254,15 @@ class Admin_product extends Controller
                     'description' => $request->description,
                     'ingredients' => $request->ingredients
                 ]);
-                
+                Storage::deleteDirectory('posts/tmp/'. $tmp_file->folder);
                 $tmp_file->delete();
-                return redirect('/product')->with('success', 'Added Success.');
+                return redirect('/')->with('success', 'Added Success.');
             }
-            return redirect('/product')->with('danger', 'Please Upload an Image.');
+            return redirect('/')->with('danger', 'Please Upload an Image.');
 
 
     }
-    public function tmpUpload(Request $request)
-    {
-        if($request->hasFile('product_image'))
-        {
-            $merchant_id = session('loginID');
-            $image = $request->file('product_image');
-            $filename = $image->getClientOriginalName();
-            $folder = uniqid('post', true);
-            $image->move(('uploads/'. 'product_image'. '/'.$merchant_id), $filename);
-            TemporaryFile::create([
-                'folder' => $folder,
-                'file' => $filename
-            ]);
-            return $folder;
-        }
-        return '';
-    }
 
-    public function tmpDelete(Request $request)
-    {
-        $tmp_file = TemporaryFile::where('folder', $request->product_image)->first();
-        $tmp_file->delete();
-    }
 
     //CATEGORY
     public function addCategory(Request $request)
@@ -617,5 +596,20 @@ class Admin_product extends Controller
 
     }
 
-
+    public function tmpUpload(Request $request)
+    {
+        if($request->hasFile('product_image'))
+        {
+            $image = $request->file('product_image');
+            $filename = $image->getClientOriginalName();
+            $folder = uniqid('post', true);
+            $image->storeAs('posts/tmp/' .$folder, $filename);
+            TemporaryFile::create([
+                'folder' => $folder,
+                'file' => $filename
+            ]);
+            return $folder;
+        }
+        return '';
+    }
 }
