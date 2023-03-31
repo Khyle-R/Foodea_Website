@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Session;
 use App\Models\tbl_merchant_application;
 use Illuminate\Support\Facades\Storage;
 use App\Clients\SendGridClient;
+use App\Models\tbl_product;
 
 class Home extends Controller
 {
@@ -63,11 +64,14 @@ class Home extends Controller
 
           $vehicle =  tbl_merchant_info::where('merchant_id', Session::get('merchant_id'))
             ->delete();
-        
+            
+         $product = tbl_product::where('merchant_id', Session::get('merchant_id'))
+        ->delete();
+
          $application =  tbl_merchant_application::where('merchant_id', Session::get('merchant_id'))
             ->delete();
 
-            if($account || $document || $vehicle || $application){
+            if($account || $document || $vehicle || $application || $product){
             Session::pull('merchant_id');
             Session::pull('verification');
             Session::pull('partnerstatus');
@@ -106,6 +110,12 @@ class Home extends Controller
          return view('contact');
     }
 
+    public function DownloadAppIndex(){ 
+         return view('download_app');
+    }
+    public function DownloadAppUserIndex(){
+        return view('download_app_user');
+    }
     public function ContactUssend(Request $request){
         // $mailData = [
         //     'title' => 'Password Reset',

@@ -7,10 +7,13 @@ use App\Models\tbl_category;
 use Illuminate\Http\Request;
 use App\Models\tbl_inventory;
 use App\Models\tbl_activitylog;
+use App\Models\tbl_admin_role;
 use App\Models\tbl_merchant_info;
 use Illuminate\Support\Facades\DB;
 use App\Models\tbl_merchant_account;
+use App\Models\tbl_merchant_document;
 use App\Models\tbl_partner_accounts;
+use App\Models\TemporaryFile;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Session;
@@ -25,8 +28,11 @@ class Admin_product extends Controller
        $productSold = DB::table('tbl_product')->count();
        $totalRevenue = DB::table('tbl_product')->count();
        $totalProduct = DB::table('tbl_product')->count();
-
-    return view('admin.dashboard',['totalOrders' => $totalOrders, 'productSold' => $productSold, 'totalRevenue' => $totalRevenue, 'totalProduct' => $totalProduct]);
+    
+    $product = tbl_product::where('merchant_id', Session::get('loginID'))
+    ->get();
+    
+    return view('admin.dashboard',['totalOrders' => $totalOrders, 'productSold' => $productSold, 'totalRevenue' => $totalRevenue, 'totalProduct' => $totalProduct,], compact('product'));
     }
     
    public function logout(){
@@ -38,14 +44,22 @@ class Admin_product extends Controller
         $log = new tbl_activitylog();
                 $log->merchant_id = $user->merchant_id;
                 $log->email = $user->email;
-                $log->name = $user->firstname. ' ' .$user->lastname;
+                if(Session::get('AdminRole')){
+                     $log->name = Session::get('AdminRole');
+                }
+                else{
+                    $log->name = Session::get('Admin');
+                }
+               
                 $log->description = 'Has Log Out';
                 $res = $log->save();
                 if($res){
        Session::pull('loginID');
-       Cookie::queue(Cookie::forget('email'));
-        Cookie::queue(Cookie::forget('password'));  
-        return redirect('/login');
+       Session::pull('AdminRole');
+       Session::pull('Admin');
+       Cookie::queue(Cookie::forget('partner_email'));
+        Cookie::queue(Cookie::forget('partner_password'));  
+        return redirect('/rider_login');
                 }
         }
     }
@@ -203,14 +217,11 @@ class Admin_product extends Controller
             }
         }
     }
-
+//
     public function addProduct(Request $request)
     {
 
-        
-        $addProd=new tbl_product();
-
-       
+              $addProd=new tbl_product();
 
             if ($request->hasFile('product_image')) 
             {
@@ -232,13 +243,38 @@ class Admin_product extends Controller
                 // $addProd->tags=$request->tags_category;
                 $addProd->description = $request->description;
                 $addProd->ingredients= $request->ingredients;
-    
             }
 
             $addProd->save();
             
             return redirect('product');
-        
+
+
+            $tmp_file = TemporaryFile::where('folder', $request->product_image)->first();
+
+            if($tmp_file)
+            {
+                Storage::copy('posts/tmp/'. $tmp_file->folder. '/' . $tmp_file->file, 'posts/' .$tmp_file->folder . '/' .$tmp_file->file);
+
+                tbl_product::create([
+                    'merchant_id' => session('loginID'),
+                    'product_name' => $request->product_name,
+                    'stock' => $request->stock,
+                    'product_image' => $tmp_file->folder. '/' .$tmp_file->file_name,
+                    'price' => $request->price,
+                    'category_name' => $request->category,
+                    'status' => $request->status,
+                    'tags' => $request->tags_category,
+                    'description' => $request->description,
+                    'ingredients' => $request->ingredients
+                ]);
+                Storage::deleteDirectory('posts/tmp/'. $tmp_file->folder);
+                $tmp_file->delete();
+                return redirect('/')->with('success', 'Added Success.');
+            }
+            return redirect('/')->with('danger', 'Please Upload an Image.');
+
+
     }
 
 
@@ -501,7 +537,7 @@ class Admin_product extends Controller
 
         $log = tbl_activitylog::all()
         ->where('merchant_id', Session::get('loginID'));
-        
+
         return view('admin.admin_log', compact('log'));
     }
 
@@ -572,5 +608,70 @@ class Admin_product extends Controller
             return back();
        }
 
+    }
+
+    public function tmpUpload(Request $request)
+    {
+        if($request->hasFile('product_image'))
+        {
+            $image = $request->file('product_image');
+            $filename = $image->getClientOriginalName();
+            $folder = uniqid('post', true);
+            $image->storeAs('posts/tmp/' .$folder, $filename);
+            TemporaryFile::create([
+                'folder' => $folder,
+                'file' => $filename
+            ]);
+            return $folder;
+        }
+        return '';
+    }
+
+    public function AccountAddIndex(){
+
+        $id = Session::get('loginID');
+
+        $Data = tbl_admin_role::where('merchant_id', $id)
+        ->get();
+       
+        return view('admin.admin_add_account', compact('Data'));
+    }
+
+    public function AddAccount(){
+        return view('admin.admin_add_email');
+    }
+    
+    public function AddNewAccount(Request $request){
+        $request->validate([
+
+            'password' => [
+            'required', 'confirmed',
+            Password::min(8)->letters()->numbers()->symbols()
+            ],
+            'password_confirmation' => 'required',
+            'status' => 'required',
+            'role' => 'required',
+             'email' => 'required|email|unique:tbl_rider_account|unique:tbl_merchant_account|unique:tbl_admin_role',
+        ]);
+        
+        $id = Session::get('loginID');
+        $document_id = tbl_merchant_document::where('merchant_id', $id)->first();
+        $info_id = tbl_merchant_info::where('merchant_id', $id)->first();
+
+        $admin = new tbl_admin_role();
+        $admin->merchant_id = $id;
+        $admin->merchant_document_id = $document_id->merchant_document_id;
+        $admin->merchant_info_id = $info_id->merchantinfo_id;
+        $admin->email = $request->email;
+        $admin->password = Hash::make($request->password);
+        $admin->status = $request->status;
+        $admin->role = $request->role;
+
+        $res = $admin->save();
+        
+        if($res){
+            $request->session()->put('success', 'Account Added');
+            return redirect('/admin_add_account');
+        }
     }
 }

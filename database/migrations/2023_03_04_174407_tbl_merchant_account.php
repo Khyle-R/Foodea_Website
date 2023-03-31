@@ -30,6 +30,7 @@ return new class extends Migration
             $table->string('city');
             $table->string('barangay');
             $table->integer('zip_code');
+            $table->string('role');
             $table->timestamp('date')->useCurrent();
             });
 

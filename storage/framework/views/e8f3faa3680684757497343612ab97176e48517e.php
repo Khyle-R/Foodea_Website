@@ -30,7 +30,7 @@
     <!--- NAVBAR -->
     <nav class="navbar navbar-expand-lg px-2 mx -2 px-xs-3 px-md-4 px-lg-5 mx-xs-3 mx-md-4 mx-lg-5">
       <div class="container-fluid px-3">
-        <a href="/" class="navbar-brand">
+        <a href="/" class="navbar-brand mb-0 h1">
           <img src="image/foodea1.png" alt="" />
           <span>FOODEA</span>
         </a>
@@ -85,14 +85,9 @@
                 <a href="/contact" class="nav-link">Contact Us</a>
               </li>
             </ul>
+            
             <a
-            href="/rider_application_agreement"
-            class="text-secondary mt-2 mx-5"
-            style="text-decoration: none;">
-              Signup
-            </a>
-            <a
-              href="/login_type"
+               href="/rider_login"
               class="btn btn-danger btn-sm py-2 px-5 rounded"
             >
               Login
@@ -113,7 +108,7 @@
           	</div>
     	</div>
 		<div class="col-12 col-md-5 col-lg-6">
-				<img class="image1 d-none d-md-block" src="image/pic.png" alt="">
+				<img class="image1 d-none d-md-block" src="<?php echo e(asset('newimage/pic.png')); ?>" alt="">
 		</div>
     </div>
 	</div>

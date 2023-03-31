@@ -17,14 +17,14 @@
               <!---/ALERT BOX --->
                         </div>
                         <div class="page-header">
-                            <h3 class="page-title black">Rider Application</h3>
+                            <h3 class="page-title black">Merchant Application</h3>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item">
                                         <a href="#">Menu</a>
                                     </li>
                                     <li class="breadcrumb-item active" aria-current="page">
-                                       Rider Application
+                                       Merchant Application
                                     </li>
                                 </ol>
                             </nav>
@@ -35,9 +35,9 @@
                                 <ul class="nav nav-tabs nav-tabs-solid nav-justified">
                                 <li class="nav-size nav-item"><a class="nav-link active" href="">All</a></li>
                                 <li class="nav-size nav-item"><a class="nav-link" href="/superadmin_merchantpending">Pending</a></li>
-                                <li class="nav-size nav-item"><a class="nav-link" href="/superadmin_merchantreview">Reviewing</a></li>
+                                {{-- <li class="nav-size nav-item"><a class="nav-link" href="/superadmin_merchantreview">Reviewing</a></li> --}}
                                 <li class="nav-size nav-item"><a class="nav-link" href="/superadmin_merchantaccept">Accepted</a></li>
-                                <li class="nav-size nav-item"><a class="nav-link" href="/superadmin_merchantarchive">Archived</a></li>
+                                <li class="nav-size nav-item"><a class="nav-link" href="/superadmin_merchantarchive">Rejected</a></li>
                                         
                                 </ul>
                             </div>
@@ -84,12 +84,12 @@
                       <div class="card-body">
                         <div class="d-flex align-items-center justify-content-between px-3">
                         <div class="dash-widget-info">
-                             @if ($review)
-                                    <h3>{{ $review }}</h3>
+                             @if ($accept)
+                                    <h3>{{ $accept }}</h3>
                                     @else
                                      <h3>0</h3>
                             @endif
-                            <span>Reviewing</span>
+                            <span>Accepted</span>
                         </div>
                          <span class="dash-widget-icon"><i class="mdi mdi-file-check"></i></span>
                     </div>
@@ -106,7 +106,7 @@
                                     @else
                                      <h3>0</h3>
                             @endif
-                            <span>Archived</span>
+                            <span>Rejected</span>
                         </div>
                          <span class="dash-widget-icon"><i class="mdi mdi-file-check"></i></span>
                     </div>
@@ -150,7 +150,7 @@
                                                 <i class=" pending mdi mdi-radiobox-marked"></i> {{ $partner->status }}
                                             </a>
                                             <div class="bg-white dropdown-menu dropdown-menu-right">
-                                                <a data-toggle="modal" data-target="#ReviewModal{{ $partner->merchant_id }}" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-success"></i> Reviewing</a>
+                                                {{-- <a data-toggle="modal" data-target="#ReviewModal{{ $partner->merchant_id }}" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-success"></i> Reviewing</a> --}}
                                                 <a data-toggle="modal" data-target="#AcceptedModal{{ $partner->merchant_id }}" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-danger"></i> Accepted</a>
                                                 <a data-toggle="modal" data-target="#RejectModal{{ $partner->merchant_id }}" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-warning"></i> Rejected</a>
                                             </div>

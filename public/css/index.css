@@ -42,7 +42,7 @@ ul {
 }
 
 nav .navbar-brand span{
-  font-size: clamp(0.75rem, 0.8040rem + 1.3120vw, 1.16rem);
+  font-size: clamp(0.75rem, 0.6040rem + 1.3120vw, 1.16rem);
   position:relative;
   text-decoration: none;
   color: #f54748;
@@ -116,11 +116,11 @@ nav .navbar-brand span{
 
 .partnerbtn{
   position: inherit;
-  width: 20px;
+  width: 10px;
 }
 
 .section {
-  width: 70%;
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -129,7 +129,22 @@ nav .navbar-brand span{
 .content {
   display: block;
   flex-direction: column;
+  content: 50%;
 }
+
+.carousel-indicators [data-bs-target]{
+  background-color: #f54748 !important;
+}
+
+.carousel-control-next,
+.carousel-control-prev /*, .carousel-indicators */ {
+    filter: invert(100%);
+}
+
+.c-item {
+  height: 75vh;
+}
+
 
 .content span {
   color: #f54748;
@@ -137,7 +152,7 @@ nav .navbar-brand span{
 }
 
 .content h1 {
-  font-size: clamp(2rem, 1.0938rem + 4.0278vw, 5.625rem);
+  font-size: clamp(2rem, 1.0938rem + 4.0278vw, 4rem);
   color: #363636;
   font-family: "Montserrat", sans-serif;
   font-weight: bold;
@@ -152,7 +167,7 @@ nav .navbar-brand span{
 
 .content a {
   background-color: #f54748;
-  padding: 16px 40px;
+  padding: 16px 20px;
   border-radius: 50px;
   color: #fff;
   letter-spacing: 1px;
@@ -166,7 +181,27 @@ nav .navbar-brand span{
 }
 
 .image img {
-  width: clamp(22.5rem, -4.8214rem + 48.5714vw, 43.75rem);
+  width: clamp(22.5rem, -4.8214rem + 48.5714vw, 27rem);
+}
+
+.imageOne img{
+  width: clamp(22.5rem, -4.8214rem + 48.5714vw, 43rem);
+}
+
+.imageTwo img{
+  width: clamp(22.5rem, -4.8214rem + 48.5714vw, 35rem);
+}
+
+.image {
+  width: 50%;
+}
+
+.imageOne{
+  width: 50%;
+}
+
+.imageTwo{
+  width: 50%;
 }
 
 .section-2 {
@@ -516,6 +551,10 @@ nav .navbar-brand span{
 
 @media (max-width:900px){
 
+  .c-item {
+    height: 50vh;
+  }
+
   .service img {
     width: clamp(13.75rem, 18.8542rem + -12.9630vw, 11.5625rem);
   }
@@ -608,6 +647,26 @@ nav .navbar-brand span{
   .image img {
     display: none;
   }
+  .imageOne img{
+     display: none;
+  }
+  .imageTwo img{
+    display: none;
+  }
+  .image {
+    display: none;
+  }
+
+  .imageOne{
+    display:none;
+  }
+
+  .imageTwo{
+    display: none;
+  }
+  .content {
+    content: 100%;
+  }
   .delivery p {
     width: 85%;
     margin: 0 auto;
@@ -633,7 +692,7 @@ nav .navbar-brand span{
   }
 
   .section {
-    width: 70%;
+    width: 100%;
     margin: 20px auto;
   }
   

@@ -70,8 +70,60 @@
         <div class="content-wrapper container mt-2 px-3 py-2">
           <div class="col-12 col-sm-12 col-md-9 col-lg-7 justify-content-center align-items-center mx-auto px-0">
               <div class="right">
+
+                
+      <!-- show Modal -->
+            <div class="modal fade" id="ShowModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-scrollable  modal-lg">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title text-white" id="exampleModalLabel">Getting latitute and longitude</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  
+                  <div class="modal-body">
+
+                    <div class="mt-3">
+                  <label>
+                    <b>Step 1:</b>
+                    <span>  Go to this link</span><a href="https://www.google.com/maps" style="color:red;"> https://www.google.com/maps</a> <span> and search the location of your business</span>
+                  </label>
+                    </div>
+
+                     <div class="mt-5 mb-5">
+                  <label>
+                    <b>Step 2:</b>
+                    <span>  Right click the pinned location and copy the</span> <br><span>first value which is latitude (ex. 14.72249) and second value longitude (ex. 121.04019)</span>
+                  </label>
+                  <div class="text-center">
+                  <img class="img-fluid mt-3" src="<?php echo e(asset('newimage/gmap.png')); ?>" alt="">
+                </div>    
+                </div>
+
+                <div class="mt-5">
+                  <label>
+                    <b>Step 3:</b>
+                    <span>  Paste the copied values to given inputs</span>
+                  </label>
+                  <div class="text-center">
+                  <img class="img-fluid mt-3" src="<?php echo e(asset('newimage/latitude.png')); ?>" alt="">
+                </div>    
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                  <button type="button" data-bs-dismiss="modal" class="red-btn">Close</button>
+                  
+                  </div>
+                </div>
+              </div>
+            </div>
+
+        <!-- End Content Here -->
+
               <h2>Secure your Account</h2>
-              <p>Please fill up the form below.</p>
+              <p>Please fill out the form below.</p>
 
                 <!--GET PARTNER ID-->
 
@@ -189,6 +241,42 @@ $message = $__bag->first($__errorArgs[0]); ?> <?php echo e($message); ?>
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?></span>
+              </div>
+
+              <div class="form-group row mt-4">
+             
+               <div class="col-lg-6">
+                <label>Longitude  <a href="#" data-bs-toggle="modal" data-bs-target="#ShowModal" style="color:#BD9140;font-size: 13px;"> (Click here for example)</a></label> 
+                <input type="text"  name="longitude" class="decimal form-control form-control-lg"/>
+                <span
+                style="color:red;">
+                <?php $__errorArgs = ['longitude'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> <?php echo e($message); ?>
+
+                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?></span>
+              </div>
+               <div class="col-lg-6">
+                <label>Latidute</label> 
+                <input  type="text" name="latitude" class="decimal form-control form-control-lg"/>
+                <span
+                style="color:red;">
+                <?php $__errorArgs = ['latitude'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?> <?php echo e($message); ?>
+
+                <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?></span>
+              </div>
               </div>
 
               <div class="form-group">
@@ -348,8 +436,20 @@ unset($__errorArgs, $__bag); ?></span>
         </div>
 
     <!-- End Content Here -->
+        
+
     <!-- Show Hide Password -->
- 
+        <script>
+        $('.decimal').keyup(function(){
+    var val = $(this).val();
+        if(isNaN(val)){
+            val = val.replace(/[^0-9\.]/g,'');
+            if(val.split('.').length>2) 
+                val =val.replace(/\.+$/,"");
+        }
+        $(this).val(val); 
+    });
+        </script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"

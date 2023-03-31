@@ -16,13 +16,17 @@ return new class extends Migration
         Schema::create('tbl_orders', function (Blueprint $table) {
 
             $table->id('order_id');
-            $table->integer('merchant_id');
             $table->integer('customer_id');
+            $table->integer('merchant_id');
             $table->integer('product_id');
+            $table->string('order_key');
+            $table->integer('restaurant_id');
             $table->integer('quantity');
             $table->double('total');
             $table->string('status');
             $table->string('payment_type');
+            $table->double('latitude', 10,7);
+            $table->double('longitude', 10,7);
             $table->timestamp('date')->useCurrent();
             });
 

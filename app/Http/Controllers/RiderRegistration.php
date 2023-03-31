@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Mail\MailVerification;
 use App\Mail\PasswordVerification;
+use App\Models\tbl_activitylog;
+use App\Models\tbl_merchant_account;
 use App\Models\tbl_vehicle_infos;
 use App\Models\tbl_rider_accounts;
 use App\Models\tbl_rider_document;
@@ -22,6 +24,8 @@ use App\Models\tbl_merchant_application;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Support\Facades\Storage;
 use App\Clients\SendGridClient;
+use App\Models\tbl_admin_role;
+use App\Models\tbl_merchant_info;
 
 class RiderRegistration extends Controller
 {
@@ -46,26 +50,44 @@ class RiderRegistration extends Controller
 
          $email = tbl_rider_accounts::where('email', $request->email)
           ->first();
-          
+         $merchant = tbl_partner_accounts::where('email', $request->email)
+          ->first();
+
           if($email){
          $code = mt_rand(1000, 9999);
 
-                    //    $mailData = [
-                    //     'title' => 'Password Reset',
-                    //     'body' => 'test',
-                    //     'code' => $code,
-                    //     'fname' => $email->firstname,
-                    //     'lname' => $email->lastname,
-                    //    ];
-                    //    Mail::to($email)->send(new PasswordVerification($mailData));
+                       $mailData = [
+                        'title' => 'Password Reset',
+                        'body' => 'test',
+                        'code' => $code,
+                        'fname' => $email->firstname,
+                        'lname' => $email->lastname,
+                       ];
+                       Mail::to($email)->send(new PasswordVerification($mailData));
 
-                       $html = view('email.forgotpass')->with('code', $code)->render();
-                    SendGridClient::sendEmail($request->email, "Password Reset", $html);
+                    // $html = view('email.forgotpass')->with('code', $code)->render();
+                    // SendGridClient::sendEmail($request->email, "Password Reset", $html);
 
                     $request->session()->put('verification', $code);
                     $request->session()->put('email', $request->email);
                      return redirect('/rider_forgotpass1');
          } 
+         if($merchant){
+            $code = mt_rand(1000, 9999);
+
+                       $mailData = [
+                        'title' => 'Password Reset',
+                        'body' => 'test',
+                        'code' => $code,
+                        'fname' => $merchant->firstname,
+                        'lname' => $merchant->lastname,
+                       ];
+                       Mail::to($merchant)->send(new PasswordVerification($mailData));
+
+                    $request->session()->put('verification', $code);
+                    $request->session()->put('email', $request->email);
+                     return redirect('/rider_forgotpass1');
+         }
          else{
             return back()->with('fail', 'Email does not exist');
          }
@@ -74,8 +96,14 @@ class RiderRegistration extends Controller
      public function RiderForgotPass2(){
         $email = tbl_rider_accounts::where('email', Session::get('email'))
         ->first();
-        
-        return view('rider_forgotpass1', compact('email'));
+        if($email){
+            return view('rider_forgotpass1', compact('email'));
+        }
+        $merchant = tbl_partner_accounts::where('email', Session::get('email'))
+        ->first();
+        if($merchant){
+            return view('rider_forgotpass1', compact('merchant'));
+        }
      }
 
      public function RiderForgotVerify(Request $request){
@@ -94,22 +122,39 @@ class RiderRegistration extends Controller
      public function RiderForgotResend(Request $request){
          $email = tbl_rider_accounts::where('email', Session::get('email'))
           ->first();
+          $merchant = tbl_partner_accounts::where('email', Session::get('email'))
+          ->first();
           
           if($email){
          $code = mt_rand(1000, 9999);
 
-                    //    $mailData = [
-                    //     'title' => 'Password Reset',
-                    //     'body' => 'test',
-                    //     'code' => $code,
-                    //     'fname' => $email->firstname,
-                    //     'lname' => $email->lastname,
-                    //    ];
-                    //    Mail::to($email)->send(new PasswordVerification($mailData));
+                       $mailData = [
+                        'title' => 'Password Reset',
+                        'body' => 'test',
+                        'code' => $code,
+                        'fname' => $email->firstname,
+                        'lname' => $email->lastname,
+                       ];
+                       Mail::to($email)->send(new PasswordVerification($mailData));
 
-                       $receiverEmail = Session::get('email');
-                       $html = view('email.forgotpass')->with('code', $code)->render();
-                        SendGridClient::sendEmail($receiverEmail, "Password Reset", $html);
+                    //    $receiverEmail = Session::get('email');
+                    //    $html = view('email.forgotpass')->with('code', $code)->render();
+                    //     SendGridClient::sendEmail($receiverEmail, "Password Reset", $html);
+
+                    $request->session()->put('verification', $code);
+                     return back();
+     }
+     if($merchant){
+         $code = mt_rand(1000, 9999);
+
+                       $mailData = [
+                        'title' => 'Password Reset',
+                        'body' => 'test',
+                        'code' => $code,
+                        'fname' => $merchant->firstname,
+                        'lname' => $merchant->lastname,
+                       ];
+                       Mail::to($merchant)->send(new PasswordVerification($mailData));
 
                     $request->session()->put('verification', $code);
                      return back();
@@ -130,11 +175,24 @@ class RiderRegistration extends Controller
         ]);
         if($request->password == $request->password_confirmation){
             $hash = Hash::make($request->password_confirmation);
+            
             $res = tbl_rider_accounts::where('email', Session::get('email'))
-            ->update([
+             ->first();
+          
+            if($res){
+                 tbl_rider_accounts::where('email', Session::get('email'))
+                 ->update([
                 'password' => $hash
             ]);
-            if($res){
+                Session::pull('email');
+                Session::pull('verification');
+                return redirect('/rider_forgotpass3');
+            }
+            else{
+                tbl_partner_accounts::where('email', Session::get('email'))
+                 ->update([
+                'password' => $hash
+            ]);
                 Session::pull('email');
                 Session::pull('verification');
                 return redirect('/rider_forgotpass3');
@@ -154,8 +212,7 @@ class RiderRegistration extends Controller
  
     public function addPostSubmit(Request $request)
     {   
-           
-            
+     
             $request->validate([
             'account_type' => 'required',    
             'firstname' => 'required',
@@ -187,7 +244,7 @@ class RiderRegistration extends Controller
               /*RIDERS */
             if($request->account_type == 'Rider'){
               $request->validate([
-            'email' => 'required|email|unique:tbl_rider_account',
+            'email' => 'required|email|unique:tbl_rider_account|unique:tbl_merchant_account',
           
               ]);
                 
@@ -223,17 +280,17 @@ class RiderRegistration extends Controller
                         ->first();
                         
                         $code = mt_rand(100000, 999999);
-                    //    $mailData = [
-                    //     'title' => 'Account Verification',
-                    //     'body' => 'test',
-                    //     'code' => $code,
-                    //     'fname' => $email->firstname,
-                    //     'lname' => $email->lastname,
-                    //    ];
-                    // Mail::to($email)->send(new MailVerification($mailData));
+                       $mailData = [
+                        'title' => 'Account Verification',
+                        'body' => 'test',
+                        'code' => $code,
+                        'fname' => $email->firstname,
+                        'lname' => $email->lastname,
+                       ];
+                    Mail::to($email)->send(new MailVerification($mailData));
 
-                    $html = view('email.emailverify')->with('code', $code)->render();
-                    SendGridClient::sendEmail($request->email, "Account Verification", $html);
+                    // $html = view('email.emailverify')->with('code', $code)->render();
+                    // SendGridClient::sendEmail($request->email, "Account Verification", $html);
 
                     $request->session()->put('verification', $code);
                      $request->session()->put('status', $id->status);
@@ -249,7 +306,7 @@ class RiderRegistration extends Controller
         /*MERCHANT */
         if($request->account_type == 'Partner Merchant'){
            $request->validate([
-            'email' => 'required|email|unique:tbl_merchant_account',
+            'email' => 'required|email|unique:tbl_merchant_account|unique:tbl_rider_account|',
               ]);
   
 
@@ -268,6 +325,7 @@ class RiderRegistration extends Controller
         $merchant->city = $request-> city;
         $merchant->barangay = $request-> barangay;
         $merchant->zip_code = $request->  zip;
+         $merchant->role = 'Admin';
 
         $res = $merchant->save();
         if($res){
@@ -306,17 +364,17 @@ class RiderRegistration extends Controller
                         
          $code = mt_rand(100000, 999999);
 
-                    //    $mailData = [
-                    //     'title' => 'Account Verification',
-                    //     'body' => 'test',
-                    //     'code' => $code,
-                    //     'fname' => $email->firstname,
-                    //     'lname' => $email->lastname,
-                    //    ];
-                    //    Mail::to($email)->send(new MailVerification($mailData));
+                       $mailData = [
+                        'title' => 'Account Verification',
+                        'body' => 'test',
+                        'code' => $code,
+                        'fname' => $email->firstname,
+                        'lname' => $email->lastname,
+                       ];
+                       Mail::to($email)->send(new MailVerification($mailData));
 
-                        $html = view('email.emailverify')->with('code', $code)->render();
-                        SendGridClient::sendEmail($email->email, "Account Verification", $html);
+                        // $html = view('email.emailverify')->with('code', $code)->render();
+                        // SendGridClient::sendEmail($email->email, "Account Verification", $html);
 
                     $request->session()->put('verification', $code);
                      return back();
@@ -558,7 +616,7 @@ class RiderRegistration extends Controller
             $filename4 = Storage::disk('s3')->url($file3);
             $filename5 = Storage::disk('s3')->url($file4);
              if($request->hasFile('drug_test')){
-            $filename6 = mt_rand(1000, 9999) . '_' .$file5;
+            $filename6 = Storage::disk('s3')->url($file5);
              }
             $filename7 = Storage::disk('s3')->url($file6);
             $filename8 = Storage::disk('s3')->url($file7);
@@ -769,8 +827,10 @@ class RiderRegistration extends Controller
     }
    
     public function RiderLoginIndex(Request $request){
+        
+    /*RIDER CHECK COOKIE */
         if(Cookie::has('rider_email') && Cookie::has('rider_password')){
-             $user = tbl_rider_accounts::where('email', '=', Cookie::get('email'))->first();
+             $user = tbl_rider_accounts::where('email', '=', Cookie::get('rider_email'))->first();
               $Data = tbl_rider_accounts::join('tbl_vehicle_info', 'tbl_rider_account.rider_id', '=', 'tbl_vehicle_info.rider_id')
                 ->join('tbl_document_info', 'tbl_rider_account.rider_id', '=', 'tbl_document_info.rider_id')
                 ->join('rider_application', 'tbl_rider_account.rider_id', '=', 'rider_application.rider_id')
@@ -781,8 +841,41 @@ class RiderRegistration extends Controller
                  $request->session()->put('registerID', $user->rider_id);
                 return view('/Rider_ApplicationStatus', compact('Data'));
             }
+            
+    /*MERCHANT CHECK COOKIE */
+      if(Cookie::get('partner_email') && Cookie::get('partner_password'))
+        {   
+             $merchant = tbl_partner_accounts::where('email', '=', Cookie::get('partner_email'))->first();
+              $status = tbl_merchant_application::where('merchant_id', $merchant->merchant_id)
+                ->first();
+
+                if($status->status == 'pending' || $status->status == 'Reviewing' || $status->status == 'Rejected'){
+                    
+                     $Data = tbl_partner_accounts::join('tbl_merchant_info', 'tbl_merchant_account.merchant_id', '=', 'tbl_merchant_info.merchant_id')
+                    ->join('merchant_application', 'tbl_merchant_account.merchant_id', '=', 'merchant_application.merchant_id')
+                    ->join('merchant_document', 'tbl_merchant_account.merchant_id', '=', 'merchant_document.merchant_id')
+                    ->where('merchant_application.merchant_id',  $merchant->merchant_id)
+                    ->limit(1)
+                    ->get();
+                    
+                    $request->session()->put('partnerID', $merchant->merchant_id);
+                    return view('/partner_applicationstatus', compact('Data'));
+                }
+                else{
+                    $log = new tbl_activitylog();
+                    $log->merchant_id = $merchant->merchant_id;
+                    $log->email = $merchant->email;
+                    $log->name = $merchant->firstname. ' ' .$merchant->lastname;
+                    $log->description = 'Has Log In';
+                    $res = $log->save();
+                    if($res){
+                    $request->session()->put('loginID', $merchant->merchant_id);
+                   return redirect('/index');
+                    }
+                }
+        }
             else{
-        return view('rider_login');
+        return view('/rider_login');
             }
     }
     
@@ -791,16 +884,21 @@ class RiderRegistration extends Controller
           
          $request->validate([
             'email'=> 'required|email',
-            'password'=> 'required|min:6'
+            'password'=> 'required|min:8'
         ]);
       
          $user = tbl_rider_accounts::where('email', '=', $request->email)->first();
-        if($user){
+         $merchant = tbl_merchant_account::where('email', '=', $request->email)->first();
+         $role = tbl_admin_role::where('email', '=', $request->email)->first();
+
+         if($user){
             
             if(Hash::check($request->password, $user->password)){
+
+                /*IF CHECKBOX = TRUE */
                 if($request->remember){
+
                 /*SET COOKIE */
-                
                 $response = new Response();
                 Cookie::queue(Cookie::forever('rider_email', $request->email));
                 Cookie::queue(Cookie::forever('rider_password', $request->password));
@@ -808,7 +906,7 @@ class RiderRegistration extends Controller
                 /*FORGET COOKIE */
                 // Cookie::queue(Cookie::forget('email'));
                 // Cookie::queue(Cookie::forget('password'));  
-                }
+                }   
                 $Data = tbl_rider_accounts::join('tbl_vehicle_info', 'tbl_rider_account.rider_id', '=', 'tbl_vehicle_info.rider_id')
                 ->join('tbl_document_info', 'tbl_rider_account.rider_id', '=', 'tbl_document_info.rider_id')
                 ->join('rider_application', 'tbl_rider_account.rider_id', '=', 'rider_application.rider_id')
@@ -822,7 +920,94 @@ class RiderRegistration extends Controller
             else{
                   return back()->with('fail', 'Password does not match');
             }
-        }else{
+        }
+        
+         /* MERCHANT LOGIN */
+        if($merchant){
+            if(Hash::check($request->password, $merchant->password)){
+                
+                /*IF CHECKBOX = TRUE */
+                 if($request->remember){
+                    
+                    /*SET COOKIE*/
+                    $minutes = 5;
+                    $response = new Response;
+                    Cookie::queue(Cookie::forever('partner_email', $request->email, $minutes));
+                    Cookie::queue(Cookie::forever('partner_password', $request->password, $minutes));
+                }
+                $status = tbl_merchant_application::where('merchant_id', $merchant->merchant_id)
+                ->first();
+                if($status->status == 'pending' || $status->status == 'Reviewing' || $status->status == 'Rejected'){
+                    
+                     $Data = tbl_partner_accounts::join('tbl_merchant_info', 'tbl_merchant_account.merchant_id', '=', 'tbl_merchant_info.merchant_id')
+                    ->join('merchant_application', 'tbl_merchant_account.merchant_id', '=', 'merchant_application.merchant_id')
+                    ->join('merchant_document', 'tbl_merchant_account.merchant_id', '=', 'merchant_document.merchant_id')
+                    ->where('merchant_application.merchant_id',  $merchant->merchant_id)
+                    ->limit(1)
+                    ->get();
+                    
+                    $request->session()->put('partnerID', $merchant->merchant_id);
+                    return view('/partner_applicationstatus', compact('Data'));
+                }
+                else{
+                $log = new tbl_activitylog();
+                $log->merchant_id = $merchant->merchant_id;
+                $log->email = $merchant->email;
+                $log->name = 'Admin';
+                $log->description = 'Has Log In';
+                $res = $log->save();
+                if($res){
+                $request->session()->put('Admin', $merchant->role);
+                $request->session()->put('loginID', $merchant->merchant_id);
+                return redirect('/index');
+                }
+            
+                }
+            }
+            else{
+                  return back()->with('fail', 'Password does not match');
+            }
+        }
+        if($role){
+             if(Hash::check($request->password, $role->password)){
+                
+                /*IF CHECKBOX = TRUE */
+                 if($request->remember){
+                    
+                    /*SET COOKIE*/
+                    $minutes = 5;
+                    $response = new Response;
+                    Cookie::queue(Cookie::forever('partner_email', $request->email, $minutes));
+                    Cookie::queue(Cookie::forever('partner_password', $request->password, $minutes));
+                }
+              
+
+                $log = new tbl_activitylog();
+                $log->merchant_id = $role->merchant_id;
+                $log->email = $role->email;
+                $log->name = $role->role;
+                $log->description = 'Has Log In';
+                $res = $log->save();
+                if($res){
+                $request->session()->put('loginID', $role->merchant_id);
+                $request->session()->put('AdminRole', $role->role);
+                if($role->role == 'Inventory Officer')
+                {
+                    return redirect('/product');
+                }
+                elseif($role->role == 'Sales Officer')
+                {
+                    return redirect('/admin_orders');
+                }
+                }
+            
+
+            }
+            else{
+                  return back()->with('fail', 'Password does not match');
+            }
+        }
+        else{
             return back()->with('fail', 'This is email is not registered');
         }
         
@@ -833,8 +1018,8 @@ class RiderRegistration extends Controller
             Session::pull('registerID');
             Cookie::queue(Cookie::forget('rider_email'));
             Cookie::queue(Cookie::forget('rider_password'));  
-            return redirect('/');
+            return redirect('/rider_login');
         }
-        
+
     }
     }

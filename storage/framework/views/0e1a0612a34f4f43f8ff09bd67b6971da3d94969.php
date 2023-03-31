@@ -39,9 +39,9 @@
                                 <ul class="nav nav-tabs nav-tabs-solid nav-justified">
                                 <li class="nav-size nav-item"><a class="nav-link active" href="">All</a></li>
                                 <li class="nav-size nav-item"><a class="nav-link" href="/superadmin_pending">Pending</a></li>
-                                <li class="nav-size nav-item"><a class="nav-link" href="/superadmin_review">Reviewing</a></li>
+                                
                                 <li class="nav-size nav-item"><a class="nav-link" href="/superadmin_accept">Accepted</a></li>
-                                <li class="nav-size nav-item"><a class="nav-link" href="/superadmin_archive">Archived</a></li>    
+                                <li class="nav-size nav-item"><a class="nav-link" href="/superadmin_archive">Rejected</a></li>    
                                 </ul>
                             </div>
                         </div>
@@ -81,24 +81,7 @@
                         </div>
                 </div>
             </div>
-            <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3 mb-3">
-                <div class="card dash-widget">
-                      <div class="card-body">
-                        <div class="d-flex align-items-center justify-content-between px-3">
-                        <div class="dash-widget-info">
-                               <?php if($review): ?>
-                                <h3><?php echo e($review); ?></h3>
-                                <?php else: ?>
-                                <h3>0</h3>
-                           <?php endif; ?>
-
-                            <span>Reviewing</span>
-                        </div>
-                         <span class="dash-widget-icon"><i class="mdi mdi-file-check"></i></span>
-                    </div>
-                        </div>
-                </div>
-            </div>
+            
             <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3 mb-3">
                 <div class="card dash-widget">
                       <div class="card-body">
@@ -116,7 +99,23 @@
                         </div>
                 </div>
             </div>
-            
+            <div class="col-md-6 col-sm-6 col-lg-6 col-xl-3 mb-3">
+                <div class="card dash-widget">
+                      <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between px-3">
+                        <div class="dash-widget-info">
+                          <?php if($reject): ?>
+                                <h3><?php echo e($reject); ?></h3>
+                                <?php else: ?>
+                                <h3>0</h3>
+                           <?php endif; ?>
+                            <span>Rejected</span>
+                        </div>
+                         <span class="dash-widget-icon"><i class="mdi mdi-file-check"></i></span>
+                    </div>
+                        </div>
+                </div>
+            </div>
         </div>
 
                     <div class="row">
@@ -142,7 +141,7 @@
                             <tr>
                                  <a href="">
                                 <td>
-                                    <img class="circle mr-2" src="<?php echo e(url(('uploads/'. 'rider_documents'. '/'.$rider->rider_id.  '/'). $rider->rider_photo)); ?>" alt="">
+                                    <img class="circle mr-2" src="<?php echo e($rider->rider_photo); ?>" alt="">
                                     <?php echo e($rider->firstname. ' ' .$rider->lastname); ?>
 
                                 </td>
@@ -156,21 +155,12 @@
 
                                             </a>
                                             <div class="bg-white dropdown-menu dropdown-menu-right">
-                                                <a data-toggle="modal" data-target="#ReviewModal<?php echo e($rider->rider_id); ?>" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-success"></i> Reviewing</a>
+                                                
                                                 <a data-toggle="modal" data-target="#AcceptedModal<?php echo e($rider->rider_id); ?>" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-danger"></i> Accepted</a>
                                                 <a data-toggle="modal" data-target="#RejectModal<?php echo e($rider->rider_id); ?>" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-warning"></i> Rejected</a>
                                             </div>
                                         <?php endif; ?>
-                                          <?php if($rider->status == 'reviewing' || $rider->status == 'Reviewing'): ?>
-                                             <a class=" btn-white-circle btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
-                                                <i class=" review mdi mdi-radiobox-marked"></i> <?php echo e($rider->status); ?>
-
-                                            </a>
-                                            <div class="bg-white dropdown-menu dropdown-menu-right">
-                                                <a data-toggle="modal" data-target="#AcceptedModal<?php echo e($rider->rider_id); ?>" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-danger"></i> Accepted</a>
-                                                <a data-toggle="modal" data-target="#RejectModal<?php echo e($rider->rider_id); ?>" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-warning"></i> Rejected</a>
-                                            </div>
-                                        <?php endif; ?>
+                                          
                                          <?php if($rider->status == 'accepted' || $rider->status == 'Accepted'): ?>
                                              <a class=" btn-white-circle btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
                                                 <i class=" accepted mdi mdi-radiobox-marked"></i> <?php echo e($rider->status); ?>

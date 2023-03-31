@@ -27,7 +27,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.js"> </script>
     
     <!-- UIkit CSS -->
-	
+	  
+
+    
+    <link href="https://unpkg.com/filepond@^4/dist/filepond.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css">
+
   </head>
   <body>
     <div class="container-scroller">
@@ -50,13 +55,13 @@
                 <div class="count-indicator">
                   <img
                     class="img-xs rounded-circle"
-                    src="<?php echo e(url('uploads/'. 'merchant_documents'. '/'. $logIndata->merchant_id. '/'. $logIndata->logo)); ?>"
-                    alt=""
+                    src="<?php echo e($logIndata->logo); ?>"
+                    alt="*"
                   />
                   <span class="count bg-success"></span>
                 </div>
                 <div class="profile-name">
-                  <h5 class="mb-0 font-weight-normal text-white fs-4"><?php echo e($logIndata->firstname . " " . $logIndata->lastname); ?></h5>
+                  <h5 class="mb-0 font-weight-normal text-white fs-4"><?php echo e($logIndata->business_name); ?></h5>
                   <span>Verified</span>
                 </div>
               </div>
@@ -85,6 +90,8 @@
           <li class="nav-item nav-category">
             <span class="nav-link">Navigation</span>
           </li>
+
+          <?php if(Session::get('Admin') == 'Admin'): ?>
           <li class="nav-item menu-items">
             <a class="nav-link" href="/index">
               <span class="menu-icon">
@@ -93,6 +100,18 @@
               <span class="menu-title">Dashboard</span>
             </a>
           </li>
+
+            <li class="nav-item menu-items">
+            <a class="nav-link" href="/admin_add_account">
+              <span class="menu-icon">
+                <i class="mdi mdi mdi-account-box"></i>
+              </span>
+              <span class="menu-title">Add Account</span>
+            </a>
+          </li>
+          <?php endif; ?>
+
+          <?php if(Session::get('AdminRole') == 'Inventory Officer'): ?>
           <li class="nav-item menu-items">
             <a
               class="nav-link"
@@ -129,6 +148,9 @@
               </ul>
             </div>
           </li>
+          <?php endif; ?>
+
+           <?php if(Session::get('AdminRole') == 'Sales Officer'): ?>
           <li class="nav-item menu-items">
             <a class="nav-link" href="/admin_orders">
               <span class="menu-icon">
@@ -153,6 +175,8 @@
               <span class="menu-title">Voucher</span>
             </a>
           </li>
+          <?php endif; ?>
+
           <li class="nav-item menu-items">
             <a class="nav-link" href="/admin_log">
               <span class="menu-icon">
@@ -161,15 +185,15 @@
               <span class="menu-title">Activity log</span>
             </a>
           </li>
-           <li class="nav-item menu-items">
+         
+               <li class="nav-item menu-items">
             <a class="nav-link" href="/admin_account">
               <span class="menu-icon">
-                <i class="mdi mdi-account-box"></i>
+                <i class="mdi mdi mdi-account-box"></i>
               </span>
-              <span class="menu-title">Account</span>
+              <span class="menu-title">Account Settings</span>
             </a>
           </li>
-         
         </ul>
       </nav>
       <!-- partial -->
@@ -180,7 +204,7 @@
             class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center"
           >
             <a class="navbar-brand brand-logo-mini" href="index.html"
-              ><img src="<?php echo e(url('uploads/'. 'merchant_documents'. '/'. $logIndata->merchant_id. '/'. $logIndata->logo)); ?>" class="w-50" alt="logo"
+              ><img src="<?php echo e($logIndata->logo); ?>" class="w-50" alt="logo"
             /></a>
           </div>
           <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
@@ -297,12 +321,12 @@
                     <img
                       class="img-xs rounded-circle"
                       style="background-color: #fff"
-                      src="<?php echo e(url('uploads/'. 'merchant_documents'. '/'. $logIndata->merchant_id. '/'. $logIndata->logo)); ?>"
+                      src="<?php echo e($logIndata->logo); ?>"
                       alt=""
                     />
                     <p class="mb-0 d-none d-sm-block navbar-profile-name">
 
-                     <?php echo e($logIndata->firstname . " " . $logIndata->lastname); ?>
+                     <?php echo e($logIndata->business_name); ?>
 
                     </p>
                     <i class="mdi mdi-menu-down d-none d-sm-block"></i>
@@ -397,6 +421,31 @@
     <script src="assets/js/app.js"></script>
     <script src="<?php echo e(asset('assets/js/toast.js')); ?>"></script>
     <!-- End custom js for this page -->
+        
+    
+    
+    <script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+    
+    <script>
+        FilePond.registerPlugin(FilePondPluginImagePreview);
+        // Get a reference to the file input element
+        const profile = document.querySelector('input[type="file"]');
+         // Create a FilePond instance
+         const pond = FilePond.create(profile, {
+            //  instantUpload: false,
+             storeAsFile: true,
+             acceptedFileTypes: ['image/*'], 
+             server:{
+                 process: '/tmp-upload',
+                 revert: '/tmp-delete',
+                headers: {
+                 'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>'
+                }
+             },
+       
+         });
+    </script>
 
   </body>
   

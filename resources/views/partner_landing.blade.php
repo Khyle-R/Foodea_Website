@@ -76,15 +76,15 @@
                 <a href="/contact" class="nav-link">Contact Us</a>
               </li>
             </ul>
-            <a
+            {{-- <a
               href="/rider_application_agreement"
               class="text-secondary mt-2 mx-5"
               style="text-decoration: none;"
             >
               Signup
-           </a>
+           </a> --}}
             <a
-              href="/login_type"
+              href="/rider_login"
               class="btn btn-danger btn-sm py-2 px-5 rounded"
             >
               Login
@@ -104,7 +104,7 @@
                 </div>
             </div>
             <div class="col-12 col-md-5 col-lg-6">
-                    <img class="image1 d-none d-md-block" src="image/market2.png" alt="">
+                    <img class="image1 d-none d-md-block" src="{{ asset('newimage/market2.png') }}" alt="">
             </div>
         </div>
         </div>

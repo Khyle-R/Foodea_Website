@@ -19,6 +19,7 @@
   </head>
   
   <body id="body-pd">
+  
     <header class="header" id="header">
       <div class="header_toggle">
         <i class="bx bx-menu" id="header-toggle"></i>
@@ -36,6 +37,12 @@
               <div class="title d-flex pb-3 ps-2 gap-2 align-items-center">
               <img src="image/foodea.png" style="width: 50px">FOODEA
             </div>
+            @if(Session::get('partnerID'))
+               <div href="#" class="nav_link active red py-3 ms-2">
+              <span class="nav_linknumber"><i class="mdi mdi-account-circle"></i></span> 
+              <span class="nav_name">Application Status</span>
+            </div>  
+             @else
             <div class="nav_link active mt-3 py-3 ms-2">
               <i class="bx bx-grid-alt nav_icon"></i>
               <span class="nav_name">Term User</span>
@@ -60,6 +67,7 @@
               <span class="nav_linknumber">5</span> 
               <span class="nav_name">Application Status</span>
             </div>
+            @endif
           </div>
         </div>
         </div>
@@ -99,7 +107,12 @@
                                     
 
                                     <div class="col-sm-12 col-lg-5">
+                                      @if($partner->status == 'Rejected')
+                                      <div class="card-rejected py-4 px-4 mx-0 mx-md-5 rounded">
+                                      @elseif($partner->status == 'pending')
                                       <div class="card-pending py-4 px-4 mx-0 mx-md-5 rounded">
+              
+                                        @endif
                                       <div class="">
                                       <h4 class="text-center text-white">{{ $partner->status }}</h4>
                                       </div>
@@ -107,7 +120,7 @@
                                     </div>  
                                   </div>  
 
-                                  <div class="row justify-content-between">
+                                  <div class="row justify-content-around">
                                     <div class="col-sm-5 ml-sm-5">
                                       <h4 class="title-border flex-wrap mb-4">Personal Information</h4>
                        
@@ -206,45 +219,50 @@
                                     </div>
                                   </div>
 
-                                  <div class="row align-items-center justify-content-between mt-2">
-                                    <div class="col-sm-5 ml-sm-5">
+                                  <div class="row align-items-center justify-content-around mt-2">
+                                    <div class="updoc col-sm-5 ml-sm-5">
                                       <h4 class="title-border flex-wrap mb-4">Uploaded Documents</h4>
                        
-                                       <div class="row px-2 mt-2">
-                                        <label class="black width">Business Logo</label>
-                                             <p class="black ml-5">{{ $partner->logo }}</p>
-                                      </div>
+                                  
                                        <div class="row px-2 mt-2">
                                         <label class="black width">Business Menu</label>
+                                        <img src="{{ $partner->menu_logo}}" alt="">
                                           <p class="black ml-5">{{ $partner->menu_photo }}</p>
                                       </div>
                                        <div class="row px-2 mt-2">
                                         <label class="black width">Business Permit</label>
-                                          <p class="black ml-5">{{ $partner->business_permit }}</p>
+                                        <p class="black ml-5">{{ $partner->business_permit }}</p>
+                                        <a href="{{ $partner->business_permit}}"><button>Download</button></a> 
                                       </div>
                                        <div class="row px-2 mt-2">
                                         <label class="black width">BIR Certificate</label>
+                                        <a href="{{ $partner->bir_cert}}"><button>Download</button></a>
                                           <p class="black ml-5">{{ $partner->bir_cert }}</p>
                                       </div>
                                        <div class="row px-2 mt-2">
                                         <label class="black width">Barangay Permit</label>
-                                         <p class="black ml-5">{{ $partner->barangay_permit }}</p>
+                                        <p class="black ml-5">{{ $partner->barangay_permit }}</p>
+                                         <a href="{{ $partner->barangay_permit}}"><button>Download</button></a>
                                       </div>
                                        <div class="row px-2 mt-2">
                                         <label class="black width">DTI Certificate</label>
-                                         <p class="black ml-5">{{ $partner->dti_cert }}</p>
+                                        <p class="black ml-5">{{ $partner->dti_cert }}</p>
+                                        <a href="{{ $partner->dti_cert}}"><button>Download</button></a>
                                       </div>
                                        <div class="row px-2 mt-2">
                                         <label class="black width">Front License ID</label>
+                                        <img src="{{ $partner->front_license}}" alt="">
                                          <p class="black ml-5">{{ $partner->front_license }}</p>
                                       </div>
                                       <div class="row px-2 mt-2">
                                         <label class="black width">Back License ID</label>
+                                        <img src="{{ $partner->back_license}}" alt="">
                                          <p class="black ml-5">{{ $partner->back_license }}</p>
                                       </div>
                                        @endforeach
 
                                     </div>
+                                    
                                      <div class="col-sm-5 ml-sm-5">
                                    <div class="row px-2 mt-2">
                                     @if(Session::get('partnerID'))
@@ -264,6 +282,7 @@
                             </div>
                         </div>
                     </div>
+                    
         
     </div>
      <!-- </div> -->

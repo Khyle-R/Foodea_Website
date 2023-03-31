@@ -35,9 +35,9 @@
             <ul class="nav nav-tabs nav-tabs-solid nav-justified">
                 <li class="nav-size nav-item"><a class="nav-link" href="/superadmin_partnerapplication">All</a></li>
                  <li class="nav-size nav-item"><a class="nav-link" href="/superadmin_merchantpending">Pending</a></li>
-                                <li class="nav-size nav-item"><a class="nav-link" href="/superadmin_merchantreview">Reviewing</a></li>
+                                {{-- <li class="nav-size nav-item"><a class="nav-link" href="/superadmin_merchantreview">Reviewing</a></li> --}}
                                 <li class="nav-size nav-item"><a class="nav-link active" href="/superadmin_merchantaccept">Accepted</a></li>
-                                <li class="nav-size nav-item"><a class="nav-link" href="/superadmin_merchantarchive">Archived</a></li>
+                                <li class="nav-size nav-item"><a class="nav-link" href="/superadmin_merchantarchive">Rejected</a></li>
 
             </ul>
         </div>
@@ -78,7 +78,7 @@
                                                 <i class=" pending mdi mdi-radiobox-marked"></i> {{ $partner->status }}
                                             </a>
                                             <div class="bg-white dropdown-menu dropdown-menu-right">
-                                                <a data-toggle="modal" data-target="#ReviewModal{{ $partner->merchant_id }}" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-success"></i> Reviewing</a>
+                                                {{-- <a data-toggle="modal" data-target="#ReviewModal{{ $partner->merchant_id }}" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-success"></i> Reviewing</a> --}}
                                                 <a data-toggle="modal" data-target="#AcceptedModal{{ $partner->merchant_id }}" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-danger"></i> Accepted</a>
                                                 <a data-toggle="modal" data-target="#RejectModal{{ $partner->merchant_id }}" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-warning"></i> Rejected</a>
                                             </div>
