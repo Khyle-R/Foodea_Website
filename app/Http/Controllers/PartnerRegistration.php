@@ -309,18 +309,21 @@ class PartnerRegistration extends Controller
         $category = tbl_category::where('merchant_id', Session::get('merchant_id'))
         ->first();
 
-        if($category->main_category == $request->categoryName)
-        {
-            $request->session()->put('fail', 'Category Name Already Exist');
-        }
-        else{
-        $addCategory = new tbl_category();
-        $addCategory->main_category = $request->categoryName;
-        $addCategory->description = $request->description;
-        $addCategory->merchant_id = session('merchant_id');
+        if(isset($category->main_category)){
+            if($category->main_category == $request->categoryName)
+            {
+                $request->session()->put('fail', 'Category Name Already Exist');
+            }
+            else{
+            $addCategory = new tbl_category();
+            $addCategory->main_category = $request->categoryName;
+            $addCategory->description = $request->description;
+            $addCategory->merchant_id = session('merchant_id');
 
-        $addCategory->save();
+            $addCategory->save();
+            }
         }
+        
         return back();
         
     }
