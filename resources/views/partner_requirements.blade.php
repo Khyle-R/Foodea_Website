@@ -177,7 +177,7 @@
                 
                     <div class="requirements">
                 <p>Front<span> (Required)</span></p>
-                <img src="{{ asset('image/front_id.png')}}" alt="">
+                <img src="https://foodea-bucket.s3.us-east-2.amazonaws.com/images/test/123/jfpGrNW5d7eYgp5E7V6rMKOfndSyELhjTFFOb1bg.png" alt="">
                 <input type="file" name="front_license">
                  <span>File size up to 5mb only</span>
                    <span
@@ -186,7 +186,7 @@
                @enderror</span>
 
                  <p>Back<span> (Required)</span></p>
-                <img src="{{ asset('image/back_id.png')}}" alt="">
+                <img src="https://foodea-bucket.s3.us-east-2.amazonaws.com/images/test/123/KXBrNxYN1eVb4HCady5NEWK6StJEOjE3dPVRn8qL.png" alt="">
                  <input type="file" name="back_license">
                  <span>File size up to 5mb only</span>
                <span

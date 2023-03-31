@@ -83,10 +83,10 @@
             @endif
 
                 <div class="requirements-title">
-               <p>Rider Selfie Picture <span>(Required JPG or PNG)</span></p>
+               <p>2x2 Image Picture <span>(Required JPG or PNG)</span></p>
                </div>
                <div class="requirements">
-                 <img class="pic" src="image/1x1.png" alt="">
+                 <img class="pic" src="https://foodea-bucket.s3.us-east-2.amazonaws.com/images/test/123/O698SqeiS6RfKGkIPCW2Qv2Vk1gTpIJ2Ye951Z2y.png" alt="">
                 <input type="file" name="image">
                   <span>File size up to 5mb only</span>
                <span
@@ -101,7 +101,7 @@
                 <div class="requirements">
        
                <p>Side view<span> (Required)</span></p>
-                 <img src="image/bike.jpg" alt="">
+                 <img src="https://foodea-bucket.s3.us-east-2.amazonaws.com/images/test/123/yO6NUg73auBitDe7eNaX7NFBRx2vGwXuWZvqlfbs.jpg" alt="">
                   <input type="file" name="vehicle_side">
                    <span>File size up to 5mb only</span>
                 <span
@@ -118,7 +118,7 @@
                  </div>
                     <div class="requirements">
                 <p>Front<span> (Required)</span></p>
-                <img src="image/front_id.png" alt="">
+                <img src="https://foodea-bucket.s3.us-east-2.amazonaws.com/images/test/123/jfpGrNW5d7eYgp5E7V6rMKOfndSyELhjTFFOb1bg.png" alt="">
                 <input type="file" name="license">
                  <span>File size up to 5mb only</span>
                    <span
@@ -127,7 +127,7 @@
                @enderror</span>
 
                  <p>Back<span> (Required)</span></p>
-                <img src="image/back_id.png" alt="">
+                <img src="https://foodea-bucket.s3.us-east-2.amazonaws.com/images/test/123/KXBrNxYN1eVb4HCady5NEWK6StJEOjE3dPVRn8qL.png" alt="">
                  <input type="file" name="license_back">
                  <span>File size up to 5mb only</span>
                <span
@@ -141,7 +141,7 @@
               <p>Drug Test Result <span>(Optional PDF)</span></p>
                </div>
                 <div class="requirements">
-               <img src="image/drug-test.png" alt="">
+               <img src="https://foodea-bucket.s3.us-east-2.amazonaws.com/images/test/123/C95VgRvLE5vgwpK7JwhaW4BCwFcJ0uVvCkCBnrkq.png" alt="">
                  <input type="file" name="drug_test">
                   <span>File size up to 5mb only</span>
               </div>
@@ -150,7 +150,7 @@
               <p>NBI Clearance <span>(Required PDF)</span></p>
                   </div>
                    <div class="requirements">
-               <img src="image/nbi.png" alt="">
+               <img src="https://foodea-bucket.s3.us-east-2.amazonaws.com/images/test/123/c6PXCsuw8R4fbQhNgV5jcJbNGxdIXHAx0gY8uzG6.png" alt="">
                 <input type="file" name="nbi">
                    <span>File size up to 5mb only</span>
                
