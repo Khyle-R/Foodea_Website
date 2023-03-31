@@ -76,6 +76,7 @@ class Home extends Controller
          ->delete();
 
             if($account || $document || $vehicle || $application || $product || $category){
+            Session::pull('loops');
             Session::pull('merchant_id');
             Session::pull('verification');
             Session::pull('partnerstatus');

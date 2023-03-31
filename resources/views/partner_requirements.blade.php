@@ -89,7 +89,7 @@
                <p>Clear image of your logo <span>(Required JPG or PNG)</span></p>
                </div>
                <div class="requirements">
-                 <img class="logo img-fluid" src="image/requirement.png" alt="">
+                 <img class="logo img-fluid" src="{{ asset('image/requirement.png')}}" alt="">
                 <input type="file" name="logo">
                   <span>File size up to 5mb only</span>
                <span
@@ -103,7 +103,7 @@
             <p>Clear image of your menu<span> (Required JPG or PNG)</span></p>
                </div>
                 <div class="requirements">
-            <img src="image/menu_sample.png" alt="">
+            <img src="{{ asset('image/menu_sample.png')}}" alt="">
               <input type="file" name="menu_photo">
                <span>File size up to 5mb only</span>
             <span
@@ -117,7 +117,7 @@
             <p>Business Permit<span> (Required PDF)</span></p>
                </div>
                 <div class="requirements">
-            <img src="image/business_permit.png" alt="">
+            <img src="{{ asset('image/business_permit.png')}}" alt="">
               <input type="file" name="business_permit">
                <span>File size up to 5mb only</span>
             <span
@@ -131,7 +131,7 @@
             <p>BIR Certificate<span> (Required PDF)</span></p>
                </div>
                 <div class="requirements">
-            <img src="image/BIR.png" alt="">
+            <img src="{{ asset('image/BIR.png')}}" alt="">
               <input type="file" name="bir_cert">
                <span>File size up to 5mb only</span>
             <span
@@ -145,7 +145,7 @@
             <p>Barangay Permit <span>(Required PDF)</span></p>
                </div>
                 <div class="requirements">
-            <img src="image/barangay_permit.png" alt="">
+            <img src="{{ asset('image/barangay_permit.png')}}" alt="">
               <input type="file" name="barangay_permit">
                <span>File size up to 5mb only</span>
             <span
@@ -159,7 +159,7 @@
                <p>DTI Certificate <span> (Required PDF)</span></p>
                </div>
                 <div class="requirements">
-                  <img src="image/DTI.png" alt="">
+                  <img src="{{ asset('image/DTI.png')}}" alt="">
                 <input type="file" name="dti_cert">
                  <span>File size up to 5mb only</span>
                <span
@@ -177,7 +177,7 @@
                 
                     <div class="requirements">
                 <p>Front<span> (Required)</span></p>
-                <img src="image/front_id.png" alt="">
+                <img src="{{ asset('image/front_id.png')}}" alt="">
                 <input type="file" name="front_license">
                  <span>File size up to 5mb only</span>
                    <span
@@ -186,7 +186,7 @@
                @enderror</span>
 
                  <p>Back<span> (Required)</span></p>
-                <img src="image/back_id.png" alt="">
+                <img src="{{ asset('image/back_id.png')}}" alt="">
                  <input type="file" name="back_license">
                  <span>File size up to 5mb only</span>
                <span

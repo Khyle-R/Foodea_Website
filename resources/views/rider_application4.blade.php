@@ -87,7 +87,7 @@
                <p class="text-danger">2x2 image Picture<span> (Required JPG or PNG)</span></p>
                </div>
                <div class="requirements">
-                 <img class="pic" src="image/1x1.png" alt="">
+                 <img class="pic" src="{{ asset('image/1x1.png')}}" alt="">
                 <input type="file" name="image">
                   <span>File size up to 5mb only</span>
                <span
@@ -101,7 +101,7 @@
               </div>
                 <div class="requirements">
               <p>Front view<span> (Required)</span></p>
-              <img src="image/front.png" alt="">
+              <img src="{{ asset('image/front.png')}}" alt="">
               <input type="file" name="vehicle_front">
                <span>File size up to 5mb only</span>
                  <span
@@ -110,7 +110,7 @@
              @enderror</span> 
 
                <p>Side view<span> (Required)</span></p>
-                 <img src="image/side.png" alt="">
+                 <img src="{{ asset('image/side.png')}}" alt="">
                   <input type="file" name="vehicle_side">
                    <span>File size up to 5mb only</span>
                 <span
@@ -119,7 +119,7 @@
                @enderror</span>
 
                 <p>Back view<span> (Required)</span></p>
-                  <img src="image/back.png" alt="">
+                  <img src="{{ asset('image/back.png')}}" alt="">
                 <input type="file" name="vehicle_back">
                  <span>File size up to 5mb only</span>
                <span
@@ -136,7 +136,7 @@
             <p>Original Authorization letter <span> (Required PDF)</span></p>
                </div>
                 <div class="requirements">
-            <img src="image/auth_letter.png" alt="">
+            <img src="{{ asset('image/auth_letter.png') }}" alt="">
               <input type="file" name="auth_letter">
                <span>File size up to 5mb only</span>
             <span
@@ -154,7 +154,7 @@
             <p>Notarized Deed of Sale <span> (Required PDF)</span></p>
                </div>
                 <div class="requirements">
-            <img src="image/deed_sale.png" alt="">
+            <img src="{{ asset('image/deed_sale.png')}}" alt="">
               <input type="file" name="deed_sale">
                <span>File size up to 5mb only</span>
             <span
@@ -169,7 +169,7 @@
                  </div>
                     <div class="requirements">
                 <p>Front<span> (Required)</span></p>
-                <img src="image/front_id.png" alt="">
+                <img src="{{ asset('image/front_id.png')}}" alt="">
                 <input type="file" name="license">
                  <span>File size up to 5mb only</span>
                    <span
@@ -178,7 +178,7 @@
                @enderror</span>
 
                  <p>Back<span> (Required)</span></p>
-                <img src="image/back_id.png" alt="">
+                <img src="{{ asset('image/back_id.png')}}" alt="">
                  <input type="file" name="license_back">
                  <span>File size up to 5mb only</span>
                <span
@@ -192,7 +192,7 @@
             <p class="text-danger">Certificate of Registration <span>(Required PDF)</span></p>
                </div>
                 <div class="requirements">
-            <img src="image/cr.png" alt="">
+            <img src="{{ asset('image/cr.png')}}" alt="">
               <input type="file" name="cr">
                <span>File size up to 5mb only</span>
             <span
@@ -206,7 +206,7 @@
                <p class="text-danger">Official Receipt of Vehicle Registration <span>(Required PDF)</span></p>
                </div>
                 <div class="requirements">
-                  <img src="image/or.png" alt="">
+                  <img src="{{ asset('image/or.png')}}" alt="">
                 <input type="file" name="or">
                  <span>File size up to 5mb only</span>
                <span
@@ -220,7 +220,7 @@
               <p class="text-danger">Drug Test Result <span>(Optional PDF)</span></p>
                </div>
                 <div class="requirements">
-               <img src="image/drug-test.png" alt="">
+               <img src="{{ asset('image/drug-test.png')}}" alt="">
                  <input type="file" name="drug_test">
                   <span>File size up to 5mb only</span>
               </div>
@@ -229,7 +229,7 @@
               <p class="text-danger">NBI Clearance <span>(Required PDF)</span></p>
                   </div>
                    <div class="requirements">
-               <img src="image/nbi.png" alt="">
+               <img src="{{ asset('image/nbi.png')}}" alt="">
                 <input type="file" name="nbi">
                    <span>File size up to 5mb only</span>
                

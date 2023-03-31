@@ -71,7 +71,7 @@
       <div class="content-wrapper container mt-2 px-3 px-md-5 py-2">
         <div class="col-12 col-sm-12 col-md-9 col-lg-7 justify-content-center align-items-center mx-auto px-0">
         <div class="right">
-          <h2>Welcome, Juan</h2>
+          <h2>Welcome</h2>
           <p>Here's the required steps to set up your account. 
             Make sure the documents you upload matches the sample 
             document or else the application process will be delayed.</p>
