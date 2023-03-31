@@ -126,8 +126,10 @@ class Home extends Controller
         //     Mail::to($request->email)->send(new ContactUs($mailData));
             
             $text = $request->text;
-            $html = view('email.contact')->with('text', $text)->render();
-            SendGridClient::sendEmail($request->email, "Message from Foodea", $html);
+            $sender_name = $request->name;
+            $sender_email = $request->email;
+            $html = view('email.contact')->with('text', $text)->with('sender_name', $sender_name)->with('sender_email', $sender_email)->render();
+            SendGridClient::sendEmail('foodeafoodea@gmail.com', "Contact us Inquiry", $html);
             
             return back();
         
