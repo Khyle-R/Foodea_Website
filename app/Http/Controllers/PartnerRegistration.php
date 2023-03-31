@@ -237,6 +237,9 @@ class PartnerRegistration extends Controller
    
     public function addProductPartner(Request $request)
     {
+        $category_name = tbl_category::where('category_id', $request->category)
+        ->first();
+      
         $request->validate([
             'product_name' => 'required',
             'category' => 'required',
@@ -260,7 +263,8 @@ class PartnerRegistration extends Controller
             $addProd->stock = $request->stock;
             $addProd->product_image = $filename1;
             $addProd->price = $request->price;
-            $addProd->category_name=$request->category;
+            $addProd->category_name= $category_name->main_category;
+            $addProd->category_id= $request->category;
             $addProd->status = $request->status;
             $addProd->calories=$request->calories;
             $addProd->description = $request->description;
@@ -302,13 +306,21 @@ class PartnerRegistration extends Controller
     //CATEGORY
     public function addCategory(Request $request)
     {
+        $category = tbl_category::where('merchant_id', Session::get('merchant_id'))
+        ->first();
+
+        if($category->main_category == $request->categoryName)
+        {
+            $request->session()->put('fail', 'Category Name Already Exist');
+        }
+        else{
         $addCategory = new tbl_category();
         $addCategory->main_category = $request->categoryName;
         $addCategory->description = $request->description;
         $addCategory->merchant_id = session('merchant_id');
 
         $addCategory->save();
-        
+        }
         return back();
         
     }

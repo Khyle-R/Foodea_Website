@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Session;
 use App\Models\tbl_merchant_application;
 use Illuminate\Support\Facades\Storage;
 use App\Clients\SendGridClient;
+use App\Models\tbl_category;
 use App\Models\tbl_product;
 
 class Home extends Controller
@@ -62,16 +63,19 @@ class Home extends Controller
          $document =  tbl_merchant_document::where('merchant_id', Session::get('merchant_id'))
             ->delete();
 
-          $vehicle =  tbl_merchant_info::where('merchant_id', Session::get('merchant_id'))
-            ->delete();
+         $vehicle =  tbl_merchant_info::where('merchant_id', Session::get('merchant_id'))
+        ->delete();
             
          $product = tbl_product::where('merchant_id', Session::get('merchant_id'))
         ->delete();
-
+       
+        $category = tbl_category::where('merchant_id', Session::get('merchant_id'))
+        ->delete();
+        
          $application =  tbl_merchant_application::where('merchant_id', Session::get('merchant_id'))
-            ->delete();
+         ->delete();
 
-            if($account || $document || $vehicle || $application || $product){
+            if($account || $document || $vehicle || $application || $product || $category){
             Session::pull('merchant_id');
             Session::pull('verification');
             Session::pull('partnerstatus');
