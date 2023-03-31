@@ -17,7 +17,7 @@ return new class extends Migration
 
             $table->id('transaction_id');
             $table->string('order_key');
-            $table->integer('merchant_id');
+            $table->integer('merchant_id')->nullable();
             $table->integer('order_id');
             $table->integer('rider_id');
             $table->integer('product_Id');

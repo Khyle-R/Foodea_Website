@@ -156,6 +156,8 @@ class PartnerRegistration extends Controller
             'barangay' => 'required',
             'street' => 'required',
             'country' => 'required',
+            'longitude' => 'required',
+            'latitude' => 'required',
             'postal_code' => 'required|min:4',
             'store_number' => 'required|min:10',
             'store_email' => 'required|email',
@@ -179,6 +181,8 @@ class PartnerRegistration extends Controller
         $merchant->date_founded = $request->date_founded; 
         $merchant->mission = $request->mission; 
         $merchant->vision = $request->vision; 
+        $merchant->longitude = $request->longitude; 
+        $merchant->latitude = $request->latitude; 
         $res = $merchant->save();
         if($res){
             $id = tbl_merchant_info::where('merchant_id', $request->merchant_id)->first();
