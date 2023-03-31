@@ -117,17 +117,17 @@ class Home extends Controller
         return view('download_app_user');
     }
     public function ContactUssend(Request $request){
-        // $mailData = [
-        //     'title' => 'Password Reset',
-        //     'body' => 'test',
-        //     'name' => $request->name,
-        //     'text' => $request->text,
-        //     ];
-        //     Mail::to($request->email)->send(new ContactUs($mailData));
+        $mailData = [
+            'title' => 'Password Reset',
+            'body' => 'test',
+            'name' => $request->name,
+            'text' => $request->text,
+            ];
+            Mail::to($request->email)->send(new ContactUs($mailData));
             
-            $text = $request->text;
-            $html = view('email.contact')->with('text', $text)->render();
-            SendGridClient::sendEmail($email->email, "Message from Foodea", $html);
+            // $text = $request->text;
+            // $html = view('email.contact')->with('text', $text)->render();
+            // SendGridClient::sendEmail($email->email, "Message from Foodea", $html);
             
             return back();
         
