@@ -21,8 +21,8 @@
                                 <li class="nav-size nav-item"><a class="nav-link" href="/admin_orders">All</a></li>
                                 <li class="nav-size nav-item"><a class="nav-link active" href="/orderpending">Pending</a></li>
                                 <li class="nav-size nav-item"><a class="nav-link" href="/orderpreparing">Preparing</a></li>
-                                <li class="nav-size nav-item"><a class="nav-link" href="/orderdelivering">Delivering</a></li>
-                                <li class="nav-size nav-item"><a class="nav-link" href="/orderdelivered">Delivered</a></li>
+                                {{-- <li class="nav-size nav-item"><a class="nav-link" href="/orderdelivering">Delivering</a></li>
+                                <li class="nav-size nav-item"><a class="nav-link" href="/orderdelivered">Delivered</a></li> --}}
                                 </ul>
                             </div>
                         </div>

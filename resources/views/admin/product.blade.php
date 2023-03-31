@@ -24,7 +24,7 @@
                <div class="card-body">
                   <div class="row justify-content-sm-between px-3 mb-3">
                      <h4 class="card-title">
-                        Order Status
+                        Product
                      </h4>
                      <div class="row">
                         <div>
@@ -194,7 +194,8 @@
                            @foreach ($products as $key => $data)
                               <tr>
                                  <td>
-                                    <img src="{{ asset('product_images/' . $data->product_image) }}" alt="image" class="img-fluid"
+
+                                    <img src="{{ asset('uploads/' . 'product_image'. '/'.$data->merchant_id. '/'.$data->product_image) }}" alt="image" class="img-fluid"
                                        style=" height: 60px; width: 70px; border-radius: 2px;" />
                                     <span class="pl-2">{{ $data->product_name }}</span>
                                  </td>
