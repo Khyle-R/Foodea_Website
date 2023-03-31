@@ -87,7 +87,7 @@
                <p class="text-danger">2x2 image Picture<span> (Required JPG or PNG)</span></p>
                </div>
                <div class="requirements">
-                 <img class="pic" src="{{ asset('image/1x1.png')}}" alt="">
+                 <img class="pic" src="https://foodea-bucket.s3.us-east-2.amazonaws.com/images/test/123/O698SqeiS6RfKGkIPCW2Qv2Vk1gTpIJ2Ye951Z2y.png" alt="">
                 <input type="file" name="image">
                   <span>File size up to 5mb only</span>
                <span
