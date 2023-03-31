@@ -24,11 +24,11 @@ class StoreTransactionRequest extends FormRequest
     public function rules()
     {
         return [
-            'order_id' => ['required', 'numeric'],
+            'order_key' => ['required'],
             'merchant_id' => ['required', 'numeric'],
             'customer_id' => ['required', 'numeric'],
             'rider_id' => ['required', 'numeric'],
-            'product_id' => ['required', 'numeric'],
+            'products_id' => ['required', 'numeric'],
             'order_status' => ['required'],
         ];
     }

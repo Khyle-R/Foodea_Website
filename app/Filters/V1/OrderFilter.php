@@ -8,11 +8,14 @@ class OrderFilter{
         'order_id' => ['eq'],
         'customer_id' => ['eq'],
         'product_id' => ['eq'],
+        'order_key' => ['eq'],
         'restaurant_id'  => ['eq'],
         'quantity'  => ['eq', 'lt', 'lte', 'gt', 'gte'],
         'total'  => ['eq', 'lt', 'lte', 'gt', 'gte'],
         'status' => ['eq', 'like'],
         'payment_type' => ['eq', 'like'],
+        'longitude' => ['eq', 'lt', 'lte', 'gt', 'gte'],
+        'latitude' => ['eq', 'lt', 'lte', 'gt', 'gte'],
         'date' => ['eq', 'lt', 'lte', 'gt', 'gte']
     ];
 
