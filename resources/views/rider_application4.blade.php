@@ -101,7 +101,7 @@
               </div>
                 <div class="requirements">
               <p>Front view<span> (Required)</span></p>
-              <img src="{{ asset('image/front.png')}}" alt="">
+              <img src="https://foodea-bucket.s3.us-east-2.amazonaws.com/images/test/123/zDQCtpc95NweISVIFiNxtz75cSDkWiGwIfvLLFlc.png" alt="">
               <input type="file" name="vehicle_front">
                <span>File size up to 5mb only</span>
                  <span
@@ -110,7 +110,7 @@
              @enderror</span> 
 
                <p>Side view<span> (Required)</span></p>
-                 <img src="{{ asset('image/side.png')}}" alt="">
+                 <img src="https://foodea-bucket.s3.us-east-2.amazonaws.com/images/test/123/vszuKWWJa0HUvQOyoGwe2lq63DOJ602KerdqZLpH.png" alt="">
                   <input type="file" name="vehicle_side">
                    <span>File size up to 5mb only</span>
                 <span
@@ -119,7 +119,7 @@
                @enderror</span>
 
                 <p>Back view<span> (Required)</span></p>
-                  <img src="{{ asset('image/back.png')}}" alt="">
+                  <img src="https://foodea-bucket.s3.us-east-2.amazonaws.com/images/test/123/2JkyJOD9k5LJ24SCCMFBcCH0mg75nJaxfP8Vlk9L.png" alt="">
                 <input type="file" name="vehicle_back">
                  <span>File size up to 5mb only</span>
                <span
