@@ -574,7 +574,7 @@
     <script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
     <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
     
-    <script>
+    {{-- <script>
         FilePond.registerPlugin(FilePondPluginImagePreview);
         // Get a reference to the file input element
         const profile = document.querySelector('input[type="file"]');
@@ -592,7 +592,7 @@
              },
        
          });
-    </script>
+    </script> --}}
 
   </body>
   
