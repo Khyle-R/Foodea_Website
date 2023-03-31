@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 class TransactionFilter{
     protected $allowedParameters = [
         'transaction_id' => ['eq'],
-        'order_id' => ['eq'],
+        'order_key' => ['eq'],
         'merchant_id' => ['eq'],
         'customer_id' => ['eq'],
         'rider_id' => ['eq'],
