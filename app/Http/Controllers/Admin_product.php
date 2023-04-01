@@ -41,26 +41,26 @@ class Admin_product extends Controller
         ->first();
         if($user)
         {
-        $log = new tbl_activitylog();
-                $log->merchant_id = $user->merchant_id;
-                $log->email = $user->email;
+            $log = new tbl_activitylog();
+            $log->merchant_id = $user->merchant_id;
+            $log->email = $user->email;
                 if(Session::get('AdminRole')){
-                     $log->name = Session::get('AdminRole');
+                        $log->name = Session::get('AdminRole');
                 }
                 else{
                     $log->name = Session::get('Admin');
                 }
-               
-                $log->description = 'Has Log Out';
-                $res = $log->save();
-                if($res){
-       Session::pull('loginID');
-       Session::pull('AdminRole');
-       Session::pull('Admin');
-       Cookie::queue(Cookie::forget('partner_email'));
-        Cookie::queue(Cookie::forget('partner_password'));  
-        return redirect('/rider_login');
-                }
+            
+            $log->description = 'Has Log Out';
+            $res = $log->save();
+            if($res){
+                Session::pull('loginID');
+                Session::pull('AdminRole');
+                Session::pull('Admin');
+                Cookie::queue(Cookie::forget('partner_email'));
+                Cookie::queue(Cookie::forget('partner_password'));  
+                return redirect('/rider_login');
+            }
         }
     }
 
@@ -248,33 +248,6 @@ class Admin_product extends Controller
             $addProd->save();
             
             return redirect('product');
-
-
-            $tmp_file = TemporaryFile::where('folder', $request->product_image)->first();
-
-            if($tmp_file)
-            {
-                Storage::copy('posts/tmp/'. $tmp_file->folder. '/' . $tmp_file->file, 'posts/' .$tmp_file->folder . '/' .$tmp_file->file);
-
-                tbl_product::create([
-                    'merchant_id' => session('loginID'),
-                    'product_name' => $request->product_name,
-                    'stock' => $request->stock,
-                    'product_image' => $tmp_file->folder. '/' .$tmp_file->file_name,
-                    'price' => $request->price,
-                    'category_name' => $request->category,
-                    'status' => $request->status,
-                    'tags' => $request->tags_category,
-                    'description' => $request->description,
-                    'ingredients' => $request->ingredients
-                ]);
-                Storage::deleteDirectory('posts/tmp/'. $tmp_file->folder);
-                $tmp_file->delete();
-                return redirect('/')->with('success', 'Added Success.');
-            }
-            return redirect('/')->with('danger', 'Please Upload an Image.');
-
-
     }
 
 

@@ -220,14 +220,10 @@
                                   </div>
 
                                   <div class="row align-items-center justify-content-around mt-2">
-                                    <div class="col-sm-5 ml-sm-5">
+                                    <div class="updoc col-sm-5 ml-sm-5">
                                       <h4 class="title-border flex-wrap mb-4">Uploaded Documents</h4>
                        
-                                       <div class="row px-2 mt-2">
-                                        <label class="black width">Business Logo</label>
-                                              <img src="<?php echo e($partner->logo); ?>" alt="">
-                                             <p class="black ml-5"><?php echo e($partner->logo); ?></p>
-                                      </div>
+                                  
                                        <div class="row px-2 mt-2">
                                         <label class="black width">Business Menu</label>
                                         <img src="<?php echo e($partner->menu_logo); ?>" alt="">
@@ -235,8 +231,8 @@
                                       </div>
                                        <div class="row px-2 mt-2">
                                         <label class="black width">Business Permit</label>
-                                        <a href="<?php echo e($partner->business_permit); ?>"><button>Download</button></a>
-                                          <p class="black ml-5"><?php echo e($partner->business_permit); ?></p>
+                                        <p class="black ml-5"><?php echo e($partner->business_permit); ?></p>
+                                        <a href="<?php echo e($partner->business_permit); ?>"><button>Download</button></a> 
                                       </div>
                                        <div class="row px-2 mt-2">
                                         <label class="black width">BIR Certificate</label>
@@ -245,13 +241,13 @@
                                       </div>
                                        <div class="row px-2 mt-2">
                                         <label class="black width">Barangay Permit</label>
+                                        <p class="black ml-5"><?php echo e($partner->barangay_permit); ?></p>
                                          <a href="<?php echo e($partner->barangay_permit); ?>"><button>Download</button></a>
-                                         <p class="black ml-5"><?php echo e($partner->barangay_permit); ?></p>
                                       </div>
                                        <div class="row px-2 mt-2">
                                         <label class="black width">DTI Certificate</label>
+                                        <p class="black ml-5"><?php echo e($partner->dti_cert); ?></p>
                                         <a href="<?php echo e($partner->dti_cert); ?>"><button>Download</button></a>
-                                         <p class="black ml-5"><?php echo e($partner->dti_cert); ?></p>
                                       </div>
                                        <div class="row px-2 mt-2">
                                         <label class="black width">Front License ID</label>
@@ -266,6 +262,7 @@
                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                                     </div>
+                                    
                                      <div class="col-sm-5 ml-sm-5">
                                    <div class="row px-2 mt-2">
                                     <?php if(Session::get('partnerID')): ?>
@@ -285,6 +282,7 @@
                             </div>
                         </div>
                     </div>
+                    
         
     </div>
      <!-- </div> -->

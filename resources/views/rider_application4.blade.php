@@ -87,7 +87,7 @@
                <p class="text-danger">2x2 image Picture<span> (Required JPG or PNG)</span></p>
                </div>
                <div class="requirements">
-                 <img class="pic" src="image/1x1.png" alt="">
+                 <img class="pic" src="https://foodea-bucket.s3.us-east-2.amazonaws.com/images/test/123/O698SqeiS6RfKGkIPCW2Qv2Vk1gTpIJ2Ye951Z2y.png" alt="">
                 <input type="file" name="image">
                   <span>File size up to 5mb only</span>
                <span
@@ -101,7 +101,7 @@
               </div>
                 <div class="requirements">
               <p>Front view<span> (Required)</span></p>
-              <img src="image/front.png" alt="">
+              <img src="https://foodea-bucket.s3.us-east-2.amazonaws.com/images/test/123/zDQCtpc95NweISVIFiNxtz75cSDkWiGwIfvLLFlc.png" alt="">
               <input type="file" name="vehicle_front">
                <span>File size up to 5mb only</span>
                  <span
@@ -110,7 +110,7 @@
              @enderror</span> 
 
                <p>Side view<span> (Required)</span></p>
-                 <img src="image/side.png" alt="">
+                 <img src="https://foodea-bucket.s3.us-east-2.amazonaws.com/images/test/123/vszuKWWJa0HUvQOyoGwe2lq63DOJ602KerdqZLpH.png" alt="">
                   <input type="file" name="vehicle_side">
                    <span>File size up to 5mb only</span>
                 <span
@@ -119,7 +119,7 @@
                @enderror</span>
 
                 <p>Back view<span> (Required)</span></p>
-                  <img src="image/back.png" alt="">
+                  <img src="https://foodea-bucket.s3.us-east-2.amazonaws.com/images/test/123/2JkyJOD9k5LJ24SCCMFBcCH0mg75nJaxfP8Vlk9L.png" alt="">
                 <input type="file" name="vehicle_back">
                  <span>File size up to 5mb only</span>
                <span
@@ -136,7 +136,7 @@
             <p>Original Authorization letter <span> (Required PDF)</span></p>
                </div>
                 <div class="requirements">
-            <img src="image/auth_letter.png" alt="">
+            <img src="https://foodea-bucket.s3.us-east-2.amazonaws.com/images/test/123/ltQBfIa09m63GSI63bVTz28wjOtz6yxH5i4Byaiv.png" alt="">
               <input type="file" name="auth_letter">
                <span>File size up to 5mb only</span>
             <span
@@ -154,7 +154,7 @@
             <p>Notarized Deed of Sale <span> (Required PDF)</span></p>
                </div>
                 <div class="requirements">
-            <img src="image/deed_sale.png" alt="">
+            <img src="https://foodea-bucket.s3.us-east-2.amazonaws.com/images/test/123/RbTQqIlE8m1T0W29glX7kbeAj1c6SOLuek3fpaTc.png" alt="">
               <input type="file" name="deed_sale">
                <span>File size up to 5mb only</span>
             <span
@@ -169,7 +169,7 @@
                  </div>
                     <div class="requirements">
                 <p>Front<span> (Required)</span></p>
-                <img src="image/front_id.png" alt="">
+                <img src="https://foodea-bucket.s3.us-east-2.amazonaws.com/images/test/123/jfpGrNW5d7eYgp5E7V6rMKOfndSyELhjTFFOb1bg.png" alt="">
                 <input type="file" name="license">
                  <span>File size up to 5mb only</span>
                    <span
@@ -178,7 +178,7 @@
                @enderror</span>
 
                  <p>Back<span> (Required)</span></p>
-                <img src="image/back_id.png" alt="">
+                <img src="https://foodea-bucket.s3.us-east-2.amazonaws.com/images/test/123/KXBrNxYN1eVb4HCady5NEWK6StJEOjE3dPVRn8qL.png" alt="">
                  <input type="file" name="license_back">
                  <span>File size up to 5mb only</span>
                <span
@@ -192,7 +192,7 @@
             <p class="text-danger">Certificate of Registration <span>(Required PDF)</span></p>
                </div>
                 <div class="requirements">
-            <img src="image/cr.png" alt="">
+            <img src="https://foodea-bucket.s3.us-east-2.amazonaws.com/images/test/123/AgPeZmK2mBdUCzw1aBkzsKqfob1mjiCi97kdHGLP.png" alt="">
               <input type="file" name="cr">
                <span>File size up to 5mb only</span>
             <span
@@ -206,7 +206,7 @@
                <p class="text-danger">Official Receipt of Vehicle Registration <span>(Required PDF)</span></p>
                </div>
                 <div class="requirements">
-                  <img src="image/or.png" alt="">
+                  <img src="https://foodea-bucket.s3.us-east-2.amazonaws.com/images/test/123/CYvFEcBa0Kk7ghSd00Q77sohOArA8yt3WmccQUC5.png" alt="">
                 <input type="file" name="or">
                  <span>File size up to 5mb only</span>
                <span
@@ -220,7 +220,7 @@
               <p class="text-danger">Drug Test Result <span>(Optional PDF)</span></p>
                </div>
                 <div class="requirements">
-               <img src="image/drug-test.png" alt="">
+               <img src="https://foodea-bucket.s3.us-east-2.amazonaws.com/images/test/123/C95VgRvLE5vgwpK7JwhaW4BCwFcJ0uVvCkCBnrkq.png" alt="">
                  <input type="file" name="drug_test">
                   <span>File size up to 5mb only</span>
               </div>
@@ -229,7 +229,7 @@
               <p class="text-danger">NBI Clearance <span>(Required PDF)</span></p>
                   </div>
                    <div class="requirements">
-               <img src="image/nbi.png" alt="">
+               <img src="https://foodea-bucket.s3.us-east-2.amazonaws.com/images/test/123/c6PXCsuw8R4fbQhNgV5jcJbNGxdIXHAx0gY8uzG6.png" alt="">
                 <input type="file" name="nbi">
                    <span>File size up to 5mb only</span>
                

@@ -108,6 +108,7 @@
                                 @error('product_image') {{ $message }}
                                 @enderror</span>
                             </div>
+                            
                           </div>
                           <div class="row">
                             <div class="col-md">
