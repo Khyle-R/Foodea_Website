@@ -23,7 +23,15 @@
       <div class="header_toggle">
         <i class="bx bx-menu" id="header-toggle"></i>
       </div>
-      <h3 class="header_title pt-2 pt-md-3">Rider Application</h3>
+      <!-- <h3 class="header_title pt-2 pt-md-3">Rider Application</h3> -->
+      <div class="dropdown">
+        <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          Rider Application
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton1">
+          <li><a class="dropdown-item" href="rider_logout">Sign Out</a></li>
+        </ul>
+      </div>
     </header>
     <div class="l-navbar" id="nav-bar">
       <nav class="nav">
@@ -308,13 +316,13 @@
                                        @endforeach
                                     </div>
                                      <div class="col-sm-5 ml-sm-5">
-                                   <div class="row px-2 mt-2 align-items-center justify-content-center">
+                                   <!-- <div class="row px-2 mt-2 align-items-center justify-content-center">
 
                                       @if(Session::get('registerID'))
                                     <a href="/rider_logout" class="button-red btn btn-lg w-75 text-white" data-toggle="modal" data-target="#exampleModalCenter">Sign Out</a>
                                  @else
                                      <a href="/" class="button-red btn btn-lg w-75 text-white" data-toggle="modal" data-target="#exampleModalCenter">Done</a>
-                                    @endif
+                                    @endif -->
 
                                   </div>
                                  
