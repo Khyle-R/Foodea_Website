@@ -16,9 +16,9 @@ class RiderController extends Controller
         $queryItems = $filter->transform($request);
 
         if (!isset($queryItems)||count($queryItems) == 0 ) {
-            return tbl_rider_accounts::all();
+            return tbl_rider_accounts::with('rider_documents')->get();
         } else {
-            return tbl_rider_accounts::where($queryItems)->get();
+            return tbl_rider_accounts::with('rider_documents')->where($queryItems)->get();
         }
     }
 
