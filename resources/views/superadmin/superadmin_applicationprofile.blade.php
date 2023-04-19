@@ -44,7 +44,7 @@
                                                 
                                                 <div class="staff-id">User ID : {{ $rider->rider_application_id }}</div>
                                                 <div class="small doj text-muted">Date Applied : {{ $rider->date }}</div>
-                                                <div class="staff-msg"><a class="red-btn" href="chat.html">{{ $rider->status }}</a></div>
+                                                <div class="staff-msg"><a class="red-btn">{{ $rider->status }}</a></div>
                                             </div>
                                         </div>
                                         <div class="col-md-7">
