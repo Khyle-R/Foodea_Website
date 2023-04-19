@@ -27,7 +27,7 @@ class OrderController extends Controller
                     $data->put('order_key', $value);
                     
                     $dateToday = date('Y-m-d h:i:s');
-                    $query = Order::where('order_key', $value)->with('product_details')->with('user_details')->with('restaurant_details')->where('date', 'like', $dateToday . '%');
+                    $query = Order::where('order_key', $value)->with('product_details')->with('user_details')->with('restaurant_details');
                     
                     $totalPrice = 0;
                     foreach($query->get() as $q){
