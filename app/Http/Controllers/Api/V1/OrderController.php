@@ -26,7 +26,8 @@ class OrderController extends Controller
                 if(!$value == '' || !$value == NULL){
                     $data->put('order_key', $value);
                     
-                    $query = Order::where('order_key', $value)->with('product_details')->with('user_details')->with('restaurant_details');
+                    $dateToday = date('Y-m-d h:i:s');
+                    $query = Order::where('order_key', $value)->with('product_details')->with('user_details')->with('restaurant_details')->where('date', 'like', $dateToday . '%');
                     
                     $totalPrice = 0;
                     foreach($query->get() as $q){
