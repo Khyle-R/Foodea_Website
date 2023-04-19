@@ -41,10 +41,10 @@
         <div
           class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top"
         >
-          <a class="sidebar-brand brand-logo" href="index.html"
+          <a class="sidebar-brand brand-logo" href="/index"
             ><img src="assets/images/foodea_logo.PNG" alt="logo"
           /></a>
-          <a class="sidebar-brand brand-logo-mini" href="index.html"
+          <a class="sidebar-brand brand-logo-mini" href="/index"
             ><img src="/image/foodea.png" class="w-50" alt="logo"
           /></a>
         </div>
@@ -104,6 +104,8 @@
           <li class="nav-item nav-category">
             <span class="nav-link">Navigation</span>
           </li>
+
+          @if(Session::get('Admin') == 'Admin')
           <li class="nav-item menu-items">
             <a class="nav-link" href="/index">
               <span class="menu-icon">
@@ -112,6 +114,18 @@
               <span class="menu-title">Dashboard</span>
             </a>
           </li>
+
+            <li class="nav-item menu-items">
+            <a class="nav-link" href="/admin_add_account">
+              <span class="menu-icon">
+                <i class="mdi mdi mdi-account-box"></i>
+              </span>
+              <span class="menu-title">Add Account</span>
+            </a>
+          </li>
+          @endif
+
+          @if(Session::get('AdminRole') == 'Inventory Officer')
           <li class="nav-item menu-items">
             <a
               class="nav-link"
@@ -148,6 +162,9 @@
               </ul>
             </div>
           </li>
+          @endif
+
+           @if(Session::get('AdminRole') == 'Sales Officer')
           <li class="nav-item menu-items">
             <a class="nav-link" href="/admin_orders">
               <span class="menu-icon">
@@ -172,6 +189,8 @@
               <span class="menu-title">Voucher</span>
             </a>
           </li>
+          @endif
+
           <li class="nav-item menu-items">
             <a class="nav-link" href="/admin_log">
               <span class="menu-icon">
@@ -180,15 +199,45 @@
               <span class="menu-title">Activity log</span>
             </a>
           </li>
-           <li class="nav-item menu-items">
-            <a class="nav-link" href="/admin_account">
+         {{-- <li class="nav-item menu-items">
+            <a
+              class="nav-link"
+              data-toggle="collapse"
+              href="#ui-basicc"
+              aria-expanded="false"
+              aria-controls="ui-basicc"
+            >
               <span class="menu-icon">
                 <i class="mdi mdi-account-box"></i>
               </span>
               <span class="menu-title">Account</span>
+              <i class="menu-arrow"></i>
+            </a>
+
+            <div class="collapse" id="ui-basicc">
+              <ul class="nav flex-column sub-menu">
+
+                <li class="nav-item">
+                  <a class="nav-link" href="/admin_account"
+                    >Account Settings</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/admin_add_account"
+                    >Add Account</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </li> --}}
+               <li class="nav-item menu-items">
+            <a class="nav-link" href="/admin_account">
+              <span class="menu-icon">
+                <i class="mdi mdi mdi-account-box"></i>
+              </span>
+              <span class="menu-title">Account Settings</span>
             </a>
           </li>
-         
         </ul>
       </nav>
       <!-- partial -->
@@ -525,7 +574,7 @@
     <script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
     <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
     
-    <script>
+    {{-- <script>
         FilePond.registerPlugin(FilePondPluginImagePreview);
         // Get a reference to the file input element
         const profile = document.querySelector('input[type="file"]');
@@ -543,7 +592,7 @@
              },
        
          });
-    </script>
+    </script> --}}
 
   </body>
   

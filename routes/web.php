@@ -245,6 +245,10 @@ Route::group(['middleware'=>['superadminLogin']], function(){
 
     Route::post('/superadmin_partnerapplication', [SuperadminController::class, 'UpdateMerchant'])->name('UpdateMerchant');
 
+    Route::post('/superadmin_partnerapplicationremove', [SuperadminController::class, 'RemoveMerchantAccount'])->name('RemoveMerchantAccount');
+
+     Route::post('/superadmin_riderremove', [SuperadminController::class, 'RemoveRiderAccount'])->name('RemoveRiderAccount');
+     
     Route::get('/superadmin_log', [SuperadminController::class, 'ActivityLog']);
 
     Route::get('/superadmin_riderdetails/{id}', [SuperadminController::class, 'RiderDetails']);
@@ -268,7 +272,7 @@ Route::group(['middleware'=>['superadminLogin']], function(){
     Route::post('/superadmin_partnerdetailsbusiness', [SuperadminController::class, 'MerchantBusinessUpdate'])->name('MerchantBusinessUpdate');
 
     Route::get('/superadmin_account', [SuperadminController::class, 'AccountIndex']);
-
+    
     Route::post('/superadmin_accountpass', [SuperadminController::class, 'ChangePassAdmin'])->name('ChangePassAdmin');
 
     Route::post('/superadmin_accountemail', [SuperadminController::class, 'ChangeEmailAdmin'])->name('ChangeEmailAdmin');
@@ -440,6 +444,9 @@ Route::group(['middleware'=>['adminLogin']], function(){
 
     Route::get('/admin_log', [Admin_product::class, 'ActivityLog']);
     Route::get('/admin_account', [Admin_product::class, 'AdminAccount']);
+    Route::get('/admin_add_account', [Admin_product::class, 'AccountAddIndex']);
+    Route::get('/admin_add_email', [Admin_product::class, 'AddAccount']);
+    Route::post('/admin_add_email_submit', [Admin_product::class, 'AddNewAccount'])->name('AddNewAccount');
     Route::post('/admin_accountpass', [Admin_product::class, 'ChangePass'])->name('ChangePass');
     Route::post('/admin_accountemail', [Admin_product::class, 'ChangeEmail'])->name('ChangeEmail');
     

@@ -121,7 +121,7 @@
               <div class="col-lg-6 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Sales</h4>
+                    <h4 class="card-title">Applicants</h4>
                     <canvas id="doughnutChart"></canvas>
                   </div>
                 </div>
@@ -132,71 +132,40 @@
               <div class="col-12 grid-margin">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Order Status</h4>
+                    <h4 class="card-title">Product</h4>
                     <div class="table-responsive">
-                      <table class="table">
-                        <thead>
-                          <tr>
-                            <th>
-                              <div class="form-check form-check-muted m-0">
-                                <label class="form-check-label">
-                                  <input
-                                    type="checkbox"
-                                    class="form-check-input"
-                                  />
-                                </label>
-                              </div>
-                            </th>
-                            <th>Client Name</th>
-                            <th>Order No</th>
-                            <th>Product Cost</th>
-                            <th>Project</th>
-                            <th>Payment Mode</th>
-                            <th>Start Date</th>
-                            <th>Payment Status</th>
-                          </tr>
+                       <div class="table-responsive">
+                     <table id="example" class="table" style="width:100%">
+                        <thead class="table-danger">
+                           <tr>
+                              <th>Product Name</th>
+                              <th>Stock</th>
+                              <th>Product Cost</th>
+                              <th>Category</th>
+                           </tr>
                         </thead>
                         <tbody>
-                         
-                          </tr>
-                          <tr>
-                            <td>
-                              <div class="form-check form-check-muted m-0">
-                                <label class="form-check-label">
-                                  <input
-                                    type="checkbox"
-                                    class="form-check-input"
-                                  />
-                                </label>
-                              </div>
-                            </td>
-                            <td>
-                              <img
-                                src="assets/images/faces/face4.jpg"
-                                alt="image"
-                              />
-                              <span class="pl-2">Sallie Reyes</span>
-                            </td>
-                            <td>02312</td>
-                            <td>$14,500</td>
-                            <td>Website</td>
-                            <td>Credit card</td>
-                            <td>04 Dec 2019</td>
-                            <td>
-                              <div class="badge badge-outline-success">
-                                Approved
-                              </div>
-                            </td>
-                          </tr>
+                           <?php $__currentLoopData = $product; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                              <tr>
+                                 <td>
+                                    <img src="<?php echo e($data->product_image); ?>" alt="image" class="img-fluid"
+                                       style=" height: 60px; width: 70px; border-radius: 2px;" />
+                                    <span class="pl-2"><?php echo e($data->product_name); ?></span>
+                                 </td>
+                                 <td><?php echo e($data->stock); ?></td>
+                                 <td><?php echo e($data->price); ?></td>
+                                 <td><?php echo e($data->category_name); ?></td>
+                                
+                              </tr>
+                           <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </tbody>
-                      </table>
+                     </table>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
- 
-            
+            </div>
              <div class="row">
                  <div class="col-lg-4">
                    

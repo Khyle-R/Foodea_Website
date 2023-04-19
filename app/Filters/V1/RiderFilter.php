@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 
 class RiderFilter{
     protected $allowedParameters = [
+        'rider_id' => ['eq', 'lte', 'lt', 'gt', 'gte'],
         'firstname' => ['eq', 'like'],
         'middlename' => ['eq', 'like'],
         'lastname' => ['eq', 'like'],

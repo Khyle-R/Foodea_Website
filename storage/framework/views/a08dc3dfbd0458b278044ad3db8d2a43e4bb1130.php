@@ -96,7 +96,7 @@
                                       <div class="row align-items-center ">
                                    
                                           <div class="text-center">
-                                      <img class="circle img-fluid mr-3" src="<?php echo e(url('uploads/'. 'merchant_documents'. '/'. $partner->merchant_id. '/'. $partner->logo)); ?>" alt="">
+                                      <img class="circle img-fluid mr-3" src="<?php echo e($partner->logo); ?>" alt="">
                                         </div>
                              
                                     
@@ -220,44 +220,49 @@
                                   </div>
 
                                   <div class="row align-items-center justify-content-around mt-2">
-                                    <div class="col-sm-5 ml-sm-5">
+                                    <div class="updoc col-sm-5 ml-sm-5">
                                       <h4 class="title-border flex-wrap mb-4">Uploaded Documents</h4>
                        
-                                       <div class="row px-2 mt-2">
-                                        <label class="black width">Business Logo</label>
-                                             <p class="black ml-5"><?php echo e($partner->logo); ?></p>
-                                      </div>
+                                  
                                        <div class="row px-2 mt-2">
                                         <label class="black width">Business Menu</label>
+                                        <img src="<?php echo e($partner->menu_logo); ?>" alt="">
                                           <p class="black ml-5"><?php echo e($partner->menu_photo); ?></p>
                                       </div>
                                        <div class="row px-2 mt-2">
                                         <label class="black width">Business Permit</label>
-                                          <p class="black ml-5"><?php echo e($partner->business_permit); ?></p>
+                                        <p class="black ml-5"><?php echo e($partner->business_permit); ?></p>
+                                        <a href="<?php echo e($partner->business_permit); ?>"><button>Download</button></a> 
                                       </div>
                                        <div class="row px-2 mt-2">
                                         <label class="black width">BIR Certificate</label>
+                                        <a href="<?php echo e($partner->bir_cert); ?>"><button>Download</button></a>
                                           <p class="black ml-5"><?php echo e($partner->bir_cert); ?></p>
                                       </div>
                                        <div class="row px-2 mt-2">
                                         <label class="black width">Barangay Permit</label>
-                                         <p class="black ml-5"><?php echo e($partner->barangay_permit); ?></p>
+                                        <p class="black ml-5"><?php echo e($partner->barangay_permit); ?></p>
+                                         <a href="<?php echo e($partner->barangay_permit); ?>"><button>Download</button></a>
                                       </div>
                                        <div class="row px-2 mt-2">
                                         <label class="black width">DTI Certificate</label>
-                                         <p class="black ml-5"><?php echo e($partner->dti_cert); ?></p>
+                                        <p class="black ml-5"><?php echo e($partner->dti_cert); ?></p>
+                                        <a href="<?php echo e($partner->dti_cert); ?>"><button>Download</button></a>
                                       </div>
                                        <div class="row px-2 mt-2">
                                         <label class="black width">Front License ID</label>
+                                        <img src="<?php echo e($partner->front_license); ?>" alt="">
                                          <p class="black ml-5"><?php echo e($partner->front_license); ?></p>
                                       </div>
                                       <div class="row px-2 mt-2">
                                         <label class="black width">Back License ID</label>
+                                        <img src="<?php echo e($partner->back_license); ?>" alt="">
                                          <p class="black ml-5"><?php echo e($partner->back_license); ?></p>
                                       </div>
                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
                                     </div>
+                                    
                                      <div class="col-sm-5 ml-sm-5">
                                    <div class="row px-2 mt-2">
                                     <?php if(Session::get('partnerID')): ?>
@@ -277,6 +282,7 @@
                             </div>
                         </div>
                     </div>
+                    
         
     </div>
      <!-- </div> -->

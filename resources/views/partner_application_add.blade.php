@@ -110,6 +110,30 @@
 
             <form method="post" action="{{ route('addproductpartner')}}" enctype="multipart/form-data">
           @csrf
+
+
+          <div class="form-group mt-3">
+            <div class="d-flex justify-content-between align-items-center">
+            <label>Category</label>
+            <a class="add-cat" href="#" data-bs-toggle="modal" data-bs-target="#addCategory">Add Category</a>
+            </div>
+            <select name="category" id="category" class="form-control form-control-lg"  >
+              <option selected="true" disabled="disabled">- Select -</option>
+              @foreach ($category as $cat)
+                <option value={{ $cat->category_id }}>{{ $cat->main_category }}</option>
+              @endforeach
+            </select>
+            
+            <span style="color:red;">
+              @if(Session::has('fail'))
+              {{ Session::pull('fail') }}
+              @endif
+              @error('category') 
+                {{ $message }}
+              @enderror
+            </span>
+         
+          </div>
          
             <div class="form-group">
               <label>Product Name</label>
@@ -122,28 +146,7 @@
               </span>
             </div>
 
-            <div class="form-group mt-3">
-              <div class="d-flex justify-content-between align-items-center">
-              <label>Category</label>
-              <a class="add-cat" href="#" data-bs-toggle="modal" data-bs-target="#addCategory">Add Category</a>
-              </div>
-              <select name="category" id="category" class="form-control form-control-lg"  >
-                <option selected="true" disabled="disabled">- Select -</option>
-                @foreach ($category as $cat)
-                  <option value={{ $cat->main_category }}>{{ $cat->main_category }}</option>
-                @endforeach
-              </select>
-              
-              <span style="color:red;">
-                @error('category') 
-                  {{ $message }}
-                @enderror
-              </span>
-           
-            </div>
-            
-
-            <div class="form-group mt-2">
+            {{-- <div class="form-group mt-2">
               <label>Tags <a style="color:#BD9140;font-size: 14px;"> (Press enter to input tags)</a></label>
               <input type="text" class="form-control" id="tags_category" name="tags_category" value="" data-role="tagsinput" name="tags_category">
               <span style="color:red;">
@@ -151,11 +154,21 @@
                   {{ $message }}
                 @enderror
               </span>
+            </div> --}}
+            
+            <div class="form-group">
+              <label>Calories</label> 
+                <input type="number" name="calories" class="form-control form-control-lg"  />
+                <span style="color:red;">
+                  @error('calories')
+                    {{ $message }}
+                  @enderror
+                </span>
             </div>
 
             <div class="form-group">
             <label for="exampleFormControlTextarea1">Description</label>
-            <textarea name="description" class="form-control" id="exampleFormControlTextarea1" rows="3" ></textarea>
+            <textarea name="description" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
             <span
               style="color:red;">
               @error('description') {{ $message }}
@@ -220,8 +233,8 @@
               <label>Status</label>
                 <select name="status" id="" class="form-control form-control-lg"  >
                   <option selected="true" disabled="disabled">- Select -</option>
-                  <option>Enable</option>
-                  <option>Disable</option> 
+                  <option>Active</option>
+                  <option>Inactive</option> 
                 </select>
                 <span style="color:red;">
                   @error('status')
@@ -269,7 +282,7 @@
                                  </div>
                                  <div class="form-group">
                                     <label> Description</label>
-                                    <textarea class="form-control" id="description" name="description" rows="4"></textarea>
+                                    <textarea class="form-control" id="description" name="description" rows="4" required="required" value=""></textarea>
                                 </div>
                             </div>
                            <!-- MODAL FOOTER -->

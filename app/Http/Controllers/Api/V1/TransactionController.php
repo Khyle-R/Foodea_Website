@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Api\V1;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Filters\V1\TransactionFilter;
-use App\Http\Requests\V1\StoreRiderRequest;
-use App\Http\Requests\V1\UpdateRiderRequest;
+use App\Http\Requests\V1\StoreTransactionRequest;
+use App\Http\Requests\V1\UpdateTransactionRequest;
 use App\Models\tbl_transaction;
 
 class TransactionController extends Controller

@@ -2,7 +2,7 @@ Congratulations!
  
 <p>Your application has been approved. Please install the application to start your journey with us.</p><br>
 
-<a href="{{ config('app.url') }}">
+<a href="foodea-website.herokuapp.com/download_app_user">
 Click here
 </a>
 

@@ -40,7 +40,7 @@
                                     <div class="profile-img">
                                          <?php $__currentLoopData = $Data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $partner): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                      
-                                          <img alt="" src="<?php echo e(url('uploads/'. 'merchant_documents'. '/'. $partner->merchant_id. '/'. $partner->logo)); ?>">
+                                          <img alt="" src="<?php echo e($partner->logo); ?>">
                                   
                                     </div>
                                 </div>
@@ -220,50 +220,50 @@
                                 <td>Business Logo</td>
                                 <td><?php echo e($partner->logo); ?></td>
                                  <td><a class="red-btn" href="" data-toggle="modal" data-target="#ViewModal1"><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
-                                <td><a class="red-btn" href="/download_merchant_file/<?php echo e($partner->merchant_id); ?>/<?php echo e($partner->logo); ?>"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
+                                <td><a class="red-btn" href="<?php echo e($partner->logo); ?>"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
 
                             </tr>   
                             <tr>
                                 <td>Menu Photo</td>
                                 <td><?php echo e($partner->menu_photo); ?></td>
                                <td><a class="red-btn" data-toggle="modal" data-target="#ViewModal2"><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
-                                <td><a class="red-btn" href="/download_merchant_file/<?php echo e($partner->merchant_id); ?>/<?php echo e($partner->menu_photo); ?>"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
+                                <td><a class="red-btn" href="<?php echo e($partner->menu_photo); ?>"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
 
                             </tr>
 
                             <tr>
                                 <td>Business Permit</td>
                                 <td><?php echo e($partner->business_permit); ?></td>
-                                 <td><a class="red-btn" href="/display_merchant_pdf/<?php echo e($partner->merchant_id); ?>/<?php echo e($partner->business_permit); ?>" ><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
-                                <td><a class="red-btn" href="/download_merchant_file/<?php echo e($partner->merchant_id); ?>/<?php echo e($partner->business_permit); ?>"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
+                                 <td><a class="red-btn" href="<?php echo e($partner->business_permit); ?>" ><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
+                                <td><a class="red-btn" href="<?php echo e($partner->business_permit); ?>"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
 
                             </tr>
                             <tr>
                                 <td>BIR Certificate</td>
                                 <td><?php echo e($partner->bir_cert); ?></td>
-                                 <td><a class="red-btn" href="/display_merchant_pdf/<?php echo e($partner->merchant_id); ?>/<?php echo e($partner->bir_cert); ?>" ><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
-                                <td><a class="red-btn" href="/download_merchant_file/<?php echo e($partner->merchant_id); ?>/<?php echo e($partner->bir_cert); ?>"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
+                                 <td><a class="red-btn" href="<?php echo e($partner->bir_cert); ?>" ><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
+                                <td><a class="red-btn" href="<?php echo e($partner->bir_cert); ?>"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
 
                             </tr>
                             <tr>
                                 <td>Barangay Permit</td>
                                 <td><?php echo e($partner->barangay_permit); ?></td>
-                                <td><a class="red-btn" href="/display_merchant_pdf/<?php echo e($partner->merchant_id); ?>/<?php echo e($partner->barangay_permit); ?>" ><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
-                                <td><a class="red-btn" href="/download_merchant_file/<?php echo e($partner->merchant_id); ?>/<?php echo e($partner->barangay_permit); ?>"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
+                                <td><a class="red-btn" href="<?php echo e($partner->barangay_permit); ?>" ><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
+                                <td><a class="red-btn" href="<?php echo e($partner->barangay_permit); ?>"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
 
                             </tr>
                            <tr>
                                 <td>DTI Certificate</td>
                                 <td><?php echo e($partner->dti_cert); ?></td>
-                                 <td><a class="red-btn" href="/display_merchant_pdf/<?php echo e($partner->merchant_id); ?>/<?php echo e($partner->dti_cert); ?>" ><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
-                                <td><a class="red-btn" href="/download_merchant_file/<?php echo e($partner->merchant_id); ?>/<?php echo e($partner->dti_cert); ?>"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
+                                 <td><a class="red-btn" href="<?php echo e($partner->dti_cert); ?>" ><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
+                                <td><a class="red-btn" href="<?php echo e($partner->dti_cert); ?>"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
 
                             </tr>
                             <tr>
                                 <td>Valid Government ID</td>
                                 <td><?php echo e($partner->front_license); ?></td>
                                 <td><a class="red-btn" data-toggle="modal" data-target="#ViewModal3" ><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
-                                <td><a class="red-btn" href="/download_valid_merchant/<?php echo e($partner->merchant_id); ?>"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
+                                <td><a class="red-btn" href="<?php echo e($partner->merchant_id); ?>"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
 
                             </tr>
                         </tbody>
@@ -337,7 +337,7 @@
                                         <div id="carouselExampleControl" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                            <img class="d-block" height="500" width="100%" src=" <?php echo e(asset('uploads/'. 'merchant_documents'. '/'. $partner->merchant_id. '/'. $partner->menu_photo)); ?> " alt="First slide">
+                            <img class="d-block" height="500" width="100%" src=" <?php echo e($partner->menu_photo); ?> " alt="First slide">
                             </div>
                         </div>
                         
@@ -652,7 +652,7 @@
                         </div>
                         <div class="modal-body">
                             <div class="image text-center">
-                           <img height="400" width="400" src="<?php echo e(url('uploads/'. 'merchant_documents'. '/'. $partner->merchant_id. '/'. $partner->logo)); ?>" alt="">
+                           <img height="400" width="400" src="<?php echo e($partner->logo); ?>" alt="">
                        </div>
                         </div>
                         </div>
@@ -673,7 +673,7 @@
                             <div id="carouselExampleContr" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                            <img class="d-block" height="650"  width="100%" src="<?php echo e(url('uploads/'. 'merchant_documents'. '/'. $partner->merchant_id. '/'. $partner->menu_photo)); ?>" alt="First slide">
+                            <img class="d-block" height="650"  width="100%" src="<?php echo e($partner->menu_photo); ?>" alt="First slide">
                             </div>
         
                         </div>
@@ -699,10 +699,10 @@
                             <div id="carouselExampleControlss" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                            <img class="d-block" height="350"  width="100%" src="<?php echo e(url('uploads/'. 'merchant_documents'. '/'. $partner->merchant_id. '/'. 'valid id/'.$partner->front_license)); ?>" alt="First slide">
+                            <img class="d-block" height="350"  width="100%" src="<?php echo e($partner->front_license); ?>" alt="First slide">
                             </div>
                             <div class="carousel-item">
-                            <img class="d-block" height="350" width="100%" src="<?php echo e(url('uploads/'. 'merchant_documents'. '/'. $partner->merchant_id. '/'. 'valid id/'.$partner->back_license)); ?>" alt="Second slide">
+                            <img class="d-block" height="350" width="100%" src="<?php echo e($partner->back_license); ?>" alt="Second slide">
                             </div>
                         </div>
                         <a class="carousel-control-prev" href="#carouselExampleControlss" role="button" data-slide="prev">

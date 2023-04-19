@@ -156,6 +156,8 @@ class PartnerRegistration extends Controller
             'barangay' => 'required',
             'street' => 'required',
             'country' => 'required',
+            'longitude' => 'required',
+            'latitude' => 'required',
             'postal_code' => 'required|min:4',
             'store_number' => 'required|min:10',
             'store_email' => 'required|email',
@@ -179,6 +181,8 @@ class PartnerRegistration extends Controller
         $merchant->date_founded = $request->date_founded; 
         $merchant->mission = $request->mission; 
         $merchant->vision = $request->vision; 
+        $merchant->longitude = $request->longitude; 
+        $merchant->latitude = $request->latitude; 
         $res = $merchant->save();
         if($res){
             $id = tbl_merchant_info::where('merchant_id', $request->merchant_id)->first();
@@ -233,10 +237,13 @@ class PartnerRegistration extends Controller
    
     public function addProductPartner(Request $request)
     {
+        $category_name = tbl_category::where('category_id', $request->category)
+        ->first();
+      
         $request->validate([
             'product_name' => 'required',
             'category' => 'required',
-            'tags_category' => 'required',
+            'calories' => 'required',
             'description' => 'required',
             'ingredients' => 'required',
             'product_image' => 'required|mimes:jpeg,png,jpg|max:5000',
@@ -248,18 +255,18 @@ class PartnerRegistration extends Controller
 
         if ($request->hasFile('product_image')) 
         {
-            $prod_image = $request->file('product_image');
-            $image_p = $prod_image->getClientOriginalName();
-            $prod_image->move('product_images', $image_p);
+            $image_p = $request->file('product_image')->store('product_images', 's3', ['visibility', 'public']);
+            $filename1 = Storage::disk('s3')->url($image_p);
         
             $addProd->merchant_id = Session::get('merchant_id');
             $addProd->product_name = $request->product_name;
             $addProd->stock = $request->stock;
-            $addProd->product_image =$image_p;
+            $addProd->product_image = $filename1;
             $addProd->price = $request->price;
-            $addProd->category_name=$request->category;
+            $addProd->category_name= $category_name->main_category;
+            $addProd->category_id= $request->category;
             $addProd->status = $request->status;
-            $addProd->tags=$request->tags_category;
+            $addProd->calories=$request->calories;
             $addProd->description = $request->description;
             $addProd->ingredients= $request->ingredients;
              $addProd->save();
@@ -275,14 +282,19 @@ class PartnerRegistration extends Controller
                         ->first();
                         
             $code = mt_rand(100000, 999999);
-              $mailData = [
-                'title' => 'Account Verification',
-                'body' => 'test',
-                'code' => $code,
-                'fname' => $email->firstname,
-                'lname' => $email->lastname,
-            ];
-             Mail::to($email)->send(new MailVerification($mailData));
+            //   $mailData = [
+            //     'title' => 'Account Verification',
+            //     'body' => 'test',
+            //     'code' => $code,
+            //     'fname' => $email->firstname,
+            //     'lname' => $email->lastname,
+            // ];
+            //  Mail::to($email)->send(new MailVerification($mailData));
+
+            
+            $html = view('email.emailverify')->with('code', $code)->render();
+            SendGridClient::sendEmail($email->email, "Account Verification", $html);
+                
             $request->session()->put('verification', $code);
             return redirect('partner_application3');
         }
@@ -294,12 +306,30 @@ class PartnerRegistration extends Controller
     //CATEGORY
     public function addCategory(Request $request)
     {
-        $addCategory = new tbl_category();
-        $addCategory->main_category = $request->categoryName;
-        $addCategory->description = $request->description;
-        $addCategory->merchant_id = session('merchant_id');
+        $category = tbl_category::where('merchant_id', Session::get('merchant_id'))
+        ->first();
 
-        $addCategory->save();
+        if(isset($category->main_category)){
+            if($category->main_category == $request->categoryName)
+            {
+                $request->session()->put('fail', 'Category Name Already Exist');
+            }
+            else{
+            $addCategory = new tbl_category();
+            $addCategory->main_category = $request->categoryName;
+            $addCategory->description = $request->description;
+            $addCategory->merchant_id = session('merchant_id');
+
+            $addCategory->save();
+            }
+        } else {
+            $addCategory = new tbl_category();
+            $addCategory->main_category = $request->categoryName;
+            $addCategory->description = $request->description;
+            $addCategory->merchant_id = session('merchant_id');
+
+            $addCategory->save();
+        }
         
         return back();
         

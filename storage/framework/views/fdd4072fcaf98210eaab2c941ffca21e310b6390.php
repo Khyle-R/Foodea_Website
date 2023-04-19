@@ -41,10 +41,10 @@
         <div
           class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top"
         >
-          <a class="sidebar-brand brand-logo" href="index.html"
+          <a class="sidebar-brand brand-logo" href="/index"
             ><img src="assets/images/foodea_logo.PNG" alt="logo"
           /></a>
-          <a class="sidebar-brand brand-logo-mini" href="index.html"
+          <a class="sidebar-brand brand-logo-mini" href="/index"
             ><img src="/image/foodea.png" class="w-50" alt="logo"
           /></a>
         </div>
@@ -55,8 +55,8 @@
                 <div class="count-indicator">
                   <img
                     class="img-xs rounded-circle"
-                    src="<?php echo e(url('uploads/'. 'merchant_documents'. '/'. $logIndata->merchant_id. '/'. $logIndata->logo)); ?>"
-                    alt=""
+                    src="<?php echo e($logIndata->logo); ?>"
+                    alt="*"
                   />
                   <span class="count bg-success"></span>
                 </div>
@@ -90,6 +90,8 @@
           <li class="nav-item nav-category">
             <span class="nav-link">Navigation</span>
           </li>
+
+          <?php if(Session::get('Admin') == 'Admin'): ?>
           <li class="nav-item menu-items">
             <a class="nav-link" href="/index">
               <span class="menu-icon">
@@ -98,6 +100,18 @@
               <span class="menu-title">Dashboard</span>
             </a>
           </li>
+
+            <li class="nav-item menu-items">
+            <a class="nav-link" href="/admin_add_account">
+              <span class="menu-icon">
+                <i class="mdi mdi mdi-account-box"></i>
+              </span>
+              <span class="menu-title">Add Account</span>
+            </a>
+          </li>
+          <?php endif; ?>
+
+          <?php if(Session::get('AdminRole') == 'Inventory Officer'): ?>
           <li class="nav-item menu-items">
             <a
               class="nav-link"
@@ -134,6 +148,9 @@
               </ul>
             </div>
           </li>
+          <?php endif; ?>
+
+           <?php if(Session::get('AdminRole') == 'Sales Officer'): ?>
           <li class="nav-item menu-items">
             <a class="nav-link" href="/admin_orders">
               <span class="menu-icon">
@@ -158,6 +175,8 @@
               <span class="menu-title">Voucher</span>
             </a>
           </li>
+          <?php endif; ?>
+
           <li class="nav-item menu-items">
             <a class="nav-link" href="/admin_log">
               <span class="menu-icon">
@@ -166,15 +185,15 @@
               <span class="menu-title">Activity log</span>
             </a>
           </li>
-           <li class="nav-item menu-items">
+         
+               <li class="nav-item menu-items">
             <a class="nav-link" href="/admin_account">
               <span class="menu-icon">
-                <i class="mdi mdi-account-box"></i>
+                <i class="mdi mdi mdi-account-box"></i>
               </span>
-              <span class="menu-title">Account</span>
+              <span class="menu-title">Account Settings</span>
             </a>
           </li>
-         
         </ul>
       </nav>
       <!-- partial -->
@@ -185,7 +204,7 @@
             class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center"
           >
             <a class="navbar-brand brand-logo-mini" href="index.html"
-              ><img src="<?php echo e(url('uploads/'. 'merchant_documents'. '/'. $logIndata->merchant_id. '/'. $logIndata->logo)); ?>" class="w-50" alt="logo"
+              ><img src="<?php echo e($logIndata->logo); ?>" class="w-50" alt="logo"
             /></a>
           </div>
           <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
@@ -302,7 +321,7 @@
                     <img
                       class="img-xs rounded-circle"
                       style="background-color: #fff"
-                      src="<?php echo e(url('uploads/'. 'merchant_documents'. '/'. $logIndata->merchant_id. '/'. $logIndata->logo)); ?>"
+                      src="<?php echo e($logIndata->logo); ?>"
                       alt=""
                     />
                     <p class="mb-0 d-none d-sm-block navbar-profile-name">
@@ -408,25 +427,7 @@
     <script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
     <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
     
-    <script>
-        FilePond.registerPlugin(FilePondPluginImagePreview);
-        // Get a reference to the file input element
-        const profile = document.querySelector('input[type="file"]');
-         // Create a FilePond instance
-         const pond = FilePond.create(profile, {
-            //  instantUpload: false,
-             storeAsFile: true,
-             acceptedFileTypes: ['image/*'], 
-             server:{
-                 process: '/tmp-upload',
-                 revert: '/tmp-delete',
-                headers: {
-                 'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>'
-                }
-             },
-       
-         });
-    </script>
+    
 
   </body>
   

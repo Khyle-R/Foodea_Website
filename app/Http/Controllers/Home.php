@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Session;
 use App\Models\tbl_merchant_application;
 use Illuminate\Support\Facades\Storage;
 use App\Clients\SendGridClient;
+use App\Models\tbl_category;
+use App\Models\tbl_product;
 
 class Home extends Controller
 {
@@ -61,13 +63,20 @@ class Home extends Controller
          $document =  tbl_merchant_document::where('merchant_id', Session::get('merchant_id'))
             ->delete();
 
-          $vehicle =  tbl_merchant_info::where('merchant_id', Session::get('merchant_id'))
-            ->delete();
+         $vehicle =  tbl_merchant_info::where('merchant_id', Session::get('merchant_id'))
+        ->delete();
+            
+         $product = tbl_product::where('merchant_id', Session::get('merchant_id'))
+        ->delete();
+       
+        $category = tbl_category::where('merchant_id', Session::get('merchant_id'))
+        ->delete();
         
          $application =  tbl_merchant_application::where('merchant_id', Session::get('merchant_id'))
-            ->delete();
+         ->delete();
 
-            if($account || $document || $vehicle || $application){
+            if($account || $document || $vehicle || $application || $product || $category){
+            Session::pull('loops');
             Session::pull('merchant_id');
             Session::pull('verification');
             Session::pull('partnerstatus');
@@ -122,8 +131,10 @@ class Home extends Controller
         //     Mail::to($request->email)->send(new ContactUs($mailData));
             
             $text = $request->text;
-            $html = view('email.contact')->with('text', $text)->render();
-            SendGridClient::sendEmail($email->email, "Message from Foodea", $html);
+            $sender_name = $request->name;
+            $sender_email = $request->email;
+            $html = view('email.contact')->with('text', $text)->with('sender_name', $sender_name)->with('sender_email', $sender_email)->render();
+            SendGridClient::sendEmail('foodeafoodea@gmail.com', "Contact us Inquiry", $html);
             
             return back();
         

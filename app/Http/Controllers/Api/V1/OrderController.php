@@ -17,9 +17,73 @@ class OrderController extends Controller
         $queryItems = $filter->transform($request);
 
         if (!isset($queryItems)||count($queryItems) == 0 ) {
-            return Order::with('product_details')->get();
+            $order_details = collect();
+            $order_keys = Order::select('order_key')->distinct()->get();
+
+            foreach($order_keys as $order_key){
+                $data = collect();
+                $value = $order_key->order_key;
+                if(!$value == '' || !$value == NULL){
+                    $data->put('order_key', $value);
+                    
+                    $dateToday = date('Y-m-d h:i:s');
+                    $query = Order::where('order_key', $value)->with('product_details')->with('user_details')->with('restaurant_details');
+                    
+                    $totalPrice = 0;
+                    foreach($query->get() as $q){
+                        $totalPrice = $totalPrice + $q->total;
+                    }
+                    $data->put('order_totalPrice', $totalPrice);
+
+                    if(!$query->count() == 0){
+                        $data->put('order_details', $query->get());
+                    } else {
+                        continue;
+                    }
+                } else {
+                    continue;
+                }
+                $order_details->push($data);
+            }
+            return $order_details;
+            
+
+            // return Order::whereHas('product_details')->whereHas('user_details')->whereHas('restaurant_details')->with('product_details')->with('user_details')->with('restaurant_details')->groupBy(function($user) {
+            //     return $user->post->groupBy('order_key');
+            // });
         } else {
-            return Order::with('product_details')->where($queryItems)->get();
+
+            $order_details = collect();
+            $order_keys = Order::select('order_key')->distinct()->get();
+
+            foreach($order_keys as $order_key){
+                $data = collect();
+                $value = $order_key->order_key;
+                if(!$value == '' || !$value == NULL){
+                    $data->put('order_key', $value);
+                    $query = Order::where('order_key', $value)->with('product_details')->with('user_details')->with('restaurant_details')->where($queryItems);
+                    
+                    $totalPrice = 0;
+                    foreach($query->get() as $q){
+                        $totalPrice = $totalPrice + $q->total;
+                    }
+                    $data->put('order_totalPrice', $totalPrice);
+
+                    if(!$query->count() == 0){
+                        $data->put('order_details', $query->get());
+                    } else {
+                        continue;
+                    }
+                    
+                } else {
+                    continue;
+                }
+                $order_details->push($data);
+            }
+
+            return $order_details;
+
+            // return Order::whereHas('product_details')->whereHas('user_details')->whereHas('restaurant_details')->with('product_details')->with('user_details')->with('restaurant_details')->where($queryItems)->get();
         }
     }
 

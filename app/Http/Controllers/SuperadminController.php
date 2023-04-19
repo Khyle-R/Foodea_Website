@@ -27,6 +27,8 @@ use App\Models\tbl_merchant_application;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Validation\Rules\Password;
 use App\Clients\SendGridClient;
+use App\Models\tbl_merchant_account;
+use App\Models\tbl_merchant_document;
 
 class SuperadminController extends Controller
 {
@@ -514,13 +516,17 @@ class SuperadminController extends Controller
           $email = tbl_rider_accounts::where('rider_id',  $request->rider_id)
           ->first();
           
-             $mailData = [
-                'title' => 'Password Reset',
-                'body' => 'test',
-                'fname' => $email->firstname,
-                'lname' => $email->lastname,
-                ];
-                Mail::to($email->email)->send(new RiderAccepted($mailData));
+            //  $mailData = [
+            //     'title' => 'Password Reset',
+            //     'body' => 'test',
+            //     'fname' => $email->firstname,
+            //     'lname' => $email->lastname,
+            //     ];
+            //     Mail::to($email->email)->send(new RiderAccepted($mailData));
+                
+             $html = view('email.accepted')->render();
+             SendGridClient::sendEmail($email->email, "Application Successful", $html);
+                
                 
               $request->session()->put('success', 'Status Updated');
                return back();
@@ -579,6 +585,40 @@ class SuperadminController extends Controller
     }
    }
 
+   public function RemoveMerchantAccount(Request $request){
+    $res = tbl_merchant_application::where('merchant_application_id', $request->id)
+    ->delete();
+
+    if($res){
+        tbl_merchant_account::where('merchant_id', $request->partner_id)
+        ->delete();
+        tbl_merchant_info::where('merchant_id', $request->partner_id)
+        ->delete();
+        tbl_merchant_document::where('merchant_id', $request->partner_id)
+        ->delete();
+
+        $request->session()->put('success', 'Account Removed');
+        return back();
+    }
+   }
+
+   
+   public function RemoveRiderAccount(Request $request){
+    $res = tbl_rider_application::where('rider_application_id', $request->id)
+    ->delete();
+
+    if($res){
+       tbl_vehicle_infos::where('rider_id', $request->rider_id)
+        ->delete();
+        tbl_rider_accounts::where('rider_id', $request->rider_id)
+        ->delete();
+        tbl_rider_document::where('rider_id', $request->rider_id)
+        ->delete();
+
+        $request->session()->put('success', 'Account Removed');
+        return back();
+    }
+   }
    
    public function UpdateMerchant(Request $request){
     if($request->status == 'Reviewing'){

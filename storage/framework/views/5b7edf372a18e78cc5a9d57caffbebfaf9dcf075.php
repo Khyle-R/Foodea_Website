@@ -53,10 +53,10 @@
         <div
           class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top"
         >
-          <a class="sidebar-brand brand-logo" href="index.html"
+          <a class="sidebar-brand brand-logo" href="superadmin_index"
             ><img src="<?php echo e(asset('assets/images/foodea_logo.PNG')); ?>" alt="logo"
           /></a>
-          <a class="sidebar-brand brand-logo-mini" href="index.html"
+          <a class="sidebar-brand brand-logo-mini" href="superadmin_index"
             ><img src="<?php echo e(url('/image/foodea.png')); ?>" class="w-50" alt="logo"
           /></a>
         </div>
@@ -181,13 +181,37 @@
             </a>
           </li>
           
-           <li class="nav-item menu-items">
-            <a class="nav-link" href="/superadmin_account">
+
+          <li class="nav-item menu-items">
+            <a
+              class="nav-link"
+              data-toggle="collapse"
+              href="#ui-basicc"
+              aria-expanded="false"
+              aria-controls="ui-basic"
+            >
               <span class="menu-icon">
-                <i class="mdi mdi-account-box"></i>
+                  <i class="mdi mdi-account-box"></i>
               </span>
               <span class="menu-title">Account</span>
+              <i class="menu-arrow"></i>
             </a>
+            <div class="collapse" id="ui-basicc">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item">
+
+                  <a class="nav-link" href="/superadmin_account"
+
+                    >Account Settings
+                <li class="nav-item">
+                  <a class="nav-link" href=""
+                    ></a
+                  >
+                </li>
+                
+              </ul>
+            </div>
+            
           </li>
         </ul>
       </nav>
@@ -198,7 +222,7 @@
           <div
             class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center"
           >
-            <a class="navbar-brand brand-logo-mini" href="index.html"
+            <a class="navbar-brand brand-logo-mini" href="/superadmin_index"
               ><img src="<?php echo e(url('/image/foodea.png')); ?>" class="w-50" alt="logo"
             /></a>
           </div>

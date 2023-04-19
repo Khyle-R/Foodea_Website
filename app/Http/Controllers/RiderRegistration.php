@@ -24,6 +24,8 @@ use App\Models\tbl_merchant_application;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Support\Facades\Storage;
 use App\Clients\SendGridClient;
+use App\Models\tbl_admin_role;
+use App\Models\tbl_merchant_info;
 
 class RiderRegistration extends Controller
 {
@@ -63,7 +65,7 @@ class RiderRegistration extends Controller
                     //    ];
                     //    Mail::to($email)->send(new PasswordVerification($mailData));
 
-                       $html = view('email.forgotpass')->with('code', $code)->render();
+                    $html = view('email.forgotpass')->with('code', $code)->render();
                     SendGridClient::sendEmail($request->email, "Password Reset", $html);
 
                     $request->session()->put('verification', $code);
@@ -73,14 +75,17 @@ class RiderRegistration extends Controller
          if($merchant){
             $code = mt_rand(1000, 9999);
 
-                       $mailData = [
-                        'title' => 'Password Reset',
-                        'body' => 'test',
-                        'code' => $code,
-                        'fname' => $merchant->firstname,
-                        'lname' => $merchant->lastname,
-                       ];
-                       Mail::to($merchant)->send(new PasswordVerification($mailData));
+                    //    $mailData = [
+                    //     'title' => 'Password Reset',
+                    //     'body' => 'test',
+                    //     'code' => $code,
+                    //     'fname' => $merchant->firstname,
+                    //     'lname' => $merchant->lastname,
+                    //    ];
+                    //    Mail::to($merchant)->send(new PasswordVerification($mailData));
+
+                    $html = view('email.forgotpass')->with('code', $code)->render();
+                    SendGridClient::sendEmail($request->email, "Password Reset", $html);
 
                     $request->session()->put('verification', $code);
                     $request->session()->put('email', $request->email);
@@ -145,14 +150,18 @@ class RiderRegistration extends Controller
      if($merchant){
          $code = mt_rand(1000, 9999);
 
-                       $mailData = [
-                        'title' => 'Password Reset',
-                        'body' => 'test',
-                        'code' => $code,
-                        'fname' => $merchant->firstname,
-                        'lname' => $merchant->lastname,
-                       ];
-                       Mail::to($merchant)->send(new PasswordVerification($mailData));
+                    //    $mailData = [
+                    //     'title' => 'Password Reset',
+                    //     'body' => 'test',
+                    //     'code' => $code,
+                    //     'fname' => $merchant->firstname,
+                    //     'lname' => $merchant->lastname,
+                    //    ];
+                    //    Mail::to($merchant)->send(new PasswordVerification($mailData));
+                    
+                    $receiverEmail = Session::get('merchant');
+                       $html = view('email.forgotpass')->with('code', $code)->render();
+                        SendGridClient::sendEmail($receiverEmail, "Password Reset", $html);
 
                     $request->session()->put('verification', $code);
                      return back();
@@ -323,6 +332,7 @@ class RiderRegistration extends Controller
         $merchant->city = $request-> city;
         $merchant->barangay = $request-> barangay;
         $merchant->zip_code = $request->  zip;
+         $merchant->role = 'Admin';
 
         $res = $merchant->save();
         if($res){
@@ -613,7 +623,7 @@ class RiderRegistration extends Controller
             $filename4 = Storage::disk('s3')->url($file3);
             $filename5 = Storage::disk('s3')->url($file4);
              if($request->hasFile('drug_test')){
-            $filename6 = mt_rand(1000, 9999) . '_' .$file5;
+            $filename6 = Storage::disk('s3')->url($file5);
              }
             $filename7 = Storage::disk('s3')->url($file6);
             $filename8 = Storage::disk('s3')->url($file7);
@@ -886,7 +896,8 @@ class RiderRegistration extends Controller
       
          $user = tbl_rider_accounts::where('email', '=', $request->email)->first();
          $merchant = tbl_merchant_account::where('email', '=', $request->email)->first();
-        
+         $role = tbl_admin_role::where('email', '=', $request->email)->first();
+
          if($user){
             
             if(Hash::check($request->password, $user->password)){
@@ -949,15 +960,55 @@ class RiderRegistration extends Controller
                 $log = new tbl_activitylog();
                 $log->merchant_id = $merchant->merchant_id;
                 $log->email = $merchant->email;
-                $log->name = $merchant->firstname. ' ' .$merchant->lastname;
+                $log->name = 'Admin';
                 $log->description = 'Has Log In';
                 $res = $log->save();
                 if($res){
+                $request->session()->put('Admin', $merchant->role);
                 $request->session()->put('loginID', $merchant->merchant_id);
                 return redirect('/index');
                 }
             
                 }
+            }
+            else{
+                  return back()->with('fail', 'Password does not match');
+            }
+        }
+        if($role){
+             if(Hash::check($request->password, $role->password)){
+                
+                /*IF CHECKBOX = TRUE */
+                 if($request->remember){
+                    
+                    /*SET COOKIE*/
+                    $minutes = 5;
+                    $response = new Response;
+                    Cookie::queue(Cookie::forever('partner_email', $request->email, $minutes));
+                    Cookie::queue(Cookie::forever('partner_password', $request->password, $minutes));
+                }
+              
+
+                $log = new tbl_activitylog();
+                $log->merchant_id = $role->merchant_id;
+                $log->email = $role->email;
+                $log->name = $role->role;
+                $log->description = 'Has Log In';
+                $res = $log->save();
+                if($res){
+                $request->session()->put('loginID', $role->merchant_id);
+                $request->session()->put('AdminRole', $role->role);
+                if($role->role == 'Inventory Officer')
+                {
+                    return redirect('/product');
+                }
+                elseif($role->role == 'Sales Officer')
+                {
+                    return redirect('/admin_orders');
+                }
+                }
+            
+
             }
             else{
                   return back()->with('fail', 'Password does not match');
