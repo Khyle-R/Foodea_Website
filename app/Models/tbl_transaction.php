@@ -34,6 +34,6 @@ class tbl_transaction extends Model
     }
 
     public function restaurant_details(){
-        return $this->hasOne(tbl_merchant_info::class, 'merchant_id', 'restaurant_id')->with('documents');
+        return $this->hasOne(tbl_merchant_info::class, 'merchant_id', 'merchant_id')->with('documents');
     }
 }
