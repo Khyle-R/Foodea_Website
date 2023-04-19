@@ -71,6 +71,9 @@ class OrderController extends Controller
                 }
                 $order_details->push($data);
             }
+            
+            $sorted = $order_details->sortBy('distance_to_rider');
+            $order_details = $sorted->values()->all();
             return $order_details;
             
 
@@ -127,6 +130,8 @@ class OrderController extends Controller
                 $order_details->push($data);
             }
 
+            $sorted = $order_details->sortBy('distance_to_rider');
+            $order_details = $sorted->values()->all();
             return $order_details;
 
             // return Order::whereHas('product_details')->whereHas('user_details')->whereHas('restaurant_details')->with('product_details')->with('user_details')->with('restaurant_details')->where($queryItems)->get();
