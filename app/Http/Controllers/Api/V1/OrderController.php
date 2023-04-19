@@ -40,19 +40,26 @@ class OrderController extends Controller
                     $dateToday = date('Y-m-d h:i:s');
                     $query = Order::where('order_key', $value)->with('product_details')->with('user_details')->with('restaurant_details');
 
-                    $latitude = 0;
-                    $longitude = 0;
-                    foreach($query->get() as $q){
-                        $latitude = $q->restaurant_details['latitude'];
-                        $longitude = $q->restaurant_details['longitude'];
-                    }
-                    $data->put('restaurant_latitude', $latitude);
-                    $data->put('restaurant_longitude', $longitude);
+                    if(!is_null($request->rider_id)){
+                        $latitude = 0;
+                        $longitude = 0;
+                        foreach($query->get() as $q){
+                            $latitude = $q->restaurant_details['latitude'];
+                            $longitude = $q->restaurant_details['longitude'];
+                        }
+                        $data->put('restaurant_latitude', $latitude);
+                        $data->put('restaurant_longitude', $longitude);
 
-                    // get the distance of two points
-                    // d = sqrt(pow((lat2 - lat1), 2) + pow((long2 - long1), 2))
-                    $distance = sqrt(pow(($latitude - $rider_latitude), 2) + pow(($longitude - $rider_longitude), 2));
-                    $data->put('distance_to_rider', $distance);
+                        // get the distance of two points
+                        // d = sqrt(pow((lat2 - lat1), 2) + pow((long2 - long1), 2))
+                        $distance = sqrt(pow(($latitude - $rider_latitude), 2) + pow(($longitude - $rider_longitude), 2));
+                        $data->put('distance_to_rider', $distance);
+
+
+                    }
+                    
+
+                    
 
                     $totalPrice = 0;
                     foreach($query->get() as $q){
@@ -72,9 +79,14 @@ class OrderController extends Controller
                 $order_details->push($data);
             }
             
-            $sorted = $order_details->sortBy('distance_to_rider');
-            $order_details = $sorted->values()->take(5);
-            return $order_details;
+            if(!is_null($request->rider_id)){
+                $sorted = $order_details->sortBy('distance_to_rider');
+                $order_details = $sorted->values()->take(5);
+                return $order_details;
+            } else {
+                return $order_details;
+            }
+            
             
 
             // return Order::whereHas('product_details')->whereHas('user_details')->whereHas('restaurant_details')->with('product_details')->with('user_details')->with('restaurant_details')->groupBy(function($user) {
@@ -98,19 +110,21 @@ class OrderController extends Controller
                     $data->put('order_key', $value);
                     $query = Order::where('order_key', $value)->with('product_details')->with('user_details')->with('restaurant_details')->where($queryItems);
 
-                    $latitude = 0;
-                    $longitude = 0;
-                    foreach($query->get() as $q){
-                        $latitude = $q->restaurant_details['latitude'];
-                        $longitude = $q->restaurant_details['longitude'];
-                    }
-                    $data->put('restaurant_latitude', $latitude);
-                    $data->put('restaurant_longitude', $longitude);
+                    if(!is_null($request->rider_id)){
+                        $latitude = 0;
+                        $longitude = 0;
+                        foreach($query->get() as $q){
+                            $latitude = $q->restaurant_details['latitude'];
+                            $longitude = $q->restaurant_details['longitude'];
+                        }
+                        $data->put('restaurant_latitude', $latitude);
+                        $data->put('restaurant_longitude', $longitude);
 
-                    // get the distance of two points
-                    // d = sqrt(pow((lat2 - lat1), 2) + pow((long2 - long1), 2))
-                    $distance = sqrt(pow(($latitude - $rider_latitude), 2) + pow(($longitude - $rider_longitude), 2));
-                    $data->put('distance_to_rider', $distance);
+                        // get the distance of two points
+                        // d = sqrt(pow((lat2 - lat1), 2) + pow((long2 - long1), 2))
+                        $distance = sqrt(pow(($latitude - $rider_latitude), 2) + pow(($longitude - $rider_longitude), 2));
+                        $data->put('distance_to_rider', $distance);
+                    }
                     
                     $totalPrice = 0;
                     foreach($query->get() as $q){
@@ -130,9 +144,13 @@ class OrderController extends Controller
                 $order_details->push($data);
             }
 
-            $sorted = $order_details->sortBy('distance_to_rider');
-            $order_details = $sorted->values()->take(5);
-            return $order_details;
+            if(!is_null($request->rider_id)){
+                $sorted = $order_details->sortBy('distance_to_rider');
+                $order_details = $sorted->values()->take(5);
+                return $order_details;
+            } else {
+                return $order_details;
+            }
 
             // return Order::whereHas('product_details')->whereHas('user_details')->whereHas('restaurant_details')->with('product_details')->with('user_details')->with('restaurant_details')->where($queryItems)->get();
         }
