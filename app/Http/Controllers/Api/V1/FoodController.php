@@ -5,9 +5,9 @@ namespace App\Http\Controllers\Api\V1;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Filters\V1\FoodFilter;
+use App\Models\tbl_product;
 use App\Http\Requests\V1\StoreFoodRequest;
 use App\Http\Requests\V1\UpdateFoodRequest;
-use App\Models\tbl_product;
 
 class FoodController extends Controller
 {

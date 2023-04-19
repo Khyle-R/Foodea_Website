@@ -41,17 +41,17 @@ class UpdateFoodRequest extends FormRequest
             ];
         } else {
             return [
-                'merchant_id' => ['sometimes','required', 'numeric'],
-                'category_id' => ['sometimes', 'required', 'numeric'],
-                'category_name' => ['sometimes', 'required'],
-                'ingredients'  => ['sometimes', 'required'],
-                'product_name'  => ['sometimes', 'required'],
-                'price'  => ['sometimes', 'required', 'numeric'],
-                'calories'  => ['sometimes', 'required', 'numeric'],
-                'product_image'  => ['sometimes', 'required'],
-                'stock' => ['sometimes', 'required', 'numeric'],
-                'status'  => ['sometimes', 'required'],
-                'description' => ['sometimes', 'required']
+                'merchant_id' => ['sometimes', 'numeric'],
+                'category_id' => ['sometimes', 'numeric'],
+                'category_name' => ['sometimes'],
+                'ingredients'  => ['sometimes'],
+                'product_name'  => ['sometimes'],
+                'price'  => ['sometimes', 'numeric'],
+                'calories'  => ['sometimes', 'numeric'],
+                'product_image'  => ['sometimes'],
+                'stock' => ['sometimes', 'numeric'],
+                'status'  => ['sometimes'],
+                'description' => ['sometimes']
             ];
         }
     }
