@@ -42,6 +42,8 @@ class UpdateAppUserRequest extends FormRequest
                 'password' => ['required'],
                 'lifestyle' => ['required'],
                 'preferences' => ['required'],
+                'latitude' => ['required', 'numeric'],
+                'longitude' => ['required', 'numeric'],
             ];
         } else {
             return [
@@ -59,6 +61,8 @@ class UpdateAppUserRequest extends FormRequest
                 'password' => ['sometimes', 'required'],
                 'lifestyle' => ['sometimes','required'],
                 'preferences' => ['sometimes','required'],
+                'latitude' => ['sometimes', 'required', 'numeric'],
+                'longitude' => ['sometimes', 'required', 'numeric'],
             ];
         }
     }
