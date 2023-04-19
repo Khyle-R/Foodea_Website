@@ -37,8 +37,7 @@ class UpdateFoodRequest extends FormRequest
                 'product_image'  => ['required'],
                 'stock' => ['required', 'numeric'],
                 'status'  => ['required'],
-                'description' => ['required'],
-                'date' => ['date']
+                'description' => ['required']
             ];
         } else {
             return [
@@ -52,8 +51,7 @@ class UpdateFoodRequest extends FormRequest
                 'product_image'  => ['sometimes', 'required'],
                 'stock' => ['sometimes', 'required', 'numeric'],
                 'status'  => ['sometimes', 'required'],
-                'description' => ['sometimes', 'required'],
-                'date' => ['sometimes', 'date']
+                'description' => ['sometimes', 'required']
             ];
         }
     }
