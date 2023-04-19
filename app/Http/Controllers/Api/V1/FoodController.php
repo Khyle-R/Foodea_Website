@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Filters\V1\FoodFilter;
 use App\Http\Requests\V1\StoreFoodRequest;
+use App\Http\Requests\V1\UpdateFoodRequest;
 use App\Models\tbl_product;
 
 class FoodController extends Controller
@@ -37,5 +38,9 @@ class FoodController extends Controller
     public function show(Request $request, tbl_product $tbl_product){
         $id = $request->segment(count(request()->segments()));
         return $tbl_product::where('product_id', $id)->get();
+    }
+
+    public function update(UpdateFoodRequest $request, tbl_product $tbl_product){
+        $tbl_productorder->update($request->all());
     }
 }
