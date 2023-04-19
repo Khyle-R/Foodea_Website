@@ -275,7 +275,7 @@ class RiderRegistration extends Controller
             
             if($res){
 
-                $request->session()->put('rider_id', $rider->id);
+                $request->session()->put('rider_id', $rider->rider_id);
 
                 $id = new tbl_rider_application();
                 $id->rider_id = Session::get('rider_id');
@@ -359,8 +359,8 @@ class RiderRegistration extends Controller
     /*EMAIL VERIFICATION */
     public function VerifyRider(Request $request){
       $email = tbl_rider_accounts::where('rider_id', Session::get('rider_id'))
-                        ->first();
-      
+        ->first();
+  
         return view('rider_application2', compact('email'));
     }
     

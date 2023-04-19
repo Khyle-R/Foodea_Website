@@ -98,7 +98,7 @@
                     <span>  Right click the pinned location and copy the</span> <br><span>first value which is latitude (ex. 14.72249) and second value longitude (ex. 121.04019)</span>
                   </label>
                   <div class="text-center">
-                  <img class="img-fluid mt-3" src="<?php echo e(asset('newimage/gmap.png')); ?>" alt="">
+                  <img class="img-fluid mt-3" src="https://foodea-bucket.s3.us-east-2.amazonaws.com/images/test/123/DidMA0jgvmzHY7uZ09fYtig3gM0Y9DYFdMJRiwfG.png" alt="">
                 </div>    
                 </div>
 
@@ -108,7 +108,7 @@
                     <span>  Paste the copied values to given inputs</span>
                   </label>
                   <div class="text-center">
-                  <img class="img-fluid mt-3" src="<?php echo e(asset('newimage/latitude.png')); ?>" alt="">
+                  <img class="img-fluid mt-3" src="https://foodea-bucket.s3.us-east-2.amazonaws.com/images/test/123/ZTPlsmZZapwZHCvf9mjcOTUpo3BFTEtsTC3BZGJi.png" alt="">
                 </div>    
                     </div>
                   </div>

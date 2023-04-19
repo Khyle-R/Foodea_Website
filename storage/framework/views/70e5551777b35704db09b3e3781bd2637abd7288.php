@@ -35,7 +35,7 @@
             <ul class="nav nav-tabs nav-tabs-solid nav-justified">
                 <li class="nav-size nav-item"><a class="nav-link" href="/superadmin_partnerapplication">All</a></li>
                  <li class="nav-size nav-item"><a class="nav-link" href="/superadmin_merchantpending">Pending</a></li>
-                                <li class="nav-size nav-item"><a class="nav-link" href="/superadmin_merchantreview">Reviewing</a></li>
+                                
                                 <li class="nav-size nav-item"><a class="nav-link active" href="/superadmin_merchantaccept">Accepted</a></li>
                                 <li class="nav-size nav-item"><a class="nav-link" href="/superadmin_merchantarchive">Rejected</a></li>
 
@@ -66,7 +66,7 @@
                             <tr>
                                  <a href="">
                                 <td>
-                                    <img class="circle mr-2" src="<?php echo e(url('uploads/'. 'merchant_documents'. '/'. $partner->merchant_id. '/'. $partner->logo)); ?>" alt="">
+                                    <img class="circle mr-2" src="<?php echo e($partner->logo); ?>" alt="">
                                    <?php echo e($partner->business_name); ?>
 
                                 </td>
@@ -80,7 +80,7 @@
 
                                             </a>
                                             <div class="bg-white dropdown-menu dropdown-menu-right">
-                                                <a data-toggle="modal" data-target="#ReviewModal<?php echo e($partner->merchant_id); ?>" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-success"></i> Reviewing</a>
+                                                
                                                 <a data-toggle="modal" data-target="#AcceptedModal<?php echo e($partner->merchant_id); ?>" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-danger"></i> Accepted</a>
                                                 <a data-toggle="modal" data-target="#RejectModal<?php echo e($partner->merchant_id); ?>" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-warning"></i> Rejected</a>
                                             </div>
@@ -121,10 +121,17 @@
                                 <td>
                                 <div class="dropdown">
                                     <a href="#" class="action-icon" data-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-vertical black-icon" aria-hidden="true"></i></a>
+                                    <?php if($partner->status == 'rejected' || $partner->status == 'Rejected'): ?>
                                     <div class="bg-white dropdown-menu dropdown-menu-right">
                                         <a class="action-btn dropdown-item black" href="/superadmin_merchantproile/<?php echo e($partner->merchant_id); ?>"><i class="fa fa-pencil m-r-5"></i> View</a>
-                                        <a class="action-btn dropdown-item black" href=""><i class="fa fa-trash-o m-r-5"></i> Delete</a>
+                                        <a class="action-btn dropdown-item black" href="#" data-toggle="modal" data-target="#RemoveModal<?php echo e($partner->merchant_id); ?>"><i class="fa fa-trash-o m-r-5"></i> Remove</a>
                                     </div>
+                                    <?php else: ?>
+                                      <div class="bg-white dropdown-menu dropdown-menu-right">
+                                        <a class="action-btn dropdown-item black" href="/superadmin_merchantproile/<?php echo e($partner->merchant_id); ?>"><i class="fa fa-pencil m-r-5"></i> View</a>
+                                        <a class="action-btn dropdown-item black" href="/application_merchant_reject/<?php echo e($partner->merchant_id); ?>"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
+                                    </div>
+                                    <?php endif; ?>
                                 </div>
                                     </td>
                                     </a>
