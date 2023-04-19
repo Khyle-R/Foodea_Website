@@ -41,6 +41,6 @@ class FoodController extends Controller
     }
 
     public function update(UpdateFoodRequest $request, tbl_product $tbl_product){
-        $tbl_productorder->update($request->all());
+        $tbl_product->update($request->all());
     }
 }
