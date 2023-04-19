@@ -73,8 +73,8 @@ class OrderController extends Controller
             }
             
             $sorted = $order_details->sortBy('distance_to_rider');
-            $order_details = $sorted->values()->all();
-            return $order_details->take(5);
+            $order_details = $sorted->values()->take(5);
+            return $order_details;
             
 
             // return Order::whereHas('product_details')->whereHas('user_details')->whereHas('restaurant_details')->with('product_details')->with('user_details')->with('restaurant_details')->groupBy(function($user) {
@@ -131,8 +131,8 @@ class OrderController extends Controller
             }
 
             $sorted = $order_details->sortBy('distance_to_rider');
-            $order_details = $sorted->values()->all();
-            return $order_details->take(5);
+            $order_details = $sorted->values()->take(5);
+            return $order_details;
 
             // return Order::whereHas('product_details')->whereHas('user_details')->whereHas('restaurant_details')->with('product_details')->with('user_details')->with('restaurant_details')->where($queryItems)->get();
         }
