@@ -28,6 +28,15 @@ class OrderController extends Controller
                     
                     $dateToday = date('Y-m-d h:i:s');
                     $query = Order::where('order_key', $value)->with('product_details')->with('user_details')->with('restaurant_details');
+
+                    $latitude = 0;
+                    $longitude = 0;
+                    foreach($query->get() as $q){
+                        $latitude = $q->latitude;
+                        $longitude = $q->longitude;
+                    }
+                    $data->put('order_latitude', $latitude);
+                    $data->put('order_longitude', $longitude);
                     
                     $totalPrice = 0;
                     foreach($query->get() as $q){
@@ -40,6 +49,7 @@ class OrderController extends Controller
                     } else {
                         continue;
                     }
+
                 } else {
                     continue;
                 }
@@ -62,6 +72,15 @@ class OrderController extends Controller
                 if(!$value == '' || !$value == NULL){
                     $data->put('order_key', $value);
                     $query = Order::where('order_key', $value)->with('product_details')->with('user_details')->with('restaurant_details')->where($queryItems);
+
+                    $latitude = 0;
+                    $longitude = 0;
+                    foreach($query->get() as $q){
+                        $latitude = $q->latitude;
+                        $longitude = $q->longitude;
+                    }
+                    $data->put('order_latitude', $latitude);
+                    $data->put('order_longitude', $longitude);
                     
                     $totalPrice = 0;
                     foreach($query->get() as $q){
