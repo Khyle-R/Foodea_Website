@@ -185,15 +185,50 @@
                                 <td><?php echo e($rider->date); ?></td>
                                 <td>
                                 <div class="dropdown">
+                                    
                                     <a href="#" class="action-icon" data-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-vertical black-icon" aria-hidden="true"></i></a>
+                                     <?php if($rider->status == 'rejected' || $rider->status == 'Rejected'): ?>
+                                    <div class="bg-white dropdown-menu dropdown-menu-right">
+                                        <a class="action-btn dropdown-item black" href="/application_profile/<?php echo e($rider->rider_id); ?>"><i class="fa fa-pencil m-r-5"></i> View</a>
+                                        <a class="action-btn dropdown-item black" href="#" data-toggle="modal" data-target="#RemoveModal<?php echo e($rider->rider_id); ?>"><i class="fa fa-trash-o m-r-5"></i> Remove</a>
+                                    </div>
+                                    <?php else: ?>
                                     <div class="bg-white dropdown-menu dropdown-menu-right">
                                         <a class="action-btn dropdown-item black" href="/application_profile/<?php echo e($rider->rider_id); ?>"><i class="fa fa-pencil m-r-5"></i> View</a>
                                         <a class="action-btn dropdown-item black" href="/application_profile_reject/<?php echo e($rider->rider_id); ?>"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
                                     </div>
+                                    <?php endif; ?>
                                 </div>
                                     </td>
                                     </a>
                             </tr>
+
+                            
+                               <!-- Remove Modal -->
+                    <div class="modal fade" id="RemoveModal<?php echo e($rider->rider_id); ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title white-font " id="exampleModalLongTitle">Remove</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            Do you want to remove this applicant?
+                            <form method="post" action="<?php echo e(route('RemoveRiderAccount')); ?>">
+                                <?php echo csrf_field(); ?>
+                            <input type="hidden" name="rider_id" value="<?php echo e($rider->rider_id); ?>">
+                            <input type="hidden" name="id" value="<?php echo e($rider->rider_application_id); ?>">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn white-btn" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn red-btn">Confirm</button>
+                            </form>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
                      
                   <!-- Review Modal -->
                     <div class="modal fade" id="ReviewModal<?php echo e($rider->rider_id); ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
