@@ -13,7 +13,7 @@ class tbl_transaction extends Model
     use HasFactory;
     public $table = 'tbl_transaction';
     public $timestamps = false;
-    protected $filable = [
+    protected $fillable = [
         'transaction_id',
         'order_key',
         'merchant_id',
