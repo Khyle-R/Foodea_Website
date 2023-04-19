@@ -25,7 +25,8 @@ class OrderController extends Controller
                 $value = $order_key->order_key;
                 if(!$value == '' || !$value == NULL){
                     $data->put('order_key', $value);
-                    $query = Order::where('order_key', $value)->with('product_details')->with('user_details')->with('restaurant_details');
+                    
+                    $query = Order::where('order_key', $value)->where('date', '=', date("Y-m-d h:i:s"))->with('product_details')->with('user_details')->with('restaurant_details');
                     
                     $totalPrice = 0;
                     foreach($query->get() as $q){
@@ -59,7 +60,7 @@ class OrderController extends Controller
                 $value = $order_key->order_key;
                 if(!$value == '' || !$value == NULL){
                     $data->put('order_key', $value);
-                    $query = Order::where('order_key', $value)->with('product_details')->with('user_details')->with('restaurant_details')->where($queryItems);
+                    $query = Order::where('order_key', $value)->where('date', '=', date("Y-m-d h:i:s"))->with('product_details')->with('user_details')->with('restaurant_details')->where($queryItems);
                     
                     $totalPrice = 0;
                     foreach($query->get() as $q){
