@@ -41,10 +41,10 @@
         <div
           class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top"
         >
-          <a class="sidebar-brand brand-logo" href="index.html"
+          <a class="sidebar-brand brand-logo" href="/index"
             ><img src="assets/images/foodea_logo.PNG" alt="logo"
           /></a>
-          <a class="sidebar-brand brand-logo-mini" href="index.html"
+          <a class="sidebar-brand brand-logo-mini" href="/index"
             ><img src="/image/foodea.png" class="w-50" alt="logo"
           /></a>
         </div>
@@ -110,7 +110,7 @@
             </a>
           </li>
           <?php endif; ?>
-          
+
           <?php if(Session::get('AdminRole') == 'Inventory Officer'): ?>
           <li class="nav-item menu-items">
             <a
