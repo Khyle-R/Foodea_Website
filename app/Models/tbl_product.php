@@ -9,8 +9,8 @@ class tbl_product extends Model
 {
     use HasFactory;
     public $table ="tbl_product";
-    public $timestamps = false;
     protected $fillable = [
+        'product_id',
         'merchant_id',
         'category_id',
         'category_name',
@@ -26,4 +26,5 @@ class tbl_product extends Model
         'date'
     ];
     protected $primaryKey = 'product_id';
+    public $timestamps = false;
 }
