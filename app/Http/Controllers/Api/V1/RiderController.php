@@ -37,6 +37,8 @@ class RiderController extends Controller
     }
 
     public function update(UpdateRiderRequest $request, tbl_rider_accounts $tbl_rider_accounts){
-        $tbl_rider_accounts->update($request->all());
+        $id = $request->segment(count(request()->segments()));
+        $rider = tbl_rider_accounts::where('rider_id', $id);
+        $rider->update($request->all());
     }
 }

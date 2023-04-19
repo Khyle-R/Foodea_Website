@@ -39,7 +39,9 @@ class UpdateRiderRequest extends FormRequest
                 'address' => ['required'],
                 'city' => ['required'],
                 'barangay' => ['required'],
-                'zip_code' => ['required','numeric']
+                'zip_code' => ['required','numeric'],
+                'latitude' => ['required', 'numeric'],
+                'longitude' => ['required', 'numeric'],
             ];
         } else {
             return [
@@ -54,7 +56,9 @@ class UpdateRiderRequest extends FormRequest
                 'address' => ['sometimes', 'required'],
                 'city' => ['sometimes', 'required'],
                 'barangay' => ['sometimes', 'required'],
-                'zip_code' => ['sometimes', 'required','numeric']
+                'zip_code' => ['sometimes', 'required','numeric'],
+                'latitude' => ['sometimes','required', 'numeric'],
+                'longitude' => ['sometimes','required', 'numeric'],
             ];
         }
     }
