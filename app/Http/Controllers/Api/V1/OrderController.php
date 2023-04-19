@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Filters\V1\OrderFilter;
 use App\Http\Requests\V1\StoreOrderRequest;
 use App\Http\Requests\V1\UpdateOrderRequest;
+use App\Models\tbl_rider_accounts;
 
 class OrderController extends Controller
 {
@@ -16,7 +17,17 @@ class OrderController extends Controller
         $filter = new OrderFilter();
         $queryItems = $filter->transform($request);
 
+        $rider_latitude = 0;
+        $rider_longitude = 0;
+
         if (!isset($queryItems)||count($queryItems) == 0 ) {
+            if(!is_null($request->rider_id)){
+                $rider_id = $request->rider_id;
+                $rider = tbl_rider_accounts::where('rider_id', $rider_id)->first();
+
+                $rider_latitude = $rider->latitude;
+                $rider_longitude = $rider->longitude;
+            }
             $order_details = collect();
             $order_keys = Order::select('order_key')->distinct()->get();
 
@@ -32,12 +43,17 @@ class OrderController extends Controller
                     $latitude = 0;
                     $longitude = 0;
                     foreach($query->get() as $q){
-                        $latitude = $q->latitude;
-                        $longitude = $q->longitude;
+                        $latitude = $q->restaurant_details['latitude'];
+                        $longitude = $q->restaurant_details['longitude'];
                     }
-                    $data->put('order_latitude', $latitude);
-                    $data->put('order_longitude', $longitude);
-                    
+                    $data->put('restaurant_latitude', $latitude);
+                    $data->put('restaurant_longitude', $longitude);
+
+                    // get the distance of two points
+                    // d = sqrt(pow((lat2 - lat1), 2) + pow((long2 - long1), 2))
+                    $distance = sqrt(pow(($latitude - $rider_latitude), 2) + pow(($longitude - $rider_longitude), 2));
+                    $data->put('distance_to_rider', $distance);
+
                     $totalPrice = 0;
                     foreach($query->get() as $q){
                         $totalPrice = $totalPrice + $q->total;
