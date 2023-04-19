@@ -28,7 +28,7 @@ class StoreTransactionRequest extends FormRequest
             'merchant_id' => ['required', 'numeric'],
             'customer_id' => ['required', 'numeric'],
             'rider_id' => ['required', 'numeric'],
-            'products_id' => ['required', 'numeric'],
+            'product_id' => ['required', 'numeric'],
             'order_status' => ['required'],
         ];
     }
