@@ -25,7 +25,7 @@ class StoreUsedVoucherRequest extends FormRequest
     {
         return [
             'user_id' => ['required', 'numeric'],
-            'product_id' => ['required', 'numeric']
+            'voucher_id' => ['required', 'numeric']
         ];
     }
 }
