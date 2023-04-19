@@ -30,25 +30,31 @@ class UpdateFoodRequest extends FormRequest
             return [
                 'merchant_id' => ['required', 'numeric'],
                 'category_id' => ['required', 'numeric'],
-                'product_name' => ['required'],
-                'price' => ['required', 'numeric'],
-                'calories' => ['required', 'numeric'],
-                'product_image' => ['required'],
+                'category_name' => ['required'],
+                'ingredients'  => ['required'],
+                'product_name'  => ['required'],
+                'price'  => ['required', 'numeric'],
+                'calories'  => ['required', 'numeric'],
+                'product_image'  => ['required'],
                 'stock' => ['required', 'numeric'],
-                'status' => ['required'],
+                'status'  => ['required'],
                 'description' => ['required'],
+                'date' => ['date'],
             ];
         } else {
             return [
-                'merchant_id' => ['sometimes', 'required', 'numeric'],
+                'merchant_id' => ['sometimes','required', 'numeric'],
                 'category_id' => ['sometimes', 'required', 'numeric'],
-                'product_name' => ['sometimes', 'required'],
-                'price' => ['sometimes', 'required', 'numeric'],
-                'calories' => ['sometimes', 'required', 'numeric'],
-                'product_image' => ['sometimes', 'required'],
+                'category_name' => ['sometimes', 'required'],
+                'ingredients'  => ['sometimes', 'required'],
+                'product_name'  => ['sometimes', 'required'],
+                'price'  => ['sometimes', 'required', 'numeric'],
+                'calories'  => ['sometimes', 'required', 'numeric'],
+                'product_image'  => ['sometimes', 'required'],
                 'stock' => ['sometimes', 'required', 'numeric'],
-                'status' => ['sometimes', 'required'],
+                'status'  => ['sometimes', 'required'],
                 'description' => ['sometimes', 'required'],
+                'date' => ['sometimes', 'date'],
             ];
         }
     }
