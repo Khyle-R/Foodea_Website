@@ -38,7 +38,7 @@ class UpdateFoodRequest extends FormRequest
                 'stock' => ['required', 'numeric'],
                 'status'  => ['required'],
                 'description' => ['required'],
-                'date' => ['date'],
+                'date' => ['date']
             ];
         } else {
             return [
@@ -53,7 +53,7 @@ class UpdateFoodRequest extends FormRequest
                 'stock' => ['sometimes', 'required', 'numeric'],
                 'status'  => ['sometimes', 'required'],
                 'description' => ['sometimes', 'required'],
-                'date' => ['sometimes', 'date'],
+                'date' => ['sometimes', 'date']
             ];
         }
     }
