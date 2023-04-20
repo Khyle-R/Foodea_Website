@@ -202,29 +202,29 @@
                                 <td>2x2 image Picture</td>
                                 <td>{{ $rider->rider_photo }}</td>
                                  <td><a class="red-btn" href="" data-toggle="modal" data-target="#ViewModal1"><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
-                                <td><a class="red-btn" href="/download_file/{{ $rider->rider_photo }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
+                                <td><a class="red-btn" href="{{ $rider->rider_photo }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
 
                             </tr>
                              <tr>
                                 <td>Vehicle Photo</td>
                                 <td>{{ $rider->vehicle_side }}</td>
                                  <td><a class="red-btn" href="" data-toggle="modal" data-target="#ViewModal2"><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
-                                <td><a class="red-btn" href="/download_vehicle/{{ $rider->rider_id }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
+                                <td><a class="red-btn" href="{{ $rider->rider_id }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
 
                             </tr>
                              <tr>
                                 <td>Professional Drivers license ID</td>
                                 <td>{{ $rider->driver_license }}</td>
                                  <td><a class="red-btn" href="" data-toggle="modal" data-target="#ViewModal3"><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
-                                <td><a class="red-btn" href="/download_license/{{ $rider->rider_id }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
+                                <td><a class="red-btn" href="{{ $rider->rider_id }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
 
                             </tr>
                             @if($rider->cert_registration) 
                             <tr>
                                 <td>Certificate of Registration</td>
                                 <td>{{ $rider->cert_registration }}</td>
-                               <td><a class="red-btn" href="/display_pdf/{{ $rider->rider_id }}/{{ $rider->cert_registration }}"><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
-                                <td><a class="red-btn" href="/download_file/{{ $rider->rider_id }}/{{ $rider->cert_registration }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
+                               <td><a class="red-btn" href="{{ $rider->cert_registration }}"><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
+                                <td><a class="red-btn" href="{{ $rider->cert_registration }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
                             </tr>
                             @endif
                             
@@ -232,8 +232,8 @@
                               <tr>
                                 <td>Authorization letter</td>
                                 <td>{{ $rider->auth_letter }}</td>
-                                <td><a class="red-btn" href="/display_pdf/{{ $rider->rider_id }}/{{ $rider->auth_letter }}"><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
-                                <td><a class="red-btn" href="/download_file/{{ $rider->rider_id }}/{{ $rider->auth_letter }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
+                                <td><a class="red-btn" href="{{ $rider->auth_letter }}"><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
+                                <td><a class="red-btn" href="{{ $rider->auth_letter }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
 
                             </tr>
    
@@ -242,8 +242,8 @@
                               <tr>
                                 <td>Deed Of Sale</td>
                                 <td>{{ $rider->deed_sale}}</td>
-                                 <td><a class="red-btn" href="/display_pdf/{{ $rider->rider_id }}/{{ $rider->deed_sale }}"><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
-                                <td><a class="red-btn" href="/download_file/{{ $rider->rider_id }}/{{ $rider->deed_sale }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
+                                 <td><a class="red-btn" href="{{ $rider->deed_sale }}"><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
+                                <td><a class="red-btn" href="{{ $rider->deed_sale }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
 
                             </tr>
                               @endif
@@ -251,8 +251,8 @@
                             <tr>
                                 <td>Official Receipt of Vehicle Registration</td>
                                 <td>{{ $rider->official_receipt }}</td>
-                                 <td><a class="red-btn" href="/display_pdf/{{ $rider->rider_id }}/{{ $rider->official_receipt }}" ><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
-                                <td><a class="red-btn" href="/download_file/{{ $rider->rider_id }}/{{ $rider->official_receipt }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
+                                 <td><a class="red-btn" href="{{ $rider->official_receipt }}" ><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
+                                <td><a class="red-btn" href="{{ $rider->official_receipt }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
 
                             </tr>
                             @endif
@@ -260,7 +260,7 @@
                             <tr>
                                 <td>Drug Test Result</td>
                                 <td>{{ $rider->drug_test }}</td>
-                                 <td><a class="red-btn" href="/display_pdf/{{ $rider->rider_id }}/{{ $rider->drug_test }}" ><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
+                                 <td><a class="red-btn" href="{{ $rider->drug_test }}" ><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
                                 <td><a class="red-btn" href="/download_file/{{ $rider->rider_id }}/{{ $rider->drug_test }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
 
                             </tr>
@@ -268,8 +268,8 @@
                             <tr>
                                 <td>NBI Clearance</td>
                                 <td>{{ $rider->nbi_clearance }}</td>
-                                <td><a class="red-btn" href="/display_pdf/{{ $rider->rider_id }}/{{ $rider->nbi_clearance }}" ><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
-                                <td><a class="red-btn" href="/download_file/{{ $rider->rider_id }}/{{ $rider->nbi_clearance }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
+                                <td><a class="red-btn" href="{{ $rider->nbi_clearance }}" ><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
+                                <td><a class="red-btn" href="{{ $rider->nbi_clearance }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
 
                             </tr>
                           
