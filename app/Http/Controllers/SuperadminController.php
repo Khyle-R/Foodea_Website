@@ -37,7 +37,7 @@ class SuperadminController extends Controller
     public function index(){
         $riders = tbl_accepted_rider::count();
         $merchant = tbl_accepted_merchant::count();
-        $sales = tbl_orders::sum('total');
+        $sales = tbl_orders::where('status', 'Delivered')->sum('total');
         $users = tbl_app_user::count();
         
         $revenue = 0.1 * $sales;

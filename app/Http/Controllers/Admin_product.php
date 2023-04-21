@@ -41,7 +41,7 @@ class Admin_product extends Controller
     
     // GET DATE AND TOTAL IN CHART
     $date = tbl_orders::selectRaw('date, sum(total) as totals')
-    ->where('restaurant_id', Session::get('loginID'))
+    ->where('restaurant_id', Session::get('loginID'))->where('status', 'Delivered')
     ->groupBy('date')
     ->get();
 
