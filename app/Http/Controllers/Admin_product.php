@@ -445,9 +445,10 @@ class Admin_product extends Controller
         $orders = collect();
         foreach ($orderKeys as $orderKey){
             $order = tbl_orders::whereIn('order_key', $orderKey)->where('restaurant_id', session('loginID'))->get();
-            $orders->push(...$order->values());
+            $orders->push($merge->values());
             continue;
         }
+        $orders = $orders->flatten();
         dd($orders);
         $orders = $orders->sortByDesc('order_id');
 
