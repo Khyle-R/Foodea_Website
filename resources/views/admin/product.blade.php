@@ -369,7 +369,7 @@
                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
                                                       Close
                                                    </button>
-                                                   <a href="product/remove/{{ $data->product_id }}" type="button"class="btn btn-danger">Remove
+                                                   <a href="/product/remove/{{ $data->product_id }}" type="button"class="btn btn-danger">Remove
                                                       product</a>
                                                 </div>
                                              </div>

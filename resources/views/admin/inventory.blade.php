@@ -147,7 +147,7 @@
                                       <a class="badge badge-outline-dark" data-dismiss="modal">
                                         Close
                                       </a>
-                                      <a class="badge badge-outline-success" href="product/restore/{{ $data->inventory_id}}">
+                                      <a class="badge badge-outline-success" href="/product/restore/{{ $data->inventory_id}}">
                                         Resore
                                       </a>
                                     </div>
