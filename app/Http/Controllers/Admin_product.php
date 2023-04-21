@@ -448,6 +448,7 @@ class Admin_product extends Controller
             $orders = $orders->merge($order, true);
             continue;
         }
+        dd($orders);
         // dd($orders);
         // $orders = $orders->sortByDesc('order_id');
 
