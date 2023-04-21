@@ -40,7 +40,7 @@
                                     <div class="profile-img">
                                          <?php $__currentLoopData = $Data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rider): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                      
-                                            <img alt="" src="<?php echo e(url(('uploads/'. 'rider_documents'. '/'.$rider->rider_id.  '/'). $rider->rider_photo)); ?>">
+                                            <img alt="" src="<?php echo e($rider->rider_photo); ?>">
                                   
                                     </div>
                                 </div>
@@ -217,29 +217,29 @@
                                 <td>2x2 image Picture</td>
                                 <td><?php echo e($rider->rider_photo); ?></td>
                                  <td><a class="red-btn" href="" data-toggle="modal" data-target="#ViewModal1"><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
-                                <td><a class="red-btn" href="/download_file/<?php echo e($rider->rider_id); ?>/<?php echo e($rider->rider_photo); ?>"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
+                                <td><a class="red-btn" href="<?php echo e($rider->rider_photo); ?>"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
 
                             </tr>
                              <tr>
                                 <td>Vehicle Photo</td>
                                 <td><?php echo e($rider->vehicle_side); ?></td>
                                  <td><a class="red-btn" href="" data-toggle="modal" data-target="#ViewModal2"><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
-                                <td><a class="red-btn" href="/download_vehicle/<?php echo e($rider->rider_id); ?>"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
+                                <td><a class="red-btn" href="<?php echo e($rider->rider_id); ?>"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
 
                             </tr>
                              <tr>
                                 <td>Professional Drivers license ID</td>
                                 <td><?php echo e($rider->driver_license); ?></td>
                                  <td><a class="red-btn" href="" data-toggle="modal" data-target="#ViewModal3"><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
-                                <td><a class="red-btn" href="/download_license/<?php echo e($rider->rider_id); ?>"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
+                                <td><a class="red-btn" href="<?php echo e($rider->rider_id); ?>"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
 
                             </tr>
                             <?php if($rider->cert_registration): ?> 
                             <tr>
                                 <td>Certificate of Registration</td>
                                 <td><?php echo e($rider->cert_registration); ?></td>
-                               <td><a class="red-btn" href="/display_pdf/<?php echo e($rider->rider_id); ?>/<?php echo e($rider->cert_registration); ?>"><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
-                                <td><a class="red-btn" href="/download_file/<?php echo e($rider->rider_id); ?>/<?php echo e($rider->cert_registration); ?>"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
+                               <td><a class="red-btn" href="<?php echo e($rider->cert_registration); ?>"><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
+                                <td><a class="red-btn" href="<?php echo e($rider->cert_registration); ?>"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
                             </tr>
                             <?php endif; ?>
                             
@@ -247,8 +247,8 @@
                               <tr>
                                 <td>Authorization letter</td>
                                 <td><?php echo e($rider->auth_letter); ?></td>
-                                <td><a class="red-btn" href="/display_pdf/<?php echo e($rider->rider_id); ?>/<?php echo e($rider->auth_letter); ?>"><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
-                                <td><a class="red-btn" href="/download_file/<?php echo e($rider->rider_id); ?>/<?php echo e($rider->auth_letter); ?>"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
+                                <td><a class="red-btn" href="<?php echo e($rider->auth_letter); ?>"><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
+                                <td><a class="red-btn" href="<?php echo e($rider->auth_letter); ?>"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
 
                             </tr>
    
@@ -257,8 +257,8 @@
                               <tr>
                                 <td>Deed Of Sale</td>
                                 <td><?php echo e($rider->deed_sale); ?></td>
-                                 <td><a class="red-btn" href="/display_pdf/<?php echo e($rider->rider_id); ?>/<?php echo e($rider->deed_sale); ?>"><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
-                                <td><a class="red-btn" href="/download_file/<?php echo e($rider->rider_id); ?>/<?php echo e($rider->deed_sale); ?>"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
+                                 <td><a class="red-btn" href="<?php echo e($rider->deed_sale); ?>"><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
+                                <td><a class="red-btn" href="<?php echo e($rider->deed_sale); ?>"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
 
                             </tr>
                               <?php endif; ?>
@@ -267,7 +267,7 @@
                                 <td>Official Receipt of Vehicle Registration</td>
                                 <td><?php echo e($rider->official_receipt); ?></td>
                                  <td><a class="red-btn" href="/display_pdf/<?php echo e($rider->rider_id); ?>/<?php echo e($rider->official_receipt); ?>" ><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
-                                <td><a class="red-btn" href="/download_file/<?php echo e($rider->rider_id); ?>/<?php echo e($rider->official_receipt); ?>"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
+                                <td><a class="red-btn" href="<?php echo e($rider->official_receipt); ?>"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
 
                             </tr>
                             <?php endif; ?>
@@ -275,16 +275,16 @@
                             <tr>
                                 <td>Drug Test Result</td>
                                 <td><?php echo e($rider->drug_test); ?></td>
-                                 <td><a class="red-btn" href="/display_pdf/<?php echo e($rider->rider_id); ?>/<?php echo e($rider->drug_test); ?>" ><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
-                                <td><a class="red-btn" href="/download_file/<?php echo e($rider->rider_id); ?>/<?php echo e($rider->drug_test); ?>"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
+                                 <td><a class="red-btn" href="<?php echo e($rider->drug_test); ?>" ><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
+                                <td><a class="red-btn" href="<?php echo e($rider->drug_test); ?>"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
 
                             </tr>
                             <?php endif; ?>
                             <tr>
                                 <td>NBI Clearance</td>
                                 <td><?php echo e($rider->nbi_clearance); ?></td>
-                                <td><a class="red-btn" href="/display_pdf/<?php echo e($rider->rider_id); ?>/<?php echo e($rider->nbi_clearance); ?>" ><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
-                                <td><a class="red-btn" href="/download_file/<?php echo e($rider->rider_id); ?>/<?php echo e($rider->nbi_clearance); ?>"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
+                                <td><a class="red-btn" href="<?php echo e($rider->nbi_clearance); ?>" ><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
+                                <td><a class="red-btn" href="<?php echo e($rider->nbi_clearance); ?>" ><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
 
                             </tr>
                           
@@ -361,13 +361,13 @@
                         <div class="carousel-inner">
                             
                             <div class="carousel-item active">
-                            <img class="d-block" height="600" width="100%" src="<?php echo e(url(('uploads/'. 'rider_documents'. '/'.$rider->rider_id.  '/'.'vehicle/'). $rider->vehicle_front)); ?>" alt="First slide">
+                            <img class="d-block" height="600" width="100%" src="<?php echo e($rider->vehicle_front); ?>" alt="First slide">
                             </div>
                             <div class="carousel-item">
-                            <img class="d-block" height="600" width="100%" src="<?php echo e(url(('uploads/'. 'rider_documents'. '/'.$rider->rider_id.  '/'.'vehicle/'). $rider->vehicle_side)); ?>" alt="Second slide">
+                            <img class="d-block" height="600" width="100%" src="<?php echo e($rider->vehicle_side); ?>" alt="Second slide">
                             </div>
                             <div class="carousel-item">
-                            <img class="d-block" height="600" width="100%" src="<?php echo e(url(('uploads/'. 'rider_documents'. '/'.$rider->rider_id.  '/'.'vehicle/'). $rider->vehicle_back)); ?>" alt="Third slide">
+                            <img class="d-block" height="600" width="100%" src="<?php echo e($rider->vehicle_back); ?>" alt="Third slide">
                             </div>
                         </div>
                         <a class="carousel-control-prev" href="#carouselExampleControls1" role="button" data-slide="prev">
@@ -388,13 +388,13 @@
                         <div class="carousel-inner">
                             
                             <div class="carousel-item active">
-                            <img class="d-block" height="500" width="100%" src="<?php echo e(url(('uploads/'. 'rider_documents'. '/'.$rider->rider_id.  '/'.'vehicle/'). $rider->vehicle_side)); ?>" alt="First slide">
+                            <img class="d-block" height="500" width="100%" src="<?php echo e($rider->vehicle_side); ?>" alt="First slide">
                             </div>
                             <div class="carousel-item">
-                            <img class="d-block" height="500" width="100%" src="<?php echo e(url(('uploads/'. 'rider_documents'. '/'.$rider->rider_id.  '/'.'vehicle/'). $rider->vehicle_side)); ?>" alt="Second slide">
+                            <img class="d-block" height="500" width="100%" src="<?php echo e($rider->vehicle_side); ?>" alt="Second slide">
                             </div>
                             <div class="carousel-item">
-                            <img class="d-block" height="500" width="100%" src="<?php echo e(url(('uploads/'. 'rider_documents'. '/'.$rider->rider_id.  '/'.'vehicle/'). $rider->vehicle_back)); ?>" alt="Third slide">
+                            <img class="d-block" height="500" width="100%" src="<?php echo e($rider->vehicle_back); ?>" alt="Third slide">
                             </div>
                         </div>
                         
@@ -421,24 +421,26 @@
                                    <div class="table-responsive">
                     <table id="example" class="table" style="width:100%">
                         <thead>
+                        
                             <tr>
-                                <th>Order Number</th>
-                                <th>Purchase Date</th>
-                                <th>Customer Name</th>
-                                <th>Payment Method</th>
-                                <th>Order Total</th>
+                                <th>Rider ID</th>
+                                <th>Name</th>
+                                <th>Customer ID</th>
                                 <th>Status</th>
+                                 <th>Date</th>
                             </tr>
                         </thead>
                         <tbody>
+                                <?php $__currentLoopData = $RiderOrder; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $rider): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td><?php echo e($rider->rider_id); ?></td>
+                                <td><?php echo e($rider->firstname); ?> <?php echo e($rider->lastname); ?></td>
+                                <td><?php echo e($rider->customer_id); ?> </td>
+                                <td><?php echo e($rider->order_status); ?></td>
+                                 <td><?php echo e($rider->date); ?></td>
                             </tr>
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                       
                            
                           
                         </tbody>
@@ -632,7 +634,7 @@
                         </div>
                         <div class="modal-body">
                             <div class="image text-center">
-                           <img height="400" width="400" src="<?php echo e(url(('uploads/'. 'rider_documents'. '/'.$rider->rider_id.  '/'). $rider->rider_photo)); ?>" alt="">
+                           <img height="400" width="400" src="<?php echo e($rider->rider_photo); ?>" alt="">
                        </div>
                         </div>
                         </div>
@@ -654,13 +656,13 @@
                             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                            <img class="d-block" height="600"  width="100%" src="<?php echo e(url(('uploads/'. 'rider_documents'. '/'.$rider->rider_id.  '/'. 'vehicle/'). $rider->vehicle_front)); ?>" alt="First slide">
+                            <img class="d-block" height="600"  width="100%" src="<?php echo e($rider->vehicle_front); ?>" alt="First slide">
                             </div>
                             <div class="carousel-item">
-                            <img class="d-block" height="600" width="100%" src="<?php echo e(url(('uploads/'. 'rider_documents'. '/'.$rider->rider_id.  '/'. 'vehicle/'). $rider->vehicle_side)); ?>" alt="Second slide">
+                            <img class="d-block" height="600" width="100%" src="<?php echo e($rider->vehicle_side); ?>" alt="Second slide">
                             </div>
                             <div class="carousel-item">
-                            <img class="d-block" height="600"  width="100%" src="<?php echo e(url(('uploads/'. 'rider_documents'. '/'.$rider->rider_id.  '/'. 'vehicle/'). $rider->vehicle_back)); ?>" alt="Third slide">
+                            <img class="d-block" height="600"  width="100%" src="<?php echo e($rider->vehicle_back); ?>" alt="Third slide">
                             </div>
                         </div>
                         <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -677,13 +679,13 @@
                             <div id="carouselExampleControlsassd" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                            <img class="d-block" height="600"  width="100%" src="<?php echo e(url(('uploads/'. 'rider_documents'. '/'.$rider->rider_id.  '/'. 'vehicle/'). $rider->vehicle_side)); ?>" alt="First slide">
+                            <img class="d-block" height="600"  width="100%" src="<?php echo e($rider->vehicle_side); ?>" alt="First slide">
                             </div>
                             <div class="carousel-item">
-                            <img class="d-block" height="600" width="100%" src="<?php echo e(url(('uploads/'. 'rider_documents'. '/'.$rider->rider_id.  '/'. 'vehicle/'). $rider->vehicle_side)); ?>" alt="Second slide">
+                            <img class="d-block" height="600" width="100%" src="<?php echo e($rider->vehicle_side); ?>" alt="Second slide">
                             </div>
                             <div class="carousel-item">
-                            <img class="d-block" height="600"  width="100%" src="<?php echo e(url(('uploads/'. 'rider_documents'. '/'.$rider->rider_id.  '/'. 'vehicle/'). $rider->vehicle_back)); ?>" alt="Third slide">
+                            <img class="d-block" height="600"  width="100%" src="<?php echo e($rider->vehicle_back); ?>" alt="Third slide">
                             </div>
                         </div>
                         
@@ -708,10 +710,10 @@
                             <div id="carouselExampleControlss" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                            <img class="d-block" height="350"  width="100%" src="<?php echo e(url(('uploads/'. 'rider_documents'. '/'. $rider->rider_id.  '/'. 'driver license/'). $rider->driver_license)); ?>" alt="First slide">
+                            <img class="d-block" height="350"  width="100%" src="<?php echo e($rider->driver_license); ?>" alt="First slide">
                             </div>
                             <div class="carousel-item">
-                            <img class="d-block" height="350" width="100%" src="<?php echo e(url(('uploads/'. 'rider_documents'. '/'.$rider->rider_id.  '/'. 'driver license/'). $rider->license_back)); ?>" alt="Second slide">
+                            <img class="d-block" height="350" width="100%" src="<?php echo e($rider->license_back); ?>" alt="Second slide">
                             </div>
                         </div>
                         <a class="carousel-control-prev" href="#carouselExampleControlss" role="button" data-slide="prev">
