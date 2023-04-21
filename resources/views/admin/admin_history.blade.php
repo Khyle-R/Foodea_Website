@@ -58,14 +58,13 @@
                   <div class="card">
                     <div class="card-body">  
                       <div class="table-responsive">
-                        {{$history}}
                         <table id="example" class="table" style="width:100%">
                           <thead>
                             <tr>
                               <th>Transaction ID</th>
                               <th>Order Key</th>
-                              <th>Customer’s ID</th>
-                              <th>Rider's ID</th>
+                              <th>Customer’s Name</th>
+                              <th>Rider's Name</th>
                               <th>Product ID</th>
                               <th>Date</th>
                               <th>Total</th>
@@ -84,10 +83,10 @@
                                 {{$data->order_key}}
                               </td>
                               <td>
-                                {{$data->customer_id}}
+                                {{$data->user_details->firstname . ' ' . $data->user_details->lastname}}
                               </td>
                               <td>
-                                {{$data->customer_id}}
+                                {{$data->rider_details->firstname . ' ' . $data->rider_details->lastname}}
                               </td>
                               <td>{{$data->product_id}}</td>
                               <td>
