@@ -223,23 +223,28 @@
                     <table id="example2" class="table" style="width:100%">
                         <thead>
                             <tr>
-                                <th>ID</th>
                                 <th>Name</th>
+                                <th>Vehicle Type</th>
                                 <th>Email</th>
-                                <th>Description</th>
-                                <th>Date Time</th>
+                                <th>Status</th>
+                                <th>Date Application</th>
                             </tr>
                         </thead>
                         <tbody>
+                           @foreach ($Data as $recent)
                             <tr>
-                                <td> 
+                                <td>
+                                    <img class="circle mr-2" src="{{ url(('uploads/'. 'rider_documents'. '/'.$recent->rider_id. '/'). $recent->rider_photo) }}" alt="">
+                                    {{ $recent->firstname. ' ' .$recent->lastname }}
                                 </td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $recent->vehicle_type }}</td>
+                                <td>{{ $recent->email }}</td>
+                                <td>
+                                  <i class=" pending mdi mdi-radiobox-marked"></i>
+                                  {{ $recent->status }}</td>
+                                <td>{{ $recent->date }}</td>
                             </tr>
-                          
+                          @endforeach
                         </tbody>
                     
                     </table>
@@ -254,6 +259,9 @@
              
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.html -->
+           @foreach ($day as $dates)
+               {{ $dates }}
+           @endforeach
           <footer class="footer">
             <div
               class="d-sm-flex justify-content-center justify-content-sm-between"
@@ -267,4 +275,10 @@
           </footer>
           <!-- partial -->
         </div>
+
+         <script type="text/javascript">
+      
+      var sarray =  {!! json_encode($day) !!};
+    
+    </script>
         @endsection

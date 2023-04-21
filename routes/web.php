@@ -11,10 +11,20 @@ use App\Http\Controllers\MailController;
 use App\Http\Controllers\sample;
 use App\Http\Controllers\SuperadminController;
 
+Route::get('/partner_application_add', [PartnerRegistration::class, 'partneraddproduct']);
+
+Route::post('/partner_application_category', [PartnerRegistration::class, 'addCategory'])->name('addCategory');
+
+Route::post('/partner_application_add', [PartnerRegistration::class, 'addProductPartner'])->name('addproductpartner');
+Route::get('/test', [Home::class, 'test']);
+Route::post('/test', [Home::class, 'teststore']);
+Route::get('/testshow', [Home::class, 'testshow']);
 
 Route::get('/', [Home::class, 'index'])->name('home.index');
 
-// Route::get('/email', [MailController::class, 'MailIndex']);
+Route::get('/download_app', [Home::class, 'DownloadAppIndex']);
+
+Route::get('/download_app_user', [Home::class, 'DownloadAppUserIndex']);
 
 Route::get('/terms_condition', [Home::class, 'TermsCondition']);
 
@@ -34,6 +44,60 @@ Route::get('/login_type', [Home::class, 'LoginType']);
 
 Route::get('/rider_logout', [RiderRegistration::class, 'RiderLogout']);
 
+Route::get('/partner_logout', [PartnerRegistration::class, 'PartnerLogout']);
+
+Route::get('/rider_forgotpass', [RiderRegistration::class, 'RiderForgotPass']);
+
+Route::post('/rider_forgotpasssend', [RiderRegistration::class, 'RiderForgetSend'])->name('RiderForgetSend');
+
+Route::get('/rider_forgotpass1', [RiderRegistration::class, 'RiderForgotPass2']);
+
+Route::post('/rider_forgotpassverify', [RiderRegistration::class, 'RiderForgotVerify'])->name('RiderForgotVerify');
+
+Route::get('/rider_forgotpassresend', [RiderRegistration::class, 'RiderForgotResend']);
+
+Route::get('/rider_forgotpass2', [RiderRegistration::class, 'RiderForgotPass3']);
+
+Route::post('/rider_forgotpassreset', [RiderRegistration::class, 'RiderForgotReset'])->name('RiderForgotReset');
+
+Route::get('/rider_forgotpass3', [RiderRegistration::class, 'RiderForgotPass4']);
+
+Route::get('/rider_signupexit', [Home::class, 'ExitSignup'])->name('ExitSignup');
+
+
+
+Route::get('/partner_forgotpass', [PartnerRegistration::class, 'PartnerForgotPass']);
+
+Route::post('/partner_forgotpasssend', [PartnerRegistration::class, 'PartnerForgetSend'])->name('PartnerForgetSend');
+
+Route::get('/partner_forgotpass1', [PartnerRegistration::class, 'PartnerForgotPass2']);
+
+Route::post('/partner_forgotpassverify', [PartnerRegistration::class, 'PartnerForgotVerify'])->name('PartnerForgotVerify');
+
+Route::get('/partner_forgotpassresend', [PartnerRegistration::class, 'PartnerForgotResend']);
+
+Route::get('/partner_forgotpass2', [PartnerRegistration::class, 'PartnerForgotPass3']);
+
+Route::post('/partner_forgotpassreset', [PartnerRegistration::class, 'PartnerForgotReset'])->name('PartnerForgotReset');
+
+Route::get('/partner_forgotpass3', [PartnerRegistration::class, 'PartnerForgotPass4']);
+
+
+Route::get('/superadmin_forgotpass', [SuperadminController::class, 'SuperadminForgotPass']);
+
+Route::post('/superadmin_forgotpasssend', [SuperadminController::class, 'SuperadminForgetSend'])->name('SuperadminForgetSend');
+
+Route::get('/superadmin_forgotpass1', [SuperadminController::class, 'SuperadminForgotPass2']);
+
+Route::post('/superadmin_forgotpassverify', [SuperadminController::class, 'SuperadminForgotVerify'])->name('SuperadminForgotVerify');
+
+Route::get('/superadmin_forgotpassresend', [SuperadminController::class, 'SuperadminForgotResend']);
+
+Route::get('/superadmin_forgotpass2', [SuperadminController::class, 'SuperadminForgotPass3']);
+
+Route::post('/superadmin_forgotpassreset', [SuperadminController::class, 'SuperadminForgotReset'])->name('SuperadminForgotReset');
+
+Route::get('/superadmin_forgotpass3', [SuperadminController::class, 'SuperadminForgotPass4']);
 
 
 Route::group(['middleware'=>['RiderStep2']], function(){
@@ -41,7 +105,6 @@ Route::group(['middleware'=>['RiderStep2']], function(){
     Route::get('/rider_application_agreement', [RiderRegistration::class, 'agreement']);
     Route::get('/account_type', [Home::class, 'AccountType']);
     Route::post('/rider_applicationn', [RiderRegistration::class, 'addPostSubmit'])->name('rider_application.addPostSubmit');
-       // Route::get('/rider_application', [RiderRegistration::class, 'index'])->name('rider_application.index');
 });
 
 
@@ -77,16 +140,11 @@ Route::group(['middleware'=>['RiderStepFinal']], function(){
 
      });
    
-
-    // Route::get('/rider_application4', [RiderRegistration::class, 'step4index']);
-
-    // Route::get('/rider_application5', [RiderRegistration::class, 'step5index']);
-
 Route::group(['middleware'=>['RiderStatus']], function(){
     Route::get('/rider_applicationstatus', [RiderRegistration::class, 'RiderApplicationStatus']);
            
     Route::get('/rider_application5', function () {
-        return view('rider_application5');
+        return view('Rider_Application5');
     });
 });
    
@@ -143,11 +201,15 @@ Route::group(['middleware'=>['superadminLogin']], function(){
 
     Route::get('/superadmin_partnerdetails/{id}', [SuperadminController::class, 'PartnerDetails']);
 
+    Route::post('/superadmin_partnerdetailsmessage', [SuperadminController::class, 'PartnerMessage'])->name('PartnerMessage');
+
     Route::get('/superadmin_profile', [SuperadminController::class, 'profile']);
 
     Route::get('/superadmin_rider', [SuperadminController::class, 'Rider']);
 
     Route::get('/application_profile/{id}', [SuperadminController::class, 'ApplicationProfile']);
+
+    Route::get('/application_profile_reject/{id}', [SuperadminController::class, 'RiderDeleteApplicationProfile']);
 
     Route::post('/superadmin_rider', [SuperadminController::class, 'Update'])->name('Updatemodal');
 
@@ -155,6 +217,10 @@ Route::group(['middleware'=>['superadminLogin']], function(){
 
     Route::post('/superadmin_riderprofile', [SuperadminController::class, 'RiderProfileUpdate'])->name('RiderProfileUpdate');
 
+    Route::post('/superadmin_riderprofileemergency', [SuperadminController::class, 'RiderEmergencyUpdate'])->name('RiderEmergencyUpdate');
+    
+    Route::post('/superadmin_riderprofilemessage', [SuperadminController::class, 'RiderMessage'])->name('RiderMessage');
+    
     Route::get('/superadmin_pending', [SuperadminController::class, 'Pending']);
 
     Route::get('/superadmin_review', [SuperadminController::class, 'Review']);
@@ -175,8 +241,14 @@ Route::group(['middleware'=>['superadminLogin']], function(){
 
     Route::get('/superadmin_merchantproile/{id}', [SuperadminController::class, 'MerchantApplicationProfile']);
 
+    Route::get('/application_merchant_reject/{id}', [SuperadminController::class, 'MerchantDeleteApplicationProfile']);
+
     Route::post('/superadmin_partnerapplication', [SuperadminController::class, 'UpdateMerchant'])->name('UpdateMerchant');
 
+    Route::post('/superadmin_partnerapplicationremove', [SuperadminController::class, 'RemoveMerchantAccount'])->name('RemoveMerchantAccount');
+
+     Route::post('/superadmin_riderremove', [SuperadminController::class, 'RemoveRiderAccount'])->name('RemoveRiderAccount');
+     
     Route::get('/superadmin_log', [SuperadminController::class, 'ActivityLog']);
 
     Route::get('/superadmin_riderdetails/{id}', [SuperadminController::class, 'RiderDetails']);
@@ -200,7 +272,7 @@ Route::group(['middleware'=>['superadminLogin']], function(){
     Route::post('/superadmin_partnerdetailsbusiness', [SuperadminController::class, 'MerchantBusinessUpdate'])->name('MerchantBusinessUpdate');
 
     Route::get('/superadmin_account', [SuperadminController::class, 'AccountIndex']);
-
+    
     Route::post('/superadmin_accountpass', [SuperadminController::class, 'ChangePassAdmin'])->name('ChangePassAdmin');
 
     Route::post('/superadmin_accountemail', [SuperadminController::class, 'ChangeEmailAdmin'])->name('ChangeEmailAdmin');
@@ -264,10 +336,9 @@ Route::get('/about', function () {
 });
 
 //ROUTE CONTACT
-Route::get('/contact', function () {
-    return view('contact');
-});
+Route::get('/contact', [Home::class, 'ContactIndex']);
 
+Route::post('/contact_send', [Home::class, 'ContactUssend'])->name('ContactUssend');
 
 Route::get('/rider_vehicle', function () {
     return view('rider_vehicle');
@@ -316,10 +387,13 @@ Route::group(['middleware'=>['adminLogin']], function(){
     //View products
     Route::get('product', function () {
 
-        $products = DB::table('tbl_product')->where('merchant_id', '=', session('loginID'))->get();
+    $products = DB::table('tbl_product')->where('merchant_id', '=', session('loginID'))->get();
 
-        return view('admin.product', ['products' => $products]);
-    });
+    $category = DB::table('tbl_category')->where('merchant_id', '=', session('loginID'))->get();
+
+
+    return view('admin.product', ['products' => $products, 'category' => $category]);
+});
 
     Route::post('product',[Admin_product::class, 'addProduct'])->name('add_product');
 
@@ -370,7 +444,12 @@ Route::group(['middleware'=>['adminLogin']], function(){
 
     Route::get('/admin_log', [Admin_product::class, 'ActivityLog']);
     Route::get('/admin_account', [Admin_product::class, 'AdminAccount']);
-
+    Route::get('/admin_add_account', [Admin_product::class, 'AccountAddIndex']);
+    Route::get('/admin_add_email', [Admin_product::class, 'AddAccount']);
+    Route::post('/admin_add_email_submit', [Admin_product::class, 'AddNewAccount'])->name('AddNewAccount');
+    Route::post('/admin_accountpass', [Admin_product::class, 'ChangePass'])->name('ChangePass');
+    Route::post('/admin_accountemail', [Admin_product::class, 'ChangeEmail'])->name('ChangeEmail');
+    
 
 
     Route::get('/business', function(){
@@ -406,5 +485,8 @@ Route::group(['middleware'=>['adminLogin']], function(){
     Route::post('/update_category',[Admin_product::class, 'updateCategory'])->name('update_category.updateCategory');
     Route::get('/delete_category/{id}',[Admin_product::class, 'deleteCategory']);
 
+    //Upload Pictures
+    Route::post('/tmp-upload', [Admin_product::class, 'tmpUpload']);
+    Route::delete('/tmp-upload', [Admin_product::class, 'tmpDelete']);
 });
 });

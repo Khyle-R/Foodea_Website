@@ -42,7 +42,7 @@ ul {
 }
 
 nav .navbar-brand span {
-    font-size: clamp(0.75rem, 0.5040rem + 1.3120vw, 1.16rem);
+    font-size: clamp(0.75rem, 0.6040rem + 1.3120vw, 1.16rem);
     position: relative;
     text-decoration: none;
     color: #f54748;
@@ -513,6 +513,46 @@ nav .navbar-brand span {
   color: #FEEECB;
 }
 
+/*   Download app     */
+.content-app h1 {
+  font-size: clamp(1.25rem, -0.5rem + 3.9vw, 5.625rem);
+  color: #363636;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+}
+
+.content-app span {
+  color: #f54748;
+  opacity: 100%;
+}
+
+.content span {
+  color: #f54748;
+  opacity: 100%;
+}
+
+.content-app p{
+  font-size: clamp(0.8rem, 0.4107rem + 0.8571vw, 1rem);
+  width: 90%;
+  opacity: 70%;
+  font-family: "Montserrat", sans-serif;
+  line-height: 25px;
+  margin-bottom: 35px;
+  font-weight: medium;
+}
+
+.image2{
+  width: clamp(18rem, -18.75rem + 66vw, 33.75rem);
+}
+
+.imagedl {
+  width: 100%;
+}
+
+.imageqr {
+  width: 100%;
+}
+
 /* CONTENT 1 */
 .context-one{
   width: 75%;
@@ -800,6 +840,7 @@ nav .navbar-brand span {
     bottom: 1rem;
     left: 6rem;
   }
+  
 }
 
 @media (max-width:576px){ 

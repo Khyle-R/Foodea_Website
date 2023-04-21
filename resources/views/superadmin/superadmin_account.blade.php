@@ -232,7 +232,7 @@
                                     <h5 class="section-title">Old Password</h5>
 
                                     <div class="form-group">   
-                                   <input type="text" value="" name="old_password" class="form-control input-border" id="old_pass" placeholder="Enter New Password">
+                                   <input type="password" value="" name="old_password" class="form-control input-border" id="old_pass" placeholder="Enter New Password">
                                      <span
                                     class="red-link">
                                     @error('old_password') {{ $message }}
@@ -242,7 +242,7 @@
                                    <h5 class="section-title">New Password</h5>
 
                                     <div class="form-group">
-                                   <input type="text" value="" name="new_password" class="form-control input-border" id="new_pass" placeholder="Enter New Password">
+                                   <input type="password" value="" name="new_password" class="form-control input-border" id="new_pass" placeholder="Enter New Password">
                                     <span
                                     class="red-link">
                                     @error('new_password') {{ $message }}
@@ -252,7 +252,7 @@
                                    <h5 class="section-title">Confirm Password</h5>
                                    
                                    <div class="form-group">
-                                  <input type="text" name="confirm_password" class="form-control input-border" id="confirm_pass" placeholder="Confirm Password">
+                                  <input type="password" name="confirm_password" class="form-control input-border" id="confirm_pass" placeholder="Confirm Password">
                                     <span
                                     class="red-link">
                                     @error('confirm_password') {{ $message }}
@@ -312,8 +312,7 @@
 <!-- partial:../../partials/_footer.html -->
 <footer class="footer">
     <div class="d-sm-flex justify-content-center justify-content-sm-between">
-        <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com
-            2020</span>
+        <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2022. All Rights Reserved</span>
        
     </div>
 </footer>

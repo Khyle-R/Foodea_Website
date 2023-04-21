@@ -14,9 +14,19 @@
                 </div>
             </div>
                     @endif
-             
+              @if (Session::has('fail'))
+                    <p style="display:none" class="failed"></p>
+            <div class="alert hide">
+                <span class="fas fa-exclamation-circle"></span>
+                <span class="msg">{{ Session::pull('fail') }}</span>
+                <div class="close-btn">
+                    <span class="fas fa-times"></span>
+                </div>
+            </div>
+                    @endif
               <!---/ALERT BOX --->
     </div>
+    @foreach ($Data as $partner)
     <div class="page-header">
         <h3 class="page-title black">Account</h3>
         <nav aria-label="breadcrumb">
@@ -38,9 +48,9 @@
                             <div class="profile-view">
                                 <div class="profile-img-wrap">
                                     <div class="profile-img">
-                                         @foreach ($Data as $partner)
+                                         
                                      
-                                          <img alt="" src="{{ url('uploads/'. 'merchant_documents'. '/'. $partner->merchant_id. '/'. $partner->logo) }}">
+                                          <img alt="*" src="{{$partner->logo}}">
                                   
                                     </div>
                                 </div>
@@ -89,7 +99,7 @@
 
                                                   
                                                     </li>
-                                                   @endforeach
+                                                   {{-- @endforeach --}}
 
                                             </ul>
                                         </div>
@@ -107,6 +117,7 @@
                     <div class="col-lg-12 col-md-12 col-sm-12 line-tabs">
                         <ul class="nav nav-tabs nav-tabs-bottom">
                             <li class="nav-item"><a href="#emp_profile" data-toggle="tab" class="nav-link tab-font active">Profile</a></li>
+                             <li class="nav-item"><a href="#emp_account" data-toggle="tab" class="nav-link tab-font">Account Settings</a></li>
                             <li class="nav-item"><a href="#emp_vehicle" data-toggle="tab" class="nav-link tab-font">Business</a></li>
                             <li class="nav-item"><a href="#emp_documents" data-toggle="tab" class="nav-link tab-font">Documents </a></li>
                             <li class="nav-item"><a href="#emp_products" data-toggle="tab" class="nav-link tab-font">Products </a></li>
@@ -193,7 +204,90 @@
                     </div>
                 </div>
                 <!-- /Profile Info Tab -->
+                 <!-- Account Settings Tab -->
+                 <div  id="emp_account" class="tab-pane fade" >
+                    <div class="row">
+                        <div class="col-md-6 d-flex mb-4">
+                            <div class="card profile-box flex-fill">
+                                <div class="card-body pr-5">
+                                    <h3 class="card-title">Change Password</h3>
 
+                                    <form method="post" action="{{ route('ChangePass') }}">
+                                        @csrf
+                                    <h5 class="section-title">Old Password</h5>
+
+                                    <div class="form-group">   
+                                   <input type="text" value="" name="old_password" class="form-control input-border" id="old_pass" placeholder="Enter New Password">
+                                     <span
+                                    class="red-link">
+                                    @error('old_password') {{ $message }}
+                                    @enderror</span>
+                                  </div>
+
+                                   <h5 class="section-title">New Password</h5>
+
+                                    <div class="form-group">
+                                   <input type="text" value="" name="password" class="form-control input-border" id="new_pass" placeholder="Enter New Password">
+                                    <span
+                                    class="red-link">
+                                    @error('password') {{ $message }}
+                                    @enderror</span>
+                                </div>
+
+                                   <h5 class="section-title">Confirm Password</h5>
+                                   
+                                   <div class="form-group">
+                                  <input type="text" name="password_confirmation" class="form-control input-border" id="confirm_pass" placeholder="Confirm Password">
+                                    <span
+                                    class="red-link">
+                                    @error('password_confirmation') {{ $message }}
+                                    @enderror</span>  
+                                </div>
+
+                                     <div class="staff-msg">
+                                        <button type="submit" id="id" class="red-btn">Update Password</button></div>
+                                     </form>
+                                  
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 d-flex mb-4">
+                            <div class="card profile-box flex-fill">
+                                <div class="card-body">
+                                    <h3 class="card-title">Change Email</h3>
+
+                                      <h5 class="section-title">Email</h5>
+                                    <form method="post" action="{{ route('ChangeEmail') }}">
+                                        @csrf
+                                    <div class="form-group">
+                                   <input type="text" value="" name="new_email" class="form-control input-border" id="new_pass" placeholder="Enter New Email">
+                                    <span
+                                    class="red-link">
+                                    @error('new_email') {{ $message }}
+                                    @enderror</span>
+                                </div>
+
+                                    <h5 class="section-title">Confirm Email</h5>
+
+                                    <div class="form-group">
+                                   <input type="text" value="" name="confirm_email" class="form-control input-border" id="new_pass" placeholder="Confirm Email">
+                                    <span
+                                    class="red-link">
+                                    @error('confirm_email') {{ $message }}
+                                    @enderror</span>
+                                </div>
+                                <div class="staff-msg">
+                                        <button type="submit" id="id" class="red-btn">Update Email</button></div>
+                                   </form>
+                                    
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Vehicle Info Tab -->
 
                   <!-- Documents Info Tab -->
                  <div class="tab-pane fade" id="emp_documents">
@@ -217,51 +311,51 @@
                             <tr>
                                 <td>Business Logo</td>
                                 <td>{{ $partner->logo }}</td>
-                                 <td><a class="red-btn" href="" data-toggle="modal" data-target="#ViewModal1"><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
-                                <td><a class="red-btn" href="/download_merchant_file/{{ $partner->merchant_id }}/{{ $partner->logo }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
+                                 <td><a class="red-btn" href="{{ $partner->logo }}" data-toggle="modal" data-target="#ViewModal1"><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
+                                <td><a class="red-btn" href="{{ $partner->logo }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
 
                             </tr>   
                             <tr>
                                 <td>Menu Photo</td>
                                 <td>{{ $partner->menu_photo }}</td>
-                               <td><a class="red-btn" data-toggle="modal" data-target="#ViewModal2"><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
-                                <td><a class="red-btn" href="/download_merchant_file/{{ $partner->merchant_id }}/{{ $partner->menu_photo }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
+                               <td><a class="red-btn" href="{{ $partner->menu_photo }}" data-toggle="modal" data-target="#ViewModal2"><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
+                                <td><a class="red-btn" href="{{ $partner->menu_photo }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
 
                             </tr>
 
                             <tr>
                                 <td>Business Permit</td>
                                 <td>{{ $partner->business_permit }}</td>
-                                 <td><a class="red-btn" href="/display_merchant_pdf/{{ $partner->merchant_id }}/{{ $partner->business_permit }}" ><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
-                                <td><a class="red-btn" href="/download_merchant_file/{{ $partner->merchant_id }}/{{ $partner->business_permit }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
+                                 <td><a class="red-btn" href="{{ $partner->business_permit }}" ><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
+                                <td><a class="red-btn" href="{{ $partner->business_permit }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
 
                             </tr>
                             <tr>
                                 <td>BIR Certificate</td>
                                 <td>{{ $partner->bir_cert }}</td>
-                                 <td><a class="red-btn" href="/display_merchant_pdf/{{ $partner->merchant_id }}/{{ $partner->bir_cert }}" ><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
-                                <td><a class="red-btn" href="/download_merchant_file/{{ $partner->merchant_id }}/{{ $partner->bir_cert }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
+                                 <td><a class="red-btn" href="{{ $partner->bir_cert }}" ><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
+                                <td><a class="red-btn" href="{{ $partner->bir_cert }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
 
                             </tr>
                             <tr>
                                 <td>Barangay Permit</td>
                                 <td>{{ $partner->barangay_permit }}</td>
-                                <td><a class="red-btn" href="/display_merchant_pdf/{{ $partner->merchant_id }}/{{ $partner->barangay_permit }}" ><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
-                                <td><a class="red-btn" href="/download_merchant_file/{{ $partner->merchant_id }}/{{ $partner->barangay_permit }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
+                                <td><a class="red-btn" href="{{ $partner->barangay_permit }}" ><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
+                                <td><a class="red-btn" href="{{ $partner->barangay_permit }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
 
                             </tr>
                            <tr>
                                 <td>DTI Certificate</td>
                                 <td>{{ $partner->dti_cert }}</td>
-                                 <td><a class="red-btn" href="/display_merchant_pdf/{{ $partner->merchant_id }}/{{ $partner->dti_cert }}" ><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
-                                <td><a class="red-btn" href="/download_merchant_file/{{ $partner->merchant_id }}/{{ $partner->dti_cert }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
+                                 <td><a class="red-btn" href="{{ $partner->dti_cert }}" ><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
+                                <td><a class="red-btn" href="{{ $partner->dti_cert }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
 
                             </tr>
                             <tr>
                                 <td>Valid Government ID</td>
                                 <td>{{ $partner->front_license }}</td>
-                                <td><a class="red-btn" data-toggle="modal" data-target="#ViewModal3" ><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
-                                <td><a class="red-btn" href="/download_valid_merchant/{{ $partner->merchant_id }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
+                                <td><a class="red-btn" href="{{ $partner->merchant_id }}" data-toggle="modal" data-target="#ViewModal3" ><i class="download-btn mdi mdi-eye mr-2"></i>View</a> </td>
+                                <td><a class="red-btn" href="{{ $partner->merchant_id }}"><i class="download-btn mdi mdi-download mr-2"></i>Download</a> </td>
 
                             </tr>
                         </tbody>
@@ -335,7 +429,7 @@
                                         <div id="carouselExampleControl" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                            <img class="d-block" height="500" width="100%" src=" {{ asset('uploads/'. 'merchant_documents'. '/'. $partner->merchant_id. '/'. $partner->menu_photo) }} " alt="First slide">
+                            <img class="d-block" height="500" width="100%" src=" {{ $partner->menu_photo }} " alt="First slide">
                             </div>
                         </div>
                         {{-- <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -373,13 +467,15 @@
                                 <th>Status</th>
                             </tr>
                         </thead>
-                        <tbody>
+                         <tbody>
+                            @foreach ($product as $products)
                             <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $products->product_name }}</td>
+                                <td>{{ $products->stock }}</td>
+                                <td>{{ $products->price }}</td>
+                                <td>{{ $products->status }}</td>
                             </tr>
+                             @endforeach
                         </tbody>
                     
                     </table>
@@ -622,7 +718,7 @@
                         </div>
                         <div class="modal-body">
                             <div class="image text-center">
-                           <img height="400" width="400" src="{{ url('uploads/'. 'merchant_documents'. '/'. $partner->merchant_id. '/'. $partner->logo) }}" alt="">
+                           <img height="400" width="400" src="{{ $partner->logo }}" alt="">
                        </div>
                         </div>
                         </div>
@@ -643,7 +739,7 @@
                             <div id="carouselExampleContr" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                            <img class="d-block" height="650"  width="100%" src="{{ url('uploads/'. 'merchant_documents'. '/'. $partner->merchant_id. '/'. $partner->menu_photo) }}" alt="First slide">
+                            <img class="d-block" height="650"  width="100%" src="{{ $partner->menu_photo }}" alt="First slide">
                             </div>
         
                         </div>
@@ -676,10 +772,10 @@
                             <div id="carouselExampleControlss" class="carousel slide" data-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                            <img class="d-block" height="350"  width="100%" src="{{ url('uploads/'. 'merchant_documents'. '/'. $partner->merchant_id. '/'. 'valid id/'.$partner->front_license) }}" alt="First slide">
+                            <img class="d-block" height="350"  width="100%" src="{{ $partner->front_license }}" alt="First slide">
                             </div>
                             <div class="carousel-item">
-                            <img class="d-block" height="350" width="100%" src="{{ url('uploads/'. 'merchant_documents'. '/'. $partner->merchant_id. '/'. 'valid id/'.$partner->back_license) }}" alt="Second slide">
+                            <img class="d-block" height="350" width="100%" src="{{ $partner->back_license }}" alt="Second slide">
                             </div>
                         </div>
                         <a class="carousel-control-prev" href="#carouselExampleControlss" role="button" data-slide="prev">
@@ -697,12 +793,12 @@
                         </div>
                     </div>
                     </div>
+    @endforeach
 <!-- content-wrapper ends -->
 <!-- partial:../../partials/_footer.html -->
 <footer class="footer">
     <div class="d-sm-flex justify-content-center justify-content-sm-between">
-        <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com
-            2020</span>
+        <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2022. All Rights Reserved</span>
        
     </div>
 </footer>

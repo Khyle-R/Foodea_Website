@@ -17,7 +17,10 @@ return new class extends Migration
 
             $table->id('inventory_id');
             $table->integer('merchant_id');
-            $table->integer('category_id');
+            $table->integer('category_id')->nullable();
+            $table->string('category_name');
+            $table->string('tags');
+            $table->string('ingredients');
             $table->string('product_name');
             $table->integer('price');
             $table->string('product_image');

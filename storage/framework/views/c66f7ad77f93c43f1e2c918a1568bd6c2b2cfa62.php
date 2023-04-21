@@ -1,84 +1,9 @@
 
 <?php $__env->startSection('content'); ?>
-   <style>
-      /* Style for Tag inside the add Category modal */
-      .wrapper {
-         width: 470px;
-
-         border-radius: 10px;
-
-
-      }
-
-      .wrapper :where(.title, li, li i, .details) {
-         display: flex;
-         align-items: center;
-      }
-
-      .title img {
-         max-width: 21px;
-      }
-
-      .title h2 {
-         font-size: 21px;
-         font-weight: 600;
-         margin-left: 8px;
-      }
-
-      .wrapper .content {
-         margin: 10px 0;
-      }
-
-      .content p {
-         font-size: 15px;
-      }
-
-      .content ul {
-         display: flex;
-         flex-wrap: wrap;
-         padding: 7px;
-         margin: 12px 0;
-         border-radius: 5px;
-         border: 1px solid #a6a6a6;
-      }
-
-      .content ul li {
-         color: #333;
-         margin: 4px 3px;
-         list-style: none;
-         border-radius: 5px;
-         background: #F2F2F2;
-         padding: 5px 8px 5px 10px;
-         border: 1px solid #e3e1e1;
-      }
-
-      .content ul li i {
-         height: 20px;
-         width: 20px;
-         color: #808080;
-         margin-left: 8px;
-         font-size: 12px;
-         cursor: pointer;
-         border-radius: 50%;
-         background: #dfdfdf;
-         justify-content: center;
-      }
-
-      .content ul input {
-         flex: 1;
-         padding: 4px;
-         border: none;
-         outline: none;
-         font-size: 16px;
-      }
-
-      .wrapper .details {
-         justify-content: space-between;
-      }
-   </style>
+  
    <div class="content-wrapper">
       <div class="row">
-         
+
       </div>
       <div class="page-header">
          <h3 class="page-title black">Product</h3>
@@ -121,8 +46,8 @@
                                           <?php echo csrf_field(); ?>
                                           <div class="form-group">
                                              <label for="exampleInputName1" class="blackk">Product Name</label>
-                                             <input type="text" class="form-control"id="exampleInputName1" placeholder="Name"value="<?php echo e(old('product_name')); ?>"
-                                                name="product_name" required/>
+                                             <input type="text" class="form-control"id="exampleInputName1" placeholder="Name"value="<?php echo e(old('product_name')); ?>" name="product_name"
+                                                required />
                                              <span style="color:red;">
                                                 <?php $__errorArgs = ['product_name'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -138,75 +63,38 @@ unset($__errorArgs, $__bag); ?>
                                              </span>
                                              <span class="gray">Do not exceed 20 characters when entering the product name.</span>
                                           </div>
-                                          <div class="row">
-                                             <div class="col form-group"><label for="exampleSelectGender" class="blackk">Category</label>
-                                                <select class="form-control" id="exampleSelectGender" style="border: 1px solid" name="category" required>
-                                                   <option><?php echo e(old('category')); ?></option>
-                                                   <option>Chicken</option>
-                                                   <option>Pork</option>
-                                                </select>
-                                                <span style="color:red;">
-                                                   <?php $__errorArgs = ['category'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                                                      <?php echo e($message); ?>
 
-                                                   <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-                                                </span>
-                                             </div>
-                                             <div class="col form-group">
+
+                                          <div class="col form-group"><label for="exampleSelectGender" class="blackk">Category</label>
+                                             <select class="form-control" id="exampleSelectGender" style="border: 1px solid" name="category" required>
                                                 
-                                                <input type=" text" id="tags_category" value="<?php echo e(old('tags_category')); ?>" name="tags_category">
-                                                <div class="wrapper">
-                                                   <div class="content">
-                                                      <p> Tags</p>
-                                                      <ul id="ul"><input id="input" value="<?php echo e(old('tags')); ?>" class="" type="text" name="tags"
-                                                            spellcheck="false"></ul>
-                                                      <span style="color:red;">
-                                                         <?php $__errorArgs = ['tags_category'];
+                                                <?php $__currentLoopData = $category; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                   <option <?php echo e(old('category') == $data->main_category ? 'selected' : ''); ?> value="<?php echo e($data->category_id); ?>|<?php echo e($data->main_category); ?>"><?php echo e($data->main_category); ?></option>
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                             </select>
+                                             <span style="color:red;">
+                                                <?php $__errorArgs = ['category'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }
 $message = $__bag->first($__errorArgs[0]); ?>
-                                                            <?php echo e($message); ?>
+                                                   <?php echo e($message); ?>
 
-                                                         <?php unset($message);
+                                                <?php unset($message);
 if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
-                                                      </span>
-                                                      <p class="gray">Press enter or add a comma after
-                                                         each tag</p>
-                                                   </div>
-                                                   <div class="details">
-                                                      <p><span>10</span> tags are remaining</p>
-                                                      <button class="btn btn-warning btn-sm px-3 mr-3 py-2 px-3 rounded" type="button">Remove All</button>
-                                                   </div>
-                                                </div>
-                                                <span style="color:red;">
-                                                   <?php $__errorArgs = ['tags_category'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                                                      <?php echo e($message); ?>
+                                             </span>
+                                          </div>
 
-                                                   <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-                                                </span>
-                                             </div>
+                                          <div class="form-group">
+                                             <label for="" class="blackk">Calories:</label>
+                                             <input type="text" class="form-control" id="tags_category" name="calories">
                                           </div>
 
                                           <div class="form-group">
                                              <label for="exampleTextarea1" class="blackk">Description</label>
-                                             <textarea class="form-control"id="exampleTextarea1"rows="4" name="description" required><?php echo e(old('description')); ?></textarea>
+                                             <textarea class="form-control"id="exampleTextarea1"rows="4" name="description" maxlength="225" required><?php echo e(old('description')); ?></textarea>
                                              <span style="color:red;">
                                                 <?php $__errorArgs = ['description'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -226,7 +114,7 @@ unset($__errorArgs, $__bag); ?>
 
                                           <div class="form-group">
                                              <label for="exampleTextarea1" class="blackk">Ingredients</label>
-                                             <textarea class="form-control"id="exampleTextarea1"rows="4" name="ingredients" required><?php echo e(old('ingredients')); ?></textarea>
+                                             <textarea class="form-control"id="exampleTextarea1"rows="4" name="ingredients" maxlength="225" required><?php echo e(old('ingredients')); ?></textarea>
                                              <span style="color:red;">
                                                 <?php $__errorArgs = ['ingredients'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -245,9 +133,12 @@ unset($__errorArgs, $__bag); ?>
                                           </div>
 
 
+
+                                          
                                           <div class="form-group">
                                              <div class="file-loading">
-                                                <input type="file" value="<?php echo e(old('product_image')); ?>" name="product_image" />
+
+                                                <input type="file" class="product_image" name="product_image" multiple data-allow-reorder="true" data-max-file-size="3MB" data-max-files="1">
                                                 <span style="color:red;">
                                                    <?php $__errorArgs = ['product_image'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -263,10 +154,11 @@ unset($__errorArgs, $__bag); ?>
                                                 </span>
                                              </div>
                                           </div>
+
                                           <div class="row">
                                              <div class="col-md">
                                                 <label for="exampleInputName1" class="blackk">Price</label>
-                                                <input type="text"class="form-control" id="exampleInputName1" value="<?php echo e(old('price')); ?>" name="price" required/>
+                                                <input type="number"class="form-control" id="exampleInputName1" value="<?php echo e(old('price')); ?>" name="price" required />
                                                 <span style="color:red;">
                                                    <?php $__errorArgs = ['price'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -283,7 +175,7 @@ unset($__errorArgs, $__bag); ?>
                                              </div>
                                              <div class="col-md">
                                                 <label for="exampleInputName1" class="blackk">Stock</label>
-                                                <input type="text"class="form-control" id="exampleInputName1" value="<?php echo e(old('stock')); ?>" name="stock" required/>
+                                                <input type="number"class="form-control" id="exampleInputName1" value="<?php echo e(old('stock')); ?>" name="stock" required />
                                                 <span style="color:red;">
                                                    <?php $__errorArgs = ['stock'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
@@ -352,7 +244,7 @@ unset($__errorArgs, $__bag); ?>
                            <?php $__currentLoopData = $products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                               <tr>
                                  <td>
-                                    <img src="<?php echo e(asset('product_images/' . $data->product_image)); ?>" alt="image" class="img-fluid"
+                                    <img src="<?php echo e($data->product_image); ?>" alt="image" class="img-fluid"
                                        style=" height: 60px; width: 70px; border-radius: 2px;" />
                                     <span class="pl-2"><?php echo e($data->product_name); ?></span>
                                  </td>
@@ -375,11 +267,13 @@ unset($__errorArgs, $__bag); ?>
                                     <div class="row">
                                        <div class="dropdown action-label">
                                           <a class=" btn-white-circle btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
-                                              <i class=" pending mdi mdi-radiobox-marked"></i> Status
+                                             <i class=" pending mdi mdi-radiobox-marked"></i> Status
                                           </a>
                                           <div class="bg-white dropdown-menu dropdown-menu-right">
-                                                <a data-toggle="modal" data-target="#deleteModal" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-success"></i> Remove Product</a>
-                                                <a data-toggle="modal" data-target="#EditModal<?php echo e($data->product_id); ?>" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-danger"></i> Edit Product</a>
+                                             <a data-toggle="modal" data-target="#deleteModal" class="action-btn dropdown-item black" href="#"><i
+                                                   class="fa fa-dot-circle-o text-success"></i> Remove Product</a>
+                                             <a data-toggle="modal" data-target="#EditModal<?php echo e($data->product_id); ?>" class="action-btn dropdown-item black" href="#"><i
+                                                   class="fa fa-dot-circle-o text-danger"></i> Edit Product</a>
                                           </div>
                                        </div>
 
@@ -400,7 +294,7 @@ unset($__errorArgs, $__bag); ?>
                                                       <div class="form-group">
                                                          <label for="exampleInputName1" class="blackk">Product Name</label>
                                                          <input type="text" class="form-control" id="exampleInputName1" placeholder="Name" value="<?php echo e($data->product_name); ?>"
-                                                            name="product_name" required/>
+                                                            name="product_name" required />
                                                          <span class="gray">Do not exceed 20
                                                             characters when entering the product
                                                             name.</span>
@@ -409,73 +303,35 @@ unset($__errorArgs, $__bag); ?>
                                                          <div class="col form-group">
                                                             <label for="exampleSelectGender" class="blackk">Category</label>
                                                             <select class="form-control" id="exampleSelectGender" style="border: 1px solid" name="category" required>
-                                                               <option>
-                                                                  <?php echo e($data->category_name); ?>
-
-                                                               </option>
-                                                               <option>Chicken</option>
-                                                               <option>Pork</option>
+                                                               
+                                                               <?php $__currentLoopData = $category; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $keys => $datas): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                                  <option <?php echo e($data->category_name == $datas->main_category ? 'selected' : ''); ?> value="<?php echo e($datas->category_id); ?>|<?php echo e($datas->main_category); ?>"><?php echo e($datas->main_category); ?></option>
+                                                               <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                             </select>
                                                          </div>
-                                                         <div class="col form-group">
-                                                            <input type=" text" id="tags_category" value="<?php echo e($data->tags); ?>" name="tags_category">
-                                                            <div class="wrapper">
-                                                                <div class="content">
-                                                                   <p> Tags</p>
-                                                                   <ul id="ul"><input id="input" value="" class="" type="text" name="tags"
-                                                                         spellcheck="false"></ul>
-                                                                   <span style="color:red;">
-                                                                      <?php $__errorArgs = ['tags_category'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                                                                         <?php echo e($message); ?>
-
-                                                                      <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-                                                                   </span>
-                                                                   <p class="gray">Press enter or add a comma after
-                                                                      each tag</p>
-                                                                </div>
-                                                                <div class="details">
-                                                                   <p><span>10</span> tags are remaining</p>
-                                                                   <button class="btn btn-warning btn-sm px-3 mr-3 py-2 px-3 rounded" type="button">Remove All</button>
-                                                                </div>
-                                                             </div>
-                                                             <span style="color:red;">
-                                                                <?php $__errorArgs = ['tags_category'];
-$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
-if ($__bag->has($__errorArgs[0])) :
-if (isset($message)) { $__messageOriginal = $message; }
-$message = $__bag->first($__errorArgs[0]); ?>
-                                                                   <?php echo e($message); ?>
-
-                                                                <?php unset($message);
-if (isset($__messageOriginal)) { $message = $__messageOriginal; }
-endif;
-unset($__errorArgs, $__bag); ?>
-                                                             </span>
-                                                          
-                                                         </div>
                                                       </div>
+                                                      <div class="form-group">
+                                                         <label for="" class="blackk">Calories:</label>
+                                                         <input type="text" class="form-control" id="tags" name="calories" value="<?php echo e($data->calories); ?>">
+                                                      </div>
+
+
+                                                      
 
                                                       <div class="form-group">
                                                          <label for="exampleTextarea1" class="blackk">Description</label>
-                                                         <textarea class="form-control"id="exampleTextarea1"rows="4" placeholder="" name="description" required><?php echo e($data->description); ?></textarea>
+                                                         <textarea class="form-control"id="exampleTextarea1"rows="4" placeholder="" name="description" maxlength="225" required><?php echo e($data->description); ?></textarea>
                                                          <span class="gray">Do not exceed 100
                                                             characters when entering the product
                                                             details.</span>
                                                       </div>
                                                       <div class="form-group">
-                                                        <label for="exampleTextarea1" class="blackk">Ingredients</label>
-                                                        <textarea class="form-control"id="exampleTextarea1"rows="4" placeholder="" name="ingredients" required><?php echo e($data->ingredients); ?></textarea>
-                                                        <span class="gray">Do not exceed 100
-                                                           characters when entering the product
-                                                           details.</span>
-                                                     </div>
+                                                         <label for="exampleTextarea1" class="blackk">Ingredients</label>
+                                                         <textarea class="form-control"id="exampleTextarea1"rows="4" placeholder="" name="ingredients" maxlength="225" required><?php echo e($data->ingredients); ?></textarea>
+                                                         <span class="gray">Do not exceed 100
+                                                            characters when entering the product
+                                                            details.</span>
+                                                      </div>
 
                                                       <div class="form-group">
                                                          <div class="file-loading">
@@ -486,13 +342,13 @@ unset($__errorArgs, $__bag); ?>
                                                       <div class="row">
                                                          <div class="col-md">
                                                             <label for="exampleInputName1" class="blackk">Price</label>
-                                                            <input type="text"class="form-control" id="exampleInputName1" placeholder="" value="<?php echo e($data->price); ?>"
-                                                               name="price" required/>
+                                                            <input type="number" min="0" step="0.01" class="form-control" id="exampleInputName1" placeholder=""
+                                                               value="<?php echo e($data->price); ?>" name="price" required />
                                                          </div>
                                                          <div class="col-md">
                                                             <label for="exampleInputName1" class="blackk">Stock</label>
-                                                            <input type="text"class="form-control" id="exampleInputName1" placeholder="" value="<?php echo e($data->stock); ?>"
-                                                               name="stock" required/>
+                                                            <input type="number"class="form-control" id="exampleInputName1" placeholder="" value="<?php echo e($data->stock); ?>"
+                                                               name="stock" required />
                                                          </div>
                                                          <div class="col-md">
                                                             <label for="exampleSelectGender" class="blackk">Status</label>
@@ -518,6 +374,7 @@ unset($__errorArgs, $__bag); ?>
                                              </div>
                                           </div>
                                        </div>
+
 
 
                                        <!-- Modal -->
@@ -561,14 +418,11 @@ unset($__errorArgs, $__bag); ?>
    <!-- partial:../../partials/_footer.html -->
    <footer class="footer">
       <div class="d-sm-flex justify-content-center justify-content-sm-between">
-         <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com
-            2020</span>
-         <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">
-            Free
-            <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin
-               templates</a>
-            from Bootstrapdash.com</span>
+         <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2022. All Rights Reserved</span>
+       
       </div>
+
+
 
       <script>
          $(document).ready(function() { //this Jquery when you click the add button the type of the button become submit
@@ -583,78 +437,6 @@ unset($__errorArgs, $__bag); ?>
             $('.updateButton').click(function() {
                $('.updateButton').attr('type', 'Submit');
             });
-         });
-      </script>
-
-
-      <script>
-
-         const ul = document.querySelector("#ul"),
-            input = document.querySelector("#input"), // input of tags
-            tagNumb = document.querySelector(".details span"),
-            td = document.querySelector("td");
-         let maxTags = 10,
-            tags = []; // array for tags
-
-         countTags();
-         createTag();
-         
-
-         function countTags() { // count tags to know the limits of arrays
-            input.focus();
-            tagNumb.innerText = maxTags - tags.length;
-
-         }
-
-         function gettingTags(gTag) {
-            gTag = gTag.replace(/"/g, '');
-            gTag = gTag.replace('[', '');
-            gTag = gTag.replace(']', '');
-            document.getElementById('tags_category').value = gTag; // set the value of the input
-            console.log(gTag);
-         }
-
-         function createTag() {
-            ul.querySelectorAll("li").forEach(li => li.remove());
-            tags.slice().reverse().forEach(tag => {
-               let liTag = `<li>${tag} <i class="uit uit-multiply" onclick="remove(this, '${tag}')"></i></li>`;
-               ul.insertAdjacentHTML("afterbegin", liTag);
-
-               var tagString = JSON.stringify(tags); // convert the array into variable
-               gettingTags(tagString);
-
-            });
-            countTags();
-         }
-
-         function remove(element, tag) { // remove tags
-            let index = tags.indexOf(tag);
-            tags = [...tags.slice(0, index), ...tags.slice(index + 1)];
-            element.parentElement.remove();
-            countTags();
-         }
-
-         function addTag(e) {
-            if (e.key == "Enter") { // when you click space the tag will add
-               let tag = e.target.value.replace(/\s+/g, ' ');
-
-               if (tag.length > 1 && !tags.includes(tag)) {
-                  if (tags.length < 10) {
-                     tag.split(',').forEach(tag => {
-                        tags.push(tag);
-                        createTag();
-                     });
-                  }
-               }
-               e.target.value = "";
-            }
-         }
-         input.addEventListener("keyup", addTag);
-         const removeBtn = document.querySelector(".details button");
-         removeBtn.addEventListener("click", () => {
-            tags.length = 0;
-            ul.querySelectorAll("li").forEach(li => li.remove());
-            countTags();
          });
       </script>
 

@@ -26,12 +26,16 @@ class StoreFoodRequest extends FormRequest
         return [
             'merchant_id' => ['required', 'numeric'],
             'category_id' => ['required', 'numeric'],
-            'product_name' => ['required'],
-            'price' => ['required', 'numeric'],
-            'product_image' => ['required'],
+            'category_name' => ['required'],
+            'ingredients'  => ['required'],
+            'product_name'  => ['required'],
+            'price'  => ['required', 'numeric'],
+            'calories'  => ['required', 'numeric'],
+            'product_image'  => ['required'],
             'stock' => ['required', 'numeric'],
-            'status' => ['required'],
+            'status'  => ['required'],
             'description' => ['required'],
+            'date' => ['date'],
         ];
     }
 }

@@ -7,11 +7,19 @@ use App\Models\tbl_category;
 use Illuminate\Http\Request;
 use App\Models\tbl_inventory;
 use App\Models\tbl_activitylog;
+use App\Models\tbl_admin_role;
 use App\Models\tbl_merchant_info;
 use Illuminate\Support\Facades\DB;
+use App\Models\tbl_merchant_account;
+use App\Models\tbl_merchant_document;
+use App\Models\tbl_orders;
 use App\Models\tbl_partner_accounts;
+use App\Models\TemporaryFile;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Validation\Rules\Password;
+use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon; // to retrieve current Date
 
 class Admin_product extends Controller
@@ -21,8 +29,35 @@ class Admin_product extends Controller
        $productSold = DB::table('tbl_product')->count();
        $totalRevenue = DB::table('tbl_product')->count();
        $totalProduct = DB::table('tbl_product')->count();
+    
+    $product = tbl_product::where('merchant_id', Session::get('loginID'))
+    ->get();
+    
+    if($product){
+    
+    $date = tbl_orders::selectRaw('date, sum(total) as totals')
+    ->where('restaurant_id', Session::get('loginID'))
+    ->groupBy('date')
+    ->get();
+   
+    
 
-    return view('admin.dashboard',['totalOrders' => $totalOrders, 'productSold' => $productSold, 'totalRevenue' => $totalRevenue, 'totalProduct' => $totalProduct]);
+    $day = [];
+    $total = [];
+    
+     foreach($date as $dates){
+            $timestamp = strtotime($dates->date);
+            $day[] = date('M', $timestamp).' '. date('d', $timestamp).' ' .date('Y', $timestamp);
+            $total[] = $dates->totals; 
+        }
+         
+   
+      
+    
+
+    return view('admin.dashboard',['totalOrders' => $totalOrders, 'productSold' => $productSold, 'totalRevenue' => $totalRevenue, 'totalProduct' => $totalProduct,], compact('product', 'day', 'total'));
+    }
+   
     }
     
    public function logout(){
@@ -31,18 +66,26 @@ class Admin_product extends Controller
         ->first();
         if($user)
         {
-        $log = new tbl_activitylog();
-                $log->merchant_id = $user->merchant_id;
-                $log->email = $user->email;
-                $log->name = $user->firstname. ' ' .$user->lastname;
-                $log->description = 'Has Log Out';
-                $res = $log->save();
-                if($res){
-       Session::pull('loginID');
-       Cookie::queue(Cookie::forget('email'));
-        Cookie::queue(Cookie::forget('password'));  
-        return redirect('/login');
+            $log = new tbl_activitylog();
+            $log->merchant_id = $user->merchant_id;
+            $log->email = $user->email;
+                if(Session::get('AdminRole')){
+                        $log->name = Session::get('AdminRole');
                 }
+                else{
+                    $log->name = Session::get('Admin');
+                }
+            
+            $log->description = 'Has Log Out';
+            $res = $log->save();
+            if($res){
+                Session::pull('loginID');
+                Session::pull('AdminRole');
+                Session::pull('Admin');
+                Cookie::queue(Cookie::forget('partner_email'));
+                Cookie::queue(Cookie::forget('partner_password'));  
+                return redirect('/rider_login');
+            }
         }
     }
 
@@ -69,8 +112,9 @@ class Admin_product extends Controller
         $product->date =$rProduct->date;
         $product->product_id =$rProduct->inventory_id;
         $product->merchant_id =$rProduct->merchant_id;
+        $product->category_id =$rProduct->category_id;
         $product->category_name =$rProduct->category_name;
-        $product->price =$rProduct->price;
+        $product->calories =$rProduct->calories;
         $product->tags =$rProduct->tags;
         
         $res= $product-> save();
@@ -122,8 +166,9 @@ class Admin_product extends Controller
         $product->date =$rProduct->date;
         $product->inventory_id =$rProduct->product_id;
         $product->merchant_id =$rProduct->merchant_id;
+        $product->category_id =$rProduct->category_id;
         $product->category_name =$rProduct->category_name;
-        $product->price =$rProduct->price;
+        $product->calories =$rProduct->calories;
         $product->tags =$rProduct->tags;
         
         $res= $product-> save();
@@ -160,16 +205,19 @@ class Admin_product extends Controller
         $affected = DB::table('tbl_product')->where('product_id', $request->product_id);
               
         if($request->product_image != ''){        
-            $path = public_path().'/product_images';
+            // $path = public_path().'/product_images';
   
- 
             //upload new file
-            $file = $request->product_image;
-            $filename = $file->getClientOriginalName();
-            $file->move($path, $filename);
-  
+            $prod_image = $request->file('product_image')->store('product_images', 's3', ['visibility', 'public']);
+            $image_p = Storage::disk('s3')->url($prod_image);
+            
+            // $file = $request->product_image;
+            // $filename = $file->getClientOriginalName();
+            // $file->move($path, $filename);
+            $category=$request->category;
+            $category_parts = explode('|', $category);
 
-            $resss=$affected->update(['product_name' => $request->product_name,'price' => $request->price,'stock' => $request->stock,'status' => $request->status,'description' => $request->description,'product_image'=> $filename],
+            $resss=$affected->update(['product_name' => $request->product_name,'price' => $request->price,'price' => $request->price,'category_id' => $category_parts[0], 'category_name' => $category_parts[1], 'calories' => $request->calories, 'ingredients' => $request->ingredients, 'stock' => $request->stock,'status' => $request->status,'description' => $request->description,'product_image'=> $image_p],
               
             );
             if ($resss) {
@@ -182,7 +230,10 @@ class Admin_product extends Controller
         }
         else {
             // if the update dont have new profile upload
-            $resss=$affected->update(['product_name' => $request->product_name,'price' => $request->price,'stock' => $request->stock,'status' => $request->status,'description' => $request->description],  
+            $category=$request->category;
+            $category_parts = explode('|', $category);
+
+            $resss=$affected->update(['product_name' => $request->product_name,'price' => $request->price,'category_id' => $category_parts[0], 'category_name' => $category_parts[1], 'calories' => $request->calories, 'ingredients' => $request->ingredients, 'stock' => $request->stock,'status' => $request->status,'description' => $request->description],  
             );
             if ($resss) {
                 return redirect('product');
@@ -193,45 +244,37 @@ class Admin_product extends Controller
             }
         }
     }
-
+//
     public function addProduct(Request $request)
     {
 
-        
-        $addProd=new tbl_product();
-
-       
+              $addProd=new tbl_product();
 
             if ($request->hasFile('product_image')) 
             {
-                $prod_image = $request->file('product_image');
+                $prod_image = $request->file('product_image')->store('product_images', 's3', ['visibility', 'public']);
 
-                $image_p = $prod_image->getClientOriginalName();
-
-                $prod_image->move('product_images', $image_p);
-
-            
+                $image_p = Storage::disk('s3')->url($prod_image);
 
                 $addProd->merchant_id = session('loginID');
                 $addProd->product_name =$request->product_name;
                 $addProd->stock = $request->stock;
                 $addProd->product_image =$image_p;
                 $addProd->price = $request->price;
-                $addProd->category_name=$request->category;
+                $addProd->calories = $request->calories;
+                $category=$request->category;
+                $category_parts = explode('|', $category);
+                $addProd->category_id = $category_parts[0];
+                $addProd->category_name = $category_parts[1];
                 $addProd->status = $request->status;
-                $addProd->tags=$request->tags_category;
+                // $addProd->tags=$request->tags_category;
                 $addProd->description = $request->description;
                 $addProd->ingredients= $request->ingredients;
-    
-              
-               
-  
             }
 
             $addProd->save();
             
             return redirect('product');
-        
     }
 
 
@@ -364,36 +407,37 @@ class Admin_product extends Controller
 
 // Admin order Show the Table
     public function Orders(){
-        $orders = DB::table('tbl_orders')->where('merchant_id', '=', session('loginID'))->get();
+        $orders = DB::table('tbl_orders')->where('restaurant_id', '=', session('loginID'))->get();
+        $orders = $orders->sortByDesc('date');
 
-        $TotalOrders = DB::table('tbl_orders')->where('merchant_id', '=', session('loginID'))->count();
-        $PendingOrders = DB::table('tbl_orders')->where([['status','Pending'],['merchant_id', '=', session('loginID')]])->count();
-        $PreparingOrders = DB::table('tbl_orders')->where([['status','Preparing'],['merchant_id', '=', session('loginID')]])->count();
-        $DeliveringOrders = DB::table('tbl_orders')->where([['status','Delivering'],['merchant_id', '=', session('loginID')]])->count();
-        $DeliveredOrders = DB::table('tbl_orders')->where([['status','Delivered'],['merchant_id', '=', session('loginID')]])->count();
+        $TotalOrders = DB::table('tbl_orders')->where('restaurant_id', '=', session('loginID'))->count();
+        $PendingOrders = DB::table('tbl_orders')->where([['status','Pending'],['restaurant_id', '=', session('loginID')]])->count();
+        $PreparingOrders = DB::table('tbl_orders')->where([['status','Preparing'],['restaurant_id', '=', session('loginID')]])->count();
+        $DeliveringOrders = DB::table('tbl_orders')->where([['status','Delivering'],['restaurant_id', '=', session('loginID')]])->count();
+        $DeliveredOrders = DB::table('tbl_orders')->where([['status','Delivered'],['restaurant_id', '=', session('loginID')]])->count();
        
 
         return view('admin.admin_orders',['orders' => $orders, 'TotalOrders' => $TotalOrders, 'PendingOrders' => $PendingOrders, 'PreparingOrders' => $PreparingOrders, 'DeliveringOrders' => $DeliveringOrders, 'DeliveredOrders' => $DeliveringOrders]);
 
     }
     public function OrderPending(){
-        $pending_order = DB::table('tbl_orders')->where([['status','=', 'Pending'],['merchant_id', '=', session('loginID')]])->get();
+        $pending_order = DB::table('tbl_orders')->where([['status','=', 'Pending'],['restaurant_id', '=', session('loginID')]])->get();
 
         return view ('admin.admin_orderpending', ['pending_order' => $pending_order]);
     }
     public function OrderPreparing(){
-        $preparing_order = DB::table('tbl_orders')->where([['status','=', 'Preparing'],['merchant_id', '=', session('loginID')]])->get();
+        $preparing_order = DB::table('tbl_orders')->where([['status','=', 'Preparing'],['restaurant_id', '=', session('loginID')]])->get();
 
         return view ('admin.admin_orderpreparing', ['preparing_order' => $preparing_order]);
     }
     public function OrderDelivering(){
-        $delivering_order = DB::table('tbl_orders')->where([['status','=', 'Delivering'],['merchant_id', '=', session('loginID')]])->get();
+        $delivering_order = DB::table('tbl_orders')->where([['status','=', 'Delivering'],['restaurant_id', '=', session('loginID')]])->get();
 
         return view ('admin.admin_orderdelivering', ['delivering_order' => $delivering_order]);
     }
 
     public function OrderDelivered(){
-        $delivered_order = DB::table('tbl_orders')->where([['status','=', 'Delivered'],['merchant_id', '=', session('loginID')]])->get();
+        $delivered_order = DB::table('tbl_orders')->where([['status','=', 'Delivered'],['restaurant_id', '=', session('loginID')]])->get();
 
         return view ('admin.admin_orderdelivered', ['delivered_order' => $delivered_order]);
     }
@@ -403,9 +447,9 @@ class Admin_product extends Controller
     public function VoucherIndex(){
         $voucher = DB::table('tbl_voucher')->where('merchant_id', '=', session('loginID'))->get();
 
-        $voucherCount = DB::table('tbl_voucher')->count();
-        $EnableVoucher = DB::table('tbl_voucher')->where('status','Enable')->count();
-        $DisableVoucher = DB::table('tbl_voucher')->where('status','Disable')->count();
+        $voucherCount = DB::table('tbl_voucher')->where('merchant_id', session('loginID'))->count();
+        $EnableVoucher = DB::table('tbl_voucher')->where([['status','Enable'],['merchant_id', '=', session('loginID')]])->count();
+        $DisableVoucher = DB::table('tbl_voucher')->where([['status','Disable'],['merchant_id', '=', session('loginID')]])->count();
 
        
         return view('admin.voucher',['voucher' => $voucher, 'EnableVoucher' => $EnableVoucher, 'DisableVoucher' => $DisableVoucher, 'voucherCount' => $voucherCount]);
@@ -494,20 +538,141 @@ class Admin_product extends Controller
 
         $log = tbl_activitylog::all()
         ->where('merchant_id', Session::get('loginID'));
-        
+
         return view('admin.admin_log', compact('log'));
     }
 
     public function AdminAccount(){
         $id = Session::get('loginID');
 
-     $Data = tbl_partner_accounts::join('tbl_merchant_info', 'tbl_merchant_account.merchant_id', '=', 'tbl_merchant_info.merchant_id')
-    ->join('merchant_document', 'tbl_merchant_account.merchant_id', '=', 'merchant_document.merchant_id')
-    ->join('tbl_accepted_merchant', 'tbl_merchant_account.merchant_id', '=', 'tbl_accepted_merchant.merchant_id')
-    ->where('tbl_merchant_account.merchant_id', $id)
-    ->limit(1)
-    ->get();
+        $Data = tbl_partner_accounts::join('tbl_merchant_info', 'tbl_merchant_account.merchant_id', '=', 'tbl_merchant_info.merchant_id')
+        ->join('merchant_document', 'tbl_merchant_account.merchant_id', '=', 'merchant_document.merchant_id')
+        ->join('tbl_accepted_merchant', 'tbl_merchant_account.merchant_id', '=', 'tbl_accepted_merchant.merchant_id')
+        ->where('tbl_merchant_account.merchant_id', $id)
+        ->limit(1)
+        ->get();
 
-        return view('admin.admin_account', compact('Data'));
+        $product = tbl_product::where('merchant_id', $id)
+        ->get();
+        return view('admin.admin_account', compact('Data', 'product'));
+    }
+
+    public function ChangePass(Request $request){
+        $request->validate([
+        'old_password' => 'required|min:8|max:50',
+        'password' => [
+            'required', 'confirmed',
+            Password::min(8)->letters()->numbers()->symbols()
+            ],
+            'password_confirmation' => 'required'
+        ]);
+
+        $pass = tbl_merchant_account::where('merchant_id', Session::get('loginID'))
+        ->value('password');
+    
+        if(Hash::check($request->old_password, $pass)){
+       
+        $res = tbl_merchant_account::where('merchant_id', Session::get('loginID'))
+        ->update([
+            'password' =>  bcrypt($request->password_confirmation)
+        ]);
+        if($res){
+            $request->session()->put('success', 'Password Updated');
+            return back();
+        }
+      
+      }
+      else{
+         $request->session()->put('fail', 'Old password does not match');
+            return back();
+      }
+    }
+    public function ChangeEmail(Request $request){
+        
+         $request->validate([
+        'new_email' => 'required|email|unique:tbl_merchant_account,email',
+        'confirm_email' => 'required|email'
+       ]);
+       
+       if($request->new_email == $request->confirm_email){
+        $res = tbl_partner_accounts::where('merchant_id', Session::get('loginID'))
+        ->update([
+            'email' => $request->confirm_email
+        ]);
+        if($res){
+            $request->session()->put('success', 'Email Updated');
+            return back();
+        }
+       }
+       else{
+          $request->session()->put('fail', 'Email does not match');
+            return back();
+       }
+
+    }
+
+    public function tmpUpload(Request $request)
+    {
+        if($request->hasFile('product_image'))
+        {
+            $image = $request->file('product_image');
+            $filename = $image->getClientOriginalName();
+            $folder = uniqid('post', true);
+            $image->storeAs('posts/tmp/' .$folder, $filename);
+            TemporaryFile::create([
+                'folder' => $folder,
+                'file' => $filename
+            ]);
+            return $folder;
+        }
+        return '';
+    }
+
+    public function AccountAddIndex(){
+
+        $id = Session::get('loginID');
+
+        $Data = tbl_admin_role::where('merchant_id', $id)
+        ->get();
+       
+        return view('admin.admin_add_account', compact('Data'));
+    }
+
+    public function AddAccount(){
+        return view('admin.admin_add_email');
+    }
+    
+    public function AddNewAccount(Request $request){
+        $request->validate([
+
+            'password' => [
+            'required', 'confirmed',
+            Password::min(8)->letters()->numbers()->symbols()
+            ],
+            'password_confirmation' => 'required',
+            'status' => 'required',
+            'role' => 'required',
+             'email' => 'required|email|unique:tbl_rider_account|unique:tbl_merchant_account|unique:tbl_admin_role',
+        ]);
+        
+        $id = Session::get('loginID');
+        $document_id = tbl_merchant_document::where('merchant_id', $id)->first();
+        $info_id = tbl_merchant_info::where('merchant_id', $id)->first();
+
+        $admin = new tbl_admin_role();
+        $admin->merchant_id = $id;
+        $admin->merchant_document_id = $document_id->merchant_document_id;
+        $admin->merchant_info_id = $info_id->merchantinfo_id;
+        $admin->email = $request->email;
+        $admin->password = Hash::make($request->password);
+        $admin->status = $request->status;
+        $admin->role = $request->role;
+
+        $res = $admin->save();
+        
+        if($res){
+            $request->session()->put('success', 'Account Added');
+            return redirect('/admin_add_account');
+        }
     }
 }

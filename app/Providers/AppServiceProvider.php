@@ -29,9 +29,14 @@ class AppServiceProvider extends ServiceProvider
         view()->composer(['Admin_product','admin.index', 'admin.dashboard', 'admin.admin_orders', 'admin.category'],function ($view){
          $logIndata = array();
         if(Session::has('loginID')){
-            $logIndata = tbl_partner_accounts::where('merchant_id', '=', Session::get('loginID'))->first();
+            $logIndata = tbl_partner_accounts::join('merchant_document', 'tbl_merchant_account.merchant_id', '=', 'merchant_document.merchant_id')
+            ->join('tbl_merchant_info', 'tbl_merchant_account.merchant_id', '=', 'tbl_merchant_info.merchant_id')
+            ->where('tbl_merchant_account.merchant_id', '=', Session::get('loginID'))
+            ->first();
+            
         }
             $view->with('logIndata', $logIndata);
+            
         }); 
     }
     

@@ -101,16 +101,14 @@
                             <span class="gray">Do not exceed 100 characters when entering the product details.</span>
                           </div>
                         
-                      
-                     
-
                           <div class="form-group">
                             <div class="file-loading">
-                              <input type="file" value="{{old('product_image')}}" name="product_image"/>
+                              <input type="file"  name="product_image"/>
                               <span style="color:red;">
                                 @error('product_image') {{ $message }}
                                 @enderror</span>
                             </div>
+                            
                           </div>
                           <div class="row">
                             <div class="col-md">
@@ -163,19 +161,9 @@
             >
               <span
                 class="text-muted d-block text-center text-sm-left d-sm-inline-block"
-                >Copyright © bootstrapdash.com 2020</span
+                >Copyright © 2022. All Rights Reserved</span
               >
-              <span
-                class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"
-              >
-                Free
-                <a
-                  href="https://www.bootstrapdash.com/bootstrap-admin-template/"
-                  target="_blank"
-                  >Bootstrap admin templates</a
-                >
-                from Bootstrapdash.com</span
-              >
+             
             </div>
           </footer>
           <!-- partial -->

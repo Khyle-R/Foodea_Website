@@ -74,7 +74,7 @@
                                         name="email"
                                         class="form-control my-1"
                                         placeholder="example@gmail.com"
-                                        value="<?php echo e(Cookie::get('email')); ?>"
+                                        value="<?php echo e(Cookie::get('superadmin_email')); ?>"
                                     />
                                        <span
                                         class="error">
@@ -97,7 +97,7 @@ unset($__errorArgs, $__bag); ?></span>
                                             class="form-control my-1 form-control-lg"
                                             placeholder="example@gmail.com"
                                             id="password"
-                                            value="<?php echo e(Cookie::get('password')); ?>"
+                                            value="<?php echo e(Cookie::get('superadmin_password')); ?>"
                                         />
                                         <span class="eye" onclick="myFunction()">
                                             <i class="fa fa-eye" id="hide1"></i>
@@ -129,7 +129,7 @@ unset($__errorArgs, $__bag); ?></span>
                                       </div>
 
                                     <div class="text-right mb-3">
-                                        <a href="#" class="nav-link"
+                                        <a href="/superadmin_forgotpass" class="nav-link"
                                             >Forgot Password?</a
                                         >
                                     </div>

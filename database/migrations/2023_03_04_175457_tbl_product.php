@@ -17,10 +17,14 @@ return new class extends Migration
 
             $table->id('product_id');
             $table->integer('merchant_id');
-            $table->integer('category_id');
+            $table->string('category_name');
+            $table->integer('category_id')->nullable();
+            $table->string('ingredients');
             $table->string('product_name');
             $table->decimal('price');
+            $table->integer('calories')->nullable();
             $table->string('product_image');
+            $table->string('tags');
             $table->integer('stock');
             $table->string('status');
             $table->string('description');

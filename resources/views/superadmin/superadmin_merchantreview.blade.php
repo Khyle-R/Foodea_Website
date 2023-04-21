@@ -53,7 +53,7 @@
                          <thead>
                             <tr>
                                 <th>Name</th>
-                                <th>Job Type</th>
+                                <th>Business Type</th>
                                 <th>Email</th>
                                 <th>Status</th>
                                 <th>Date Application</th>
@@ -66,7 +66,7 @@
                             <tr>
                                  <a href="">
                                 <td>
-                                    <img class="circle mr-2" src="{{ url('uploads/'. 'merchant_documents'. '/'. $partner->merchant_id. '/'. $partner->logo) }}" alt="">
+                                    <img class="circle mr-2" src="{{ $partner->logo }}" alt="">
                                    {{ $partner->business_name}}
                                 </td>
                                 <td>{{ $partner->business_type }}</td>
@@ -114,16 +114,49 @@
                                 </td>
                                 <td>{{ $partner->date }}</td>
                                 <td>
-                                <div class="dropdown">
+                                 <div class="dropdown">
                                     <a href="#" class="action-icon" data-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-vertical black-icon" aria-hidden="true"></i></a>
+                                    @if ($partner->status == 'rejected' || $partner->status == 'Rejected')
                                     <div class="bg-white dropdown-menu dropdown-menu-right">
                                         <a class="action-btn dropdown-item black" href="/superadmin_merchantproile/{{  $partner->merchant_id }}"><i class="fa fa-pencil m-r-5"></i> View</a>
-                                        <a class="action-btn dropdown-item black" href=""><i class="fa fa-trash-o m-r-5"></i> Delete</a>
+                                        <a class="action-btn dropdown-item black" href="#" data-toggle="modal" data-target="#RemoveModal{{ $partner->merchant_id }}"><i class="fa fa-trash-o m-r-5"></i> Remove</a>
                                     </div>
+                                    @else
+                                      <div class="bg-white dropdown-menu dropdown-menu-right">
+                                        <a class="action-btn dropdown-item black" href="/superadmin_merchantproile/{{  $partner->merchant_id }}"><i class="fa fa-pencil m-r-5"></i> View</a>
+                                        <a class="action-btn dropdown-item black" href="/application_merchant_reject/{{ $partner->merchant_id }}"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
+                                    </div>
+                                    @endif
                                 </div>
                                     </td>
                                     </a>
                             </tr>
+
+                               <!-- Remove Modal -->
+                    <div class="modal fade" id="RemoveModal{{ $partner->merchant_id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title white-font " id="exampleModalLongTitle">Remove</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            Do you want to remove this applicant?
+                            <form method="post" action="{{ route('RemoveMerchantAccount') }}">
+                                @csrf
+                            <input type="hidden" name="partner_id" value="{{ $partner->merchant_id }}">
+                            <input type="hidden" name="id" value="{{ $partner->merchant_application_id }}">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn white-btn" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn red-btn">Confirm</button>
+                            </form>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
                   
                              <!-- Review Modal -->
                     <div class="modal fade" id="ReviewModal{{ $partner->merchant_id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -221,19 +254,9 @@
                         >
                             <span
                                 class="text-muted d-block text-center text-sm-left d-sm-inline-block"
-                                >Copyright © bootstrapdash.com 2020</span
+                                >Copyright © 2022. All Rights Reserved</span
                             >
-                            <span
-                                class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"
-                            >
-                                Free
-                                <a
-                                    href="https://www.bootstrapdash.com/bootstrap-admin-template/"
-                                    target="_blank"
-                                    >Bootstrap admin templates</a
-                                >
-                                from Bootstrapdash.com</span
-                            >
+                           
                         </div>
                     </footer>
                     <!-- partial -->

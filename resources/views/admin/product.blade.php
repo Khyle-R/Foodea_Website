@@ -1,84 +1,9 @@
 @extends('admin.index')
 @section('content')
-   <style>
-      /* Style for Tag inside the add Category modal */
-      .wrapper {
-         width: 470px;
-
-         border-radius: 10px;
-
-
-      }
-
-      .wrapper :where(.title, li, li i, .details) {
-         display: flex;
-         align-items: center;
-      }
-
-      .title img {
-         max-width: 21px;
-      }
-
-      .title h2 {
-         font-size: 21px;
-         font-weight: 600;
-         margin-left: 8px;
-      }
-
-      .wrapper .content {
-         margin: 10px 0;
-      }
-
-      .content p {
-         font-size: 15px;
-      }
-
-      .content ul {
-         display: flex;
-         flex-wrap: wrap;
-         padding: 7px;
-         margin: 12px 0;
-         border-radius: 5px;
-         border: 1px solid #a6a6a6;
-      }
-
-      .content ul li {
-         color: #333;
-         margin: 4px 3px;
-         list-style: none;
-         border-radius: 5px;
-         background: #F2F2F2;
-         padding: 5px 8px 5px 10px;
-         border: 1px solid #e3e1e1;
-      }
-
-      .content ul li i {
-         height: 20px;
-         width: 20px;
-         color: #808080;
-         margin-left: 8px;
-         font-size: 12px;
-         cursor: pointer;
-         border-radius: 50%;
-         background: #dfdfdf;
-         justify-content: center;
-      }
-
-      .content ul input {
-         flex: 1;
-         padding: 4px;
-         border: none;
-         outline: none;
-         font-size: 16px;
-      }
-
-      .wrapper .details {
-         justify-content: space-between;
-      }
-   </style>
+  
    <div class="content-wrapper">
       <div class="row">
-         
+
       </div>
       <div class="page-header">
          <h3 class="page-title black">Product</h3>
@@ -123,8 +48,8 @@
                                           @csrf
                                           <div class="form-group">
                                              <label for="exampleInputName1" class="blackk">Product Name</label>
-                                             <input type="text" class="form-control"id="exampleInputName1" placeholder="Name"value="{{ old('product_name') }}"
-                                                name="product_name" required/>
+                                             <input type="text" class="form-control"id="exampleInputName1" placeholder="Name"value="{{ old('product_name') }}" name="product_name"
+                                                required />
                                              <span style="color:red;">
                                                 @error('product_name')
                                                    {{ $message }}
@@ -132,51 +57,30 @@
                                              </span>
                                              <span class="gray">Do not exceed 20 characters when entering the product name.</span>
                                           </div>
-                                          <div class="row">
-                                             <div class="col form-group"><label for="exampleSelectGender" class="blackk">Category</label>
-                                                <select class="form-control" id="exampleSelectGender" style="border: 1px solid" name="category" required>
-                                                   <option>{{ old('category') }}</option>
-                                                   <option>Chicken</option>
-                                                   <option>Pork</option>
-                                                </select>
-                                                <span style="color:red;">
-                                                   @error('category')
-                                                      {{ $message }}
-                                                   @enderror
-                                                </span>
-                                             </div>
-                                             <div class="col form-group">
-                                                {{-- use to get array in tags --}}
-                                                <input type=" text" id="tags_category" value="{{ old('tags_category') }}" name="tags_category">
-                                                <div class="wrapper">
-                                                   <div class="content">
-                                                      <p> Tags</p>
-                                                      <ul id="ul"><input id="input" value="{{ old('tags') }}" class="" type="text" name="tags"
-                                                            spellcheck="false"></ul>
-                                                      <span style="color:red;">
-                                                         @error('tags_category')
-                                                            {{ $message }}
-                                                         @enderror
-                                                      </span>
-                                                      <p class="gray">Press enter or add a comma after
-                                                         each tag</p>
-                                                   </div>
-                                                   <div class="details">
-                                                      <p><span>10</span> tags are remaining</p>
-                                                      <button class="btn btn-warning btn-sm px-3 mr-3 py-2 px-3 rounded" type="button">Remove All</button>
-                                                   </div>
-                                                </div>
-                                                <span style="color:red;">
-                                                   @error('tags_category')
-                                                      {{ $message }}
-                                                   @enderror
-                                                </span>
-                                             </div>
+
+
+                                          <div class="col form-group"><label for="exampleSelectGender" class="blackk">Category</label>
+                                             <select class="form-control" id="exampleSelectGender" style="border: 1px solid" name="category" required>
+                                                {{-- <option>{{ old('category') }}</option> --}}
+                                                @foreach ($category as $key => $data)
+                                                   <option {{old('category') == $data->main_category ? 'selected' : ''}} value="{{$data->category_id}}|{{$data->main_category}}">{{ $data->main_category }}</option>
+                                                @endforeach
+                                             </select>
+                                             <span style="color:red;">
+                                                @error('category')
+                                                   {{ $message }}
+                                                @enderror
+                                             </span>
+                                          </div>
+
+                                          <div class="form-group">
+                                             <label for="" class="blackk">Calories:</label>
+                                             <input type="text" class="form-control" id="tags_category" name="calories">
                                           </div>
 
                                           <div class="form-group">
                                              <label for="exampleTextarea1" class="blackk">Description</label>
-                                             <textarea class="form-control"id="exampleTextarea1"rows="4" name="description" required>{{ old('description') }}</textarea>
+                                             <textarea class="form-control"id="exampleTextarea1"rows="4" name="description" maxlength="225" required>{{ old('description') }}</textarea>
                                              <span style="color:red;">
                                                 @error('description')
                                                    {{ $message }}
@@ -188,7 +92,7 @@
 
                                           <div class="form-group">
                                              <label for="exampleTextarea1" class="blackk">Ingredients</label>
-                                             <textarea class="form-control"id="exampleTextarea1"rows="4" name="ingredients" required>{{ old('ingredients') }}</textarea>
+                                             <textarea class="form-control"id="exampleTextarea1"rows="4" name="ingredients" maxlength="225" required>{{ old('ingredients') }}</textarea>
                                              <span style="color:red;">
                                                 @error('ingredients')
                                                    {{ $message }}
@@ -198,10 +102,21 @@
                                                 the product details.</span>
                                           </div>
 
+{{-- 
+                                          <div class="form-group">
+                                             <input type="file" value="{{ old('product_image') }}" name="product_image" />
+                                             <span style="color:red;">
+                                                @error('product_image')
+                                                   {{ $message }}
+                                                @enderror
+                                             </span>
+                                          </div> --}}
 
+                                          
                                           <div class="form-group">
                                              <div class="file-loading">
-                                                <input type="file" value="{{ old('product_image') }}" name="product_image" />
+
+                                                <input type="file" class="product_image" name="product_image" multiple data-allow-reorder="true" data-max-file-size="3MB" data-max-files="1">
                                                 <span style="color:red;">
                                                    @error('product_image')
                                                       {{ $message }}
@@ -209,10 +124,11 @@
                                                 </span>
                                              </div>
                                           </div>
+
                                           <div class="row">
                                              <div class="col-md">
                                                 <label for="exampleInputName1" class="blackk">Price</label>
-                                                <input type="text"class="form-control" id="exampleInputName1" value="{{ old('price') }}" name="price" required/>
+                                                <input type="number"class="form-control" id="exampleInputName1" value="{{ old('price') }}" name="price" required />
                                                 <span style="color:red;">
                                                    @error('price')
                                                       {{ $message }}
@@ -221,7 +137,7 @@
                                              </div>
                                              <div class="col-md">
                                                 <label for="exampleInputName1" class="blackk">Stock</label>
-                                                <input type="text"class="form-control" id="exampleInputName1" value="{{ old('stock') }}" name="stock" required/>
+                                                <input type="number"class="form-control" id="exampleInputName1" value="{{ old('stock') }}" name="stock" required />
                                                 <span style="color:red;">
                                                    @error('stock')
                                                       {{ $message }}
@@ -274,7 +190,7 @@
                            @foreach ($products as $key => $data)
                               <tr>
                                  <td>
-                                    <img src="{{ asset('product_images/' . $data->product_image) }}" alt="image" class="img-fluid"
+                                    <img src="{{ $data->product_image }}" alt="image" class="img-fluid"
                                        style=" height: 60px; width: 70px; border-radius: 2px;" />
                                     <span class="pl-2">{{ $data->product_name }}</span>
                                  </td>
@@ -297,11 +213,13 @@
                                     <div class="row">
                                        <div class="dropdown action-label">
                                           <a class=" btn-white-circle btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
-                                              <i class=" pending mdi mdi-radiobox-marked"></i> Status
+                                             <i class=" pending mdi mdi-radiobox-marked"></i> Status
                                           </a>
                                           <div class="bg-white dropdown-menu dropdown-menu-right">
-                                                <a data-toggle="modal" data-target="#deleteModal" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-success"></i> Remove Product</a>
-                                                <a data-toggle="modal" data-target="#EditModal{{ $data->product_id }}" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-danger"></i> Edit Product</a>
+                                             <a data-toggle="modal" data-target="#deleteModal{{ $data->product_id }}" class="action-btn dropdown-item black" href="#"><i
+                                                   class="fa fa-dot-circle-o text-success"></i> Remove Product</a>
+                                             <a data-toggle="modal" data-target="#EditModal{{ $data->product_id }}" class="action-btn dropdown-item black" href="#"><i
+                                                   class="fa fa-dot-circle-o text-danger"></i> Edit Product</a>
                                           </div>
                                        </div>
 
@@ -322,7 +240,7 @@
                                                       <div class="form-group">
                                                          <label for="exampleInputName1" class="blackk">Product Name</label>
                                                          <input type="text" class="form-control" id="exampleInputName1" placeholder="Name" value="{{ $data->product_name }}"
-                                                            name="product_name" required/>
+                                                            name="product_name" required />
                                                          <span class="gray">Do not exceed 20
                                                             characters when entering the product
                                                             name.</span>
@@ -331,19 +249,27 @@
                                                          <div class="col form-group">
                                                             <label for="exampleSelectGender" class="blackk">Category</label>
                                                             <select class="form-control" id="exampleSelectGender" style="border: 1px solid" name="category" required>
-                                                               <option>
-                                                                  {{ $data->category_name}}
-                                                               </option>
-                                                               <option>Chicken</option>
-                                                               <option>Pork</option>
+                                                               {{-- <option>
+                                                                  {{ $data->category_name }}
+                                                               </option> --}}
+                                                               @foreach ($category as $keys => $datas)
+                                                                  <option {{$data->category_name == $datas->main_category ? 'selected' : ''}} value="{{$datas->category_id}}|{{$datas->main_category}}">{{ $datas->main_category }}</option>
+                                                               @endforeach
                                                             </select>
                                                          </div>
-                                                         <div class="col form-group">
-                                                            <input type=" text" id="tags_category" value="{{ $data->tags}}" name="tags_category">
+                                                      </div>
+                                                      <div class="form-group">
+                                                         <label for="" class="blackk">Calories:</label>
+                                                         <input type="text" class="form-control" id="tags" name="calories" value="{{ $data->calories }}">
+                                                      </div>
+
+
+                                                      {{-- <div class="col form-group">
+                                                            
                                                             <div class="wrapper">
                                                                 <div class="content">
                                                                    <p> Tags</p>
-                                                                   <ul id="ul"><input id="input" value="" class="" type="text" name="tags"
+                                                                   <ul id="ul"><input id="input1" value="{{ $data->tags }}" class="" type="text" name="tags"
                                                                          spellcheck="false"></ul>
                                                                    <span style="color:red;">
                                                                       @error('tags_category')
@@ -365,22 +291,22 @@
                                                              </span>
                                                           
                                                          </div>
-                                                      </div>
+                                                      </div> --}}
 
                                                       <div class="form-group">
                                                          <label for="exampleTextarea1" class="blackk">Description</label>
-                                                         <textarea class="form-control"id="exampleTextarea1"rows="4" placeholder="" name="description" required>{{ $data->description }}</textarea>
+                                                         <textarea class="form-control"id="exampleTextarea1"rows="4" placeholder="" name="description" maxlength="225" required>{{ $data->description }}</textarea>
                                                          <span class="gray">Do not exceed 100
                                                             characters when entering the product
                                                             details.</span>
                                                       </div>
                                                       <div class="form-group">
-                                                        <label for="exampleTextarea1" class="blackk">Ingredients</label>
-                                                        <textarea class="form-control"id="exampleTextarea1"rows="4" placeholder="" name="ingredients" required>{{ $data->ingredients }}</textarea>
-                                                        <span class="gray">Do not exceed 100
-                                                           characters when entering the product
-                                                           details.</span>
-                                                     </div>
+                                                         <label for="exampleTextarea1" class="blackk">Ingredients</label>
+                                                         <textarea class="form-control"id="exampleTextarea1"rows="4" placeholder="" name="ingredients" maxlength="225" required>{{ $data->ingredients }}</textarea>
+                                                         <span class="gray">Do not exceed 100
+                                                            characters when entering the product
+                                                            details.</span>
+                                                      </div>
 
                                                       <div class="form-group">
                                                          <div class="file-loading">
@@ -391,13 +317,13 @@
                                                       <div class="row">
                                                          <div class="col-md">
                                                             <label for="exampleInputName1" class="blackk">Price</label>
-                                                            <input type="text"class="form-control" id="exampleInputName1" placeholder="" value="{{ $data->price }}"
-                                                               name="price" required/>
+                                                            <input type="number" min="0" step="0.01" class="form-control" id="exampleInputName1" placeholder=""
+                                                               value="{{ $data->price }}" name="price" required />
                                                          </div>
                                                          <div class="col-md">
                                                             <label for="exampleInputName1" class="blackk">Stock</label>
-                                                            <input type="text"class="form-control" id="exampleInputName1" placeholder="" value="{{ $data->stock }}"
-                                                               name="stock" required/>
+                                                            <input type="number"class="form-control" id="exampleInputName1" placeholder="" value="{{ $data->stock }}"
+                                                               name="stock" required />
                                                          </div>
                                                          <div class="col-md">
                                                             <label for="exampleSelectGender" class="blackk">Status</label>
@@ -425,8 +351,9 @@
                                        </div>
 
 
+
                                        <!-- Modal -->
-                                       <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                       <div class="modal fade" id="deleteModal{{$data->product_id}}" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
                                           <div class="modal-dialog modal-dialog-centered">
                                              <div class="modal-content">
                                                 <div class="modal-header">
@@ -442,7 +369,7 @@
                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
                                                       Close
                                                    </button>
-                                                   <a href="product/remove/{{ $data->product_id }}" type="button"class="btn btn-danger">Remove
+                                                   <a href="/product/remove/{{ $data->product_id }}" type="button"class="btn btn-danger">Remove
                                                       product</a>
                                                 </div>
                                              </div>
@@ -466,14 +393,11 @@
    <!-- partial:../../partials/_footer.html -->
    <footer class="footer">
       <div class="d-sm-flex justify-content-center justify-content-sm-between">
-         <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com
-            2020</span>
-         <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">
-            Free
-            <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin
-               templates</a>
-            from Bootstrapdash.com</span>
+         <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2022. All Rights Reserved</span>
+       
       </div>
+
+
 
       <script>
          $(document).ready(function() { //this Jquery when you click the add button the type of the button become submit
@@ -488,78 +412,6 @@
             $('.updateButton').click(function() {
                $('.updateButton').attr('type', 'Submit');
             });
-         });
-      </script>
-
-
-      <script>
-
-         const ul = document.querySelector("#ul"),
-            input = document.querySelector("#input"), // input of tags
-            tagNumb = document.querySelector(".details span"),
-            td = document.querySelector("td");
-         let maxTags = 10,
-            tags = []; // array for tags
-
-         countTags();
-         createTag();
-         
-
-         function countTags() { // count tags to know the limits of arrays
-            input.focus();
-            tagNumb.innerText = maxTags - tags.length;
-
-         }
-
-         function gettingTags(gTag) {
-            gTag = gTag.replace(/"/g, '');
-            gTag = gTag.replace('[', '');
-            gTag = gTag.replace(']', '');
-            document.getElementById('tags_category').value = gTag; // set the value of the input
-            console.log(gTag);
-         }
-
-         function createTag() {
-            ul.querySelectorAll("li").forEach(li => li.remove());
-            tags.slice().reverse().forEach(tag => {
-               let liTag = `<li>${tag} <i class="uit uit-multiply" onclick="remove(this, '${tag}')"></i></li>`;
-               ul.insertAdjacentHTML("afterbegin", liTag);
-
-               var tagString = JSON.stringify(tags); // convert the array into variable
-               gettingTags(tagString);
-
-            });
-            countTags();
-         }
-
-         function remove(element, tag) { // remove tags
-            let index = tags.indexOf(tag);
-            tags = [...tags.slice(0, index), ...tags.slice(index + 1)];
-            element.parentElement.remove();
-            countTags();
-         }
-
-         function addTag(e) {
-            if (e.key == "Enter") { // when you click space the tag will add
-               let tag = e.target.value.replace(/\s+/g, ' ');
-
-               if (tag.length > 1 && !tags.includes(tag)) {
-                  if (tags.length < 10) {
-                     tag.split(',').forEach(tag => {
-                        tags.push(tag);
-                        createTag();
-                     });
-                  }
-               }
-               e.target.value = "";
-            }
-         }
-         input.addEventListener("keyup", addTag);
-         const removeBtn = document.querySelector(".details button");
-         removeBtn.addEventListener("click", () => {
-            tags.length = 0;
-            ul.querySelectorAll("li").forEach(li => li.remove());
-            countTags();
          });
       </script>
 

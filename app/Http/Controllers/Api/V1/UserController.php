@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Filters\V1\UserFilter;
 use App\Http\Requests\V1\StoreAppUserRequest;
+use App\Http\Requests\V1\UpdateAppUserRequest;
 use App\Models\AppUser;
 
 class UserController extends Controller
@@ -23,5 +24,19 @@ class UserController extends Controller
 
     public function store(StoreAppUserRequest $request){
         return AppUser::create($request->all());
+    }
+
+    public function show(Request $request, AppUser $app_user){
+        $id = $request->segment(count(request()->segments()));
+        return $app_user::where('user_id', $id)->get();
+    }
+
+    public function destroy(Request $request, AppUser $app_user){
+        $id = $request->segment(count(request()->segments()));
+        return $app_user::where('user_id', $id)->delete();
+    }
+
+    public function update(UpdateAppUserRequest $request, AppUser $app_user){
+        $app_user->update($request->all());
     }
 }

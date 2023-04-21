@@ -35,9 +35,9 @@
             <ul class="nav nav-tabs nav-tabs-solid nav-justified">
                 <li class="nav-size nav-item"><a class="nav-link" href="/superadmin_rider">All</a></li>
                 <li class="nav-size nav-item"><a class="nav-link" href="/superadmin_pending">Pending</a></li>
-                <li class="nav-size nav-item"><a class="nav-link" href="/superadmin_review">Reviewing</a></li>
+                {{-- <li class="nav-size nav-item"><a class="nav-link" href="/superadmin_review">Reviewing</a></li> --}}
                 <li class="nav-size nav-item"><a class="nav-link" href="/superadmin_accept">Accepted</a></li>
-                <li class="nav-size nav-item"><a class="nav-link active" href="">Archived</a></li>
+                <li class="nav-size nav-item"><a class="nav-link active" href="">Rejected</a></li>
 
             </ul>
         </div>
@@ -54,7 +54,7 @@
                           <thead>
                             <tr>
                                 <th>Name</th>
-                                <th>Job Type</th>
+                                <th>Vehicle Type</th>
                                 <th>Email</th>
                                 <th>Status</th>
                                 <th>Date Application</th>
@@ -79,7 +79,7 @@
                                                 <i class=" pending mdi mdi-radiobox-marked"></i> {{ $rider->status }}
                                             </a>
                                             <div class="bg-white dropdown-menu dropdown-menu-right">
-                                                <a data-toggle="modal" data-target="#ReviewModal{{ $rider->rider_id }}" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-success"></i> Reviewing</a>
+                                                {{-- <a data-toggle="modal" data-target="#ReviewModal{{ $rider->rider_id }}" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-success"></i> Reviewing</a> --}}
                                                 <a data-toggle="modal" data-target="#AcceptedModal{{ $rider->rider_id }}" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-danger"></i> Accepted</a>
                                                 <a data-toggle="modal" data-target="#RejectModal{{ $rider->rider_id }}" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-warning"></i> Rejected</a>
                                             </div>
@@ -114,16 +114,51 @@
                                 </td>
                                 <td>{{ $rider->date }}</td>
                                 <td>
-                                <div class="dropdown">
+                               <div class="dropdown">
+                                    
                                     <a href="#" class="action-icon" data-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-vertical black-icon" aria-hidden="true"></i></a>
+                                     @if ($rider->status == 'rejected' || $rider->status == 'Rejected')
                                     <div class="bg-white dropdown-menu dropdown-menu-right">
                                         <a class="action-btn dropdown-item black" href="/application_profile/{{ $rider->rider_id }}"><i class="fa fa-pencil m-r-5"></i> View</a>
-                                        <a class="action-btn dropdown-item black" href=""><i class="fa fa-trash-o m-r-5"></i> Delete</a>
+                                        <a class="action-btn dropdown-item black" href="#" data-toggle="modal" data-target="#RemoveModal{{ $rider->rider_id }}"><i class="fa fa-trash-o m-r-5"></i> Remove</a>
                                     </div>
+                                    @else
+                                    <div class="bg-white dropdown-menu dropdown-menu-right">
+                                        <a class="action-btn dropdown-item black" href="/application_profile/{{ $rider->rider_id }}"><i class="fa fa-pencil m-r-5"></i> View</a>
+                                        <a class="action-btn dropdown-item black" href="/application_profile_reject/{{ $rider->rider_id }}"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
+                                    </div>
+                                    @endif
                                 </div>
                                     </td>
                                     </a>
                             </tr>
+
+                            
+                               <!-- Remove Modal -->
+                    <div class="modal fade" id="RemoveModal{{ $rider->rider_id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title white-font " id="exampleModalLongTitle">Remove</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            Do you want to remove this applicant?
+                            <form method="post" action="{{ route('RemoveRiderAccount') }}">
+                                @csrf
+                            <input type="hidden" name="rider_id" value="{{ $rider->rider_id }}">
+                            <input type="hidden" name="id" value="{{ $rider->rider_application_id }}">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn white-btn" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn red-btn">Confirm</button>
+                            </form>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
                   <!-- Review Modal -->
                     <div class="modal fade" id="ReviewModal{{ $rider->rider_id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered" role="document">
@@ -220,19 +255,9 @@
                         >
                             <span
                                 class="text-muted d-block text-center text-sm-left d-sm-inline-block"
-                                >Copyright © bootstrapdash.com 2020</span
+                                >Copyright © 2022. All Rights Reserved</span
                             >
-                            <span
-                                class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"
-                            >
-                                Free
-                                <a
-                                    href="https://www.bootstrapdash.com/bootstrap-admin-template/"
-                                    target="_blank"
-                                    >Bootstrap admin templates</a
-                                >
-                                from Bootstrapdash.com</span
-                            >
+                            
                         </div>
                     </footer>
                     <!-- partial -->

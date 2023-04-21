@@ -86,14 +86,9 @@
                 <a href="/contact" class="nav-link active">Contact Us</a>
               </li>
             </ul>
+            
             <a
-            href="/account_type"
-            class="text-secondary mt-2 mx-5"
-            style="text-decoration: none;">
-              Signup
-            </a>
-            <a
-              href="/login_type"
+               href="/rider_login"
               class="btn btn-danger btn-sm py-2 px-5 rounded"
             >
               Login
@@ -190,26 +185,28 @@
       <div class="right-side">
         <div class="topic-text">Send us a message</div>
         <p>If you have any work from me or any types of quries related to my tutorial, you can send me message from here. It's my pleasure to help you.</p>
-      <form action="#">
+     
+        <form method="post" action="<?php echo e(route('ContactUssend')); ?>">
+          <?php echo csrf_field(); ?>
         <div class="input-box">
-          <input type="text" placeholder="Enter your name">
+          <input type="text" name="name" placeholder="Enter your name">
         </div>
         <div class="input-box">
-          <input type="text" placeholder="Enter your email">
+          <input type="text" name="email" placeholder="Enter your email">
         </div>
         <div class="input-box message-box">
           <!-- <textarea id="message" rows="8" placeholder="Comment text.">
           </textarea> -->
           <textarea
             id="message"
-            name="textarea"
+            name="text"
             rows="5"
             cols="30"
             placeholder="Comment text."></textarea>
 
         </div>
         <div class="button">
-          <input type="button" value="Send Now" >
+          <input type="submit" value="Send Now" >
         </div>
       </form>
     </div>
@@ -269,13 +266,13 @@
                 <a href="/contact" class="text-reset text-decoration-none">
                     <p>Contact Us</p>
                 </a>
-                <a href="/" class="text-reset text-decoration-none">
+                <a href="/mission" class="text-reset text-decoration-none">
                     <p>Mission</p>
                 </a>
-                <a href="/" class="text-reset text-decoration-none">
+                <a href="/vision" class="text-reset text-decoration-none">
                     <p>Vision</p>
                 </a>
-                <a href="/" class="text-reset text-decoration-none">
+                <a href="/service" class="text-reset text-decoration-none">
                     <p>Services</p>
                 </a>
             </div>
@@ -286,8 +283,12 @@
                 </div>
                 <div class="legal">
                     <h2>Legal:</h2>
-                    <p>Terms and Condition</p>
-                    <p>Privacy Policy</p>
+                    <a href="/terms_condition" class="text-reset text-decoration-none">
+                      <p>Terms and Condition</p>
+                    </a>
+                    <a href="/privacy" class="text-reset text-decoration-none">
+                      <p>Privacy Policy</p>
+                    </a>
                 </div>
             </div>
         </div>

@@ -57,7 +57,7 @@
                                     <div class="col-md-6 ml-5">
                                       <div class="row align-items-center ">
                                    
-                                      <img class="circle img-responsive mr-3" width="170" height="160" src="{{ url('uploads/rider_documents/'. $rider->rider_photo) }}" alt="">
+                                      <img class="circle img-responsive mr-3" width="170" height="160" src="{{ $rider->rider_photo }}" alt="">
                                       <div class="col flex-wrap">
                              
                                     
@@ -209,19 +209,9 @@
                         >
                             <span
                                 class="text-muted d-block text-center text-sm-left d-sm-inline-block"
-                                >Copyright © bootstrapdash.com 2020</span
+                                >Copyright © 2022. All Rights Reserved</span
                             >
-                            <span
-                                class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"
-                            >
-                                Free
-                                <a
-                                    href="https://www.bootstrapdash.com/bootstrap-admin-template/"
-                                    target="_blank"
-                                    >Bootstrap admin templates</a
-                                >
-                                from Bootstrapdash.com</span
-                            >
+                           
                         </div>
                     </footer>
                     <!-- partial -->

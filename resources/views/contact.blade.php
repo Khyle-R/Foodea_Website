@@ -86,14 +86,14 @@
                 <a href="/contact" class="nav-link active">Contact Us</a>
               </li>
             </ul>
-            <a
+            {{-- <a
             href="/rider_application_agreement"
             class="text-secondary mt-2 mx-5"
             style="text-decoration: none;">
               Signup
-            </a>
+            </a> --}}
             <a
-              href="/login_type"
+               href="/rider_login"
               class="btn btn-danger btn-sm py-2 px-5 rounded"
             >
               Login
@@ -190,26 +190,28 @@
       <div class="right-side">
         <div class="topic-text">Send us a message</div>
         <p>If you have any work from me or any types of quries related to my tutorial, you can send me message from here. It's my pleasure to help you.</p>
-      <form action="#">
+     
+        <form method="post" action="{{ route('ContactUssend') }}">
+          @csrf
         <div class="input-box">
-          <input type="text" placeholder="Enter your name">
+          <input type="text" name="name" placeholder="Enter your name">
         </div>
         <div class="input-box">
-          <input type="text" placeholder="Enter your email">
+          <input type="text" name="email" placeholder="Enter your email">
         </div>
         <div class="input-box message-box">
           <!-- <textarea id="message" rows="8" placeholder="Comment text.">
           </textarea> -->
           <textarea
             id="message"
-            name="textarea"
+            name="text"
             rows="5"
             cols="30"
             placeholder="Comment text."></textarea>
 
         </div>
         <div class="button">
-          <input type="button" value="Send Now" >
+          <input type="submit" value="Send Now" >
         </div>
       </form>
     </div>

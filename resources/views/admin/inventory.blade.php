@@ -103,7 +103,7 @@
                             </td>
                             <td>
                               <img
-                                src="{{ asset('product_images/'.$data->product_image)}}"
+                                src="{{$data->product_image}}"
                                 alt="image"
                                 class="img-fluid"
                                 style="
@@ -125,13 +125,13 @@
                                       <i class=" pending mdi mdi-radiobox-marked"></i> Status
                                   </a>
                                   <div class="bg-white dropdown-menu dropdown-menu-right">
-                                        <a data-toggle="modal" data-target="#deleteModal" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-success"></i> Delete</a>
-                                        <a data-toggle="modal" data-target="#restoreModal" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-danger"></i> Restore</a>
+                                        <a data-toggle="modal" data-target="#deleteModal{{ $data->inventory_id}}" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-success"></i> Delete</a>
+                                        <a data-toggle="modal" data-target="#restoreModal{{ $data->inventory_id}}" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-danger"></i> Restore</a>
                                   </div>
                                </div>
 
                                 <!-- Modal -->
-                              <div class="modal fade" id="restoreModal" tabindex="-1" role="dialog" aria-labelledby="restoreModalLabel" aria-hidden="true">
+                              <div class="modal fade" id="restoreModal{{ $data->inventory_id}}" tabindex="-1" role="dialog" aria-labelledby="restoreModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered">
                                   <div class="modal-content">
                                     <div class="modal-header">
@@ -140,15 +140,15 @@
                                         <span aria-hidden="true">&times;</span>
                                       </button>
                                     </div>
-                                    <div class="modal-body">
-                                      Are you sure you want to Resore?
+                                    <div class="modal-body"> 
+                                      Are you sure you want to Restore?
                                     </div>
                                     <div class="modal-footer">
                                       <a class="badge badge-outline-dark" data-dismiss="modal">
                                         Close
                                       </a>
-                                      <a class="badge badge-outline-success" href="product/restore/{{ $data->inventory_id}}">
-                                        Resore
+                                      <a class="badge badge-outline-success" href="/product/restore/{{ $data->inventory_id}}">
+                                        Restore
                                       </a>
                                     </div>
                                   </div>
@@ -158,7 +158,7 @@
 
 
                                   <!-- Modal -->
-                                <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="deleteModal{{ $data->inventory_id}}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
                                   <div class="modal-dialog modal-dialog-centered" >
                                     <div class="modal-content">
                                       <div class="modal-header">
@@ -206,19 +206,9 @@
             >
               <span
                 class="text-muted d-block text-center text-sm-left d-sm-inline-block"
-                >Copyright © bootstrapdash.com 2020</span
+                >Copyright © 2022. All Rights Reserved</span
               >
-              <span
-                class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"
-              >
-                Free
-                <a
-                  href="https://www.bootstrapdash.com/bootstrap-admin-template/"
-                  target="_blank"
-                  >Bootstrap admin templates</a
-                >
-                from Bootstrapdash.com</span
-              >
+            
             </div>
           </footer>
           <!-- partial -->

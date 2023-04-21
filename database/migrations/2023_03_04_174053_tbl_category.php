@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('merchant_id');
             $table->string('main_category');
             $table->string('description');
+            $table->string('sub_category')->nullable();
             $table->timestamp('date')->useCurrent();
             });
 

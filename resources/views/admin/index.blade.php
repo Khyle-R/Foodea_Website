@@ -23,9 +23,16 @@
     <link rel="stylesheet" href="assets/css/superadmin.css"/>
     <!-- End layout styles -->
     <link rel="icon" href="{{ url('image/foodea1.png') }}">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-tagsinput/0.8.0/bootstrap-tagsinput.js"> </script>
     {{-- Datatable plugins --}}
-    
+    <!-- UIkit CSS -->
+	  {{-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.2.2/dist/css/uikit.min.css" /> --}}
+
+    {{--File Pond--}}
+    <link href="https://unpkg.com/filepond@^4/dist/filepond.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css">
+
   </head>
   <body>
     <div class="container-scroller">
@@ -34,10 +41,10 @@
         <div
           class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top"
         >
-          <a class="sidebar-brand brand-logo" href="index.html"
+          <a class="sidebar-brand brand-logo" href="/index"
             ><img src="assets/images/foodea_logo.PNG" alt="logo"
           /></a>
-          <a class="sidebar-brand brand-logo-mini" href="index.html"
+          <a class="sidebar-brand brand-logo-mini" href="/index"
             ><img src="/image/foodea.png" class="w-50" alt="logo"
           /></a>
         </div>
@@ -48,13 +55,13 @@
                 <div class="count-indicator">
                   <img
                     class="img-xs rounded-circle"
-                    src="assets/images/faces/face15.jpg"
-                    alt=""
+                    src="{{$logIndata->logo}}"
+                    alt="*"
                   />
                   <span class="count bg-success"></span>
                 </div>
                 <div class="profile-name">
-                  <h5 class="mb-0 font-weight-normal text-white fs-4">{{$logIndata->firstname . " " . $logIndata->lastname}}</h5>
+                  <h5 class="mb-0 font-weight-normal text-white fs-4">{{$logIndata->business_name}}</h5>
                   <span>Verified</span>
                 </div>
               </div>
@@ -97,6 +104,8 @@
           <li class="nav-item nav-category">
             <span class="nav-link">Navigation</span>
           </li>
+
+          @if(Session::get('Admin') == 'Admin')
           <li class="nav-item menu-items">
             <a class="nav-link" href="/index">
               <span class="menu-icon">
@@ -105,6 +114,18 @@
               <span class="menu-title">Dashboard</span>
             </a>
           </li>
+
+            <li class="nav-item menu-items">
+            <a class="nav-link" href="/admin_add_account">
+              <span class="menu-icon">
+                <i class="mdi mdi mdi-account-box"></i>
+              </span>
+              <span class="menu-title">Add Account</span>
+            </a>
+          </li>
+          @endif
+
+          @if(Session::get('AdminRole') == 'Inventory Officer')
           <li class="nav-item menu-items">
             <a
               class="nav-link"
@@ -141,6 +162,9 @@
               </ul>
             </div>
           </li>
+          @endif
+
+           @if(Session::get('AdminRole') == 'Sales Officer')
           <li class="nav-item menu-items">
             <a class="nav-link" href="/admin_orders">
               <span class="menu-icon">
@@ -165,6 +189,8 @@
               <span class="menu-title">Voucher</span>
             </a>
           </li>
+          @endif
+
           <li class="nav-item menu-items">
             <a class="nav-link" href="/admin_log">
               <span class="menu-icon">
@@ -173,15 +199,45 @@
               <span class="menu-title">Activity log</span>
             </a>
           </li>
-           <li class="nav-item menu-items">
-            <a class="nav-link" href="/admin_account">
+         {{-- <li class="nav-item menu-items">
+            <a
+              class="nav-link"
+              data-toggle="collapse"
+              href="#ui-basicc"
+              aria-expanded="false"
+              aria-controls="ui-basicc"
+            >
               <span class="menu-icon">
                 <i class="mdi mdi-account-box"></i>
               </span>
               <span class="menu-title">Account</span>
+              <i class="menu-arrow"></i>
+            </a>
+
+            <div class="collapse" id="ui-basicc">
+              <ul class="nav flex-column sub-menu">
+
+                <li class="nav-item">
+                  <a class="nav-link" href="/admin_account"
+                    >Account Settings</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/admin_add_account"
+                    >Add Account</a
+                  >
+                </li>
+              </ul>
+            </div>
+          </li> --}}
+               <li class="nav-item menu-items">
+            <a class="nav-link" href="/admin_account">
+              <span class="menu-icon">
+                <i class="mdi mdi mdi-account-box"></i>
+              </span>
+              <span class="menu-title">Account Settings</span>
             </a>
           </li>
-         
         </ul>
       </nav>
       <!-- partial -->
@@ -192,7 +248,7 @@
             class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center"
           >
             <a class="navbar-brand brand-logo-mini" href="index.html"
-              ><img src="../../user/image/foodea.png" class="w-50" alt="logo"
+              ><img src="{{ $logIndata->logo }}" class="w-50" alt="logo"
             /></a>
           </div>
           <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
@@ -361,7 +417,7 @@
                 >
                   <h6 class="dropdown-header p-3 mb-0">Notifications</h6>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item preview-item">
+                  {{-- <a class="dropdown-item preview-item">
                     <div class="preview-thumbnail">
                       <div class="preview-icon bg-dark rounded-circle">
                         <i class="mdi mdi-calendar text-success"></i>
@@ -373,9 +429,9 @@
                         Just a reminder that you have an event today
                       </p>
                     </div>
-                  </a>
+                  </a> --}}
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item preview-item">
+                  {{-- <a class="dropdown-item preview-item">
                     <div class="preview-thumbnail">
                       <div class="preview-icon bg-dark rounded-circle">
                         <i class="mdi mdi-settings text-danger"></i>
@@ -385,9 +441,9 @@
                       <p class="preview-subject mb-1">Settings</p>
                       <p class="text-success ellipsis mb-0">Update dashboard</p>
                     </div>
-                  </a>
+                  </a> --}}
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item preview-item">
+                  {{-- <a class="dropdown-item preview-item">
                     <div class="preview-thumbnail">
                       <div class="preview-icon bg-dark rounded-circle">
                         <i class="mdi mdi-link-variant text-warning"></i>
@@ -397,7 +453,7 @@
                       <p class="preview-subject mb-1">Launch Admin</p>
                       <p class="text-success ellipsis mb-0">New admin wow!</p>
                     </div>
-                  </a>
+                  </a> --}}
                   <div class="dropdown-divider"></div>
                   <p class="p-3 mb-0 text-center bg-dark">See all notifications</p>
                 </div>
@@ -412,12 +468,13 @@
                   <div class="navbar-profile">
                     <img
                       class="img-xs rounded-circle"
-                      src="assets/images/faces/face15.jpg"
+                      style="background-color: #fff"
+                      src="{{ $logIndata->logo }}"
                       alt=""
                     />
                     <p class="mb-0 d-none d-sm-block navbar-profile-name">
 
-                     {{$logIndata->firstname . " " . $logIndata->lastname}}
+                     {{$logIndata->business_name}}
                     </p>
                     <i class="mdi mdi-menu-down d-none d-sm-block"></i>
                   </div>
@@ -428,7 +485,7 @@
                 >
                   <h6 class="dropdown-header text-white p-3 mb-0">Profile</h6>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item preview-item">
+                  <a href="/admin_account" class="dropdown-item preview-item">
                     <div class="preview-thumbnail">
                       <div class="preview-icon bg-dark rounded-circle">
                         <i class="mdi mdi-settings text-success"></i>
@@ -466,6 +523,18 @@
         </nav>
         <!-- partial -->
         <div class="main-panel">
+           <!-- Loader -->
+      <div id="loader-wrapper">
+        <div id="loader">
+          <div class="loader-ellips">
+            <span class="loader-ellips__dot"></span>
+            <span class="loader-ellips__dot"></span>
+            <span class="loader-ellips__dot"></span>
+            <span class="loader-ellips__dot"></span>
+          </div>
+        </div>
+      </div>
+      <!-- /Loader -->
           @yield('content')
         <!-- main-panel ends -->
       </div>
@@ -495,9 +564,36 @@
     <!-- endinject -->
     <!-- Custom js for this page -->
     <script src="assets/js/dashboard.js"></script>
-    <script src="assets/js/chart.js"></script>
+    <script src="assets/js/admin_chart.js"></script>
     <script src="assets/js/app.js"></script>
+    <script src="{{ asset('assets/js/toast.js') }}"></script>
     <!-- End custom js for this page -->
+        
+    {{--File Pond--}}
+    
+    <script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
+    <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
+    
+    {{-- <script>
+        FilePond.registerPlugin(FilePondPluginImagePreview);
+        // Get a reference to the file input element
+        const profile = document.querySelector('input[type="file"]');
+         // Create a FilePond instance
+         const pond = FilePond.create(profile, {
+            //  instantUpload: false,
+             storeAsFile: true,
+             acceptedFileTypes: ['image/*'], 
+             server:{
+                 process: '/tmp-upload',
+                 revert: '/tmp-delete',
+                headers: {
+                 'X-CSRF-TOKEN': '{{csrf_token()}}'
+                }
+             },
+       
+         });
+    </script> --}}
 
   </body>
+  
 </html>

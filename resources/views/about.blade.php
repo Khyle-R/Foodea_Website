@@ -30,7 +30,7 @@
     <!--- NAVBAR -->
     <nav class="navbar navbar-expand-lg px-2 mx -2 px-xs-3 px-md-4 px-lg-5 mx-xs-3 mx-md-4 mx-lg-5">
       <div class="container-fluid px-3">
-        <a href="/" class="navbar-brand">
+        <a href="/" class="navbar-brand mb-0 h1">
           <img src="image/foodea1.png" alt="" />
           <span>FOODEA</span>
         </a>
@@ -86,14 +86,14 @@
                 <a href="/contact" class="nav-link">Contact Us</a>
               </li>
             </ul>
-            <a
+            {{-- <a
             href="/rider_application_agreement"
             class="text-secondary mt-2 mx-5"
             style="text-decoration: none;">
               Signup
-            </a>
+            </a> --}}
             <a
-              href="/login_type"
+               href="/rider_login"
               class="btn btn-danger btn-sm py-2 px-5 rounded"
             >
               Login
@@ -134,7 +134,7 @@
     <!-- SECTION 4 -->
     <section class="d-flex" data-aos="fade-up">
       <div class="content pt-4 pb-2 py-xs-3 py-md-4 py-lg-5">
-        <h1 class="text-center">Lunch made easy<br>with just a tap</h1>
+        <h1 class="text-center">Meal made easy<br>with just a tap</h1>
       </div>
     </section>
     <!-- SECTION 4 -->
@@ -217,10 +217,10 @@
                 <a href="/contact" class="text-reset text-decoration-none">
                     <p>Contact Us</p>
                 </a>
-                <a href="/" class="text-reset text-decoration-none">
+                <a href="/mission" class="text-reset text-decoration-none">
                     <p>Mission</p>
                 </a>
-                <a href="/" class="text-reset text-decoration-none">
+                <a href="/vision" class="text-reset text-decoration-none">
                     <p>Vision</p>
                 </a>
                 <a href="/" class="text-reset text-decoration-none">
@@ -232,10 +232,14 @@
                     <h2>For inquiries:</h2>
                     <p>foodea@gmail.com</p>
                 </div>
-                <div class="legal">
+               <div class="legal">
                     <h2>Legal:</h2>
-                    <p>Terms and Condition</p>
-                    <p>Privacy Policy</p>
+                    <a href="/terms_condition" class="text-reset text-decoration-none">
+                      <p>Terms and Condition</p>
+                    </a>
+                    <a href="/privacy" class="text-reset text-decoration-none">
+                      <p>Privacy Policy</p>
+                    </a>
                 </div>
             </div>
         </div>

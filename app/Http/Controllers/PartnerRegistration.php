@@ -7,6 +7,8 @@ use Illuminate\Http\Response;
 use App\Mail\MailVerification;
 use App\Models\tbl_activitylog;
 use App\Models\tbl_merchant_info;
+use App\Mail\PasswordVerification;
+use App\Models\tbl_category;
 use App\Models\tbl_rider_accounts;
 use App\Models\tbl_partner_accounts;
 use Illuminate\Support\Facades\Hash;
@@ -14,7 +16,11 @@ use Illuminate\Support\Facades\Mail;
 use App\Models\tbl_merchant_document;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Session;
+use App\Models\tbl_product;
 use App\Models\tbl_merchant_application;
+use Illuminate\Validation\Rules\Password;
+use Illuminate\Support\Facades\Storage;
+use App\Clients\SendGridClient;
 
 class PartnerRegistration extends Controller
 {
@@ -29,6 +35,116 @@ class PartnerRegistration extends Controller
     public function partner2index(){
         return view('/partner_application2');
     }
+    
+    
+    public function PartnerForgotPass(){
+        return view('partner_forgotpass');
+    }
+    public function PartnerForgetSend(Request $request){
+        $request->validate([
+            'email' => 'required|email'
+        ]);
+
+        $email = tbl_partner_accounts::where('email', $request->email)->first();
+          
+        if($email){
+            $code = mt_rand(1000, 9999);
+            // $mailData = [
+            // 'title' => 'Password Reset',
+            // 'body' => 'test',
+            // 'code' => $code,
+            // 'fname' => $email->firstname,
+            // 'lname' => $email->lastname,
+            // ];
+            // Mail::to($email)->send(new PasswordVerification($mailData));
+
+            $html = view('email.forgotpass')->with('code', $code)->render();
+            SendGridClient::sendEmail($request->email,"Password Reset", $html);
+
+            $request->session()->put('partner_verification', $code);
+            $request->session()->put('partner_email', $request->email);
+
+            return redirect('/partner_forgotpass1');
+         } 
+         else{
+            return back()->with('fail', 'Email does not exist');
+         }
+        
+    }
+     public function PartnerForgotPass2(){
+        $email = tbl_partner_accounts::where('email', Session::get('partner_email'))
+        ->first();
+        
+        return view('partner_forgotpass1', compact('email'));
+     }
+
+     public function PartnerForgotVerify(Request $request){
+        $num1 = $request->num1;
+        $num2 = $request->num2;
+        $num3 = $request->num3;
+        $num4 = $request->num4;
+        if($num1. $num2 . $num3 . $num4 == Session::get('partner_verification')){
+            return redirect('/partner_forgotpass2');
+        }
+        else{
+            return back()->with('fail', 'Verification does not match');
+        }
+     }
+     
+     public function PartnerForgotResend(Request $request){
+         $email = tbl_partner_accounts::where('email', Session::get('partner_email'))
+          ->first();
+          
+        if($email){
+            $code = mt_rand(1000, 9999);
+            // $mailData = [
+            // 'title' => 'Password Reset',
+            // 'body' => 'test',
+            // 'code' => $code,
+            // 'fname' => $email->firstname,
+            // 'lname' => $email->lastname,
+            // ];
+            // Mail::to($email)->send(new PasswordVerification($mailData));
+
+            $receiverEmail = Session::get('partner_email');
+            $html = view('email.forgotpass')->with('code', $code)->render();
+            SendGridClient::sendEmail($receiverEmail, "Password Reset", $html);
+
+            $request->session()->put('partner_verification', $code);
+
+            return back();
+        }
+    }
+     public function PartnerForgotPass3(){
+        return view('partner_forgotpass2');
+     }
+
+     public function PartnerForgotReset(Request $request){
+        $request->validate([
+            'password' => [
+            'required', 'confirmed',
+            Password::min(8)->letters()->numbers()->symbols()
+            ],
+            'password_confirmation' => 'required'
+        ]);
+        if($request->password == $request->password_confirmation){
+            $hash = Hash::make($request->password_confirmation);
+            $res = tbl_partner_accounts::where('email', Session::get('partner_email'))
+            ->update([
+                'password' => $hash
+            ]);
+            if($res){
+                Session::pull('partner_email');
+                Session::pull('partner_verification');
+                return redirect('/partner_forgotpass3');
+            }
+        }
+        
+       
+     }
+     public function PartnerForgotPass4(){
+        return view('partner_forgotpass3');
+     }
 
     public function partner2submit(Request $request){
 
@@ -40,8 +156,10 @@ class PartnerRegistration extends Controller
             'barangay' => 'required',
             'street' => 'required',
             'country' => 'required',
-            'postal_code' => 'required',
-            'store_number' => 'required',
+            'longitude' => 'required',
+            'latitude' => 'required',
+            'postal_code' => 'required|min:4',
+            'store_number' => 'required|min:10',
             'store_email' => 'required|email',
             'date_founded' => 'required',
             'mission' => 'required',
@@ -63,45 +181,160 @@ class PartnerRegistration extends Controller
         $merchant->date_founded = $request->date_founded; 
         $merchant->mission = $request->mission; 
         $merchant->vision = $request->vision; 
+        $merchant->longitude = $request->longitude; 
+        $merchant->latitude = $request->latitude; 
         $res = $merchant->save();
         if($res){
-            
             $id = tbl_merchant_info::where('merchant_id', $request->merchant_id)->first();
             
-           $success = tbl_merchant_application::where('merchant_id', $request->merchant_id)
-            ->update([
-                'merchantinfo_id' => $id->merchantinfo_id,
-                'status' => 'second'
-            ]);
-             $status =  tbl_merchant_application::where('merchant_id', $request->merchant_id)
-             ->first();
+            $success = tbl_merchant_application::where('merchant_id', $request->merchant_id)
+                ->update([
+                    'merchantinfo_id' => $id->merchantinfo_id,
+                    'status' => 'second'
+                ]);
+            $status =  tbl_merchant_application::where('merchant_id', $request->merchant_id)->first();
             if($success){
-              $email = tbl_partner_accounts::where('merchant_id', Session::get('merchant_id'))
-                        ->first();
+            //   $email = tbl_partner_accounts::where('merchant_id', Session::get('merchant_id'))
+            //             ->first();
                         
-            $code = mt_rand(100000, 999999);
-              $mailData = [
-                'title' => 'Account Verification',
-                'body' => 'test',
-                'code' => $code,
-                'fname' => $email->firstname,
-                'lname' => $email->lastname,
-            ];
-             Mail::to($email)->send(new MailVerification($mailData));
+            // $code = mt_rand(100000, 999999);
+            //   $mailData = [
+            //     'title' => 'Account Verification',
+            //     'body' => 'test',
+            //     'code' => $code,
+            //     'fname' => $email->firstname,
+            //     'lname' => $email->lastname,
+            // ];
+            //  Mail::to($email)->send(new MailVerification($mailData));
 
-            $request->session()->put('verification', $code);
+            // $request->session()->put('verification', $code);
             $request->session()->put('partnerstatus', $status->status);
-            return redirect('/partner_application3');
+            return redirect('/partner_application_add');
             }
            
         }
         else{
          
         }
-
-
     }
 
+    public function partneraddproduct(Request $request){
+
+        $category = tbl_category::where('merchant_id', Session::get('merchant_id'))
+        ->get();
+
+        if(Session::get('loops') > 1){
+             $loop = Session::get('loops');
+        }
+        else{
+            
+        $loop = 1;
+        $request->session()->put('loops', $loop);
+        }
+       
+        return view('/partner_application_add', compact('category'));
+    }
+   
+    public function addProductPartner(Request $request)
+    {
+        $category_name = tbl_category::where('category_id', $request->category)
+        ->first();
+      
+        $request->validate([
+            'product_name' => 'required',
+            'category' => 'required',
+            'calories' => 'required',
+            'description' => 'required',
+            'ingredients' => 'required',
+            'product_image' => 'required|mimes:jpeg,png,jpg|max:5000',
+            'price' => 'required',
+            'stock' => 'required',
+            'status' => 'required'
+        ]);
+        $addProd=new tbl_product();
+
+        if ($request->hasFile('product_image')) 
+        {
+            $image_p = $request->file('product_image')->store('product_images', 's3', ['visibility', 'public']);
+            $filename1 = Storage::disk('s3')->url($image_p);
+        
+            $addProd->merchant_id = Session::get('merchant_id');
+            $addProd->product_name = $request->product_name;
+            $addProd->stock = $request->stock;
+            $addProd->product_image = $filename1;
+            $addProd->price = $request->price;
+            $addProd->category_name= $category_name->main_category;
+            $addProd->category_id= $request->category;
+            $addProd->status = $request->status;
+            $addProd->calories=$request->calories;
+            $addProd->description = $request->description;
+            $addProd->ingredients= $request->ingredients;
+             $addProd->save();
+
+        $loop = Session::get('loops');
+        $loop = $loop + 1;
+        $request->session()->put('loops', $loop);
+        }
+        if(Session::get('loops') == 6){
+            Session::pull('loops');
+           
+            $email = tbl_partner_accounts::where('merchant_id', Session::get('merchant_id'))
+                        ->first();
+                        
+            $code = mt_rand(100000, 999999);
+            //   $mailData = [
+            //     'title' => 'Account Verification',
+            //     'body' => 'test',
+            //     'code' => $code,
+            //     'fname' => $email->firstname,
+            //     'lname' => $email->lastname,
+            // ];
+            //  Mail::to($email)->send(new MailVerification($mailData));
+
+            
+            $html = view('email.emailverify')->with('code', $code)->render();
+            SendGridClient::sendEmail($email->email, "Account Verification", $html);
+                
+            $request->session()->put('verification', $code);
+            return redirect('partner_application3');
+        }
+        else{
+            return redirect('partner_application_add');
+        }
+    }
+    
+    //CATEGORY
+    public function addCategory(Request $request)
+    {
+        $category = tbl_category::where('merchant_id', Session::get('merchant_id'))
+        ->first();
+
+        if(isset($category->main_category)){
+            if($category->main_category == $request->categoryName)
+            {
+                $request->session()->put('fail', 'Category Name Already Exist');
+            }
+            else{
+            $addCategory = new tbl_category();
+            $addCategory->main_category = $request->categoryName;
+            $addCategory->description = $request->description;
+            $addCategory->merchant_id = session('merchant_id');
+
+            $addCategory->save();
+            }
+        } else {
+            $addCategory = new tbl_category();
+            $addCategory->main_category = $request->categoryName;
+            $addCategory->description = $request->description;
+            $addCategory->merchant_id = session('merchant_id');
+
+            $addCategory->save();
+        }
+        
+        return back();
+        
+    }
+    
     public function PartnerVerifyIndex(){
          $email = tbl_partner_accounts::where('merchant_id', Session::get('merchant_id'))
                         ->first();
@@ -116,14 +349,17 @@ class PartnerRegistration extends Controller
                         
          $code = mt_rand(100000, 999999);
 
-         $mailData = [
-         'title' => 'Account Verification',
-         'body' => 'test',
-          'code' => $code,
-         'fname' => $email->firstname,
-         'lname' => $email->lastname,
-        ];
-         Mail::to($email)->send(new MailVerification($mailData));
+        //  $mailData = [
+        //  'title' => 'Account Verification',
+        //  'body' => 'test',
+        //   'code' => $code,
+        //  'fname' => $email->firstname,
+        //  'lname' => $email->lastname,
+        // ];
+        //  Mail::to($email)->send(new MailVerification($mailData));
+
+        $html = view('email.emailverify')->with('code', $code)->render();
+        SendGridClient::sendEmail($email->email, "Account Verification", $html);
 
          $request->session()->put('verification', $code);
         return back();
@@ -174,42 +410,42 @@ class PartnerRegistration extends Controller
         
         if($request->hasFile('menu_photo') && $request->hasfile('logo') && $request->hasFile('business_permit') && $request->hasFile('bir_cert') && $request->hasFile('dti_cert') && $request->hasFile('front_license') && $request->hasFile('back_license')){
           
-            $logo = $request->file('logo');
-            $menu = $request->file('menu_photo');
-            $file = $request->file('business_permit');
-            $file2 = $request->file('bir_cert');
-            $file3 = $request->file('barangay_permit');
-            $file4 = $request->file('dti_cert');
-            $file5 = $request->file('front_license');
-            $file6 = $request->file('back_license');
+            $logo = $request->file('logo')->store('merchant_documents/'.$request->merchant_id.'', 's3', ['visibility', 'public']);
+            $menu = $request->file('menu_photo')->store('merchant_documents/'.$request->merchant_id.'', 's3', ['visibility', 'public']);
+            $file = $request->file('business_permit')->store('merchant_documents/'.$request->merchant_id.'', 's3', ['visibility', 'public']);
+            $file2 = $request->file('bir_cert')->store('merchant_documents/'.$request->merchant_id.'', 's3', ['visibility', 'public']);
+            $file3 = $request->file('barangay_permit')->store('merchant_documents/'.$request->merchant_id.'', 's3', ['visibility', 'public']);
+            $file4 = $request->file('dti_cert')->store('merchant_documents/'.$request->merchant_id.'', 's3', ['visibility', 'public']);
+            $file5 = $request->file('front_license')->store('merchant_documents/'.$request->merchant_id.'/valid_id', 's3', ['visibility', 'public']);
+            $file6 = $request->file('back_license')->store('merchant_documents/'.$request->merchant_id.'/valid_id', 's3', ['visibility', 'public']);
 
             
-            $log = $logo->getClientOriginalName();
-            $photo = $menu->getClientOriginalName();
-            $permit = $file->getClientOriginalName();
-            $bir = $file2->getClientOriginalName();
-            $barangay = $file3->getClientOriginalName();
-            $dti = $file4->getClientOriginalName();
-            $front = $file5->getClientOriginalName();
-            $back = $file6->getClientOriginalName();
+            // $log = $logo->getClientOriginalName();
+            // $photo = $menu->getClientOriginalName();
+            // $permit = $file->getClientOriginalName();
+            // $bir = $file2->getClientOriginalName();
+            // $barangay = $file3->getClientOriginalName();
+            // $dti = $file4->getClientOriginalName();
+            // $front = $file5->getClientOriginalName();
+            // $back = $file6->getClientOriginalName();
 
-            $filename1 = mt_rand(1000, 9999) . '_' .$log;
-            $filename2 = mt_rand(1000, 9999) . '_' .$photo;
-            $filename3 = mt_rand(1000, 9999) . '_' .$permit;
-            $filename4 = mt_rand(1000, 9999) . '_' .$bir;
-            $filename5 = mt_rand(1000, 9999) . '_' .$barangay;
-            $filename6 = mt_rand(1000, 9999) . '_' .$dti;
-            $filename7 = mt_rand(1000, 9999) . '_' .$front;
-            $filename8 = mt_rand(1000, 9999) . '_' .$back;
+            $filename1 = Storage::disk('s3')->url($logo);
+            $filename2 = Storage::disk('s3')->url($menu);
+            $filename3 = Storage::disk('s3')->url($file);
+            $filename4 = Storage::disk('s3')->url($file2);
+            $filename5 = Storage::disk('s3')->url($file3);
+            $filename6 = Storage::disk('s3')->url($file4);
+            $filename7 = Storage::disk('s3')->url($file5);
+            $filename8 = Storage::disk('s3')->url($file6);
          
-            $logo->move(('uploads/'. 'merchant_documents'. '/'.$request->merchant_id), $filename1);
-            $menu->move(('uploads/'. 'merchant_documents'. '/'.$request->merchant_id), $filename2);
-            $file ->move(('uploads/'. 'merchant_documents'. '/'.$request->merchant_id), $filename3);
-            $file2->move(('uploads/'. 'merchant_documents'. '/'.$request->merchant_id), $filename4);
-            $file3 ->move(('uploads/'. 'merchant_documents'. '/'.$request->merchant_id), $filename5);
-            $file4->move(('uploads/'. 'merchant_documents'. '/'.$request->merchant_id), $filename6);
-            $file5 ->move(('uploads/'. 'merchant_documents'. '/'.$request->merchant_id. '/'. 'valid id/'), $filename7);
-            $file6 ->move(('uploads/'. 'merchant_documents'. '/'.$request->merchant_id. '/'. 'valid id/'), $filename8);
+            // $logo->move(('uploads/'. 'merchant_documents'. '/'.$request->merchant_id), $filename1);
+            // $menu->move(('uploads/'. 'merchant_documents'. '/'.$request->merchant_id), $filename2);
+            // $file ->move(('uploads/'. 'merchant_documents'. '/'.$request->merchant_id), $filename3);
+            // $file2->move(('uploads/'. 'merchant_documents'. '/'.$request->merchant_id), $filename4);
+            // $file3 ->move(('uploads/'. 'merchant_documents'. '/'.$request->merchant_id), $filename5);
+            // $file4->move(('uploads/'. 'merchant_documents'. '/'.$request->merchant_id), $filename6);
+            // $file5 ->move(('uploads/'. 'merchant_documents'. '/'.$request->merchant_id. '/'. 'valid id/'), $filename7);
+            // $file6 ->move(('uploads/'. 'merchant_documents'. '/'.$request->merchant_id. '/'. 'valid id/'), $filename8);
 
             $document->logo = $filename1;
             $document->menu_photo = $filename2;
@@ -247,9 +483,9 @@ class PartnerRegistration extends Controller
     }
 
     public function LoginIndex(Request $request){
-         $user = tbl_partner_accounts::where('email', '=', Cookie::get('email'))->first();
+         $user = tbl_partner_accounts::where('email', '=', Cookie::get('partner_email'))->first();
          
-        if(Cookie::get('email') && Cookie::get('password'))
+        if(Cookie::get('partner_email') && Cookie::get('partner_password'))
         {   
               $status = tbl_merchant_application::where('merchant_id', $user->merchant_id)
                 ->first();
@@ -296,8 +532,8 @@ class PartnerRegistration extends Controller
                  if($request->remember){
                     $minutes = 5;
                     $response = new Response;
-                    Cookie::queue(Cookie::forever('email', $request->email, $minutes));
-                    Cookie::queue(Cookie::forever('password', $request->password, $minutes));
+                    Cookie::queue(Cookie::forever('partner_email', $request->email, $minutes));
+                    Cookie::queue(Cookie::forever('partner_password', $request->password, $minutes));
                 }
                 $status = tbl_merchant_application::where('merchant_id', $user->merchant_id)
                 ->first();
@@ -310,6 +546,7 @@ class PartnerRegistration extends Controller
                     ->limit(1)
                     ->get();
                     
+                    $request->session()->put('partnerID', $user->merchant_id);
                     return view('/partner_applicationstatus', compact('Data'));
                 }
                 else{
@@ -333,21 +570,49 @@ class PartnerRegistration extends Controller
         }
         
     }
-    
+      public function PartnerLogout(){
+        if(Session::has('partnerID')){
+            Session::pull('partnerID');
+            Cookie::queue(Cookie::forget('partner_email'));
+            Cookie::queue(Cookie::forget('partner_password'));  
+            return redirect('/rider_login');
+        }
+        
+    }
      public function agreement(){
         return view('/merchant_application_agreement');
     }
-    public function PartnerApplicationStatus(){
+    
+    public function PartnerApplicationStatus(Request $request){
         $id = Session::get('merchant_id');
 
+    $status = tbl_merchant_application::where('merchant_id', $id)
+    ->first();    
+   
+    if($status->status == 'Accepted')
+    {
+        $user = tbl_partner_accounts::where('merchant_id', '=', $id)->first();
+        $log = new tbl_activitylog();
+                $log->merchant_id = $user->merchant_id;
+                $log->email = $user->email;
+                $log->name = $user->firstname. ' ' .$user->lastname;
+                $log->description = 'Has Log In';
+                $res = $log->save();
+                if($res){
+                $request->session()->put('loginID', $user->merchant_id);
+                return redirect('/index');
+                }
+    }
+    else{
         $Data = tbl_partner_accounts::join('tbl_merchant_info', 'tbl_merchant_account.merchant_id', '=', 'tbl_merchant_info.merchant_id')
     ->join('merchant_application', 'tbl_merchant_account.merchant_id', '=', 'merchant_application.merchant_id')
     ->join('merchant_document', 'tbl_merchant_account.merchant_id', '=', 'merchant_document.merchant_id')
     ->where('merchant_application.merchant_id',  $id)
     ->limit(1)
     ->get();
-        
+    
      return view('partner_applicationstatus', compact('Data'));
 
     }
+}
 }

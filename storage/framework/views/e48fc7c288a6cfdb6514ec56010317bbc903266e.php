@@ -38,7 +38,11 @@
                 <div class="card-body">
                     <div class="row justify-content-sm-between px-3 mb-3">
                         <h5 class="card-title black">
-                            Showing 3 Applicants
+                            <?php if($accepted): ?>
+                            Showing <?php echo e($accepted); ?> applicants
+                            <?php else: ?>
+                                    Showing 0 Applicants 
+                            <?php endif; ?>
                         </h5>
                     </div>
                     
@@ -50,14 +54,14 @@
                 <div class="card">
                 <div class="card-body">
                     <div class="text-center">
-                        <img class="circle mb-2" height="87" width="90" src="<?php echo e(url('uploads/'. 'merchant_documents'. '/'. $partner->merchant_id. '/'. $partner->logo)); ?>" alt="">
+                        <img class="circle mb-2" height="87" width="90" src="<?php echo e($partner->logo); ?>" alt="">
                         <p class="card-text black-name"><?php echo e($partner->business_name); ?></p>
                     </div>
                      <div class="dropdown profile-action">
                             <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-vertical black-icon" aria-hidden="true"></i></a>
                             <div class="bg-white dropdown-menu dropdown-menu-right">
                                 <a data-toggle="modal" data-target="#EditModal<?php echo e($partner->merchant_id); ?>" class="action-btn dropdown-item black" href=""><i class="fa fa-pencil m-r-5"></i> Edit</a>
-                                <a data-toggle="modal" data-target="#RemoveModal<?php echo e($partner->merchant_id); ?>" class="action-btn dropdown-item black" href=""><i class="fa fa-trash-o m-r-5"></i> Delete</a>
+                                <a data-toggle="modal" data-target="#RemoveModal<?php echo e($partner->merchant_id); ?>" class="action-btn dropdown-item black" href=""><i class="fa fa-trash-o m-r-5"></i> Remove</a>
                             </div>
                         </div>
                 </div>
@@ -147,6 +151,7 @@
                             <form method="post" action="<?php echo e(route('RemoveMerchant')); ?>">
                                 <?php echo csrf_field(); ?>
                             <input type="hidden" name="accepted_merchant_id" value="<?php echo e($partner->accepted_merchant_id); ?>">
+                            <input type="hidden" name="merchant_id" value="<?php echo e($partner->merchant_id); ?>">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn white-btn" data-dismiss="modal">Close</button>
@@ -174,13 +179,8 @@
 <!-- partial:../../partials/_footer.html -->
 <footer class="footer">
     <div class="d-sm-flex justify-content-center justify-content-sm-between">
-        <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com
-            2020</span>
-        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">
-            Free
-            <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin
-                templates</a>
-            from Bootstrapdash.com</span>
+        <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2022. All Rights Reserved</span>
+       
     </div>
 </footer>
 <!-- partial -->

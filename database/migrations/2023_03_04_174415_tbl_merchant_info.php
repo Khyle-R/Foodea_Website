@@ -26,6 +26,8 @@ return new class extends Migration
             $table->string('barangay');
             $table->string('street');
             $table->string('postal_code');
+            $table->string('latitude', 10,7);
+            $table->string('longitude', 10,7);
             $table->string('store_number');
             $table->string('store_email');
             $table->longText('mission');

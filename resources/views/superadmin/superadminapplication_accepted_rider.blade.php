@@ -37,7 +37,12 @@
                 <div class="card-body">
                     <div class="row justify-content-sm-between px-3 mb-3">
                         <h5 class="card-title black">
-                            Showing 3 Applicants
+                             @if ($accepted)
+                                Showing {{ $accepted }} Applicants
+                                @else
+                                    Showing 0 Applicants 
+                             @endif
+                           
                         </h5>
                     </div>
                 
@@ -49,7 +54,7 @@
                 <div class="card">
                 <div class="card-body">
                     <div class="text-center">
-                        <img class="circle mb-2" height="87" width="90" src="{{ url(('uploads/'. 'rider_documents'. '/'.$rider->rider_id.  '/'). $rider->rider_photo) }}" alt="">
+                        <img class="circle mb-2" height="87" width="90" src="{{ $rider->rider_photo }}" alt="">
                         <p class="card-text black-name">{{ $rider->firstname. ' ' .$rider->lastname }}</p>
                     </div>
                      <div class="dropdown profile-action">
@@ -150,6 +155,7 @@
                             <form method="post" action="{{ route('RemoveRider') }}">
                                 @csrf
                             <input type="hidden" name="accepted_rider_id" value="{{ $rider->accepted_rider_id }}">
+                            <input type="hidden" name="rider_id" value="{{ $rider->rider_id }}">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn white-btn" data-dismiss="modal">Close</button>
@@ -176,13 +182,8 @@
 <!-- partial:../../partials/_footer.html -->
 <footer class="footer">
     <div class="d-sm-flex justify-content-center justify-content-sm-between">
-        <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com
-            2020</span>
-        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">
-            Free
-            <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin
-                templates</a>
-            from Bootstrapdash.com</span>
+        <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2022. All Rights Reserved</span>
+      
     </div>
 </footer>
 <!-- partial -->

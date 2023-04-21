@@ -81,7 +81,7 @@
                                         name="email"
                                         class="form-control my-1"
                                         placeholder="example@gmail.com"
-                                        value="{{ Cookie::get('email') }}"
+                                        value="{{ Cookie::get('rider_email') }}"
                                     />
                                        <span
                                         class="error">
@@ -96,7 +96,7 @@
                                             class="form-control my-1 form-control-lg"
                                             placeholder="Password"
                                             id="password"
-                                            value="{{ Cookie::get('password') }}"
+                                            value="{{ Cookie::get('rider_password') }}"
                                         />
                                         <span class="eye" onclick="myFunction()">
                                             <i class="fa fa-eye" id="hide1"></i>
@@ -120,7 +120,7 @@
                                           </div>
     
                                         <div class="text-right mb-3">
-                                            <a href="#" class="nav-link"
+                                            <a href="/rider_forgotpass" class="nav-link"
                                                 >Forgot Password?</a
                                             >
                                         </div>
@@ -207,5 +207,6 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"
     ></script>
+    
     
 </html>

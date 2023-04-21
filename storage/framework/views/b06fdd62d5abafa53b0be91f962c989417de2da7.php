@@ -69,7 +69,7 @@
                                   <img src="image/foodea4.png" alt="">
                                 </div>
                                 <form method="post" action="<?php echo e(route('login.LoginMerchant')); ?>" class="mt-4">
-                                   <?php echo csrf_field(); ?>
+                                   <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
 
                                     <div class="form-group">
                                     <label for="email">Email</label>
@@ -78,7 +78,7 @@
                                         name="email"
                                         class="form-control my-1"
                                         placeholder="example@gmail.com"
-                                        value="<?php echo e(Cookie::get('email')); ?>"
+                                        value="<?php echo e(Cookie::get('partner_email')); ?>"
                                     />
                                        <span
                                         class="error">
@@ -101,7 +101,7 @@ unset($__errorArgs, $__bag); ?></span>
                                             class="form-control my-1 form-control-lg"
                                             placeholder="Password"
                                             id="password"
-                                            value="<?php echo e(Cookie::get('password')); ?>"
+                                            value="<?php echo e(Cookie::get('partner_password')); ?>"
                                             
                                         />
                                             <span class="eye" onclick="myFunction()">
@@ -135,7 +135,7 @@ unset($__errorArgs, $__bag); ?> </span>
                                           </div>
 
                                         <div class="col-auto mb-3">
-                                            <a href="#" class="nav-link"
+                                            <a href="/partner_forgotpass" class="nav-link"
                                                 >Forgot Password?</a
                                             >
                                         </div>

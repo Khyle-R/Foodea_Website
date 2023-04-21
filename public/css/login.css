@@ -36,6 +36,22 @@ ul {
     font-weight: bold;
 }
 
+.key {
+    padding-block: 10px;
+    padding-inline: 10px;
+    border-radius: 30px;
+    background-color: #ffbaba;
+    color: #F54748;
+}
+
+.check {
+    padding-block: 10px;
+    padding-inline: 10px;
+    border-radius: 30px;
+    background-color: #D2FDBB;
+    color: #77DD76;
+}
+
 .form-control {
     font-size: 18px;
 }
@@ -55,11 +71,11 @@ ul {
     color: #835602;
 }
 
-.bg_image img{
+.bg_image img {
     width: 20rem;
 }
 
-.bg_image{
+.bg_image {
     z-index: -1;
 }
 
@@ -195,22 +211,91 @@ ul {
 
 
 .eye {
-  background: none;
-  border: none;
-  display: inline;
-  float: right;
-  transform: translateY(-160%);
-  z-index: 9;
-  margin-right: .5rem;
-  clear: right;
+    background: none;
+    border: none;
+    display: inline;
+    float: right;
+    transform: translateY(-160%);
+    z-index: 9;
+    margin-right: .5rem;
+    clear: right;
 }
 
 #hide1 {
     display: none;
 }
 
-@media (max-width:700px){ 
-.bg_image img{
-    width: 25rem;
+.eye2 {
+    background: none;
+    border: none;
+    float: right;
+    transform: translateY(-150%);
+    z-index: 9;
+    margin-right: .5rem;
+    clear: right;
 }
+
+#hide3 {
+    display: none;
+}
+
+@media (max-width:700px) {
+    .bg_image img {
+        width: 25rem;
+    }
+}
+
+/*CODE*/
+.code-container {
+    display: flex;
+    align-items: center;
+    margin: 40px 0;
+    justify-content: center;
+}
+
+.code {
+    caret-color: transparent;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 10px;
+    border: 1px solid #030303b2;
+    font-size: 20px;
+    font-family: "Lato", sans-serif;
+    /* width: 75px; */
+    width: clamp(2.5rem, 1.5278rem + 3.8889vw, 4.6rem);
+    /* height: 80px; */
+    height: clamp(2.5rem, 1.3889rem + 4.4444vw, 4rem);
+    margin: 8px;
+    text-align: center;
+    font-weight: 300;
+    /* font-size: 24px;
+      height: 50px;
+      max-width: 50px;
+      font-size: bold; */
+}
+
+@media (max-width: 600px) {
+    .code-container {
+        flex-wrap: wrap;
+    }
+
+    .code {
+        font-size: 24px;
+        height: 50px;
+        max-width: 50px;
+        font-size: bold;
+    }
+
+    button {
+        width: 100%;
+    }
+}
+
+.code::-webkit-outer-spin-button,
+.code::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+.code:valid {
+    border-color: #c26161;
+    box-shadow: 0 10px 10px -5px rgba(0, 0, 0, 0.25);
 }

@@ -76,15 +76,9 @@
                 <a href="/contact" class="nav-link">Contact Us</a>
               </li>
             </ul>
+            
             <a
-              href="/account_type"
-              class="text-secondary mt-2 mx-5"
-              style="text-decoration: none;"
-            >
-              Signup
-           </a>
-            <a
-              href="/login_type"
+              href="/rider_login"
               class="btn btn-danger btn-sm py-2 px-5 rounded"
             >
               Login
@@ -100,11 +94,11 @@
                 <div class="content text-center text-md-start d-flex flex-column align-items-center align-items-md-start pt-4 pt-md-5">
                     <h1>Grow your business with<span> Foodea</span></h1>
                     <p class="text-center text-md-start">Expand your business by bringing your food out and filling up your customers tummy and reach new customers by partnering with us.</p>
-                    <a href="/merchant_application_agreement" class="text-decoration-none">Apply Now</a>
+                    <a href="/rider_application_agreement" class="text-decoration-none">Apply Now</a>
                 </div>
             </div>
             <div class="col-12 col-md-5 col-lg-6">
-                    <img class="image1 d-none d-md-block" src="image/market2.png" alt="">
+                    <img class="image1 d-none d-md-block" src="<?php echo e(asset('newimage/market2.png')); ?>" alt="">
             </div>
         </div>
         </div>
@@ -158,7 +152,7 @@
                         <div class="d-flex flex-row">
                             <div class="steptwo d-flex flex-end flex-column text-end">
                                 <h2>STEP 2:</h2>
-                                <p>Sign-Up online to be a Foodea partner.</p>
+                                <p>Upload required documents.</p>
                             </div>
                             <div class="step1-image">
                                 <img src="image/signup.png" alt="">
@@ -375,13 +369,13 @@
                 <a href="/contact" class="text-reset text-decoration-none">
                     <p>Contact Us</p>
                 </a>
-                <a href="/" class="text-reset text-decoration-none">
+                <a href="/mission" class="text-reset text-decoration-none">
                     <p>Mission</p>
                 </a>
-                <a href="/" class="text-reset text-decoration-none">
+                <a href="/vision" class="text-reset text-decoration-none">
                     <p>Vision</p>
                 </a>
-                <a href="/" class="text-reset text-decoration-none">
+                <a href="/service" class="text-reset text-decoration-none">
                     <p>Services</p>
                 </a>
             </div>
@@ -392,8 +386,12 @@
                 </div>
                 <div class="legal">
                     <h2>Legal:</h2>
-                    <p>Terms and Condition</p>
-                    <p>Privacy Policy</p>
+                    <a href="/terms_condition" class="text-reset text-decoration-none">
+                      <p>Terms and Condition</p>
+                    </a>
+                    <a href="/privacy" class="text-reset text-decoration-none">
+                      <p>Privacy Policy</p>
+                    </a>
                 </div>
             </div>
         </div>
