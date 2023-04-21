@@ -116,7 +116,7 @@
                                         </div>
                                         <div class="modal-body">
                                           <!-- Accepted & User -->
-                                          <label><i class="mdi mdi-circle text-success icon-sm"></i>Accepted</label>
+                                          <label><i class="mdi mdi-circle text-success icon-sm"></i> Accepted</label>
                                           <img class="rounded-circle mx-auto d-block py-2" src="{{$data->transaction_details->rider_details->rider_documents->rider_photo ?? ''}}" width="120" height="110"/>
                                           <ul class="list-unstyled text-center text-small">
                                             <li>
@@ -141,60 +141,63 @@
                                               @endif
                                             </li>
                                           </ul>
-                                        </div>
-                                        <!-- Orders -->
-                                        <div class="table-responsive-sm">
-                                          <table class="ordetails">
-                                            <thead>
-                                              <tr>
-                                                <th>Order</th>
-                                                <th>Product Name</th>
-                                                <th>Qty</th>
-                                                <th>Amount</th>
-                                              </tr>
-                                            </thead>
-                                            <tbody>
-                                              <tr>
-                                                <td>
-                                                  <img
-                                                    src="assets/images/milktea.jpg"
-                                                    alt="image" width="40" height="50"
-                                                  />
-                                                </td>
-                                                <td>Classic Milk Tea R</td>
-                                                <td>1</td>
-                                                <td>₱95.00</td>
-                                              </tr>
-                                              <tr>
-                                                <td>
-                                                  <img
-                                                    src="assets/images/milktea.jpg"
-                                                    alt="image" width="40" height="50"
-                                                  />
-                                                </td>
-                                                <td>Premium Milk Tea R</td>
-                                                <td>1</td>
-                                                <td>₱115.00</td>
-                                              </tr>
-                                              <tr>
-                                                <td colspan="2"></td>
-                                                <td>Total</td>
-                                                <td>₱210.00</td>
-                                              </tr>
-                                            </tbody>
-                                          </table>
-                                        </div>
-                                        <div class="cod">
-                                          <label>Cash on Delivery</label>
-                                        </div>
-                                          <span class="ridername">
-                                            <div>
-                                              <label>Rider’s name</label>
-                                            </div>
-                                            <div>
-                                              <label>Juan Dela cruz</label>
-                                            </div>
-                                          </span>
+                                          <!-- Orders -->
+                                          <div class="table-responsive-sm">
+                                            <table class="ordetails">
+                                              <thead>
+                                                <tr>
+                                                  <th>Order</th>
+                                                  <th>Product Name</th>
+                                                  <th>Qty</th>
+                                                  <th>Amount</th>
+                                                </tr>
+                                              </thead>
+                                              <tbody>
+                                                <?php 
+                                                  $current_order_key = $data->order_key;
+                                                ?>
+                                                <tr>
+                                                  @foreach($data as $item)
+                                                    @if($item->order_key == $current_order_key)
+                                                    <td>
+                                                      <img
+                                                        src="{{$item->transaction_details->product_details->product_image ?? ''}}"
+                                                        alt="image" width="40" height="50"
+                                                      />
+                                                    </td>
+                                                    <td>
+                                                      @if(isset($item->transaction_details) && isset($item->transaction_details->product_details))
+                                                        {{$item->transaction_details->product_details->product_name}}
+                                                      @else
+                                                        {{'Item Name'}}
+                                                      @endif
+                                                    </td>
+                                                    <td>{{$item->quantity}}</td>
+                                                    <td>{{$item->total}}</td>
+                                                    @endif
+                                                  @endforeach
+                                                </tr>
+                                              </tbody>
+                                            </table>
+                                          </div>
+                                          <div class="cod">
+                                            <label>Cash on Delivery</label>
+                                          </div>
+                                            <span class="ridername">
+                                              <div>
+                                                <label>Customer’s name</label>
+                                              </div>
+                                              <div>
+                                                <label>
+                                                  @if(isset($data->transaction_details) && isset($data->transaction_details->user_details))
+                                                    {{$data->transaction_details->user_details->firstname . ' ' . $data->transaction_details->user_details->lastname}}
+                                                  @else
+                                                    {{'asd'}}
+                                                  @endif
+                                                </label>
+                                              </div>
+                                            </span>
+                                          </div>
                                         </div>
                                         <div class="modal-footer">
                                           <button type="button" class="btn btn-danger btn-block btn-rounded " data-dismiss="modal">Back</button>
