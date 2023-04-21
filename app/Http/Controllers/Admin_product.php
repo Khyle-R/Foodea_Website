@@ -450,7 +450,7 @@ class Admin_product extends Controller
         }
         // dd($orders);
         $orders = $orders->sortByDesc(function ($item) {
-            return collect($item->items)->sortBy('order_id')->first()['order_id'];
+            return optional(collect($item->items)->sortBy('order_id')->first())['order_id'];
         });
 
         $TotalOrders = DB::table('tbl_orders')->where('restaurant_id', '=', session('loginID'))->count();
