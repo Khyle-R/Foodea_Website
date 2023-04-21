@@ -160,11 +160,18 @@
                                                                     </tr>
                                                                 </thead>
                                                                 <tbody>
-                                                                    <tr>
-                                                                        <td><img src="{{$data->transaction_details->product_details->product_image ?? ''}}" alt="" width="50" height="40"></td>
-                                                                        <td>{{$data->transaction_details->product_details->product_name ?? ''}}</td>
-                                                                        <th>{{ $data->quantity}}</td>
-                                                                    </tr>
+                                                                    <?php 
+                                                                        $current_key = $data->order_key;    
+                                                                    ?>
+                                                                    @foreach($orders as $key2 => $item)
+                                                                        @if($item->order_key == $current_key)
+                                                                            <tr>
+                                                                                <td><img src="{{$items->transaction_details->product_details->product_image ?? ''}}" alt="image" width="50" height="40"></td>
+                                                                                <td>{{$items->transaction_details->product_details->product_name ?? 'Item Name'}}</td>
+                                                                                <th>{{ $data->quantity}}</td>
+                                                                            </tr>
+                                                                        @endif
+                                                                    @endforeach
                                                                 </tbody>
                                                             </table>
                                                         </div>
