@@ -441,7 +441,7 @@ class Admin_product extends Controller
 
 // Admin order Show the Table
     public function Orders(){
-        $orders = DB::table('tbl_orders')->where('restaurant_id', '=', session('loginID'))->selectRaw('MAX(order_id) as order_id, order_key, *')->groupBy('order_key')->get();
+        $orders = DB::table('tbl_orders')->where('restaurant_id', '=', session('loginID'))->selectRaw('MAX(order_id) as order_id, order_key, customer_id, merchant_id, product_id, restaurant_id, quantity, total, status, payment_type, latitude, longitude, date, created_at, updated_at')->groupBy('order_key')->get();
         dd($orders);
         $orders = $orders->sortByDesc('order_id');
 
