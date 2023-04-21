@@ -129,6 +129,7 @@
                                                 {{'asd'}}
                                               @endif
                                             </li>
+                                            <br>
                                             <li>
                                               @if(isset($data->transaction_details) && isset($data->transaction_details->rider_details))
                                                 {{$data->transaction_details->rider_details->address}}
@@ -136,6 +137,7 @@
                                                 {{'asd'}}
                                               @endif
                                             </li>
+                                            <br>
                                             <li>
                                               @if(isset($data->transaction_details) && isset($data->transaction_details->rider_details))
                                                 {{$data->transaction_details->rider_details->mobile_number}}
@@ -160,25 +162,25 @@
                                                   $current_order_key = $data->order_key;
                                                 ?>
                                                   @foreach($history as $item)
-                                                  <tr>
                                                     @if($item->order_key == $current_order_key)
-                                                    <td>
-                                                      <img
-                                                        src="{{$item->transaction_details->product_details->product_image ?? ''}}"
-                                                        alt="image" width="40" height="50"
-                                                      />
-                                                    </td>
-                                                    <td>
-                                                      @if(isset($item->transaction_details) && isset($item->transaction_details->product_details))
-                                                        {{$item->transaction_details->product_details->product_name}}
-                                                      @else
-                                                        {{'Item Name'}}
-                                                      @endif
-                                                    </td>
-                                                    <td>{{$item->quantity}}</td>
-                                                    <td>{{$item->total}}</td>
+                                                      <tr>
+                                                        <td>
+                                                          <img
+                                                            src="{{$item->transaction_details->product_details->product_image ?? ''}}"
+                                                            alt="image" width="40" height="50"
+                                                          />
+                                                        </td>
+                                                        <td>
+                                                          @if(isset($item->transaction_details) && isset($item->transaction_details->product_details))
+                                                            {{$item->transaction_details->product_details->product_name}}
+                                                          @else
+                                                            {{'Item Name'}}
+                                                          @endif
+                                                        </td>
+                                                        <td>{{$item->quantity}}</td>
+                                                        <td>{{$item->total}}</td>
+                                                      </tr>
                                                     @endif
-                                                    </tr>
                                                   @endforeach
                                               </tbody>
                                             </table>
