@@ -414,7 +414,7 @@ class Admin_product extends Controller
 
     public function Order_Preparing(Request $request)
     {
-        $affected = DB::table('tbl_orders')->where('order_id', $request->order_id);
+        $affected = DB::table('tbl_orders')->where('order_key', $request->order_id);
                 
         $resss=$affected->update(['status' => 'Ready for pick up'],);
               

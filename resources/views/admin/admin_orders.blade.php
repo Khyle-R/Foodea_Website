@@ -244,7 +244,7 @@
                                                   @csrf
                                                 <input type="hidden" name="status" value="Reiv">
                                                 <input type="hidden" name="id" value="{}">
-                                                <input type="hidden" name="order_id" id="order_id" value="{{ $data->order_id}}">
+                                                <input type="hidden" name="order_id" id="order_id" value="{{ $data->order_key}}">
                                             </div>
                                             <!-- MODAL FOOTER -->
                                             <div class="modal-footer">
