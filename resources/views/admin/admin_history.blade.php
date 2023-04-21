@@ -73,7 +73,7 @@
                             </tr>
                           </thead>
                           <tbody>
-                            @foreach ($history as $key => $data)
+                            @foreach ($history as $data)
 
                             <tr>
                               <td>
@@ -94,6 +94,9 @@
                               </td>
                               <td>
                                 {{$data->order_status}}
+                              </td>
+                              <td>
+                                {{$data->total}}
                               </td>
                               <td>
                                   
