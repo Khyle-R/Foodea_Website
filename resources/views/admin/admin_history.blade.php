@@ -65,7 +65,6 @@
                               <th>Order Key</th>
                               <th>Customer’s Name</th>
                               <th>Rider's Name</th>
-                              <th>Product ID</th>
                               <th>Date</th>
                               <th>Total</th>
                               <th>Status</th>
@@ -96,12 +95,11 @@
                                   {{'asd'}}
                                 @endif
                               </td>
-                              <td>{{$data->product_id}}</td>
                               <td>
                                 {{$data->date}}
                               </td>
                               <td>
-                                {{$data->order_status}}
+                                {{$data->status}}
                               </td>
                               <td>
                                 {{$data->total}}
