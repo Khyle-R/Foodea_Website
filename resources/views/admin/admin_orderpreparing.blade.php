@@ -9,7 +9,7 @@
                                         <a href="#">Menu</a>
                                     </li>
                                     <li class="breadcrumb-item active" aria-current="page">
-                                        Preparing
+                                        Ready for pick up
                                     </li>
                                 </ol>
                             </nav>
@@ -20,7 +20,7 @@
                                 <ul class="nav nav-tabs nav-tabs-solid nav-justified">
                                 <li class="nav-size nav-item"><a class="nav-link" href="/admin_orders">All</a></li>
                                 <li class="nav-size nav-item"><a class="nav-link" href="/orderpending">Pending</a></li>
-                                <li class="nav-size nav-item"><a class="nav-link active" href="/orderpreparing">Preparing</a></li>
+                                <li class="nav-size nav-item"><a class="nav-link active" href="/orderpreparing">Ready for pick up</a></li>
                                 <li class="nav-size nav-item"><a class="nav-link" href="/orderdelivering">Delivering</a></li>
                                 <li class="nav-size nav-item"><a class="nav-link" href="/orderdelivered">Delivered</a></li>
                                 </ul>
@@ -56,13 +56,10 @@
                                     <td>{{ $data->total}}</td>
                                     <td>
                                         <div class="dropdown action-label">
-                                                <a class=" btn-white-circle btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
+                                                <a  data-toggle="dropdown" aria-expanded="false">
                                                     <i class=" pending mdi mdi-radiobox-marked"></i> {{ $data->status}}
                                                 </a>
                                             <div class="bg-white dropdown-menu dropdown-menu-right">
-                                                <a data-toggle="modal" data-target="#PendingModal{{ $data->order_id}}" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-success"></i> Pending</a>
-                                                <a data-toggle="modal" data-target="#DeliveringModal{{ $data->order_id}}" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-warning"></i> Delivering</a>
-                                                <a data-toggle="modal" data-target="#DeliveredModal{{ $data->order_id}}" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-warning"></i> Delivered</a>
                                             </div>
                                         </div>
                                     </td>

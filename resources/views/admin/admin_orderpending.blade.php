@@ -20,7 +20,7 @@
                                 <ul class="nav nav-tabs nav-tabs-solid nav-justified">
                                 <li class="nav-size nav-item"><a class="nav-link" href="/admin_orders">All</a></li>
                                 <li class="nav-size nav-item"><a class="nav-link active" href="/orderpending">Pending</a></li>
-                                <li class="nav-size nav-item"><a class="nav-link" href="/orderpreparing">Preparing</a></li>
+                                <li class="nav-size nav-item"><a class="nav-link" href="/orderpreparing">Ready for pick up</a></li>
                                 <li class="nav-size nav-item"><a class="nav-link" href="/orderdelivering">Delivering</a></li>
                                 <li class="nav-size nav-item"><a class="nav-link" href="/orderdelivered">Delivered</a></li>
                                 </ul>
@@ -61,9 +61,7 @@
                                                     <i class=" pending mdi mdi-radiobox-marked"></i> {{ $data->status}}
                                                 </a>
                                             <div class="bg-white dropdown-menu dropdown-menu-right">
-                                                <a data-toggle="modal" data-target="#PreparingModal{{ $data->order_id}}" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-danger"></i> Preparing</a>
-                                                <a data-toggle="modal" data-target="#DeliveringModal{{ $data->order_id}}" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-warning"></i> Delivering</a>
-                                                <a data-toggle="modal" data-target="#DeliveredModal{{ $data->order_id}}" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-warning"></i> Delivered</a>
+                                                <a data-toggle="modal" data-target="#PreparingModal{{ $data->order_id}}" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-danger"></i> Ready for pick up</a>
                                             </div>
                                         </div>
                                     </td>

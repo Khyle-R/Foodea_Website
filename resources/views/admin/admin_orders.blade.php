@@ -20,7 +20,7 @@
                                 <ul class="nav nav-tabs nav-tabs-solid nav-justified">
                                 <li class="nav-size nav-item"><a class="nav-link active" href="/admin_orders">All</a></li>
                                 <li class="nav-size nav-item"><a class="nav-link" href="/orderpending">Pending</a></li>
-                                <li class="nav-size nav-item"><a class="nav-link" href="/orderpreparing">Preparing</a></li>
+                                <li class="nav-size nav-item"><a class="nav-link" href="/orderpreparing">Ready for pick up</a></li>
                                 <li class="nav-size nav-item"><a class="nav-link" href="/orderdelivering">Delivering</a></li>
                                 <li class="nav-size nav-item"><a class="nav-link" href="/orderdelivered">Delivered</a></li>
                                 </ul>
@@ -63,7 +63,7 @@
 						<div class="d-flex align-items-center justify-content-between px-3">
 							<div class="dash-widget-info">
 									<h3>{{ $PreparingOrders}}</h3>
-								<span>Preparing</span>
+								<span>Ready for pick up</span>
 							</div>
 							<span class="dash-widget-icon"><i class="mdi mdi-file-check"></i></span>
 						</div>
@@ -122,10 +122,10 @@
                                                     <i class=" pending mdi mdi-radiobox-marked"></i> {{ $data->status}}
                                                 </a>
                                             <div class="bg-white dropdown-menu dropdown-menu-right">
-                                                <a data-toggle="modal" data-target="#PendingModal{{ $data->order_id}}" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-success"></i> Pending</a>
-                                                <a data-toggle="modal" data-target="#PreparingModal{{ $data->order_id}}" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-danger"></i> Preparing</a>
-                                                <a data-toggle="modal" data-target="#DeliveringModal{{ $data->order_id}}" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-warning"></i> Delivering</a>
-                                                <a data-toggle="modal" data-target="#DeliveredModal{{ $data->order_id}}" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-warning"></i> Delivered</a>
+                                                {{-- <a data-toggle="modal" data-target="#PendingModal{{ $data->order_id}}" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-success"></i> Pending</a> --}}
+                                                <a data-toggle="modal" data-target="#PreparingModal{{ $data->order_id}}" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-danger"></i> Ready for pick up</a>
+                                                {{-- <a data-toggle="modal" data-target="#DeliveringModal{{ $data->order_id}}" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-warning"></i> Delivering</a>
+                                                <a data-toggle="modal" data-target="#DeliveredModal{{ $data->order_id}}" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-warning"></i> Delivered</a> --}}
                                             </div>
                                         </div>
                                     </td>
