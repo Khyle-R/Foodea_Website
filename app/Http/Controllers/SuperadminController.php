@@ -324,7 +324,6 @@ class SuperadminController extends Controller
     ->join('merchant_application', 'tbl_merchant_account.merchant_id', '=', 'merchant_application.merchant_id')
     ->join('merchant_document', 'tbl_merchant_account.merchant_id', '=', 'merchant_document.merchant_id')
     ->distinct()
-    ->orderBy('tbl_merchant_account.merchant_id', 'desc')
     ->get(['merchant_document.logo' ,'merchant_application_id', 'status', 'merchant_application.date', 'merchant_application.merchant_id', 'store_email', 'business_type', 'business_name']);
    
          $all = tbl_merchant_application::count();

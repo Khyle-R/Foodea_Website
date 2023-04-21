@@ -91,9 +91,9 @@
                                 <!-- <a href="#" class="btn btn-link">
                                     <img class="imagedl mt-5" src="image/gplay.png" alt=""></button>
                                 </a> -->
-                                <a href="https://expo.dev/artifacts/eas/oz3XBZY4xEEMaFm4B8HyZ8.apk"
+                                <a href="https://expo.dev/artifacts/eas/xcKxNiAkKHEQHRZfaVXM24.apk"
                                     class="btn btn-link">
-                                    <img class="imagedl mt-4" src="{{ asset('newimage/download_now.png')}}"
+                                    <img class="imagedl mt-4" src="https://foodea-bucket.s3.us-east-2.amazonaws.com/images/test/123/qZRW20hPJyDRFL0sT1Ym36P2bdiWkGSFggPZ3GGm.png"
                                         alt=""></button>
                                 </a>
                             </div>
