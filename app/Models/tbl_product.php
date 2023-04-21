@@ -8,19 +8,23 @@ use Illuminate\Database\Eloquent\Model;
 class tbl_product extends Model
 {
     use HasFactory;
-    public $table ="tbl_product";
-    public $timestamps = false;
+    public $table = 'tbl_product';
     protected $fillable = [
+        'product_id',
         'merchant_id',
-        'product_name',
-        'stock' ,
-        'product_image',
-        'price',
+        'category_id',
         'category_name',
-        'status',
+        'ingredients',
         'tags',
+        'product_name',
+        'price',
+        'calories',
+        'product_image',
+        'stock',
+        'status',
         'description',
-        'ingredients'
+        'date'
     ];
     protected $primaryKey = 'product_id';
+    public $timestamps = false;
 }

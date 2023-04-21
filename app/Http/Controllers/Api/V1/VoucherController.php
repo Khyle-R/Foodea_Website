@@ -14,9 +14,9 @@ class VoucherController extends Controller
         $queryItems = $filter->transform($request);
 
         if (!isset($queryItems)||count($queryItems) == 0 ) {
-            return tbl_voucher::all();
+            return tbl_voucher::with('restaurant_details')->get();
         } else {
-            return tbl_voucher::where($queryItems)->get();
+            return tbl_voucher::with('restaurant_details')->where($queryItems)->get();
         }
     }
 

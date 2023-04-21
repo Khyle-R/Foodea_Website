@@ -39,6 +39,8 @@ class StoreAppUserRequest extends FormRequest
             'password' => ['required'],
             'lifestyle' => ['required'],
             'preferences' => ['required'],
+            'latitude' => ['required'],
+            'longitude' => ['required']
         ];
     }
 }

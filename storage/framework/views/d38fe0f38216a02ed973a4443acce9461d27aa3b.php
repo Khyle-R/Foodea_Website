@@ -126,7 +126,7 @@
             </div>
           </div>
      <!-- </div> -->
-
+          <p><?php echo e(Session::get('verification')); ?></p>
      
   <!-- EXIT Modal -->
         <div class="modal fade" id="ExitModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

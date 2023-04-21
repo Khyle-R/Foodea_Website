@@ -31,7 +31,7 @@ class UpdateTransactionRequest extends FormRequest
                 'merchant_id' => ['required', 'numeric'],
                 'customer_id' => ['required', 'numeric'],
                 'rider_id' => ['required', 'numeric'],
-                'products_id' => ['required', 'numeric'],
+                'product_id' => ['required', 'numeric'],
                 'order_status' => ['required']
             ];
         } else {
@@ -40,7 +40,7 @@ class UpdateTransactionRequest extends FormRequest
                 'merchant_id' => ['sometimes', 'required', 'numeric'],
                 'customer_id' => ['sometimes', 'required', 'numeric'],
                 'rider_id' => ['sometimes', 'required', 'numeric'],
-                'products_id' => ['sometimes', 'required', 'numeric'],
+                'product_id' => ['sometimes', 'required', 'numeric'],
                 'order_status' => ['sometimes', 'required'],
             ];
         }

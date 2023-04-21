@@ -121,7 +121,7 @@
               <div class="col-lg-6 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Sales</h4>
+                    <h4 class="card-title">Applicants</h4>
                     <canvas id="doughnutChart"></canvas>
                   </div>
                 </div>

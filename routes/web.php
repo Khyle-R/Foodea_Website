@@ -245,6 +245,10 @@ Route::group(['middleware'=>['superadminLogin']], function(){
 
     Route::post('/superadmin_partnerapplication', [SuperadminController::class, 'UpdateMerchant'])->name('UpdateMerchant');
 
+    Route::post('/superadmin_partnerapplicationremove', [SuperadminController::class, 'RemoveMerchantAccount'])->name('RemoveMerchantAccount');
+
+     Route::post('/superadmin_riderremove', [SuperadminController::class, 'RemoveRiderAccount'])->name('RemoveRiderAccount');
+     
     Route::get('/superadmin_log', [SuperadminController::class, 'ActivityLog']);
 
     Route::get('/superadmin_riderdetails/{id}', [SuperadminController::class, 'RiderDetails']);

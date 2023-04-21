@@ -8,12 +8,15 @@ class FoodFilter{
         'product_id' => ['eq'],
         'merchant_id' => ['eq'],
         'category_id' => ['eq'],
-        'product_name' => ['eq', 'like'],
-        'calories' => ['eq', 'lt', 'lte', 'gt', 'gte'],
-        'price' => ['eq', 'gt', 'lt', 'gte', 'lte'],
-        'stock' => ['eq', 'gt', 'lt', 'gte', 'lte'],
-        'status' => ['ne', 'eq'],
-        'description' => ['eq']
+        'category_name' => ['eq', 'like'],
+        'ingredients'  => ['eq', 'like'],
+        'product_name'  => ['eq', 'like'],
+        'price'  => ['eq', 'lte', 'lt', 'gt', 'gte'],
+        'calories'  => ['eq', 'lte', 'lt', 'gt', 'gte'],
+        'product_image'  => ['eq', 'like'],
+        'stock' => ['eq', 'lte', 'lt', 'gt', 'gte'],
+        'status'  => ['eq', 'like'],
+        'description' => ['eq', 'like']
     ];
 
     protected $operatorMap = [

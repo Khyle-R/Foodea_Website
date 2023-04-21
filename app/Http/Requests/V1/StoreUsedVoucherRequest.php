@@ -4,7 +4,7 @@ namespace App\Http\Requests\V1;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreTransactionRequest extends FormRequest
+class StoreUsedVoucherRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,12 +24,8 @@ class StoreTransactionRequest extends FormRequest
     public function rules()
     {
         return [
-            'order_key' => ['required'],
-            'merchant_id' => ['required', 'numeric'],
-            'customer_id' => ['required', 'numeric'],
-            'rider_id' => ['required', 'numeric'],
-            'product_id' => ['required', 'numeric'],
-            'order_status' => ['required'],
+            'user_id' => ['required', 'numeric'],
+            'voucher_id' => ['required', 'numeric']
         ];
     }
 }
