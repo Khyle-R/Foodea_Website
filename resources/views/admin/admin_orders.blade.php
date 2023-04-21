@@ -167,10 +167,21 @@
                                                                     @foreach($order_with_key as $key2 => $item)
                                                                         
                                                                         @if($item->order_key == $current_key)
-                                                                            {{$item}}
                                                                             <tr>
-                                                                                <td><img src="{{$item->transaction_details->product_details->product_image ?? ''}}" alt="image" width="50" height="40"></td>
-                                                                                <td>{{$item->transaction_details->product_details->product_name ?? 'Item Name'}}</td>
+                                                                                <td><img src="
+                                                                                @if(isset($item->transaction_details) && isset($item->transaction_details->product_details))
+                                                                                {{$item->transaction_details->product_details->product_image}}
+                                                                                @else
+                                                                                {{''}}
+                                                                                @endif    
+                                                                                " alt="image" width="50" height="40"></td>
+                                                                                <td>
+                                                                                    @if(isset($item->transaction_details) && isset($item->transaction_details->product_details))
+                                                                                        {{$item->transaction_details->product_details->product_name}}
+                                                                                    @else
+                                                                                        {{'Item name'}}
+                                                                                    @endif   
+                                                                                </td>
                                                                                 <th>{{ $item->quantity}}</td>
                                                                             </tr>
                                                                         @endif
