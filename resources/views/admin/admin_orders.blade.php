@@ -111,7 +111,7 @@
                               @foreach ($orders as $key => $data)
                               
                                 <tr>
-                                    <td>{{ $data[0]->order_id}}</td>
+                                    <td>{{ $data->order_id}}</td>
                                     <td>{{ $data[0]->customer_id}}</td>
                                     <td>{{ $data[0]->order_key}}</td>
                                     <td>{{ $data[0]->product_id}}</td>
