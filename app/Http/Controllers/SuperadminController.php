@@ -43,7 +43,22 @@ class SuperadminController extends Controller
         ->distinct()
         ->get(['rider_photo' ,'firstname', 'lastname' ,'vehicle_type', 'status', 'rider_application.date', 'rider_application.rider_application_id', 'tbl_rider_account.rider_id', 'email']);
 
-        return view('superadmin.superadmin_dashboard', compact('riders', 'merchant', 'Data'));
+        if($Data){
+        
+         $date = tbl_merchant_application::get();
+         
+        $day=[];
+         foreach($date as $dates){
+            $timestamp = strtotime($dates->date);
+            $day[] = date('D', $timestamp);
+         }
+ 
+      
+        
+         return view('superadmin.superadmin_dashboard', compact('riders', 'merchant', 'Data', 'day'));
+        }
+
+       
     }
  
     public function SuperadminForgotPass(){

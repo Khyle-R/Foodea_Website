@@ -564,7 +564,7 @@
     <!-- endinject -->
     <!-- Custom js for this page -->
     <script src="assets/js/dashboard.js"></script>
-    <script src="assets/js/chart.js"></script>
+    <script src="assets/js/admin_chart.js"></script>
     <script src="assets/js/app.js"></script>
     <script src="{{ asset('assets/js/toast.js') }}"></script>
     <!-- End custom js for this page -->
