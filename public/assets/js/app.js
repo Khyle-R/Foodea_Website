@@ -1,7 +1,7 @@
 $(document).ready(function () {
     $('#example').DataTable({
         responsive: true,
-        order: [[4, 'desc']],
+
     });
 
 });
@@ -24,6 +24,14 @@ $(document).ready(function () {
 
         responsive: true,
         "order": [],
+    });
+
+});
+$(document).ready(function () {
+    $('#sortStart').DataTable({
+
+        responsive: true,
+        order: [[0, 'desc']],
     });
 
 });
