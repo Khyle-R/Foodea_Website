@@ -445,7 +445,7 @@ class Admin_product extends Controller
         $orders = collect();
         foreach ($orderKeys as $orderKey){
             $order = tbl_orders::whereIn('order_key', $orderKey)->where('restaurant_id', session('loginID'))->get();
-            $orders->put($order);
+            $orders->add($order);
             continue;
         }
         dd($orders);
