@@ -157,8 +157,7 @@
                                                   $current_order_key = $data->order_key;
                                                 ?>
                                                 <tr>
-                                                  {{dd($history)}}
-                                                  @foreach($data as $item)
+                                                  @foreach($history as $item)
                                                     
                                                     @if($item->order_key == $current_order_key)
                                                     <td>
