@@ -162,7 +162,7 @@
                                                                 <tbody>
                                                                     <?php 
                                                                         $current_key = $data->order_key;
-                                                                        $order_with_key = App\Models\tbl_orders::where('order_key', $current_key)->get();  
+                                                                        $order_with_key = App\Models\tbl_orders::where('order_key', $current_key)->with('transaction_details')->get();  
                                                                     ?>
                                                                     @foreach($order_with_key as $key2 => $item)
                                                                         
