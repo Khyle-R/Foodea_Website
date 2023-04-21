@@ -346,13 +346,6 @@
                             </tbody>
                         </table>
                         </div>
-                        <script>
-                            $(document).ready(function () {
-                                $('#example').DataTable({
-                                    order: [[4, 'desc']],
-                                }); 
-                            });
-                        </script>
                     </div>
                 </div>
             </div>
