@@ -445,7 +445,7 @@ class Admin_product extends Controller
         $orders = collect();
         foreach ($orderKeys as $orderKey){
             $order = tbl_orders::whereIn('order_key', $orderKey)->where('restaurant_id', session('loginID'))->get();
-            $orders = $orders->merge($merge);
+            $orders = $orders->merge($order);
             continue;
         }
         $orders = $orders->flatten();
