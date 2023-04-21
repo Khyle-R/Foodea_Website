@@ -164,6 +164,7 @@
                                                                         $current_key = $data->order_key;    
                                                                     ?>
                                                                     @foreach($orders as $key2 => $item)
+                                                                        {{$item}}
                                                                         @if($item->order_key == $current_key)
                                                                             <tr>
                                                                                 <td><img src="{{$item->transaction_details->product_details->product_image ?? ''}}" alt="image" width="50" height="40"></td>
@@ -175,44 +176,10 @@
                                                                 </tbody>
                                                             </table>
                                                         </div>
-                                                        {{-- <div class="form-group">
-                                                            <form method="post" action="">
-                                                            @csrf
-                                                            <label>Order Number:</label>
-                                                            <input id="OrderNumber" name="OrderNumber" type="text" class="form-control" placeholder="{{ $data->order_id}}" required>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>Customer ID</label>
-                                                            <input id="CustomerId" name="CustomerId" type="text" class="form-control" placeholder="{{ $data->customer_id}}" required>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>Product ID</label>
-                                                            <input id="ProductId" name="ProductId" type="text" class="form-control" placeholder="{{ $data->product_id}}" required>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>Quantity</label>
-                                                            <input id="quantity" name="quantity" type="text" class="form-control" placeholder="{{ $data->quantity}}" required>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>Total</label>
-                                                            <input id="total" name="total" type="text" class="form-control" placeholder="{{ $data->total}}" required>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>Status</label>
-                                                            <input id="status" name="status" type="text" class="form-control" placeholder="{{ $data->status}}" required>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>Payment type</label>
-                                                            <input id="paymentType" name="paymentType" type="text" class="form-control" placeholder="{{ $data->payment_type}}" required>
-                                                        </div>
-                                                        <div class="form-group">
-                                                            <label>Date</label>
-                                                            <input id="date" name="date" type="text" class="form-control" placeholder="{{ $data->date}}" required>
-                                                        </div> --}}
                                                     </div>
                                                     <!-- MODAL FOOTER -->
                                                     <div class="modal-footer">
-                                                        {{-- </form> --}}
+
                                                     </div>
                                                 </div>
                                             </div>
