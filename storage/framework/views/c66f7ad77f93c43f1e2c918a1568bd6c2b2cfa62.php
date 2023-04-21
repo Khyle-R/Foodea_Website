@@ -270,7 +270,7 @@ unset($__errorArgs, $__bag); ?>
                                              <i class=" pending mdi mdi-radiobox-marked"></i> Status
                                           </a>
                                           <div class="bg-white dropdown-menu dropdown-menu-right">
-                                             <a data-toggle="modal" data-target="#deleteModal" class="action-btn dropdown-item black" href="#"><i
+                                             <a data-toggle="modal" data-target="#deleteModal<?php echo e($data->product_id); ?>" class="action-btn dropdown-item black" href="#"><i
                                                    class="fa fa-dot-circle-o text-success"></i> Remove Product</a>
                                              <a data-toggle="modal" data-target="#EditModal<?php echo e($data->product_id); ?>" class="action-btn dropdown-item black" href="#"><i
                                                    class="fa fa-dot-circle-o text-danger"></i> Edit Product</a>
@@ -378,7 +378,7 @@ unset($__errorArgs, $__bag); ?>
 
 
                                        <!-- Modal -->
-                                       <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                       <div class="modal fade" id="deleteModal<?php echo e($data->product_id); ?>" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
                                           <div class="modal-dialog modal-dialog-centered">
                                              <div class="modal-content">
                                                 <div class="modal-header">
@@ -394,7 +394,7 @@ unset($__errorArgs, $__bag); ?>
                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
                                                       Close
                                                    </button>
-                                                   <a href="product/remove/<?php echo e($data->product_id); ?>" type="button"class="btn btn-danger">Remove
+                                                   <a href="/product/remove/<?php echo e($data->product_id); ?>" type="button"class="btn btn-danger">Remove
                                                       product</a>
                                                 </div>
                                              </div>

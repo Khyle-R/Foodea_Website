@@ -216,7 +216,7 @@
                                              <i class=" pending mdi mdi-radiobox-marked"></i> Status
                                           </a>
                                           <div class="bg-white dropdown-menu dropdown-menu-right">
-                                             <a data-toggle="modal" data-target="#deleteModal" class="action-btn dropdown-item black" href="#"><i
+                                             <a data-toggle="modal" data-target="#deleteModal{{ $data->product_id }}" class="action-btn dropdown-item black" href="#"><i
                                                    class="fa fa-dot-circle-o text-success"></i> Remove Product</a>
                                              <a data-toggle="modal" data-target="#EditModal{{ $data->product_id }}" class="action-btn dropdown-item black" href="#"><i
                                                    class="fa fa-dot-circle-o text-danger"></i> Edit Product</a>
@@ -353,7 +353,7 @@
 
 
                                        <!-- Modal -->
-                                       <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                       <div class="modal fade" id="deleteModal{{$data->product_id}}" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
                                           <div class="modal-dialog modal-dialog-centered">
                                              <div class="modal-content">
                                                 <div class="modal-header">
@@ -369,7 +369,7 @@
                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">
                                                       Close
                                                    </button>
-                                                   <a href="product/remove/{{ $data->product_id }}" type="button"class="btn btn-danger">Remove
+                                                   <a href="/product/remove/{{ $data->product_id }}" type="button"class="btn btn-danger">Remove
                                                       product</a>
                                                 </div>
                                              </div>

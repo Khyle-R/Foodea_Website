@@ -25,8 +25,8 @@ class OrderController extends Controller
                 $rider_id = $request->rider_id;
                 $rider = tbl_rider_accounts::where('rider_id', $rider_id)->first();
 
-                $rider_latitude = $rider->latitude;
-                $rider_longitude = $rider->longitude;
+                $rider_latitude = $rider->latitude ?? 0;
+                $rider_longitude = $rider->longitude ?? 0;
             }
             $order_details = collect();
             $order_keys = Order::select('order_key')->distinct()->get();
@@ -97,8 +97,8 @@ class OrderController extends Controller
                 $rider_id = $request->rider_id;
                 $rider = tbl_rider_accounts::where('rider_id', $rider_id)->first();
 
-                $rider_latitude = $rider->latitude;
-                $rider_longitude = $rider->longitude;
+                $rider_latitude = $rider->latitude ?? 0;
+                $rider_longitude = $rider->longitude ?? 0;
             }
             $order_details = collect();
             $order_keys = Order::select('order_key')->distinct()->get();

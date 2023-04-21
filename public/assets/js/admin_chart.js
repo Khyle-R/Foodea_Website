@@ -82,7 +82,8 @@ $(function () {
 
     var doughnutPieData = {
         datasets: [{
-            data: [1, 1, 1, 1],
+            // data: [1, 1, 1, 1],
+            data: OrderData,
             backgroundColor: [
                 "rgba(255, 99, 132, 0.5)",
                 "rgba(54, 162, 235, 0.5)",
@@ -102,7 +103,8 @@ $(function () {
         }, ],
 
         // These labels appear in the legend and in the tooltips when hovering different arcs
-        labels: ["Pending", "Accepted", "Rejected"],
+        // labels: ["Pending", "Preparing", "Delivering", "Delivered"],
+        labels: OrderLabel,
     };
     var doughnutPieOptions = {
         responsive: true,
@@ -113,10 +115,11 @@ $(function () {
     };
     var areaData = {
         // labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-        labels: sarray,
+        labels: DateLabel,
         datasets: [{
             label: "Sales",
-            data: [7200, 1900, 3000, 5000, 2000, 3000, 5000],
+            // data: [7200, 1900],
+            data: DateData,
             backgroundColor: [
                 "rgba(255, 99, 132, 0.2)",
                 "rgba(54, 162, 235, 0.2)",

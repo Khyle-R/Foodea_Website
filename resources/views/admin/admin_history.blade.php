@@ -62,10 +62,9 @@
                           <thead>
                             <tr>
                               <th>Transaction ID</th>
-                              <th>Order Number</th>
-                              <th>Customer’s ID</th>
-                              <th>Rider's ID</th>
-                              <th>Product ID</th>
+                              <th>Order Key</th>
+                              <th>Customer’s Name</th>
+                              <th>Rider's Name</th>
                               <th>Date</th>
                               <th>Total</th>
                               <th>Status</th>
@@ -73,41 +72,36 @@
                             </tr>
                           </thead>
                           <tbody>
-                            @foreach ($history as $key => $data)
-
+                            @foreach ($history as $data)
                             <tr>
-                              <td>
-                                {{$data->transaction_id}}
-                              </td>
                               <td>
                                 {{$data->order_id}}
                               </td>
                               <td>
-                                {{$data->customer_id}}
+                                {{$data->order_key}}
                               </td>
                               <td>
-                                {{$data->customer_id}}
+                                @if(isset($data->transaction_details) && isset($data->transaction_details->user_details))
+                                  {{$data->transaction_details->user_details->firstname . ' ' . $data->transaction_details->user_details->lastname}}
+                                @else
+                                  {{'asd'}}
+                                @endif
                               </td>
-                              <td>{{$data->product_Id}}</td>
+                              <td>
+                                @if(isset($data->transaction_details) && isset($data->transaction_details->rider_details))
+                                  {{$data->transaction_details->rider_details->firstname . ' ' . $data->transaction_details->rider_details->lastname}}
+                                @else
+                                  {{'asd'}}
+                                @endif
+                              </td>
                               <td>
                                 {{$data->date}}
                               </td>
                               <td>
-                                {{$data->order_status}}
+                                {{$data->total}}
                               </td>
                               <td>
-                                  
-                                  @if ($data->order_status =='Cancelled')
-                                      <button class="btn btn-danger" data-toggle="modal" data-target="#Cancelled">
-                                        Cancelled
-                                      </button>
-                                    @elseif($data->order_status=='Delivered')
-                                      <button class="btn btn-success" data-toggle="modal" data-target="#Cancelled">
-                                        Delivered
-                                      </button>
-                                    @else
-                                    
-                                    @endif
+                                {{$data->status}}
                               </td>
                               <td>
                                   <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#viewdetails">View Details</button>
