@@ -444,7 +444,7 @@ class Admin_product extends Controller
         $orderKeys = tbl_orders::select('order_key')->distinct()->where('restaurant_id', session('loginID'))->get();
         $orders = collect();
         foreach ($orderKeys as $orderKey){
-            $order = tbl_orders::whereIn('order_key', $orderKey)->where('restaurant_id', session('loginID'))->get();
+            $order = tbl_orders::whereIn('order_key', $orderKey)->where('restaurant_id', session('loginID'))->first();
             $orders = $orders->merge($order, true);
             continue;
         }
