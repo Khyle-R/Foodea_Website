@@ -445,10 +445,10 @@ class Admin_product extends Controller
         $orders = collect();
         foreach ($orderKeys as $orderKey){
             $order = tbl_orders::whereIn('order_key', $orderKey)->where('restaurant_id', session('loginID'))->get();
-            $orders= $orders->merge($order->values());
+            $orders= $orders->merge($order);
             continue;
         }
-        dd($orders);
+        dd($orders->values());
         $orders = $orders->sortByDesc('order_id');
 
         $TotalOrders = DB::table('tbl_orders')->where('restaurant_id', '=', session('loginID'))->count();
