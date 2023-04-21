@@ -143,7 +143,7 @@
                            </tr>
                         </thead>
                         <tbody>
-                           <?php $__currentLoopData = $product; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                           <?php $__currentLoopData = $products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                               <tr>
                                  <td>
                                     <img src="<?php echo e($data->product_image); ?>" alt="image" class="img-fluid"

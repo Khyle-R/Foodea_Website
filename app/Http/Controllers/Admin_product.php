@@ -38,10 +38,11 @@ class Admin_product extends Controller
        $totalProduct = tbl_product::where('merchant_id', Session::get('loginID'))
        ->count('product_id');
     
-    $product = tbl_product::where('merchant_id', Session::get('loginID'))
-    ->get();
-    
-    if($product){
+        $products = tbl_product::where('merchant_id', Session::get('loginID'))
+        ->get();
+        
+        
+    if($products){
     
     // GET DATE AND TOTAL IN CHART
     $date = tbl_orders::selectRaw('date as dates, sum(total) as totals')
@@ -87,7 +88,7 @@ class Admin_product extends Controller
         $products[] = $prod;
         
     }
-    return view('admin.dashboard',['totalOrders' => $totalOrders, 'productSold' => $productSold, 'totalRevenue' => $totalRevenue, 'totalProduct' => $totalProduct,], compact('product', 'day', 'total', 'order_status', 'order_count', 'products'));
+    return view('admin.dashboard',['totalOrders' => $totalOrders, 'productSold' => $productSold, 'totalRevenue' => $totalRevenue, 'totalProduct' => $totalProduct,], compact('products', 'day', 'total', 'order_status', 'order_count', 'products'));
     }
    
     }
@@ -414,7 +415,7 @@ class Admin_product extends Controller
     {
         $affected = DB::table('tbl_orders')->where('order_id', $request->order_id);
                 
-        $resss=$affected->update(['status' => 'Preparing'],);
+        $resss=$affected->update(['status' => 'Ready for pick up'],);
               
         return redirect('orderpreparing');
     }
@@ -458,7 +459,7 @@ class Admin_product extends Controller
         return view ('admin.admin_orderpending', ['pending_order' => $pending_order]);
     }
     public function OrderPreparing(){
-        $preparing_order = DB::table('tbl_orders')->where([['status','=', 'Preparing'],['restaurant_id', '=', session('loginID')]])->get();
+        $preparing_order = DB::table('tbl_orders')->where([['status','=', 'Ready for pick up'],['restaurant_id', '=', session('loginID')]])->get();
 
         return view ('admin.admin_orderpreparing', ['preparing_order' => $preparing_order]);
     }
