@@ -26,20 +26,15 @@ use Carbon\Carbon; // to retrieve current Date
 class Admin_product extends Controller
 {
     public function dashboard(){
-       $totalOrders = tbl_orders::where('restaurant_id', Session::get('loginID'))
-       ->count();
+        $totalOrders = tbl_orders::where('restaurant_id', Session::get('loginID'))->count();
        
-       $productSold = tbl_orders::where('restaurant_id', Session::get('loginID'))
-       ->count('product_id');
+        $productSold = tbl_orders::where('restaurant_id', Session::get('loginID'))->where('status', 'Delivered')->sum('quantity');
        
-       $totalRevenue = tbl_orders::where('restaurant_id', Session::get('loginID'))
-       ->sum('total');
+        $totalRevenue = tbl_orders::where('restaurant_id', Session::get('loginID'))->where('status', 'Delivered')->sum('total');
       
-       $totalProduct = tbl_product::where('merchant_id', Session::get('loginID'))
-       ->count('product_id');
+        $totalProduct = tbl_product::where('merchant_id', Session::get('loginID'))->count('product_id');
     
-        $allProduct = tbl_product::where('merchant_id', Session::get('loginID'))
-        ->get();
+        $allProduct = tbl_product::where('merchant_id', Session::get('loginID'))->get();
         
         
     if($allProduct){
