@@ -38,11 +38,11 @@ class Admin_product extends Controller
        $totalProduct = tbl_product::where('merchant_id', Session::get('loginID'))
        ->count('product_id');
     
-        $prod = tbl_product::where('merchant_id', Session::get('loginID'))
+        $allProduct = tbl_product::where('merchant_id', Session::get('loginID'))
         ->get();
         
         
-    if($prod){
+    if($allProduct){
     
     // GET DATE AND TOTAL IN CHART
     $date = tbl_orders::selectRaw('date as dates, sum(total) as totals')
@@ -88,7 +88,7 @@ class Admin_product extends Controller
         $products[] = $prod;
         
     }
-    return view('admin.dashboard',['totalOrders' => $totalOrders, 'productSold' => $productSold, 'totalRevenue' => $totalRevenue, 'totalProduct' => $totalProduct,], compact('prod', 'day', 'total', 'order_status', 'order_count', 'products'));
+    return view('admin.dashboard',['totalOrders' => $totalOrders, 'productSold' => $productSold, 'totalRevenue' => $totalRevenue, 'totalProduct' => $totalProduct,], compact('products', 'day', 'total', 'order_status', 'order_count', 'allProduct'));
     }
    
     }

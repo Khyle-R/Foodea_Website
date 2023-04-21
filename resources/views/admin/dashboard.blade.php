@@ -143,7 +143,7 @@
                            </tr>
                         </thead>
                         <tbody>
-                           @foreach ($prod as $key => $data)
+                           @foreach ($allProduct as $key => $data)
                               <tr>
                                  <td>
                                     <img src="{{ $data->product_image }}" alt="image" class="img-fluid"
