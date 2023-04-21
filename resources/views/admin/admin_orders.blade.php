@@ -94,7 +94,7 @@
                     <div class="card-body">
 
                         <div class="table-responsive">
-                            <table id="example" class="table" style="width:100%">
+                            <table id="example1" class="table" style="width:100%">
                             <thead>
                                 <tr>
                                     <th>Order Number</th>
@@ -346,6 +346,13 @@
                             </tbody>
                         </table>
                         </div>
+                        <script>
+                            $(document).ready(function () {
+                                $('#example1').DataTable({
+                                    order: [[4, 'desc']],
+                                }); 
+                            });
+                        </script>
                     </div>
                 </div>
             </div>

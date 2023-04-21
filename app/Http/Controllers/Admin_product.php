@@ -448,8 +448,8 @@ class Admin_product extends Controller
             $orders = $orders->merge($order, true);
             continue;
         }
-        dd($orders);
-        $orders = $orders->sortByDesc('order_id');
+        // dd($orders);
+        // $orders = $orders->sortByDesc('order_id');
 
         $TotalOrders = DB::table('tbl_orders')->where('restaurant_id', '=', session('loginID'))->count();
         $PendingOrders = DB::table('tbl_orders')->where([['status','Pending'],['restaurant_id', '=', session('loginID')]])->count();
