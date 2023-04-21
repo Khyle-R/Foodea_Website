@@ -490,7 +490,6 @@ class SuperadminController extends Controller
     ->join('merchant_application', 'tbl_merchant_account.merchant_id', '=', 'merchant_application.merchant_id')
     ->join('merchant_document', 'tbl_merchant_account.merchant_id', '=', 'merchant_document.merchant_id')
     ->where('merchant_application.status', 'Pending')
-    ->orderBy('tbl_merchant_account.merchant_id', 'desc')
     ->distinct()
     ->get(['merchant_document.logo' ,'merchant_application_id', 'status', 'merchant_application.date', 'merchant_application.merchant_id', 'store_email', 'business_type', 'business_name']);
    
@@ -530,7 +529,6 @@ class SuperadminController extends Controller
     ->join('merchant_application', 'tbl_merchant_account.merchant_id', '=', 'merchant_application.merchant_id')
     ->join('merchant_document', 'tbl_merchant_account.merchant_id', '=', 'merchant_document.merchant_id')
     ->where('merchant_application.status', 'Reviewing')
-    ->orderBy('tbl_merchant_account.merchant_id', 'desc')
     ->distinct()
     ->get(['merchant_document.logo' ,'merchant_application_id', 'status', 'merchant_application.date', 'merchant_application.merchant_id', 'store_email', 'business_type', 'business_name']);
    
@@ -543,7 +541,6 @@ class SuperadminController extends Controller
     ->join('merchant_application', 'tbl_merchant_account.merchant_id', '=', 'merchant_application.merchant_id')
     ->join('merchant_document', 'tbl_merchant_account.merchant_id', '=', 'merchant_document.merchant_id')
     ->where('merchant_application.status', 'Accepted')
-    ->orderBy('tbl_merchant_account.merchant_id', 'desc')
     ->distinct()
     ->get(['merchant_document.logo' ,'merchant_application_id', 'status', 'merchant_application.date', 'merchant_application.merchant_id', 'store_email', 'business_type', 'business_name']);
    
@@ -556,7 +553,6 @@ class SuperadminController extends Controller
     ->join('merchant_application', 'tbl_merchant_account.merchant_id', '=', 'merchant_application.merchant_id')
     ->join('merchant_document', 'tbl_merchant_account.merchant_id', '=', 'merchant_document.merchant_id')
     ->where('merchant_application.status', 'Rejected')
-    ->orderBy('tbl_merchant_account.merchant_id', 'desc')
     ->distinct()
     ->get(['merchant_document.logo' ,'merchant_application_id', 'status', 'merchant_application.date', 'merchant_application.merchant_id', 'store_email', 'business_type', 'business_name']);
    
