@@ -38,7 +38,7 @@ class Admin_product extends Controller
        $totalProduct = tbl_product::where('merchant_id', Session::get('loginID'))
        ->count('product_id');
     
-        $products = tbl_product::where('merchant_id', Session::get('loginID'))
+        $prod = tbl_product::where('merchant_id', Session::get('loginID'))
         ->get();
         
         
@@ -88,7 +88,7 @@ class Admin_product extends Controller
         $products[] = $prod;
         
     }
-    return view('admin.dashboard',['totalOrders' => $totalOrders, 'productSold' => $productSold, 'totalRevenue' => $totalRevenue, 'totalProduct' => $totalProduct,], compact('products', 'day', 'total', 'order_status', 'order_count', 'products'));
+    return view('admin.dashboard',['totalOrders' => $totalOrders, 'productSold' => $productSold, 'totalRevenue' => $totalRevenue, 'totalProduct' => $totalProduct,], compact('prod', 'day', 'total', 'order_status', 'order_count', 'products'));
     }
    
     }
