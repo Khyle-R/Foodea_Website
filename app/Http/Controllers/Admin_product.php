@@ -441,7 +441,7 @@ class Admin_product extends Controller
 
 // Admin order Show the Table
     public function Orders(){
-        $orderKeys = tbl_orders::select('order_keys')->distinct()->where('restaurant_id', session('loginID'))->pluck('order_key')->toArray();
+        $orderKeys = tbl_orders::select('order_key')->distinct()->where('restaurant_id', session('loginID'))->pluck('order_key')->toArray();
         $orders = tbl_orders::whereIn('order_key', $orderKeys)->get();
         dd($orders);
         $orders = $orders->sortByDesc('order_id');
