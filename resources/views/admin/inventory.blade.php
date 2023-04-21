@@ -103,7 +103,7 @@
                             </td>
                             <td>
                               <img
-                                src="{{ asset('product_images/'.$data->product_image)}}"
+                                src="{{$data->product_image}}"
                                 alt="image"
                                 class="img-fluid"
                                 style="
