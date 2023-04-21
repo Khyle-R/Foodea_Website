@@ -167,24 +167,18 @@
                                                                     @foreach($order_with_key as $key2 => $item)
                                                                         
                                                                         @if($item->order_key == $current_key)
-                                                                            {{$item->product_id . ' '}}
-                                                                            <tr>
-                                                                                <td><img src="
-                                                                                @if(isset($item->transaction_details) && isset($item->transaction_details->product_details))
-                                                                                {{$item->transaction_details->product_details->product_image}}
-                                                                                @else
-                                                                                {{''}}
-                                                                                @endif    
-                                                                                " alt="image" width="50" height="40"></td>
-                                                                                <td>
-                                                                                    @if(isset($item->transaction_details) && isset($item->transaction_details->product_details))
-                                                                                        {{$item->transaction_details->product_details->product_name}}
-                                                                                    @else
-                                                                                        {{'Item name'}}
-                                                                                    @endif   
-                                                                                </td>
-                                                                                <th>{{ $item->quantity}}</td>
-                                                                            </tr>
+                                                                            <?php
+                                                                                $prod_id = $item->product_id;
+                                                                                $food_items = App\Models\tbl_product::where('product_id', $prod_id)->get();
+                                                                            ?>
+                                                                            @foreach($food_items as $single)
+                                                                                <tr>
+                                                                                    <td><img src="{{$single->product_image}}" alt="image" width="50" height="40"></td>
+                                                                                    <td>{{$single->product_name}}</td>
+                                                                                    <th>{{ $item->quantity}}</td>
+                                                                                </tr>
+                                                                            @endforeach
+                                                                            
                                                                         @endif
                                                                     @endforeach
                                                                 </tbody>
