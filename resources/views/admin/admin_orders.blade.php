@@ -164,8 +164,9 @@
                                                                         $current_key = $data->order_key;    
                                                                     ?>
                                                                     @foreach($orders as $key2 => $item)
-                                                                        {{$item}}
+                                                                        
                                                                         @if($item->order_key == $current_key)
+                                                                            {{$item}}
                                                                             <tr>
                                                                                 <td><img src="{{$item->transaction_details->product_details->product_image ?? ''}}" alt="image" width="50" height="40"></td>
                                                                                 <td>{{$item->transaction_details->product_details->product_name ?? 'Item Name'}}</td>
