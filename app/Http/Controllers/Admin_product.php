@@ -42,7 +42,7 @@ class Admin_product extends Controller
         ->get();
         
         
-    if($products){
+    if($prod){
     
     // GET DATE AND TOTAL IN CHART
     $date = tbl_orders::selectRaw('date as dates, sum(total) as totals')
