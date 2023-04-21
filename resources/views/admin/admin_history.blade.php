@@ -116,7 +116,10 @@
                                         </div>
                                         <div class="modal-body">
                                           <!-- Accepted & User -->
-                                          <label><i class="mdi mdi-circle text-success icon-sm"></i> Accepted</label>
+                                          <label><i class="mdi mdi-circle text-success icon-sm"></i> Delivered</label>
+                                          <div class="mx-auto">
+                                            Rider Details
+                                          </div>
                                           <img class="rounded-circle mx-auto d-block py-2" src="{{$data->transaction_details->rider_details->rider_documents->rider_photo ?? ''}}" width="120" height="110"/>
                                           <ul class="list-unstyled text-center text-small">
                                             <li>
@@ -143,7 +146,7 @@
                                           </ul>
                                           <!-- Orders -->
                                           <div class="table-responsive-sm">
-                                            <table class="ordetails">
+                                            <table class="ordetails mx-auto">
                                               <thead>
                                                 <tr>
                                                   <th>Order</th>
@@ -156,9 +159,8 @@
                                                 <?php 
                                                   $current_order_key = $data->order_key;
                                                 ?>
-                                                <tr>
                                                   @foreach($history as $item)
-                                                    
+                                                  <tr>
                                                     @if($item->order_key == $current_order_key)
                                                     <td>
                                                       <img
@@ -176,32 +178,29 @@
                                                     <td>{{$item->quantity}}</td>
                                                     <td>{{$item->total}}</td>
                                                     @endif
+                                                    </tr>
                                                   @endforeach
-                                                </tr>
                                               </tbody>
                                             </table>
                                           </div>
-                                          <div class="cod">
+                                          <div class="cod mx-auto">
                                             <label>Cash on Delivery</label>
                                           </div>
-                                            <span class="ridername">
-                                              <div>
-                                                <label>Customer’s name</label>
-                                              </div>
-                                              <div>
-                                                <label>
-                                                  @if(isset($data->transaction_details) && isset($data->transaction_details->user_details))
-                                                    {{$data->transaction_details->user_details->firstname . ' ' . $data->transaction_details->user_details->lastname}}
-                                                  @else
-                                                    {{'asd'}}
-                                                  @endif
-                                                </label>
-                                              </div>
-                                            </span>
+                                          <span class="ridername mx-auto">
+                                            <div>
+                                              <label>Customer’s name</label>
+                                            </div>
+                                            <div>
+                                              <label>
+                                                @if(isset($data->transaction_details) && isset($data->transaction_details->user_details))
+                                                  {{$data->transaction_details->user_details->firstname . ' ' . $data->transaction_details->user_details->lastname}}
+                                                @else
+                                                  {{'asd'}}
+                                                @endif
+                                              </label>
+                                            </div>
+                                          </span>
                                           </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                          <button type="button" class="btn btn-danger btn-block btn-rounded " data-dismiss="modal">Back</button>
                                         </div>
                                       </div>
                                     </div>
