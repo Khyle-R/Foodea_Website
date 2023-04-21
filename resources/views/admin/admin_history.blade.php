@@ -171,11 +171,7 @@
                                                           />
                                                         </td>
                                                         <td>
-                                                          @if(isset($item->transaction_details) && isset($item->transaction_details->product_details))
-                                                            {{$item->transaction_details->product_details->product_name}}
-                                                          @else
-                                                            {{'Item Name'}}
-                                                          @endif
+                                                            {{$item->transaction_details->product_details->product_name ?? 'Item name'}}
                                                         </td>
                                                         <td>{{$item->quantity}}</td>
                                                         <td>{{$item->total}}</td>
