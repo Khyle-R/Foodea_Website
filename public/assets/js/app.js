@@ -35,6 +35,13 @@ $(document).ready(function () {
     });
 
 });
+$(document).ready(function () {
+    $('#topSellingMerchant').DataTable({
+        responsive: true,
+        order: [[4, 'desc']],
+    });
+
+});
 
 // Loader
 $(window).on('load', function () {
