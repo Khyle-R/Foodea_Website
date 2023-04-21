@@ -440,12 +440,13 @@ class Admin_product extends Controller
 
 // Admin order Show the Table
     public function Orders(){
-        $orders = DB::table('tbl_orders')->where('restaurant_id', '=', session('loginID'))->get();
+        $orders = DB::table('tbl_orders')->where('restaurant_id', '=', session('loginID'))->selectRaw('MAX(order_id) as order_id, order_key, *')->groupBy('order_key')->get();
+        dd($orders);
         $orders = $orders->sortByDesc('date');
 
         $TotalOrders = DB::table('tbl_orders')->where('restaurant_id', '=', session('loginID'))->count();
         $PendingOrders = DB::table('tbl_orders')->where([['status','Pending'],['restaurant_id', '=', session('loginID')]])->count();
-        $PreparingOrders = DB::table('tbl_orders')->where([['status','Preparing'],['restaurant_id', '=', session('loginID')]])->count();
+        $PreparingOrders = DB::table('tbl_orders')->where([['status','Ready to pick up'],['restaurant_id', '=', session('loginID')]])->count();
         $DeliveringOrders = DB::table('tbl_orders')->where([['status','Delivering'],['restaurant_id', '=', session('loginID')]])->count();
         $DeliveredOrders = DB::table('tbl_orders')->where([['status','Delivered'],['restaurant_id', '=', session('loginID')]])->count();
        

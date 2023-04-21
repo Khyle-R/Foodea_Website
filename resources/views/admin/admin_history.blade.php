@@ -171,7 +171,7 @@
                                                           />
                                                         </td>
                                                         <td>
-                                                            {{$item->transaction_details->product_details->product_name ?? 'Item name'}}
+                                                          {{$item->transaction_details->product_details->product_name ?? 'Item name'}}
                                                         </td>
                                                         <td>{{$item->quantity}}</td>
                                                         <td>{{$item->total}}</td>
