@@ -562,7 +562,7 @@ class Admin_product extends Controller
 
     public function History()
     {
-        $history = DB::table('tbl_transaction')->get();
+        $history = DB::table('tbl_orders')->where('status', 'Delivered')->get();
 
         return view('admin.admin_history', ['history' => $history]);
     }

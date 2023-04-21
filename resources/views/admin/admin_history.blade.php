@@ -62,7 +62,7 @@
                           <thead>
                             <tr>
                               <th>Transaction ID</th>
-                              <th>Order Number</th>
+                              <th>Order Key</th>
                               <th>Customer’s ID</th>
                               <th>Rider's ID</th>
                               <th>Product ID</th>
@@ -77,18 +77,18 @@
 
                             <tr>
                               <td>
-                                {{$data->transaction_id}}
-                              </td>
-                              <td>
                                 {{$data->order_id}}
                               </td>
                               <td>
+                                {{$data->order_key}}
+                              </td>
+                              <td>
                                 {{$data->customer_id}}
                               </td>
                               <td>
                                 {{$data->customer_id}}
                               </td>
-                              <td>{{$data->product_Id}}</td>
+                              <td>{{$data->product_id}}</td>
                               <td>
                                 {{$data->date}}
                               </td>
