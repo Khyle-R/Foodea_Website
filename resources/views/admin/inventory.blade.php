@@ -125,13 +125,13 @@
                                       <i class=" pending mdi mdi-radiobox-marked"></i> Status
                                   </a>
                                   <div class="bg-white dropdown-menu dropdown-menu-right">
-                                        <a data-toggle="modal" data-target="#deleteModal" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-success"></i> Delete</a>
-                                        <a data-toggle="modal" data-target="#restoreModal" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-danger"></i> Restore</a>
+                                        <a data-toggle="modal" data-target="#deleteModal{{ $data->inventory_id}}" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-success"></i> Delete</a>
+                                        <a data-toggle="modal" data-target="#restoreModal{{ $data->inventory_id}}" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-danger"></i> Restore</a>
                                   </div>
                                </div>
 
                                 <!-- Modal -->
-                              <div class="modal fade" id="restoreModal" tabindex="-1" role="dialog" aria-labelledby="restoreModalLabel" aria-hidden="true">
+                              <div class="modal fade" id="restoreModal{{ $data->inventory_id}}" tabindex="-1" role="dialog" aria-labelledby="restoreModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered">
                                   <div class="modal-content">
                                     <div class="modal-header">
@@ -140,8 +140,8 @@
                                         <span aria-hidden="true">&times;</span>
                                       </button>
                                     </div>
-                                    <div class="modal-body">
-                                      Are you sure you want to Resore?
+                                    <div class="modal-body"> 
+                                      Are you sure you want to Restore? {{ $data->inventory_id}}
                                     </div>
                                     <div class="modal-footer">
                                       <a class="badge badge-outline-dark" data-dismiss="modal">
@@ -158,7 +158,7 @@
 
 
                                   <!-- Modal -->
-                                <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                                <div class="modal fade" id="deleteModal{{ $data->inventory_id}}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
                                   <div class="modal-dialog modal-dialog-centered" >
                                     <div class="modal-content">
                                       <div class="modal-header">
@@ -168,7 +168,7 @@
                                         </button>
                                       </div>
                                       <div class="modal-body">
-                                        Are you sure you want to Delete?
+                                        Are you sure you want to Delete? {{ $data->inventory_id}}
                                       </div>
                                       <div class="modal-footer">
                                         <a class="badge badge-outline-dark" data-dismiss="modal">
