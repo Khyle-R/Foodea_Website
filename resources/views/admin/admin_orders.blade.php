@@ -153,7 +153,25 @@
                                             </div>
                                             <!-- MODAL BODY -->
                                             <div class="modal-body text-dark">
-                                                <div class="form-group">
+                                                <div class="table-responsive">
+                                                    <table class="ordetails mx-auto">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Image</th>
+                                                                <th>Product Name</th>
+                                                                <th>Quantity</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr>
+                                                                <td><img src="{{$data->transaction_details->product_details->product_image ?? ''}}" alt="" width="50" height="40"></td>
+                                                                <td>{{$data->transaction_details->product_details->product_name ?? ''}}</td>
+                                                                <th>{{ $data->quantity}}</td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                {{-- <div class="form-group">
                                                     <form method="post" action="">
                                                     @csrf
                                                     <label>Order Number:</label>
@@ -186,11 +204,11 @@
                                                 <div class="form-group">
                                                     <label>Date</label>
                                                     <input id="date" name="date" type="text" class="form-control" placeholder="{{ $data->date}}" required>
-                                                </div>
+                                                </div> --}}
                                             </div>
                                             <!-- MODAL FOOTER -->
                                             <div class="modal-footer">
-                                                </form>
+                                                {{-- </form> --}}
                                             </div>
                                         </div>
                                     </div>
