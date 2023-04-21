@@ -166,9 +166,9 @@
                                                                     @foreach($orders as $key2 => $item)
                                                                         @if($item->order_key == $current_key)
                                                                             <tr>
-                                                                                <td><img src="{{$items->transaction_details->product_details->product_image ?? ''}}" alt="image" width="50" height="40"></td>
-                                                                                <td>{{$items->transaction_details->product_details->product_name ?? 'Item Name'}}</td>
-                                                                                <th>{{ $data->quantity}}</td>
+                                                                                <td><img src="{{$item->transaction_details->product_details->product_image ?? ''}}" alt="image" width="50" height="40"></td>
+                                                                                <td>{{$item->transaction_details->product_details->product_name ?? 'Item Name'}}</td>
+                                                                                <th>{{ $item->quantity}}</td>
                                                                             </tr>
                                                                         @endif
                                                                     @endforeach
