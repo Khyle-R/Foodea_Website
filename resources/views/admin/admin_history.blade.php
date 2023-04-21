@@ -83,10 +83,10 @@
                                 {{$data->order_key}}
                               </td>
                               <td>
-                                {{$data->user_details->firstname . ' ' . $data->user_details->lastname}}
+                                {{$data->transaction_details->user_details->firstname . ' ' . $data->transaction_details->user_details->lastname}}
                               </td>
                               <td>
-                                {{$data->rider_details->firstname . ' ' . $data->rider_details->lastname}}
+                                {{$data->transaction_details->rider_details->firstname . ' ' . $data->transaction_details->rider_details->lastname}}
                               </td>
                               <td>{{$data->product_id}}</td>
                               <td>
