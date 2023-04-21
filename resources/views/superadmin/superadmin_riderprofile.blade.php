@@ -428,24 +428,26 @@
                                    <div class="table-responsive">
                     <table id="example" class="table" style="width:100%">
                         <thead>
+                        
                             <tr>
-                                <th>Order Number</th>
-                                <th>Purchase Date</th>
-                                <th>Customer Name</th>
-                                <th>Payment Method</th>
-                                <th>Order Total</th>
+                                <th>Rider ID</th>
+                                <th>Name</th>
+                                <th>Customer ID</th>
                                 <th>Status</th>
+                                 <th>Date</th>
                             </tr>
                         </thead>
                         <tbody>
+                                @foreach ($RiderOrder as $rider)
                             <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $rider->rider_id }}</td>
+                                <td>{{ $rider->firstname }} {{ $rider->lastname }}</td>
+                                <td>{{ $rider->customer_id }} </td>
+                                <td>{{ $rider->order_status }}</td>
+                                 <td>{{ $rider->date }}</td>
                             </tr>
+                            @endforeach
+                       
                            
                           
                         </tbody>

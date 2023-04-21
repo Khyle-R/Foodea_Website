@@ -18,9 +18,9 @@
                             </nav>
                         </div>
                                  <div class="d-flex flex-row justify-content-end my-4">
-                        <div class="title">
+                        {{-- <div class="title">
                     <a class="red-btn" href="#">Download Report</a>
-                    </div>
+                    </div> --}}
                     
                     </div>
 
@@ -42,13 +42,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                     
+                     @foreach ($sales as $sale)
                             <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $sale->restaurant_id }}</td>
+                                <td>{{ $sale->business_name }}</td>
+                                <td>{{ $sale->total }}</td>
+                                <td>{{ 0.1 * $sale->total  }}</td>
                             </tr>
+                     @endforeach
+                         
                        
                         </tbody>
                     

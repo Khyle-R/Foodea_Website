@@ -12,10 +12,17 @@
                     <div class="row">
                       <div class="col-9">
                         <div class="d-flex align-items-center align-self-start">
-                          <h3 class="mb-0"><?php echo e($totalRevenue); ?></h3>
+                          <?php if($totalRevenue): ?>
+                          <h3 class="mb-0">₱ <?php echo e($totalRevenue); ?>.00</h3>
                           <p class="text-success ml-2 mb-0 font-weight-medium">
                            
                           </p>
+                          <?php else: ?>
+                          <h3 class="mb-0">₱ 0.00</h3>
+                          <p class="text-success ml-2 mb-0 font-weight-medium">
+                           
+                          </p>
+                          <?php endif; ?>
                         </div>
                       </div>
                       <div class="col-3">
