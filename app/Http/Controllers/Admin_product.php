@@ -445,13 +445,11 @@ class Admin_product extends Controller
         $orders = collect();
         foreach ($orderKeys as $orderKey){
             $order = tbl_orders::whereIn('order_key', $orderKey)->where('restaurant_id', session('loginID'))->get();
-            $orders->push($order);
+            $orders->put($order);
             continue;
         }
-        // dd($orders);
-        $orders = $orders->sortByDesc(function ($item) {
-            return $item['order_id'];
-        });
+        dd($orders);
+        $orders = $orders->sortByDesc('order_id');
 
         $TotalOrders = DB::table('tbl_orders')->where('restaurant_id', '=', session('loginID'))->count();
         $PendingOrders = DB::table('tbl_orders')->where([['status','Pending'],['restaurant_id', '=', session('loginID')]])->count();
