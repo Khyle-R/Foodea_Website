@@ -382,36 +382,36 @@ class Admin_product extends Controller
 
 // Admin order Show the Table
     public function Orders(){
-        $orders = DB::table('tbl_orders')->where('merchant_id', '=', session('loginID'))->get();
+        $orders = DB::table('tbl_orders')->where('restaurant_id', '=', session('loginID'))->get();
 
-        $TotalOrders = DB::table('tbl_orders')->where('merchant_id', '=', session('loginID'))->count();
-        $PendingOrders = DB::table('tbl_orders')->where([['status','Pending'],['merchant_id', '=', session('loginID')]])->count();
-        $PreparingOrders = DB::table('tbl_orders')->where([['status','Preparing'],['merchant_id', '=', session('loginID')]])->count();
-        $DeliveringOrders = DB::table('tbl_orders')->where([['status','Delivering'],['merchant_id', '=', session('loginID')]])->count();
-        $DeliveredOrders = DB::table('tbl_orders')->where([['status','Delivered'],['merchant_id', '=', session('loginID')]])->count();
+        $TotalOrders = DB::table('tbl_orders')->where('restaurant_id', '=', session('loginID'))->count();
+        $PendingOrders = DB::table('tbl_orders')->where([['status','Pending'],['restaurant_id', '=', session('loginID')]])->count();
+        $PreparingOrders = DB::table('tbl_orders')->where([['status','Preparing'],['restaurant_id', '=', session('loginID')]])->count();
+        $DeliveringOrders = DB::table('tbl_orders')->where([['status','Delivering'],['restaurant_id', '=', session('loginID')]])->count();
+        $DeliveredOrders = DB::table('tbl_orders')->where([['status','Delivered'],['restaurant_id', '=', session('loginID')]])->count();
        
 
         return view('admin.admin_orders',['orders' => $orders, 'TotalOrders' => $TotalOrders, 'PendingOrders' => $PendingOrders, 'PreparingOrders' => $PreparingOrders, 'DeliveringOrders' => $DeliveringOrders, 'DeliveredOrders' => $DeliveringOrders]);
 
     }
     public function OrderPending(){
-        $pending_order = DB::table('tbl_orders')->where([['status','=', 'Pending'],['merchant_id', '=', session('loginID')]])->get();
+        $pending_order = DB::table('tbl_orders')->where([['status','=', 'Pending'],['restaurant_id', '=', session('loginID')]])->get();
 
         return view ('admin.admin_orderpending', ['pending_order' => $pending_order]);
     }
     public function OrderPreparing(){
-        $preparing_order = DB::table('tbl_orders')->where([['status','=', 'Preparing'],['merchant_id', '=', session('loginID')]])->get();
+        $preparing_order = DB::table('tbl_orders')->where([['status','=', 'Preparing'],['restaurant_id', '=', session('loginID')]])->get();
 
         return view ('admin.admin_orderpreparing', ['preparing_order' => $preparing_order]);
     }
     public function OrderDelivering(){
-        $delivering_order = DB::table('tbl_orders')->where([['status','=', 'Delivering'],['merchant_id', '=', session('loginID')]])->get();
+        $delivering_order = DB::table('tbl_orders')->where([['status','=', 'Delivering'],['restaurant_id', '=', session('loginID')]])->get();
 
         return view ('admin.admin_orderdelivering', ['delivering_order' => $delivering_order]);
     }
 
     public function OrderDelivered(){
-        $delivered_order = DB::table('tbl_orders')->where([['status','=', 'Delivered'],['merchant_id', '=', session('loginID')]])->get();
+        $delivered_order = DB::table('tbl_orders')->where([['status','=', 'Delivered'],['restaurant_id', '=', session('loginID')]])->get();
 
         return view ('admin.admin_orderdelivered', ['delivered_order' => $delivered_order]);
     }
