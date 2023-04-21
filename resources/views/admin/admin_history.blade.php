@@ -82,10 +82,19 @@
                                 {{$data->order_key}}
                               </td>
                               <td>
-                                {{$data->transaction_details->user_details->firstname . ' ' . $data->transaction_details->user_details->lastname}}
+                                @if(isset($data->transaction_details) && isset($data->transaction_details->user_details))
+                                  {{$data->transaction_details->user_details->firstname . ' ' . $data->transaction_details->user_details->lastname}}
+                                @else
+                                  {{'asd'}}
+                                @endif
+                                
                               </td>
                               <td>
-                                {{$data->transaction_details->rider_details->firstname . ' ' . $data->transaction_details->rider_details->lastname}}
+                                @if(isset($data->transaction_details) && isset($data->transaction_details->rider_details))
+                                  {{$data->transaction_details->rider_details->firstname . ' ' . $data->transaction_details->rider_details->lastname}}
+                                @else
+                                  {{'asd'}}
+                                @endif
                               </td>
                               <td>{{$data->product_id}}</td>
                               <td>
