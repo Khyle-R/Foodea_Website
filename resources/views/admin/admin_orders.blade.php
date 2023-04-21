@@ -109,7 +109,7 @@
                             </thead>
                             <tbody>
                               @foreach ($orders as $key => $data)
-                                {{dd($data)}}
+                                {{dd($data[0]->order_id)}}
                               
                                 <tr>
                                     <td>{{ $data->order_id}}</td>
