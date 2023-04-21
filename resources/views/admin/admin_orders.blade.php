@@ -136,83 +136,84 @@
                                                 <a data-toggle="modal" data-target="#ViewModal{{ $data->order_id}}" class="action-btn dropdown-item black" href="#"><i class="fa fa-pencil m-r-5"></i>View</a>
                                             </div>
                                         </div>
+                                        <!-- MODAL STARTS HERE -->
+                                        <!-- VIEW CONTENT -->
+                                        <div class="modal fade" tabindex="-1" id="ViewModal{{ $data->order_id}}" role="dialog">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <!-- MODAL HEADER -->
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title text-white">View Orders</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <!-- MODAL BODY -->
+                                                    <div class="modal-body text-dark">
+                                                        <div class="table-responsive">
+                                                            <table class="ordetails mx-auto">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Image</th>
+                                                                        <th>Product Name</th>
+                                                                        <th>Quantity</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td><img src="{{$data->transaction_details->product_details->product_image ?? ''}}" alt="" width="50" height="40"></td>
+                                                                        <td>{{$data->transaction_details->product_details->product_name ?? ''}}</td>
+                                                                        <th>{{ $data->quantity}}</td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                        {{-- <div class="form-group">
+                                                            <form method="post" action="">
+                                                            @csrf
+                                                            <label>Order Number:</label>
+                                                            <input id="OrderNumber" name="OrderNumber" type="text" class="form-control" placeholder="{{ $data->order_id}}" required>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Customer ID</label>
+                                                            <input id="CustomerId" name="CustomerId" type="text" class="form-control" placeholder="{{ $data->customer_id}}" required>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Product ID</label>
+                                                            <input id="ProductId" name="ProductId" type="text" class="form-control" placeholder="{{ $data->product_id}}" required>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Quantity</label>
+                                                            <input id="quantity" name="quantity" type="text" class="form-control" placeholder="{{ $data->quantity}}" required>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Total</label>
+                                                            <input id="total" name="total" type="text" class="form-control" placeholder="{{ $data->total}}" required>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Status</label>
+                                                            <input id="status" name="status" type="text" class="form-control" placeholder="{{ $data->status}}" required>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Payment type</label>
+                                                            <input id="paymentType" name="paymentType" type="text" class="form-control" placeholder="{{ $data->payment_type}}" required>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label>Date</label>
+                                                            <input id="date" name="date" type="text" class="form-control" placeholder="{{ $data->date}}" required>
+                                                        </div> --}}
+                                                    </div>
+                                                    <!-- MODAL FOOTER -->
+                                                    <div class="modal-footer">
+                                                        {{-- </form> --}}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </td>
                                 </tr>
 
-                                <!-- MODAL STARTS HERE -->
-                                 <!-- VIEW CONTENT -->
-                                 <div class="modal fade" tabindex="-1" id="ViewModal{{ $data->order_id}}" role="dialog">
-                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                        <div class="modal-content">
-                                            <!-- MODAL HEADER -->
-                                            <div class="modal-header">
-                                                <h5 class="modal-title text-white">View Orders</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <!-- MODAL BODY -->
-                                            <div class="modal-body text-dark">
-                                                <div class="table-responsive">
-                                                    <table class="ordetails mx-auto">
-                                                        <thead>
-                                                            <tr>
-                                                                <th>Image</th>
-                                                                <th>Product Name</th>
-                                                                <th>Quantity</th>
-                                                            </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            <tr>
-                                                                <td><img src="{{$data->transaction_details->product_details->product_image ?? ''}}" alt="" width="50" height="40"></td>
-                                                                <td>{{$data->transaction_details->product_details->product_name ?? ''}}</td>
-                                                                <th>{{ $data->quantity}}</td>
-                                                            </tr>
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                                {{-- <div class="form-group">
-                                                    <form method="post" action="">
-                                                    @csrf
-                                                    <label>Order Number:</label>
-                                                    <input id="OrderNumber" name="OrderNumber" type="text" class="form-control" placeholder="{{ $data->order_id}}" required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Customer ID</label>
-                                                    <input id="CustomerId" name="CustomerId" type="text" class="form-control" placeholder="{{ $data->customer_id}}" required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Product ID</label>
-                                                    <input id="ProductId" name="ProductId" type="text" class="form-control" placeholder="{{ $data->product_id}}" required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Quantity</label>
-                                                    <input id="quantity" name="quantity" type="text" class="form-control" placeholder="{{ $data->quantity}}" required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Total</label>
-                                                    <input id="total" name="total" type="text" class="form-control" placeholder="{{ $data->total}}" required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Status</label>
-                                                    <input id="status" name="status" type="text" class="form-control" placeholder="{{ $data->status}}" required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Payment type</label>
-                                                    <input id="paymentType" name="paymentType" type="text" class="form-control" placeholder="{{ $data->payment_type}}" required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Date</label>
-                                                    <input id="date" name="date" type="text" class="form-control" placeholder="{{ $data->date}}" required>
-                                                </div> --}}
-                                            </div>
-                                            <!-- MODAL FOOTER -->
-                                            <div class="modal-footer">
-                                                {{-- </form> --}}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                
 
                                 <!-- PENDING MODAL -->
                                 <div class="modal fade" id="PendingModal{{ $data->order_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
