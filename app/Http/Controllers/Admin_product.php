@@ -382,7 +382,8 @@ class Admin_product extends Controller
 
 // Admin order Show the Table
     public function Orders(){
-        $orders = DB::table('tbl_orders')->where('restaurant_id', '=', session('loginID'))->sortByDesc('date')->get();
+        $orders = DB::table('tbl_orders')->where('restaurant_id', '=', session('loginID'))->get();
+        $orders = $orders->sortByDesc('date');
 
         $TotalOrders = DB::table('tbl_orders')->where('restaurant_id', '=', session('loginID'))->count();
         $PendingOrders = DB::table('tbl_orders')->where([['status','Pending'],['restaurant_id', '=', session('loginID')]])->count();
