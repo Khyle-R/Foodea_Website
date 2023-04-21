@@ -99,6 +99,7 @@
                                 <tr>
                                     <th>Order Number</th>
                                     <th>Customer’s ID</th>
+                                    <th>Order Key</th>
                                     <th>Product ID</th>
                                     <th>Date</th>
                                     <th>Total</th>
@@ -113,6 +114,7 @@
                                 <tr>
                                     <td>{{ $data->order_id}}</td>
                                     <td>{{ $data->customer_id}}</td>
+                                    <td>{{ $data->order_key}}</td>
                                     <td>{{ $data->product_id}}</td>
                                     <td>{{ $data->date}}</td>
                                     <td>{{ $data->total}}</td>
