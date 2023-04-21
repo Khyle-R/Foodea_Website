@@ -74,7 +74,7 @@
                           </thead>
                           <tbody>
                             @foreach ($history as $data)
-                              {{dd($data)}}
+                              {{dd($data->transaction_details)}}
                             <tr>
                               <td>
                                 {{$data->order_id}}
