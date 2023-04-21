@@ -87,8 +87,9 @@ class Admin_product extends Controller
         $product->date =$rProduct->date;
         $product->product_id =$rProduct->inventory_id;
         $product->merchant_id =$rProduct->merchant_id;
+        $product->category_id =$rProduct->category_id;
         $product->category_name =$rProduct->category_name;
-        $product->price =$rProduct->price;
+        $product->calories =$rProduct->calories;
         $product->tags =$rProduct->tags;
         
         $res= $product-> save();
@@ -140,8 +141,9 @@ class Admin_product extends Controller
         $product->date =$rProduct->date;
         $product->inventory_id =$rProduct->product_id;
         $product->merchant_id =$rProduct->merchant_id;
+        $product->category_id =$rProduct->category_id;
         $product->category_name =$rProduct->category_name;
-        $product->price =$rProduct->price;
+        $product->calories =$rProduct->calories;
         $product->tags =$rProduct->tags;
         
         $res= $product-> save();

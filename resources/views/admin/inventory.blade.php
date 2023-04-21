@@ -141,7 +141,7 @@
                                       </button>
                                     </div>
                                     <div class="modal-body"> 
-                                      Are you sure you want to Restore? {{ $data->inventory_id}}
+                                      Are you sure you want to Restore?
                                     </div>
                                     <div class="modal-footer">
                                       <a class="badge badge-outline-dark" data-dismiss="modal">
@@ -168,7 +168,7 @@
                                         </button>
                                       </div>
                                       <div class="modal-body">
-                                        Are you sure you want to Delete? {{ $data->inventory_id}}
+                                        Are you sure you want to Delete?
                                       </div>
                                       <div class="modal-footer">
                                         <a class="badge badge-outline-dark" data-dismiss="modal">
