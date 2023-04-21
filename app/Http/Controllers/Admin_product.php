@@ -448,7 +448,7 @@ class Admin_product extends Controller
             $orders->push($order);
             continue;
         }
-        dd($orders);
+        // dd($orders);
         $orders = $orders->sortByDesc('order_id');
 
         $TotalOrders = DB::table('tbl_orders')->where('restaurant_id', '=', session('loginID'))->count();
