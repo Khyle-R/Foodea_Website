@@ -32,6 +32,6 @@ class tbl_orders extends Model
     public $timestamps = false;
 
     public function transaction_details(){
-        return $this->hasOne(tbl_transaction::class, 'order_key', 'order_key')->with('rider_details')->with('user_details');
+        return $this->hasOne(tbl_transaction::class, 'order_key', 'order_key')->with('rider_details')->with('user_details')->with('product_details');
     }
 }
