@@ -82,7 +82,8 @@ $(function () {
 
     var doughnutPieData = {
         datasets: [{
-            data: [1, 1, 1, 1],
+            // data: [1, 1, 1, 1],
+            data: OrderData,
             backgroundColor: [
                 "rgba(255, 99, 132, 0.5)",
                 "rgba(54, 162, 235, 0.5)",
@@ -102,7 +103,8 @@ $(function () {
         }, ],
 
         // These labels appear in the legend and in the tooltips when hovering different arcs
-        labels: ["Pending", "Preparing", "Delivering", "Delivered"],
+        // labels: ["Pending", "Preparing", "Delivering", "Delivered"],
+        labels: OrderLabel,
     };
     var doughnutPieOptions = {
         responsive: true,
