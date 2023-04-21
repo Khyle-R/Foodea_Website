@@ -86,7 +86,6 @@
                                 @else
                                   {{'asd'}}
                                 @endif
-                                
                               </td>
                               <td>
                                 @if(isset($data->transaction_details) && isset($data->transaction_details->rider_details))
@@ -99,24 +98,10 @@
                                 {{$data->date}}
                               </td>
                               <td>
-                                {{$data->status}}
-                              </td>
-                              <td>
                                 {{$data->total}}
                               </td>
                               <td>
-                                  
-                                  @if ($data->order_status =='Cancelled')
-                                      <button class="btn btn-danger" data-toggle="modal" data-target="#Cancelled">
-                                        Cancelled
-                                      </button>
-                                    @elseif($data->order_status=='Delivered')
-                                      <button class="btn btn-success" data-toggle="modal" data-target="#Cancelled">
-                                        Delivered
-                                      </button>
-                                    @else
-                                    
-                                    @endif
+                                {{$data->status}}
                               </td>
                               <td>
                                   <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#viewdetails">View Details</button>
