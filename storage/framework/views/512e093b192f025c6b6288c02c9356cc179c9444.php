@@ -14,7 +14,7 @@
                         <div class="d-flex align-items-center align-self-start">
                           <h3 class="mb-0"><?php echo e($totalRevenue); ?></h3>
                           <p class="text-success ml-2 mb-0 font-weight-medium">
-                            +3.5%
+                           
                           </p>
                         </div>
                       </div>
@@ -40,7 +40,7 @@
                         <div class="d-flex align-items-center align-self-start">
                           <h3 class="mb-0"><?php echo e($totalOrders); ?></h3>
                           <p class="text-success ml-2 mb-0 font-weight-medium">
-                            +11%
+                            
                           </p>
                         </div>
                       </div>
@@ -65,9 +65,7 @@
                       <div class="col-9">
                         <div class="d-flex align-items-center align-self-start">
                           <h3 class="mb-0"><?php echo e($productSold); ?></h3>
-                          <p class="text-danger ml-2 mb-0 font-weight-medium">
-                            -2.4%
-                          </p>
+                          
                         </div>
                       </div>
                       <div class="col-3">
@@ -90,7 +88,7 @@
                         <div class="d-flex align-items-center align-self-start">
                           <h3 class="mb-0"><?php echo e($totalProduct); ?></h3>
                           <p class="text-success ml-2 mb-0 font-weight-medium">
-                            +3.5%
+                          
                           </p>
                         </div>
                       </div>
@@ -175,7 +173,7 @@
                     <div class="card-body">
                       <div class="d-flex flex-row justify-content-between">
                     <h4 class="card-title">Top Selling Products</h4>
-                      <a class="text-muted mb-1 small">View Product</a>
+                      
                     </div>
                       <div class="table-responsive">
                       <table class="table table-striped">
@@ -189,12 +187,15 @@
                         </thead>
                         <tbody>
                           
-                           <tr>
-                            <td>10</td>
-                            <td>Fried Chicken</td>
-                            <td>Chicken</td>
-                            <td>5000</td>
+                          <?php $__currentLoopData = $products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                              <tr>
+                            <td><?php echo e($product->product_id); ?></td>
+                            <td><?php echo e($product->product_name); ?></td>
+                            <td><?php echo e($product->category_name); ?></td>
+                            <td><?php echo e($product->totals); ?></td>
                           </tr>
+                          <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                           
                         </tbody>
                       </table>
                     </div>
@@ -222,8 +223,15 @@
           
 
       <script type="text/javascript">
+      // SALES
       var DateLabel =  <?php echo json_encode($day); ?>;
       var DateData =  <?php echo json_encode($total); ?>;
+
+      //ORDERS
+      var OrderLabel =  <?php echo json_encode($order_status); ?>;
+      var OrderData =  <?php echo json_encode($order_count); ?>;
+        
+
     </script>
 
 <?php $__env->stopSection(); ?>

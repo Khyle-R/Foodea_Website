@@ -14,7 +14,7 @@
                         <div class="d-flex align-items-center align-self-start">
                           <h3 class="mb-0">{{$totalRevenue}}</h3>
                           <p class="text-success ml-2 mb-0 font-weight-medium">
-                            +3.5%
+                           
                           </p>
                         </div>
                       </div>
@@ -40,7 +40,7 @@
                         <div class="d-flex align-items-center align-self-start">
                           <h3 class="mb-0">{{ $totalOrders}}</h3>
                           <p class="text-success ml-2 mb-0 font-weight-medium">
-                            +11%
+                            
                           </p>
                         </div>
                       </div>
@@ -65,9 +65,7 @@
                       <div class="col-9">
                         <div class="d-flex align-items-center align-self-start">
                           <h3 class="mb-0">{{$productSold}}</h3>
-                          <p class="text-danger ml-2 mb-0 font-weight-medium">
-                            -2.4%
-                          </p>
+                          
                         </div>
                       </div>
                       <div class="col-3">
@@ -90,7 +88,7 @@
                         <div class="d-flex align-items-center align-self-start">
                           <h3 class="mb-0">{{$totalProduct}}</h3>
                           <p class="text-success ml-2 mb-0 font-weight-medium">
-                            +3.5%
+                          
                           </p>
                         </div>
                       </div>
@@ -272,7 +270,7 @@
                     <div class="card-body">
                       <div class="d-flex flex-row justify-content-between">
                     <h4 class="card-title">Top Selling Products</h4>
-                      <a class="text-muted mb-1 small">View Product</a>
+                      {{-- <a class="text-muted mb-1 small">View Product</a> --}}
                     </div>
                       <div class="table-responsive">
                       <table class="table table-striped">
@@ -286,12 +284,15 @@
                         </thead>
                         <tbody>
                           
-                           <tr>
-                            <td>10</td>
-                            <td>Fried Chicken</td>
-                            <td>Chicken</td>
-                            <td>5000</td>
+                          @foreach ($products as $product)
+                              <tr>
+                            <td>{{ $product->product_id }}</td>
+                            <td>{{ $product->product_name }}</td>
+                            <td>{{ $product->category_name }}</td>
+                            <td>{{ $product->totals }}</td>
                           </tr>
+                          @endforeach
+                           
                         </tbody>
                       </table>
                     </div>
@@ -319,8 +320,15 @@
           
 
       <script type="text/javascript">
+      // SALES
       var DateLabel =  {!! json_encode($day) !!};
       var DateData =  {!! json_encode($total) !!};
+
+      //ORDERS
+      var OrderLabel =  {!! json_encode($order_status) !!};
+      var OrderData =  {!! json_encode($order_count) !!};
+        
+
     </script>
 
 @endsection

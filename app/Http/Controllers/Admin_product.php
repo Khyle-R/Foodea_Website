@@ -14,6 +14,7 @@ use App\Models\tbl_merchant_account;
 use App\Models\tbl_merchant_document;
 use App\Models\tbl_orders;
 use App\Models\tbl_partner_accounts;
+use App\Models\tbl_transaction;
 use App\Models\TemporaryFile;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Cookie;
@@ -25,22 +26,28 @@ use Carbon\Carbon; // to retrieve current Date
 class Admin_product extends Controller
 {
     public function dashboard(){
-       $totalOrders = DB::table('tbl_orders')->count();
-       $productSold = DB::table('tbl_product')->count();
-       $totalRevenue = DB::table('tbl_product')->count();
-       $totalProduct = DB::table('tbl_product')->count();
+       $totalOrders = tbl_orders::where('restaurant_id', Session::get('loginID'))
+       ->count();
+       
+       $productSold = tbl_orders::where('restaurant_id', Session::get('loginID'))
+       ->count('product_id');
+       
+       $totalRevenue = tbl_orders::where('restaurant_id', Session::get('loginID'))
+       ->sum('total');
+      
+       $totalProduct = tbl_product::where('merchant_id', Session::get('loginID'))
+       ->count('product_id');
     
     $product = tbl_product::where('merchant_id', Session::get('loginID'))
     ->get();
     
     if($product){
     
-    $date = tbl_orders::selectRaw('date, sum(total) as totals')
+    // GET DATE AND TOTAL IN CHART
+    $date = tbl_orders::selectRaw('date as dates, sum(total) as totals')
     ->where('restaurant_id', Session::get('loginID'))
     ->groupBy('date')
     ->get();
-   
-    
 
     $day = [];
     $total = [];
@@ -50,12 +57,37 @@ class Admin_product extends Controller
             $day[] = date('M', $timestamp).' '. date('d', $timestamp).' ' .date('Y', $timestamp);
             $total[] = $dates->totals; 
         }
-         
+        // !GET DATE AND TOTAL IN CHART 
    
-      
+    // GET STATUS IN CHART
+    $status = tbl_transaction::selectRaw('order_status, count(order_status) as order_counts')
+    ->groupBy('order_status')
+    ->where('merchant_id', Session::get('loginID'))
+    ->get();
     
+    $order_status = [];
+    $order_count = [];
+    
+    foreach($status as $stat){
+         $order_status[] = $stat->order_status;
+         $order_count[] = $stat->order_counts;
+        }
 
-    return view('admin.dashboard',['totalOrders' => $totalOrders, 'productSold' => $productSold, 'totalRevenue' => $totalRevenue, 'totalProduct' => $totalProduct,], compact('product', 'day', 'total'));
+     // !GET STATUS IN CHART
+
+        $Data = tbl_product::join('tbl_orders', 'tbl_product.product_id', '=', 'tbl_orders.product_id')
+        ->where('tbl_orders.restaurant_id', Session::get('loginID'))
+        ->selectRaw('tbl_product.product_id, tbl_product.product_name, tbl_product.category_name, sum(tbl_orders.total) as totals, count(tbl_orders.product_id) as product_sold')
+        ->groupBy('tbl_product.product_id', 'tbl_product.product_name', 'tbl_product.category_name')
+        ->orderBy('product_sold', 'desc')
+        ->get();
+    
+    $product=[];
+    foreach($Data as $prod){
+        $products[] = $prod;
+        
+    }
+    return view('admin.dashboard',['totalOrders' => $totalOrders, 'productSold' => $productSold, 'totalRevenue' => $totalRevenue, 'totalProduct' => $totalProduct,], compact('product', 'day', 'total', 'order_status', 'order_count', 'products'));
     }
    
     }
