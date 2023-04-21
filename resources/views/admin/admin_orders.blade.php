@@ -167,6 +167,7 @@
                                                                     @foreach($order_with_key as $key2 => $item)
                                                                         
                                                                         @if($item->order_key == $current_key)
+                                                                            {{$item->product_id . ' '}}
                                                                             <tr>
                                                                                 <td><img src="
                                                                                 @if(isset($item->transaction_details) && isset($item->transaction_details->product_details))
