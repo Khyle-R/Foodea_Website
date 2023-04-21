@@ -158,6 +158,7 @@
                                                 ?>
                                                 <tr>
                                                   @foreach($data as $item)
+                                                    {{dd($item)}}
                                                     @if($item->order_key == $current_order_key)
                                                     <td>
                                                       <img
