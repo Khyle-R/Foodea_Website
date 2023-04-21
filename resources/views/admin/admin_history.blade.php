@@ -58,7 +58,8 @@
                   <div class="card">
                     <div class="card-body">  
                       <div class="table-responsive">
-                        <table id="example" class="table" style="width:100%">
+                        {{$history}}
+                        {{-- <table id="example" class="table" style="width:100%">
                           <thead>
                             <tr>
                               <th>Transaction ID</th>
@@ -119,7 +120,7 @@
 
                             @endforeach
                           </tbody>
-                        </table>
+                        </table> --}}
                       </div>
                     </div>
                   </div>
