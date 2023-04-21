@@ -109,7 +109,7 @@
                                     <div class="modal-dialog  modal-sm" role="document">
                                       <div class="modal-content">
                                         <div class="modal-header">
-                                          <h5 class="modal-title" id="exampleModalLabel">Customer's Details</h5>
+                                          <h5 class="modal-title" id="exampleModalLabel">Order Details</h5>
                                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                           </button>
@@ -117,7 +117,7 @@
                                         <div class="modal-body">
                                           <!-- Accepted & User -->
                                           <label><i class="mdi mdi-circle text-success icon-sm"></i> Delivered</label>
-                                          <div class="mx-auto">
+                                          <div class="text-center">
                                             Rider Details
                                           </div>
                                           <img class="rounded-circle mx-auto d-block py-2" src="{{$data->transaction_details->rider_details->rider_documents->rider_photo ?? ''}}" width="120" height="110"/>
@@ -183,10 +183,10 @@
                                               </tbody>
                                             </table>
                                           </div>
-                                          <div class="cod mx-auto">
+                                          <div class="cod text-center">
                                             <label>Cash on Delivery</label>
                                           </div>
-                                          <span class="ridername mx-auto">
+                                          <span class="ridername text-center">
                                             <div>
                                               <label>Customer’s name</label>
                                             </div>
