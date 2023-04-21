@@ -161,9 +161,10 @@
                                                                 </thead>
                                                                 <tbody>
                                                                     <?php 
-                                                                        $current_key = $data->order_key;    
+                                                                        $current_key = $data->order_key;
+                                                                        $order_with_key = App\Models\tbl_orders::where('order_key', $current_key)->get();  
                                                                     ?>
-                                                                    @foreach($orders as $key2 => $item)
+                                                                    @foreach($order_with_key as $key2 => $item)
                                                                         
                                                                         @if($item->order_key == $current_key)
                                                                             {{$item}}
