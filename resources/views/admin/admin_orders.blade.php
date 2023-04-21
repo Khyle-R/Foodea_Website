@@ -111,20 +111,20 @@
                               @foreach ($orders as $key => $data)
                               
                                 <tr>
-                                    <td>{{ $data->order_id}}</td>
-                                    <td>{{ $data->customer_id}}</td>
-                                    <td>{{ $data->order_key}}</td>
-                                    <td>{{ $data->product_id}}</td>
-                                    <td>{{ $data->date}}</td>
-                                    <td>{{ $data->total}}</td>
+                                    <td>{{ $data[$key]->order_id}}</td>
+                                    <td>{{ $data[$key]->customer_id}}</td>
+                                    <td>{{ $data[$key]->order_key}}</td>
+                                    <td>{{ $data[$key]->product_id}}</td>
+                                    <td>{{ $data[$key]->date}}</td>
+                                    <td>{{ $data[$key]->total}}</td>
                                     <td>
                                         <div class="dropdown action-label">
                                                 <a class=" btn-white-circle btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
-                                                    <i class=" pending mdi mdi-radiobox-marked"></i> {{ $data->status}}
+                                                    <i class=" pending mdi mdi-radiobox-marked"></i> {{ $data[$key]->status}}
                                                 </a>
                                             <div class="bg-white dropdown-menu dropdown-menu-right">
                                                 {{-- <a data-toggle="modal" data-target="#PendingModal{{ $data->order_id}}" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-success"></i> Pending</a> --}}
-                                                <a data-toggle="modal" data-target="#PreparingModal{{ $data->order_id}}" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-danger"></i> Ready for pick up</a>
+                                                <a data-toggle="modal" data-target="#PreparingModal{{ $data[$key]->order_id}}" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-danger"></i> Ready for pick up</a>
                                                 {{-- <a data-toggle="modal" data-target="#DeliveringModal{{ $data->order_id}}" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-warning"></i> Delivering</a>
                                                 <a data-toggle="modal" data-target="#DeliveredModal{{ $data->order_id}}" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-warning"></i> Delivered</a> --}}
                                             </div>
@@ -134,7 +134,7 @@
                                         <div class="dropdown">
                                             <a href="#" class="action-icon" data-toggle="dropdown" aria-expanded="false"><i class="mdi mdi-dots-vertical black-icon" aria-hidden="true"></i></a>
                                             <div class="bg-white dropdown-menu dropdown-menu-right">
-                                                <a data-toggle="modal" data-target="#ViewModal{{ $data->order_id}}" class="action-btn dropdown-item black" href="#"><i class="fa fa-pencil m-r-5"></i>View</a>
+                                                <a data-toggle="modal" data-target="#ViewModal{{ $data[$key]->order_id}}" class="action-btn dropdown-item black" href="#"><i class="fa fa-pencil m-r-5"></i>View</a>
                                             </div>
                                         </div>
                                     </td>
@@ -142,7 +142,7 @@
 
                                 <!-- MODAL STARTS HERE -->
                                  <!-- VIEW CONTENT -->
-                                 <div class="modal fade" tabindex="-1" id="ViewModal{{ $data->order_id}}" role="dialog">
+                                 <div class="modal fade" tabindex="-1" id="ViewModal{{ $data[$key]->order_id}}" role="dialog">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <!-- MODAL HEADER -->
@@ -158,35 +158,35 @@
                                                     <form method="post" action="">
                                                     @csrf
                                                     <label>Order Number:</label>
-                                                    <input id="OrderNumber" name="OrderNumber" type="text" class="form-control" placeholder="{{ $data->order_id}}" required>
+                                                    <input id="OrderNumber" name="OrderNumber" type="text" class="form-control" placeholder="{{ $data[$key]->order_id}}" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Customer ID</label>
-                                                    <input id="CustomerId" name="CustomerId" type="text" class="form-control" placeholder="{{ $data->customer_id}}" required>
+                                                    <input id="CustomerId" name="CustomerId" type="text" class="form-control" placeholder="{{ $data[$key]->customer_id}}" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Product ID</label>
-                                                    <input id="ProductId" name="ProductId" type="text" class="form-control" placeholder="{{ $data->product_id}}" required>
+                                                    <input id="ProductId" name="ProductId" type="text" class="form-control" placeholder="{{ $data[$key]->product_id}}" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Quantity</label>
-                                                    <input id="quantity" name="quantity" type="text" class="form-control" placeholder="{{ $data->quantity}}" required>
+                                                    <input id="quantity" name="quantity" type="text" class="form-control" placeholder="{{ $data[$key]->quantity}}" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Total</label>
-                                                    <input id="total" name="total" type="text" class="form-control" placeholder="{{ $data->total}}" required>
+                                                    <input id="total" name="total" type="text" class="form-control" placeholder="{{ $data[$key]->total}}" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Status</label>
-                                                    <input id="status" name="status" type="text" class="form-control" placeholder="{{ $data->status}}" required>
+                                                    <input id="status" name="status" type="text" class="form-control" placeholder="{{ $data[$key]->status}}" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Payment type</label>
-                                                    <input id="paymentType" name="paymentType" type="text" class="form-control" placeholder="{{ $data->payment_type}}" required>
+                                                    <input id="paymentType" name="paymentType" type="text" class="form-control" placeholder="{{ $data[$key]->payment_type}}" required>
                                                 </div>
                                                 <div class="form-group">
                                                     <label>Date</label>
-                                                    <input id="date" name="date" type="text" class="form-control" placeholder="{{ $data->date}}" required>
+                                                    <input id="date" name="date" type="text" class="form-control" placeholder="{{ $data[$key]->date}}" required>
                                                 </div>
                                             </div>
                                             <!-- MODAL FOOTER -->
@@ -198,7 +198,7 @@
                                 </div>
 
                                 <!-- PENDING MODAL -->
-                                <div class="modal fade" id="PendingModal{{ $data->order_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal fade" id="PendingModal{{ $data[$key]->order_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <!-- MODAL HEADER -->
@@ -214,7 +214,7 @@
                                                 <form method="post" action="{{ route('order.Pending')}}">
                                                 @csrf
                                                 <input type="hidden" name="status" value="Pending">
-                                                <input type="hidden" name="order_id" id="order_id"  value="{{ $data->order_id}}">
+                                                <input type="hidden" name="order_id" id="order_id"  value="{{ $data[$key]->order_id}}">
                                             </div>
                                             <!-- MODAL FOOTER -->
                                             <div class="modal-footer">
@@ -228,7 +228,7 @@
                                 </div>
 
                                 <!-- PREPARING MODAL -->
-                                <div class="modal fade" id="PreparingModal{{ $data->order_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal fade" id="PreparingModal{{ $data[$key]->order_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <!-- MODAL HEADER -->
@@ -245,7 +245,7 @@
                                                   @csrf
                                                 <input type="hidden" name="status" value="Reiv">
                                                 <input type="hidden" name="id" value="{}">
-                                                <input type="hidden" name="order_id" id="order_id" value="{{ $data->order_id}}">
+                                                <input type="hidden" name="order_id" id="order_id" value="{{ $data[$key]->order_id}}">
                                             </div>
                                             <!-- MODAL FOOTER -->
                                             <div class="modal-footer">
@@ -258,7 +258,7 @@
                                 </div>
 
                                 <!-- DELIVERING MODAL -->
-                                <div class="modal fade" id="DeliveringModal{{ $data->order_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal fade" id="DeliveringModal{{ $data[$key]->order_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <!-- MODAL HEADER -->
@@ -274,7 +274,7 @@
                                                 <form method="post" action="{{ route('order.Delivering')}}">
                                                   @csrf
                                                 <input type="hidden" name="status" value="Delivering">
-                                                <input type="hidden" name="order_id" id="order_id" value="{{ $data->order_id}}">
+                                                <input type="hidden" name="order_id" id="order_id" value="{{ $data[$key]->order_id}}">
                                             </div>
                                             <!-- MODAL FOOTER -->
                                             <div class="modal-footer">
@@ -287,7 +287,7 @@
                                 </div>
 
                                 <!-- DELIVERED MODAL -->
-                                <div class="modal fade" id="DeliveredModal{{ $data->order_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal fade" id="DeliveredModal{{ $data[$key]->order_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered" role="document">
                                         <div class="modal-content">
                                             <!-- MODAL HEADER -->
@@ -303,7 +303,7 @@
                                                 <form method="post" action="{{ route('order.Delivered')}}">
                                                 @csrf
                                                 <input type="hidden" name="status" value="Delivered">
-                                                <input type="hidden" name="order_id" id="order_id" value="{{ $data->order_id}}">
+                                                <input type="hidden" name="order_id" id="order_id" value="{{ $data[$key]->order_id}}">
                                             </div>
                                             <!-- MODAL FOOTER -->
                                             <div class="modal-footer">
