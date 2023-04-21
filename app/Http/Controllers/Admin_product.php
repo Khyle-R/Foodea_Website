@@ -84,7 +84,7 @@ class Admin_product extends Controller
         ->orderBy('product_sold', 'desc')
         ->get();
     
-    $product=[];
+    $products=[];
     foreach($Data as $prod){
         $products[] = $prod;
         
