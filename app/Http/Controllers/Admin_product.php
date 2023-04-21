@@ -61,16 +61,16 @@ class Admin_product extends Controller
         // !GET DATE AND TOTAL IN CHART 
    
     // GET STATUS IN CHART
-    $status = tbl_transaction::selectRaw('order_status, count(order_status) as order_counts')
-    ->groupBy('order_status')
-    ->where('merchant_id', Session::get('loginID'))
+    $status = tbl_orders::selectRaw('status, count(status) as order_counts')
+    ->groupBy('status')
+    ->where('restaurant_id', Session::get('loginID'))
     ->get();
     
     $order_status = [];
     $order_count = [];
     
     foreach($status as $stat){
-         $order_status[] = $stat->order_status;
+         $order_status[] = $stat->status;
          $order_count[] = $stat->order_counts;
         }
 
