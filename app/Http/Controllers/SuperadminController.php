@@ -27,20 +27,28 @@ use App\Models\tbl_merchant_application;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Validation\Rules\Password;
 use App\Clients\SendGridClient;
+use App\Models\tbl_app_user;
 use App\Models\tbl_merchant_account;
 use App\Models\tbl_merchant_document;
+use App\Models\tbl_orders;
 
 class SuperadminController extends Controller
 {
     public function index(){
         $riders = tbl_accepted_rider::count();
         $merchant = tbl_accepted_merchant::count();
+        $sales = tbl_orders::sum('total');
+        $users = tbl_app_user::count();
+        
+        $revenue = 0.1 * $sales;
 
+        
          $Data = tbl_rider_accounts::join('tbl_vehicle_info', 'tbl_rider_account.rider_id', '=', 'tbl_vehicle_info.rider_id')
         ->join('rider_application', 'tbl_rider_account.rider_id', '=', 'rider_application.rider_id')
         ->join('tbl_document_info', 'tbl_rider_account.rider_id', '=', 'tbl_document_info.rider_id')
         ->where('rider_application.status', 'Pending')
         ->distinct()
+        ->orderBy('tbl_rider_account.rider_id', 'desc')
         ->get(['rider_photo' ,'firstname', 'lastname' ,'vehicle_type', 'status', 'rider_application.date', 'rider_application.rider_application_id', 'tbl_rider_account.rider_id', 'email']);
 
         if($Data){
@@ -52,10 +60,64 @@ class SuperadminController extends Controller
             $timestamp = strtotime($dates->date);
             $day[] = date('D', $timestamp);
          }
- 
-      
+         
+          // GET DATE AND TOTAL IN CHART
+            $date = tbl_orders::selectRaw('date, sum(total) as totals')
+            ->groupBy('date')
+            ->get();
+
+            $day = [];
+            $total = [];
+    
+       
+         foreach($date as $dates){
+            $timestamp = strtotime($dates->date);
+            $day[] = date('M', $timestamp).' '. date('d', $timestamp).' ' .date('Y', $timestamp);
+            $total[] = 0.1 * $dates->totals; 
         
-         return view('superadmin.superadmin_dashboard', compact('riders', 'merchant', 'Data', 'day'));
+        }
+      
+        // !GET DATE AND TOTAL IN CHART 
+        
+         $TopMerchant = tbl_merchant_info::join('tbl_orders', 'tbl_merchant_info.merchant_id', '=', 'tbl_orders.restaurant_id')
+        ->selectRaw('tbl_merchant_info.merchant_id, tbl_merchant_info.business_name, tbl_merchant_info.store_email, tbl_merchant_info.business_type, count(tbl_orders.restaurant_id) as totals')
+        ->groupBy('tbl_merchant_info.merchant_id', 'tbl_merchant_info.business_name', 'tbl_merchant_info.store_email', 'business_type')
+        ->orderBy('totals', 'desc')
+        ->get();
+    
+        $TopSellingMerchant=[];
+        foreach($TopMerchant as $top){
+            $TopSellingMerchant[] = $top;
+            
+        }
+        
+
+         $TopSellingProducts = tbl_product::join('tbl_orders', 'tbl_product.product_id', '=', 'tbl_orders.product_id')
+        ->selectRaw('tbl_product.product_id, tbl_product.product_name, tbl_product.category_name, sum(tbl_orders.total) as totals, count(tbl_orders.product_id) as product_sold')
+        ->groupBy('tbl_product.product_id', 'tbl_product.product_name', 'tbl_product.category_name')
+        ->orderBy('product_sold', 'desc')
+        ->get();
+    
+        $product=[];
+        foreach($TopSellingProducts as $prod){
+            $products[] = $prod;
+            
+        }
+
+        $barchart = tbl_orders::selectRaw('YEAR(date) as year, sum(total) as totals')
+        ->groupBy('year')
+        ->get();
+
+          $year=[];
+          $barsales = [];
+          
+        foreach($barchart as $bar){
+            $year[] = $bar->year;
+            $barsales[] = 0.1 * $bar->totals;
+            
+        }
+
+         return view('superadmin.superadmin_dashboard', compact('riders', 'merchant', 'Data', 'day', 'revenue', 'users', 'day', 'total', 'TopSellingMerchant', 'products', 'year', 'barsales'));
         }
 
        
@@ -262,6 +324,7 @@ class SuperadminController extends Controller
     ->join('merchant_application', 'tbl_merchant_account.merchant_id', '=', 'merchant_application.merchant_id')
     ->join('merchant_document', 'tbl_merchant_account.merchant_id', '=', 'merchant_document.merchant_id')
     ->distinct()
+    ->orderBy('tbl_merchant_account.merchant_id', 'desc')
     ->get(['merchant_document.logo' ,'merchant_application_id', 'status', 'merchant_application.date', 'merchant_application.merchant_id', 'store_email', 'business_type', 'business_name']);
    
          $all = tbl_merchant_application::count();
@@ -286,6 +349,7 @@ class SuperadminController extends Controller
         ->join('rider_application', 'tbl_rider_account.rider_id', '=', 'rider_application.rider_id')
         ->join('tbl_document_info', 'tbl_rider_account.rider_id', '=', 'tbl_document_info.rider_id')
         ->distinct()
+        ->orderBy('tbl_rider_account.rider_id', 'desc')
         ->get(['rider_photo' ,'firstname', 'lastname' ,'vehicle_type', 'status', 'rider_application.date', 'rider_application.rider_application_id', 'tbl_rider_account.rider_id', 'email']);
         
         $all = tbl_rider_application::count();
@@ -380,6 +444,7 @@ class SuperadminController extends Controller
         ->join('rider_application', 'tbl_rider_account.rider_id', '=', 'rider_application.rider_id')
         ->join('tbl_document_info', 'tbl_rider_account.rider_id', '=', 'tbl_document_info.rider_id')
         ->where('rider_application.status', 'Pending')
+        ->orderBy('tbl_rider_account.rider_id', 'desc')
         ->distinct()
         ->get(['rider_photo' ,'firstname', 'lastname' ,'vehicle_type', 'status', 'rider_application.date', 'rider_application.rider_application_id', 'tbl_rider_account.rider_id', 'email']);
 
@@ -391,7 +456,7 @@ class SuperadminController extends Controller
         ->join('rider_application', 'tbl_rider_account.rider_id', '=', 'rider_application.rider_id')
         ->join('tbl_document_info', 'tbl_rider_account.rider_id', '=', 'tbl_document_info.rider_id')
          ->where('rider_application.status', 'Reviewing')
-        ->distinct()
+         ->distinct()
         ->get(['rider_photo' ,'firstname', 'lastname' ,'vehicle_type', 'status', 'rider_application.date', 'rider_application.rider_application_id', 'tbl_rider_account.rider_id', 'email']);
 
     return view('superadmin.superadmin_review', compact('Data'));
@@ -402,7 +467,8 @@ class SuperadminController extends Controller
         ->join('rider_application', 'tbl_rider_account.rider_id', '=', 'rider_application.rider_id')
         ->join('tbl_document_info', 'tbl_rider_account.rider_id', '=', 'tbl_document_info.rider_id')
          ->where('rider_application.status', 'Accepted')
-        ->distinct()
+        ->orderBy('tbl_rider_account.rider_id', 'desc')
+         ->distinct()
         ->get(['rider_photo' ,'firstname', 'lastname' ,'vehicle_type', 'status', 'rider_application.date', 'rider_application.rider_application_id', 'tbl_rider_account.rider_id', 'email']);
 
     return view('superadmin.superadmin_accept', compact('Data'));
@@ -413,6 +479,7 @@ class SuperadminController extends Controller
         ->join('rider_application', 'tbl_rider_account.rider_id', '=', 'rider_application.rider_id')
         ->join('tbl_document_info', 'tbl_rider_account.rider_id', '=', 'tbl_document_info.rider_id')
         ->where('rider_application.status', 'Rejected')
+        ->orderBy('tbl_rider_account.rider_id', 'desc')
         ->distinct()
         ->get(['rider_photo' ,'firstname', 'lastname' ,'vehicle_type', 'status', 'rider_application.date', 'rider_application.rider_application_id', 'tbl_rider_account.rider_id', 'email']);
 
@@ -424,6 +491,7 @@ class SuperadminController extends Controller
     ->join('merchant_application', 'tbl_merchant_account.merchant_id', '=', 'merchant_application.merchant_id')
     ->join('merchant_document', 'tbl_merchant_account.merchant_id', '=', 'merchant_document.merchant_id')
     ->where('merchant_application.status', 'Pending')
+    ->orderBy('tbl_merchant_account.merchant_id', 'desc')
     ->distinct()
     ->get(['merchant_document.logo' ,'merchant_application_id', 'status', 'merchant_application.date', 'merchant_application.merchant_id', 'store_email', 'business_type', 'business_name']);
    
@@ -463,6 +531,7 @@ class SuperadminController extends Controller
     ->join('merchant_application', 'tbl_merchant_account.merchant_id', '=', 'merchant_application.merchant_id')
     ->join('merchant_document', 'tbl_merchant_account.merchant_id', '=', 'merchant_document.merchant_id')
     ->where('merchant_application.status', 'Reviewing')
+    ->orderBy('tbl_merchant_account.merchant_id', 'desc')
     ->distinct()
     ->get(['merchant_document.logo' ,'merchant_application_id', 'status', 'merchant_application.date', 'merchant_application.merchant_id', 'store_email', 'business_type', 'business_name']);
    
@@ -475,6 +544,7 @@ class SuperadminController extends Controller
     ->join('merchant_application', 'tbl_merchant_account.merchant_id', '=', 'merchant_application.merchant_id')
     ->join('merchant_document', 'tbl_merchant_account.merchant_id', '=', 'merchant_document.merchant_id')
     ->where('merchant_application.status', 'Accepted')
+    ->orderBy('tbl_merchant_account.merchant_id', 'desc')
     ->distinct()
     ->get(['merchant_document.logo' ,'merchant_application_id', 'status', 'merchant_application.date', 'merchant_application.merchant_id', 'store_email', 'business_type', 'business_name']);
    
@@ -487,6 +557,7 @@ class SuperadminController extends Controller
     ->join('merchant_application', 'tbl_merchant_account.merchant_id', '=', 'merchant_application.merchant_id')
     ->join('merchant_document', 'tbl_merchant_account.merchant_id', '=', 'merchant_document.merchant_id')
     ->where('merchant_application.status', 'Rejected')
+    ->orderBy('tbl_merchant_account.merchant_id', 'desc')
     ->distinct()
     ->get(['merchant_document.logo' ,'merchant_application_id', 'status', 'merchant_application.date', 'merchant_application.merchant_id', 'store_email', 'business_type', 'business_name']);
    
@@ -502,7 +573,14 @@ class SuperadminController extends Controller
         ->limit(1)
         ->get();
 
-    return view('superadmin.superadmin_riderprofile', compact('Data'));
+    $RiderOrder = tbl_rider_accounts::join('tbl_transaction', 'tbl_rider_account.rider_id', '=', 'tbl_transaction.rider_id')
+    ->join('tbl_product', 'tbl_transaction.product_id', '=', 'tbl_product.product_id')
+    ->where('tbl_rider_account.rider_id', $id)
+    ->where('tbl_transaction.order_status', 'Delivered')
+    ->get();
+
+
+    return view('superadmin.superadmin_riderprofile', compact('Data', 'RiderOrder'));
    }
    
    public function Update(Request $request){
@@ -982,7 +1060,13 @@ class SuperadminController extends Controller
 
     }
     public function SalesIndex(){
-        return view('superadmin.superadmin_sales');
+
+        $sales = tbl_merchant_info::join('tbl_orders', 'tbl_merchant_info.merchant_id', '=', 'tbl_orders.restaurant_id')
+        ->orderBy('restaurant_id', 'desc')
+        ->get();
+    
+      
+        return view('superadmin.superadmin_sales', compact('sales'));
     }
     
     /*VIEW PDF */

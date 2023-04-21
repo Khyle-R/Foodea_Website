@@ -45,7 +45,7 @@ class Admin_product extends Controller
     if($allProduct){
     
     // GET DATE AND TOTAL IN CHART
-    $date = tbl_orders::selectRaw('date as dates, sum(total) as totals')
+    $date = tbl_orders::selectRaw('date, sum(total) as totals')
     ->where('restaurant_id', Session::get('loginID'))
     ->groupBy('date')
     ->get();
@@ -58,6 +58,7 @@ class Admin_product extends Controller
             $day[] = date('M', $timestamp).' '. date('d', $timestamp).' ' .date('Y', $timestamp);
             $total[] = $dates->totals; 
         }
+   
         // !GET DATE AND TOTAL IN CHART 
    
     // GET STATUS IN CHART
@@ -442,7 +443,7 @@ class Admin_product extends Controller
     public function Orders(){
         $orders = DB::table('tbl_orders')->where('restaurant_id', '=', session('loginID'))->selectRaw('MAX(order_id) as order_id, order_key, *')->groupBy('order_key')->get();
         dd($orders);
-        $orders = $orders->sortByDesc('date');
+        $orders = $orders->sortByDesc('order_id');
 
         $TotalOrders = DB::table('tbl_orders')->where('restaurant_id', '=', session('loginID'))->count();
         $PendingOrders = DB::table('tbl_orders')->where([['status','Pending'],['restaurant_id', '=', session('loginID')]])->count();
@@ -456,22 +457,26 @@ class Admin_product extends Controller
     }
     public function OrderPending(){
         $pending_order = DB::table('tbl_orders')->where([['status','=', 'Pending'],['restaurant_id', '=', session('loginID')]])->get();
+         $pending_order = $pending_order->sortByDesc('order_id');
 
         return view ('admin.admin_orderpending', ['pending_order' => $pending_order]);
     }
     public function OrderPreparing(){
         $preparing_order = DB::table('tbl_orders')->where([['status','=', 'Ready for pick up'],['restaurant_id', '=', session('loginID')]])->get();
+        $preparing_order = $preparing_order->sortByDesc('order_id');
 
         return view ('admin.admin_orderpreparing', ['preparing_order' => $preparing_order]);
     }
     public function OrderDelivering(){
         $delivering_order = DB::table('tbl_orders')->where([['status','=', 'Delivering'],['restaurant_id', '=', session('loginID')]])->get();
-
+        $delivering_order = $delivering_order->sortByDesc('order_id');
+        
         return view ('admin.admin_orderdelivering', ['delivering_order' => $delivering_order]);
     }
 
     public function OrderDelivered(){
         $delivered_order = DB::table('tbl_orders')->where([['status','=', 'Delivered'],['restaurant_id', '=', session('loginID')]])->get();
+        $delivered_order = $delivered_order->sortByDesc('order_id');
 
         return view ('admin.admin_orderdelivered', ['delivered_order' => $delivered_order]);
     }
