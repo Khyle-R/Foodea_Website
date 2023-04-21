@@ -121,7 +121,7 @@
               <div class="col-lg-6 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Applicants</h4>
+                    <h4 class="card-title">Orders</h4>
                     <canvas id="doughnutChart"></canvas>
                   </div>
                 </div>
@@ -300,6 +300,7 @@
            </div>
          </div>
           </div>
+    
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.html -->
           <footer class="footer">
@@ -315,4 +316,11 @@
           </footer>
           <!-- partial -->
         </div>
+          
+
+      <script type="text/javascript">
+      var DateLabel =  {!! json_encode($day) !!};
+      var DateData =  {!! json_encode($total) !!};
+    </script>
+
 @endsection

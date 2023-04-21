@@ -12,6 +12,7 @@ use App\Models\tbl_merchant_info;
 use Illuminate\Support\Facades\DB;
 use App\Models\tbl_merchant_account;
 use App\Models\tbl_merchant_document;
+use App\Models\tbl_orders;
 use App\Models\tbl_partner_accounts;
 use App\Models\TemporaryFile;
 use Illuminate\Support\Facades\Hash;
@@ -32,7 +33,31 @@ class Admin_product extends Controller
     $product = tbl_product::where('merchant_id', Session::get('loginID'))
     ->get();
     
-    return view('admin.dashboard',['totalOrders' => $totalOrders, 'productSold' => $productSold, 'totalRevenue' => $totalRevenue, 'totalProduct' => $totalProduct,], compact('product'));
+    if($product){
+    
+    $date = tbl_orders::selectRaw('date, sum(total) as totals')
+    ->where('restaurant_id', Session::get('loginID'))
+    ->groupBy('date')
+    ->get();
+   
+    
+
+    $day = [];
+    $total = [];
+    
+     foreach($date as $dates){
+            $timestamp = strtotime($dates->date);
+            $day[] = date('M', $timestamp).' '. date('d', $timestamp).' ' .date('Y', $timestamp);
+            $total[] = $dates->totals; 
+        }
+         
+   
+      
+    
+
+    return view('admin.dashboard',['totalOrders' => $totalOrders, 'productSold' => $productSold, 'totalRevenue' => $totalRevenue, 'totalProduct' => $totalProduct,], compact('product', 'day', 'total'));
+    }
+   
     }
     
    public function logout(){
