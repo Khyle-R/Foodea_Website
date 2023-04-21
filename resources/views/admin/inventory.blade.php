@@ -148,7 +148,7 @@
                                         Close
                                       </a>
                                       <a class="badge badge-outline-success" href="/product/restore/{{ $data->inventory_id}}">
-                                        Resore
+                                        Restore
                                       </a>
                                     </div>
                                   </div>
