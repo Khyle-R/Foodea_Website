@@ -109,7 +109,13 @@
                               @foreach ($orders as $key => $data)
                                 <tr>
                                     <td>{{ $data->order_id}}</td>
-                                    <td>{{ $data->customer_id}}</td>
+                                    <td>
+                                        @if(isset($data->transaction_details) && isset($data->transaction_details->user_details))
+                                            {{$data->transaction_details->user_details->firstname . ' ' . $data->transaction_details->user_details->lastname}}
+                                        @else
+                                            {{'Customer Name'}}
+                                        @endif
+                                    </td>
                                     <td>{{ $data->order_key}}</td>
                                     <td>{{ $data->date}}</td>
                                     <td>
