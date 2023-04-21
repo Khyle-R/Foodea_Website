@@ -49,17 +49,17 @@ class PartnerRegistration extends Controller
           
         if($email){
             $code = mt_rand(1000, 9999);
-            $mailData = [
-            'title' => 'Password Reset',
-            'body' => 'test',
-            'code' => $code,
-            'fname' => $email->firstname,
-            'lname' => $email->lastname,
-            ];
-            Mail::to($email)->send(new PasswordVerification($mailData));
+            // $mailData = [
+            // 'title' => 'Password Reset',
+            // 'body' => 'test',
+            // 'code' => $code,
+            // 'fname' => $email->firstname,
+            // 'lname' => $email->lastname,
+            // ];
+            // Mail::to($email)->send(new PasswordVerification($mailData));
 
-            // $html = view('email.forgotpass')->with('code', $code)->render();
-            // SendGridClient::sendEmail($request->email,"Password Reset", $html);
+            $html = view('email.forgotpass')->with('code', $code)->render();
+            SendGridClient::sendEmail($request->email,"Password Reset", $html);
 
             $request->session()->put('partner_verification', $code);
             $request->session()->put('partner_email', $request->email);
@@ -97,18 +97,18 @@ class PartnerRegistration extends Controller
           
         if($email){
             $code = mt_rand(1000, 9999);
-            $mailData = [
-            'title' => 'Password Reset',
-            'body' => 'test',
-            'code' => $code,
-            'fname' => $email->firstname,
-            'lname' => $email->lastname,
-            ];
-            Mail::to($email)->send(new PasswordVerification($mailData));
+            // $mailData = [
+            // 'title' => 'Password Reset',
+            // 'body' => 'test',
+            // 'code' => $code,
+            // 'fname' => $email->firstname,
+            // 'lname' => $email->lastname,
+            // ];
+            // Mail::to($email)->send(new PasswordVerification($mailData));
 
             $receiverEmail = Session::get('partner_email');
-            // $html = view('email.forgotpass')->with('code', $code)->render();
-            // SendGridClient::sendEmail($receiverEmail, "Password Reset", $html);
+            $html = view('email.forgotpass')->with('code', $code)->render();
+            SendGridClient::sendEmail($receiverEmail, "Password Reset", $html);
 
             $request->session()->put('partner_verification', $code);
 
@@ -237,6 +237,9 @@ class PartnerRegistration extends Controller
    
     public function addProductPartner(Request $request)
     {
+        $category_name = tbl_category::where('category_id', $request->category)
+        ->first();
+      
         $request->validate([
             'product_name' => 'required',
             'category' => 'required',
@@ -252,7 +255,7 @@ class PartnerRegistration extends Controller
 
         if ($request->hasFile('product_image')) 
         {
-            $image_p = $request->file('product_image')->store('merchant_documents/'.$request->merchant_id.'', 's3', ['visibility', 'public']);
+            $image_p = $request->file('product_image')->store('product_images', 's3', ['visibility', 'public']);
             $filename1 = Storage::disk('s3')->url($image_p);
         
             $addProd->merchant_id = Session::get('merchant_id');
@@ -260,7 +263,8 @@ class PartnerRegistration extends Controller
             $addProd->stock = $request->stock;
             $addProd->product_image = $filename1;
             $addProd->price = $request->price;
-            $addProd->category_name=$request->category;
+            $addProd->category_name= $category_name->main_category;
+            $addProd->category_id= $request->category;
             $addProd->status = $request->status;
             $addProd->calories=$request->calories;
             $addProd->description = $request->description;
@@ -278,14 +282,19 @@ class PartnerRegistration extends Controller
                         ->first();
                         
             $code = mt_rand(100000, 999999);
-              $mailData = [
-                'title' => 'Account Verification',
-                'body' => 'test',
-                'code' => $code,
-                'fname' => $email->firstname,
-                'lname' => $email->lastname,
-            ];
-             Mail::to($email)->send(new MailVerification($mailData));
+            //   $mailData = [
+            //     'title' => 'Account Verification',
+            //     'body' => 'test',
+            //     'code' => $code,
+            //     'fname' => $email->firstname,
+            //     'lname' => $email->lastname,
+            // ];
+            //  Mail::to($email)->send(new MailVerification($mailData));
+
+            
+            $html = view('email.emailverify')->with('code', $code)->render();
+            SendGridClient::sendEmail($email->email, "Account Verification", $html);
+                
             $request->session()->put('verification', $code);
             return redirect('partner_application3');
         }
@@ -297,12 +306,30 @@ class PartnerRegistration extends Controller
     //CATEGORY
     public function addCategory(Request $request)
     {
-        $addCategory = new tbl_category();
-        $addCategory->main_category = $request->categoryName;
-        $addCategory->description = $request->description;
-        $addCategory->merchant_id = session('merchant_id');
+        $category = tbl_category::where('merchant_id', Session::get('merchant_id'))
+        ->first();
 
-        $addCategory->save();
+        if(isset($category->main_category)){
+            if($category->main_category == $request->categoryName)
+            {
+                $request->session()->put('fail', 'Category Name Already Exist');
+            }
+            else{
+            $addCategory = new tbl_category();
+            $addCategory->main_category = $request->categoryName;
+            $addCategory->description = $request->description;
+            $addCategory->merchant_id = session('merchant_id');
+
+            $addCategory->save();
+            }
+        } else {
+            $addCategory = new tbl_category();
+            $addCategory->main_category = $request->categoryName;
+            $addCategory->description = $request->description;
+            $addCategory->merchant_id = session('merchant_id');
+
+            $addCategory->save();
+        }
         
         return back();
         
@@ -322,17 +349,17 @@ class PartnerRegistration extends Controller
                         
          $code = mt_rand(100000, 999999);
 
-         $mailData = [
-         'title' => 'Account Verification',
-         'body' => 'test',
-          'code' => $code,
-         'fname' => $email->firstname,
-         'lname' => $email->lastname,
-        ];
-         Mail::to($email)->send(new MailVerification($mailData));
+        //  $mailData = [
+        //  'title' => 'Account Verification',
+        //  'body' => 'test',
+        //   'code' => $code,
+        //  'fname' => $email->firstname,
+        //  'lname' => $email->lastname,
+        // ];
+        //  Mail::to($email)->send(new MailVerification($mailData));
 
-        // $html = view('email.emailverify')->with('code', $code)->render();
-        // SendGridClient::sendEmail($email->email, "Account Verification", $html);
+        $html = view('email.emailverify')->with('code', $code)->render();
+        SendGridClient::sendEmail($email->email, "Account Verification", $html);
 
          $request->session()->put('verification', $code);
         return back();

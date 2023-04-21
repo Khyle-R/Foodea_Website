@@ -57,7 +57,7 @@
                                                 
                                                <div class="staff-id">{{ $partner->business_name }}</div>
                                                 <div class="small doj text-muted">Date Applied : {{ $partner->date }}</div>
-                                                <div class="staff-msg"><a class="red-btn" href="#">{{ $partner->status }}</a></div>
+                                                <div class="staff-msg"><a class="red-btn">{{ $partner->status }}</a></div>
                                             </div>
                                         </div>
                                         <div class="col-md-7">

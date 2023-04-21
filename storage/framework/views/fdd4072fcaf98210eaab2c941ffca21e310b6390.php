@@ -41,10 +41,10 @@
         <div
           class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top"
         >
-          <a class="sidebar-brand brand-logo" href="index.html"
+          <a class="sidebar-brand brand-logo" href="/index"
             ><img src="assets/images/foodea_logo.PNG" alt="logo"
           /></a>
-          <a class="sidebar-brand brand-logo-mini" href="index.html"
+          <a class="sidebar-brand brand-logo-mini" href="/index"
             ><img src="/image/foodea.png" class="w-50" alt="logo"
           /></a>
         </div>
@@ -427,25 +427,7 @@
     <script src="https://unpkg.com/filepond@^4/dist/filepond.js"></script>
     <script src="https://unpkg.com/filepond-plugin-image-preview/dist/filepond-plugin-image-preview.js"></script>
     
-    <script>
-        FilePond.registerPlugin(FilePondPluginImagePreview);
-        // Get a reference to the file input element
-        const profile = document.querySelector('input[type="file"]');
-         // Create a FilePond instance
-         const pond = FilePond.create(profile, {
-            //  instantUpload: false,
-             storeAsFile: true,
-             acceptedFileTypes: ['image/*'], 
-             server:{
-                 process: '/tmp-upload',
-                 revert: '/tmp-delete',
-                headers: {
-                 'X-CSRF-TOKEN': '<?php echo e(csrf_token()); ?>'
-                }
-             },
-       
-         });
-    </script>
+    
 
   </body>
   

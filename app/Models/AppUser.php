@@ -24,7 +24,9 @@ class AppUser extends Model
         'email',
         'password',
         'lifestyle',
-        'preferences'
+        'preferences',
+        'latitude',
+        'longitude'
     ];
     protected $primaryKey = 'user_id';
 }

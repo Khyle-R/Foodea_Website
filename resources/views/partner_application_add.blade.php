@@ -120,11 +120,14 @@
             <select name="category" id="category" class="form-control form-control-lg"  >
               <option selected="true" disabled="disabled">- Select -</option>
               @foreach ($category as $cat)
-                <option value={{ $cat->main_category }}>{{ $cat->main_category }}</option>
+                <option value={{ $cat->category_id }}>{{ $cat->main_category }}</option>
               @endforeach
             </select>
             
             <span style="color:red;">
+              @if(Session::has('fail'))
+              {{ Session::pull('fail') }}
+              @endif
               @error('category') 
                 {{ $message }}
               @enderror

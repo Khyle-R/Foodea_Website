@@ -104,14 +104,12 @@
 
 {{-- 
                                           <div class="form-group">
-                                             <div class="file-loading">
-                                                <input type="file" value="{{ old('product_image') }}" name="product_image" />
-                                                <span style="color:red;">
-                                                   @error('product_image')
-                                                      {{ $message }}
-                                                   @enderror
-                                                </span>
-                                             </div>
+                                             <input type="file" value="{{ old('product_image') }}" name="product_image" />
+                                             <span style="color:red;">
+                                                @error('product_image')
+                                                   {{ $message }}
+                                                @enderror
+                                             </span>
                                           </div> --}}
 
                                           

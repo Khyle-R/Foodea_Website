@@ -91,7 +91,7 @@
                                 <!-- <a href="#" class="btn btn-link">
                                     <img class="imagedl mt-5" src="image/gplay.png" alt=""></button>
                                 </a> -->
-                                <a href="https://expo.dev/accounts/kennyyy.023/projects/navigation/builds/76488489-9623-45ca-bd9d-714946b81e7a?fbclid=IwAR20KUUp88V3inKVXFQkHUMMVnab_LhCEaHgzU-igWnKQr9jCyRqW23-aTw"
+                                <a href="https://expo.dev/artifacts/eas/oz3XBZY4xEEMaFm4B8HyZ8.apk"
                                     class="btn btn-link">
                                     <img class="imagedl mt-4" src="{{ asset('newimage/download_now.png')}}"
                                         alt=""></button>

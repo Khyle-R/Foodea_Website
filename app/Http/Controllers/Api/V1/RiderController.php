@@ -16,9 +16,9 @@ class RiderController extends Controller
         $queryItems = $filter->transform($request);
 
         if (!isset($queryItems)||count($queryItems) == 0 ) {
-            return tbl_rider_accounts::all();
+            return tbl_rider_accounts::whereHas('rider_documents')->with('rider_documents')->get();
         } else {
-            return tbl_rider_accounts::where($queryItems)->get();
+            return tbl_rider_accounts::whereHas('rider_documents')->with('rider_documents')->where($queryItems)->get();
         }
     }
 
@@ -28,7 +28,7 @@ class RiderController extends Controller
 
     public function show(Request $request, tbl_rider_accounts $tbl_rider_accounts){
         $id = $request->segment(count(request()->segments()));
-        return $tbl_rider_accounts::where('rider_id', $id)->get();
+        return $tbl_rider_accounts::with('rider_documents')->where('rider_id', $id)->get();
     }
 
     public function destroy(Request $request, tbl_rider_accounts $tbl_rider_accounts){
@@ -37,6 +37,8 @@ class RiderController extends Controller
     }
 
     public function update(UpdateRiderRequest $request, tbl_rider_accounts $tbl_rider_accounts){
-        $tbl_rider_accounts->update($request->all());
+        $id = $request->segment(count(request()->segments()));
+        $rider = tbl_rider_accounts::where('rider_id', $id);
+        $rider->update($request->all());
     }
 }

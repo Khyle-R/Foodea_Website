@@ -5,8 +5,9 @@ namespace App\Http\Controllers\Api\V1;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Filters\V1\FoodFilter;
-use App\Http\Requests\V1\StoreFoodRequest;
 use App\Models\tbl_product;
+use App\Http\Requests\V1\StoreFoodRequest;
+use App\Http\Requests\V1\UpdateFoodsRequest;
 
 class FoodController extends Controller
 {
@@ -37,5 +38,14 @@ class FoodController extends Controller
     public function show(Request $request, tbl_product $tbl_product){
         $id = $request->segment(count(request()->segments()));
         return $tbl_product::where('product_id', $id)->get();
+    }
+
+    public function update(Request $request, tbl_product $tbl_product){
+        $id = $request->segment(count(request()->segments()));
+        $food = tbl_product::where('product_id', $id);
+        // dd($request->all());
+        $food->update($request->all());
+        // $tbl_product->update($request->all());
+        // dd($tbl_product);
     }
 }

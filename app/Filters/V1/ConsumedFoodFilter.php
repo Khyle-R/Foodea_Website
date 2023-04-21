@@ -3,23 +3,12 @@ namespace App\Filters\V1;
 
 use Illuminate\Http\Request;
 
-class RiderFilter{
+class ConsumedFoodFilter{
     protected $allowedParameters = [
-        'rider_id' => ['eq', 'lte', 'lt', 'gt', 'gte'],
-        'firstname' => ['eq', 'like'],
-        'middlename' => ['eq', 'like'],
-        'lastname' => ['eq', 'like'],
-        'age' => ['eq', 'lte', 'lt', 'gte', 'gt'],
-        'gender' => ['eq', 'like'],
-        'birthdate' => ['like', 'eq'],
-        'email' => ['eq', 'like'],
-        'mobile_number' => ['eq'],
-        'address' => ['eq', 'like'],
-        'city' => ['like', 'eq'],
-        'barangay' => ['eq', 'like'],
-        'zip_code' => ['eq','like'],
-        'latitude' => ['eq', 'gt', 'gte', 'lte', 'lt'],
-        'longitude' => ['eq', 'gt', 'gte', 'lte', 'lt']
+        'user_id' => ['eq'],
+        'food_name' => ['eq', 'like'],
+        'calories' => ['eq', 'gt', 'gte', 'lt', 'lte'],
+        'date' => ['eq', 'gt', 'gte', 'lt', 'lte']
     ];
 
     protected $operatorMap = [
