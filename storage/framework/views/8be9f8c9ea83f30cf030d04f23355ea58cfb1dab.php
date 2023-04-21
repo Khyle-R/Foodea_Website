@@ -260,6 +260,10 @@
              
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.html -->
+           <?php $__currentLoopData = $day; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $dates): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+               <?php echo e($dates); ?>
+
+           <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
           <footer class="footer">
             <div
               class="d-sm-flex justify-content-center justify-content-sm-between"
@@ -273,5 +277,11 @@
           </footer>
           <!-- partial -->
         </div>
+
+         <script type="text/javascript">
+      
+      var sarray =  <?php echo json_encode($day); ?>;
+    
+    </script>
         <?php $__env->stopSection(); ?>
 <?php echo $__env->make('superadmin.superadmin_index', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH E:\xampp\htdocs\Foodea_Website\resources\views/superadmin/superadmin_dashboard.blade.php ENDPATH**/ ?>

@@ -259,6 +259,9 @@
              
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.html -->
+           @foreach ($day as $dates)
+               {{ $dates }}
+           @endforeach
           <footer class="footer">
             <div
               class="d-sm-flex justify-content-center justify-content-sm-between"
@@ -272,4 +275,10 @@
           </footer>
           <!-- partial -->
         </div>
+
+         <script type="text/javascript">
+      
+      var sarray =  {!! json_encode($day) !!};
+    
+    </script>
         @endsection
