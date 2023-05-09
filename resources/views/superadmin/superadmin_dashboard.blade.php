@@ -222,6 +222,16 @@
                             </tr>
                         </thead>
                         <tbody>
+                          @if($products == 0)
+                           <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            
+                            </tr>
+                        
+                          @else
                           @foreach ($products as $prod)
                             <tr>
                                 <td>{{ $prod->product_id }}</td>
@@ -231,6 +241,7 @@
                             
                             </tr>
                            @endforeach
+                             @endif
                         </tbody>
                     
                     </table>

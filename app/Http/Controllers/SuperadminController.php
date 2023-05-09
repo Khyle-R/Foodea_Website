@@ -96,19 +96,25 @@ class SuperadminController extends Controller
             
         }
         
-
+        if($sales){
          $TopSellingProducts = tbl_product::join('tbl_orders', 'tbl_product.product_id', '=', 'tbl_orders.product_id')
         ->selectRaw('tbl_product.product_id, tbl_product.product_name, tbl_product.category_name, sum(tbl_orders.total) as totals, count(tbl_orders.product_id) as product_sold')
         ->groupBy('tbl_product.product_id', 'tbl_product.product_name', 'tbl_product.category_name')
         ->where('tbl_orders.status', 'Delivered')
         ->orderBy('product_sold', 'desc')
         ->get();
-    
+
         $product=[];
         foreach($TopSellingProducts as $prod){
             $products[] = $prod;
             
         }
+                }
+                else{
+                      $products = 0;   
+                }
+       
+        
 
         $barchart = tbl_orders::selectRaw('YEAR(date) as year, sum(total) as totals')
         ->groupBy('year')

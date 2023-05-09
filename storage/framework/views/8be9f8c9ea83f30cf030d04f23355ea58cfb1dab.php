@@ -222,6 +222,16 @@
                             </tr>
                         </thead>
                         <tbody>
+                          <?php if($products == 0): ?>
+                           <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            
+                            </tr>
+                        
+                          <?php else: ?>
                           <?php $__currentLoopData = $products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $prod): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <tr>
                                 <td><?php echo e($prod->product_id); ?></td>
@@ -231,6 +241,7 @@
                             
                             </tr>
                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                             <?php endif; ?>
                         </tbody>
                     
                     </table>
