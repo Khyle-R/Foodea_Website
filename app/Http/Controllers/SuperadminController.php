@@ -27,10 +27,15 @@ use App\Models\tbl_merchant_application;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Validation\Rules\Password;
 use App\Clients\SendGridClient;
+use App\Models\tbl_activitylog;
 use App\Models\tbl_app_user;
+use App\Models\tbl_category;
+use App\Models\tbl_inventory;
 use App\Models\tbl_merchant_account;
 use App\Models\tbl_merchant_document;
 use App\Models\tbl_orders;
+use App\Models\tbl_transaction;
+use App\Models\tbl_voucher;
 
 class SuperadminController extends Controller
 {
@@ -690,7 +695,20 @@ class SuperadminController extends Controller
         ->delete();
         tbl_merchant_document::where('merchant_id', $request->partner_id)
         ->delete();
-
+        tbl_product::where('merchant_id', $request->partner_id)
+        ->delete();
+        tbl_transaction::where('merchant_id', $request->partner_id)
+        ->delete();
+        tbl_voucher::where('merchant_id', $request->partner_id)
+        ->delete();
+        tbl_orders::where('restaurant_id', $request->partner_id)
+        ->delete();
+        tbl_inventory::where('merchant_id', $request->partner_id)
+        ->delete();
+        tbl_category::where('merchant_id', $request->partner_id)
+        ->delete();
+        tbl_activitylog::where('merchant_id', $request->partner_id)
+        ->delete();
         $request->session()->put('success', 'Account Removed');
         return back();
     }
