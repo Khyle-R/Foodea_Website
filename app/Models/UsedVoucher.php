@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\tbl_voucher;
 
 class UsedVoucher extends Model
 {
@@ -16,4 +17,8 @@ class UsedVoucher extends Model
     ];
     protected $primaryKey = 'id';
     public $timestamps = false;
+
+    public function voucher_details(){
+        return $this->hasOne(tbl_voucher::class, 'voucher_id', 'voucher_id');
+    }
 }

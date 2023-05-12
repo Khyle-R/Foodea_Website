@@ -58,14 +58,13 @@
                   <div class="card">
                     <div class="card-body">  
                       <div class="table-responsive">
-                        <table id="example" class="table" style="width:100%">
+                        <table id="sortStart" class="table" style="width:100%">
                           <thead>
                             <tr>
                               <th>Transaction ID</th>
-                              <th>Order Number</th>
-                              <th>Customer’s ID</th>
-                              <th>Rider's ID</th>
-                              <th>Product ID</th>
+                              <th>Order Key</th>
+                              <th>Customer’s Name</th>
+                              <th>Rider's Name</th>
                               <th>Date</th>
                               <th>Total</th>
                               <th>Status</th>
@@ -73,47 +72,147 @@
                             </tr>
                           </thead>
                           <tbody>
-                            @foreach ($history as $key => $data)
-
+                            @foreach ($history as $data)
                             <tr>
-                              <td>
-                                {{$data->transaction_id}}
-                              </td>
                               <td>
                                 {{$data->order_id}}
                               </td>
                               <td>
-                                {{$data->customer_id}}
+                                {{$data->order_key}}
                               </td>
                               <td>
-                                {{$data->customer_id}}
+                                @if(isset($data->transaction_details) && isset($data->transaction_details->user_details))
+                                  {{$data->transaction_details->user_details->firstname . ' ' . $data->transaction_details->user_details->lastname}}
+                                @else
+                                  {{'asd'}}
+                                @endif
                               </td>
-                              <td>{{$data->product_Id}}</td>
+                              <td>
+                                @if(isset($data->transaction_details) && isset($data->transaction_details->rider_details))
+                                  {{$data->transaction_details->rider_details->firstname . ' ' . $data->transaction_details->rider_details->lastname}}
+                                @else
+                                  {{'asd'}}
+                                @endif
+                              </td>
                               <td>
                                 {{$data->date}}
                               </td>
                               <td>
-                                {{$data->order_status}}
+                                {{$data->total}}
                               </td>
                               <td>
-                                  
-                                  @if ($data->order_status =='Cancelled')
-                                      <button class="btn btn-danger" data-toggle="modal" data-target="#Cancelled">
-                                        Cancelled
-                                      </button>
-                                    @elseif($data->order_status=='Delivered')
-                                      <button class="btn btn-success" data-toggle="modal" data-target="#Cancelled">
-                                        Delivered
-                                      </button>
-                                    @else
-                                    
-                                    @endif
+                                {{$data->status}}
                               </td>
                               <td>
-                                  <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#viewdetails">View Details</button>
+                                  <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#viewdetails{{$data->order_id}}">View Details</button>
+                                  <div class="modal fade" id="viewdetails{{$data->order_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog  modal-sm" role="document">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <h5 class="modal-title" id="exampleModalLabel">Order Details</h5>
+                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                          </button>
+                                        </div>
+                                        <div class="modal-body">
+                                          <!-- Accepted & User -->
+                                          <label><i class="mdi mdi-circle text-success icon-sm"></i> Delivered</label>
+                                          <div class="text-center">
+                                            Rider Details
+                                          </div>
+                                          <img class="rounded-circle mx-auto d-block py-2" src="{{$data->transaction_details->rider_details->rider_documents->rider_photo ?? ''}}" width="120" height="110"/>
+                                          <ul class="list-unstyled text-center text-small">
+                                            <li>
+                                              @if(isset($data->transaction_details) && isset($data->transaction_details->rider_details))
+                                                {{$data->transaction_details->rider_details->firstname . ' ' . $data->transaction_details->rider_details->lastname}}
+                                              @else
+                                                {{'asd'}}
+                                              @endif
+                                            </li>
+                                            <br>
+                                            <li>
+                                              @if(isset($data->transaction_details) && isset($data->transaction_details->rider_details))
+                                                {{$data->transaction_details->rider_details->address}}
+                                              @else
+                                                {{'asd'}}
+                                              @endif
+                                            </li>
+                                            <br>
+                                            <li>
+                                              @if(isset($data->transaction_details) && isset($data->transaction_details->rider_details))
+                                                {{$data->transaction_details->rider_details->mobile_number}}
+                                              @else
+                                                {{'asd'}}
+                                              @endif
+                                            </li>
+                                          </ul>
+                                          <!-- Orders -->
+                                          <div class="table-responsive-sm">
+                                            <table class="ordetails mx-auto">
+                                              <thead>
+                                                <tr>
+                                                  <th>Order</th>
+                                                  <th>Product Name</th>
+                                                  <th>Qty</th>
+                                                  <th>Amount</th>
+                                                </tr>
+                                              </thead>
+                                              <tbody>
+                                                <?php 
+                                                  $current_order_key = $data->order_key;
+                                                  $order_with_key = App\Models\tbl_orders::where('order_key', $current_order_key)->with('transaction_details')->get();  
+                                                ?>
+                                                  @foreach($history as $item)
+                                                    @if($item->order_key == $current_order_key)
+                                                    <?php 
+                                                      $prod_id = $item->product_id;
+                                                      $food_items = App\Models\tbl_product::where('product_id', $prod_id)->get();
+                                                    ?>
+                                                    @foreach($food_items as $single)
+                                                      <tr>
+                                                        <td>
+                                                          <img
+                                                            src="{{$single->product_image}}"
+                                                            alt="image" width="40" height="50"
+                                                          />
+                                                        </td>
+                                                        <td>
+                                                          {{$single->product_name}}
+                                                        </td>
+                                                        <td>{{$item->quantity}}</td>
+                                                        <td>{{$item->total}}</td>
+                                                      </tr>
+                                                    @endforeach
+                                                      
+                                                    @endif
+                                                  @endforeach
+                                              </tbody>
+                                            </table>
+                                          </div>
+                                          <div class="cod text-center">
+                                            <label>Cash on Delivery</label>
+                                          </div>
+                                          <span class="ridername text-center">
+                                            <div>
+                                              <label>Customer’s name</label>
+                                            </div>
+                                            <div>
+                                              <label>
+                                                @if(isset($data->transaction_details) && isset($data->transaction_details->user_details))
+                                                  {{$data->transaction_details->user_details->firstname . ' ' . $data->transaction_details->user_details->lastname}}
+                                                @else
+                                                  {{'asd'}}
+                                                @endif
+                                              </label>
+                                            </div>
+                                          </span>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
                               </td>
                             </tr>
-
                             @endforeach
                           </tbody>
                         </table>
@@ -125,86 +224,7 @@
 
 
                 <!-- Modal Details -->
-            <div class="modal fade" id="viewdetails" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog  modal-sm" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Customer's Details</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-                  </div>
-                  <div class="modal-body">
-                    
-                    <!-- Accepted & User -->
-                            <label><i class="mdi mdi-circle text-success icon-sm"></i>Accepted</label>
-                            <img class="rounded-circle mx-auto d-block py-2" src="assets/images/sample2.jpg" width="120" height="110"/>
-                            <ul class="list-unstyled text-center text-small">
-                              <li>John Paul Quia</li>
-                              <li>CAMARIN CALOOCAN CITY</li>
-                              <li>09185731806</li>
-                            </ul>
             
-                  <!-- Orders -->
-                  <div class="table-responsive-sm">
-                    <table class="ordetails">
-                      <thead>
-                        <tr>
-                          <th>Order</th>
-                          <th>Product Name</th>
-                          <th>Qty</th>
-                          <th>Amount</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>
-                            <img
-                              src="assets/images/milktea.jpg"
-                              alt="image" width="40" height="50"
-                            />
-                          </td>
-                          <td>Classic Milk Tea R</td>
-                          <td>1</td>
-                          <td>₱95.00</td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <img
-                              src="assets/images/milktea.jpg"
-                              alt="image" width="40" height="50"
-                            />
-                          </td>
-                          <td>Premium Milk Tea R</td>
-                          <td>1</td>
-                          <td>₱115.00</td>
-                        </tr>
-                        <tr>
-                          <td colspan="2"></td>
-                          <td>Total</td>
-                          <td>₱210.00</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                    </div>
-                         <div class="cod">
-                         <label>Cash on Delivery</label>
-                         </div>
-                         <span class="ridername">
-                         <div>
-                         <label>Rider’s name</label>
-                         </div>
-                         <div>
-                         <label>Juan Dela cruz</label>
-                         </div>
-                         </span>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-danger btn-block btn-rounded " data-dismiss="modal">Back</button>
-                  </div>
-                </div>
-              </div>
-            </div>
             
 
             <!-- Modal Delivered-->

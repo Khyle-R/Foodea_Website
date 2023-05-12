@@ -15,9 +15,9 @@ class UsedVoucherController extends Controller
         $queryItems = $filter->transform($request);
 
         if (!isset($queryItems)||count($queryItems) == 0 ) {
-            return UsedVoucher::all();
+            return UsedVoucher::with('voucher_details')->get();
         } else {
-            return UsedVoucher::where($queryItems)->get();
+            return UsedVoucher::with('voucher_details')->where($queryItems)->get();
         }
     }
 
@@ -27,7 +27,7 @@ class UsedVoucherController extends Controller
 
     public function show(Request $request, UsedVoucher $UsedVoucher){
         $id = $request->segment(count(request()->segments()));
-        return $UsedVoucher::where('id', $id)->get();
+        return $UsedVoucher::where('id', $id)->with('voucher_details')->get();
     }
 
     // public function destroy(Request $request, tbl_voucher $tbl_voucher){

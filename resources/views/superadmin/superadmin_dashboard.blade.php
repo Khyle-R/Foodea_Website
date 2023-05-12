@@ -9,10 +9,18 @@
                     <div class="row">
                       <div class="col-9">
                         <div class="d-flex align-items-center align-self-start">
-                          <h3 class="mb-0">₱0.00</h3>
+                          @if($revenue)
+                        
+                          <h3 class="mb-0">₱ {{ $revenue }}.00</h3>
                           <p class="text-success ml-2 mb-0 font-weight-medium">
-                            +3.5%
+                           
                           </p>
+                          @else
+                           <h3 class="mb-0">₱ 0.00</h3>
+                          <p class="text-success ml-2 mb-0 font-weight-medium">
+                           
+                          </p>
+                            @endif
                         </div>
                       </div>
                       <div class="col-3">
@@ -24,7 +32,7 @@
                       </div>
                     </div>
                     <h6 class="text-muted font-weight-normal">
-                      Sales
+                      Revenue
                     </h6>
                   </div>
                 </div>
@@ -38,13 +46,13 @@
                           @if($riders)
                           <h3 class="mb-0">{{ $riders }}</h3>
                           <p class="text-success ml-2 mb-0 font-weight-medium">
-                            +11%
+                          
                           </p>
                           
                           @else
                           <h3 class="mb-0">0</h3>
                           <p class="text-success ml-2 mb-0 font-weight-medium">
-                            +11%
+                            
                           </p>
                           @endif
                         </div>
@@ -72,13 +80,13 @@
                           @if($merchant)
                           <h3 class="mb-0">{{ $merchant }}</h3>
                           <p class="text-success ml-2 mb-0 font-weight-medium">
-                            +11%
+                     
                           </p>
                           
                           @else
                           <h3 class="mb-0">0</h3>
                           <p class="text-success ml-2 mb-0 font-weight-medium">
-                            +11%
+                     
                           </p>
                           @endif
                         </div>
@@ -101,10 +109,17 @@
                     <div class="row">
                       <div class="col-9">
                         <div class="d-flex align-items-center align-self-start">
-                          <h3 class="mb-0">0</h3>
+                          @if($users)
+                          <h3 class="mb-0">{{ $users }}</h3>
                           <p class="text-success ml-2 mb-0 font-weight-medium">
-                            +3.5%
+                       
                           </p>
+                          @else
+                           <h3 class="mb-0">0</h3>
+                          <p class="text-success ml-2 mb-0 font-weight-medium">
+                       
+                          </p>
+                          @endif
                         </div>
                       </div>
                       <div class="col-3">
@@ -128,12 +143,20 @@
               <div class="col-lg-6 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Sales</h4>
+                    <h4 class="card-title">Revenue</h4>
                     <canvas id="areaChart" style="height: 250px"></canvas>
                   </div>
                 </div>
               </div>
-              <div class="col-lg-6">
+              <div class="col-lg-6 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title"></h4>
+                    <canvas id="barChart" style="height:230px"></canvas>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-12">
                 <div class="card mb-4">
                   <div class="card-body">
                       <div class="d-flex flex-row justify-content-between my-2">
@@ -142,27 +165,31 @@
                     </div>
                     
                     </div>
+                    
                     <div class="table-responsive">
-                    <table id="example0" class="table" style="width:100%">
+                    <table id="topSellingMerchant" class="table" style="width:100%">
                         <thead>
+                          
                             <tr>
                                 <th>ID</th>
-                                <th>Name</th>
+                                <th>Business Name</th>
                                 <th>Email</th>
-                                <th>Descriptiong</th>
-                                <th>Date Time</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td> 
-                                </td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <th>Business Type</th>
+                                <th>Orders</th>
                             </tr>
                           
+                            
+                        </thead>
+                        <tbody>
+                          @foreach ($TopSellingMerchant as $tops )
+                            <tr>
+                                <td> {{ $tops->merchant_id }}</td>
+                                <td>{{ $tops->business_name }}</td>
+                                <td>{{ $tops->store_email }}</td>
+                                <td>{{ $tops->business_type }}</td>
+                                <td>{{ $tops->totals }}</td>
+                            </tr>
+                          @endforeach
                         </tbody>
                     
                     </table>
@@ -170,6 +197,7 @@
             </div>
           </div>  
          </div>
+         
               </div>
 
               <!--Recent Applcation-->
@@ -186,23 +214,23 @@
                     <table id="example1" class="table" style="width:100%">
                         <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Description</th>
-                                <th>Date Time</th>
+                                <th>Product ID</th>
+                                <th>Product</th>
+                                <th>Category</th>
+                                <th>Sales</th>
+                             
                             </tr>
                         </thead>
                         <tbody>
+                          @foreach ($products as $prod)
                             <tr>
-                                <td> 
-                                </td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td>{{ $prod->product_id }}</td>
+                                <td>{{ $prod->product_name }}</td>
+                                <td>{{ $prod->category_name }}</td>
+                                <td>{{ $prod->totals }}</td>
+                            
                             </tr>
-                          
+                           @endforeach
                         </tbody>
                     
                     </table>
@@ -259,6 +287,7 @@
              
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.html -->
+      
           <footer class="footer">
             <div
               class="d-sm-flex justify-content-center justify-content-sm-between"
@@ -272,4 +301,13 @@
           </footer>
           <!-- partial -->
         </div>
+
+         <script type="text/javascript">
+      
+      var DateLabel =  {!! json_encode($day) !!};
+      var DateData =  {!! json_encode($total) !!};
+
+      var YearLabel =  {!! json_encode($year) !!};
+      var YearData =  {!! json_encode($barsales) !!};
+    </script>
         @endsection

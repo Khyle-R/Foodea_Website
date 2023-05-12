@@ -17,7 +17,9 @@ class RiderFilter{
         'address' => ['eq', 'like'],
         'city' => ['like', 'eq'],
         'barangay' => ['eq', 'like'],
-        'zip_code' => ['eq','like']
+        'zip_code' => ['eq','like'],
+        'latitude' => ['eq', 'gt', 'gte', 'lte', 'lt'],
+        'longitude' => ['eq', 'gt', 'gte', 'lte', 'lt']
     ];
 
     protected $operatorMap = [
