@@ -58,7 +58,7 @@
                   <div class="card">
                     <div class="card-body">  
                       <div class="table-responsive">
-                        <table id="example" class="table" style="width:100%">
+                        <table id="sortStart" class="table" style="width:100%">
                           <thead>
                             <tr>
                               <th>Transaction ID</th>
@@ -160,22 +160,30 @@
                                               <tbody>
                                                 <?php 
                                                   $current_order_key = $data->order_key;
+                                                  $order_with_key = App\Models\tbl_orders::where('order_key', $current_order_key)->with('transaction_details')->get();  
                                                 ?>
                                                   @foreach($history as $item)
                                                     @if($item->order_key == $current_order_key)
+                                                    <?php 
+                                                      $prod_id = $item->product_id;
+                                                      $food_items = App\Models\tbl_product::where('product_id', $prod_id)->get();
+                                                    ?>
+                                                    @foreach($food_items as $single)
                                                       <tr>
                                                         <td>
                                                           <img
-                                                            src="{{$item->transaction_details->product_details->product_image ?? ''}}"
+                                                            src="{{$single->product_image}}"
                                                             alt="image" width="40" height="50"
                                                           />
                                                         </td>
                                                         <td>
-                                                            {{$item->transaction_details->product_details->product_name ?? 'Item name'}}
+                                                          {{$single->product_name}}
                                                         </td>
                                                         <td>{{$item->quantity}}</td>
                                                         <td>{{$item->total}}</td>
                                                       </tr>
+                                                    @endforeach
+                                                      
                                                     @endif
                                                   @endforeach
                                               </tbody>

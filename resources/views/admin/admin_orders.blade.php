@@ -94,28 +94,30 @@
                     <div class="card-body">
 
                         <div class="table-responsive">
-                            <table id="example" class="table" style="width:100%">
+                            <table id="sortStart" class="table" style="width:100%">
                             <thead>
                                 <tr>
                                     <th>Order Number</th>
                                     <th>Customer’s ID</th>
-                                    <th>Product ID</th>
+                                    <th>Order Key</th>
                                     <th>Date</th>
-                                    <th>Total</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                               @foreach ($orders as $key => $data)
-                                  
-                              
                                 <tr>
                                     <td>{{ $data->order_id}}</td>
-                                    <td>{{ $data->customer_id}}</td>
-                                    <td>{{ $data->product_id}}</td>
+                                    <?php 
+                                        $id_user = $data->customer_id;
+                                        $curr_user = App\Models\AppUser::where('user_id', $id_user)->get();
+                                    ?>
+                                    @foreach($curr_user as $curr)
+                                        <td>{{$curr->firstname. ' '.$curr->lastname}}</td>
+                                    @endforeach
+                                    <td>{{ $data->order_key}}</td>
                                     <td>{{ $data->date}}</td>
-                                    <td>{{ $data->total}}</td>
                                     <td>
                                         <div class="dropdown action-label">
                                                 <a class=" btn-white-circle btn-white btn-sm btn-rounded dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">
@@ -136,65 +138,66 @@
                                                 <a data-toggle="modal" data-target="#ViewModal{{ $data->order_id}}" class="action-btn dropdown-item black" href="#"><i class="fa fa-pencil m-r-5"></i>View</a>
                                             </div>
                                         </div>
+                                        <!-- MODAL STARTS HERE -->
+                                        <!-- VIEW CONTENT -->
+                                        <div class="modal fade" tabindex="-1" id="ViewModal{{ $data->order_id}}" role="dialog">
+                                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                                <div class="modal-content">
+                                                    <!-- MODAL HEADER -->
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title text-white">View Orders</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <!-- MODAL BODY -->
+                                                    <div class="modal-body text-dark">
+                                                        <div class="table-responsive">
+                                                            <table class="ordetails mx-auto">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Image</th>
+                                                                        <th>Product Name</th>
+                                                                        <th>Quantity</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <?php 
+                                                                        $current_key = $data->order_key;
+                                                                        $order_with_key = App\Models\tbl_orders::where('order_key', $current_key)->with('transaction_details')->get();  
+                                                                    ?>
+                                                                    @foreach($order_with_key as $key2 => $item)
+                                                                        
+                                                                        @if($item->order_key == $current_key)
+                                                                            <?php
+                                                                                $prod_id = $item->product_id;
+                                                                                $food_items = App\Models\tbl_product::where('product_id', $prod_id)->get();
+                                                                            ?>
+                                                                            @foreach($food_items as $single)
+                                                                                <tr>
+                                                                                    <td><img src="{{$single->product_image}}" alt="image" width="50" height="40"></td>
+                                                                                    <td>{{$single->product_name}}</td>
+                                                                                    <th>{{ $item->quantity}}</td>
+                                                                                </tr>
+                                                                            @endforeach
+                                                                            
+                                                                        @endif
+                                                                    @endforeach
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                    <!-- MODAL FOOTER -->
+                                                    <div class="modal-footer">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </td>
                                 </tr>
 
-                                <!-- MODAL STARTS HERE -->
-                                 <!-- VIEW CONTENT -->
-                                 <div class="modal fade" tabindex="-1" id="ViewModal{{ $data->order_id}}" role="dialog">
-                                    <div class="modal-dialog modal-dialog-centered" role="document">
-                                        <div class="modal-content">
-                                            <!-- MODAL HEADER -->
-                                            <div class="modal-header">
-                                                <h5 class="modal-title text-white">View Orders</h5>
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                            <!-- MODAL BODY -->
-                                            <div class="modal-body text-dark">
-                                                <div class="form-group">
-                                                    <form method="post" action="">
-                                                    @csrf
-                                                    <label>Order Number:</label>
-                                                    <input id="OrderNumber" name="OrderNumber" type="text" class="form-control" placeholder="{{ $data->order_id}}" required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Customer ID</label>
-                                                    <input id="CustomerId" name="CustomerId" type="text" class="form-control" placeholder="{{ $data->customer_id}}" required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Product ID</label>
-                                                    <input id="ProductId" name="ProductId" type="text" class="form-control" placeholder="{{ $data->product_id}}" required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Quantity</label>
-                                                    <input id="quantity" name="quantity" type="text" class="form-control" placeholder="{{ $data->quantity}}" required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Total</label>
-                                                    <input id="total" name="total" type="text" class="form-control" placeholder="{{ $data->total}}" required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Status</label>
-                                                    <input id="status" name="status" type="text" class="form-control" placeholder="{{ $data->status}}" required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Payment type</label>
-                                                    <input id="paymentType" name="paymentType" type="text" class="form-control" placeholder="{{ $data->payment_type}}" required>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label>Date</label>
-                                                    <input id="date" name="date" type="text" class="form-control" placeholder="{{ $data->date}}" required>
-                                                </div>
-                                            </div>
-                                            <!-- MODAL FOOTER -->
-                                            <div class="modal-footer">
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                
 
                                 <!-- PENDING MODAL -->
                                 <div class="modal fade" id="PendingModal{{ $data->order_id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -244,7 +247,7 @@
                                                   @csrf
                                                 <input type="hidden" name="status" value="Reiv">
                                                 <input type="hidden" name="id" value="{}">
-                                                <input type="hidden" name="order_id" id="order_id" value="{{ $data->order_id}}">
+                                                <input type="hidden" name="order_id" id="order_id" value="{{ $data->order_key}}">
                                             </div>
                                             <!-- MODAL FOOTER -->
                                             <div class="modal-footer">

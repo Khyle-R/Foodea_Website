@@ -167,7 +167,7 @@
                     </div>
                     
                     <div class="table-responsive">
-                    <table id="example0" class="table" style="width:100%">
+                    <table id="topSellingMerchant" class="table" style="width:100%">
                         <thead>
                           
                             <tr>

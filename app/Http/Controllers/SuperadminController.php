@@ -27,17 +27,22 @@ use App\Models\tbl_merchant_application;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Validation\Rules\Password;
 use App\Clients\SendGridClient;
+use App\Models\tbl_activitylog;
 use App\Models\tbl_app_user;
+use App\Models\tbl_category;
+use App\Models\tbl_inventory;
 use App\Models\tbl_merchant_account;
 use App\Models\tbl_merchant_document;
 use App\Models\tbl_orders;
+use App\Models\tbl_transaction;
+use App\Models\tbl_voucher;
 
 class SuperadminController extends Controller
 {
     public function index(){
         $riders = tbl_accepted_rider::count();
         $merchant = tbl_accepted_merchant::count();
-        $sales = tbl_orders::sum('total');
+        $sales = tbl_orders::where('status', 'Delivered')->sum('total');
         $users = tbl_app_user::count();
         
         $revenue = 0.1 * $sales;
@@ -95,6 +100,7 @@ class SuperadminController extends Controller
          $TopSellingProducts = tbl_product::join('tbl_orders', 'tbl_product.product_id', '=', 'tbl_orders.product_id')
         ->selectRaw('tbl_product.product_id, tbl_product.product_name, tbl_product.category_name, sum(tbl_orders.total) as totals, count(tbl_orders.product_id) as product_sold')
         ->groupBy('tbl_product.product_id', 'tbl_product.product_name', 'tbl_product.category_name')
+        ->where('tbl_orders.status', 'Delivered')
         ->orderBy('product_sold', 'desc')
         ->get();
     
@@ -324,7 +330,6 @@ class SuperadminController extends Controller
     ->join('merchant_application', 'tbl_merchant_account.merchant_id', '=', 'merchant_application.merchant_id')
     ->join('merchant_document', 'tbl_merchant_account.merchant_id', '=', 'merchant_document.merchant_id')
     ->distinct()
-    ->orderBy('tbl_merchant_account.merchant_id', 'desc')
     ->get(['merchant_document.logo' ,'merchant_application_id', 'status', 'merchant_application.date', 'merchant_application.merchant_id', 'store_email', 'business_type', 'business_name']);
    
          $all = tbl_merchant_application::count();
@@ -491,7 +496,6 @@ class SuperadminController extends Controller
     ->join('merchant_application', 'tbl_merchant_account.merchant_id', '=', 'merchant_application.merchant_id')
     ->join('merchant_document', 'tbl_merchant_account.merchant_id', '=', 'merchant_document.merchant_id')
     ->where('merchant_application.status', 'Pending')
-    ->orderBy('tbl_merchant_account.merchant_id', 'desc')
     ->distinct()
     ->get(['merchant_document.logo' ,'merchant_application_id', 'status', 'merchant_application.date', 'merchant_application.merchant_id', 'store_email', 'business_type', 'business_name']);
    
@@ -531,7 +535,6 @@ class SuperadminController extends Controller
     ->join('merchant_application', 'tbl_merchant_account.merchant_id', '=', 'merchant_application.merchant_id')
     ->join('merchant_document', 'tbl_merchant_account.merchant_id', '=', 'merchant_document.merchant_id')
     ->where('merchant_application.status', 'Reviewing')
-    ->orderBy('tbl_merchant_account.merchant_id', 'desc')
     ->distinct()
     ->get(['merchant_document.logo' ,'merchant_application_id', 'status', 'merchant_application.date', 'merchant_application.merchant_id', 'store_email', 'business_type', 'business_name']);
    
@@ -544,7 +547,6 @@ class SuperadminController extends Controller
     ->join('merchant_application', 'tbl_merchant_account.merchant_id', '=', 'merchant_application.merchant_id')
     ->join('merchant_document', 'tbl_merchant_account.merchant_id', '=', 'merchant_document.merchant_id')
     ->where('merchant_application.status', 'Accepted')
-    ->orderBy('tbl_merchant_account.merchant_id', 'desc')
     ->distinct()
     ->get(['merchant_document.logo' ,'merchant_application_id', 'status', 'merchant_application.date', 'merchant_application.merchant_id', 'store_email', 'business_type', 'business_name']);
    
@@ -557,7 +559,6 @@ class SuperadminController extends Controller
     ->join('merchant_application', 'tbl_merchant_account.merchant_id', '=', 'merchant_application.merchant_id')
     ->join('merchant_document', 'tbl_merchant_account.merchant_id', '=', 'merchant_document.merchant_id')
     ->where('merchant_application.status', 'Rejected')
-    ->orderBy('tbl_merchant_account.merchant_id', 'desc')
     ->distinct()
     ->get(['merchant_document.logo' ,'merchant_application_id', 'status', 'merchant_application.date', 'merchant_application.merchant_id', 'store_email', 'business_type', 'business_name']);
    
@@ -694,7 +695,20 @@ class SuperadminController extends Controller
         ->delete();
         tbl_merchant_document::where('merchant_id', $request->partner_id)
         ->delete();
-
+        tbl_product::where('merchant_id', $request->partner_id)
+        ->delete();
+        tbl_transaction::where('merchant_id', $request->partner_id)
+        ->delete();
+        tbl_voucher::where('merchant_id', $request->partner_id)
+        ->delete();
+        tbl_orders::where('restaurant_id', $request->partner_id)
+        ->delete();
+        tbl_inventory::where('merchant_id', $request->partner_id)
+        ->delete();
+        tbl_category::where('merchant_id', $request->partner_id)
+        ->delete();
+        tbl_activitylog::where('merchant_id', $request->partner_id)
+        ->delete();
         $request->session()->put('success', 'Account Removed');
         return back();
     }

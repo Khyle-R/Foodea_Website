@@ -26,27 +26,22 @@ use Carbon\Carbon; // to retrieve current Date
 class Admin_product extends Controller
 {
     public function dashboard(){
-       $totalOrders = tbl_orders::where('restaurant_id', Session::get('loginID'))
-       ->count();
+        $totalOrders = tbl_orders::where('restaurant_id', Session::get('loginID'))->count();
        
-       $productSold = tbl_orders::where('restaurant_id', Session::get('loginID'))
-       ->count('product_id');
+        $productSold = tbl_orders::where('restaurant_id', Session::get('loginID'))->where('status', 'Delivered')->sum('quantity');
        
-       $totalRevenue = tbl_orders::where('restaurant_id', Session::get('loginID'))
-       ->sum('total');
+        $totalRevenue = tbl_orders::where('restaurant_id', Session::get('loginID'))->where('status', 'Delivered')->sum('total');
       
-       $totalProduct = tbl_product::where('merchant_id', Session::get('loginID'))
-       ->count('product_id');
+        $totalProduct = tbl_product::where('merchant_id', Session::get('loginID'))->count('product_id');
     
-        $allProduct = tbl_product::where('merchant_id', Session::get('loginID'))
-        ->get();
+        $allProduct = tbl_product::where('merchant_id', Session::get('loginID'))->get();
         
         
     if($allProduct){
     
     // GET DATE AND TOTAL IN CHART
     $date = tbl_orders::selectRaw('date, sum(total) as totals')
-    ->where('restaurant_id', Session::get('loginID'))
+    ->where('restaurant_id', Session::get('loginID'))->where('status', 'Delivered')
     ->groupBy('date')
     ->get();
 
@@ -84,7 +79,7 @@ class Admin_product extends Controller
         ->orderBy('product_sold', 'desc')
         ->get();
     
-    $product=[];
+    $products=[];
     foreach($Data as $prod){
         $products[] = $prod;
         
@@ -414,7 +409,7 @@ class Admin_product extends Controller
 
     public function Order_Preparing(Request $request)
     {
-        $affected = DB::table('tbl_orders')->where('order_id', $request->order_id);
+        $affected = DB::table('tbl_orders')->where('order_key', $request->order_id);
                 
         $resss=$affected->update(['status' => 'Ready for pick up'],);
               
@@ -441,12 +436,19 @@ class Admin_product extends Controller
 
 // Admin order Show the Table
     public function Orders(){
-        $orders = DB::table('tbl_orders')->where('restaurant_id', '=', session('loginID'))->get();
-        $orders = $orders->sortByDesc('order_id');
+        $orderKeys = tbl_orders::select('order_key')->distinct()->where('restaurant_id', session('loginID'))->get();
+        $orders = collect();
+        foreach ($orderKeys as $orderKey){
+            $order = tbl_orders::whereIn('order_key', $orderKey)->where('restaurant_id', session('loginID'))->with('transaction_details')->take(1)->get();
+            $orders = $orders->merge($order);
+            continue;
+        }
+        // dd($orders);
+        // $orders = $orders->sortByDesc('order_id');
 
         $TotalOrders = DB::table('tbl_orders')->where('restaurant_id', '=', session('loginID'))->count();
         $PendingOrders = DB::table('tbl_orders')->where([['status','Pending'],['restaurant_id', '=', session('loginID')]])->count();
-        $PreparingOrders = DB::table('tbl_orders')->where([['status','Preparing'],['restaurant_id', '=', session('loginID')]])->count();
+        $PreparingOrders = DB::table('tbl_orders')->where([['status','Ready for pick up'],['restaurant_id', '=', session('loginID')]])->count();
         $DeliveringOrders = DB::table('tbl_orders')->where([['status','Delivering'],['restaurant_id', '=', session('loginID')]])->count();
         $DeliveredOrders = DB::table('tbl_orders')->where([['status','Delivered'],['restaurant_id', '=', session('loginID')]])->count();
        
