@@ -18,9 +18,7 @@
                             </nav>
                         </div>
                                  <div class="d-flex flex-row justify-content-end my-4">
-                        <div class="title">
-                    <a class="red-btn" href="#">Download Report</a>
-                    </div>
+                        
                     
                     </div>
 
@@ -42,13 +40,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                     
+                     <?php $__currentLoopData = $sales; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $sale): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
+                                <td><?php echo e($sale->restaurant_id); ?></td>
+                                <td><?php echo e($sale->business_name); ?></td>
+                                <td><?php echo e($sale->total); ?></td>
+                                <td><?php echo e(0.1 * $sale->total); ?></td>
                             </tr>
+                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                         
                        
                         </tbody>
                     

@@ -12,10 +12,17 @@
                     <div class="row">
                       <div class="col-9">
                         <div class="d-flex align-items-center align-self-start">
-                          <h3 class="mb-0"><?php echo e($totalRevenue); ?></h3>
+                          <?php if($totalRevenue): ?>
+                          <h3 class="mb-0">₱ <?php echo e($totalRevenue); ?>.00</h3>
                           <p class="text-success ml-2 mb-0 font-weight-medium">
-                            +3.5%
+                           
                           </p>
+                          <?php else: ?>
+                          <h3 class="mb-0">₱ 0.00</h3>
+                          <p class="text-success ml-2 mb-0 font-weight-medium">
+                           
+                          </p>
+                          <?php endif; ?>
                         </div>
                       </div>
                       <div class="col-3">
@@ -40,7 +47,7 @@
                         <div class="d-flex align-items-center align-self-start">
                           <h3 class="mb-0"><?php echo e($totalOrders); ?></h3>
                           <p class="text-success ml-2 mb-0 font-weight-medium">
-                            +11%
+                            
                           </p>
                         </div>
                       </div>
@@ -65,9 +72,7 @@
                       <div class="col-9">
                         <div class="d-flex align-items-center align-self-start">
                           <h3 class="mb-0"><?php echo e($productSold); ?></h3>
-                          <p class="text-danger ml-2 mb-0 font-weight-medium">
-                            -2.4%
-                          </p>
+                          
                         </div>
                       </div>
                       <div class="col-3">
@@ -90,7 +95,7 @@
                         <div class="d-flex align-items-center align-self-start">
                           <h3 class="mb-0"><?php echo e($totalProduct); ?></h3>
                           <p class="text-success ml-2 mb-0 font-weight-medium">
-                            +3.5%
+                          
                           </p>
                         </div>
                       </div>
@@ -121,7 +126,7 @@
               <div class="col-lg-6 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Applicants</h4>
+                    <h4 class="card-title">Orders</h4>
                     <canvas id="doughnutChart"></canvas>
                   </div>
                 </div>
@@ -145,7 +150,7 @@
                            </tr>
                         </thead>
                         <tbody>
-                           <?php $__currentLoopData = $product; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                           <?php $__currentLoopData = $allProduct; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                               <tr>
                                  <td>
                                     <img src="<?php echo e($data->product_image); ?>" alt="image" class="img-fluid"
@@ -175,7 +180,7 @@
                     <div class="card-body">
                       <div class="d-flex flex-row justify-content-between">
                     <h4 class="card-title">Top Selling Products</h4>
-                      <a class="text-muted mb-1 small">View Product</a>
+                      
                     </div>
                       <div class="table-responsive">
                       <table class="table table-striped">
@@ -189,12 +194,15 @@
                         </thead>
                         <tbody>
                           
-                           <tr>
-                            <td>10</td>
-                            <td>Fried Chicken</td>
-                            <td>Chicken</td>
-                            <td>5000</td>
+                          <?php $__currentLoopData = $products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                              <tr>
+                            <td><?php echo e($product->product_id); ?></td>
+                            <td><?php echo e($product->product_name); ?></td>
+                            <td><?php echo e($product->category_name); ?></td>
+                            <td><?php echo e($product->totals); ?></td>
                           </tr>
+                          <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                           
                         </tbody>
                       </table>
                     </div>
@@ -203,6 +211,7 @@
            </div>
          </div>
           </div>
+    
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.html -->
           <footer class="footer">
@@ -218,5 +227,19 @@
           </footer>
           <!-- partial -->
         </div>
+          
+
+      <script type="text/javascript">
+      // SALES
+      var DateLabel =  <?php echo json_encode($day); ?>;
+      var DateData =  <?php echo json_encode($total); ?>;
+
+      //ORDERS
+      var OrderLabel =  <?php echo json_encode($order_status); ?>;
+      var OrderData =  <?php echo json_encode($order_count); ?>;
+        
+
+    </script>
+
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('admin.index', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH E:\xampp\htdocs\Foodea_Website\resources\views/admin/dashboard.blade.php ENDPATH**/ ?>

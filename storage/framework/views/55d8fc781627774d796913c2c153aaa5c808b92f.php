@@ -20,7 +20,7 @@
                                 <ul class="nav nav-tabs nav-tabs-solid nav-justified">
                                 <li class="nav-size nav-item"><a class="nav-link active" href="/admin_orders">All</a></li>
                                 <li class="nav-size nav-item"><a class="nav-link" href="/orderpending">Pending</a></li>
-                                <li class="nav-size nav-item"><a class="nav-link" href="/orderpreparing">Preparing</a></li>
+                                <li class="nav-size nav-item"><a class="nav-link" href="/orderpreparing">Ready for pick up</a></li>
                                 <li class="nav-size nav-item"><a class="nav-link" href="/orderdelivering">Delivering</a></li>
                                 <li class="nav-size nav-item"><a class="nav-link" href="/orderdelivered">Delivered</a></li>
                                 </ul>
@@ -63,7 +63,7 @@
 						<div class="d-flex align-items-center justify-content-between px-3">
 							<div class="dash-widget-info">
 									<h3><?php echo e($PreparingOrders); ?></h3>
-								<span>Preparing</span>
+								<span>Ready for pick up</span>
 							</div>
 							<span class="dash-widget-icon"><i class="mdi mdi-file-check"></i></span>
 						</div>
@@ -123,10 +123,9 @@
 
                                                 </a>
                                             <div class="bg-white dropdown-menu dropdown-menu-right">
-                                                <a data-toggle="modal" data-target="#PendingModal<?php echo e($data->order_id); ?>" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-success"></i> Pending</a>
-                                                <a data-toggle="modal" data-target="#PreparingModal<?php echo e($data->order_id); ?>" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-danger"></i> Preparing</a>
-                                                <a data-toggle="modal" data-target="#DeliveringModal<?php echo e($data->order_id); ?>" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-warning"></i> Delivering</a>
-                                                <a data-toggle="modal" data-target="#DeliveredModal<?php echo e($data->order_id); ?>" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-warning"></i> Delivered</a>
+                                                
+                                                <a data-toggle="modal" data-target="#PreparingModal<?php echo e($data->order_id); ?>" class="action-btn dropdown-item black" href="#"><i class="fa fa-dot-circle-o text-danger"></i> Ready for pick up</a>
+                                                
                                             </div>
                                         </div>
                                     </td>
@@ -357,11 +356,7 @@
         <footer class="footer">
             <div class="d-sm-flex justify-content-center justify-content-sm-between">
                 <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2023. All Rights Reserved</span>
-                    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">
-                        <a  href=""
-                            target="_blank">from foodea.com 
-                        </a>
-                    </span>
+                  
             </div>
         </footer>
         <!-- END OF FOOTER --> 

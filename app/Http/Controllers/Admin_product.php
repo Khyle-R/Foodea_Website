@@ -12,7 +12,9 @@ use App\Models\tbl_merchant_info;
 use Illuminate\Support\Facades\DB;
 use App\Models\tbl_merchant_account;
 use App\Models\tbl_merchant_document;
+use App\Models\tbl_orders;
 use App\Models\tbl_partner_accounts;
+use App\Models\tbl_transaction;
 use App\Models\TemporaryFile;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Cookie;
@@ -24,15 +26,72 @@ use Carbon\Carbon; // to retrieve current Date
 class Admin_product extends Controller
 {
     public function dashboard(){
-       $totalOrders = DB::table('tbl_orders')->count();
-       $productSold = DB::table('tbl_product')->count();
-       $totalRevenue = DB::table('tbl_product')->count();
-       $totalProduct = DB::table('tbl_product')->count();
+       $totalOrders = tbl_orders::where('restaurant_id', Session::get('loginID'))
+       ->count();
+       
+       $productSold = tbl_orders::where('restaurant_id', Session::get('loginID'))
+       ->count('product_id');
+       
+       $totalRevenue = tbl_orders::where('restaurant_id', Session::get('loginID'))
+       ->sum('total');
+      
+       $totalProduct = tbl_product::where('merchant_id', Session::get('loginID'))
+       ->count('product_id');
     
-    $product = tbl_product::where('merchant_id', Session::get('loginID'))
+        $allProduct = tbl_product::where('merchant_id', Session::get('loginID'))
+        ->get();
+        
+        
+    if($allProduct){
+    
+    // GET DATE AND TOTAL IN CHART
+    $date = tbl_orders::selectRaw('date, sum(total) as totals')
+    ->where('restaurant_id', Session::get('loginID'))
+    ->groupBy('date')
+    ->get();
+
+    $day = [];
+    $total = [];
+    
+     foreach($date as $dates){
+            $timestamp = strtotime($dates->date);
+            $day[] = date('M', $timestamp).' '. date('d', $timestamp).' ' .date('Y', $timestamp);
+            $total[] = $dates->totals; 
+        }
+   
+        // !GET DATE AND TOTAL IN CHART 
+   
+    // GET STATUS IN CHART
+    $status = tbl_orders::selectRaw('status, count(status) as order_counts')
+    ->groupBy('status')
+    ->where('restaurant_id', Session::get('loginID'))
     ->get();
     
-    return view('admin.dashboard',['totalOrders' => $totalOrders, 'productSold' => $productSold, 'totalRevenue' => $totalRevenue, 'totalProduct' => $totalProduct,], compact('product'));
+    $order_status = [];
+    $order_count = [];
+    
+    foreach($status as $stat){
+         $order_status[] = $stat->status;
+         $order_count[] = $stat->order_counts;
+        }
+
+     // !GET STATUS IN CHART
+
+        $Data = tbl_product::join('tbl_orders', 'tbl_product.product_id', '=', 'tbl_orders.product_id')
+        ->where('tbl_orders.restaurant_id', Session::get('loginID'))
+        ->selectRaw('tbl_product.product_id, tbl_product.product_name, tbl_product.category_name, sum(tbl_orders.total) as totals, count(tbl_orders.product_id) as product_sold')
+        ->groupBy('tbl_product.product_id', 'tbl_product.product_name', 'tbl_product.category_name')
+        ->orderBy('product_sold', 'desc')
+        ->get();
+    
+    $product=[];
+    foreach($Data as $prod){
+        $products[] = $prod;
+        
+    }
+    return view('admin.dashboard',['totalOrders' => $totalOrders, 'productSold' => $productSold, 'totalRevenue' => $totalRevenue, 'totalProduct' => $totalProduct,], compact('products', 'day', 'total', 'order_status', 'order_count', 'allProduct'));
+    }
+   
     }
     
    public function logout(){
@@ -87,8 +146,9 @@ class Admin_product extends Controller
         $product->date =$rProduct->date;
         $product->product_id =$rProduct->inventory_id;
         $product->merchant_id =$rProduct->merchant_id;
+        $product->category_id =$rProduct->category_id;
         $product->category_name =$rProduct->category_name;
-        $product->price =$rProduct->price;
+        $product->calories =$rProduct->calories;
         $product->tags =$rProduct->tags;
         
         $res= $product-> save();
@@ -140,8 +200,9 @@ class Admin_product extends Controller
         $product->date =$rProduct->date;
         $product->inventory_id =$rProduct->product_id;
         $product->merchant_id =$rProduct->merchant_id;
+        $product->category_id =$rProduct->category_id;
         $product->category_name =$rProduct->category_name;
-        $product->price =$rProduct->price;
+        $product->calories =$rProduct->calories;
         $product->tags =$rProduct->tags;
         
         $res= $product-> save();
@@ -355,7 +416,7 @@ class Admin_product extends Controller
     {
         $affected = DB::table('tbl_orders')->where('order_id', $request->order_id);
                 
-        $resss=$affected->update(['status' => 'Preparing'],);
+        $resss=$affected->update(['status' => 'Ready for pick up'],);
               
         return redirect('orderpreparing');
     }
@@ -380,36 +441,41 @@ class Admin_product extends Controller
 
 // Admin order Show the Table
     public function Orders(){
-        $orders = DB::table('tbl_orders')->where('merchant_id', '=', session('loginID'))->get();
+        $orders = DB::table('tbl_orders')->where('restaurant_id', '=', session('loginID'))->get();
+        $orders = $orders->sortByDesc('order_id');
 
-        $TotalOrders = DB::table('tbl_orders')->where('merchant_id', '=', session('loginID'))->count();
-        $PendingOrders = DB::table('tbl_orders')->where([['status','Pending'],['merchant_id', '=', session('loginID')]])->count();
-        $PreparingOrders = DB::table('tbl_orders')->where([['status','Preparing'],['merchant_id', '=', session('loginID')]])->count();
-        $DeliveringOrders = DB::table('tbl_orders')->where([['status','Delivering'],['merchant_id', '=', session('loginID')]])->count();
-        $DeliveredOrders = DB::table('tbl_orders')->where([['status','Delivered'],['merchant_id', '=', session('loginID')]])->count();
+        $TotalOrders = DB::table('tbl_orders')->where('restaurant_id', '=', session('loginID'))->count();
+        $PendingOrders = DB::table('tbl_orders')->where([['status','Pending'],['restaurant_id', '=', session('loginID')]])->count();
+        $PreparingOrders = DB::table('tbl_orders')->where([['status','Preparing'],['restaurant_id', '=', session('loginID')]])->count();
+        $DeliveringOrders = DB::table('tbl_orders')->where([['status','Delivering'],['restaurant_id', '=', session('loginID')]])->count();
+        $DeliveredOrders = DB::table('tbl_orders')->where([['status','Delivered'],['restaurant_id', '=', session('loginID')]])->count();
        
 
         return view('admin.admin_orders',['orders' => $orders, 'TotalOrders' => $TotalOrders, 'PendingOrders' => $PendingOrders, 'PreparingOrders' => $PreparingOrders, 'DeliveringOrders' => $DeliveringOrders, 'DeliveredOrders' => $DeliveringOrders]);
 
     }
     public function OrderPending(){
-        $pending_order = DB::table('tbl_orders')->where([['status','=', 'Pending'],['merchant_id', '=', session('loginID')]])->get();
+        $pending_order = DB::table('tbl_orders')->where([['status','=', 'Pending'],['restaurant_id', '=', session('loginID')]])->get();
+         $pending_order = $pending_order->sortByDesc('order_id');
 
         return view ('admin.admin_orderpending', ['pending_order' => $pending_order]);
     }
     public function OrderPreparing(){
-        $preparing_order = DB::table('tbl_orders')->where([['status','=', 'Preparing'],['merchant_id', '=', session('loginID')]])->get();
+        $preparing_order = DB::table('tbl_orders')->where([['status','=', 'Ready for pick up'],['restaurant_id', '=', session('loginID')]])->get();
+        $preparing_order = $preparing_order->sortByDesc('order_id');
 
         return view ('admin.admin_orderpreparing', ['preparing_order' => $preparing_order]);
     }
     public function OrderDelivering(){
-        $delivering_order = DB::table('tbl_orders')->where([['status','=', 'Delivering'],['merchant_id', '=', session('loginID')]])->get();
-
+        $delivering_order = DB::table('tbl_orders')->where([['status','=', 'Delivering'],['restaurant_id', '=', session('loginID')]])->get();
+        $delivering_order = $delivering_order->sortByDesc('order_id');
+        
         return view ('admin.admin_orderdelivering', ['delivering_order' => $delivering_order]);
     }
 
     public function OrderDelivered(){
-        $delivered_order = DB::table('tbl_orders')->where([['status','=', 'Delivered'],['merchant_id', '=', session('loginID')]])->get();
+        $delivered_order = DB::table('tbl_orders')->where([['status','=', 'Delivered'],['restaurant_id', '=', session('loginID')]])->get();
+        $delivered_order = $delivered_order->sortByDesc('order_id');
 
         return view ('admin.admin_orderdelivered', ['delivered_order' => $delivered_order]);
     }
@@ -501,8 +567,7 @@ class Admin_product extends Controller
 
     public function History()
     {
-        $history = DB::table('tbl_transaction')->get();
-
+        $history = tbl_orders::where('status', 'Delivered')->where('restaurant_id', Session::get('loginID'))->with('transaction_details')->get();
         return view('admin.admin_history', ['history' => $history]);
     }
 

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\tbl_product;
 use App\Models\tbl_merchant_info;
 use App\Models\AppUser;
+use App\Models\tbl_rider_accounts;
 
 class tbl_transaction extends Model
 {
@@ -35,5 +36,9 @@ class tbl_transaction extends Model
 
     public function restaurant_details(){
         return $this->hasOne(tbl_merchant_info::class, 'merchant_id', 'merchant_id')->with('documents');
+    }
+
+    public function rider_details(){
+        return $this->hasOne(tbl_rider_accounts::class, 'rider_id', 'rider_id')->with('rider_documents');
     }
 }
